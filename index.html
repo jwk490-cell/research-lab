@@ -89,14 +89,44 @@ button.card:hover{border-color:var(--accent-line);transform:translateY(-2px);
   color:var(--dim2);font-size:13.5px;background:var(--surface)}
 .empty b{display:block;font-size:15px;color:var(--dim);margin-bottom:6px}
 
-/* ───────── 텔레그램 서브탭 ───────── */
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.chip{padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--dim);
-  font-family:inherit;font-size:12.5px;font-weight:600;border-radius:99px;cursor:pointer;transition:.12s}
-.chip:hover{color:var(--txt);border-color:var(--dim2)}
-.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.subpanel{display:none}
-.subpanel.on{display:block}
+/* ───────── 텔레그램: 좌측 채널 목록 + 피드 ───────── */
+.tgwrap{display:flex;gap:18px;align-items:flex-start}
+.tglist{width:212px;flex:none;display:flex;flex-direction:column;gap:2px;
+  position:sticky;top:16px;max-height:calc(100vh - 160px);overflow-y:auto}
+.tgitem{display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:transparent;
+  color:var(--dim);font-family:inherit;font-size:12.5px;font-weight:600;border-radius:8px;
+  cursor:pointer;text-align:left;transition:.12s;white-space:nowrap}
+.tgitem:hover{background:var(--hover);color:var(--txt)}
+.tgitem.on{background:var(--accent-soft);color:var(--accent)}
+.tgitem .tname{overflow:hidden;text-overflow:ellipsis}
+.tgitem .cnt{margin-left:auto;font-size:10.5px;color:var(--dim2);font-weight:700;flex:none}
+.tgitem.on .cnt{color:var(--accent)}
+.tgfeed{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:13px 16px;box-shadow:var(--shadow)}
+.post .ph{display:flex;align-items:center;gap:9px;min-width:0}
+.post .av{width:34px;height:34px;border-radius:50%;color:#fff;font-weight:800;font-size:13px;
+  display:flex;align-items:center;justify-content:center;flex:none}
+.post .who{min-width:0}
+.post .nm{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post .hd{color:var(--dim2);font-size:11px}
+.post .tm{margin-left:auto;color:var(--dim2);font-size:11.5px;flex:none;padding-left:8px}
+.post .tx{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.62;margin-top:9px}
+.post .tx a{color:var(--accent);word-break:break-all}
+.post .tx.clamp{display:-webkit-box;-webkit-line-clamp:10;-webkit-box-orient:vertical;overflow:hidden}
+.post .more,.feedmore{margin-top:7px;background:none;border:none;color:var(--accent);
+  font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:0}
+.feedmore{align-self:center;background:var(--surface);border:1px solid var(--line);
+  border-radius:99px;padding:9px 22px}
+.post .pf{margin-top:8px}
+.post .pf a{font-size:11.5px;color:var(--dim2);text-decoration:none}
+.post .pf a:hover{color:var(--accent)}
+@media(max-width:860px){
+  .tgwrap{flex-direction:column}
+  .tglist{position:static;width:100%;max-height:none;flex-direction:row;
+    flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+  .tgitem{flex:none}
+}
 
 footer{flex:none;height:40px;display:flex;align-items:center;justify-content:center;
   color:var(--dim2);font-size:11.5px;border-top:1px solid var(--line);background:var(--surface)}
@@ -156,7 +186,7 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
         <button class="card" data-go="sector"><h3>🏭 산업별 등락 <span class="tag">매일</span></h3><p>27개 업종 등락률과 업종 내 종목별 상세 — 매일 업데이트.</p></button>
         <button class="card" data-go="export"><h3>🚢 수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑. 양식 개선 작업 진행 중.</p></button>
         <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
-        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag soon">준비중</span></h3><p>주요 텔레그램 채널 자동 스크랩 + 일별 요약. 채널별 세부 탭 제공 예정.</p></button>
+        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">하루 6회</span></h3><p>주요 텔레그램 17개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
       </div>
     </section>
 
@@ -180,9 +210,11 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
 
     <section class="panel" id="tab-telegram">
       <div class="ptitle">텔레그램 채널 요약</div>
-      <div class="pdesc">주요 텔레그램 채널의 글을 자동 수집해 일별로 요약합니다. 채널을 선택하세요.</div>
-      <div class="chips" id="tgChips"></div>
-      <div id="tgPanels"></div>
+      <div class="pdesc" id="tgMeta">불러오는 중…</div>
+      <div class="tgwrap">
+        <div class="tglist" id="tgList"></div>
+        <div class="tgfeed" id="tgFeed"></div>
+      </div>
     </section>
 
   </main>
@@ -191,28 +223,73 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
 <footer>© 2026 Joy and July Equity Partners · 단순 정보 제공 목적이며, 투자 판단의 근거가 아닙니다.</footer>
 
 <script>
-/* ── 텔레그램 채널 목록: 여기에 채널을 추가하면 서브탭이 자동 생성됩니다.
-     summaryHtml 에 요약 콘텐츠(HTML)를 넣으면 표시되고, 비우면 준비중으로 표시. ── */
-const TG_CHANNELS=[
-  {id:'taerin', name:'태린이아빠', summaryHtml:''},
-];
+/* ── 텔레그램 피드: data/telegram.json 을 읽어 좌측 채널 목록 + 최신순 피드 렌더 ── */
+let TG=null,tgSel='all',tgFetchedAt=0,tgShown=0;
+const PAGE=150;
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const linkify=s=>s.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
 
-const chipsEl=document.getElementById('tgChips'),panelsEl=document.getElementById('tgPanels');
-TG_CHANNELS.forEach((ch,i)=>{
-  const chip=document.createElement('button');
-  chip.className='chip'+(i===0?' on':'');chip.textContent=ch.name;chip.dataset.ch=ch.id;
-  chipsEl.appendChild(chip);
-  const p=document.createElement('div');
-  p.className='subpanel'+(i===0?' on':'');p.id='tg-'+ch.id;
-  p.innerHTML=ch.summaryHtml||'<div class="empty"><b>아직 요약이 없습니다</b>자동 수집·요약 파이프라인 연결 후 일별 요약이 표시됩니다.</div>';
-  panelsEl.appendChild(p);
-});
-chipsEl.addEventListener('click',e=>{
-  const chip=e.target.closest('.chip');if(!chip)return;
-  chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
-  panelsEl.querySelectorAll('.subpanel').forEach(p=>p.classList.remove('on'));
-  chip.classList.add('on');
-  document.getElementById('tg-'+chip.dataset.ch).classList.add('on');
+async function loadTG(force){
+  if(!force&&TG&&Date.now()-tgFetchedAt<120000){return}
+  try{
+    const res=await fetch('data/telegram.json?t='+Date.now(),{cache:'no-store'});
+    if(!res.ok)throw new Error(res.status);
+    TG=await res.json();tgFetchedAt=Date.now();
+  }catch(e){TG=null}
+  renderTG();
+}
+function renderTG(){
+  const meta=document.getElementById('tgMeta'),list=document.getElementById('tgList'),feed=document.getElementById('tgFeed');
+  if(!TG){
+    meta.textContent='주요 텔레그램 채널의 당일 게시글을 자동 수집합니다.';
+    feed.innerHTML='<div class="empty"><b>아직 수집된 데이터가 없습니다</b>첫 수집(오전 7:30) 이후 게시글이 표시됩니다.</div>';
+    list.innerHTML='';return;
+  }
+  meta.textContent=`${TG.date} 게시글 ${TG.posts.length}건 · 마지막 수집 ${TG.updated.slice(11)} · 07:30/09/11/14/16/21시 자동 업데이트`;
+  /* 채널 목록 (글 많은 순) */
+  const chs=[...TG.channels].sort((a,b)=>b.count-a.count);
+  let html=`<button class="tgitem${tgSel==='all'?' on':''}" data-ch="all"><span class="tname">전체</span><span class="cnt">${TG.posts.length}</span></button>`;
+  chs.forEach(c=>{html+=`<button class="tgitem${tgSel===c.handle?' on':''}" data-ch="${c.handle}" title="@${c.handle}"><span class="tname">${esc(c.title)}</span><span class="cnt">${c.count}</span></button>`});
+  list.innerHTML=html;
+  /* 피드 (최신순, 150건씩) */
+  const posts=tgSel==='all'?TG.posts:TG.posts.filter(p=>p.ch===tgSel);
+  tgShown=Math.min(PAGE,posts.length);
+  feed.innerHTML=posts.length?'':'<div class="empty"><b>오늘 올라온 글이 없습니다</b></div>';
+  appendPosts(posts,0,tgShown);
+  if(posts.length>tgShown){
+    const btn=document.createElement('button');btn.className='feedmore';
+    btn.textContent=`더 보기 (${posts.length-tgShown}건 남음)`;
+    btn.onclick=()=>{const from=tgShown;tgShown=posts.length;btn.remove();appendPosts(posts,from,posts.length)};
+    feed.appendChild(btn);
+  }
+}
+function appendPosts(posts,from,to){
+  const feed=document.getElementById('tgFeed');
+  const titleOf={};TG.channels.forEach(c=>titleOf[c.handle]=c.title);
+  const frag=document.createDocumentFragment();
+  for(let i=from;i<to;i++){
+    const p=posts[i];
+    const long=p.text.length>700||p.text.split('\n').length>12;
+    const el=document.createElement('article');el.className='post';
+    el.innerHTML=`<div class="ph">
+        <div class="av" style="background:hsl(${hue(p.ch)},48%,46%)">${esc((titleOf[p.ch]||p.ch)[0])}</div>
+        <div class="who"><div class="nm">${esc(titleOf[p.ch]||p.ch)}</div><div class="hd">@${p.ch}</div></div>
+        <div class="tm">${p.ts.slice(11)}</div></div>
+      <div class="tx${long?' clamp':''}">${linkify(esc(p.text))}</div>
+      ${long?'<button class="more">더보기</button>':''}
+      <div class="pf"><a href="${p.link}" target="_blank" rel="noopener">원문 보기 ↗</a></div>`;
+    if(long){const b=el.querySelector('.more'),tx=el.querySelector('.tx');
+      b.onclick=()=>{const c=tx.classList.toggle('clamp');b.textContent=c?'더보기':'접기'};}
+    frag.appendChild(el);
+  }
+  const moreBtn=feed.querySelector('.feedmore');
+  feed.insertBefore(frag,moreBtn);
+}
+document.getElementById('tgList').addEventListener('click',e=>{
+  const it=e.target.closest('.tgitem');if(!it)return;
+  tgSel=it.dataset.ch;renderTG();
+  document.querySelector('main').scrollTo({top:0});
 });
 
 /* ── 탭 전환 (iframe은 첫 진입 시에만 로드) ── */
@@ -226,6 +303,7 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   if(f&&!f.src){f.src=f.dataset.src;}
+  if(tab==='telegram')loadTG(false);
   document.getElementById('nav').classList.remove('open');
   history.replaceState(null,'','#'+tab);
 }
