@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joy and July Research Hub</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+/* ───────── 테마 변수 ───────── */
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --line:#e5e8ee; --line2:#eef0f4;
+  --txt:#1a2233; --dim:#6b7689; --dim2:#9aa4b5;
+  --accent:#2563eb; --accent-soft:#eff4ff; --accent-line:#cdddfb;
+  --up:#16a34a; --down:#dc2626;
+  --brand:#BE2E22;
+  --sidebar-bg:#ffffff; --hover:#f3f5f9;
+  --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+}
+html[data-theme="dark"]{
+  --bg:#0a0e17; --surface:#111726; --line:#1e2940; --line2:#1a2336;
+  --txt:#e6edf6; --dim:#8a96ab; --dim2:#5d6880;
+  --accent:#3b82f6; --accent-soft:rgba(59,130,246,.12); --accent-line:rgba(59,130,246,.35);
+  --up:#2ec27e; --down:#e5484d;
+  --brand:#d9594c;
+  --sidebar-bg:#0d1320; --hover:#161e30;
+  --shadow:none;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--txt);
+  font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕","Segoe UI",-apple-system,sans-serif;
+  font-size:14px;display:flex;flex-direction:column;transition:background .2s,color .2s}
+
+/* ───────── 상단 헤더 ───────── */
+header{display:flex;align-items:center;gap:12px;padding:0 20px;height:56px;flex:none;
+  background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+.blogo{display:flex;flex-direction:column;line-height:1;flex:none;user-select:none}
+.blogo .l1{font-weight:800;font-size:18px;text-transform:uppercase;
+  color:var(--brand);letter-spacing:.02em;white-space:nowrap}
+.blogo .l2{font-weight:700;font-size:9px;text-transform:uppercase;
+  color:var(--brand);letter-spacing:.28em;text-align:right;margin-top:3px;white-space:nowrap}
+.brandsep{width:1px;height:26px;background:var(--line);flex:none}
+.brand{font-size:14.5px;font-weight:800;letter-spacing:-.3px;white-space:nowrap}
+.brand small{font-weight:500;color:var(--dim);font-size:12px;margin-left:8px;letter-spacing:0}
+@media(max-width:600px){.brand small{display:none}}
+.spacer{flex:1}
+.hbtn{border:1px solid var(--line);background:var(--surface);color:var(--dim);font-family:inherit;
+  font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.hbtn:hover{background:var(--hover);color:var(--txt)}
+#menuBtn{display:none}
+
+/* ───────── 레이아웃 ───────── */
+.layout{display:flex;flex:1;min-height:0}
+nav{width:222px;flex:none;background:var(--sidebar-bg);border-right:1px solid var(--line);
+  padding:14px 10px;overflow-y:auto}
+.navgroup{font-size:10.5px;font-weight:700;color:var(--dim2);letter-spacing:.08em;
+  text-transform:uppercase;padding:14px 10px 6px}
+.navgroup:first-child{padding-top:2px}
+.navitem{display:flex;align-items:center;gap:9px;width:100%;padding:9px 10px;border:none;
+  background:transparent;color:var(--dim);font-family:inherit;font-size:13.5px;font-weight:600;
+  border-radius:8px;cursor:pointer;text-align:left;transition:.12s}
+.navitem:hover{background:var(--hover);color:var(--txt)}
+.navitem.on{background:var(--accent-soft);color:var(--accent)}
+.navitem .ico{width:18px;text-align:center;font-size:14px;flex:none}
+
+main{flex:1;min-width:0;overflow-y:auto}
+.panel{display:none;padding:24px 28px 48px;max-width:1180px;margin:0 auto}
+.panel.on{display:block}
+.panel.embed{padding:0;max-width:none;margin:0}
+.panel.embed iframe{display:block;width:100%;height:calc(100vh - 97px);border:0;background:var(--bg)}
+.ptitle{font-size:20px;font-weight:800;letter-spacing:-.4px}
+.pdesc{color:var(--dim);font-size:13px;margin:6px 0 20px}
+
+/* ───────── 카드 ───────── */
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:16px;box-shadow:var(--shadow)}
+.card h3{font-size:14px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card p{color:var(--dim);font-size:12.5px;line-height:1.55}
+button.card{display:block;width:100%;text-align:left;font-family:inherit;color:inherit;
+  cursor:pointer;transition:.15s}
+button.card:hover{border-color:var(--accent-line);transform:translateY(-2px);
+  box-shadow:0 4px 14px rgba(16,24,40,.08)}
+.tag{font-size:10.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);
+  border:1px solid var(--accent-line);padding:2px 8px;border-radius:99px;flex:none}
+.tag.soon{color:var(--dim);background:var(--line2);border-color:var(--line)}
+
+.empty{border:1.5px dashed var(--line);border-radius:12px;padding:48px 24px;text-align:center;
+  color:var(--dim2);font-size:13.5px;background:var(--surface)}
+.empty b{display:block;font-size:15px;color:var(--dim);margin-bottom:6px}
+
+/* ───────── 텔레그램 서브탭 ───────── */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--dim);
+  font-family:inherit;font-size:12.5px;font-weight:600;border-radius:99px;cursor:pointer;transition:.12s}
+.chip:hover{color:var(--txt);border-color:var(--dim2)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.subpanel{display:none}
+.subpanel.on{display:block}
+
+footer{flex:none;height:40px;display:flex;align-items:center;justify-content:center;
+  color:var(--dim2);font-size:11.5px;border-top:1px solid var(--line);background:var(--surface)}
+
+/* ───────── 모바일 ───────── */
+@media(max-width:860px){
+  #menuBtn{display:inline-flex}
+  nav{position:fixed;top:56px;left:0;bottom:0;z-index:40;transform:translateX(-100%);
+    transition:transform .2s;box-shadow:4px 0 18px rgba(0,0,0,.12)}
+  nav.open{transform:none}
+  .panel{padding:18px 16px 40px}
+  .panel.embed{padding:0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <button class="hbtn" id="menuBtn">☰</button>
+  <div class="blogo">
+    <span class="l1">Joy and July</span>
+    <span class="l2">Equity Partners</span>
+  </div>
+  <div class="brandsep"></div>
+  <div class="brand">Research Hub<small>투자 리서치 대시보드</small></div>
+  <div class="spacer"></div>
+  <button class="hbtn" id="themeBtn">🌙 다크</button>
+</header>
+
+<div class="layout">
+
+  <!-- ───────── 사이드바 ───────── -->
+  <nav id="nav">
+    <div class="navgroup">메인</div>
+    <button class="navitem on" data-tab="home"><span class="ico">🏠</span>홈</button>
+
+    <div class="navgroup">데일리</div>
+    <button class="navitem" data-tab="supply"><span class="ico">📊</span>수급 대시보드</button>
+    <button class="navitem" data-tab="sector"><span class="ico">🏭</span>산업별 등락</button>
+
+    <div class="navgroup">데이터</div>
+    <button class="navitem" data-tab="export"><span class="ico">🚢</span>수출 데이터</button>
+    <button class="navitem" data-tab="backlog"><span class="ico">📦</span>수주잔고</button>
+
+    <div class="navgroup">리서치</div>
+    <button class="navitem" data-tab="telegram"><span class="ico">✈️</span>텔레그램 채널 요약</button>
+  </nav>
+
+  <!-- ───────── 메인 콘텐츠 ───────── -->
+  <main>
+
+    <section class="panel on" id="tab-home">
+      <div class="ptitle">홈</div>
+      <div class="pdesc">Joy and July Research Hub — 좌측 탭 또는 아래 카드를 눌러 이동하세요.</div>
+      <div class="grid">
+        <button class="card" data-go="supply"><h3>📊 수급 대시보드 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 시총대비 순매수/순매도 — 매일 장 마감 후 업데이트.</p></button>
+        <button class="card" data-go="sector"><h3>🏭 산업별 등락 <span class="tag">매일</span></h3><p>27개 업종 등락률과 업종 내 종목별 상세 — 매일 업데이트.</p></button>
+        <button class="card" data-go="export"><h3>🚢 수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑. 양식 개선 작업 진행 중.</p></button>
+        <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
+        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag soon">준비중</span></h3><p>주요 텔레그램 채널 자동 스크랩 + 일별 요약. 채널별 세부 탭 제공 예정.</p></button>
+      </div>
+    </section>
+
+    <section class="panel embed" id="tab-supply">
+      <iframe data-src="supply.html" title="수급 대시보드"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-sector">
+      <iframe data-src="sector.html" title="산업별 등락"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-export">
+      <iframe data-src="export.html" title="수출 데이터"></iframe>
+    </section>
+
+    <section class="panel" id="tab-backlog">
+      <div class="ptitle">수주잔고</div>
+      <div class="pdesc">수주잔고가 튀는 기업을 트래킹하는 툴이 들어올 자리입니다.</div>
+      <div class="empty"><b>준비 중입니다</b>데이터 수집 방식이 정해지면 이 탭에 트래킹 대시보드가 추가됩니다.</div>
+    </section>
+
+    <section class="panel" id="tab-telegram">
+      <div class="ptitle">텔레그램 채널 요약</div>
+      <div class="pdesc">주요 텔레그램 채널의 글을 자동 수집해 일별로 요약합니다. 채널을 선택하세요.</div>
+      <div class="chips" id="tgChips"></div>
+      <div id="tgPanels"></div>
+    </section>
+
+  </main>
+</div>
+
+<footer>© 2026 Joy and July Equity Partners · 단순 정보 제공 목적이며, 투자 판단의 근거가 아닙니다.</footer>
+
+<script>
+/* ── 텔레그램 채널 목록: 여기에 채널을 추가하면 서브탭이 자동 생성됩니다.
+     summaryHtml 에 요약 콘텐츠(HTML)를 넣으면 표시되고, 비우면 준비중으로 표시. ── */
+const TG_CHANNELS=[
+  {id:'taerin', name:'태린이아빠', summaryHtml:''},
+];
+
+const chipsEl=document.getElementById('tgChips'),panelsEl=document.getElementById('tgPanels');
+TG_CHANNELS.forEach((ch,i)=>{
+  const chip=document.createElement('button');
+  chip.className='chip'+(i===0?' on':'');chip.textContent=ch.name;chip.dataset.ch=ch.id;
+  chipsEl.appendChild(chip);
+  const p=document.createElement('div');
+  p.className='subpanel'+(i===0?' on':'');p.id='tg-'+ch.id;
+  p.innerHTML=ch.summaryHtml||'<div class="empty"><b>아직 요약이 없습니다</b>자동 수집·요약 파이프라인 연결 후 일별 요약이 표시됩니다.</div>';
+  panelsEl.appendChild(p);
+});
+chipsEl.addEventListener('click',e=>{
+  const chip=e.target.closest('.chip');if(!chip)return;
+  chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  panelsEl.querySelectorAll('.subpanel').forEach(p=>p.classList.remove('on'));
+  chip.classList.add('on');
+  document.getElementById('tg-'+chip.dataset.ch).classList.add('on');
+});
+
+/* ── 탭 전환 (iframe은 첫 진입 시에만 로드) ── */
+const items=document.querySelectorAll('.navitem'),panels=document.querySelectorAll('.panel');
+function openTab(tab){
+  const btn=document.querySelector(`.navitem[data-tab="${tab}"]`);if(!btn)return;
+  items.forEach(b=>b.classList.remove('on'));
+  panels.forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  const panel=document.getElementById('tab-'+tab);
+  panel.classList.add('on');
+  const f=panel.querySelector('iframe[data-src]');
+  if(f&&!f.src){f.src=f.dataset.src;}
+  document.getElementById('nav').classList.remove('open');
+  history.replaceState(null,'','#'+tab);
+}
+items.forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
+document.querySelectorAll('[data-go]').forEach(c=>c.addEventListener('click',()=>openTab(c.dataset.go)));
+if(location.hash)openTab(location.hash.slice(1));
+
+/* ── 다크모드 토글 (선택 기억) ── */
+const themeBtn=document.getElementById('themeBtn'),html=document.documentElement;
+function applyTheme(t){html.dataset.theme=t;themeBtn.textContent=t==='dark'?'☀️ 라이트':'🌙 다크';}
+applyTheme(localStorage.getItem('jj-theme')||'light');
+themeBtn.addEventListener('click',()=>{
+  const next=html.dataset.theme==='dark'?'light':'dark';
+  applyTheme(next);localStorage.setItem('jj-theme',next);
+});
+
+/* ── 모바일 메뉴 ── */
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('nav').classList.toggle('open'));
+</script>
+</body>
+</html>
