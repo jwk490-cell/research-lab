@@ -34,11 +34,8 @@ body{background:var(--bg);color:var(--txt);
 /* ───────── 상단 헤더 ───────── */
 header{display:flex;align-items:center;gap:12px;padding:0 20px;height:56px;flex:none;
   background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
-.blogo{display:flex;flex-direction:column;line-height:1;flex:none;user-select:none}
-.blogo .l1{font-weight:800;font-size:18px;text-transform:uppercase;
-  color:var(--brand);letter-spacing:.02em;white-space:nowrap}
-.blogo .l2{font-weight:700;font-size:9px;text-transform:uppercase;
-  color:var(--brand);letter-spacing:.28em;text-align:right;margin-top:3px;white-space:nowrap}
+.blogo{font-weight:800;font-size:20px;letter-spacing:-.3px;color:var(--txt);
+  flex:none;user-select:none;white-space:nowrap}
 .brandsep{width:1px;height:26px;background:var(--line);flex:none}
 .brand{font-size:14.5px;font-weight:800;letter-spacing:-.3px;white-space:nowrap}
 .brand small{font-weight:500;color:var(--dim);font-size:12px;margin-left:8px;letter-spacing:0}
@@ -146,10 +143,7 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
 
 <header>
   <button class="hbtn" id="menuBtn">☰</button>
-  <div class="blogo">
-    <span class="l1">Joy and July</span>
-    <span class="l2">Equity Partners</span>
-  </div>
+  <div class="blogo">JnJ</div>
   <div class="brandsep"></div>
   <div class="brand">Research Hub<small>투자 리서치 대시보드</small></div>
   <div class="spacer"></div>
@@ -166,6 +160,8 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
     <div class="navgroup">데일리</div>
     <button class="navitem" data-tab="supply"><span class="ico">📊</span>수급 대시보드</button>
     <button class="navitem" data-tab="sector"><span class="ico">🏭</span>산업별 등락</button>
+    <button class="navitem" data-tab="oscillator"><span class="ico">🌊</span>수급 오실레이터</button>
+    <button class="navitem" data-tab="disparity"><span class="ico">📉</span>50일 이격도</button>
 
     <div class="navgroup">데이터</div>
     <button class="navitem" data-tab="export"><span class="ico">🚢</span>수출 데이터</button>
@@ -184,6 +180,8 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
       <div class="grid">
         <button class="card" data-go="supply"><h3>📊 수급 대시보드 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 시총대비 순매수/순매도 — 매일 장 마감 후 업데이트.</p></button>
         <button class="card" data-go="sector"><h3>🏭 산업별 등락 <span class="tag">매일</span></h3><p>27개 업종 등락률과 업종 내 종목별 상세 — 매일 업데이트.</p></button>
+        <button class="card" data-go="oscillator"><h3>🌊 수급 오실레이터 <span class="tag">지표</span></h3><p>기관+외국인 순매수 ÷ 시총 → 이동평균 → 백분위 — 시장 및 종목별 수급 오실레이터.</p></button>
+        <button class="card" data-go="disparity"><h3>📉 50일 이격도 <span class="tag">지표</span></h3><p>코스피/코스닥 50일 이격도 — 130 과열 / 110 해소 콤보차트.</p></button>
         <button class="card" data-go="export"><h3>🚢 수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑. 양식 개선 작업 진행 중.</p></button>
         <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
         <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">하루 6회</span></h3><p>주요 텔레그램 17개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
@@ -196,6 +194,14 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
 
     <section class="panel embed" id="tab-sector">
       <iframe data-src="sector.html" title="산업별 등락"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-oscillator">
+      <iframe data-src="oscillator.html" title="수급 오실레이터"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-disparity">
+      <iframe data-src="disparity.html" title="50일 이격도"></iframe>
     </section>
 
     <section class="panel embed" id="tab-export">
