@@ -32,7 +32,6 @@ Publish-One "$src\index.html"                                       "supply.html
 Publish-One "C:\Users\smily\.claude\sector-report\sector-report.html" "sector.html"   "ht-sector"
 Publish-One $export.FullName                                        "export.html"     "ht-export"
 Publish-One "$src\이격도.html"                                       "disparity.html"  "ht-disp"
-Publish-One "$src\osc_dashboard.html"                               "oscillator.html" "ht-osc"
 Publish-One $semietf.FullName                                       "semietf.html"    "ht-semietf"
 
 if (-not $NoPush) {
