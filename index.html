@@ -135,6 +135,22 @@ button.card:hover{border-color:var(--accent-line);transform:translateY(-2px);
 .wrapsec li:last-child{margin-bottom:0}
 .wrapsec li b{font-weight:700}
 .wrapsrc{color:var(--dim2);font-size:11.5px;margin-top:2px}
+.wrapdiv{font-size:10.5px;font-weight:700;color:var(--dim2);letter-spacing:.08em;
+  text-transform:uppercase;margin-top:14px}
+.wrapday{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden}
+.wrapday summary{padding:13px 18px;cursor:pointer;font-size:13.5px;font-weight:700;
+  color:var(--dim);list-style:none;display:flex;align-items:center;gap:6px;user-select:none}
+.wrapday summary::-webkit-details-marker{display:none}
+.wrapday summary::after{content:'▸';margin-left:auto;color:var(--dim2);transition:transform .15s}
+.wrapday[open] summary::after{transform:rotate(90deg)}
+.wrapday summary:hover{color:var(--txt);background:var(--hover)}
+.wrapday[open] summary{color:var(--txt);border-bottom:1px solid var(--line)}
+.wrapday .inner{padding:4px 18px 16px;display:flex;flex-direction:column;gap:0}
+.wrapday .inner .wrapsec{background:transparent;border:none;box-shadow:none;
+  border-radius:0;padding:14px 2px 0}
+.wrapday .inner .wrapsec+.wrapsec{border-top:1px dashed var(--line2);margin-top:14px}
+.wrapday .inner .wrapsrc{margin-top:12px}
 
 footer{flex:none;height:40px;display:flex;align-items:center;justify-content:center;
   color:var(--dim2);font-size:11.5px;border-top:1px solid var(--line);background:var(--surface)}
@@ -269,13 +285,22 @@ async function loadWrap(){
     return;
   }
   const md=s=>esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
-  meta.innerHTML=`<b>${WRAP.date}</b> 장 마감 기준 · ${WRAP.updated.slice(11)} 작성 · 매 평일 16시 자동 업데이트`;
-  let html='';
-  WRAP.sections.forEach(s=>{
-    html+=`<div class="wrapsec"><h3>${esc(s.emoji)} ${esc(s.title)}</h3><ul>`
-      +s.bullets.map(b=>`<li>${md(b)}</li>`).join('')+'</ul></div>';
-  });
-  html+=`<div class="wrapsrc">출처: ${WRAP.sources.map(s=>`${esc(s.title)}(${s.count}건)`).join(' · ')} — 4개 채널 당일 게시글 통합 요약</div>`;
+  const dayHtml=d=>d.sections.map(s=>
+    `<div class="wrapsec"><h3>${esc(s.emoji)} ${esc(s.title)}</h3><ul>`
+    +s.bullets.map(b=>`<li>${md(b)}</li>`).join('')+'</ul></div>').join('')
+    +`<div class="wrapsrc">출처: ${d.sources.map(s=>`${esc(s.title)}(${s.count}건)`).join(' · ')} — 4개 채널 당일 게시글 통합 요약</div>`;
+  const wd=ds=>['일','월','화','수','목','금','토'][new Date(ds+'T00:00:00+09:00').getDay()];
+
+  const days=WRAP.days||[WRAP];
+  const latest=days[0];
+  meta.innerHTML=`<b>${latest.date}(${wd(latest.date)})</b> 장 마감 기준 · ${latest.updated.slice(11)} 작성 · 매 평일 16시 자동 업데이트 · 최근 ${days.length}거래일 보관`;
+  let html=dayHtml(latest);
+  if(days.length>1){
+    html+='<div class="wrapdiv">지난 거래일</div>';
+    days.slice(1).forEach(d=>{
+      html+=`<details class="wrapday"><summary>📅 ${esc(d.date)} (${wd(d.date)}) 시황정리</summary><div class="inner">${dayHtml(d)}</div></details>`;
+    });
+  }
   body.innerHTML=html;
 }
 

@@ -1,4 +1,4 @@
-{
+{"days":[{
   "date": "2026-06-11",
   "updated": "2026-06-11 16:25",
   "sections": [
@@ -63,4 +63,4 @@
     {"handle": "chacha_881", "title": "데일리 주식정보", "count": 16},
     {"handle": "shmstory", "title": "시황맨의 주식이야기", "count": 4}
   ]
-}
+}]}
