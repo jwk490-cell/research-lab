@@ -186,7 +186,7 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
         <button class="card" data-go="disparity"><h3>📉 50일 이격도 <span class="tag">지표</span></h3><p>코스피/코스닥 50일 이격도 — 130 과열 / 110 해소 콤보차트.</p></button>
         <button class="card" data-go="export"><h3>🚢 수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑. 양식 개선 작업 진행 중.</p></button>
         <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
-        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">10분마다</span></h3><p>주요 텔레그램 17개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
+        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">10분마다</span></h3><p>주요 텔레그램 18개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
       </div>
     </section>
 
@@ -285,7 +285,8 @@ function renderTG(){
 }
 function appendPosts(posts,from,to){
   const feed=document.getElementById('tgFeed');
-  const titleOf={};TG.channels.forEach(c=>titleOf[c.handle]=c.title);
+  const titleOf={},privOf={};
+  TG.channels.forEach(c=>{titleOf[c.handle]=c.title;privOf[c.handle]=c.private;});
   const frag=document.createDocumentFragment();
   for(let i=from;i<to;i++){
     const p=posts[i];
@@ -293,7 +294,7 @@ function appendPosts(posts,from,to){
     const el=document.createElement('article');el.className='post';
     el.innerHTML=`<div class="ph">
         <div class="av" style="background:hsl(${hue(p.ch)},48%,46%)">${esc((titleOf[p.ch]||p.ch)[0])}</div>
-        <div class="who"><div class="nm">${esc(titleOf[p.ch]||p.ch)}</div><div class="hd">@${p.ch}</div></div>
+        <div class="who"><div class="nm">${esc(titleOf[p.ch]||p.ch)}</div><div class="hd">${privOf[p.ch]?'비공개 채널':'@'+p.ch}</div></div>
         <div class="tm">${p.ts.slice(11)}</div></div>
       <div class="tx${long?' clamp':''}">${linkify(esc(p.text))}</div>
       ${long?'<button class="more">더보기</button>':''}
