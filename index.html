@@ -213,7 +213,7 @@ footer{flex:none;height:40px;display:flex;align-items:center;justify-content:cen
         <button class="card" data-go="disparity"><h3>📉 50일 이격도 <span class="tag">지표</span></h3><p>코스피/코스닥 50일 이격도 — 130 과열 / 110 해소 콤보차트.</p></button>
         <button class="card" data-go="export"><h3>🚢 수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑. 양식 개선 작업 진행 중.</p></button>
         <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
-        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">10분마다</span></h3><p>주요 텔레그램 18개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
+        <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">매시간</span></h3><p>주요 텔레그램 18개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
       </div>
     </section>
 
@@ -328,7 +328,7 @@ function renderTG(){
     feed.innerHTML='<div class="empty"><b>아직 수집된 데이터가 없습니다</b>첫 수집(오전 7:30) 이후 게시글이 표시됩니다.</div>';
     list.innerHTML='';return;
   }
-  meta.textContent=`${TG.date} 게시글 ${TG.posts.length}건 · 마지막 수집 ${TG.updated.slice(11)} · 10분마다 자동 업데이트`;
+  meta.textContent=`${TG.date} 게시글 ${TG.posts.length}건 · 마지막 수집 ${TG.updated.slice(11)} · 매시간 자동 업데이트`;
   /* 채널 목록 (글 많은 순) */
   const chs=[...TG.channels].sort((a,b)=>b.count-a.count);
   let html=`<button class="tgitem${tgSel==='all'?' on':''}" data-ch="all"><span class="tname">전체</span><span class="cnt">${TG.posts.length}</span></button>`;
