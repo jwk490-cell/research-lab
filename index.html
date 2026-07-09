@@ -172,6 +172,34 @@ button.card:hover::after{width:100%}
 .wrapday .inner .wrapsec+.wrapsec{border-top:1px dashed var(--line);margin-top:14px}
 .wrapday .inner .wrapsrc{margin-top:12px}
 
+/* ───────── 실시간 한국주식 (Hyperliquid) ───────── */
+.rgrid2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+.rcard{background:linear-gradient(180deg,#12161f,#0f131b);border:1px solid var(--line);
+  border-radius:15px;padding:22px 24px;box-shadow:var(--shadow)}
+.rtop{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px}
+.rname{font-size:22px;font-weight:800;letter-spacing:-.3px}
+.rtk{font-size:11px;color:var(--dim2);font-weight:600;margin-top:2px}
+.rlinks{margin-left:auto;display:flex;gap:6px}
+.rlink{font-size:11px;font-weight:600;color:var(--dim);border:1px solid var(--line);
+  border-radius:8px;padding:5px 10px;text-decoration:none;white-space:nowrap}
+.rlink:hover{color:var(--gold-hi);border-color:var(--gold-line)}
+.rprice{font-size:34px;font-weight:800;letter-spacing:-1px;display:flex;align-items:baseline;gap:4px}
+.rprice .won{font-size:16px;font-weight:700;color:var(--dim)}
+.rkimp{font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-left:8px;
+  color:var(--up);background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);vertical-align:middle}
+.rchg{font-size:13px;font-weight:700;margin-top:8px;display:flex;align-items:center;gap:8px}
+.rchg .lbl{color:var(--dim2);font-weight:600;font-size:12px}
+.rusd{color:var(--dim);font-size:13px;margin-top:6px}
+.rhr{border-top:1px dashed var(--line);margin:18px 0}
+.rstats{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.rst .k{font-size:11px;color:var(--dim2);margin-bottom:3px}
+.rst .v{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.rst .v.pos{color:var(--up)} .rst .v.neg{color:var(--down)}
+.rprem{margin-top:18px;font-size:12.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rprem .pv{font-size:15px;font-weight:800}
+.rprem .sub{color:var(--dim2)}
+.up{color:var(--up)} .down{color:var(--down)}
+
 footer{flex:none;height:41px;display:flex;align-items:center;justify-content:center;
   color:var(--dim2);font-size:11px;letter-spacing:.02em;border-top:1px solid var(--line);background:#0c0f16}
 
@@ -207,6 +235,9 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
     <div class="navgroup">메인</div>
     <button class="navitem on" data-tab="home"><span class="ico">🏠</span>홈</button>
 
+    <div class="navgroup">실시간 · Hyperliquid</div>
+    <button class="navitem" data-tab="raoni"><span class="ico">🟢</span>실시간 한국주식</button>
+
     <div class="navgroup">데일리</div>
     <button class="navitem" data-tab="wrap"><span class="ico">📰</span>시황정리</button>
     <button class="navitem" data-tab="supply"><span class="ico">📊</span>수급 대시보드</button>
@@ -232,6 +263,11 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
         <p>KRX 수급·산업·매크로 데이터와 주요 리서치 채널을 한 곳에서. 좌측 메뉴 또는 아래 카드로 이동하세요.</p>
       </div>
 
+      <div class="hgroup">실시간 · Hyperliquid</div>
+      <div class="grid">
+        <button class="card" data-go="raoni"><h3>🟢 실시간 한국주식 <span class="tag">5초 갱신</span></h3><p>삼성전자·SK하이닉스 Hyperliquid 시장가를 원화 환산 — 김프·프리미엄·펀딩비·미결제약정 실시간.</p></button>
+      </div>
+
       <div class="hgroup">데일리</div>
       <div class="grid">
         <button class="card" data-go="wrap"><h3>📰 시황정리 <span class="tag">매일 16시</span></h3><p>시황 채널 4곳의 당일 글을 통합 요약 — 수급 · 매크로 · 섹터별 이슈 불렛 정리.</p></button>
@@ -248,6 +284,12 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
         <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">매시간</span></h3><p>주요 텔레그램 18개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
         <button class="card" data-go="taerin"><h3>📈 태린이아빠 <span class="tag">피드</span></h3><p>태린이아빠 채널 아카이브.</p></button>
       </div>
+    </section>
+
+    <section class="panel" id="tab-raoni">
+      <div class="ptitle">실시간 한국주식 <span style="font-size:12px;font-weight:600;color:var(--dim2)">Hyperliquid 시장가 × 업비트 USDT/KRW</span></div>
+      <div class="pdesc" id="raMeta">불러오는 중…</div>
+      <div class="rgrid2" id="raBody"></div>
     </section>
 
     <section class="panel" id="tab-wrap">
@@ -409,6 +451,67 @@ document.getElementById('tgList').addEventListener('click',e=>{
   document.querySelector('main').scrollTo({top:0});
 });
 
+/* ── 실시간 한국주식: Hyperliquid(직접) × raoni.json(환율·네이버가) ── */
+const RA_TICKERS=[{tk:'SMSN',key:'SMSN'},{tk:'SKHX',key:'SKHX'}];
+let raRef=null,raTimer=null,raRefAt=0;
+const fmtWon=n=>'₩'+Math.round(n).toLocaleString('ko-KR');
+const fmtEok=n=>{const e=n/1e8;return e>=10000?'₩'+(e/10000).toFixed(2)+'조':'₩'+Math.round(e).toLocaleString('ko-KR')+'억';};
+async function raLoadRef(){
+  if(raRef&&Date.now()-raRefAt<60000)return raRef;
+  try{const r=await fetch('data/raoni.json?t='+Date.now(),{cache:'no-store'});raRef=await r.json();raRefAt=Date.now();}catch(e){}
+  return raRef;
+}
+async function raTick(){
+  const meta=document.getElementById('raMeta'),body=document.getElementById('raBody');
+  const ref=await raLoadRef();
+  let hl;
+  try{
+    const r=await fetch('https://api.hyperliquid.xyz/info',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'metaAndAssetCtxs',dex:'xyz'})});
+    hl=await r.json();
+  }catch(e){meta.textContent='Hyperliquid 연결 실패 — 잠시 후 재시도합니다.';return;}
+  const names=hl[0].universe.map(u=>u.name),ctxs=hl[1];
+  const rate=(ref&&ref.usdt_krw)||null;
+  meta.innerHTML=`업비트 USDT <b style="color:var(--gold-hi)">${rate?fmtWon(rate):'-'}</b>`
+    +(ref&&ref.naver_fx?` · 네이버 환율 ${fmtWon(ref.naver_fx)}`:'')
+    +` · 5초마다 갱신 · <span style="color:var(--dim2)">${new Date().toLocaleTimeString('ko-KR')}</span>`;
+  let html='';
+  for(const {tk,key} of RA_TICKERS){
+    const i=names.indexOf('xyz:'+tk); if(i<0)continue;
+    const c=ctxs[i], mark=parseFloat(c.markPx), prev=parseFloat(c.prevDayPx);
+    const st=(ref&&ref.stocks&&ref.stocks[key])||{};
+    const won=rate?mark*rate:null;
+    const chg=mark-prev, chgpct=prev?chg/prev*100:0;
+    const funding=parseFloat(c.funding), apr=funding*24*365*100;
+    const oi=parseFloat(c.openInterest), vlm=parseFloat(c.dayNtlVlm);
+    const nvPrice=st.price||null;
+    const prem=(won&&nvPrice)?(won-nvPrice)/nvPrice*100:null;
+    const premWon=(won&&nvPrice)?won-nvPrice:null;
+    const up=chg>=0;
+    html+=`<div class="rcard">
+      <div class="rtop"><div><div class="rname">${st.name||tk}</div><div class="rtk">xyz:${tk}${st.code?' · '+st.code:''}</div></div>
+        <div class="rlinks"><a class="rlink" href="https://app.hyperliquid.xyz/trade/${tk}" target="_blank" rel="noopener">하이퍼리퀴드 ↗</a>
+        ${st.code?`<a class="rlink" href="https://finance.naver.com/item/main.naver?code=${st.code}" target="_blank" rel="noopener">네이버 ↗</a>`:''}</div></div>
+      <div class="rprice">${won?fmtWon(won):'—'}<span class="won">원</span>${rate&&nvPrice?'<span class="rkimp">● 김프 ON</span>':''}</div>
+      <div class="rchg"><span class="lbl">전일 대비</span><span class="${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(chg).toFixed(2)} · ${up?'+':''}${chgpct.toFixed(2)}%</span></div>
+      <div class="rusd">≈ $${mark.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} USD</div>
+      <div class="rhr"></div>
+      <div class="rstats">
+        <div class="rst"><div class="k">네이버 현재가</div><div class="v">${nvPrice?fmtWon(nvPrice):'-'}</div></div>
+        <div class="rst"><div class="k">24H 거래대금</div><div class="v">${rate?fmtEok(vlm*rate):'-'}</div></div>
+        <div class="rst"><div class="k">미결제약정</div><div class="v">${Math.round(oi).toLocaleString('ko-KR')}</div></div>
+        <div class="rst"><div class="k">펀딩비 (1H)</div><div class="v ${funding>=0?'pos':'neg'}">${funding>=0?'+':''}${(funding*100).toFixed(4)}% · APR ${apr>=0?'+':''}${apr.toFixed(2)}%</div></div>
+      </div>
+      ${prem!=null?`<div class="rprem"><span class="pv ${prem>=0?'up':'down'}">${prem>=0?'+':''}${prem.toFixed(2)}%</span>
+        <span class="sub">프리미엄 · ${premWon>=0?'+':''}${fmtWon(premWon)}</span>
+        <span class="sub">· 네이버 ${fmtWon(nvPrice)}</span></div>`:''}</div>`;
+  }
+  body.innerHTML=html||'<div class="empty"><b>티커를 찾을 수 없습니다</b></div>';
+}
+function raStart(){raTick();clearInterval(raTimer);raTimer=setInterval(()=>{
+  if(document.getElementById('tab-raoni').classList.contains('on'))raTick();else clearInterval(raTimer);
+},5000);}
+
 /* ── 탭 전환 (iframe은 첫 진입 시에만 로드) ── */
 const items=document.querySelectorAll('.navitem'),panels=document.querySelectorAll('.panel');
 function openTab(tab){
@@ -422,6 +525,7 @@ function openTab(tab){
   if(f&&!f.src){f.src=f.dataset.src;}
   if(tab==='telegram')loadTG(false);
   if(tab==='wrap')loadWrap();
+  if(tab==='raoni')raStart();
   document.getElementById('nav').classList.remove('open');
   history.replaceState(null,'','#'+tab);
 }
