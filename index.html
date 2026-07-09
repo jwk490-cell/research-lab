@@ -172,17 +172,6 @@ button.card:hover::after{width:100%}
 .wrapday .inner .wrapsec+.wrapsec{border-top:1px dashed var(--line);margin-top:14px}
 .wrapday .inner .wrapsrc{margin-top:12px}
 
-/* ───────── SK에코플랜트 뉴스 ───────── */
-.nlist{margin-top:6px}
-.nitem{padding:9px 0;border-bottom:1px solid var(--line2)}
-.nitem:last-child{border-bottom:none;padding-bottom:2px}
-.nt{font-size:13.5px;font-weight:700;color:var(--txt);text-decoration:none;line-height:1.5}
-.nt:hover{color:var(--gold-hi)}
-.nmeta{font-size:11.5px;color:var(--dim2);margin-top:2px}
-.nsum{font-size:12.5px;color:var(--dim);line-height:1.6;margin-top:4px}
-.ncnt{font-size:11px;font-weight:700;color:var(--gold-hi);background:var(--gold-soft);
-  border:1px solid var(--gold-line);padding:1px 8px;border-radius:99px;margin-left:2px}
-
 footer{flex:none;height:41px;display:flex;align-items:center;justify-content:center;
   color:var(--dim2);font-size:11px;letter-spacing:.02em;border-top:1px solid var(--line);background:#0c0f16}
 
@@ -232,7 +221,6 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
     <div class="navgroup">리서치</div>
     <button class="navitem" data-tab="telegram"><span class="ico">✈️</span>텔레그램 채널 요약</button>
     <button class="navitem" data-tab="taerin"><span class="ico">📈</span>태린이아빠</button>
-    <button class="navitem" data-tab="skeco"><span class="ico">🏗️</span>SK에코플랜트 뉴스</button>
   </nav>
 
   <!-- ───────── 메인 콘텐츠 ───────── -->
@@ -259,7 +247,6 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
         <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
         <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">매시간</span></h3><p>주요 텔레그램 18개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
         <button class="card" data-go="taerin"><h3>📈 태린이아빠 <span class="tag">피드</span></h3><p>태린이아빠 채널 아카이브.</p></button>
-        <button class="card" data-go="skeco"><h3>🏗️ SK에코플랜트 뉴스 <span class="tag">하루 4회</span></h3><p>SK에코플랜트 언론 보도를 6시간마다(00·06·12·18시) 자동 수집·요약 — 2026년 테마별 정리 포함.</p></button>
       </div>
     </section>
 
@@ -308,11 +295,6 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
       <iframe data-src="https://jwk490-cell.github.io/taerin/" title="태린이아빠 이미지 피드"></iframe>
     </section>
 
-    <section class="panel" id="tab-skeco">
-      <div class="ptitle">SK에코플랜트 뉴스</div>
-      <div class="pdesc" id="skeMeta">불러오는 중…</div>
-      <div class="wrapbody" id="skeBody"></div>
-    </section>
 
   </main>
 </div>
@@ -427,53 +409,6 @@ document.getElementById('tgList').addEventListener('click',e=>{
   document.querySelector('main').scrollTo({top:0});
 });
 
-/* ── SK에코플랜트 뉴스: data/skeco_news.json 렌더 ── */
-let SKE=null,skeFetchedAt=0;
-async function loadSkeco(){
-  if(SKE&&Date.now()-skeFetchedAt<300000)return;
-  const meta=document.getElementById('skeMeta'),body=document.getElementById('skeBody');
-  try{
-    const res=await fetch('data/skeco_news.json?t='+Date.now(),{cache:'no-store'});
-    if(!res.ok)throw new Error(res.status);
-    SKE=await res.json();skeFetchedAt=Date.now();
-  }catch(e){
-    meta.textContent='SK에코플랜트 관련 언론 보도를 하루 4회(00·06·12·18시) 자동 수집·요약합니다.';
-    body.innerHTML='<div class="empty"><b>아직 수집된 데이터가 없습니다</b>첫 수집 이후 이 탭에 기사가 표시됩니다.</div>';
-    return;
-  }
-  const md=s=>esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
-  const item=a=>`<div class="nitem"><a class="nt" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>
-    <div class="nmeta">${esc(a.source)}${a.more?` 외 ${a.more}건`:''} · ${esc(a.ts.slice(5,16))}</div>
-    ${a.summary?`<div class="nsum">${md(a.summary)}</div>`:''}</div>`;
-  const checkHtml=c=>`<div class="wrapsec"><h3>🕒 ${esc(c.label)} 체크 <span class="ncnt">신규 ${c.articles.length}건</span></h3>
-    ${c.digest&&c.digest.length?`<ul>${c.digest.map(b=>`<li>${md(b)}</li>`).join('')}</ul>`:''}
-    <div class="nlist">${c.articles.map(item).join('')}</div></div>`;
-  meta.innerHTML=`마지막 체크 <b>${esc(SKE.last_check||'-')}</b> · 신규 ${SKE.last_new!=null?SKE.last_new:'-'}건 · 하루 4회(00·06·12·18시) 자동 체크`;
-  let html='';
-  const checks=SKE.checks||[];
-  if(!checks.length)html+='<div class="empty"><b>아직 수집된 신규 기사가 없습니다</b>다음 체크에서 새 보도가 잡히면 여기에 쌓입니다.</div>';
-  else{
-    const byDay=[];
-    checks.forEach(c=>{const d=c.ts.slice(0,10);const g=byDay.find(x=>x.d===d);g?g.cs.push(c):byDay.push({d,cs:[c]})});
-    byDay.forEach((g,i)=>{
-      const inner=g.cs.map(checkHtml).join('');
-      if(i===0)html+=inner;
-      else html+=`<details class="wrapday"><summary>📅 ${esc(g.d)} — 기사 ${g.cs.reduce((n,c)=>n+c.articles.length,0)}건</summary><div class="inner">${inner}</div></details>`;
-    });
-  }
-  if(SKE.bootstrap){
-    const b=SKE.bootstrap;
-    html+=`<div class="wrapdiv">2026년 보도 정리 — 테마별${b.asof?` (최초 수집 ${esc(b.asof)})`:''}</div>`;
-    (b.themes||[]).forEach(t=>{
-      html+=`<details class="wrapday"><summary>${esc(t.title)} <span class="ncnt">${(t.articles||[]).length}건</span></summary><div class="inner">
-        ${t.summary?`<div class="nsum" style="margin:12px 0 2px">${md(t.summary)}</div>`:''}
-        <div class="nlist">${(t.articles||[]).map(a=>`<div class="nitem"><a class="nt" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>
-          <div class="nmeta">${esc(a.source||'-')} · ${esc(a.date||'')}</div>${a.gist?`<div class="nsum">${md(a.gist)}</div>`:''}</div>`).join('')}</div></div></details>`;
-    });
-  }
-  body.innerHTML=html;
-}
-
 /* ── 탭 전환 (iframe은 첫 진입 시에만 로드) ── */
 const items=document.querySelectorAll('.navitem'),panels=document.querySelectorAll('.panel');
 function openTab(tab){
@@ -487,7 +422,6 @@ function openTab(tab){
   if(f&&!f.src){f.src=f.dataset.src;}
   if(tab==='telegram')loadTG(false);
   if(tab==='wrap')loadWrap();
-  if(tab==='skeco')loadSkeco();
   document.getElementById('nav').classList.remove('open');
   history.replaceState(null,'','#'+tab);
 }
