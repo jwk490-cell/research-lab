@@ -172,6 +172,53 @@ button.card:hover::after{width:100%}
 .wrapday .inner .wrapsec+.wrapsec{border-top:1px dashed var(--line);margin-top:14px}
 .wrapday .inner .wrapsrc{margin-top:12px}
 
+/* ───────── raoni류 공용: 레인지·페어·스탯·게이지·차트범례·테이블 ───────── */
+.rngwrap{display:inline-flex;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.rng{border:none;background:transparent;color:var(--dim);font-family:inherit;font-size:11.5px;font-weight:700;
+  padding:5px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.rng:hover{color:var(--txt)}
+.rng.on{background:var(--gold-soft);color:var(--gold-hi);box-shadow:0 0 0 1px var(--gold-line) inset}
+.pairwrap{display:flex;gap:8px}
+.pair{flex:1;max-width:340px;border:1px solid var(--line);background:var(--surface2);color:var(--dim);
+  font-family:inherit;font-size:12.5px;font-weight:700;padding:9px 16px;border-radius:11px;cursor:pointer}
+.pair:hover{color:var(--txt)}
+.pair.on{background:var(--gold-soft);color:var(--gold-hi);border-color:var(--gold-line)}
+.statrow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.stc .k{font-size:10.5px;color:var(--dim2);margin-bottom:4px}
+.stc .v{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
+.stc .s{font-size:10.5px;color:var(--dim2);margin-top:3px}
+.stc .s.up{color:var(--up)}.stc .s.down{color:var(--down)}
+.cbar{width:74px;border-radius:8px 8px 3px 3px;margin:8px auto 0;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.clegend{font-size:11px;color:var(--dim);margin-top:8px;display:flex;align-items:center;flex-wrap:wrap}
+.clegend i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.gauge{position:relative;height:7px;background:var(--surface2);border:1px solid var(--line);border-radius:99px;margin-top:12px}
+.gzero{position:absolute;left:50%;top:-3px;bottom:-3px;width:1.5px;background:var(--dim2)}
+.gmark{position:absolute;top:-3.5px;width:13px;height:13px;border-radius:50%;transform:translateX(-50%);
+  box-shadow:0 0 8px rgba(0,0,0,.5);border:2px solid #0a0d13}
+.brandpill{font-size:10.5px;font-weight:800;letter-spacing:.04em;color:#0a0d13;background:var(--gold);
+  border-radius:6px;padding:2.5px 9px}
+.ddt{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+.ddt th{font-size:10.5px;color:var(--dim2);font-weight:700;text-align:right;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ddt th:first-child,.ddt td:first-child{text-align:left}
+.ddt td{padding:7px 10px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap}
+.ddt tr:last-child td{border-bottom:none}
+.ddt tr:hover td{background:rgba(255,255,255,.02)}
+.ddt td.up{color:var(--up)}.ddt td.down{color:var(--down)}
+.termgrid{display:grid;gap:12px;grid-template-columns:280px 1fr 250px;align-items:start}
+.termgrid2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:12px;align-items:start}
+@media(max-width:1100px){.termgrid{grid-template-columns:1fr}}
+.kvrow{font-size:11.5px;color:var(--dim);margin-top:3px}
+.kvrow b{color:var(--txt);font-weight:700}
+.tlist{display:flex;flex-direction:column}
+.titem{padding:7px 0;border-bottom:1px solid var(--line2)}
+.titem:last-child{border-bottom:none}
+.ttag{font-size:9.5px;font-weight:700;color:var(--gold-hi);background:var(--gold-soft);border:1px solid var(--gold-line);
+  border-radius:5px;padding:1px 6px;margin-right:5px}
+.nt{font-size:13.5px;font-weight:700;color:var(--txt);text-decoration:none;line-height:1.5}
+.nt:hover{color:var(--gold-hi)}
+.nmeta{font-size:11px;color:var(--dim2);margin-top:2px}
+
 /* ───────── 실시간 한국주식 (Hyperliquid) ───────── */
 .rgrid2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
 .rcard{background:linear-gradient(180deg,#12161f,#0f131b);border:1px solid var(--line);
@@ -237,6 +284,15 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
 
     <div class="navgroup">실시간 · Hyperliquid</div>
     <button class="navitem" data-tab="raoni"><span class="ico">🟢</span>실시간 한국주식</button>
+    <button class="navitem" data-tab="indices"><span class="ico">🧭</span>지수</button>
+    <button class="navitem" data-tab="term"><span class="ico">🖥️</span>터미널</button>
+
+    <div class="navgroup">분석 · 삼성↔하이닉스</div>
+    <button class="navitem" data-tab="caps"><span class="ico">⚖️</span>시총비교</button>
+    <button class="navitem" data-tab="gap"><span class="ico">↔️</span>괴리율</button>
+    <button class="navitem" data-tab="etfgap"><span class="ico">🎯</span>ETF 괴리율</button>
+    <button class="navitem" data-tab="dd"><span class="ico">🩸</span>전고대비</button>
+    <button class="navitem" data-tab="ram"><span class="ico">💾</span>램값</button>
 
     <div class="navgroup">데일리</div>
     <button class="navitem" data-tab="wrap"><span class="ico">📰</span>시황정리</button>
@@ -266,6 +322,17 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
       <div class="hgroup">실시간 · Hyperliquid</div>
       <div class="grid">
         <button class="card" data-go="raoni"><h3>🟢 실시간 한국주식 <span class="tag">5초 갱신</span></h3><p>삼성전자·SK하이닉스 Hyperliquid 시장가를 원화 환산 — 김프·프리미엄·펀딩비·미결제약정 실시간.</p></button>
+        <button class="card" data-go="indices"><h3>🧭 지수 <span class="tag">5초 갱신</span></h3><p>코스피(EWY 환산) · 코스피200 선물(KR200 perp) — 장 마감 후에도 실시간 추정.</p></button>
+        <button class="card" data-go="term"><h3>🖥️ 터미널 <span class="tag">통합 데스크</span></h3><p>시세·PER·목표주가·상대수익률·뉴스·공시·수급·글로벌 반도체를 한 화면에.</p></button>
+      </div>
+
+      <div class="hgroup">분석 · 삼성↔하이닉스</div>
+      <div class="grid">
+        <button class="card" data-go="caps"><h3>⚖️ 시총비교 <span class="tag">2010~</span></h3><p>삼성전자(+우) ↔ SK하이닉스 시가총액 추이 · 격차 · 비율 · 추월 필요주가.</p></button>
+        <button class="card" data-go="gap"><h3>↔️ 괴리율 <span class="tag">2010~</span></h3><p>삼성 보통/우선 괴리율 · 하이닉스↔SK스퀘어 NAV 할인율 — 추이와 통계.</p></button>
+        <button class="card" data-go="etfgap"><h3>🎯 ETF 괴리율 <span class="tag">5분</span></h3><p>단일종목 레버리지·인버스 ETF 시장가 vs NAV — 프리미엄/디스카운트 게이지.</p></button>
+        <button class="card" data-go="dd"><h3>🩸 전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이(2010~) + -15% 이상 하락 구간 전체 기록.</p></button>
+        <button class="card" data-go="ram"><h3>💾 램값 <span class="tag">일별</span></h3><p>DRAM 현물가(DDR5·DDR4·DDR3 스팟) — DRAMeXchange 세션평균 추이.</p></button>
       </div>
 
       <div class="hgroup">데일리</div>
@@ -290,6 +357,56 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
       <div class="ptitle">실시간 한국주식 <span style="font-size:12px;font-weight:600;color:var(--dim2)">Hyperliquid 시장가 × 업비트 USDT/KRW</span></div>
       <div class="pdesc" id="raMeta">불러오는 중…</div>
       <div class="rgrid2" id="raBody"></div>
+    </section>
+
+    <section class="panel" id="tab-indices">
+      <div class="ptitle">지수 <span style="font-size:12px;font-weight:600;color:var(--dim2)">코스피 · 코스피200 선물 (Hyperliquid)</span></div>
+      <div class="pdesc" id="idxMeta">불러오는 중…</div>
+      <div class="rgrid2" id="idxBody"></div>
+      <div style="font-size:11px;color:var(--dim2);margin-top:14px">코스피 = 네이버 코스피 ÷ EWY(피드 시점 계수) × 현재 EWY 마크 · 코스피200 선물 = HL xyz:KR200 마크 가격 · 5초 갱신</div>
+    </section>
+
+    <section class="panel" id="tab-caps">
+      <div class="ptitle">시총비교 <span style="font-size:12px;font-weight:600;color:var(--dim2)">삼성전자 ↔ SK하이닉스</span></div>
+      <div class="pdesc" id="capsMeta">불러오는 중…</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+        <div class="rngwrap" id="capsRng"></div>
+        <button class="pair" id="capsPref" style="margin-left:auto">우선주 포함 ON</button>
+      </div>
+      <div id="capsBody" style="display:flex;flex-direction:column;gap:14px"></div>
+    </section>
+
+    <section class="panel" id="tab-gap">
+      <div class="ptitle">괴리율 <span style="font-size:12px;font-weight:600;color:var(--dim2)">삼성전자↔우선주 · 하이닉스↔SK스퀘어</span></div>
+      <div class="pdesc" id="gapMeta">불러오는 중…</div>
+      <div class="pairwrap" id="gapPair" style="margin-bottom:10px"></div>
+      <div class="rngwrap" id="gapRng" style="margin-bottom:14px"></div>
+      <div id="gapBody" style="display:flex;flex-direction:column;gap:14px"></div>
+    </section>
+
+    <section class="panel" id="tab-etfgap">
+      <div class="ptitle">ETF 괴리율 <span style="font-size:12px;font-weight:600;color:var(--dim2)">단일종목 레버리지 · 인버스</span></div>
+      <div class="pdesc" id="etfgMeta">불러오는 중…</div>
+      <div id="etfgBody"></div>
+      <div style="font-size:11px;color:var(--dim2);margin-top:14px">괴리율 = (시장가 − NAV) ÷ NAV · 양수면 NAV보다 비싸게(프리미엄), 음수면 싸게(디스카운트) 거래 중 · 장중 NAV는 추정치(iNAV)</div>
+    </section>
+
+    <section class="panel" id="tab-dd">
+      <div class="ptitle">전고대비 <span style="font-size:12px;font-weight:600;color:var(--dim2)">낙폭 트래킹 · 2010~현재</span></div>
+      <div class="pdesc" id="ddMeta">불러오는 중…</div>
+      <div id="ddBody" style="display:flex;flex-direction:column;gap:16px"></div>
+    </section>
+
+    <section class="panel" id="tab-term">
+      <div class="ptitle">터미널 <span style="font-size:12px;font-weight:600;color:var(--dim2)">삼성전자 · SK하이닉스 통합 데스크</span></div>
+      <div class="pdesc" id="termMeta">불러오는 중…</div>
+      <div id="termBody"></div>
+    </section>
+
+    <section class="panel" id="tab-ram">
+      <div class="ptitle">램값 <span style="font-size:12px;font-weight:600;color:var(--dim2)">DRAM 현물가 동향</span></div>
+      <div class="pdesc" id="ramMeta">불러오는 중…</div>
+      <div id="ramBody"></div>
     </section>
 
     <section class="panel" id="tab-wrap">
@@ -512,6 +629,399 @@ function raStart(){raTick();clearInterval(raTimer);raTimer=setInterval(()=>{
   if(document.getElementById('tab-raoni').classList.contains('on'))raTick();else clearInterval(raTimer);
 },5000);}
 
+/* ══════════ 공용: 캔버스 라인차트 + 유틸 ══════════ */
+function lineChart(cv,cfg){
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||800,H=cfg.h||280;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';
+  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
+  const P={l:cfg.pl||58,r:14,t:12,b:22},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  let lo=Infinity,hi=-Infinity;
+  cfg.series.forEach(s=>s.data.forEach(v=>{if(v!=null&&isFinite(v)){lo=Math.min(lo,v);hi=Math.max(hi,v)}}));
+  (cfg.hlines||[]).forEach(l=>{lo=Math.min(lo,l.y);hi=Math.max(hi,l.y)});
+  if(!isFinite(lo)){return}
+  const pad=(hi-lo)*0.07||1;lo-=pad;hi+=pad;
+  const n=cfg.labels.length;
+  const px=i=>P.l+IW*(n>1?i/(n-1):0.5), py=v=>P.t+IH*(1-(v-lo)/(hi-lo));
+  const yfmt=cfg.yfmt||(v=>v.toLocaleString('ko-KR'));
+  x.strokeStyle='#232a38';x.fillStyle='#5a6478';x.font='10.5px Pretendard, sans-serif';x.lineWidth=1;
+  const ticks=4;
+  for(let i=0;i<=ticks;i++){const v=lo+(hi-lo)*i/ticks,y=py(v);
+    x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.globalAlpha=.5;x.stroke();x.globalAlpha=1;
+    x.textAlign='right';x.fillText(yfmt(v),P.l-7,y+3.5);}
+  const step=Math.max(1,Math.floor(n/6));x.textAlign='center';
+  for(let i=0;i<n;i+=step){const d=cfg.labels[i];
+    x.fillText(cfg.xfmt?cfg.xfmt(d):d,px(i),H-6);}
+  (cfg.hlines||[]).forEach(l=>{x.strokeStyle=l.color||'#c9a24a';x.setLineDash(l.dash||[5,4]);
+    x.beginPath();x.moveTo(P.l,py(l.y));x.lineTo(W-P.r,py(l.y));x.stroke();x.setLineDash([]);
+    if(l.label){x.fillStyle=l.color||'#c9a24a';x.textAlign='left';x.fillText(l.label,P.l+4,py(l.y)-4)}});
+  cfg.series.forEach(s=>{
+    if(s.fill){x.beginPath();let started=false;
+      for(let i=0;i<n;i++){const v=s.data[i];if(v==null)continue;
+        if(!started){x.moveTo(px(i),py(v));started=true}else x.lineTo(px(i),py(v));}
+      x.lineTo(px(n-1),py(cfg.fillBase!=null?cfg.fillBase:lo));x.lineTo(px(0),py(cfg.fillBase!=null?cfg.fillBase:lo));
+      x.closePath();x.fillStyle=s.fill;x.fill();}
+    x.beginPath();x.strokeStyle=s.color;x.lineWidth=s.w||1.6;let st=false;
+    for(let i=0;i<n;i++){const v=s.data[i];if(v==null)continue;
+      if(!st){x.moveTo(px(i),py(v));st=true}else x.lineTo(px(i),py(v));}
+    x.stroke();});
+}
+const RANGES={'1M':21,'3M':63,'6M':126,'1Y':245,'3Y':735,'5Y':1225,'10Y':2450,'ALL':1e9};
+function sliceR(arr,code){const k=RANGES[code]||1e9;return arr.length>k?arr.slice(-k):arr;}
+const fmtDate8=d=>d.slice(2,4)+'.'+d.slice(4,6)+'.'+d.slice(6,8);
+const xYear=d=>d.slice(0,4);
+const fmtJo=n=>{const j=n/1e12;return j>=1?j.toLocaleString('ko-KR',{maximumFractionDigits:1})+'조':(n/1e8).toFixed(0)+'억';};
+function rngBar(el,cur,codes,onsel){el.innerHTML=codes.map(c=>`<button class="rng${c===cur?' on':''}" data-r="${c}">${c==='ALL'?'전체':c}</button>`).join('');
+  el.onclick=e=>{const b=e.target.closest('.rng');if(b)onsel(b.dataset.r);};}
+async function getJson(path){const r=await fetch(path+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;return r.json();}
+let CAPS=null,DD=null,RAM=null;
+async function needCaps(){if(!CAPS)CAPS=await getJson('data/caps.json');return CAPS;}
+async function needRa(){await raLoadRef();return raRef;}
+
+/* ══════════ 지수 (Hyperliquid EWY·KR200) ══════════ */
+let idxTimer=null;
+async function idxTick(){
+  const body=document.getElementById('idxBody'),meta=document.getElementById('idxMeta');
+  const ref=await needRa();
+  let hl;try{const r=await fetch('https://api.hyperliquid.xyz/info',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'metaAndAssetCtxs',dex:'xyz'})});hl=await r.json();}catch(e){meta.textContent='Hyperliquid 연결 실패';return;}
+  const names=hl[0].universe.map(u=>u.name),ctxs=hl[1];
+  const C=t=>ctxs[names.indexOf('xyz:'+t)]||{};
+  const ewy=C('EWY'),kr=C('KR200');
+  const coef=ref&&ref.kospi_coef, kospiNv=ref&&ref.indices&&ref.indices.KOSPI;
+  const em=parseFloat(ewy.markPx),ep=parseFloat(ewy.prevDayPx);
+  const est=coef?em*coef:null, prevEst=coef?ep*coef:null;
+  const km=parseFloat(kr.markPx),kp=parseFloat(kr.prevDayPx);
+  meta.innerHTML=`USD/KRW <b style="color:var(--gold-hi)">${ref&&ref.naver_fx?'₩'+ref.naver_fx.toLocaleString():'-'}</b> · 5초 갱신 · ${new Date().toLocaleTimeString('ko-KR')}`;
+  const card=(t,tk,big,chg,pct,rows)=>`<div class="rcard"><div class="rtop"><div><div class="rname">${t}</div><div class="rtk">${tk}</div></div></div>
+    <div class="rprice" style="font-size:32px">${big}</div>
+    <div class="rchg"><span class="${chg>=0?'up':'down'}">${chg>=0?'▲':'▼'} ${Math.abs(chg).toFixed(2)} · ${chg>=0?'+':''}${pct.toFixed(2)}%</span></div>
+    <div class="rhr"></div><div class="rstats">${rows.map(r=>`<div class="rst"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join('')}</div></div>`;
+  let html='';
+  if(est){html+=card('코스피','xyz:EWY × 계수',est.toLocaleString('ko-KR',{maximumFractionDigits:2}),est-prevEst,(est-prevEst)/prevEst*100,[
+    ['EWY 마크 (USD)','$'+em.toFixed(2)],['환산 계수',coef.toFixed(3)],
+    ['현재 코스피 (네이버)',kospiNv?kospiNv.value.toLocaleString('ko-KR',{maximumFractionDigits:2}):'-'],
+    ['EWY 24H 거래대금','$'+(parseFloat(ewy.dayNtlVlm)/1e6).toFixed(2)+'M']]);}
+  html+=card('코스피200 선물','xyz:KR200 perp',km.toLocaleString('ko-KR',{maximumFractionDigits:2}),km-kp,(km-kp)/kp*100,[
+    ['오라클',parseFloat(kr.oraclePx).toLocaleString('ko-KR',{maximumFractionDigits:2})],
+    ['미드',parseFloat(kr.midPx).toLocaleString('ko-KR',{maximumFractionDigits:2})],
+    ['24H 거래대금','$'+(parseFloat(kr.dayNtlVlm)/1e3).toFixed(1)+'K'],
+    ['미결제약정',parseFloat(kr.openInterest).toLocaleString('ko-KR',{maximumFractionDigits:1})]]);
+  body.innerHTML=html;
+}
+function idxStart(){idxTick();clearInterval(idxTimer);idxTimer=setInterval(()=>{
+  if(document.getElementById('tab-indices').classList.contains('on'))idxTick();else clearInterval(idxTimer);},5000);}
+
+/* ══════════ 시총비교 ══════════ */
+let capsRange='1Y',capsPref=true;
+async function capsLoad(){
+  const d=await needCaps(),ref=await needRa();
+  const el=document.getElementById('capsBody');
+  const sh=d.shares;
+  const dates=d.dates, s=d.close.s, sp=d.close.sp, h=d.close.h;
+  const sam=dates.map((_,i)=>s[i]!=null?(s[i]*sh.s+(capsPref&&sp[i]!=null?sp[i]*sh.sp:0)):null);
+  const hyn=dates.map((_,i)=>h[i]!=null?h[i]*sh.h:null);
+  const L=sliceR(dates,capsRange),S=sliceR(sam,capsRange),Hy=sliceR(hyn,capsRange);
+  const liveS=(ref&&ref.stocks&&ref.stocks.SMSN&&ref.stocks.SMSN.price)||s[s.length-1];
+  const liveH=(ref&&ref.stocks&&ref.stocks.SKHX&&ref.stocks.SKHX.price)||h[h.length-1];
+  const capS=liveS*sh.s+(capsPref?sp[sp.length-1]*sh.sp:0), capH=liveH*sh.h;
+  const gapArr=S.map((v,i)=>v!=null&&Hy[i]!=null?v-Hy[i]:null).filter(v=>v!=null);
+  const maxGap=Math.max(...gapArr),minGap=Math.min(...gapArr);
+  const need=capS/sh.h;
+  const ratio=S.map((v,i)=>v!=null&&Hy[i]?v/Hy[i]:null);
+  document.getElementById('capsMeta').innerHTML=`기준: 네이버 일봉 종가 × 현재 발행주식수 · 마지막 빌드 ${CAPS.updated} · 현재가는 5분 피드`;
+  el.innerHTML=`
+  <div class="rcard" style="text-align:center">
+    <div style="display:flex;justify-content:center;gap:60px;align-items:flex-end;margin:6px 0 14px">
+      <div><div style="font-size:24px;font-weight:800">${fmtJo(capS)}</div>
+        <div class="cbar" style="height:${Math.round(150*capS/Math.max(capS,capH))}px;background:linear-gradient(180deg,#2dd4bf,#0d9488)"></div>
+        <div style="margin-top:8px;font-size:13px;font-weight:700">🏆 삼성${capsPref?' +우':''}</div></div>
+      <div><div style="font-size:24px;font-weight:800">${fmtJo(capH)}</div>
+        <div class="cbar" style="height:${Math.round(150*capH/Math.max(capS,capH))}px;background:linear-gradient(180deg,#e0be6e,#b07d10)"></div>
+        <div style="margin-top:8px;font-size:13px;font-weight:700">SK하이닉스</div></div>
+    </div>
+    <div style="font-size:15px">격차 <b style="color:var(--gold-hi)">${capS>capH?'삼성':'하이닉스'} +${fmtJo(Math.abs(capS-capH))}</b>
+      <span style="color:var(--dim)"> · ${capS>capH?'삼성':'하이닉스'}이 ${(Math.abs(capS/capH-1)*100).toFixed(1)}% 큼</span></div>
+    <div style="font-size:12.5px;color:var(--dim);margin-top:6px">삼성${capsPref?'(+우)':''} 추월까지 → 하이닉스 <b style="color:var(--txt)">₩${Math.round(need).toLocaleString()}</b> 필요 (${((need/liveH-1)*100).toFixed(1)>0?'+':''}${((need/liveH-1)*100).toFixed(1)}% · 현재 ₩${Math.round(liveH).toLocaleString()})</div>
+  </div>
+  <div class="statrow">
+    <div class="stc"><div class="k">삼성 시총</div><div class="v">${fmtJo(capS)}</div></div>
+    <div class="stc"><div class="k">SK하이닉스 시총</div><div class="v">${fmtJo(capH)}</div></div>
+    <div class="stc"><div class="k">격차 (삼성 − 하닉)</div><div class="v" style="color:var(--gold-hi)">${capS-capH>=0?'+':''}${fmtJo(capS-capH)}</div></div>
+    <div class="stc"><div class="k">기간 최대 격차</div><div class="v" style="color:var(--down)">+${fmtJo(maxGap)}</div></div>
+    <div class="stc"><div class="k">기간 최소 격차</div><div class="v">${fmtJo(minGap)}</div></div>
+  </div>
+  <div class="rcard"><h3 style="font-size:14px;margin-bottom:10px">시가총액 추이 <span style="color:var(--dim2);font-size:11px;font-weight:500">단위 조 · 삼성 = 보통주${capsPref?' + 우선주':''}</span></h3>
+    <canvas id="capsCv1"></canvas>
+    <div class="clegend"><i style="background:#2dd4bf"></i>삼성전자${capsPref?'+우':''} <i style="background:#e0be6e;margin-left:14px"></i>SK하이닉스</div></div>
+  <div class="rcard"><h3 style="font-size:14px;margin-bottom:10px">시총 비율 (삼성 ÷ 하이닉스) <span style="color:var(--dim2);font-size:11px;font-weight:500">1.00 미만 = 하이닉스가 더 큼</span></h3>
+    <canvas id="capsCv2"></canvas></div>`;
+  lineChart(document.getElementById('capsCv1'),{labels:L,series:[
+    {data:S.map(v=>v/1e12),color:'#2dd4bf',w:1.8},{data:Hy.map(v=>v/1e12),color:'#e0be6e',w:1.8}],
+    yfmt:v=>Math.round(v).toLocaleString()+'조',xfmt:capsRange==='1M'||capsRange==='3M'?fmtDate8:xYear});
+  lineChart(document.getElementById('capsCv2'),{labels:L,series:[
+    {data:sliceR(ratio,capsRange),color:'#2dd4bf',fill:'rgba(45,212,191,.12)',w:1.6}],
+    hlines:[{y:1,color:'#c9a24a',label:'동률 1.00'}],
+    yfmt:v=>v.toFixed(2)+'×',xfmt:capsRange==='1M'||capsRange==='3M'?fmtDate8:xYear});
+}
+function capsInit(){
+  rngBar(document.getElementById('capsRng'),capsRange,['1M','3M','6M','1Y','3Y','5Y','10Y','ALL'],r=>{capsRange=r;capsInit();});
+  document.getElementById('capsPref').onclick=()=>{capsPref=!capsPref;capsInit();};
+  document.getElementById('capsPref').textContent='우선주 포함 '+(capsPref?'ON':'OFF');
+  document.getElementById('capsPref').classList.toggle('on',capsPref);
+  capsLoad();
+}
+
+/* ══════════ 괴리율 ══════════ */
+let gapRange='1Y',gapPair='sam';
+async function gapLoad(){
+  const d=await needCaps();
+  const el=document.getElementById('gapBody');
+  const dates=d.dates;
+  let series,aName,bName,aArr,bArr,fml;
+  if(gapPair==='sam'){
+    aName='삼성전자(005930)';bName='삼성전자우(005935)';
+    aArr=d.close.s;bArr=d.close.sp;
+    series=dates.map((_,i)=>aArr[i]&&bArr[i]?(aArr[i]-bArr[i])/aArr[i]*100:null);
+    fml='괴리율 = (보통주 − 우선주) ÷ 보통주 × 100';
+  }else{
+    aName='SK하이닉스 지분가치(20.07%)';bName='SK스퀘어(402340)';
+    aArr=dates.map((_,i)=>d.close.h[i]?d.close.h[i]*d.shares.h*d.sq_stake_hynix:null);
+    bArr=dates.map((_,i)=>d.close.sq[i]?d.close.sq[i]*d.shares.sq:null);
+    series=dates.map((_,i)=>aArr[i]&&bArr[i]?(aArr[i]-bArr[i])/aArr[i]*100:null);
+    fml='NAV 할인율 = (하이닉스 지분가치 − 스퀘어 시총) ÷ 지분가치 × 100';
+  }
+  const idxs=dates.map((_,i)=>i).filter(i=>series[i]!=null);
+  const rIdx=sliceR(idxs,gapRange);
+  const L=rIdx.map(i=>dates[i]),V=rIdx.map(i=>series[i]);
+  const cur=V[V.length-1],avg=V.reduce((a,b)=>a+b,0)/V.length;
+  const sd=Math.sqrt(V.reduce((a,b)=>a+(b-avg)**2,0)/V.length);
+  const mx=Math.max(...V),mn=Math.min(...V);
+  const mxD=L[V.indexOf(mx)],mnD=L[V.indexOf(mn)];
+  document.getElementById('gapMeta').textContent=`출처: 네이버 일봉 종가 · 마지막 빌드 ${CAPS.updated} · ${fml}`;
+  el.innerHTML=`
+  <div class="statrow">
+    <div class="stc"><div class="k">현재 ${gapPair==='sam'?'괴리율':'할인율'}</div><div class="v" style="font-size:19px;color:var(--gold-hi)">${cur.toFixed(2)}%</div><div class="s">${fmtDate8(L[L.length-1])}</div></div>
+    <div class="stc"><div class="k">기간 평균</div><div class="v">${avg.toFixed(2)}%</div><div class="s">σ ${sd.toFixed(2)}pp</div></div>
+    <div class="stc"><div class="k">최대</div><div class="v" style="color:var(--down)">${mx.toFixed(2)}%</div><div class="s">${fmtDate8(mxD)}</div></div>
+    <div class="stc"><div class="k">최소</div><div class="v" style="color:var(--up)">${mn.toFixed(2)}%</div><div class="s">${fmtDate8(mnD)}</div></div>
+    <div class="stc"><div class="k">데이터 일수</div><div class="v">${V.length}일</div></div>
+  </div>
+  <div class="rcard"><h3 style="font-size:14px;margin-bottom:10px">${gapPair==='sam'?'괴리율':'NAV 할인율'} 추이</h3><canvas id="gapCv1"></canvas>
+    <div class="clegend"><i style="background:#2dd4bf"></i>${gapPair==='sam'?'괴리율':'할인율'} <i style="background:#c9a24a;margin-left:14px"></i>평균 ${avg.toFixed(2)}%</div></div>
+  <div class="rcard"><h3 style="font-size:14px;margin-bottom:10px">${gapPair==='sam'?'종가 비교':'가치 비교'}</h3><canvas id="gapCv2"></canvas>
+    <div class="clegend"><i style="background:#2dd4bf"></i>${aName} <i style="background:#e0be6e;margin-left:14px"></i>${bName}</div></div>`;
+  lineChart(document.getElementById('gapCv1'),{labels:L,series:[
+    {data:V,color:'#2dd4bf',fill:'rgba(45,212,191,.13)',w:1.7}],
+    hlines:[{y:avg,color:'#c9a24a'}],yfmt:v=>v.toFixed(1)+'%',
+    xfmt:['1M','3M','6M'].includes(gapRange)?fmtDate8:xYear});
+  const aV=rIdx.map(i=>aArr[i]),bV=rIdx.map(i=>bArr[i]);
+  lineChart(document.getElementById('gapCv2'),{labels:L,series:[
+    {data:aV,color:'#2dd4bf',w:1.6},{data:bV,color:'#e0be6e',w:1.6}],
+    yfmt:gapPair==='sam'?(v=>Math.round(v/1000)+'천'):(v=>Math.round(v/1e12)+'조'),
+    xfmt:['1M','3M','6M'].includes(gapRange)?fmtDate8:xYear});
+}
+function gapInit(){
+  const pb=document.getElementById('gapPair');
+  pb.innerHTML=`<button class="pair${gapPair==='sam'?' on':''}" data-p="sam">삼성 보통/우선</button><button class="pair${gapPair==='sq'?' on':''}" data-p="sq">하이닉스 / SK스퀘어</button>`;
+  pb.onclick=e=>{const b=e.target.closest('.pair');if(b){gapPair=b.dataset.p;gapInit();}};
+  rngBar(document.getElementById('gapRng'),gapRange,['1M','3M','6M','1Y','3Y','5Y','10Y','ALL'],r=>{gapRange=r;gapInit();});
+  gapLoad();
+}
+
+/* ══════════ ETF 괴리율 ══════════ */
+async function etfgLoad(){
+  const ref=await needRa();
+  const el=document.getElementById('etfgBody');
+  if(!ref||!ref.etf||!ref.etf.length){el.innerHTML='<div class="empty"><b>ETF 데이터 없음</b></div>';return;}
+  document.getElementById('etfgMeta').innerHTML=`단일종목 레버리지·인버스 ETF — 현재가 · NAV(장중 iNAV 추정) · 괴리율 · 5분 갱신 (${ref.updated.slice(11,16)}) · 출처 네이버금융`;
+  const groups={'삼성전자':[],'SK하이닉스':[]};
+  ref.etf.forEach(e=>groups[e.under]&&groups[e.under].push(e));
+  const stPct=u=>{const k=u==='삼성전자'?'SMSN':'SKHX';const s=ref.stocks&&ref.stocks[k];
+    if(!s||!s.price||!s.prevClose)return'';
+    const p=(s.price-s.prevClose)/s.prevClose*100;
+    return `<span class="${p>=0?'up':'down'}" style="font-size:13px;margin-left:8px">${p>=0?'▲+':'▼'}${p.toFixed(2)}%</span>`;};
+  let html='';
+  for(const u of ['삼성전자','SK하이닉스']){
+    html+=`<div class="hgroup" style="margin-top:4px">■ ${u} ${stPct(u)}</div><div class="rgrid2" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">`;
+    for(const e of groups[u]){
+      const pos=Math.max(-1,Math.min(1,e.gap||0));
+      html+=`<div class="rcard" style="padding:16px 18px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span class="brandpill">${e.brand}</span><span style="font-size:11.5px;color:var(--dim)">단일종목 ${e.type}</span>
+          <span style="margin-left:auto;font-size:11px;color:var(--dim2)">괴리율</span></div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div><span style="font-size:23px;font-weight:800">₩${e.price?e.price.toLocaleString():'-'}</span><span style="color:var(--dim);font-size:12px"> 원</span>
+            <div class="rchg" style="margin-top:4px"><span class="${(e.chgVal||0)>=0?'up':'down'}" style="font-size:12px">${(e.chgVal||0)>=0?'▲':'▼'} ${Math.abs(e.chgVal||0).toLocaleString()} · ${(e.chgPct||0)>=0?'+':''}${(e.chgPct||0).toFixed(2)}%</span><span class="lbl">전일 대비</span></div></div>
+          <div style="font-size:21px;font-weight:800;color:${(e.gap||0)>=0?'var(--up)':'var(--down)'}">${(e.gap||0)>=0?'+':''}${(e.gap||0).toFixed(2)}%</div></div>
+        <div class="gauge"><div class="gmark" style="left:${50+pos*50}%;background:${(e.gap||0)>=0?'var(--up)':'var(--down)'}"></div><div class="gzero"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim2);margin-top:3px"><span>할인 −1%</span><span>0 · NAV ₩${e.nav?e.nav.toLocaleString():'-'}</span><span>+1% 할증</span></div>
+      </div>`;}
+    html+='</div>';}
+  el.innerHTML=html;
+}
+
+/* ══════════ 전고대비 ══════════ */
+async function ddLoad(){
+  if(!DD)DD=await getJson('data/drawdown.json');
+  const el=document.getElementById('ddBody');
+  document.getElementById('ddMeta').textContent=`전고점(장중 사상최고) 대비 낙폭 · ${DD.threshold}% 이상 구간 트래킹 · 회복 = 전고점 재돌파 · 마지막 빌드 ${DD.updated}`;
+  let html='';
+  DD.stocks.forEach((s,si)=>{
+    html+=`<div class="rcard">
+      <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px">
+        <span style="font-size:18px;font-weight:800">${s.name}</span><span style="font-size:11px;color:var(--dim2)">${s.code} · ${s.tk}</span>
+        <span style="margin-left:auto;font-size:11.5px;font-weight:700;color:var(--down);background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:99px;padding:3px 11px">전고대비 ${s.cur_dd}%${s.cur_dd<=-20?' · 조정장':''}</span></div>
+      <div class="rstats" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
+        <div class="rst"><div class="k">현재가 (종가)</div><div class="v">₩${s.price.toLocaleString()}</div></div>
+        <div class="rst"><div class="k">전고점 (장중 사상최고)</div><div class="v">₩${s.ath.toLocaleString()} <span style="color:var(--dim2);font-weight:500;font-size:11px">${fmtDate8(s.ath_date)}</span></div></div>
+        <div class="rst"><div class="k">현재 낙폭 (종가)</div><div class="v" style="color:var(--down)">${s.cur_dd}%</div></div>
+        <div class="rst"><div class="k">-15% 진입 횟수</div><div class="v">${s.n_episodes}회</div></div></div>
+      <canvas id="ddCv${si}"></canvas>
+      <div style="font-size:10.5px;color:var(--dim2);margin-top:4px">전고점(=0%) 대비 종가 낙폭 추이 · 점선 = -15% (2010~현재)</div>
+      <div class="hgroup" style="margin-top:16px">전고대비 -15% 이상 하락 구간 · 최신순 ${s.n_episodes}건</div>
+      <div style="overflow-x:auto"><table class="ddt"><thead><tr><th>-15% 진입일</th><th>최저점 (날짜·장중저가)</th><th>최대 낙폭</th><th>회복일</th><th>지속(거래일)</th></tr></thead><tbody>
+      ${s.episodes.map(e=>`<tr><td>${fmtDate8(e.enter)}</td><td><b>${fmtDate8(e.trough_d)}</b> (₩${Math.round(e.trough_p).toLocaleString()})</td>
+        <td style="color:var(--down);font-weight:700">${e.max_dd}%</td>
+        <td>${e.recover?`<span style="color:var(--up)">${fmtDate8(e.recover)}</span>`:'<span style="color:var(--gold-hi);font-weight:700">진행중</span>'}</td>
+        <td>${e.days}일</td></tr>`).join('')}</tbody></table></div></div>`;
+  });
+  el.innerHTML=html;
+  DD.stocks.forEach((s,si)=>{
+    lineChart(document.getElementById('ddCv'+si),{labels:s.dates,h:230,series:[
+      {data:s.dd,color:'#ef8080',fill:'rgba(239,68,68,.14)',w:1}],fillBase:0,
+      hlines:[{y:-15,color:'#ef4444',dash:[4,4],label:'-15%'}],
+      yfmt:v=>v.toFixed(0)+'%',xfmt:xYear});
+  });
+}
+
+/* ══════════ 터미널 ══════════ */
+let termTimer=null,termRange='6M';
+async function termLoad(){
+  const ref=await needRa();const d=await needCaps();
+  const el=document.getElementById('termBody');
+  if(!ref){el.innerHTML='<div class="empty"><b>피드 없음</b></div>';return;}
+  document.getElementById('termMeta').innerHTML=`업데이트 ${ref.updated.slice(11,16)} · 삼성전자·SK하이닉스 · 출처: 네이버·Hyperliquid·DART`;
+  const t=ref.terminal||{};
+  const stCard=(key,color)=>{
+    const s=ref.stocks[key]||{},ti=t[key]||{};
+    const chg=s.price&&s.prevClose?s.price-s.prevClose:0,pct=s.prevClose?chg/s.prevClose*100:0;
+    const tgt=ti.target?parseFloat(String(ti.target).replace(/,/g,'')):null;
+    const ups=tgt&&s.price?(tgt/s.price-1)*100:null;
+    return `<div class="rcard" style="border-left:3px solid ${color};padding:16px 18px">
+      <div style="font-size:12px;color:var(--dim2)">${s.name} <span style="color:var(--dim2)">${s.code}</span></div>
+      <div style="font-size:22px;font-weight:800;margin:4px 0">₩${s.price?s.price.toLocaleString():'-'} <span class="${chg>=0?'up':'down'}" style="font-size:13px">${chg>=0?'▲':'▼'}${Math.abs(chg).toLocaleString()} (${pct>=0?'+':''}${pct.toFixed(2)}%)</span></div>
+      <div class="kvrow">PER <b>${ti.per||'-'}</b> · 추정PER <b>${ti.cnsPer||'-'}</b> · PBR <b>${ti.pbr||'-'}</b></div>
+      <div class="kvrow">배당 <b>${ti.dvr||'-'}</b> · 외인 <b>${ti.frgnRate||'-'}</b> · 시총 <b>${ti.marketValue||'-'}</b></div>
+      ${tgt?`<div class="kvrow" style="margin-top:6px">목표주가 <b style="color:var(--gold-hi)">₩${tgt.toLocaleString()}</b> <span class="${ups>=0?'up':'down'}">${ups>=0?'+':''}${ups.toFixed(1)}%</span></div>`:''}
+      <div class="kvrow" style="font-size:10.5px;color:var(--dim2)">52주 ${ti.high52||'-'} / ${ti.low52||'-'}</div></div>`;};
+  const idx=ref.indices||{};
+  const miniIdx=(nm,o)=>o?`<div class="stc" style="min-width:0"><div class="k">${nm}</div><div class="v" style="font-size:15px">${o.value.toLocaleString('ko-KR',{maximumFractionDigits:2})}</div>
+    <div class="s ${o.chg>=0?'up':'down'}">${o.chg>=0?'▲':'▼'}${Math.abs(o.chg).toLocaleString()} (${o.pct>=0?'+':''}${o.pct}%)</div></div>`:'';
+  el.innerHTML=`
+  <div class="termgrid">
+    <div style="display:flex;flex-direction:column;gap:12px">${stCard('SMSN','#2dd4bf')}${stCard('SKHX','#e0be6e')}</div>
+    <div class="rcard"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <h3 style="font-size:13.5px">📊 삼성전자 vs SK하이닉스 상대수익률 (기준일=0%)</h3>
+      <div class="rngwrap" id="termRng" style="margin-left:auto"></div></div>
+      <canvas id="termCv" style="width:100%"></canvas>
+      <div class="clegend"><i style="background:#2dd4bf"></i>삼성전자 <i style="background:#e0be6e;margin-left:14px"></i>SK하이닉스</div></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="statrow" style="grid-template-columns:1fr 1fr;gap:10px">${miniIdx('코스피',idx.KOSPI)}${miniIdx('코스닥',idx.KOSDAQ)}
+        <div class="stc"><div class="k">원/달러</div><div class="v" style="font-size:15px">${ref.naver_fx?ref.naver_fx.toLocaleString():'-'}</div></div>
+        <div class="stc"><div class="k">업비트 USDT</div><div class="v" style="font-size:15px">${ref.usdt_krw?ref.usdt_krw.toLocaleString():'-'}</div></div></div>
+      <div class="hgroup" style="margin:2px 0 0">🌐 글로벌 반도체 (HL·USD)</div>
+      <div class="statrow" style="grid-template-columns:1fr 1fr;gap:10px" id="termGlb"><div class="stc"><div class="k">로딩…</div></div></div>
+    </div>
+  </div>
+  <div class="termgrid2">
+    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:10px">📰 뉴스</h3><div class="tlist">
+      ${(ref.news||[]).slice(0,14).map(n=>`<div class="titem"><a class="nt" style="font-size:12.5px" href="${n.url}" target="_blank" rel="noopener">${esc(n.title)}</a>
+        <div class="nmeta">${(n.tags||[]).map(tg=>`<span class="ttag">${tg}</span>`).join('')} ${esc(n.source)} · ${n.ts}</div></div>`).join('')||'<div class="nmeta">뉴스 없음</div>'}</div></div>
+    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:10px">🎯 컨센서스 · 목표주가</h3>
+      ${['SMSN','SKHX'].map(k=>{const ti=t[k]||{};const nm=(ref.stocks[k]||{}).name||k;
+        return `<div style="margin-bottom:12px"><div style="font-size:12px;font-weight:700;margin-bottom:4px">${nm} <span style="color:var(--gold-hi)">${ti.target?'₩'+ti.target:'-'}</span> <span style="color:var(--dim2);font-size:10.5px">투자의견 ${ti.recomm||'-'}</span></div>
+        <div class="tlist">${(ti.researches||[]).slice(0,4).map(r=>`<div class="titem" style="padding:5px 0"><span style="font-size:12px">${esc(r.title)}</span><div class="nmeta">${esc(r.broker)} · ${r.date}</div></div>`).join('')}</div></div>`;}).join('')}</div>
+    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:10px">📄 공시 (DART)</h3><div class="tlist">
+      ${(ref.filings||[]).length?(ref.filings||[]).slice(0,12).map(f=>`<div class="titem"><a class="nt" style="font-size:12.5px" href="${f.url}" target="_blank" rel="noopener">${esc(f.title)}</a><div class="nmeta">${f.ts}</div></div>`).join(''):'<div class="nmeta">최근 공시 수집분 없음 (당일 RSS 누적)</div>'}</div></div>
+    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:10px">💰 수급 (외국인·기관·개인 순매수)</h3>
+      ${['SMSN','SKHX'].map(k=>{const ti=t[k]||{};const nm=(ref.stocks[k]||{}).name||k;
+        return `<div style="font-size:12px;font-weight:700;margin:6px 0 4px">${nm}</div>
+        <table class="ddt" style="font-size:11.5px"><thead><tr><th>일자</th><th>외국인</th><th>기관</th><th>개인</th></tr></thead><tbody>
+        ${(ti.deal||[]).map(r=>{
+          const c=v=>{const s=String(v||'');const neg=s.startsWith('-');return `<td class="${neg?'down':'up'}">${s.replace(/[+-]/,'')?(neg?'-':'+')+Math.round(Math.abs(parseFloat(s.replace(/[,+]/g,'')))/1e4).toLocaleString()+'만':'-'}</td>`;};
+          return `<tr><td>${(r.date||'').slice(4,6)}/${(r.date||'').slice(6,8)}</td>${c(r.frgn)}${c(r.org)}${c(r.indi)}</tr>`;}).join('')}</tbody></table>`;}).join('')}</div>
+  </div>`;
+  rngBar(document.getElementById('termRng'),termRange,['1M','3M','6M','1Y'],r=>{termRange=r;termChart();});
+  termChart();termGlobal();
+}
+async function termChart(){
+  const d=await needCaps();
+  const idxs=d.dates.map((_,i)=>i).filter(i=>d.close.s[i]!=null&&d.close.h[i]!=null);
+  const r=sliceR(idxs,termRange);
+  const L=r.map(i=>d.dates[i]);
+  const base_s=d.close.s[r[0]],base_h=d.close.h[r[0]];
+  lineChart(document.getElementById('termCv'),{labels:L,h:300,series:[
+    {data:r.map(i=>(d.close.s[i]/base_s-1)*100),color:'#2dd4bf',w:1.7},
+    {data:r.map(i=>(d.close.h[i]/base_h-1)*100),color:'#e0be6e',w:1.7}],
+    hlines:[{y:0,color:'#5a6478',dash:[3,4]}],yfmt:v=>(v>=0?'+':'')+v.toFixed(0)+'%',
+    xfmt:['1M','3M'].includes(termRange)?fmtDate8:d8=>d8.slice(4,6)+'월'});
+}
+async function termGlobal(){
+  try{
+    const r=await fetch('https://api.hyperliquid.xyz/info',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'metaAndAssetCtxs',dex:'xyz'})});
+    const hl=await r.json();const names=hl[0].universe.map(u=>u.name),ctxs=hl[1];
+    const cell=(nm,tk)=>{const c=ctxs[names.indexOf('xyz:'+tk)];if(!c)return'';
+      const m=parseFloat(c.markPx),p=parseFloat(c.prevDayPx),pct=(m-p)/p*100;
+      return `<div class="stc"><div class="k">${nm}</div><div class="v" style="font-size:15px">${m.toLocaleString('en-US',{maximumFractionDigits:2})}</div>
+        <div class="s ${pct>=0?'up':'down'}">${pct>=0?'▲+':'▼'}${pct.toFixed(2)}%</div></div>`;};
+    document.getElementById('termGlb').innerHTML=cell('엔비디아','NVDA')+cell('마이크론','MU')+cell('TSMC','TSM')+cell('인텔','INTC');
+  }catch(e){}
+}
+function termStart(){termLoad();clearInterval(termTimer);termTimer=setInterval(()=>{
+  if(document.getElementById('tab-term').classList.contains('on')){raRefAt=0;termLoad();}else clearInterval(termTimer);},60000);}
+
+/* ══════════ 램값 ══════════ */
+async function ramLoad(){
+  if(!RAM)RAM=await getJson('data/ram.json').catch(()=>null);
+  const el=document.getElementById('ramBody');
+  if(!RAM||!RAM.items||!RAM.items.length){
+    document.getElementById('ramMeta').textContent='DRAM 현물가(스팟) · 출처 DRAMeXchange';
+    el.innerHTML='<div class="empty"><b>아직 수집된 데이터가 없습니다</b>다음 일별 빌드에서 채워집니다.</div>';return;}
+  document.getElementById('ramMeta').innerHTML=`DRAM 현물가(스팟·세션평균) · 단위 USD · 출처 DRAMeXchange · 업데이트 ${RAM.updated} · <span style="color:var(--dim2)">추이 히스토리는 2026-07-09부터 자체 수집</span>`;
+  const hist=RAM.history||[];
+  const chgOf=(name,daysAgo)=>{
+    if(hist.length<2)return null;
+    const target=hist.length-1-daysAgo;
+    if(target<0)return null;
+    const past=hist[target].items.find(i=>i.name===name);
+    const cur=RAM.items.find(i=>i.name===name);
+    return past&&cur?(cur.avg/past.avg-1)*100:null;};
+  const fc=v=>v==null?'<span style="color:var(--dim2)">—</span>':`<span class="${v>=0?'up':'down'}">${v>=0?'▲':'▼'}${Math.abs(v).toFixed(2)}%</span>`;
+  const top=['DDR5 16Gb (2Gx8) 4800/5600','DDR4 16Gb (2Gx8) 3200','DDR4 8Gb (1Gx8) 3200'];
+  let html='<div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">';
+  for(const nm of top){
+    const it=RAM.items.find(i=>i.name===nm);if(!it)continue;
+    html+=`<div class="rcard" style="padding:16px 18px"><div style="font-size:12px;color:var(--dim);margin-bottom:6px">${nm}</div>
+      <div style="font-size:26px;font-weight:800">$${it.avg.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:3})} <span style="font-size:12px;color:var(--dim2)">USD</span></div>
+      <div style="font-size:11.5px;margin-top:6px">24h ${fc(chgOf(nm,1))} · 7일 ${fc(chgOf(nm,7))} · 30일 ${fc(chgOf(nm,30))}</div></div>`;}
+  html+='</div>';
+  html+=`<div class="rcard" style="margin-top:14px"><h3 style="font-size:13.5px;margin-bottom:8px">📈 가격 추이 (세션평균)</h3><canvas id="ramCv" style="width:100%"></canvas>
+    <div class="clegend" id="ramLg"></div></div>`;
+  html+=`<div class="rcard" style="margin-top:14px"><h3 style="font-size:13.5px;margin-bottom:8px">💾 현물가 전체 시세</h3>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">품목</th><th>현재가</th><th>24시간</th><th>7일</th><th>30일</th></tr></thead><tbody>
+    ${RAM.items.map(it=>`<tr><td style="text-align:left;font-weight:600">${esc(it.name)}</td><td>$${it.avg.toLocaleString('en-US',{maximumFractionDigits:3})}</td>
+      <td>${fc(chgOf(it.name,1))}</td><td>${fc(chgOf(it.name,7))}</td><td>${fc(chgOf(it.name,30))}</td></tr>`).join('')}</tbody></table></div></div>`;
+  el.innerHTML=html;
+  if(hist.length>=1){
+    const colors=['#2dd4bf','#e0be6e','#ef8080','#8ab4f8','#b08ad6','#56d4dd','#f0a860'];
+    const L=hist.map(h=>h.date);
+    const series=RAM.items.slice(0,5).map((it,i)=>({label:it.name,color:colors[i%colors.length],w:1.6,
+      data:hist.map(h=>{const f=h.items.find(x=>x.name===it.name);return f?f.avg:null;})}));
+    lineChart(document.getElementById('ramCv'),{labels:L,h:260,series,
+      yfmt:v=>'$'+v.toFixed(0),xfmt:d=>d.slice(5)});
+    document.getElementById('ramLg').innerHTML=series.map(s=>`<i style="background:${s.color}"></i>${esc(s.label)}&nbsp;&nbsp;`).join('');
+  }
+}
+
 /* ── 탭 전환 (iframe은 첫 진입 시에만 로드) ── */
 const items=document.querySelectorAll('.navitem'),panels=document.querySelectorAll('.panel');
 function openTab(tab){
@@ -526,6 +1036,13 @@ function openTab(tab){
   if(tab==='telegram')loadTG(false);
   if(tab==='wrap')loadWrap();
   if(tab==='raoni')raStart();
+  if(tab==='indices')idxStart();
+  if(tab==='caps')capsInit();
+  if(tab==='gap')gapInit();
+  if(tab==='etfgap')etfgLoad();
+  if(tab==='dd')ddLoad();
+  if(tab==='term')termStart();
+  if(tab==='ram')ramLoad();
   document.getElementById('nav').classList.remove('open');
   history.replaceState(null,'','#'+tab);
 }
