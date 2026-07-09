@@ -1,11 +1,11 @@
 {
- "updated": "2026-07-09 13:15:02",
+ "updated": "2026-07-09 13:20:02",
  "usdt_krw": 1490.0,
  "naver_fx": null,
  "stocks": {
   "SMSN": {
-   "price": 275500.0,
-   "prevClose": 273500.0,
+   "price": 275250.0,
+   "prevClose": 273000.0,
    "market": "OPEN",
    "code": "005930",
    "name": "삼성전자"
