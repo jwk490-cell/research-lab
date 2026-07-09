@@ -23,13 +23,12 @@
 /* 수출 대시보드는 상승=빨강 / 하락=파랑 (한국 관례) */
 html.ht-export{--up:#ef4444; --dn:#5a9bd8}
 
-/* ── 폰트: Pretendard 통일, 본문 보통 크기 ── */
-body{
+/* ── 폰트: 모든 폰트 Pretendard 강제 (literally all) ── */
+*,*::before,*::after{
   font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",
     "Segoe UI",-apple-system,sans-serif !important;
-  font-size:13px;
-  background:#0a0d13;
 }
+body{font-size:13px;background:#0a0d13}
 
 /* ── 둥근 모서리 통일 ── */
 .card,.section,.stat-card,.mcard,.dcard,.formula,.stock-list,.stock-info-box,
