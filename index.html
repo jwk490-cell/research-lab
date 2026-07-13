@@ -308,6 +308,7 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
     <div class="navgroup">리서치</div>
     <button class="navitem" data-tab="telegram"><span class="ico">✈️</span>텔레그램 채널 요약</button>
     <button class="navitem" data-tab="taerin"><span class="ico">📈</span>태린이아빠</button>
+    <button class="navitem" data-tab="deepresearch"><span class="ico">🔬</span>심층 리서치</button>
   </nav>
 
   <!-- ───────── 메인 콘텐츠 ───────── -->
@@ -452,6 +453,12 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
 
     <section class="panel embed" id="tab-taerin">
       <iframe data-src="https://jwk490-cell.github.io/taerin/" title="태린이아빠 이미지 피드"></iframe>
+    </section>
+
+    <section class="panel" id="tab-deepresearch">
+      <div class="ptitle">심층 리서치</div>
+      <div class="pdesc" id="drMeta">불러오는 중…</div>
+      <div id="drGrid"></div>
     </section>
 
 
@@ -1043,12 +1050,29 @@ function openTab(tab){
   if(tab==='dd')ddLoad();
   if(tab==='term')termStart();
   if(tab==='ram')ramLoad();
+  if(tab==='deepresearch')drLoad();
   document.getElementById('nav').classList.remove('open');
   history.replaceState(null,'','#'+tab);
 }
 items.forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
 document.querySelectorAll('[data-go]').forEach(c=>c.addEventListener('click',()=>openTab(c.dataset.go)));
 if(location.hash)openTab(location.hash.slice(1));
+
+/* ── 심층 리서치: data/research.json 렌더 ── */
+var drLoaded=false;
+async function drLoad(){
+  if(drLoaded)return;
+  const grid=document.getElementById('drGrid'),meta=document.getElementById('drMeta');
+  const escd=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  try{
+    const res=await fetch('data/research.json?t='+Date.now(),{cache:'no-store'});
+    const j=await res.json();const items=j.items||[];
+    meta.textContent=items.length?`${items.length}건 · 최근 갱신 ${j.updated||'-'} — 카드를 누르면 리포트가 새 창으로 열립니다.`:'아직 게시된 리서치가 없습니다.';
+    grid.style.cssText='display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))';
+    grid.innerHTML=items.map(r=>`<a href="research/${encodeURIComponent(r.file)}" target="_blank" rel="noopener" style="display:block;background:var(--surface);border:1px solid var(--gold-line);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--txt)"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><div style="font-weight:700;font-size:15px">${escd(r.name)} <span style="color:var(--dim);font-size:12px">${escd(r.ticker)}</span></div><div style="font-size:11px;color:var(--gold)">${escd(r.rating)}${r.version?' · '+escd(r.version):''}</div></div><div style="margin-top:7px;font-size:12.5px;color:var(--dim);line-height:1.5">${escd(r.call)}</div><div style="margin-top:8px;font-size:11px;color:var(--dim2)">${escd(r.date)}</div></a>`).join('');
+    drLoaded=true;
+  }catch(e){meta.textContent='research.json 로드 실패: '+e;}
+}
 
 /* ── 모바일 메뉴 ── */
 document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('nav').classList.toggle('open'));
