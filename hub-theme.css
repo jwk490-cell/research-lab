@@ -87,14 +87,22 @@ body{font-size:13px;background:#0a0d13}
 .ht-disp .legend{font-size:12px}
 .ht-disp .foot{font-size:12px}
 
-/* ════════ 반도체 ETF 수혜 (ht-semietf) ════════ */
-html.ht-semietf{--red:#ef4444;--blue:#5a9bd8;--mut:#8b95a8;--acc:#c9a24a}
+/* ════════ 반도체 ETF 수혜 (ht-semietf) — 44종 테이블 레이아웃 ════════ */
+html.ht-semietf{--red:#ef4444;--blue:#5a9bd8;--mut:#8b95a8;--acc:#c9a24a;
+  --ink:#e9ecf3;--line:#232a38;--bg:#0a0d13}
 .ht-semietf body{font-size:13px}
 .ht-semietf .sub{font-size:13px}
-.ht-semietf th{font-size:11.5px}
-.ht-semietf td{font-size:12.5px}
+.ht-semietf table{background:#12161f;border-color:#232a38}
+.ht-semietf th{background:#171c27;color:#8b95a8;font-size:11.5px}
+.ht-semietf td{border-top:1px solid #1b212d;font-size:12.5px}
 .ht-semietf tr:hover td{background:rgba(255,255,255,.03)}
-.ht-semietf .note{font-size:12.5px}
+.ht-semietf .btn{background:#12161f;border-color:#232a38;color:#8b95a8}
+.ht-semietf .btn:hover{color:#e9ecf3}
+.ht-semietf .btn.on{background:#c9a24a;color:#12161f;border-color:#c9a24a}
+.ht-semietf .chip{background:#1b2130;color:#c2ccdb}
+.ht-semietf .note{background:#12161f;border-color:#232a38;color:#8b95a8;font-size:12.5px}
+.ht-semietf .rk{color:#5a6478}
+.ht-semietf #stkt th{background:#171c27}
 
 /* ════════ 수출 데이터 (ht-export) ════════ */
 .ht-export body{font-size:13px}
