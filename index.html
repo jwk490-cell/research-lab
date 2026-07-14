@@ -303,6 +303,8 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
 
     <div class="navgroup">데이터</div>
     <button class="navitem" data-tab="export"><span class="ico">🚢</span>수출 데이터</button>
+    <button class="navitem" data-tab="corpexport"><span class="ico">🏗️</span>기업별 수출</button>
+    <button class="navitem" data-tab="trade10"><span class="ico">🛃</span>수출입 잠정치</button>
     <button class="navitem" data-tab="backlog"><span class="ico">📦</span>수주잔고</button>
 
     <div class="navgroup">리서치</div>
@@ -348,6 +350,8 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
       <div class="hgroup">데이터 · 리서치</div>
       <div class="grid">
         <button class="card" data-go="export"><h3>🚢 수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑.</p></button>
+        <button class="card" data-go="corpexport"><h3>🏗️ 기업별 수출 <span class="tag">월간</span></h3><p>관세청 시군구×HS 확정통계로 상장사 196개 라인 수출액·판가 추적 — 스파크라인·MoM·YoY·상세 차트.</p></button>
+        <button class="card" data-go="trade10"><h3>🛃 수출입 잠정치 <span class="tag">10일 단위</span></h3><p>관세청 잠정치(1~10일/1~20일/월) — 품목·국가별 YoY, 매월 11·21·1일 발표 즉시 반영.</p></button>
         <button class="card" data-go="backlog"><h3>📦 수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 툴 — 데이터 수집 방식 설계 중.</p></button>
         <button class="card" data-go="telegram"><h3>✈️ 텔레그램 채널 요약 <span class="tag">매시간</span></h3><p>주요 텔레그램 18개 채널의 당일 게시글 자동 수집 — 최신순 피드, 채널별 필터.</p></button>
         <button class="card" data-go="taerin"><h3>📈 태린이아빠 <span class="tag">피드</span></h3><p>태린이아빠 채널 아카이브.</p></button>
@@ -434,6 +438,14 @@ footer{flex:none;height:41px;display:flex;align-items:center;justify-content:cen
 
     <section class="panel embed" id="tab-export">
       <iframe data-src="export.html" title="수출 데이터"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-corpexport">
+      <iframe data-src="corpexport.html" title="기업별 수출"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-trade10">
+      <iframe data-src="trade10.html" title="수출입 잠정치"></iframe>
     </section>
 
     <section class="panel" id="tab-backlog">
