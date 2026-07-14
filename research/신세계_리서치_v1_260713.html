@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신세계 004170 · 심층리서치 v1 · 2026-07-13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F5EF; --paper:#FCFBF7; --ink:#1A1814; --ink2:#3C372F; --muted:#7A7264;
+  --line:#E2DCCF; --line2:#D2C9B6; --accent:#B8472E; --accent2:#2E6B5E; --gold:#9C7A2E;
+  --up:#2E6B5E; --down:#B8472E; --chip:#EFEAE0; --shadow:rgba(40,34,24,0.07);
+  --pretendard:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--line)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#fff;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:600;font-size:12px;letter-spacing:.02em}
+.tabs{position:sticky;top:54px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{position:sticky;top:92px;z-index:48;background:#F0ECE1;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:4px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:31px;font-weight:600;line-height:1.28;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.7}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 62%,#F0D9A8 62%);padding:0 1px;font-weight:500}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:var(--ink);color:#F2EEE3;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#fff;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down)} .est.bull{background:var(--up)}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:840px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:16px 17px;box-shadow:0 1px 2px var(--shadow)}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#EEE9DE;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F3EFE5}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.txt{text-align:left}
+tr.hl td{background:#FBF3E3;font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#F0ECE1}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:#DCEAE5;color:var(--up)} .tag.s{background:#F3DBD3;color:var(--down)} .tag.n{background:#EDE6D6;color:var(--gold)}
+.note{background:#EFEADE;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:#E6EEEA;border-color:#BFD8CF}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:#F5E9E3;border-color:#E3C4B6}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.chart .cap{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--paper)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">004170</span>
+    <span class="nm">신세계 <small>Shinsegae · 백화점·면세·패션 프리미엄 유통 · 심층리서치 v1</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">591,000원</span>
+    <span style="color:var(--muted)">시총 5.58조</span>
+    <span class="rating">신규 대기(매집 밴드) · 1차 46~50만</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·사업구조</button>
+  <button class="tab" data-t="t3"><b>03</b>실적·분기해부</button>
+  <button class="tab" data-t="t4"><b>04</b>성장동력·경쟁</button>
+  <button class="tab" data-t="t5"><b>05</b>컨센×주가·수급</button>
+  <button class="tab" data-t="t6"><b>06</b>밸류·시나리오</button>
+  <button class="tab" data-t="t7"><b>07</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span style="color:var(--gold);font-weight:600">기준</span>
+  <span>주가 591,000원 (26-07-13 종가, 당일 −6.0%)</span>
+  <span>시총 5조 5,821억</span>
+  <span>코스피 6,807 (고점 9,114 대비 −25%)</span>
+  <span>컨센 = FnGuide 26-07-10 · 18개 기관</span>
+  <span>2Q26 발표 8월 초순 예상</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ═══════════════ TAB 1 결론·판정 ═══════════════ -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">판정 · 2026-07-13 · RESEARCH LAB · 시스템 첫 케이스</div>
+  <h1 class="big">장사는 10년 만에 최고인데, 주가는 코스피 광풍과 한 몸이었다.<br>빠진 건 신세계가 아니라 시장이다 — 1차 매집 46~50만, 지금은 대기가 결론.</h1>
+  <p class="lead">신세계의 이익 변곡은 실측이다. 1Q26 영업이익 1,978억(+49.5%, 컨센 +17.6% 상회)으로 분기 역대 최대<span class="src">출처<span class="tip">신세계그룹 뉴스룸 2026-05-12 발표 · FnGuide getCnsPerforTrend 조회 2026-07-13</span></span>, 인천공항 DF2 철수로 연 1,000억 임차료가 구조적으로 제거됐고, 면세는 5개 분기 적자를 끊고 흑자전환했다. 문제는 가격이 어디서 왔느냐다. <strong>1년 주가 +235% 중 컨센 상향 기여는 +35%뿐 — 나머지는 멀티플 2.5배 확장</strong>이고, 그 멀티플은 코스피가 3,202→9,114로 부푼 유동성 광풍과 동행했다. 지금 그 시장이 9거래일 만에 −25% 무너지는 중이다(서킷브레이커 2회). 신세계 −25% 조정에서 <em>개별 악재는 0건</em>(급락 중에도 TP 상향만 계속, 외국인은 매일 순매수) — 즉 이것은 종목의 문제가 아니라 시장의 문제다. 하지만 백화점 성장 가정의 뿌리가 자산효과인 이상, 시장 붕괴는 이 종목엔 밸류와 펀더의 이중 리스크다. 현재가 59.1만 = 27E PER 12.9배는 Base 페어밸류 부근이라 비대칭이 아직 없다.</p>
+
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">현재가 (07-13 종가)</div><div class="val">591,000</div><div class="sub">당일 −6.0% · 고점 79.2만 대비 −25%</div></div>
+    <div class="kpi"><div class="lab">PER 26E / 27E / 28E</div><div class="val">14.8<span class="u">x</span></div><div class="sub">12.9x / 11.7x · 12MF ~13.7x</div></div>
+    <div class="kpi"><div class="lab">컨센 영업이익 26E</div><div class="val up">7,610<span class="u">억</span></div><div class="sub">+58.6% YoY · 27E 8,508억 +11.8%<span class="est">컨센</span></div></div>
+    <div class="kpi"><div class="lab">시나리오 EV (확률가중)</div><div class="val down">550,000</div><div class="sub">−6.9% · Bull 70만 / Base 57만 / Bear 39만</div></div>
+  </div>
+
+  <h2 class="sec">컨센서스 손익 한 장 (FY23A–FY28E) — 순익·시총 축 병행</h2>
+  <table>
+    <thead><tr><th>억원, EPS·DPS 원</th><th class="num">23A</th><th class="num">24A</th><th class="num">25A</th><th class="num">26E</th><th class="num">27E</th><th class="num">28E</th></tr></thead>
+    <tbody>
+      <tr><td>매출액(순매출)</td><td class="num">63,571</td><td class="num">65,704</td><td class="num">69,295</td><td class="num">72,957</td><td class="num">75,727</td><td class="num">78,615</td></tr>
+      <tr><td>YoY</td><td class="num">−18.6%</td><td class="num">+3.4%</td><td class="num">+5.5%</td><td class="num">+5.3%</td><td class="num">+3.8%</td><td class="num">+3.8%</td></tr>
+      <tr class="hl"><td>영업이익</td><td class="num">6,398</td><td class="num">4,770</td><td class="num">4,800</td><td class="num up">7,610</td><td class="num">8,508</td><td class="num">8,956</td></tr>
+      <tr><td>OP YoY</td><td class="num">−0.9%</td><td class="num">−25.4%</td><td class="num">+0.6%</td><td class="num up">+58.6%</td><td class="num">+11.8%</td><td class="num">+5.3%</td></tr>
+      <tr class="tot"><td>지배주주순이익</td><td class="num">2,251</td><td class="num">1,078</td><td class="num">139</td><td class="num">3,795</td><td class="num">4,336</td><td class="num">4,777</td></tr>
+      <tr class="hl"><td>EPS</td><td class="num">22,865</td><td class="num">10,948</td><td class="num">1,440</td><td class="num">39,973</td><td class="num">45,905</td><td class="num">50,571</td></tr>
+      <tr class="hl"><td>PER @591,000</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">14.8x</td><td class="num">12.9x</td><td class="num">11.7x</td></tr>
+      <tr><td>PER (당시 기말가)</td><td class="num">7.7x</td><td class="num">12.2x</td><td class="num">171x*</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>PBR</td><td class="num">0.39</td><td class="num">0.27</td><td class="num">0.49</td><td class="num">1.08</td><td class="num">0.99</td><td class="num">0.91</td></tr>
+      <tr><td>ROE %</td><td class="num">5.4</td><td class="num">2.5</td><td class="num">0.3*</td><td class="num">8.2</td><td class="num">8.6</td><td class="num">8.8</td></tr>
+      <tr><td>DPS</td><td class="num">4,000</td><td class="num">4,500</td><td class="num">5,200</td><td class="num">5,614<span class="est">E</span></td><td class="num">5,822<span class="est">E</span></td><td class="num">6,050<span class="est">E</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*25A 지배순익 139억 급감 = 4Q25에 DF2 철수 관련 영업외비용 1,484억 일괄 반영(일회성) — trailing PER·ROE는 착시, 26E 정상화 수치가 기준. 출처: FnGuide 컨센서스(18개 기관, 26-07-10)<span class="src">출처<span class="tip">wcomp.fnguide.com CompanyInfo perforTrend, 2026-07-13 조회. 26E~28E PER·PBR은 07-13 종가 591,000원 기준 재계산. 네이버 연간 API와 교차검증 일치.</span></span>. 4Q25 일회성은 신세계 4Q25 IR p.4 주석.</p>
+
+  <div class="chart">
+    <div class="ct">연간 영업이익 경로 — "신기록"이 아니라 "회복 + 구조 개선"</div>
+    <div class="cs">2023년 OP 6,398억이 원래 체력. 26E 7,610억은 그 회복(+α)이고, α의 몸통은 경기가 아니라 비용 제거다</div>
+    <svg viewBox="0 0 1120 300" role="img" aria-label="연간 영업이익 막대">
+      <line x1="70" y1="260" x2="1090" y2="260" stroke="#D2C9B6"/>
+      <g font-family="IBM Plex Mono" font-size="11" text-anchor="middle">
+        <rect x="108" y="95.7" width="110" height="164.3" fill="#2E6B5E" opacity="0.85"/><text x="163" y="88">6,398</text><text x="163" y="278" fill="#7A7264">23A</text>
+        <rect x="275" y="137.5" width="110" height="122.5" fill="#2E6B5E" opacity="0.85"/><text x="330" y="130">4,770</text><text x="330" y="278" fill="#7A7264">24A</text>
+        <rect x="442" y="136.7" width="110" height="123.3" fill="#2E6B5E" opacity="0.85"/><text x="497" y="129">4,800</text><text x="497" y="278" fill="#7A7264">25A</text>
+        <rect x="609" y="64.6" width="110" height="195.4" fill="#2E6B5E" opacity="0.45"/><text x="664" y="57" font-weight="600">7,610 E</text><text x="664" y="278" fill="#7A7264">26E</text>
+        <rect x="776" y="41.5" width="110" height="218.5" fill="#2E6B5E" opacity="0.45"/><text x="831" y="34">8,508 E</text><text x="831" y="278" fill="#7A7264">27E</text>
+        <rect x="943" y="30" width="110" height="230" fill="#2E6B5E" opacity="0.45"/><text x="998" y="23">8,956 E</text><text x="998" y="278" fill="#7A7264">28E</text>
+      </g>
+    </svg>
+    <div class="cap">단위 억원. 진한 막대=실적, 연한 막대=FnGuide 컨센(26-07-10). 24년 −25%는 백화점 소비침체+면세 공항 임차료 급증의 합작 — 그 둘이 26년에 동시에 풀렸다.</div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="two">
+    <div>
+      <ul class="cl">
+        <li><strong>① 이익 변곡은 실측이다 — 그리고 절반은 경기와 무관하다.</strong> 1Q26 서프라이즈에 이어 2Q26 컨센 OP 1,413억(+88%), 신한은 1,556억(+106%)까지 본다. 26E +58.6% 증익의 몸통: 공항 임차료 제거(연 ~1,000억, 확정), 면세 시내점 할인율 정상화, 백화점 리뉴얼 성과(본점 +70%)와 외국인 매출(본점 비중 28.4%, 4~5월 +230%). 이 중 임차료 제거와 리뉴얼은 <em>이미 일어난 일의 연장</em>이라 시장이 흔들려도 온다.</li>
+        <li><strong>② 그러나 멀티플은 시장의 선물이었다.</strong> 1년 +235% = 컨센 상향 1.35배 × 멀티플 2.5배. PBR 0.27→1.08, fwd PER ~6배→14.8배 — 10년 디레이팅의 되감기가 코스피 +185% 광풍과 정확히 겹쳤다. 시장 대비 초과분(+86%p)만이 진짜 개별 리레이팅이고, 나머지는 조수(潮水)다. 그 조수가 지금 빠지는 중(코스피 고점 −25%)이며, 백화점 소비의 뿌리인 자산효과도 같은 조수다.</li>
+        <li><strong>③ 조정의 수급은 건강하다 — 파는 쪽이 '아는 돈'이 아니다.</strong> 7/2~7/13 급락 8거래일: 외국인 +1,011억 순매수(매일), 기관 −828억(투신·사모 차익실현). 외인 지분율 24.2%→27.1%(+2.8%p). 급락 재료는 이란·호르무즈발 코스피 서킷 2회(−8.3%·−9.0%)의 베타 — 신세계 고유 악재는 이벤트 정합 결과 0건(탭 05).</li>
+      </ul>
+    </div>
+    <div>
+      <div class="note in"><div class="h">한 문장 콜</div><strong>신규 진입 대기.</strong> 1차 매집 밴드 <strong>460,000~500,000원</strong>(27E 10~11배, 50bp) — 조건: 코스피 투매 진정(연속 서킷 국면 종료). 2차 <strong>380,000~420,000원</strong>(Bear 시나리오 실현가 = 27E 8.5~9배, +100bp, 그 가격이면 R/R 3:1). <strong>가격 불문 추격이 허용되는 유일한 조건</strong>: 8월 초 2Q26 OP 1,500억+ 확인 & 코스피 20일선 회복 & 27E 컨센 OP 9,000억+ 상향 — 그때는 Base 자체가 이동한다. <strong>보유자는 홀드</strong>(개별 thesis 무손상 — 단 코스피 6,500 이탈과 백화점 월지표 둔화가 겹치면 절반 축소).</div>
+      <div class="note warn"><div class="h">이 판정이 틀리는 경로 (Clarity over Certainty)</div>① <em>시장이 V자 반등하면</em> 매집 밴드는 오지 않고 재고점으로 갈 수 있다 — 그래서 "추격 허용 조건"을 열어놨다(2Q 실적+시장 안정이면 60만대에도 진입). ② <em>시장 붕괴가 실물 침체로 번지면</em> 1차 밴드도 떨어지는 칼이다 — 그래서 1차는 50bp만, 본대는 2차 밴드에 둔다. 이 콜은 "신세계가 좋은 회사냐"(YES)가 아니라 "지금 가격에 비대칭이 있느냐"(NO)에 대한 답이다.</div>
+    </div>
+  </div>
+
+  <div class="note"><div class="h">상대 판정 — 백화점 3사에서 누구를 사나</div>업황 변곡은 3사 공통(1Q26 백화점 부문 OP: 롯데 1,912억·신세계 1,410억·현대 1,358억 모두 사상 최대). 그 안에서 신세계가 <strong>인바운드 순도</strong>(본점 외국인 비중 28.4% — 명동 시내면세와 시너지), <strong>주주환원 신뢰</strong>(밸류업 2년 조기 달성 + 분기배당 도입 + 매년 2% 소각), <strong>이익의 질</strong>(면세 비용 구조 리셋) 모두 우위 — 업종 최선호. 밸류 갭으로는 롯데쇼핑(26E 11.7배 + 배당 2.8%)이 싸지만 지배순익의 일회성 잡음(25A 516억)과 자사 구조조정 서사라 질이 다르다. 단, <em>"최선호"와 "지금 사도 됨"은 별개다 — 3사 전부 시장 베타에 잠겨 있다.</em></div>
+
+  <h2 class="sec">팔로우 총평 — BM 등급 · 성립 조건 · 갈아타기 원칙</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3>BM 등급: A− (퀄리티 한 단어 = "입지 독점")</h3><p style="font-size:12.5px">최상위 상권의 유한한 입지(강남점 거래액 3.67조 국내 1위·본점·반포 센트럴시티)를 쥐고 명품 브랜드와 상호 필수재 관계 — 특정매입 수수료 마진의 반복 수익. 이익의 71%가 백화점, 13%가 부동산(센트럴). A가 아닌 이유: 소비 경기·자산효과 민감(β 자산), 면세는 정책·임차료 종속의 구조적 B, SI는 지분 39.7%뿐이라 이익 누수.</p></div>
+    <div class="card acc"><h3>투자포인트 성립 조건</h3><p style="font-size:12.5px">① <strong>인바운드의 구조화</strong> — 무비자가 상시 제도로 가는 방향(현재 12월 말 시한). ② <strong>자산효과 유지</strong> — 코스피가 침체 전이 없이 안정. ②가 꺾이면 백화점 +13% 성장 가정이 훼손된다. 단 <em>임차료 제거(연 1,000억)와 소각(연 2%)은 경기 무관</em> — 이게 하방을 받치는 뼈다. 둘 다 무너지는 경우가 Bear(39만)다.</p></div>
+    <div class="card"><h3>갈아타기 원칙</h3><p style="font-size:12.5px">TP 밴드(83~100만) 도달 = 리레이팅 완성 = 이 종목의 스토리 소진 — 그때는 증액이 아니라 면세 풀이어 회복의 호텔신라, 또는 저평가 잔존의 롯데쇼핑 순환을 검토. 백화점 기존점 성장이 2개 분기 연속 역성장하면(유행 종료 신호) 가격 불문 정리.</p></div>
+  </div>
+
+  <div class="note in"><div class="h">스케치하듯 읽으면 남는 한 줄</div>"신세계 = 인바운드와 자산효과를 최상위 상권에서 가장 순도 높게 파는 내수 대장 — 10년 디레이팅을 주주환원으로 되사는 중. 회사는 준비됐고, 가격은 시장이 정할 것. 46~50만을 기다린다."</div>
+</section>
+
+<!-- ═══════════════ TAB 2 BM·사업구조 ═══════════════ -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 돈 버는 법 · 지배구조</div>
+  <h2 class="sec">무엇을 팔아 어떻게 버나 — 이익의 7할은 백화점, 2위 캐시카우는 부동산</h2>
+  <p class="lead">신세계의 손익 구조는 명확하다. <strong>백화점(㈜신세계+광주·대구·대전 합산)이 영업이익의 71.3%</strong>, 반포 고속터미널 부동산·호텔의 신세계센트럴이 13.1%, 나머지(면세·패션·가구·T커머스)가 잔여를 나눈다<span class="src">출처<span class="tip">1Q26 IR 실적자료 p.5-6 (2026-05-12), 영업이익 기여 기준. 조회 2026-07-13</span></span>. 면세(디에프)는 이익 기여 5.4%에 불과하지만 <em>손익의 스윙 팩터</em> — 분기 −369억(24.4Q)에서 +106억(26.1Q)까지 475억을 오간 진폭이 최근 2년 연결 이익 변동의 몸통이었다.</p>
+
+  <div class="chart">
+    <div class="ct">26.1Q 사업부별 영업이익 기여 — 어디서 돈을 버나</div>
+    <div class="cs">막대 = 영업이익(억원). 매출 비중(백화점 63%·면세 18%)과 이익 비중이 전혀 다르다 — 매출≠이익</div>
+    <svg viewBox="0 0 1120 260" role="img" aria-label="사업부별 영업이익 기여">
+      <g font-family="IBM Plex Mono" font-size="11">
+        <rect x="200" y="20" width="740" height="26" fill="#2E6B5E" opacity="0.85"/><text x="180" y="38" text-anchor="end" font-family="Pretendard" font-size="12.5">백화점</text><text x="950" y="38">1,410억 · 71.3%</text>
+        <rect x="200" y="56" width="136" height="26" fill="#9C7A2E" opacity="0.8"/><text x="180" y="74" text-anchor="end" font-family="Pretendard" font-size="12.5">센트럴(부동산·호텔)</text><text x="346" y="74">260억 · 13.1%</text>
+        <rect x="200" y="92" width="78" height="26" fill="#3C6E8F" opacity="0.8"/><text x="180" y="110" text-anchor="end" font-family="Pretendard" font-size="12.5">인터내셔날(패션)</text><text x="288" y="110">148억 · 7.5%</text>
+        <rect x="200" y="128" width="56" height="26" fill="#B8472E" opacity="0.8"/><text x="180" y="146" text-anchor="end" font-family="Pretendard" font-size="12.5">면세(디에프)</text><text x="266" y="146">106억 · 5.4% — 흑자전환</text>
+        <rect x="200" y="164" width="39" height="26" fill="#7A7264" opacity="0.7"/><text x="180" y="182" text-anchor="end" font-family="Pretendard" font-size="12.5">라이브쇼핑</text><text x="249" y="182">74억 · 3.7%</text>
+        <rect x="200" y="200" width="7" height="26" fill="#7A7264" opacity="0.5"/><text x="180" y="218" text-anchor="end" font-family="Pretendard" font-size="12.5">까사(가구)</text><text x="217" y="218">13억 · 0.7%</text>
+      </g>
+    </svg>
+    <div class="cap">출처: 1Q26 IR (2026-05-12). 백화점은 4개 법인 단순합산·총매출 기준(IR 방식) — DART 연결 세그먼트(순매출·내부거래 조정)와 기준이 다름을 명시.</div>
+  </div>
+
+  <h2 class="sec">사업부 지도 — 법인·지분·BM 한 줄</h2>
+  <table>
+    <thead><tr><th>부문</th><th>법인 (지분)</th><th class="txt">BM 한 줄 — 누가 고객, 무엇으로 버나</th><th>26.1Q OP</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>백화점</td><td class="num">본체+광주 62.8%·대구 61%·대전 100%</td><td class="txt">최상위 상권 13개점에서 명품·패션 <strong>특정매입 수수료</strong>+임대 마진. 고소득 내수 + 외국인(전사 매출의 6.9%, 본점 28.4%)</td><td class="num">1,410억</td></tr>
+      <tr><td>면세</td><td class="num">신세계디에프 100%</td><td class="txt">명동 시내점(FIT 46%) + 인천공항. <strong>직매입</strong>이라 재고·할인율 리스크 보유 — 공항 임차료가 손익 스윙 변수였고, DF2 철수(26.4.28)로 리셋</td><td class="num">106억</td></tr>
+      <tr><td>패션·뷰티</td><td class="num">신세계인터내셔날 39.7% (상장 031430)</td><td class="txt">해외패션 수입유통 + 수입 코스메틱·향수. 백화점 유통망 시너지. 26.1월 JAJU를 까사에 양도, 본업 집중</td><td class="num">148억</td></tr>
+      <tr><td>부동산·호텔</td><td class="num">신세계센트럴 60%</td><td class="txt">반포 고속터미널 복합시설 임대 + JW메리어트(OCC 73%, ADR +9%) — 분기 220~290억 안정 캐시카우</td><td class="num">260억</td></tr>
+      <tr><td>홈퍼니싱</td><td class="num">신세계까사 97.9%</td><td class="txt">까사미아 + JAJU(26.1월 양수). 주택 입주물량 사이클 민감</td><td class="num">13억</td></tr>
+      <tr><td>T커머스</td><td class="num">신세계라이브쇼핑 76.1%</td><td class="txt">TV·모바일 홈쇼핑, 건강식품·뷰티 고마진 장르</td><td class="num">74억</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: 1Q26 IR p.8 지분구조(26년 3월말), 세그먼트 정리 md. 기타: 인천신세계 95.1%(송도 개발), SSG.COM 24.4%(지분법·계열분리 잔여 이슈), 신세계사이먼(아울렛 5개, 지분법).</p>
+
+  <h2 class="sec">지배구조 — 정유경 체제, 소수주주 누수 지도</h2>
+  <div class="chart">
+    <div class="ct">지배 사슬과 이익 귀속 — 연결 순이익의 ~18%는 소수주주 몫</div>
+    <svg viewBox="0 0 1120 330" role="img" aria-label="지배구조 다이어그램">
+      <g font-family="Pretendard" font-size="12.5">
+        <rect x="420" y="15" width="280" height="44" rx="6" fill="#1A1814"/><text x="560" y="34" fill="#F2EEE3" text-anchor="middle" font-weight="600">정유경 (회장) 29.77%</text><text x="560" y="50" fill="#C9BFA8" text-anchor="middle" font-size="10.5">2024.10 이마트와 계열분리 · 밸류업 주체</text>
+        <line x1="560" y1="59" x2="560" y2="85" stroke="#7A7264" stroke-width="1.5"/>
+        <rect x="390" y="85" width="340" height="52" rx="6" fill="#FCFBF7" stroke="#B8472E" stroke-width="2"/><text x="560" y="106" text-anchor="middle" font-weight="700">㈜신세계 (004170) 시총 5.58조</text><text x="560" y="124" text-anchor="middle" font-size="10.5" fill="#7A7264">국민연금 12.73% · 외국인 27.06% · 자사주 7.17%(소각 재원)</text>
+        <line x1="470" y1="137" x2="150" y2="175" stroke="#7A7264"/><line x1="510" y1="137" x2="390" y2="175" stroke="#7A7264"/><line x1="560" y1="137" x2="560" y2="175" stroke="#7A7264"/><line x1="610" y1="137" x2="740" y2="175" stroke="#7A7264"/><line x1="650" y1="137" x2="960" y2="175" stroke="#7A7264"/>
+        <rect x="60" y="175" width="185" height="64" rx="6" fill="#FCFBF7" stroke="#D2C9B6"/><text x="152" y="194" text-anchor="middle" font-weight="600">백화점 3사</text><text x="152" y="210" text-anchor="middle" font-size="10.5" fill="#7A7264">광주 62.8% · 대구 61%</text><text x="152" y="224" text-anchor="middle" font-size="10.5" fill="#B8472E">소수주주 누수 有</text>
+        <rect x="300" y="175" width="175" height="64" rx="6" fill="#FCFBF7" stroke="#2E6B5E" stroke-width="1.5"/><text x="387" y="194" text-anchor="middle" font-weight="600">신세계디에프 100%</text><text x="387" y="210" text-anchor="middle" font-size="10.5" fill="#7A7264">면세 — 전액 지배 귀속</text><text x="387" y="224" text-anchor="middle" font-size="10.5" fill="#2E6B5E">흑전 이익 100% 흡수</text>
+        <rect x="475" y="175" width="170" height="64" rx="6" fill="#FCFBF7" stroke="#D2C9B6"/><text x="560" y="194" text-anchor="middle" font-weight="600">신세계센트럴 60%</text><text x="560" y="210" text-anchor="middle" font-size="10.5" fill="#7A7264">부동산·호텔 캐시카우</text><text x="560" y="224" text-anchor="middle" font-size="10.5" fill="#B8472E">40% 소수주주 누수</text>
+        <rect x="655" y="175" width="170" height="64" rx="6" fill="#FCFBF7" stroke="#D2C9B6"/><text x="740" y="194" text-anchor="middle" font-weight="600">인터내셔날 39.7%</text><text x="740" y="210" text-anchor="middle" font-size="10.5" fill="#7A7264">상장 031430 연결</text><text x="740" y="224" text-anchor="middle" font-size="10.5" fill="#B8472E">이익 60.3% 소수주주</text>
+        <rect x="855" y="175" width="200" height="64" rx="6" fill="#FCFBF7" stroke="#D2C9B6"/><text x="955" y="194" text-anchor="middle" font-weight="600">까사 97.9% · 라이브 76.1%</text><text x="955" y="210" text-anchor="middle" font-size="10.5" fill="#7A7264">SSG.COM 24.4% 지분법</text><text x="955" y="224" text-anchor="middle" font-size="10.5" fill="#9C7A2E">계열분리 잔여 정리 대상</text>
+        <text x="560" y="285" text-anchor="middle" font-size="12" fill="#3C372F">26E 연결 순이익 4,653억 → 지배주주 귀속 3,795억 (<tspan fill="#B8472E" font-weight="600">−18% 소수주주 누수</tspan>) — 밸류는 반드시 지배 순익 축으로</text>
+        <text x="560" y="305" text-anchor="middle" font-size="10.5" fill="#7A7264">면세 흑전 이익은 100% 지배 귀속(디에프 완전자회사) — 이번 증익의 질이 좋은 이유 하나</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="note"><div class="h">BM의 임플리케이션 — 총매출 12조 vs 순매출 6.9조</div>백화점은 <strong>특정매입</strong>(판매분만 매입 인식, 재고 위험 브랜드 부담) 비중이 높아 거래액(총매출)의 일부만 회계 매출로 잡힌다 — FY25 총매출 12조 vs 순매출 6.9조. 따라서 ① OPM은 순매출 기준으로 봐야 하고(26.1Q 10.7%) ② 성장의 실재 지표는 회계 매출이 아니라 <em>총매출(거래액)과 기존점 신장률</em>이다(체크13-2 실재 레이어). 면세는 반대로 직매입 — 매출 전액 인식+재고·할인율 위험 보유. 같은 "매출 1억"이라도 백화점과 면세의 질이 다르다.</div>
+</section>
+
+<!-- ═══════════════ TAB 3 실적·분기해부 ═══════════════ -->
+<section class="panel" id="t3">
+  <div class="eyebrow">실적 · 분기 해부 · 이익의 질</div>
+  <h2 class="sec">9개 분기 시계열 — 변곡은 25.4Q에 시작됐고, 26.1Q에 확인됐다</h2>
+
+  <div class="chart">
+    <div class="ct">연결 분기 영업이익 + OPM(총매출 대비)</div>
+    <div class="cs">25.2Q가 바닥(753억·2.6%) — 이후 4개 분기 연속 개선, 26.1Q 1,978억은 분기 역대 최대</div>
+    <svg viewBox="0 0 1120 300" role="img" aria-label="분기 영업이익 추이">
+      <line x1="70" y1="260" x2="1090" y2="260" stroke="#D2C9B6"/>
+      <g font-family="IBM Plex Mono" font-size="10.5" text-anchor="middle">
+        <rect x="95" y="70.5" width="70" height="189.5" fill="#2E6B5E" opacity="0.5"/><text x="130" y="63">1,630</text><text x="130" y="277" fill="#7A7264">24.1Q</text>
+        <rect x="206" y="123.4" width="70" height="136.6" fill="#2E6B5E" opacity="0.5"/><text x="241" y="116">1,175</text><text x="241" y="277" fill="#7A7264">24.2Q</text>
+        <rect x="317" y="151.9" width="70" height="108.1" fill="#2E6B5E" opacity="0.5"/><text x="352" y="145">930</text><text x="352" y="277" fill="#7A7264">24.3Q</text>
+        <rect x="428" y="139.6" width="70" height="120.4" fill="#2E6B5E" opacity="0.5"/><text x="463" y="133">1,036</text><text x="463" y="277" fill="#7A7264">24.4Q</text>
+        <rect x="539" y="106.2" width="70" height="153.8" fill="#2E6B5E" opacity="0.7"/><text x="574" y="99">1,323</text><text x="574" y="277" fill="#7A7264">25.1Q</text>
+        <rect x="650" y="172.5" width="70" height="87.5" fill="#B8472E" opacity="0.6"/><text x="685" y="165">753</text><text x="685" y="277" fill="#7A7264">25.2Q</text>
+        <rect x="761" y="144.0" width="70" height="116.0" fill="#2E6B5E" opacity="0.7"/><text x="796" y="137">998</text><text x="796" y="277" fill="#7A7264">25.3Q</text>
+        <rect x="872" y="59.5" width="70" height="200.5" fill="#2E6B5E" opacity="0.85"/><text x="907" y="52">1,725</text><text x="907" y="277" fill="#7A7264">25.4Q</text>
+        <rect x="983" y="30" width="70" height="230" fill="#2E6B5E"/><text x="1018" y="23" font-weight="600">1,978</text><text x="1018" y="277" fill="#7A7264">26.1Q</text>
+      </g>
+      <polyline points="130,85.2 241,158.8 352,195.6 463,200.2 574,140.4 685,232.4 796,191.0 907,122.0 1018,66.8" fill="none" stroke="#9C7A2E" stroke-width="2.5" stroke-dasharray="1,0"/>
+      <g font-family="IBM Plex Mono" font-size="10" fill="#9C7A2E"><text x="1035" y="62">OPM 6.2%</text><text x="700" y="248">2.6%</text></g>
+    </svg>
+    <div class="cap">단위 억원, OPM은 총매출 대비. 출처: 신세계 공식 IR 실적자료 4부(24.1Q는 누계 차감 역산, 개별 발표치와 검산 일치). 조회 2026-07-13.</div>
+  </div>
+
+  <div class="two">
+    <div class="chart">
+      <div class="ct">백화점 분기 영업이익 — 리뉴얼 감가를 이기는 레버리지</div>
+      <svg viewBox="0 0 1120 300" role="img" aria-label="백화점 분기 영업이익">
+        <line x1="70" y1="260" x2="1090" y2="260" stroke="#D2C9B6"/>
+        <g font-family="IBM Plex Mono" font-size="10.5" text-anchor="middle">
+          <rect x="95" y="77.5" width="70" height="182.5" fill="#2E6B5E" opacity="0.5"/><text x="130" y="70">1,137</text><text x="130" y="277" fill="#7A7264">24.1Q</text>
+          <rect x="206" y="128.7" width="70" height="131.3" fill="#2E6B5E" opacity="0.5"/><text x="241" y="121">818</text><text x="241" y="277" fill="#7A7264">24.2Q</text>
+          <rect x="317" y="118.3" width="70" height="141.7" fill="#2E6B5E" opacity="0.5"/><text x="352" y="111">883</text><text x="352" y="277" fill="#7A7264">24.3Q</text>
+          <rect x="428" y="66.1" width="70" height="193.9" fill="#2E6B5E" opacity="0.5"/><text x="463" y="59">1,208</text><text x="463" y="277" fill="#7A7264">24.4Q</text>
+          <rect x="539" y="86.8" width="70" height="173.2" fill="#2E6B5E" opacity="0.7"/><text x="574" y="80">1,079</text><text x="574" y="277" fill="#7A7264">25.1Q</text>
+          <rect x="650" y="146.2" width="70" height="113.8" fill="#2E6B5E" opacity="0.7"/><text x="685" y="139">709</text><text x="685" y="277" fill="#7A7264">25.2Q</text>
+          <rect x="761" y="125.2" width="70" height="134.8" fill="#2E6B5E" opacity="0.7"/><text x="796" y="118">840</text><text x="796" y="277" fill="#7A7264">25.3Q</text>
+          <rect x="872" y="30" width="70" height="230" fill="#2E6B5E" opacity="0.85"/><text x="907" y="23">1,433</text><text x="907" y="277" fill="#7A7264">25.4Q</text>
+          <rect x="983" y="33.7" width="70" height="226.3" fill="#2E6B5E"/><text x="1018" y="26" font-weight="600">1,410</text><text x="1018" y="277" fill="#7A7264">26.1Q</text>
+        </g>
+      </svg>
+      <div class="cap">25년 내내 리뉴얼 감가상각(분기 +64~84억)로 감익 → 25.4Q부터 매출이 감가를 압도(+70% 본점 외국인). 26.1Q +30.7% YoY, 1분기 사상 최대.</div>
+    </div>
+    <div class="chart">
+      <div class="ct">면세(디에프) 분기 영업이익 — 스윙 팩터의 리셋</div>
+      <svg viewBox="0 0 1120 300" role="img" aria-label="면세 분기 영업이익">
+        <line x1="70" y1="81.3" x2="1090" y2="81.3" stroke="#7A7264" stroke-width="1" stroke-dasharray="4,3"/>
+        <g font-family="IBM Plex Mono" font-size="10.5" text-anchor="middle">
+          <rect x="95" y="46.4" width="70" height="34.9" fill="#2E6B5E" opacity="0.7"/><text x="130" y="39">+72</text><text x="130" y="292" fill="#7A7264">24.1Q</text>
+          <rect x="206" y="39.7" width="70" height="41.6" fill="#2E6B5E" opacity="0.7"/><text x="241" y="32">+86</text><text x="241" y="292" fill="#7A7264">24.2Q</text>
+          <rect x="317" y="81.3" width="70" height="78.4" fill="#B8472E" opacity="0.65"/><text x="352" y="174">−162</text><text x="352" y="292" fill="#7A7264">24.3Q</text>
+          <rect x="428" y="81.3" width="70" height="178.7" fill="#B8472E" opacity="0.8"/><text x="463" y="274">−369</text><text x="463" y="292" fill="#7A7264">24.4Q</text>
+          <rect x="539" y="81.3" width="70" height="11.1" fill="#B8472E" opacity="0.6"/><text x="574" y="107">−23</text><text x="574" y="292" fill="#7A7264">25.1Q</text>
+          <rect x="650" y="81.3" width="70" height="7.3" fill="#B8472E" opacity="0.6"/><text x="685" y="103">−15</text><text x="685" y="292" fill="#7A7264">25.2Q</text>
+          <rect x="761" y="81.3" width="70" height="27.1" fill="#B8472E" opacity="0.6"/><text x="796" y="123">−56</text><text x="796" y="292" fill="#7A7264">25.3Q</text>
+          <rect x="872" y="71.6" width="70" height="9.7" fill="#2E6B5E" opacity="0.8"/><text x="907" y="64">+20</text><text x="907" y="292" fill="#7A7264">25.4Q</text>
+          <rect x="983" y="30" width="70" height="51.3" fill="#2E6B5E"/><text x="1018" y="23" font-weight="600">+106</text><text x="1018" y="292" fill="#7A7264">26.1Q</text>
+        </g>
+      </svg>
+      <div class="cap">적자의 원인은 업황이 아니라 인천공항 임차료(25.2Q +222억)였다 — DF2 철수(26.4.28 영업종료)로 원인 자체를 제거. 2Q26 컨센 +202억(E, 신한).</div>
+    </div>
+  </div>
+
+  <h2 class="sec">사업부별 분기 상세 (공식 IR, 억원)</h2>
+  <table>
+    <thead><tr><th>영업이익</th><th class="num">24.1Q</th><th class="num">24.2Q</th><th class="num">24.3Q</th><th class="num">24.4Q</th><th class="num">25.1Q</th><th class="num">25.2Q</th><th class="num">25.3Q</th><th class="num">25.4Q</th><th class="num">26.1Q</th></tr></thead>
+    <tbody>
+      <tr><td>백화점</td><td class="num">1,137</td><td class="num">818</td><td class="num">883</td><td class="num">1,208</td><td class="num">1,079</td><td class="num">709</td><td class="num">840</td><td class="num">1,433</td><td class="num">1,410</td></tr>
+      <tr><td>면세(디에프)</td><td class="num">72</td><td class="num">86</td><td class="num down">−162</td><td class="num down">−369</td><td class="num down">−23</td><td class="num down">−15</td><td class="num down">−56</td><td class="num up">20</td><td class="num up">106</td></tr>
+      <tr><td>인터내셔날*</td><td class="num">112</td><td class="num">133</td><td class="num">21</td><td class="num down">−30</td><td class="num">27</td><td class="num down">−23</td><td class="num down">−20</td><td class="num down">−28</td><td class="num up">148</td></tr>
+      <tr><td>센트럴</td><td class="num">262</td><td class="num">109</td><td class="num">259</td><td class="num">227</td><td class="num">222</td><td class="num">98</td><td class="num">276</td><td class="num">292</td><td class="num">260</td></tr>
+      <tr><td>까사</td><td class="num">10</td><td class="num">−5</td><td class="num">2</td><td class="num">3</td><td class="num">1</td><td class="num">−18</td><td class="num">−4</td><td class="num">−29</td><td class="num">13</td></tr>
+      <tr><td>라이브쇼핑</td><td class="num">55</td><td class="num">59</td><td class="num">13</td><td class="num">49</td><td class="num">57</td><td class="num">60</td><td class="num">24</td><td class="num">61</td><td class="num">74</td></tr>
+      <tr class="tot"><td>연결 합계</td><td class="num">1,630</td><td class="num">1,175</td><td class="num">930</td><td class="num">1,036</td><td class="num">1,323</td><td class="num">753</td><td class="num">998</td><td class="num">1,725</td><td class="num">1,978</td></tr>
+      <tr><td>연결 순이익</td><td class="num">1,296</td><td class="num">581</td><td class="num">366</td><td class="num down">−377</td><td class="num">771</td><td class="num">83</td><td class="num">483</td><td class="num down">−702</td><td class="num up">1,454</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*인터내셔날은 26.1월 JAJU 사업을 까사에 양도 — 24.4Q·25.1Q·25.4Q·26.1Q는 계속사업 재작성 기준, 나머지는 발표 당시 기준(기준 단절 주의). 까사 26.1Q 매출 +78.8%는 JAJU 양수 효과 — 기존 가구 성장으로 오독 금지. 출처: IR 4부, 세그먼트_260713.md.</p>
+
+  <div class="note warn"><div class="h">이익의 질 — 3가지를 걷어내고 봐야 한다</div>① <strong>25.4Q 순손실 −702억은 DF2 철수 영업외비용 1,484억의 일회성</strong>(4Q25 IR p.4) — 이 때문에 25A 지배순익이 139억으로 급감, trailing PER 436배·ROE 0.3%는 전부 착시다. 걷어내면 25년 실질 지배순익은 ~1,300억대<span class="est">E</span>. ② <strong>소수주주 누수 18%</strong> — 연결 순익이 아니라 지배 순익 축으로만 밸류(탭 02). ③ <strong>재무 여력은 중립</strong> — 차입금 4조 5,238억·부채비율 135%·이자보상 7.1배(26.1Q IR): 위험하진 않으나 금리에 무풍은 아니다. 주주환원(배당+소각 연간 ~700억)은 현 현금창출력(EBITDA 분기 3,270억) 대비 부담 없음.</div>
+</section>
+
+<!-- ═══════════════ TAB 4 성장동력·경쟁 ═══════════════ -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 성장성 · 수요 겐또 · 경쟁 구도</div>
+  <h2 class="sec">성장의 물리량 3축 — 그중 하나는 확정이고, 하나는 정책이고, 하나는 시장이다</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3>① 임차료 제거 — 확정 (확률 1)</h3><p style="font-size:12.5px">인천공항 DF2 철수(26.4.28 영업종료·공시 25.10.30). DF2는 24년 매출 4,039억을 내면서도 연 ~1,000억 임차료로 적자의 몸통이었다<span class="src">출처<span class="tip">이투데이 2026-06-02, 경향신문 2025-10-30 공시 보도, 4Q25 IR. 임차료 연 약 1,000억은 언론 보도 기준(E)</span></span>. 26년엔 5~12월 8개월치(~670억<span class="est">E</span>), 27년엔 풀이어가 반영된다. <em>수요 겐또가 필요 없는, 이미 일어난 이익</em> — 시장이 무너져도 온다.</p></div>
+    <div class="card"><h3>② 인바운드 — 정책 반확정</h3><p style="font-size:12.5px">중국인 단체 무비자: 25.8.6 발표 → 9.29 시행 → 26.6.23 연말까지 연장 합의(김민석-리창). 실측: 방한 외국인 카드소비 월 2조 첫 돌파(26.6월 보도), 본점 외국인 매출 1Q +140% → 4~5월 +230%, 본점 매출의 28.4%가 외국인. <em>12월 말 시한부</em> — 상시화되면 미반영 업사이드, 중단되면 증분 훼손(리스크 ②).</p></div>
+    <div class="card acc"><h3>③ 자산효과 — 시장 종속 (지금 역회전 중)</h3><p style="font-size:12.5px">백화점 +13% 성장 가정의 나머지 한 축은 내국인 구매력 — 확장재정·근로소득·<strong>자산가격</strong>(신한 리포트가 명시한 가정). 코스피 +185% 광풍이 만든 명품 소비("반도체 부의 효과" — 6/4 급등의 재료)는 코스피 −25% 급락과 함께 역회전 위험. <em>이 축이 이 종목의 유일한 "빌린 연료"다.</em></p></div>
+  </div>
+
+  <div class="chart">
+    <div class="ct">인바운드·구조개선 타임라인 — 저점에서 고점까지 방아쇠 체인</div>
+    <svg viewBox="0 0 1120 200" role="img" aria-label="타임라인">
+      <line x1="60" y1="100" x2="1080" y2="100" stroke="#D2C9B6" stroke-width="2"/>
+      <g font-family="Pretendard" font-size="11" text-anchor="middle">
+        <circle cx="110" cy="100" r="5" fill="#B8472E"/><text x="110" y="80" font-weight="600">25.8.8</text><text x="110" y="130" fill="#3C372F">2Q25 쇼크</text><text x="110" y="145" fill="#7A7264" font-size="10">OP −36%</text>
+        <circle cx="230" cy="100" r="5" fill="#2E6B5E"/><text x="230" y="80" font-weight="600">25.9.2</text><text x="230" y="130" fill="#3C372F">주가 저점</text><text x="230" y="145" fill="#7A7264" font-size="10">160,800원</text>
+        <circle cx="350" cy="100" r="5" fill="#2E6B5E"/><text x="350" y="80" font-weight="600">25.9.29</text><text x="350" y="130" fill="#3C372F">무비자 시행</text><text x="350" y="145" fill="#7A7264" font-size="10">中 단체관광</text>
+        <circle cx="470" cy="100" r="5" fill="#2E6B5E"/><text x="470" y="80" font-weight="600">25.10.30</text><text x="470" y="130" fill="#3C372F">DF2 철수 공시</text><text x="470" y="145" fill="#7A7264" font-size="10">임차료 리셋</text>
+        <circle cx="590" cy="100" r="5" fill="#2E6B5E"/><text x="590" y="80" font-weight="600">26.2.10</text><text x="590" y="130" fill="#3C372F">4Q 서프라이즈</text><text x="590" y="145" fill="#7A7264" font-size="10">TP 41~47만</text>
+        <circle cx="710" cy="100" r="5" fill="#2E6B5E"/><text x="710" y="80" font-weight="600">26.5.12</text><text x="710" y="130" fill="#3C372F">1Q 역대최대</text><text x="710" y="145" fill="#7A7264" font-size="10">+분기배당 도입</text>
+        <circle cx="830" cy="100" r="5" fill="#2E6B5E"/><text x="830" y="80" font-weight="600">26.6.23</text><text x="830" y="130" fill="#3C372F">무비자 연장</text><text x="830" y="145" fill="#7A7264" font-size="10">12월말까지</text>
+        <circle cx="930" cy="100" r="5" fill="#9C7A2E"/><text x="930" y="80" font-weight="600">26.6.18</text><text x="930" y="130" fill="#3C372F">고점 79.2만</text><text x="930" y="145" fill="#7A7264" font-size="10">저점의 4.9배</text>
+        <circle cx="1035" cy="100" r="5" fill="#B8472E"/><text x="1035" y="80" font-weight="600">26.7월</text><text x="1035" y="130" fill="#3C372F">시장 붕괴</text><text x="1035" y="145" fill="#7A7264" font-size="10">코스피 −25%</text>
+      </g>
+    </svg>
+    <div class="cap">저점의 본질은 2Q25 어닝쇼크(무비자 발표가 저점 이전이었으나 실적 실망이 압도) — 즉 이 종목은 정책 테마가 아니라 실적으로 움직여 온 종목이다. 출처: 이벤트정합_260713.md (전 항목 뉴스 검증).</div>
+  </div>
+
+  <h2 class="sec">겐또 — 27E 컨센 증익 +898억은 어디서 오나</h2>
+  <p>컨센 27E OP 8,508억(+898억 YoY)을 분해하면<span class="est">E</span>: <strong>임차료 제거 연간화 +330억</strong>(26년 8개월→27년 12개월) + <strong>면세 시내점 정상화 +200~300억</strong>(할인율·FIT 믹스) + <strong>백화점 저성장 증익 +300~400억</strong>(총매출 +4~5% × 레버리지). 즉 <em>27E 증익의 절반 이상이 경기 무관 팩터</em> — 시장 붕괴 시에도 컨센이 통째로 무너지진 않는 구조다. 역으로 26E가 요구하는 하반기 OP는 4,219억(25년 하반기 2,723억 대비 +55%)인데, 이 중 임차료 제거(+500억)와 면세 흑자(+250억)만으로 절반이 채워진다 — <strong>26E 컨센은 공격적 가정이 아니라 산수에 가깝다</strong>. 남는 스윙은 백화점 총매출 성장률(신한 가정 +27%)이 유지되느냐 — 여기가 자산효과 연결 고리다.</p>
+
+  <h2 class="sec">경쟁 구도 — 파이가 커지는 국면이라 아직 제로섬이 아니다</h2>
+  <table>
+    <thead><tr><th>1Q26</th><th class="num">신세계 (004170)</th><th class="num">롯데쇼핑 (023530)</th><th class="num">현대백화점 (069960)</th><th class="num">호텔신라 (008770)</th></tr></thead>
+    <tbody>
+      <tr><td>연결 영업이익</td><td class="num">1,978억 (+49.5%)</td><td class="num">2,529억 (+70.6%)</td><td class="num">988억 (−12.2%)</td><td class="num">204억 (흑전)</td></tr>
+      <tr class="hl"><td>백화점 부문 OP</td><td class="num">1,410억 (+30.7%) 최대</td><td class="num">1,912억 (+~40%) 최대</td><td class="num">1,358억 (+39.7%) 최대</td><td class="num">—</td></tr>
+      <tr><td>면세 부문</td><td class="num up">+106억 흑전</td><td class="num">개선 중</td><td class="num up">+34억 흑전</td><td class="num up">TR +122억 (7분기만)</td></tr>
+      <tr><td>본점 외국인 매출</td><td class="num">+140% (비중 28.4%)</td><td class="num">+103%</td><td class="num">더현대 MZ·외국인 강세</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="grid g3">
+    <div class="card"><h3>롯데쇼핑 — 체급 최대, 질은 열위</h3><p style="font-size:12.5px">1Q OP 절대액 최대(2,529억)에 26E PER 11.7배로 가장 싸다. 그러나 25A 지배순익 516억의 일회성 잡음, 마트·이커머스 구조조정 서사가 섞여 이익의 질이 낮다. 본점 외국인 +103%로 인바운드 추격 — <strong>위협도 중</strong>(시내면세·본점 상권 직접 경쟁).</p></div>
+    <div class="card"><h3>현대백화점 — 백화점은 강한데 연결이 무겁다</h3><p style="font-size:12.5px">백화점 부문 OP 역대 최대(+39.7%)·더현대 MZ 집객력. 그러나 지누스(가구) −301억이 연결을 훼손(1Q 연결 −12.2%) — 순수 백화점 노출이 아니다. 26E PER 12.9배. <strong>위협도 중하</strong>(상권 겹침 제한적).</p></div>
+    <div class="card"><h3>호텔신라 — 면세 풀이어의 베타</h3><p style="font-size:12.5px">면세 매출 체급 1위, 7개 분기 만의 흑전(컨센 9배 상회). 인바운드 사이클의 고베타 순수노출 — 신세계 면세 thesis가 맞으면 신라가 더 크게 오른다(26E 17.9배는 이미 그 기대). <strong>경쟁이자 동맹</strong>: 시내면세 할인율 경쟁 완화가 서로의 마진을 만든다. 갈아타기 후보 1순위.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════ TAB 5 컨센×주가·수급 (C2) ═══════════════ -->
+<section class="panel" id="t5">
+  <div class="eyebrow">C2 · 컨센 × 주가 × 멀티플 — 시장은 무엇을 믿고 있나 (커버리지의 심장)</div>
+  <h2 class="sec">주봉 2년 + 이벤트 정합 — 4.9배 랠리의 해부</h2>
+  <div class="chart">
+    <div class="ct">신세계 주봉 종가 (2024.07 ~ 2026.07, 수정주가)</div>
+    <div class="cs">모든 상승 변곡이 실적 발표일이다 — 테마가 아니라 어닝이 끌어온 랠리. 마지막 하락만 시장(코스피 −25%)이 만들었다</div>
+    <svg viewBox="0 0 1120 340" role="img" aria-label="주봉 차트">
+      <g font-family="IBM Plex Mono" font-size="10" fill="#7A7264">
+        <text x="60" y="272" text-anchor="end">20만</text><line x1="70" y1="268.4" x2="1090" y2="268.4" stroke="#EEE9DE"/>
+        <text x="60" y="190" text-anchor="end">40만</text><line x1="70" y1="185.8" x2="1090" y2="185.8" stroke="#EEE9DE"/>
+        <text x="60" y="107" text-anchor="end">60만</text><line x1="70" y1="103.1" x2="1090" y2="103.1" stroke="#EEE9DE"/>
+        <text x="70" y="330">2024-07</text><text x="580" y="330" text-anchor="middle">2025-07</text><text x="1060" y="330" text-anchor="end">2026-07</text>
+      </g>
+      <polyline fill="none" stroke="#1A1814" stroke-width="2" points="70,289.3 80,288.1 90,291.9 100,290.9 110,288.5 120,288.8 129,286.2 139,285.2 149,287.0 159,284.0 169,286.2 179,288.0 189,288.8 199,290.5 209,289.0 219,292.6 228,297.3 238,297.3 248,295.5 258,296.8 268,295.7 278,296.3 288,296.7 298,297.0 308,296.8 318,296.0 327,296.2 337,296.2 347,297.0 357,295.0 367,289.5 377,292.2 387,284.7 397,289.2 407,290.4 417,291.9 427,288.0 436,291.1 446,287.4 456,287.8 466,285.6 476,283.7 486,281.3 496,279.0 506,277.5 516,279.5 526,280.2 535,273.6 545,273.0 555,273.5 565,274.3 575,273.7 585,278.1 595,281.4 605,280.3 615,283.2 625,282.7 634,282.7 644,280.8 654,278.1 664,266.1 674,273.9 684,275.7 694,277.7 704,278.6 714,277.4 724,279.3 733,271.7 743,262.0 753,256.8 763,261.2 773,251.0 783,244.8 793,247.7 803,248.8 813,255.6 823,243.4 833,233.1 842,231.2 852,219.0 862,214.9 872,200.6 882,205.8 892,198.8 902,213.0 912,216.3 922,208.9 932,211.8 941,225.0 951,210.1 961,194.4 971,182.9 981,182.9 991,174.0 1001,127.5 1011,130.0 1021,138.2 1031,82.5 1040,63.9 1050,57.3 1060,45.3 1070,59.3 1080,91.1 1090,106.8"/>
+      <g font-family="Pretendard" font-size="10.5">
+        <circle cx="644" cy="284.6" r="4" fill="#B8472E"/><text x="644" y="302" text-anchor="middle" fill="#B8472E" font-weight="600">52주 저점 16.1만</text>
+        <circle cx="743" cy="262.0" r="4" fill="#2E6B5E"/><text x="743" y="249" text-anchor="middle" fill="#2E6B5E">3Q 리뷰 · TP 상향 시작</text>
+        <circle cx="872" cy="200.6" r="4" fill="#2E6B5E"/><text x="872" y="188" text-anchor="middle" fill="#2E6B5E">4Q 서프라이즈</text>
+        <circle cx="1001" cy="127.5" r="4" fill="#2E6B5E"/><text x="985" y="115" text-anchor="middle" fill="#2E6B5E">1Q 역대최대+분기배당</text>
+        <circle cx="1050" cy="23.8" r="4" fill="#9C7A2E"/><text x="1030" y="16" text-anchor="middle" fill="#9C7A2E" font-weight="600">장중 고점 79.2만</text>
+        <circle cx="1090" cy="106.8" r="4.5" fill="#B8472E"/><text x="1072" y="126" text-anchor="middle" fill="#B8472E" font-weight="600">현재 59.1만</text>
+      </g>
+    </svg>
+    <div class="cap">출처: 네이버 fchart 일봉 1,100개→주봉 리샘플(수정주가), 좌표 코드 계산. 이벤트 날짜는 이벤트정합_260713.md에서 뉴스 검증 완료.</div>
+  </div>
+
+  <h2 class="sec">TP 리비전 계단 vs 주가 — 12개월간 하향 0건, 4배 상향</h2>
+  <div class="chart">
+    <div class="ct">셀사이드 목표주가(점) vs 주가(선) — 1년</div>
+    <div class="cs">주가가 TP를 추월하면 셀사이드가 곧바로 TP를 올리는 추격 상향이 5회 반복 — 상향의 주체가 매번 "실적"이라 건강하지만, 6월엔 TP가 주가를 앞질러 달리기 시작했다(과열 신호)</div>
+    <svg viewBox="0 0 1120 330" role="img" aria-label="TP 리비전 vs 주가">
+      <g font-family="IBM Plex Mono" font-size="10" fill="#7A7264">
+        <text x="60" y="268" text-anchor="end">20만</text><line x1="70" y1="263.7" x2="1090" y2="263.7" stroke="#EEE9DE"/>
+        <text x="60" y="213" text-anchor="end">40만</text><line x1="70" y1="209.3" x2="1090" y2="209.3" stroke="#EEE9DE"/>
+        <text x="60" y="159" text-anchor="end">60만</text><line x1="70" y1="155.0" x2="1090" y2="155.0" stroke="#EEE9DE"/>
+        <text x="60" y="105" text-anchor="end">80만</text><line x1="70" y1="100.7" x2="1090" y2="100.7" stroke="#EEE9DE"/>
+        <text x="60" y="51" text-anchor="end">100만</text><line x1="70" y1="46.3" x2="1090" y2="46.3" stroke="#EEE9DE"/>
+        <text x="70" y="320">2025-07</text><text x="580" y="320" text-anchor="middle">2026-01</text><text x="1060" y="320" text-anchor="end">2026-07</text>
+      </g>
+      <polyline fill="none" stroke="#1A1814" stroke-width="1.8" opacity="0.75" points="70,265.9 128,268.0 178,269.7 232,271.5 290,268.9 344,264.6 402,263.4 456,258.7 514,252.6 572,240.9 626,226.4 684,213.6 738,190.7 796,158.1 850,127.5 908,90.6 962,60.2 1020,83.0 1078,101.5"/>
+      <g fill="#B8472E">
+        <circle cx="99" cy="248.5" r="5"/><circle cx="180" cy="247.3" r="5"/><circle cx="205" cy="245.6" r="5"/><circle cx="435" cy="228.0" r="5"/><circle cx="465" cy="219.0" r="5"/><circle cx="530" cy="205.6" r="5"/><circle cx="640" cy="198.3" r="5"/><circle cx="800" cy="160.4" r="5"/><circle cx="920" cy="59.0" r="6"/><circle cx="970" cy="82.2" r="5"/><circle cx="1005" cy="102.8" r="6"/>
+      </g>
+      <g font-family="IBM Plex Mono" font-size="10" fill="#B8472E">
+        <text x="99" y="238" text-anchor="middle">23.5만</text><text x="530" y="195" text-anchor="middle">35만</text><text x="800" y="150" text-anchor="middle">60.7만</text><text x="920" y="48" text-anchor="middle" font-weight="600">100만(대신)</text><text x="1035" y="93" text-anchor="middle">83만(신한)</text>
+      </g>
+    </svg>
+    <div class="cap">점 = 각 시점 리포트 TP(복수 발행일은 평균). 주가선은 주요 시점 근사(일봉 실측은 위 주봉 차트). 출처: 한경컨센서스 12개월 19건 + 신한 7/8 PDF, 레포트_인덱스_260713.md.</div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3>이익 vs 멀티플 분해 — 1년 +235%의 성분</h3>
+      <table>
+        <thead><tr><th>성분</th><th class="num">배율</th><th class="txt">근거</th></tr></thead>
+        <tbody>
+          <tr><td>컨센 상향 (26E OP)</td><td class="num">×1.35</td><td class="txt">5,619억(1년 전) → 7,610억<span class="src">출처<span class="tip">FnGuide cnsTrend — 1년 전 26E OP 컨센 5,619억, 2026-07-10 조회</span></span></td></tr>
+          <tr class="hl"><td>멀티플 확장</td><td class="num">×2.48</td><td class="txt">fwd PER ~6배 → 14.8배 (PBR 0.27→1.08)</td></tr>
+          <tr class="tot"><td>주가</td><td class="num">×3.35</td><td class="txt">176,500 → 591,000원 (+235%)</td></tr>
+          <tr><td>(참고) 코스피 동기간</td><td class="num">×2.13</td><td class="txt">3,202 → 6,807 — 멀티플 확장의 상당분은 시장 공통</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12.5px">뇌 규율 "리레이팅이 대부분이면 과열 의심"에 정확히 걸리는 구성이다. 다만 <em>시장 대비 초과분(+86%p)</em>만 떼면 그 초과는 컨센 상향(+35%)+개별 리레이팅(주주환원·면세 리셋)으로 설명 가능 — 과열의 주범은 종목이 아니라 시장이었다는 뜻이고, 그래서 시장이 빠지자 종목도 −25% 같이 빠졌다.</p>
+    </div>
+    <div>
+      <h3>함의 PER — 현재가와 TP는 각각 무엇을 믿나</h3>
+      <table>
+        <thead><tr><th>가격</th><th class="num">26E 14.8x</th><th class="num">27E 12.9x</th><th class="num">28E 11.7x</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>현재가 591,000</td><td class="num">14.8x</td><td class="num">12.9x</td><td class="num">11.7x</td></tr>
+          <tr><td>고점 792,000 (6/18)</td><td class="num">19.8x</td><td class="num">17.3x</td><td class="num">15.7x</td></tr>
+          <tr><td>TP 컨센 805,556</td><td class="num">20.2x</td><td class="num">17.5x</td><td class="num">15.9x</td></tr>
+          <tr><td>1차 매집 480,000</td><td class="num">12.0x</td><td class="num">10.5x</td><td class="num">9.5x</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12.5px"><strong>내재기대 역산 한 줄</strong>: 현재가는 "26E 실현 + 27E의 부분 신뢰 + 리레이팅 체제(12~15배) 유지"를 지불한 가격. 고점·TP는 "리레이팅 완성(17~20배) + 인바운드 상시화"까지 지불 — 유통주 역사(홈밴드 6~12배)에 없던 영역이다. 1차 매집 밴드는 "27E 컨센만 믿고 리레이팅은 절반만 인정"하는 가격 — 그게 우리가 사고 싶은 좌표다.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 가격에 뭐가 들어있고 뭐가 공짜인가</h2>
+  <table>
+    <thead><tr><th class="txt">투자포인트</th><th>반영도</th><th class="txt">판정 근거</th><th class="txt">검증 트리거</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">백화점 리뉴얼·외국인 성장 (26E)</td><td><span class="tag s">반영</span></td><td class="txt">26E 컨센에 풀 반영 (신한 백화점 총매출 +27% 가정)</td><td class="txt">월별 기존점·8월 2Q 실적</td></tr>
+      <tr><td class="txt">면세 흑전 — DF2 임차료 제거</td><td><span class="tag s">반영</span></td><td class="txt">2Q26E 면세 OP +202억부터 컨센 편입</td><td class="txt">2Q 면세 부문 OP</td></tr>
+      <tr><td class="txt">27E 임차료 풀이어 + 면세 정상화</td><td><span class="tag n">부분</span></td><td class="txt">27E +11.8%에 일부 — 시내점 마진 정상화 폭은 하우스별 이견</td><td class="txt">할인율·FIT 믹스 공시</td></tr>
+      <tr><td class="txt">무비자 상시화·중국 단체 본격 회복</td><td><span class="tag b">미반영</span></td><td class="txt">컨센 매출 27E +3.8%는 보수적 — 상시화 시 매출·면세 추가 상향 여지</td><td class="txt">12월 연장/제도화 발표</td></tr>
+      <tr><td class="txt">주주환원 증액 (DPS 6,500 — 신한)</td><td><span class="tag n">부분</span></td><td class="txt">컨센 DPS 26E 5,614원 &lt; 신한 6,500원 — 분기배당 도입 후 추가 증액 여지</td><td class="txt">2~3Q 분기배당 공시</td></tr>
+      <tr><td class="txt">고속터미널 부지 재개발 (자산가치)</td><td><span class="tag b">미반영</span></td><td class="txt">신한이 리레이팅 보조 요인으로 언급만 — 어느 모델에도 숫자 없음 (스토리 단계)</td><td class="txt">개발 계획 공시</td></tr>
+      <tr><td class="txt">(다운) 자산효과 역전 — 코스피 붕괴</td><td><span class="tag b">미반영</span></td><td class="txt"><strong>컨센 하향 0건 — 27E가 자산효과 지속을 전제하고 있다</strong>. 시장 붕괴 지속 시 하향 사이클 미개시 상태</td><td class="txt">코스피 · 백화점 월지표</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn"><div class="h">컨센 감사의 결론</div>업사이드 공짜 옵션(무비자 상시화·재개발)도 있지만, <strong>가장 큰 미반영은 다운사이드다</strong> — 셀사이드 전원이 강세(하향 0건)인 지금, 자산효과 역전이 시작되면 하향 사이클 자체가 아직 시작 전이라는 뜻. "모두가 낙관할 때의 컨센"은 상향 여지보다 하향 여지가 크다. 이것이 Base 확률을 45%로, Bear를 30%로 잡은 근거다.</div>
+
+  <h2 class="sec">상대주가 · 이벤트 정합 · 수급</h2>
+  <div class="chart">
+    <div class="ct">1년 상대주가 (2025-07-14 = 100)</div>
+    <div class="cs">신세계 299 vs 코스피 213 vs 롯데 192 vs 현대백화점 190 — 업종 내 압도적 1등, 그러나 하락도 시장과 동행</div>
+    <svg viewBox="0 0 1120 290" role="img" aria-label="상대주가">
+      <g font-family="IBM Plex Mono" font-size="10" fill="#7A7264">
+        <text x="60" y="236" text-anchor="end">100</text><line x1="70" y1="231.9" x2="1090" y2="231.9" stroke="#EEE9DE"/>
+        <text x="60" y="172" text-anchor="end">200</text><line x1="70" y1="168.0" x2="1090" y2="168.0" stroke="#EEE9DE"/>
+        <text x="60" y="108" text-anchor="end">300</text><line x1="70" y1="104.1" x2="1090" y2="104.1" stroke="#EEE9DE"/>
+        <text x="60" y="44" text-anchor="end">400</text><line x1="70" y1="40.1" x2="1090" y2="40.1" stroke="#EEE9DE"/>
+      </g>
+      <polyline fill="none" stroke="#B8472E" stroke-width="2.2" id="ln-ssg" points=""/>
+      <polyline fill="none" stroke="#1A1814" stroke-width="1.6" opacity="0.65" id="ln-kospi" points=""/>
+      <polyline fill="none" stroke="#3C6E8F" stroke-width="1.4" opacity="0.7" id="ln-lotte" points=""/>
+      <polyline fill="none" stroke="#9C7A2E" stroke-width="1.4" opacity="0.7" id="ln-hds" points=""/>
+      <g font-family="IBM Plex Mono" font-size="10.5">
+        <text x="1094" y="109" fill="#B8472E" font-weight="600">신세계 299</text>
+        <text x="1094" y="162" fill="#1A1814">KOSPI 213</text>
+        <text x="1094" y="187" fill="#3C6E8F">롯데 192</text>
+        <text x="1094" y="203" fill="#9C7A2E">현백 190</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#B8472E"></i>신세계</span><span><i style="background:#1A1814"></i>KOSPI</span><span><i style="background:#3C6E8F"></i>롯데쇼핑</span><span><i style="background:#9C7A2E"></i>현대백화점</span></div>
+    <div class="cap">좌표는 코드 생성(네이버 fchart 일봉). 폴리라인 데이터는 스크립트가 로드 시 주입.</div>
+  </div>
+
+  <table>
+    <thead><tr><th>급등락일</th><th class="num">등락</th><th class="txt">재료 (뉴스 검증)</th><th>펀더 동반</th><th class="num">코스피</th></tr></thead>
+    <tbody>
+      <tr><td class="num">26-05-21</td><td class="num up">+16.9%</td><td class="txt">코스피 초강세일(기관 2.3조 매수) + 소비회복 + NH TP 66만 상향(5/20)</td><td><span class="tag b">동반</span></td><td class="num up">+8.4%</td></tr>
+      <tr class="hl"><td class="num">26-06-04</td><td class="num up">+15.8%</td><td class="txt"><strong>순수 개별 알파</strong> — "반도체 부(富)의 효과"(성과급→명품·반세권 백화점) + 공항 철수 고정비 절감 부각</td><td><span class="tag b">동반</span></td><td class="num down">−1.8%</td></tr>
+      <tr><td class="num">26-06-08</td><td class="num down">−12.0%</td><td class="txt">코스피 서킷브레이커(글로벌 반도체 조정) — 개별 재료 없음, 다음날 +9.1% 반등</td><td><span class="tag s">시장</span></td><td class="num down">−8.3%</td></tr>
+      <tr><td class="num">26-07-08</td><td class="num down">−8.1%</td><td class="txt">이란·호르무즈 + 반도체 셀온 — <strong>당일 신세계 뉴스는 오히려 TP 상향(호재)</strong></td><td><span class="tag s">시장</span></td><td class="num down">−5.4%</td></tr>
+      <tr><td class="num">26-07-13</td><td class="num down">−6.0%</td><td class="txt">하이닉스 −12.6%·삼전 −7.7% 투매, 코스피 서킷 — "신세계 잠정실적 급락" 제하 기사는 삼전 잠정실적발 폭락의 오귀속으로 판정(신세계 공시 없음)</td><td><span class="tag s">시장</span></td><td class="num down">−9.0%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two">
+    <div>
+      <h3>수급 — 파는 자와 사는 자</h3>
+      <table>
+        <thead><tr><th>주체</th><th class="num">7/2~7/13 (급락기)</th><th class="num">최근 20거래일</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>외국인</td><td class="num up">+1,011억 (매일 순매수)</td><td class="num up">+1,555억</td></tr>
+          <tr><td>기관계</td><td class="num down">−828억</td><td class="num down">−1,491억</td></tr>
+          <tr><td>· 투신</td><td class="num down">—</td><td class="num down">−579억</td></tr>
+          <tr><td>· 사모</td><td class="num down">—</td><td class="num down">−470억</td></tr>
+          <tr><td>· 연기금</td><td class="num down">—</td><td class="num down">−196억</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--muted)">외인 지분율 24.23%(6/15)→27.06%(7/13), +2.83%p. 출처: 키움 캐시 100영업일(binzip 합산검증 일치)+네이버 dealTrend, 수급_260713.md. 공매도·대차 잔고는 무료 소스 미확보 — 미결.</p>
+    </div>
+    <div>
+      <h3>자체 스크리너 이력 — 이 종목은 우리 레이더에 있었다</h3>
+      <p style="font-size:12.5px">수급빈집 스크리너: 6/16~7/7 후보 연속 등장, <strong>7/6·7/7 삼중 교집합(빈집+주도업종+추정치상향) 4종목 중 하나</strong>(빈집점수 61.1 — "빈집 오실레이터 2→23 반등, 5일 순매수 +142억, 매도→매수 전환"). 7/8 −8.1% 급락으로 후보 탈락. 수급 오실레이터는 6월말 바닥(1~2)→7/10 27.2로 회복 중 — <em>수급 관점에선 "빈집에 유입이 막 시작되다가 시장 붕괴로 중단된" 상태.</em> 시장 안정 시 재유입 후보 1순위 프로파일.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TAB 6 밸류·시나리오 ═══════════════ -->
+<section class="panel" id="t6">
+  <div class="eyebrow">밸류에이션 · 피어 콤프 · 시나리오 · 손익비</div>
+  <h2 class="sec">피어 콤프 3개년 — 순이익·시총 축 (컨센: FnGuide 26-07-10, 18~10개 기관)</h2>
+  <table>
+    <thead><tr><th>지배순이익 기준</th><th class="num">시총</th><th class="num">PER 26E</th><th class="num">PER 27E</th><th class="num">PER 28E</th><th class="num">순익 CAGR 26→28</th><th class="num">PBR 26E</th><th class="num">배당 26E</th><th class="txt">비고</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>신세계 @59.1만</td><td class="num">5.58조</td><td class="num">14.8x</td><td class="num">12.9x</td><td class="num">11.7x</td><td class="num">+12.2%</td><td class="num">1.08</td><td class="num">0.9%</td><td class="txt">이익 질·인바운드 순도 최상 + 소각 연 2%</td></tr>
+      <tr><td>롯데쇼핑</td><td class="num">4.39조</td><td class="num">11.7x</td><td class="num">10.1x</td><td class="num">9.1x</td><td class="num">+13.3%</td><td class="num">0.28</td><td class="num">2.8%</td><td class="txt">가장 싸다 — 단 25A 순익 516억 일회성 잡음</td></tr>
+      <tr><td>현대백화점</td><td class="num">3.60조</td><td class="num">12.9x</td><td class="num">10.1x</td><td class="num">9.1x</td><td class="num">+18.1%</td><td class="num">0.74</td><td class="num">1.3%</td><td class="txt">백화점 강한데 지누스가 연결 훼손</td></tr>
+      <tr><td>호텔신라</td><td class="num">1.98조</td><td class="num">17.9x</td><td class="num">13.2x</td><td class="num">11.1x</td><td class="num">+27.0%</td><td class="num">1.56</td><td class="num">0.4%</td><td class="txt">면세 풀이어 고베타 — 25A 적자→흑전</td></tr>
+      <tr><td>이마트 (참고)</td><td class="num">2.26조</td><td class="num">15.2x</td><td class="num">8.4x</td><td class="num">6.8x</td><td class="num">+50.0%</td><td class="num">0.20</td><td class="num">3.3%</td><td class="txt">컨센 10곳으로 얇음 — 신뢰 하위</td></tr>
+    </tbody>
+  </table>
+  <div class="chart">
+    <div class="ct">피어 PER 사다리 — 26E → 27E → 28E</div>
+    <div class="cs">신세계 프리미엄(vs 롯데 +27%)의 근거 = 이익의 질 + 주주환원 + 인바운드 순도. 시간이 흐르면 전 종목 한 자릿수로 내려간다</div>
+    <svg viewBox="0 0 1120 300" role="img" aria-label="피어 PER 사다리">
+      <line x1="70" y1="250" x2="1090" y2="250" stroke="#D2C9B6"/>
+      <g font-family="IBM Plex Mono" font-size="10.5" text-anchor="middle">
+        <rect x="95" y="86" width="50" height="164" fill="#B8472E" opacity="0.85"/><rect x="153" y="107" width="50" height="143" fill="#B8472E" opacity="0.55"/><rect x="211" y="120" width="50" height="130" fill="#B8472E" opacity="0.35"/>
+        <text x="120" y="78">14.8</text><text x="178" y="99">12.9</text><text x="236" y="112">11.7</text><text x="178" y="270" font-family="Pretendard">신세계</text>
+        <rect x="305" y="120" width="50" height="130" fill="#3C6E8F" opacity="0.85"/><rect x="363" y="138" width="50" height="112" fill="#3C6E8F" opacity="0.55"/><rect x="421" y="149" width="50" height="101" fill="#3C6E8F" opacity="0.35"/>
+        <text x="330" y="112">11.7</text><text x="388" y="130">10.1</text><text x="446" y="141">9.1</text><text x="388" y="270" font-family="Pretendard">롯데쇼핑</text>
+        <rect x="515" y="107" width="50" height="143" fill="#9C7A2E" opacity="0.85"/><rect x="573" y="138" width="50" height="112" fill="#9C7A2E" opacity="0.55"/><rect x="631" y="149" width="50" height="101" fill="#9C7A2E" opacity="0.35"/>
+        <text x="540" y="99">12.9</text><text x="598" y="130">10.1</text><text x="656" y="141">9.1</text><text x="598" y="270" font-family="Pretendard">현대백화점</text>
+        <rect x="725" y="51" width="50" height="199" fill="#2E6B5E" opacity="0.85"/><rect x="783" y="103" width="50" height="147" fill="#2E6B5E" opacity="0.55"/><rect x="841" y="127" width="50" height="123" fill="#2E6B5E" opacity="0.35"/>
+        <text x="750" y="43">17.9</text><text x="808" y="95">13.2</text><text x="866" y="119">11.1</text><text x="808" y="270" font-family="Pretendard">호텔신라</text>
+        <rect x="935" y="81" width="50" height="169" fill="#7A7264" opacity="0.85"/><rect x="993" y="157" width="50" height="93" fill="#7A7264" opacity="0.55"/><rect x="1051" y="174" width="39" height="76" fill="#7A7264" opacity="0.35"/>
+        <text x="960" y="73">15.2</text><text x="1018" y="149">8.4</text><text x="1070" y="166">6.8</text><text x="1010" y="270" font-family="Pretendard">이마트</text>
+      </g>
+    </svg>
+    <div class="cap">진한→연한 = 26E→27E→28E. 전 종목 07-10 종가 기준(신세계만 07-13 종가로 재계산). 업종(WI26 소매/유통) PER 40.8배 대비 전원 할인 — 업종 평균은 이커머스 왜곡.</div>
+  </div>
+
+  <h2 class="sec">홈그라운드 밴드 — "10년 만의 리레이팅"의 실체와 되돌림 목적지</h2>
+  <div class="two">
+    <div>
+      <table>
+        <thead><tr><th>연도(기말가)</th><th class="num">PER</th><th class="num">PBR</th><th class="num">ROE</th></tr></thead>
+        <tbody>
+          <tr><td>2023A</td><td class="num">7.7x</td><td class="num">0.39</td><td class="num">5.4%</td></tr>
+          <tr><td>2024A</td><td class="num">12.2x</td><td class="num">0.27</td><td class="num">2.5%</td></tr>
+          <tr><td>2025A</td><td class="num">(171x 착시)</td><td class="num">0.49</td><td class="num">(0.3% 착시)</td></tr>
+          <tr class="hl"><td>현재 (fwd)</td><td class="num">14.8x</td><td class="num">1.08</td><td class="num">8.2%E</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p style="font-size:13px">리레이팅의 실체는 PER보다 <strong>PBR × ROE</strong>로 읽는 게 정직하다: ROE가 2~5%대에서 8%대로 올라서며(이익 정상화+소각) PBR이 0.3에서 1.1로 재평가된 것. PBR 1.08은 강남·반포 부동산을 가진 회사로서 <em>자산가치 부근</em>이라 절대 고평가는 아니다. 문제는 경로 — <strong>PBR 0.3→1.1을 만든 유동성 장세가 되돌려질 때, ROE 8%가 유지되더라도 PBR 0.8(주가 ~44만)까지의 되돌림은 밸류 논리만으로 정당화된다.</strong> 우리 매집 밴드(46~50만)가 그 어림과 겹치는 이유다.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">시나리오 BUILD — 가정 → EPS → 출구배수 → TP → 확률</h2>
+  <table>
+    <thead><tr><th></th><th class="txt">가정 (드라이버)</th><th class="num">27E EPS</th><th class="num">출구배수 (근거)</th><th class="num">TP</th><th class="num">등락</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag b">Bull</span></td><td class="txt">시장 안정 + 2Q OP 1,500억+ + 무비자 연장/상시화 → 27E 컨센 상향 (신한 트랙)</td><td class="num">50,000<span class="est">E</span></td><td class="num">14x (리레이팅 체제 유지)</td><td class="num">700,000</td><td class="num up">+18%</td><td class="num">25%</td></tr>
+      <tr class="hl"><td><span class="tag n">Base</span></td><td class="txt">26E 실현·27E 컨센 유지, 시장 횡보 — 멀티플 리레이팅 부분 후퇴</td><td class="num">45,905</td><td class="num">12.5x (현 12MF 수준)</td><td class="num">574,000</td><td class="num">−3%</td><td class="num">45%</td></tr>
+      <tr><td><span class="tag s">Bear</span></td><td class="txt">코스피 붕괴 지속·자산효과 역전 → 백화점 성장 훼손, 컨센 하향 사이클 개시</td><td class="num">41,300<span class="est">E</span> (−10%)</td><td class="num">9.5x (홈밴드 상단 회귀)</td><td class="num">390,000</td><td class="num down">−34%</td><td class="num">30%</td></tr>
+      <tr class="tot"><td>EV</td><td class="txt">확률가중 = 0.25×70 + 0.45×57.4 + 0.30×39</td><td class="num">—</td><td class="num">—</td><td class="num">550,000</td><td class="num down">−6.9%</td><td class="num">100%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12.5px"><strong>확률의 근거</strong>(주관 — 조정용): Bear 30%는 "코스피가 고점 −25%에서 더 무너져 실물(소비)로 전이될 확률" — 서킷 2회가 이미 발생한 국면의 기저율로 낮지 않다. Bull 25%는 2Q 서프라이즈 확률은 높으나(신한·NH 전망) "시장 안정"이 동시에 필요해 할인. <strong>Bear 낙폭 검증</strong>: 신세계는 올해만 −21%(3월)·−26%(6~7월) 조정 2회 실측 — −34%는 그 연장선+컨센 첫 하향의 결합으로 과하지 않다. <strong>판독: 현재가 EV가 마이너스 — 신규 진입 손익비 미달. 1차 매집 밴드(48만)에서 같은 시나리오로 Bull +46%/Bear −19%, R/R 2.4:1로 복원된다.</strong></p>
+
+  <div class="chart">
+    <div class="ct">Football Field — 시나리오 · TP 밴드 · 매집 밴드</div>
+    <svg viewBox="0 0 1120 300" role="img" aria-label="Football field">
+      <g font-family="IBM Plex Mono" font-size="10" fill="#7A7264">
+        <line x1="80" y1="30" x2="80" y2="255" stroke="#EEE9DE"/><text x="80" y="272" text-anchor="middle">40만</text>
+        <line x1="315" y1="30" x2="315" y2="255" stroke="#EEE9DE"/><text x="315" y="272" text-anchor="middle">52만... </text>
+        <line x1="341" y1="30" x2="341" y2="255" stroke="#EEE9DE" opacity="0"/>
+        <line x1="550" y1="30" x2="550" y2="255" stroke="#EEE9DE"/><text x="550" y="272" text-anchor="middle">70만</text>
+        <line x1="785" y1="30" x2="785" y2="255" stroke="#EEE9DE"/><text x="785" y="272" text-anchor="middle">88만</text>
+        <line x1="1020" y1="30" x2="1020" y2="255" stroke="#EEE9DE"/><text x="1020" y="272" text-anchor="middle">106만</text>
+      </g>
+      <g font-family="Pretendard" font-size="11.5">
+        <rect x="132" y="40" width="53" height="20" rx="10" fill="#B8472E" opacity="0.3"/><text x="120" y="55" text-anchor="end">2차 매집 38~42만</text>
+        <rect x="237" y="75" width="52" height="20" rx="10" fill="#2E6B5E" opacity="0.45"/><text x="225" y="90" text-anchor="end" font-weight="600">1차 매집 46~50만</text>
+        <rect x="145" y="110" width="240" height="20" rx="10" fill="#B8472E" opacity="0.5"/><text x="133" y="125" text-anchor="end">Bear 39만 ~ Base 57.4만</text>
+        <rect x="385" y="145" width="165" height="20" rx="10" fill="#2E6B5E" opacity="0.5"/><text x="373" y="160" text-anchor="end">Base 57.4만 ~ Bull 70만</text>
+        <rect x="720" y="180" width="222" height="20" rx="10" fill="#9C7A2E" opacity="0.5"/><text x="708" y="195" text-anchor="end">셀사이드 TP 83만~100만</text>
+        <line x1="407" y1="30" x2="407" y2="255" stroke="#B8472E" stroke-width="2" stroke-dasharray="5,3"/><text x="407" y="24" text-anchor="middle" fill="#B8472E" font-weight="700">현재 59.1만</text>
+        <line x1="354" y1="30" x2="354" y2="255" stroke="#9C7A2E" stroke-width="1.5" stroke-dasharray="2,3"/><text x="354" y="248" text-anchor="middle" fill="#9C7A2E" font-size="10">EV 55만</text>
+      </g>
+    </svg>
+    <div class="cap">x축 스케일: 34만~106만 선형. 52주 저점 16.1만은 스케일 밖(참고). 셀사이드 TP 컨센 평균 80.6만(18곳).</div>
+  </div>
+
+  <div class="note"><div class="h">멀티베거 3체크 — 이미 난 멀티베거다</div>매출확장 △(+4~5%대 저성장) / 마진확장 ✓(OPM 6.9→10.4%, 진행 중) / 멀티플확장 ✓(6배→15배, <strong>이미 소진</strong>). 저점 대비 4.9배는 세 확장이 겹친 결과였고, 지금부터 살 수 있는 것은 이익 성장분(+연 12%)과 배당·소각(+3%)뿐이다 — 멀티플은 지키는 게임이지 더 받는 게임이 아니다. 이것이 TP 밴드(17~20배)를 Bull에서도 채택하지 않은 이유다.</div>
+</section>
+
+<!-- ═══════════════ TAB 7 리스크·매매플랜·KPI ═══════════════ -->
+<section class="panel" id="t7">
+  <div class="eyebrow">리스크 매트릭스 · 매매 플랜 · 추적 KPI · 미결</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="num">주가 영향</th><th class="num">12M 확률</th><th class="txt">메커니즘 (왜 그 낙폭·그 확률인가)</th><th class="txt">관전 신호</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt">① 코스피 광풍 붕괴 지속 → 역자산효과</td><td class="num down">−25~35%</td><td class="num">30~35%</td><td class="txt">백화점 성장 가정의 뿌리가 자산효과 — 멀티플 압축(14.8→9~10배)과 컨센 하향(−5~10%)이 <strong>곱해진다</strong>. 서킷 2회 발생 국면의 기저율로 확률 낮지 않음</td><td class="txt">코스피 20일선 · 백화점 월 기존점</td></tr>
+      <tr><td class="txt">② 무비자 미연장 (12월 말 시한)</td><td class="num down">−10~15%</td><td class="num">25%</td><td class="txt">면세 흑전 폭 축소 + 백화점 외국인 증분(본점 28.4%) 훼손 → 27E OP −600~800억<span class="est">E</span>. 두 차례 연장 이력으로 재연장이 우세하나 지정학 종속</td><td class="txt">11~12월 한중 발표 · 월 방한객</td></tr>
+      <tr><td class="txt">③ 2Q26 컨센 미스 (8월 초)</td><td class="num down">−10~20%</td><td class="num">20%</td><td class="txt">컨센 OP 1,413억(+88%) — 눈높이가 이미 높다. 미스 시 "리레이팅 논거 훼손"으로 과반응. 단 프리뷰 전망치들이 컨센 상회(신한 +5%) 쪽</td><td class="txt">8월 초 발표 · 7월 백화점 매출 기사</td></tr>
+      <tr><td class="txt">④ 면세 시내점 할인율 재악화·따이공 재점화</td><td class="num down">−5~10%</td><td class="num">20%</td><td class="txt">흑전의 절반은 할인율 정상화 — 경쟁 재점화 시 반납. 단 3사 동반 흑전 국면이라 출혈 유인 낮음</td><td class="txt">분기 면세 OP · 신라 TR 마진</td></tr>
+      <tr><td class="txt">⑤ 27년 역기저 (구조적·시점 확정)</td><td class="num down">멀티플 −10~20%</td><td class="num">확실 (27년)</td><td class="txt">본점 +70%·외국인 +230%의 기저가 27년에 돌아온다 — 성장률 +59%→+12% 감속은 컨센에 있으나, 감속 확인 시점에 PEG 논리로 디레이팅 트리거</td><td class="txt">27.1Q부터 YoY 경로</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">업사이드 옵션 정량화 — 0.1%짜리 걸러내기</h2>
+  <table>
+    <thead><tr><th class="txt">옵션</th><th class="num">27E EPS 기여</th><th class="txt">산출 근거</th><th>반영도</th><th>등급</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt">무비자 상시화 + 중국 단체 본격화</td><td class="num">+3,000~4,500원<span class="est">E</span></td><td class="txt">면세 매출 +10~15% × OPM 4~5% + 백화점 외국인 증분 → 지배NP +280~420억</td><td><span class="tag b">미반영</span></td><td><span class="tag b">유의미</span></td></tr>
+      <tr><td class="txt">임차료 제거 27년 풀이어</td><td class="num">+2,600원</td><td class="txt">+330억 OP × (1−세율) ÷ 9.4M주 — 산수</td><td><span class="tag n">부분</span></td><td><span class="tag b">유의미</span></td></tr>
+      <tr><td class="txt">DPS 증액 (신한 6,500원 트랙)</td><td class="num">배당수익률 +0.15%p</td><td class="txt">컨센 5,822 vs 신한 7,000(27F) — EPS 아닌 환원율 재료</td><td><span class="tag n">부분</span></td><td><span class="tag n">경계선</span></td></tr>
+      <tr><td class="txt">고속터미널 재개발</td><td class="num">0 (NAV 재료)</td><td class="txt">어느 모델에도 숫자 없음 — 멀티플·자산가치 스토리 단계</td><td><span class="tag b">미반영</span></td><td><span class="tag s">카운트 안 함</span></td></tr>
+      <tr><td class="txt">SSG닷컴 지분 정리 (계열분리 마무리)</td><td class="num">방향 미정</td><td class="txt">24.4% 지분법 — 현금화면 호재, 인수면 부담. 공시 전 판단 불가</td><td><span class="tag b">미반영</span></td><td><span class="tag s">카운트 안 함</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <table>
+    <thead><tr><th>상태</th><th class="txt">트리거 (if)</th><th class="txt">액션 (then)</th><th class="txt">근거</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>신규</td><td class="txt">460,000~500,000원 진입 <strong>+ 코스피 연속 서킷 국면 종료</strong></td><td class="txt">1차 50bp 매집</td><td class="txt">27E 10~11배 — 리레이팅 절반만 지불, R/R 2.4:1</td></tr>
+      <tr><td>신규</td><td class="txt">380,000~420,000원 (Bear 실현가)</td><td class="txt">2차 +100bp (합계 150bp 상한)</td><td class="txt">27E 8.5~9배 = 홈밴드 — 자산가치(PBR 0.7)가 받치는 가격, R/R 3:1</td></tr>
+      <tr><td>추격</td><td class="txt">2Q26 OP 1,500억+ <strong>&amp;</strong> 코스피 20일선 회복 <strong>&amp;</strong> 27E 컨센 OP 9,000억+ 상향</td><td class="txt">가격 불문 50bp 진입</td><td class="txt">Base 자체가 이동 (Bull 트랙 진입 확인)</td></tr>
+      <tr><td>보유</td><td class="txt">현 보유분 (있다면)</td><td class="txt">홀드 — 개별 thesis 무손상</td><td class="txt">급락 재료가 시장 베타뿐, 외인 매수 지속</td></tr>
+      <tr><td>축소</td><td class="txt">코스피 6,500 이탈 <strong>&amp;</strong> 백화점 월 매출 둔화 동시 발생</td><td class="txt">보유분 절반 축소</td><td class="txt">역자산효과의 실측 개시 — 리스크①의 현실화</td></tr>
+      <tr><td>이익실현</td><td class="txt">TP 밴드 진입 (80만+) 또는 27E 17배+</td><td class="txt">절반 이상 실현, 갈아타기 검토(신라·롯데)</td><td class="txt">리레이팅 완성 = 스토리 소진</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn"><div class="h">Thesis Break — 가격 불문 전량 정리 조건 (사실 기준)</div>① 무비자 중단 <strong>+</strong> 월 방한객 감소 전환 (인바운드 thesis 사망) ② 백화점 기존점 총매출 2개 분기 연속 역성장 (소비 모멘텀 종료) ③ 면세 시내점 2개 분기 연속 재적자 (구조 개선 논거 반증). 어느 것도 가격 조건이 아니다 — 가격은 시장이 정하지만 사실은 회사가 증명한다.</div>
+
+  <h2 class="sec">추적 KPI 대시보드 — 분기·월 갱신</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="num">최신치</th><th class="txt">보는 이유</th><th class="txt">경보선</th><th>주기</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">월 방한 외래객 (관광공사)</td><td class="num">카드소비 월 2조 돌파 (6월)</td><td class="txt">인바운드 thesis의 물리량 — 면세·백화점 외국인의 원천</td><td class="txt">YoY 감소 전환</td><td>월</td></tr>
+      <tr><td class="txt">백화점 총매출·기존점 신장률</td><td class="num">1Q26 +13.0%</td><td class="txt">실재 지표(거래액) — 회계 매출보다 정직</td><td class="txt">+5% 하회</td><td>분기</td></tr>
+      <tr><td class="txt">본점·강남 외국인 매출 비중</td><td class="num">본점 28.4% (1Q26)</td><td class="txt">인바운드 침투 깊이 — 증가율 아닌 비중으로</td><td class="txt">비중 정체+증가율 급감</td><td>분기</td></tr>
+      <tr><td class="txt">면세 부문 OP</td><td class="num">+106억 (26.1Q)</td><td class="txt">스윙 팩터의 흑자 지속성 — 2Q 컨센 +202억E</td><td class="txt">재적자</td><td>분기</td></tr>
+      <tr><td class="txt">외국인 지분율</td><td class="num">27.06% (7/13)</td><td class="txt">조정 국면의 스마트머니 게이지 — 매수 지속 여부</td><td class="txt">2주 연속 순매도</td><td>주</td></tr>
+      <tr><td class="txt">컨센 27E OP</td><td class="num">8,508억 (7/10)</td><td class="txt">첫 하향 리포트 출현 = 사이클 전환 신호 (12개월간 0건)</td><td class="txt">첫 하향 발생</td><td>수시</td></tr>
+      <tr><td class="txt">코스피 / 20일선</td><td class="num">6,807 / 이탈 중</td><td class="txt">자산효과 프록시 + 매집 개시 조건</td><td class="txt">6,500 이탈</td><td>일</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two">
+    <div>
+      <h3>촉매 캘린더</h3>
+      <table>
+        <thead><tr><th>시점</th><th class="txt">이벤트</th><th class="txt">판별점</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="num">26.8월 초</td><td class="txt">2Q26 실적 (2Q25는 8/8 발표였음)</td><td class="txt">OP 1,500억±, 면세 +202억E 확인 — 최대 분기점</td></tr>
+          <tr><td class="num">26.10월</td><td class="txt">중국 국경절 연휴 인바운드</td><td class="txt">방한객·면세 매출 피크 실측</td></tr>
+          <tr><td class="num">26.11~12월</td><td class="txt">무비자 연장/상시화 결정</td><td class="txt">연장=안도, 상시화=미반영 업사이드, 중단=thesis break ①</td></tr>
+          <tr><td class="num">27.2월</td><td class="txt">4Q26·연간 + 자사주 소각 3년차 + DPS</td><td class="txt">밸류업 이행 3년 완주 여부</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>미결 — 지어내지 않고 남겨두는 것</h3>
+      <ul class="cl c2" style="font-size:12.5px">
+        <li>DART 분기보고서 연결 세그먼트 주석과 IR 잠정치 대조 미수행 — <strong>사용자 제공 예정 DART PDF로 검증 예정</strong></li>
+        <li>공매도 잔고·대차잔고 — KRX 비로그인 차단, 무료 소스 미확보</li>
+        <li>인천공항 잔여 사업권(DF1 등) 유무·조건 — DF2 외 공항 노출의 정확한 잔여분</li>
+        <li>월별 방한 외래객 원계열 시계열 — 관광공사 데이터 파이프라인 미구축</li>
+        <li>2Q26 발표 확정일 미공표 (8월 초순 추정)</li>
+        <li>1년 전 26E EPS 컨센 원값 — 이익vs멀티플 분해는 OP 컨센 기준(EPS 정밀 분해는 스냅샷 축적 후)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note in"><div class="h">내 베팅 한 문장 + 그 베팅을 깨는 변수</div><strong>베팅</strong>: "신세계의 이익 변곡(26E OP 7,610억)은 시장과 무관하게 실현되고, 시장 붕괴가 만들어줄 46~50만은 그 이익을 27E 10~11배에 사는 기회다." <strong>깨는 변수</strong>: ① 코스피 붕괴의 실물 전이(소비 침체 — 이익 자체 훼손) ② 무비자 중단(인바운드 축 소멸) ③ 시장 V자 반등(밴드 미도달 — 이 경우 추격 조건으로 대응) ④ 2Q 미스(눈높이 붕괴). 퀄리티 한 단어: <strong>"입지 독점"</strong>.</div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정: 신규 대기 · 보유 홀드</span><span class="pill">1차 매집 46~50만</span><span class="pill">2차 38~42만</span><span class="pill">추격조건: 2Q 1,500억+ & 시장안정</span><span class="pill">EV 55만</span><span class="pill">thesis break: 무비자 중단·기존점 역성장×2Q·면세 재적자×2Q</span></div>
+    RESEARCH LAB · 심층 리서치 v1 · 기준일 2026-07-13 · 작성 Claude (research-brain 시스템 첫 케이스)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 모든 추정 <span class="est">E</span> 태그, [가정→근거→식→교차검증] 표기, 추정/실측 구분.<br>
+    데이터 계보: 신세계 공식 IR 실적자료 4부(25.2Q~26.1Q, deptmapp.shinsegae.com) · FnGuide 컨센(wcomp.fnguide.com, 26-07-10, 18개 기관 — 스냅샷 raw 저장) · 네이버 fchart 일봉 1,100개(수정주가)·dealTrend · 키움 raw_cache 수급 100영업일 · 한경컨센서스 12개월 19건 + 신한투자증권 26-07-08 리포트 PDF 정독 · 이벤트 정합: 뉴스 전수 검증(이벤트정합_260713.md) · 조회일 전부 2026-07-13.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+/* 상대주가 폴리라인 데이터 주입 (좌표는 파이썬 코드 생성 — REBASE_DATA 치환) */
+var REBASE={ssg:"70,231.9 74,232.4 78,234.3 83,234.6 87,235.3 91,236.1 95,236.0 99,236.4 104,238.3 108,238.8 112,240.5 116,240.2 120,240.2 125,240.3 129,241.4 133,241.2 137,240.5 141,238.6 146,238.2 150,240.5 154,242.4 158,242.7 162,242.9 167,242.8 171,243.1 175,243.2 179,242.1 183,242.8 188,242.4 192,241.9 196,242.2 200,242.4 204,242.0 209,242.4 213,242.7 217,243.7 221,243.4 225,241.1 230,240.9 234,240.7 238,239.9 242,239.5 246,239.4 250,238.7 255,237.5 259,235.4 263,234.0 267,232.8 271,229.4 276,231.0 280,231.5 284,233.3 288,233.5 292,235.5 297,234.6 301,235.3 305,236.6 309,236.9 313,238.4 318,237.9 322,238.9 326,239.4 330,238.7 334,239.2 339,239.0 343,239.4 347,237.4 351,238.0 355,238.2 360,238.6 364,238.7 368,239.0 372,238.8 376,239.7 381,240.4 385,238.5 389,238.6 393,234.8 397,233.8 402,230.2 406,229.9 410,226.8 414,225.7 418,226.2 423,224.1 427,224.1 431,222.9 435,220.7 439,222.1 444,226.0 448,228.3 452,226.2 456,225.7 460,225.5 465,220.2 469,218.7 473,215.5 477,217.6 481,217.6 486,217.0 490,214.9 494,216.5 498,213.1 502,212.8 507,210.3 511,212.4 515,210.0 519,212.4 523,215.0 528,215.2 532,214.7 536,213.7 540,215.8 544,215.2 549,216.0 553,221.2 557,217.9 561,218.6 565,211.1 570,213.1 574,211.6 578,209.0 582,208.4 586,204.7 590,205.3 595,203.5 599,206.5 603,204.5 607,202.3 611,203.2 616,202.1 620,206.1 624,204.8 628,199.7 632,196.6 637,192.6 641,194.5 645,191.8 649,191.6 653,189.3 658,189.3 662,181.1 666,174.1 670,177.9 674,177.9 679,178.2 683,181.4 687,182.2 691,180.4 695,181.1 700,178.3 704,179.5 708,176.7 712,179.6 716,192.4 721,186.7 725,187.9 729,194.7 733,189.0 737,185.3 742,187.1 746,190.5 750,183.0 754,184.5 758,184.2 763,187.4 767,184.6 771,192.6 775,192.2 779,186.9 784,188.4 788,186.9 792,196.0 796,198.7 800,193.5 805,196.6 809,197.2 813,191.3 817,195.3 821,189.2 826,183.8 830,185.6 834,185.0 838,183.8 842,184.2 847,174.5 851,173.3 855,175.3 859,172.4 863,172.4 868,171.6 872,164.3 876,165.9 880,164.1 884,164.4 889,164.3 893,163.2 897,163.3 901,155.9 905,157.3 910,151.8 914,153.1 918,139.9 922,122.9 926,121.0 930,133.3 935,132.3 939,136.0 943,109.0 947,122.9 951,126.2 956,125.5 960,127.4 964,129.4 968,129.1 972,111.9 977,82.9 981,85.8 985,111.0 989,94.2 993,74.5 998,65.1 1002,71.2 1006,68.0 1010,48.0 1014,52.5 1019,59.9 1023,66.1 1027,63.1 1031,78.7 1035,74.5 1040,56.4 1044,56.7 1048,60.2 1052,51.8 1056,45.0 1061,59.3 1065,67.7 1069,72.8 1073,76.1 1077,93.8 1082,100.0 1086,92.5 1090,104.8",kospi:"70,231.9 74,231.6 78,232.2 83,232.1 87,232.2 91,231.7 95,232.5 99,232.3 104,232.1 108,232.0 112,231.7 116,231.3 120,230.8 125,231.0 129,233.5 133,233.0 137,232.0 141,232.0 146,231.4 150,231.7 154,231.8 158,232.1 162,231.4 167,231.4 171,232.4 175,232.9 179,233.3 183,233.1 188,232.6 192,231.7 196,232.3 200,232.2 204,232.0 209,232.2 213,233.1 217,232.5 221,232.2 225,231.9 230,231.8 234,231.5 238,230.7 242,229.6 246,229.1 250,228.0 255,227.8 259,226.9 263,227.7 267,226.7 271,227.0 276,226.6 280,226.2 284,226.5 288,226.5 292,228.2 297,227.3 301,227.4 305,226.8 309,225.0 313,223.7 318,224.3 322,224.7 326,222.8 330,221.0 334,221.0 339,219.7 343,219.5 347,218.3 351,219.0 355,217.1 360,215.1 364,215.8 368,214.3 372,214.2 376,213.8 381,211.5 385,213.5 389,215.9 393,215.4 397,216.9 402,214.5 406,213.8 410,213.0 414,212.6 418,215.7 423,214.2 427,216.9 431,217.4 435,215.9 439,218.9 444,219.0 448,218.8 452,216.7 456,216.2 460,217.4 465,217.5 469,216.1 473,215.2 477,215.4 481,214.0 486,212.9 490,213.1 494,213.3 498,213.8 502,212.6 507,214.2 511,216.0 515,214.8 519,216.1 523,215.5 528,213.8 532,213.6 536,213.8 540,213.4 544,211.6 549,211.7 553,209.8 557,206.8 561,205.5 565,205.0 570,204.9 574,204.3 578,203.5 582,202.1 586,201.5 590,200.0 595,199.2 599,197.9 603,198.3 607,197.8 611,196.9 616,196.2 620,197.0 624,194.3 628,192.6 632,191.6 637,191.5 641,197.0 645,190.2 649,188.6 653,192.7 658,194.2 662,190.0 666,190.0 670,188.9 674,185.6 679,185.9 683,182.5 687,179.9 691,179.1 695,176.6 700,174.4 704,169.9 708,171.2 712,180.2 716,194.1 721,184.3 725,184.3 729,191.0 733,185.4 737,183.8 742,184.4 746,186.3 750,185.0 754,183.2 758,177.5 763,180.8 767,180.4 771,187.9 775,184.9 779,183.2 784,186.8 788,187.2 792,190.5 796,195.0 800,186.4 805,191.3 809,188.5 813,187.0 817,186.1 821,178.6 826,180.5 830,178.9 834,179.9 838,176.7 842,174.2 847,171.5 851,172.2 855,171.7 859,168.3 863,167.7 868,166.5 872,166.5 876,163.8 880,163.2 884,162.2 889,164.1 893,157.3 897,148.4 901,146.3 905,146.1 910,139.7 914,143.2 918,139.2 922,136.5 926,146.2 930,145.8 935,150.7 939,151.9 943,139.8 947,139.2 951,135.2 956,131.5 960,132.4 964,126.6 968,120.4 972,120.1 977,123.3 981,132.9 985,146.4 989,134.2 993,141.5 998,140.8 1002,133.6 1006,125.2 1010,121.6 1014,118.9 1019,114.9 1023,115.1 1027,113.9 1031,132.0 1035,126.7 1040,117.5 1044,127.9 1048,128.2 1052,126.6 1056,130.1 1061,143.1 1065,134.3 1069,135.1 1073,143.0 1077,151.1 1082,150.2 1086,146.6 1090,159.9",lotte:"70,231.9 74,233.3 78,235.4 83,235.5 87,236.6 91,237.0 95,236.3 99,236.6 104,238.0 108,238.4 112,239.5 116,239.1 120,238.8 125,238.8 129,239.8 133,239.1 137,239.2 141,238.2 146,237.8 150,239.9 154,242.0 158,242.5 162,242.8 167,242.7 171,243.2 175,243.5 179,243.2 183,243.2 188,243.5 192,243.1 196,243.0 200,243.4 204,242.8 209,243.3 213,243.2 217,244.4 221,244.1 225,242.9 230,242.7 234,242.5 238,242.0 242,241.7 246,241.8 250,241.6 255,240.2 259,240.0 263,239.0 267,238.2 271,238.2 276,238.8 280,239.1 284,239.7 288,239.3 292,240.0 297,239.7 301,239.6 305,240.4 309,240.5 313,242.7 318,242.7 322,242.7 326,242.6 330,242.4 334,242.7 339,242.4 343,242.9 347,241.5 351,242.2 355,242.5 360,242.3 364,242.7 368,243.2 372,243.8 376,244.1 381,244.7 385,244.6 389,244.9 393,242.3 397,243.0 402,240.1 406,240.8 410,238.8 414,238.9 418,238.0 423,237.8 427,237.8 431,238.6 435,237.6 439,236.8 444,239.0 448,239.4 452,238.6 456,238.6 460,239.0 465,237.4 469,236.6 473,235.6 477,236.3 481,236.9 486,238.3 490,238.8 494,239.0 498,238.2 502,235.9 507,235.7 511,236.7 515,236.0 519,235.5 523,236.8 528,236.1 532,236.5 536,235.9 540,237.4 544,238.1 549,238.2 553,241.3 557,241.3 561,241.1 565,240.3 570,241.1 574,241.4 578,240.3 582,239.3 586,237.8 590,237.6 595,236.3 599,236.4 603,235.9 607,235.9 611,234.6 616,233.2 620,235.6 624,234.7 628,235.0 632,233.1 637,229.1 641,229.7 645,224.3 649,219.7 653,219.2 658,218.8 662,217.4 666,205.7 670,204.3 674,207.0 679,205.8 683,207.5 687,208.7 691,205.6 695,207.1 700,206.7 704,210.7 708,210.3 712,213.5 716,222.7 721,219.6 725,218.9 729,222.8 733,221.2 737,217.8 742,218.6 746,219.6 750,214.4 754,213.6 758,212.1 763,210.5 767,205.7 771,215.9 775,212.4 779,207.4 784,205.2 788,205.0 792,210.5 796,209.9 800,211.6 805,214.6 809,216.8 813,212.8 817,213.1 821,210.7 826,207.5 830,211.0 834,212.9 838,212.2 842,210.5 847,199.2 851,199.5 855,200.3 859,202.2 863,201.6 868,199.1 872,190.2 876,190.0 880,190.5 884,189.2 889,188.4 893,185.8 897,191.2 901,187.7 905,186.2 910,180.7 914,175.4 918,168.7 922,156.3 926,161.0 930,169.9 935,167.9 939,174.2 943,166.3 947,166.1 951,170.0 956,175.0 960,175.7 964,178.5 968,178.7 972,173.4 977,159.2 981,158.4 985,162.7 989,151.4 993,140.6 998,135.4 1002,140.5 1006,147.9 1010,138.6 1014,134.2 1019,146.0 1023,153.0 1027,155.1 1031,156.9 1035,157.4 1040,160.3 1044,157.1 1048,160.0 1052,161.1 1056,148.9 1061,162.0 1065,163.0 1069,158.5 1073,157.2 1077,169.1 1082,170.0 1086,172.5 1090,173.3",hds:"70,231.9 74,233.6 78,234.7 83,235.0 87,234.7 91,235.8 95,236.7 99,237.9 104,239.8 108,239.9 112,240.7 116,240.8 120,240.7 125,241.6 129,242.9 133,242.6 137,242.8 141,239.0 146,239.0 150,238.9 154,240.3 158,240.9 162,240.9 167,240.0 171,240.8 175,240.8 179,239.0 183,239.7 188,239.8 192,238.6 196,238.2 200,238.0 204,237.6 209,238.8 213,240.0 217,242.2 221,242.2 225,238.8 230,237.6 234,238.1 238,236.5 242,236.2 246,234.8 250,234.5 255,234.3 259,233.4 263,231.0 267,228.9 271,227.2 276,227.1 280,227.2 284,227.4 288,227.0 292,228.5 297,227.4 301,227.9 305,229.4 309,228.6 313,232.4 318,232.7 322,233.4 326,233.8 330,233.7 334,234.2 339,233.5 343,234.2 347,232.7 351,233.0 355,232.8 360,232.8 364,233.0 368,233.3 372,233.3 376,233.8 381,234.6 385,231.3 389,232.1 393,228.1 397,225.7 402,225.7 406,228.5 410,224.8 414,224.2 418,226.1 423,224.1 427,223.7 431,224.8 435,224.0 439,222.5 444,224.9 448,227.3 452,226.5 456,226.0 460,225.8 465,221.2 469,220.2 473,220.5 477,223.8 481,223.5 486,226.7 490,226.1 494,226.4 498,222.5 502,222.9 507,224.5 511,225.4 515,224.8 519,225.3 523,225.5 528,225.3 532,226.4 536,225.8 540,226.4 544,227.2 549,227.8 553,230.7 557,228.0 561,231.0 565,226.3 570,226.1 574,225.4 578,225.3 582,226.2 586,222.4 590,223.2 595,222.1 599,224.4 603,224.1 607,223.5 611,226.0 616,226.0 620,228.1 624,227.2 628,227.9 632,225.7 637,223.9 641,224.7 645,220.6 649,217.5 653,218.0 658,219.2 662,218.7 666,212.8 670,213.6 674,210.7 679,211.6 683,214.5 687,214.1 691,212.3 695,212.0 700,210.2 704,212.2 708,211.4 712,217.2 716,226.4 721,225.6 725,227.1 729,230.8 733,228.9 737,227.1 742,229.4 746,231.0 750,229.7 754,229.0 758,227.7 763,229.8 767,225.4 771,231.4 775,230.5 779,229.2 784,231.0 788,231.0 792,234.6 796,235.0 800,233.3 805,237.2 809,237.9 813,237.5 817,238.5 821,235.2 826,234.2 830,233.7 834,234.4 838,231.5 842,230.0 847,225.8 851,226.6 855,225.7 859,225.0 863,225.4 868,223.5 872,220.2 876,208.9 880,210.7 884,209.9 889,212.2 893,210.1 897,213.2 901,208.5 905,209.8 910,210.5 914,210.9 918,208.6 922,199.9 926,204.7 930,209.9 935,212.9 939,216.2 943,203.9 947,211.4 951,213.6 956,215.2 960,212.0 964,211.6 968,209.8 972,202.3 977,188.5 981,183.4 985,181.8 989,167.8 993,164.7 998,152.2 1002,159.8 1006,155.2 1010,143.6 1014,137.0 1019,139.3 1023,146.4 1027,145.4 1031,148.8 1035,150.7 1040,145.8 1044,142.0 1048,147.2 1052,147.2 1056,146.9 1061,152.9 1065,158.1 1069,160.4 1073,160.5 1077,166.4 1082,167.2 1086,167.6 1090,174.6"};
+if(REBASE.ssg){document.getElementById('ln-ssg').setAttribute('points',REBASE.ssg);
+document.getElementById('ln-kospi').setAttribute('points',REBASE.kospi);
+document.getElementById('ln-lotte').setAttribute('points',REBASE.lotte);
+document.getElementById('ln-hds').setAttribute('points',REBASE.hds);}
+</script>
+</body>
+</html>
