@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마키나락스 477850 · 심층리서치(딥리서치) v1 · 2026-07-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F5EF; --paper:#FCFBF7; --ink:#1A1814; --ink2:#3C372F; --muted:#7A7264;
+  --line:#E2DCCF; --line2:#D2C9B6; --accent:#B8472E; --accent2:#2E6B5E; --gold:#9C7A2E;
+  --up:#2E6B5E; --down:#B8472E; --chip:#EFEAE0; --shadow:rgba(40,34,24,0.07);
+  --pretendard:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--line)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#fff;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:600;font-size:12px;letter-spacing:.02em}
+.tabs{position:sticky;top:54px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{position:sticky;top:92px;z-index:48;background:#F0ECE1;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:4px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:31px;font-weight:600;line-height:1.2;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.7}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 62%,#F0D9A8 62%);padding:0 1px;font-weight:500}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:var(--ink);color:#F2EEE3;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#fff;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down)} .est.bull{background:var(--up)}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:16px 17px;box-shadow:0 1px 2px var(--shadow)}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#EEE9DE;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F3EFE5}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.txt{text-align:left}
+tr.hl td{background:#FBF3E3;font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#F0ECE1}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:#DCEAE5;color:var(--up)} .tag.s{background:#F3DBD3;color:var(--down)} .tag.n{background:#EDE6D6;color:var(--gold)}
+.note{background:#EFEADE;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:#E6EEEA;border-color:#BFD8CF}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:#F5E9E3;border-color:#E3C4B6}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--paper)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">477850</span>
+    <span class="nm">마키나락스 <small>MakinaRocks · 산업 AI / 엔터프라이즈 AI OS (KOSDAQ) · 심층리서치 v1</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px" id="pxNow">₩30,100</span>
+    <span style="color:var(--muted)" id="pxSub">시총 ~5,280억 · 공모가 2.0배 · 07-15 +7.7%</span>
+    <span class="rating">딥리서치 v1 · 팩트체크</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·요약</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·기술·제품</button>
+  <button class="tab" data-t="t3"><b>03</b>재무·실적</button>
+  <button class="tab" data-t="t4"><b>04</b>투자·밸류·주주</button>
+  <button class="tab" data-t="t5"><b>05</b>IPO·상장후 수급</button>
+  <button class="tab" data-t="t6"><b>06</b>경쟁·시장</button>
+  <button class="tab" data-t="t7"><b>07</b>리스크·팩트체크</button>
+  <button class="tab" data-t="t8"><b>08</b>출처·방법론</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span style="color:var(--gold);font-weight:600">기준 2026-07-15</span>
+  <span>KOSDAQ 477850 · 상장 2026-05-20(기술특례)</span>
+  <span>공모가 15,000원 · 수요예측 1,196:1 · 확약 78.2%</span>
+  <span id="fxPx" style="color:var(--gold);font-weight:600">현재가 30,100원(+7.7%) · 시총 ~5,280억 · 공모가 2.0배</span>
+  <span style="color:var(--muted)">딥리서치 108에이전트 · 25소스 · 적대적 검증(23확정/2기각)</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ═══════════ TAB 1 결론·요약 ═══════════ -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">판정 · 2026-07-15 · RESEARCH LAB</div>
+  <h1 class="big">역대 최고 확약률로 상장한, 아직 적자인 '피지컬 AI'</h1>
+  <p class="lead">마키나락스의 IPO는 코스닥 <strong>역대급 흥행</strong>이었다 — 공모가 밴드 상단, 수요예측 1,196:1, 의무보유확약 78.2%(코스닥 최고), 상장 첫날 약 4배. 그러나 회사는 <strong>여전히 적자(2025년 영업손실 -80억)</strong>이고, 공모가는 <em>2028년 추정이익의 현재가치</em>에 기댄 값이다. 진짜 방패는 <strong>삼성·현대차·LG·SK텔레콤·네이버·GS·한화·포스코 + Applied Materials</strong>로 이어지는 대기업 전략 지분 라인업. 숙제는 매출의 <em>서비스(컨설팅) 편중</em>과 상장 초기 <em>유통물량 38.5%</em>의 오버행이다.</p>
+
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">공모가 / 밴드</div><div class="val">15,000<span class="u">원</span></div><div class="sub">밴드 12,500~15,000 · 상단 확정</div></div>
+    <div class="kpi"><div class="lab">기관 수요예측</div><div class="val">1,196<span class="u">:1</span></div><div class="sub">2,427개사 · 확약 78.2% <span class="est">역대최고</span></div></div>
+    <div class="kpi"><div class="lab">2025 매출 / 영업손익</div><div class="val">114.6<span class="u">억</span></div><div class="sub">+38.2% YoY · 영업손실 -80.4억</div></div>
+    <div class="kpi"><div class="lab">누적 조달 / 라운드</div><div class="val">530<span class="u">억</span></div><div class="sub">6라운드 · 17개 투자사 · SI 다수</div></div>
+  </div>
+
+  <h2 class="sec">한눈에 — 검증 통과 팩트</h2>
+  <table>
+    <thead><tr><th>축</th><th class="txt">핵심</th><th>신뢰도</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">회사</td><td class="txt">2017.12 설립 · CEO 윤성호(MIT 물리학 박사) · 서초구 · '엔터프라이즈 AI OS 기반 피지컬 AI'</td><td><span class="tag b">높음</span></td></tr>
+      <tr><td class="txt">제품</td><td class="txt">엔터프라이즈 AI OS <strong>Runway</strong>(2022.11, 온프레미스·폐쇄망) + 도면 AI <strong>DrawX</strong>. CB Insights MLOps 맵 국내 유일</td><td><span class="tag b">높음</span></td></tr>
+      <tr><td class="txt">재무</td><td class="txt">매출 14→32→52→83→114.6억(’21~’25) 고성장, 3년 연속 적자(-112/-109/-80억). 가이던스 ’26 225억·’27 흑자전환</td><td><span class="tag b">높음</span></td></tr>
+      <tr><td class="txt">주주</td><td class="txt">삼성·현대차·LG·SKT·네이버·GS·한화·포스코·Applied Materials 전략 지분(대부분 CVC/계열 경유)</td><td><span class="tag b">높음</span></td></tr>
+      <tr><td class="txt">밸류</td><td class="txt">’23 프리IPO ~2,500억 → ’24 다운라운드 ~1,200억(반토막) → IPO 공모시총 2,194~2,633억</td><td><span class="tag b">높음</span></td></tr>
+      <tr><td class="txt">IPO</td><td class="txt">2026-05-20 코스닥 기술특례 상장 · 미래에셋 대표주관 · 첫날 ~4배</td><td><span class="tag b">높음</span></td></tr>
+      <tr><td class="txt">경쟁</td><td class="txt">밸류 피어=엑셈·와이즈넛·슈어소프트테크·비아이매트릭스(≠제품 직접경쟁). 실경쟁 지형 미확립</td><td><span class="tag n">중간</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">투자 판단의 다섯 기둥</h2>
+  <ul class="cl">
+    <li><strong>① 대기업 지분 라인업 = 최대 셀링포인트.</strong> 국내 8대 그룹 + 글로벌 반도체 장비사 Applied Materials가 전략 투자자로 참여 — 레퍼런스·판로·신뢰의 원천. 단, 상당수는 <em>CVC/계열사 경유</em>이고 개별 지분율은 비공개(참여 '사실'까지만 확립).</li>
+    <li><strong>② IPO 수요는 검증됐다.</strong> 확약률 78.2%(코스닥 역대 최고), 수요예측 1,196:1 — 기관이 밸류를 <em>일단</em> 수용했다는 신호. 그러나 초기 유통물량 38.5%가 오버행으로 남는다.</li>
+    <li><strong>③ 성장은 진짜, 흑자는 미래.</strong> 매출 CAGR는 높지만 3년 연속 적자. 밸류는 현재 실적이 아니라 <em>2028년 추정이익 현가</em>에 의존 — 추정 미달 시 하방이 크다.</li>
+    <li><strong>④ 아직은 '플랫폼'보다 '서비스' 회사.</strong> 2026 1분기 매출의 <em>79%가 AI 컨설팅</em>, 런웨이 플랫폼은 21%. SaaS 전환 속도가 밸류 정당화의 핵심 변수.</li>
+    <li><strong>⑤ 회사 마케팅 수치는 걸러 읽어라.</strong> 'Runway 셋업 6개월→4주·팀 절반', '2025 수주 20.4억 배증' 등 정량 효율/수주 주장은 <em>적대적 검증에서 기각</em>됐다(07번 탭).</li>
+  </ul>
+
+  <div class="note in"><div class="h">한 문장 요약</div>
+  <strong>스토리(대기업 지분·산업 AI 성장)는 실재하고 IPO 수요도 검증됐으나, 밸류는 미래추정 선불 + 적자 지속 + 서비스 편중 + 초기 오버행이라는 네 개의 청구서를 함께 안고 출발한 종목.</strong> 상장 후 트래킹의 핵심은 ① 분기 런웨이(플랫폼) 매출 비중 상승 ② 적자 축소 지속 ③ 락업 해제 소화 ④ 대기업 지분의 실매출 전환 여부.</div>
+
+  <div class="note warn"><div class="h">고지</div>본 자료는 <strong>공개 소스 기반 딥리서치·팩트체크 정리</strong>로, 특정 매매를 권유하는 투자자문이 아니다. 밸류에이션 수치는 회사 증권신고서·DB증권 IPO 리포트 등 공개 자료의 <em>재정리</em>이며, 저자 독자추정 목표주가가 아니다.</div>
+</section>
+
+<!-- ═══════════ TAB 2 BM·기술·제품 ═══════════ -->
+<section class="panel" id="t2">
+  <div class="eyebrow">사업모델 · 기술 · 제품</div>
+  <h1 class="big">엔터프라이즈 AI OS로 '제조 현장의 두뇌'를 판다</h1>
+  <p class="lead">마키나락스는 반도체·자동차·2차전지·태양광 등 <strong>제조업의 이상탐지·자율운영·강화학습</strong>에 특화된 산업 AI 기업이다. 2024년부터 <strong>방산(국방 통합 AI 플랫폼)</strong>으로 영역을 넓혔다. 스스로를 "엔터프라이즈 AI OS 기반 <em>피지컬 AI</em> 대표기업"으로 규정한다(회사 용어).</p>
+
+  <div class="grid g2">
+    <div class="card acc"><h3>Runway (런웨이) — 주력</h3><p style="margin-top:4px">AI 모델의 <strong>개발→배포→운영→유지보수</strong> 전주기를 관리하는 엔터프라이즈 MLOps 플랫폼. 2022년 11월 출시, 현재 <strong>Runway 2.0</strong>(플랫폼/애플리케이션 분리). <em>온프레미스·폐쇄망(고보안)</em> 지원이 반도체·방산향 차별점이다.</p></div>
+    <div class="card acc2"><h3>DrawX — 2번째 제품</h3><p style="margin-top:4px">도면 기반 의사결정 AI 에이전트. 제조 도면을 읽고 판단을 보조하는 신규 라인업으로, 컨설팅 레퍼런스를 제품화하려는 방향성을 보여준다.</p></div>
+  </div>
+
+  <div class="note"><div class="h">포지셔닝 근거</div><strong>CB Insights의 ML Operations 마켓맵</strong>에 <em>국내 유일</em>하게 등재 — DataRobot·Databricks·Dataiku·Scale AI·Hugging Face 등 글로벌 완성형 MLOps 플레이어들과 같은 카테고리로 분류됐다.<span class="src">출처<span class="tip">인공지능신문(aitimes.kr) — CB인사이트 'MLOps Market Map'의 AI 개발 플랫폼 부문에 마키나락스 국내 유일 등재. 단 '등재' 사실이지 점유율·우열의 근거는 아님.</span></span></p></div>
+
+  <h2 class="sec">돈 버는 법 — 아직은 '컨설팅 79 : 플랫폼 21'</h2>
+  <p>표면은 플랫폼(SW) 회사지만, <strong>실매출은 아직 서비스(컨설팅) 비중이 지배적</strong>이다. 2026년 1분기 기준 AI 컨설팅 23.9억(79%) vs 런웨이 플랫폼 6.5억(21%).<span class="src">출처<span class="tip">블로터(bloter.net) 2026년 1분기 실적: 연결 영업수익 30.3억(+167.6% YoY), 부문별 AI 컨설팅 23.9억(79%)·런웨이 6.5억(21%).</span></span> 투자 논리의 핵심은 <em>이 믹스가 플랫폼 쪽으로 얼마나 빨리 넘어가느냐</em>다 — SaaS(런웨이) 비중 상승은 마진·밸류 정당화의 직접 동인.</p>
+
+  <div class="chart"><div class="ct">부문별 매출 믹스 — 2026 1Q (총 30.3억)</div><div class="cs">플랫폼(런웨이) 비중이 아직 21%. 이 막대가 오른쪽으로 자라야 '플랫폼 회사'의 밸류가 정당화된다.</div>
+  <svg viewBox="0 0 1080 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부문별 매출 믹스">
+    <rect x="60" y="34" width="758.4" height="42" fill="#2E6B5E" rx="4"/>
+    <rect x="818.4" y="34" width="201.6" height="42" fill="#B8472E" rx="4"/>
+    <text x="439" y="60" text-anchor="middle" fill="#F7F5EF" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">AI 컨설팅 · 23.9억 · 79%</text>
+    <text x="919" y="60" text-anchor="middle" fill="#F7F5EF" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">런웨이 21%</text>
+    <text x="60" y="100" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10.5">0%</text>
+    <text x="1020" y="100" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10.5">100% (30.3억)</text>
+  </svg>
+  </div>
+
+  <h2 class="sec">핵심기술 스택</h2>
+  <ul class="cl c2">
+    <li><strong>이상탐지(Anomaly Detection).</strong> 제조 공정의 정상/비정상 패턴 학습 — 반도체·2차전지 품질/설비 진단의 코어.</li>
+    <li><strong>강화학습(RL) 기반 자율운영.</strong> 반도체 ASIC 플로어플랜 등 최적화·자율제어 과제에 적용(회사 소개).</li>
+    <li><strong>MLOps(런웨이).</strong> 폐쇄망까지 포함한 모델 라이프사이클 자동화 — 대기업/방산의 보안 요건이 진입장벽이자 차별점.</li>
+    <li><strong>도메인 특화 모델 다수.</strong> 회사는 수천 개 산업 특화 모델 상용화 경험을 주장(정량 효과성은 미검증 — 07번 탭 참조).</li>
+  </ul>
+
+  <div class="note"><div class="h">상장 후 확인된 고객·레퍼런스 (2026 상반기)</div>
+  <span class="pill">삼성전자</span><span class="pill">현대차</span><span class="pill">두산에너빌리티</span><span class="pill">국방과학연구소(ADD)</span><span class="pill">요코가와</span><span class="pill">덴소코리아</span><span class="pill">한국수자원공사</span>
+  <p style="margin-top:8px">상반기 수주는 <strong>국방·항공우주 27% / 중공업 23% / 첨단제조(반도체·디스플레이·배터리) 22% / 일반제조 21%</strong>로 분산. 방산(AWS 국방 AI MOU·ADD)과 공공(K-water)으로 저변이 넓어지는 중이다(수주 상세는 05번 탭).</p></div>
+</section>
+
+<!-- ═══════════ TAB 3 재무·실적 ═══════════ -->
+<section class="panel" id="t3">
+  <div class="eyebrow">재무 · 매출추이 · 손익</div>
+  <h1 class="big">고성장 곡선, 좁혀지는 적자 — 그러나 아직 적자</h1>
+  <p class="lead">매출은 2021년 14억에서 2025년 114.6억으로 <strong>가파르게 성장</strong>했고, 영업손실은 -112 → -109 → -80억으로 <em>축소 중</em>이다. 회사는 2026년 매출 225억(+97%)과 <strong>2027년 흑자전환</strong>을 목표로 제시한다(가이던스, 실적 아님).</p>
+
+  <table>
+    <thead><tr><th>억원 · 12월 결산</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2026E</th></tr></thead>
+    <tbody>
+      <tr><td>매출(영업수익)</td><td class="num">14</td><td class="num">32</td><td class="num">52</td><td class="num">83</td><td class="num">114.6</td><td class="num">225<span class="est">가이던스</span></td></tr>
+      <tr><td>YoY</td><td class="num">—</td><td class="num">+129%</td><td class="num">+63%</td><td class="num up">+60%</td><td class="num up">+38.2%</td><td class="num up">+97%</td></tr>
+      <tr class="tot"><td>영업손익</td><td class="num">—</td><td class="num">—</td><td class="num down">-112</td><td class="num down">-109</td><td class="num down">-80.4</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: DB증권 IPO 분석리포트(finuts PDF, 1차) — 16p 전문에서 축자 확인 · 감사보고서(2024 82.94억) 교차검증. 2026E는 회사 가이던스.<span class="src">출처<span class="tip">DB증권 IPO 리포트: 2021~2026E 매출 14/32/52/83/115/225억, 2018년 이후 84% 수준 고성장, 2026 가이던스 225억(+97%), 2026.3 확보계약잔고 131억, 2027 흑자전환 목표. 영업손실 2023 -112 / 2024 -109 / 2025 -80.4억.</span></span></p>
+
+  <div class="chart"><div class="ct">매출(막대) × 영업손실(선) — 2021~2026E (억원)</div><div class="cs">막대는 위로(매출 성장), 붉은 선은 0선 아래에서 위로(적자 축소). 2026E 매출(빗금)은 회사 가이던스. 둘이 만나는 지점이 '흑자전환'.</div>
+  <svg viewBox="0 0 1080 345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="매출과 영업손실 추이">
+    <defs><pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#2E6B5E" opacity="0.18"/><line x1="0" y1="0" x2="0" y2="7" stroke="#2E6B5E" stroke-width="3"/></pattern></defs>
+    <!-- gridlines -->
+    <line x1="60" y1="76.67" x2="1040" y2="76.67" stroke="#E2DCCF" stroke-width="1"/>
+    <line x1="60" y1="143.33" x2="1040" y2="143.33" stroke="#E2DCCF" stroke-width="1"/>
+    <line x1="60" y1="276.67" x2="1040" y2="276.67" stroke="#E2DCCF" stroke-width="1"/>
+    <text x="52" y="80" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">200</text>
+    <text x="52" y="147" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">100</text>
+    <text x="52" y="280" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">-100</text>
+    <!-- zero line -->
+    <line x1="60" y1="210" x2="1040" y2="210" stroke="#D2C9B6" stroke-width="1.5"/>
+    <text x="52" y="214" text-anchor="end" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">0</text>
+    <!-- revenue bars -->
+    <rect x="112" y="200.67" width="76" height="9.33" fill="#2E6B5E" rx="2"/>
+    <rect x="272" y="188.67" width="76" height="21.33" fill="#2E6B5E" rx="2"/>
+    <rect x="432" y="175.33" width="76" height="34.67" fill="#2E6B5E" rx="2"/>
+    <rect x="592" y="154.67" width="76" height="55.33" fill="#2E6B5E" rx="2"/>
+    <rect x="752" y="133.6" width="76" height="76.4" fill="#2E6B5E" rx="2"/>
+    <rect x="912" y="60" width="76" height="150" fill="url(#hatch)" stroke="#2E6B5E" stroke-width="1.2" rx="2"/>
+    <!-- revenue value labels -->
+    <text x="150" y="194" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">14</text>
+    <text x="310" y="182" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">32</text>
+    <text x="470" y="169" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">52</text>
+    <text x="630" y="148" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">83</text>
+    <text x="790" y="127" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">114.6</text>
+    <text x="950" y="53" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="600">225E</text>
+    <!-- loss line -->
+    <polyline points="470,284.67 630,282.67 790,263.6" fill="none" stroke="#B8472E" stroke-width="2.4"/>
+    <circle cx="470" cy="284.67" r="4.5" fill="#B8472E"/><circle cx="630" cy="282.67" r="4.5" fill="#B8472E"/><circle cx="790" cy="263.6" r="4.5" fill="#B8472E"/>
+    <text x="470" y="300" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">-112</text>
+    <text x="630" y="298" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">-109</text>
+    <text x="790" y="279" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">-80.4</text>
+    <!-- year labels -->
+    <text x="150" y="333" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="11">2021</text>
+    <text x="310" y="333" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="11">2022</text>
+    <text x="470" y="333" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="11">2023</text>
+    <text x="630" y="333" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="11">2024</text>
+    <text x="790" y="333" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="11">2025</text>
+    <text x="950" y="333" text-anchor="middle" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="11">2026E</text>
+  </svg>
+  <div class="lgd"><span><i style="background:#2E6B5E"></i>매출(억)</span><span><i style="background:#B8472E"></i>영업손실(억)</span><span><i style="background:#2E6B5E;opacity:.4"></i>2026E 가이던스</span></div>
+  </div>
+
+  <div class="note in"><div class="h">2026년 출발은 강하다</div>
+  1분기 매출 30.3억(+167.6% YoY), 영업손실 -24.3억(전년 -32.2억에서 축소), 순손실 -23.7억.<span class="src">출처<span class="tip">블로터 2026-1Q: 영업수익 30.3억(+167.6%), 영업손실 24.3억, 순손실 23.7억. 컨설팅 23.9억·런웨이 6.5억.</span></span> 확보계약잔고는 2026년 3월 기준 131억 — 그러나 연 가이던스 225억까지는 <strong>약 94억의 미확보 파이프라인</strong>이 남아, 흑자전환 목표(2027)의 관건은 이 파이프라인의 가시성이다.</div>
+</section>
+
+<!-- ═══════════ TAB 4 투자·밸류·주주 ═══════════ -->
+<section class="panel" id="t4">
+  <div class="eyebrow">투자유치 · 밸류에이션 · 주주구성</div>
+  <h1 class="big">반토막을 딛고 3,000억을 정조준한 이력</h1>
+  <p class="lead">누적 <strong>530억(약 4천만 달러)</strong>을 6개 라운드·17개 투자사로 조달했다. 투자관점의 최대 셀링포인트는 <strong>국내 8대 그룹 + 글로벌 Applied Materials</strong>의 전략 지분참여. 밸류는 2023년 프리IPO 약 2,500억에서 2024년 <em>다운라운드 약 1,200억</em>으로 반토막 났다가, IPO에서 회복했다.</p>
+
+  <h2 class="sec">밸류에이션 궤적</h2>
+  <div class="chart"><div class="ct">기업가치 궤적 (억원) — 프리IPO → 다운라운드 → IPO</div><div class="cs">2023년 말 ~2,500억 → 2024년 예심 철회 후 다운라운드 ~1,200억(−52%) → 2026 IPO 공모시총 2,194~2,633억으로 회복. <b>상장 후 현재(7/15) 시총은 ~5,280억으로 공모 대비 2배(05번 탭).</b></div>
+  <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="밸류에이션 궤적">
+    <line x1="80" y1="250" x2="1000" y2="250" stroke="#D2C9B6" stroke-width="1"/>
+    <line x1="80" y1="100" x2="1000" y2="100" stroke="#E2DCCF" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="72" y="104" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">2,500</text>
+    <text x="72" y="254" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">0</text>
+    <!-- line 2500->1200->2633 : y = 250 - val/3000*180 -->
+    <polyline points="200,100 540,178 880,92.02" fill="none" stroke="#B8472E" stroke-width="2.6"/>
+    <circle cx="200" cy="100" r="6" fill="#2E6B5E"/>
+    <circle cx="540" cy="178" r="6" fill="#B8472E"/>
+    <circle cx="880" cy="92.02" r="6" fill="#9C7A2E"/>
+    <text x="200" y="84" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">~2,500</text>
+    <text x="540" y="198" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">~1,200</text>
+    <text x="880" y="76" text-anchor="middle" fill="#9C7A2E" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">2,194~2,633</text>
+    <text x="370" y="150" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5" font-weight="600">−52% 다운라운드</text>
+    <text x="200" y="272" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10.5">2023말 프리IPO</text>
+    <text x="540" y="272" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10.5">2024 다운라운드</text>
+    <text x="880" y="272" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10.5">2026 IPO 공모</text>
+  </svg>
+  </div>
+
+  <div class="two">
+    <div>
+      <h3>라운드·조달</h3>
+      <ul class="cl">
+        <li>누적 <strong>530억</strong> · 6개 라운드 · 17개 투자사(최종 사모단계 Pre-IPO)</li>
+        <li>시리즈A: <strong>Applied Ventures·LG·SK·네이버</strong></li>
+        <li>전략투자 라운드: <strong>GS·삼성·포스코·한화</strong> 합류</li>
+        <li>2023말 프리IPO ~2,500억(삼성증권·Applied Ventures 참여)</li>
+        <li>2024 다운라운드 ~1,200억(주당 9,200원, 190억 3자배정, Almus·HB인베스트)<span class="src">출처<span class="tip">뉴스톱/더비스타 — '1년 만에 50% 하락, 2,400억→1,200억'. 2024.10 코스닥 예심 자진철회 직후 발생. thebell '3,000억 몸값 정조준'.</span></span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>상장 후 지분구조</h3>
+      <table>
+        <thead><tr><th class="txt">주체</th><th>지분</th></tr></thead>
+        <tbody>
+          <tr><td class="txt">윤성호(대표) 외</td><td class="num">25.85%</td></tr>
+          <tr><td class="txt">이재혁(2대주주)</td><td class="num">6.96%</td></tr>
+          <tr><td class="txt">벤처금융·전문투자자<br><span style="font-size:10.5px;color:var(--muted)">(NAVER·SKT 등 포함)</span></td><td class="num">52%</td></tr>
+          <tr class="tot"><td class="txt">공모주주+상장주선인</td><td class="num">15%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--muted)">DB증권 리포트 표2·표3. 총 락업(보호예수) 61.52%.</p>
+    </div>
+  </div>
+
+  <div class="note"><div class="h">상장사 전략투자자 라인업 (핵심 투자포인트)</div>
+  <span class="pill">삼성</span><span class="pill">현대차</span><span class="pill">LG</span><span class="pill">SK텔레콤</span><span class="pill">네이버</span><span class="pill">GS</span><span class="pill">한화</span><span class="pill">포스코</span><span class="pill">Applied Materials</span>
+  <p style="margin-top:8px"><strong>주의:</strong> 상당수는 <em>CVC/계열사 경유</em>다 — Applied Materials→Applied Ventures, 포스코→포스코인베스트, SK→SK텔레콤, LG→LG테크놀로지벤처스, 삼성→삼성증권. <strong>개별 지분율은 비공개</strong>이므로 "지분참여 사실"까지만 확립됐고, 각 그룹의 사업협력이 실매출로 얼마나 연결되는지는 별도 확인 필요.<span class="src">출처<span class="tip">회사 About·IPO 뉴스 + THE VC·edaily·VentureSquare·market-ink 교차검증(3-0). 규제 IPO 증권신고서 기반 캡테이블. 개별 SI 지분율 미공개.</span></span></p></div>
+</section>
+
+<!-- ═══════════ TAB 5 IPO·상장후 수급 ═══════════ -->
+<section class="panel" id="t5">
+  <div class="eyebrow">IPO · 상장 후 수급</div>
+  <h1 class="big">코스닥 역대급 청약, 그리고 남은 오버행</h1>
+  <p class="lead">2026년 5월 20일 코스닥 <strong>기술특례 상장</strong>(477850). 미래에셋증권 대표주관(삼성증권 공동). 공모가는 밴드 상단 15,000원, 기관 수요예측 1,196:1, <strong>의무보유확약 78.2%로 코스닥 IPO 역대 최고</strong>. 상장 첫날 약 4배(≈60,000원)로 급등했다.</p>
+
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">공모가 (밴드 상단)</div><div class="val">15,000<span class="u">원</span></div><div class="sub">밴드 12,500~15,000</div></div>
+    <div class="kpi"><div class="lab">수요예측 경쟁률</div><div class="val">1,196<span class="u">:1</span></div><div class="sub">2,427개사 · 주문 ~30조</div></div>
+    <div class="kpi"><div class="lab">일반청약 경쟁률</div><div class="val">2,808<span class="u">:1</span></div><div class="sub">증거금 ~13.9조</div></div>
+    <div class="kpi"><div class="lab">확약률 (역대 최고)</div><div class="val">78.2<span class="u">%</span></div><div class="sub">3M↑ 51.6% · 6M↑ 20.5%</div></div>
+  </div>
+
+  <h2 class="sec">IPO 타임라인</h2>
+  <table>
+    <thead><tr><th class="txt">일자</th><th class="txt">이벤트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026-02-27</td><td class="txt">한국거래소 코스닥 상장 예비심사 승인</td></tr>
+      <tr><td class="txt">2026-03-25</td><td class="txt">증권신고서 제출 — 공모 2,635,000주, 밴드 12,500~15,000원(조달 32.9~39.5억)</td></tr>
+      <tr><td class="txt">2026-04-28~05-06</td><td class="txt">기관 수요예측 → 공모가 15,000원 확정</td></tr>
+      <tr><td class="txt">2026-05-11~12</td><td class="txt">일반청약(2,808:1, 증거금 ~13.9조)</td></tr>
+      <tr class="hl"><td class="txt">2026-05-20</td><td class="txt">코스닥 상장(477850) · 첫날 ~4배 급등(≈60,000원)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: 회사 IPO 뉴스룸 + 한국경제·이데일리·비즈워치·서울경제·Korea Herald 교차검증(3-0).</p>
+
+  <div class="note warn"><div class="h">오버행 — 상장 초기 유통물량 38.5%</div>
+  상장 직후 유통가능물량 비중은 <strong>약 38.48%(≈675만주)</strong>로 코스닥 신규주 중 낮지 않다. 공모가가 <em>현재 실적이 아닌 2028년 추정이익 현가</em>로 산정됐고 일반청약 <strong>환매청구권(풋백)도 없어</strong>, 공모가 하회 시 손실이 청약자에게 전가되는 구조다.<span class="src">출처<span class="tip">Daum/뉴스 2026-05-09 — 상장 직후 유통물량 38.48%(675만주), 영업손실 3년 연속, 공모가 미래추정 의존, 일반청약 환매청구권 없음.</span></span></p></div>
+
+  <h2 class="sec">상장 후 실데이터 <span style="font-size:12px;color:var(--muted)">(2026-07-15 기준)</span></h2>
+  <div id="postListing">
+    <div class="grid g4">
+      <div class="kpi"><div class="lab">현재가 (07-15)</div><div class="val">30,100<span class="u">원</span></div><div class="sub up">+7.7% · 종가 부근</div></div>
+      <div class="kpi"><div class="lab">시가총액</div><div class="val">~5,280<span class="u">억</span></div><div class="sub">전체 상장주식 기준 · 포털 ~4,960억</div></div>
+      <div class="kpi"><div class="lab">공모가(15,000) 대비</div><div class="val up">+101<span class="u">%</span></div><div class="sub">약 2.0배</div></div>
+      <div class="kpi"><div class="lab">시초가 6만 / 고점 8.36만 대비</div><div class="val down">-50~64<span class="u">%</span></div><div class="sub">52주 최고 83,600(상장 초기)</div></div>
+    </div>
+
+    <div class="note"><div class="h">상장 후 주가 흐름 — 따따블 이후 반토막 조정</div>
+    5/20 상장 첫날 <strong>'따따블'</strong>(시초가 6만, 공모가 대비 +300%) → 5/21 상한가 78,000원 → <em>보호예수 미적용 스톡옵션 기행사 물량(594,194주·유통의 3.39%, 가중평균 행사가 4,766원)</em> 출회가 급락 요인으로 지목되며 6/1 33,600원까지 급락 → 현재 30,100원. <strong>공모가의 2배지만 초기 고점 대비 -64%</strong>. 밸류의 방패였던 확약(78.2%)이 유통물량 순차 해제로 시험받는 국면이다.<span class="src">출처<span class="tip">Investing.com·Alphasquare 30,100원 교차확인, 구글 파이낸스 시총 5,273억. 시총은 소스 불일치(포털 4,962억 vs 전체 상장주식 17,554,024주 기준 ~5,280억). 네이버·야후·stockanalysis 접속불가로 미사용.</span></span></p></div>
+
+    <h3>락업(보호예수) 해제 스케줄 — 근시일 최대 시험대는 ~7/20</h3>
+    <table>
+      <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="num">유통비중</th><th class="num">증분(%p)</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td class="txt">05-20</td><td class="txt">상장 직후 유통</td><td class="num">38.48%</td><td class="num">—</td><td><span class="tag b">확정</span></td></tr>
+        <tr><td class="txt">06-04</td><td class="txt">기관 15일 확약 해제</td><td class="num">38.95%</td><td class="num">+0.47</td><td><span class="tag b">확정</span></td></tr>
+        <tr><td class="txt">~06-20</td><td class="txt">1개월 — VC/FI 순차 시작</td><td class="num">41.07%</td><td class="num">+2.59</td><td><span class="tag n">추정</span></td></tr>
+        <tr class="hl"><td class="txt">~07-20</td><td class="txt">2개월 — 근시일 최대 오버행</td><td class="num">52.43%</td><td class="num">+11.36</td><td><span class="tag n">추정</span></td></tr>
+        <tr><td class="txt">~08-20</td><td class="txt">3개월</td><td class="num">56.27%</td><td class="num">+3.83</td><td><span class="tag n">추정</span></td></tr>
+        <tr><td class="txt">~11-20</td><td class="txt">6개월 (확약 최대분)</td><td class="num">65.18%</td><td class="num">+8.91</td><td><span class="tag n">추정</span></td></tr>
+        <tr><td class="txt">~27-05</td><td class="txt">1년</td><td class="num">68.80%</td><td class="num">+3.62</td><td><span class="tag n">추정</span></td></tr>
+        <tr class="tot"><td class="txt">~29-05</td><td class="txt">3년 — 최대주주/창업자 블록</td><td class="num">100%</td><td class="num">+31.20</td><td><span class="tag n">추정</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11.5px;color:var(--muted)">거래소 공시 확정은 06-04(+0.47%p)뿐. 나머지 비중은 증권신고서 %, 날짜는 상장기념일(5/20) 역산 추정(±1~2일 오차 가능). 최대주주 4,536,804주(25.84%) 1~3년 · 주요주주 1,221,016주(6.96%) ~3년 락업.<span class="src">출처<span class="tip">확약 만기별 구성: 15일 83,150주 · 1개월 151,465주 · 3개월 520,076주 · 6개월 842,820주(6개월분 최대). 상장 전 기행사 스톡옵션 594,194주는 보호예수 미적용.</span></span></p>
+
+    <div class="chart"><div class="ct">유통가능물량 비중 추이 (%) — 락업 순차 해제</div><div class="cs">오늘(7/15) 기준 약 5일 뒤 ~7/20 2개월차 해제(+11.36%p → 52.43%)가 시장이 '실질 시험대'로 보는 근시일 최대 분수령. 실선=확정, 점선=추정. 시간축은 등간격(실제 간격 아님).</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="유통물량 비중 추이">
+      <line x1="70" y1="50" x2="1010" y2="50" stroke="#E2DCCF" stroke-width="1"/>
+      <line x1="70" y1="160" x2="1010" y2="160" stroke="#E2DCCF" stroke-width="1"/>
+      <line x1="70" y1="270" x2="1010" y2="270" stroke="#D2C9B6" stroke-width="1.5"/>
+      <text x="60" y="54" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">100</text>
+      <text x="60" y="164" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">50</text>
+      <text x="60" y="274" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">0</text>
+      <!-- today marker -->
+      <line x1="450" y1="50" x2="450" y2="270" stroke="#7A7264" stroke-width="1" stroke-dasharray="4 4"/>
+      <text x="450" y="44" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600">오늘 7/15</text>
+      <!-- confirmed segment (solid) -->
+      <polyline points="70,185.3 204.3,184.3" fill="none" stroke="#2E6B5E" stroke-width="2.6"/>
+      <!-- estimate segment (dashed) -->
+      <polyline points="204.3,184.3 338.6,179.7 472.9,154.7 607.1,146.2 741.4,126.6 875.7,118.6 1010,50" fill="none" stroke="#B8472E" stroke-width="2.4" stroke-dasharray="6 4"/>
+      <circle cx="70" cy="185.3" r="4.5" fill="#2E6B5E"/>
+      <circle cx="204.3" cy="184.3" r="4.5" fill="#2E6B5E"/>
+      <circle cx="338.6" cy="179.7" r="4.5" fill="#B8472E"/>
+      <circle cx="472.9" cy="154.7" r="7.5" fill="#9C7A2E"/>
+      <circle cx="607.1" cy="146.2" r="4.5" fill="#B8472E"/>
+      <circle cx="741.4" cy="126.6" r="4.5" fill="#B8472E"/>
+      <circle cx="875.7" cy="118.6" r="4.5" fill="#B8472E"/>
+      <circle cx="1010" cy="50" r="4.5" fill="#B8472E"/>
+      <!-- value labels -->
+      <text x="74" y="176" text-anchor="start" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="10.5">38.5</text>
+      <text x="204.3" y="174" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="10.5">39.0</text>
+      <text x="338.6" y="170" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">41.1</text>
+      <text x="472.9" y="140" text-anchor="middle" fill="#9C7A2E" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">52.4%</text>
+      <text x="607.1" y="136" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">56.3</text>
+      <text x="741.4" y="116" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">65.2</text>
+      <text x="875.7" y="108" text-anchor="middle" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">68.8</text>
+      <text x="1006" y="42" text-anchor="end" fill="#B8472E" font-family="IBM Plex Mono,monospace" font-size="10.5">100%</text>
+      <!-- date labels -->
+      <text x="70" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">5/20</text>
+      <text x="204.3" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">6/4</text>
+      <text x="338.6" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">1M</text>
+      <text x="472.9" y="306" text-anchor="middle" fill="#9C7A2E" font-family="IBM Plex Mono,monospace" font-size="10.5" font-weight="600">2M · 7/20</text>
+      <text x="607.1" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">3M</text>
+      <text x="741.4" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">6M</text>
+      <text x="875.7" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">1Y</text>
+      <text x="1010" y="290" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10">3Y</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#2E6B5E"></i>확정 해제</span><span><i style="background:#B8472E"></i>추정(신고서 %·역산일)</span><span><i style="background:#9C7A2E"></i>7/20 최대 분수령</span></div>
+    </div>
+
+    <h3>상장 후 뉴스·수주 하이라이트</h3>
+    <div class="note in"><div class="h">수주(bookings) ≠ 매출(revenue) — 혼동 주의</div>'상반기 수주 200억 돌파'는 <strong>신규 수주(bookings)</strong>로 인식 매출과 다르다. 전년 동기 ~64억 대비 3배이며 2025년 연간 수주(205억)를 반기 만에 근접했다. 반기(H1) 손익은 미제출(반기보고서 8월 중순 예상). H1 수주 믹스: 국방·항공우주 27% / 중공업 23% / 첨단제조 22% / 일반제조 21%.</div>
+    <ul class="cl">
+      <li><strong>6/16 덴소코리아</strong> — 차량 전장부품 시험공정에 AI 비전 이상감지 자동화 적용</li>
+      <li><strong>6/18 한국수자원공사(K-water)</strong> — 생성형 AI 스마트정수장 시스템 시범구축(전국 44개 정수장, 런웨이 기반 LLM·RAG·XAI)</li>
+      <li><strong>7/1 파트너 생태계 가동</strong> — 반도체 이상탐지 기업 '다겸'과 첫 MOU(파트너가 런웨이 위에 솔루션 직접 개발·공급)</li>
+      <li><strong>7/7 AWS 국방 AI MOU</strong> — 런웨이를 '국방 AI OS'로 고도화(자율무인체계·우주 상황인식·사이버방어 확장)</li>
+      <li><strong>6/26 청와대 신안보 회의</strong> — 윤성호 대표 혁신기업 발표. 정부 '2030 방산 AI 빅테크 5개 육성' 정책</li>
+    </ul>
+    <p style="font-size:11px;color:var(--muted)">주요고객(H1): 국방과학연구소(ADD)·두산에너빌리티·삼성전자·요코가와·현대차. 회사 장기목표: 2030년 매출 ~1,000억(이 중 ~80%를 런웨이 리커링으로 전환 지향).<span class="src">출처<span class="tip">머니투데이·ZDNet·아주경제·뉴시스·딜사이트 등 2026.6~7 보도 교차확인. 수주·믹스·고객은 회사 발표 기반.</span></span></p>
+  </div>
+</section>
+
+<!-- ═══════════ TAB 6 경쟁·시장 ═══════════ -->
+<section class="panel" id="t6">
+  <div class="eyebrow">경쟁구도 · 상대가치</div>
+  <h1 class="big">밸류 피어 4사, 그러나 '진짜 경쟁사'는 아직 안갯속</h1>
+  <p class="lead">IPO 밸류에이션은 국내 상장 SW/AI 4사를 비교기업으로 삼았다: <strong>엑셈·와이즈넛·슈어소프트테크·비아이매트릭스</strong>. 이들의 평균 P/E 40.5배를 2028년 추정순이익 현가에 적용해 주당 23,143원을 산출한 뒤 <em>35.2~46.0% 할인</em>해 공모밴드를 정했다.</p>
+
+  <div class="chart"><div class="ct">공모가 함의 밸류 vs 피어 — 2028E PER (배)</div><div class="cs">피어 평균 40.5배 대비, 공모가에 함의된 마키나락스 2028E PER는 약 21.9~26.2배(할인 반영). '싸게' 내놓은 것처럼 보이나, 분모(2028E 이익)가 추정치라는 점이 핵심.</div>
+  <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PER 비교">
+    <line x1="80" y1="200" x2="1000" y2="200" stroke="#D2C9B6" stroke-width="1"/>
+    <!-- scale max 45, baseY 200, plotH 150 -->
+    <line x1="80" y1="66.67" x2="1000" y2="66.67" stroke="#E2DCCF" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="72" y="70" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">40</text>
+    <text x="72" y="204" text-anchor="end" fill="#7A7264" font-family="IBM Plex Mono,monospace" font-size="10">0</text>
+    <rect x="175" y="65" width="150" height="135" fill="#9C7A2E" rx="3"/>
+    <rect x="465" y="127" width="150" height="73" fill="#2E6B5E" rx="3"/>
+    <rect x="755" y="112.7" width="150" height="87.3" fill="#2E6B5E" rx="3"/>
+    <text x="250" y="56" text-anchor="middle" fill="#9C7A2E" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">40.5x</text>
+    <text x="540" y="118" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">21.9x</text>
+    <text x="830" y="103" text-anchor="middle" fill="#2E6B5E" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600">26.2x</text>
+    <text x="250" y="220" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10.5">피어 평균</text>
+    <text x="540" y="220" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10.5">공모 하단 함의</text>
+    <text x="830" y="220" text-anchor="middle" fill="#3C372F" font-family="IBM Plex Mono,monospace" font-size="10.5">공모 상단 함의</text>
+  </svg>
+  </div>
+
+  <div class="note in"><div class="h">중요 — '피어'는 밸류 비교군이지 제품 경쟁사가 아니다</div>
+  엑셈·와이즈넛·슈어소프트테크·비아이매트릭스는 <em>상대가치 산정용 비교군</em>일 뿐, 마키나락스 런웨이의 실제 제품 시장(글로벌 MLOps: Databricks·DataRobot·Dataiku 등)에서의 직접 경쟁 지형·점유율은 <strong>이번 검증에서 별도 확립되지 않았다</strong>. 실질 경쟁 분석은 후속 과제(08번 탭).</div>
+
+  <h3>시장 내 위치 (정성)</h3>
+  <ul class="cl c2">
+    <li><strong>글로벌 벤치마크와 같은 카테고리.</strong> CB Insights MLOps 맵에서 DataRobot·Databricks 등과 나란히 분류 — 국내 유일 등재라는 상징성.</li>
+    <li><strong>차별점은 '폐쇄망 + 제조 도메인'.</strong> 글로벌 범용 MLOps가 다루기 어려운 고보안·제조 특화 영역이 해자 후보.</li>
+    <li><strong>단, 규모의 격차.</strong> 글로벌 플레이어 대비 매출·자본 규모는 초기 단계 — 레퍼런스(대기업 지분)로 이 격차를 메우는 전략.</li>
+  </ul>
+</section>
+
+<!-- ═══════════ TAB 7 리스크·팩트체크 ═══════════ -->
+<section class="panel" id="t7">
+  <div class="eyebrow">리스크 · 팩트체크</div>
+  <h1 class="big">청구서 넷, 그리고 걸러야 할 마케팅 수치</h1>
+  <p class="lead">이 종목은 성장 스토리와 함께 <strong>네 개의 청구서</strong>를 안고 출발한다. 그리고 딥리서치의 부가가치는, 회사·보도 자료에 실렸으나 <em>적대적 검증에서 기각된</em> 마케팅 수치를 걸러낸 데 있다.</p>
+
+  <h2 class="sec">리스크</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3>① 적자 지속 · 현금소진</h3><p style="margin-top:4px">3년 연속 영업적자(-112/-109/-80억). 2027 흑자전환 목표의 파이프라인 가시성(가이던스 225억 중 ~94억 미확보)이 관건.</p></div>
+    <div class="card acc"><h3>② 초기 오버행</h3><p style="margin-top:4px">상장 직후 유통물량 ≈38.5%(675만주) + 락업 해제 스케줄에 따른 순차 물량 출회 가능성.</p></div>
+    <div class="card acc"><h3>③ 미래추정 의존 밸류</h3><p style="margin-top:4px">공모가가 2028E 추정이익 현가 기반. 추정 미달 시 하방 크고, 청약 환매청구권도 없음.</p></div>
+    <div class="card acc"><h3>④ 서비스 편중 + 다운라운드 이력</h3><p style="margin-top:4px">매출의 79%가 컨설팅(플랫폼 전환 속도 미검증). 2024년 밸류 반토막 이력은 변동성의 방증.</p></div>
+  </div>
+
+  <h2 class="sec">🔍 적대적 검증에서 기각된 주장</h2>
+  <p>아래는 회사/보도 자료에 등장하나, 3표 적대적 검증에서 <strong>반증되어 본 리포트에서 제외</strong>한 항목이다. 성장 자체(재무 표)는 별개로 확정됐다.</p>
+  <table>
+    <thead><tr><th class="txt">기각된 주장</th><th>표결</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">"Runway가 ML 셋업기간을 6개월→4주로 줄이고 필요 MLOps 팀 규모를 절반으로"</td><td><span class="tag s">1-2 기각</span></td></tr>
+      <tr><td class="txt">"매출 2018년 1.6억→2025년 11.46억(84% CAGR)의 세부치 및 2025년 수주 20.4억 배증"</td><td><span class="tag s">0-3 기각</span></td></tr>
+    </tbody>
+  </table>
+  <div class="note warn"><div class="h">시사점</div><strong>정량 효율성·수주 배증 주장은 신뢰하지 말 것.</strong> 반면 매출 성장(14→114.6억), 대기업 지분참여, IPO 흥행, 밸류 궤적은 복수 1차 출처로 확정됐다. '무엇이 검증됐고 무엇이 마케팅인지'를 구분하는 것이 이 종목 판단의 출발점.</div>
+
+  <h2 class="sec">용어 정밀도</h2>
+  <ul class="cl">
+    <li>'AI OS' '피지컬 AI'는 <strong>회사 마케팅 용어</strong>이며 기술 효과성의 검증은 아니다.</li>
+    <li>투자자 명단은 실제로는 <strong>CVC/계열사 경유</strong>가 많다(§4 참조).</li>
+    <li>밸류 '피어 4사'는 <strong>상대가치 비교군</strong>이지 제품 직접 경쟁사가 아니다.</li>
+  </ul>
+</section>
+
+<!-- ═══════════ TAB 8 출처·방법론 ═══════════ -->
+<section class="panel" id="t8">
+  <div class="eyebrow">출처 · 방법론 · 미해결</div>
+  <h1 class="big">어떻게 검증했나 — 그리고 무엇이 남았나</h1>
+  <p class="lead">본 리포트는 <strong>딥리서치 하네스</strong>로 생성했다: 6개 각도 팬아웃 웹검색 → 25개 소스 본문 수집·112개 주장 추출 → 상위 25개 주장을 <strong>3표 적대적 검증</strong>(2/3 반박 시 폐기) → 신뢰도 순 종합. 총 108개 에이전트, 23개 확정·2개 기각.</p>
+
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">검색 각도</div><div class="val">6</div><div class="sub">회사/투자/재무/경쟁/IPO/리스크</div></div>
+    <div class="kpi"><div class="lab">소스 수집</div><div class="val">25</div><div class="sub">1차 브로커리지·회사·언론</div></div>
+    <div class="kpi"><div class="lab">주장 검증</div><div class="val">25</div><div class="sub">확정 23 · 기각 2</div></div>
+    <div class="kpi"><div class="lab">에이전트</div><div class="val">108</div><div class="sub">적대적 3표 검증 포함</div></div>
+  </div>
+
+  <h2 class="sec">주요 출처</h2>
+  <ul class="cl c2">
+    <li><strong>DB증권 IPO 분석리포트</strong>(finuts PDF) — 재무·밸류·주주구성 1차 <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">finuts.co.kr/…334855d8.pdf</span></li>
+    <li><strong>마키나락스 공식</strong> — About / IPO 뉴스룸 <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">makinarocks.ai</span></li>
+    <li><strong>THE VC</strong> — 라운드·투자자 로스터 <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">thevc.kr/makinarocks</span></li>
+    <li><strong>한국M&A경제신문</strong> — 밸류 궤적·다운라운드 <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">kmnanews.com/…10144</span></li>
+    <li><strong>블로터</strong> — 2026 1Q 실적·부문 믹스 <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">bloter.net/…663747</span></li>
+    <li><strong>인공지능신문</strong> — CB Insights 등재 <span style="font-family:var(--mono);font-size:10px;color:var(--muted)">aitimes.kr/…31566</span></li>
+  </ul>
+
+  <h2 class="sec">미해결 질문 (후속 리서치)</h2>
+  <ul class="cl">
+    <li><strong>상장 후 수급.</strong> 현재 주가·유통시총·<em>기관 락업 해제 스케줄</em>과 오버행 타임라인(05번 탭에서 갱신).</li>
+    <li><strong>실질 경쟁 지형.</strong> 글로벌/국내 MLOps·산업 이상탐지 시장에서 Databricks·DataRobot 등 대비 제품 차별성·점유. 밸류 피어 4사 외 실경쟁 분석 부재.</li>
+    <li><strong>흑자전환 실현성.</strong> 2026 가이던스 225억(+97%) 중 미확보 ~94억의 파이프라인 가시성, 적자 축소(-109→-80억) 지속성.</li>
+    <li><strong>대기업 지분의 실매출 전환.</strong> 삼성·현대차·SKT·네이버 등 전략투자자별 정확 지분율과 사업협력의 매출 기여도, 방산(국방 통합 AI) 매출 규모.</li>
+  </ul>
+
+  <div class="foot">
+    데이터 계보: 딥리서치 하네스(6각도 팬아웃 → 25소스 → 112주장 → 3표 적대적 검증, 108에이전트) · DB증권 IPO 리포트(1차) · 회사 증권신고서/뉴스룸 · THE VC·edaily·블로터·플래텀·한국경제·이데일리·인공지능신문 등 교차검증 · 기준일 2026-07-15(상장 2026-05-20 완료).<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다. 밸류에이션 수치는 공개 자료의 재정리이며 저자 독자추정 목표주가가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>
