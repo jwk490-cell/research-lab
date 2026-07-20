@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한양이엔지 045100 · 심층리서치 v1 · 2026-07-20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F5EF; --paper:#FCFBF7; --ink:#1A1814; --ink2:#3C372F; --muted:#7A7264;
+  --line:#E2DCCF; --line2:#D2C9B6; --accent:#B8472E; --accent2:#2E6B5E; --gold:#9C7A2E;
+  --up:#2E6B5E; --down:#B8472E; --chip:#EFEAE0; --shadow:rgba(40,34,24,0.07);
+  --pretendard:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--line)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#fff;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:600;font-size:12px;letter-spacing:.02em}
+.tabs{position:sticky;top:54px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:31px;font-weight:600;line-height:1.2;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.7}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 62%,#F0D9A8 62%);padding:0 1px;font-weight:500}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:var(--ink);color:#F2EEE3;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#fff;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down)} .est.bull{background:var(--up)}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:16px 17px;box-shadow:0 1px 2px var(--shadow)}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.card h4{font-family:var(--pretendard);font-size:13.5px;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.card p{font-size:12.5px;margin:6px 0}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#EEE9DE;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F3EFE5}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.txt{text-align:left}
+tr.hl td{background:#FBF3E3;font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#F0ECE1}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:#DCEAE5;color:var(--up)} .tag.s{background:#F3DBD3;color:var(--down)} .tag.n{background:#EDE6D6;color:var(--gold)}
+.note{background:#EFEADE;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:#E6EEEA;border-color:#BFD8CF}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:#F5E9E3;border-color:#E3C4B6}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--paper)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">045100</span>
+    <span class="nm">한양이엔지 <small>Hanyang ENG · 반도체 플랜트 인프라(배관·훅업·CCSS·UHP) · 심층리서치 v1</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">29,000원</span>
+    <span style="color:var(--muted)">시총 5,075억 · 당일 −5.84%</span>
+    <span class="rating">관망(매집 대기) · Base 33,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·역량·해자</button>
+  <button class="tab" data-t="t4"><b>04</b>고객·capex 깔때기</button>
+  <button class="tab" data-t="t5"><b>05</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t6"><b>06</b>실적·분기해부</button>
+  <button class="tab" data-t="t7"><b>07</b>컨센×주가·PER밴드</button>
+  <button class="tab" data-t="t8"><b>08</b>경쟁·Peer</button>
+  <button class="tab" data-t="t9"><b>09</b>밸류·시나리오</button>
+  <button class="tab" data-t="t10"><b>10</b>리스크·매매·KPI</button>
+</div></div>
+
+<div class="wrap">
+
+<!-- ═══════════ TAB 1 결론·판정 ═══════════ -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">판정 · 2026-07-20 · RESEARCH LAB</div>
+  <h1 class="big">이익은 진짜 돌아섰고, 가격은 이미 반쯤 되샀다 — 남은 건 시장이다.</h1>
+  <p class="lead">한양이엔지의 1Q26 영업이익 +88.6%는 삼성·하이닉스 capex 램프가 만든 <em>실측</em>이다. 하지만 이건 발주처에 종속된 저마진 자본재 EPC고, 딥밸류(PER 3~4배)에서 이미 fwd 7~8배로 리레이팅됐다. 오늘 −5.84%는 종목이 아니라 코스닥·반도체 투매의 베타 — 좋은 회사·싼 가격이지만, <em>붕괴하는 시장에 추격할 비대칭은 아직 없다</em>. 24,000~25,000을 기다린다.</p>
+
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">현재가 (07-20)</div><div class="val">29,000<span class="u">원</span></div><div class="sub">당일 −5.84% · 시총 5,075억</div></div>
+    <div class="kpi"><div class="lab">PER 25A / 26E / 27E</div><div class="val">7.7<span class="u">x</span></div><div class="sub">26E 7.7 / 27E 6.9 · 12MF ~9x</div></div>
+    <div class="kpi"><div class="lab">지배순익 25A→27E</div><div class="val">418→740<span class="u">억</span></div><div class="sub">+77% 회복 · 컨센 얇음<span class="est">E</span></div></div>
+    <div class="kpi"><div class="lab">시나리오 EV (확률가중)</div><div class="val">33,200<span class="u">원</span></div><div class="sub">Bull 47천 / Base 33천 / Bear 17천</div></div>
+  </div>
+
+  <h2 class="sec">컨센서스 손익 한 장 (FY23A–FY27E) — 순익·시총 축 병행</h2>
+  <table>
+    <thead><tr><th>억원, EPS·DPS 원</th><th class="num">23A</th><th class="num">24A</th><th class="num">25A</th><th class="num">26E</th><th class="num">27E</th></tr></thead>
+    <tbody>
+      <tr><td>매출액</td><td class="num">10,262</td><td class="num">11,863</td><td class="num">11,182</td><td class="num">12,300</td><td class="num">13,100</td></tr>
+      <tr><td>YoY</td><td class="num">—</td><td class="num">+15.6%</td><td class="num down">−5.7%</td><td class="num up">+10.0%</td><td class="num up">+6.5%</td></tr>
+      <tr><td>영업이익</td><td class="num">851</td><td class="num">862</td><td class="num">537</td><td class="num">850</td><td class="num">940</td></tr>
+      <tr><td>OP YoY</td><td class="num">—</td><td class="num">+1.3%</td><td class="num down">−37.7%</td><td class="num up">+58.3%</td><td class="num up">+10.6%</td></tr>
+      <tr><td>OPM %</td><td class="num">8.3</td><td class="num">7.3</td><td class="num">4.8</td><td class="num">6.9</td><td class="num">7.2</td></tr>
+      <tr class="tot"><td>지배 순이익</td><td class="num">774</td><td class="num">763</td><td class="num">418</td><td class="num">660</td><td class="num">740</td></tr>
+      <tr class="hl"><td>EPS (원)</td><td class="num">4,540</td><td class="num">4,527</td><td class="num">2,541</td><td class="num">3,770</td><td class="num">4,230</td></tr>
+      <tr class="hl"><td>PER @29,000 (시총÷순익)</td><td class="num">—</td><td class="num">—</td><td class="num">12.1x</td><td class="num">7.7x</td><td class="num">6.9x</td></tr>
+      <tr><td>PER (당시 기말가)</td><td class="num">3.4x</td><td class="num">3.7x</td><td class="num">~11x</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>PBR</td><td class="num">0.52</td><td class="num">0.50</td><td class="num">0.84</td><td class="num">0.77</td><td class="num">0.70</td></tr>
+      <tr><td>ROE %</td><td class="num">15.4</td><td class="num">13.5</td><td class="num">6.8</td><td class="num">10.3</td><td class="num">11.0</td></tr>
+      <tr><td>DPS (원)</td><td class="num">550</td><td class="num">650</td><td class="num">610 E</td><td class="num">650 E</td><td class="num">700 E</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">23A~25A 실적·EPS·ROE·PBR·당시 PER = 한경 마켓 재무요약(2026-07-20 조회, 백만원→억원 환산)<span class="src">출처<span class="tip">markets.hankyung.com/stock/045100/financial-summary · 2026-07-20 조회. 2023 OP 851억·NP지배 774억, 2024 862/763, 2025 537/418.</span></span>. <strong>26E·27E는 본 리서치 추정<span class="est">E</span></strong> — 영업이익은 한국IR협의회 2026E OP 888억(역대 최대) 전망과 1Q26 연율화(222억×4≈888억)를 반영해 보수적 850억 채택, 지배순익은 과거 NP/OP 0.85~0.91배를 적용. <strong>주의: 컨센 커버리지가 얇다</strong> — 한경 12MF EPS는 3,208원(→순익 ~560억)으로 1Q26 서프라이즈 미반영 추정, 본 리서치는 그보다 높은 660억 채택(탭 07·미결 참조).</p>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <ul class="cl">
+    <li><strong>① 이익 변곡은 실측이다 — capex가 끌었다.</strong> 1Q26 매출 3,413억(+26.9%)·영업이익 222억(+88.6%)<span class="src">출처<span class="tip">1Q26 실적: 매출 3,413억 +26.9%, 영업이익 222억 +88.64% (다수 매체·기업정보 집계, 2026-07-20 조회)</span></span>. 2025년 바닥(OP 537억, −37.7%)은 삼성 P4·테일러 착공 공백기의 실적 공백이었고, 4Q25~1Q26부터 <em>훅업·CCSS 매출이 인식되기 시작</em>했다. 2026 삼성 반도체 capex 60조+·SK하이닉스 30조 중반이 물리적 backlog로 깔린다.</li>
+    <li><strong>② 그러나 이건 저마진 자본재 EPC다 — 멀티플에 천장이 있다.</strong> OPM 5~8%, 발주처(삼성·하이닉스)에 가격결정력 종속, 매출은 팹 착공 사이클 따라 lumpy. 그래서 이 종목은 역사적으로 PER 3~4배(2023·2024)에 갇혀 있었다. 지금 fwd 7~8배는 <em>딥밸류의 절반 되돌림</em>이 이미 일어난 자리 — 여기서 더 받으려면 실적이 컨센을 계속 상회해야 한다.</li>
+    <li><strong>③ 오늘 급락은 종목이 아니라 시장이다.</strong> 07-20 −5.84%는 코스닥·반도체 동반 투매의 베타(같은 날 반도체 대형주 급락). 52주 고점 39,400 대비 −26%로 이미 시장과 함께 빠졌다. 개별 악재는 없다 — 하지만 반도체 자본재는 시장 붕괴가 곧 <em>capex 심리 위축 리스크</em>로 전이될 수 있어, 밸류 매력만으로 바닥을 단정하기 이르다.</li>
+  </ul>
+
+  <div class="note in">
+    <div class="h">한 문장 콜</div>
+    <strong>신규 진입 관망 · 매집 밴드 대기.</strong> 1차 매집 <strong>24,000~25,000원</strong>(27E 6.4~6.6배·PBR ~0.68, 50bp — 조건: 코스닥·반도체 투매 진정). 2차 <strong>20,000~22,000원</strong>(52주 저점권 근접, +100bp, 그 가격이면 R/R 2:1↑). 가격 불문 추격이 허용되는 유일 조건: <strong>8월 초 2Q26 영업이익 230억+ 확인 & 수주잔고 반등 & 코스닥 20일선 회복</strong> — 그때는 Base가 위로 이동한다. 보유자는 홀드(개별 thesis 무손상, 배당 2.1%·PBR 0.77이 하방).
+  </div>
+
+  <div class="note warn">
+    <div class="h">이 판정이 틀리는 경로 (Clarity over Certainty)</div>
+    ① 시장이 V자 반등하고 2Q26이 서프라이즈면 매집 밴드는 안 오고 재고점(35천+)으로 간다 — 그래서 "추격 허용 조건"을 열어놨다. ② 삼성 capex가 실제로 가속하면 EPC 저마진이라도 물량으로 순익이 컨센을 크게 상회할 수 있다(2024 OP 862억이 원래 체력). 이 콜은 "한양이엔지가 나쁜 회사냐"(NO)가 아니라 "지금 29,000에 하방 대비 비대칭이 있느냐"(아직 아니다)에 대한 답이다.
+  </div>
+
+  <h2 class="sec">상대 판정 — 반도체 인프라에서 누구를 사나</h2>
+  <p>반도체 capex 낙수는 클린룸·설비 3사(<strong>한양이엔지·에스티아이·성도이엔지</strong>) 공통 테마다. 그 안에서 한양이엔지는 <em>반도체 배관·훅업 국내 점유율 1위</em>와 삼성 트랙레코드가 해자지만, <em>삼성 단일 발주처 집중(삼성+하이닉스+삼성물산 ≈ 60%)</em>이 양날의 검이다. CCSS 직접 경쟁은 <strong>에스티아이(039440)</strong> — 시총 4,451억, LG 의존이라 고객 분산 관점에선 상호보완. 가장 싼 건 <strong>성도이엔지(037350, PER 4.5배)</strong>지만 클린룸 도급 비중이 높아 마진 변동성이 크다. <strong>"최선호"와 "지금 사도 됨"은 별개</strong> — 3사 전부 코스닥·반도체 베타에 잠겨 있다.</p>
+
+  <h2 class="sec">팔로우 총평 — BM 등급 · 성립 조건 · 갈아타기 원칙</h2>
+  <div class="grid g3">
+    <div class="card acc"><h4>BM 등급: B+ ("점유율 1위 + 삼성 락인")</h4><p>반도체 팹 배관·훅업 국내 1위, 20년 삼성 트랙레코드·설치기반 레퍼런스 락인. <strong>A가 아닌 이유:</strong> 발주처 종속 저마진 EPC(OPM 5~8%), 삼성 집중, 수주 lumpy — 가격결정력이 회사에 없다.</p></div>
+    <div class="card acc2"><h4>투자포인트 성립 조건</h4><p>① 삼성 P4·P5·테일러 + 하이닉스 M15X·용인 <em>착공→훅업 인식</em>이 2026~2027 지속. ② OPM이 2025 바닥(4.8%)에서 7%대로 정상화 유지. ②가 꺾이면 "물량은 느는데 이익은 안 느는" EPC 함정 재현.</p></div>
+    <div class="card"><h4>갈아타기 원칙</h4><p>fwd PER 10배 접근(35,000+) = 자본재 리레이팅 완성 = 스토리 소진 → 증액 아닌 <em>후공정·소재 순환</em> 검토. 삼성 capex가 하이닉스로 쏠리면 하이닉스 노출 큰 peer로 비중 이동.</p></div>
+  </div>
+
+  <div class="bq">"한양이엔지 = 삼성·하이닉스가 팹을 지을 때 배관을 까는 국내 1위 인프라 손 — 이익은 확실히 돌아섰지만 멀티플은 자본재의 천장에 갇혀 있다. 회사는 준비됐고, 가격은 시장이 정한다. 24~25천을 기다린다."</div>
+</section>
+
+<!-- ═══════════ TAB 2 BM ═══════════ -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 돈 버는 법</div>
+  <h2 class="sec">무엇을 팔아 어떻게 버나 — 팹 한 채가 서면 그 안의 '혈관'을 깐다</h2>
+  <p>한양이엔지의 손익은 <strong>반도체·디스플레이 팹의 설비 인프라 시공</strong>에서 나온다. 고객이 삼성전자·SK하이닉스처럼 새 팹을 지으면, 그 안에 들어가는 <em>초고순도(UHP) 가스·케미컬 배관, 훅업(장비 연결), 화학약품 중앙공급장치(CCSS)</em>를 설계·시공·납품한다. 즉 <strong>반도체 capex의 '건설·설비' 낙수 레이어</strong>에 위치한 자본재 회사다.</p>
+
+  <h3>매출 구성 — 배관·훅업이 몸통, CCSS가 고마진 장치</h3>
+  <table>
+    <thead><tr><th>부문</th><th class="txt">무엇을 / 누구에게</th><th class="num">비중(설비 내)</th><th class="txt">성격</th></tr></thead>
+    <tbody>
+      <tr><td>배관·엔지니어링</td><td class="txt">UHP 가스·케미컬 배관, 장비 훅업, 클린룸 인프라 시공</td><td class="num">83.5%</td><td class="txt">도급 EPC · 저마진 · 물량형</td></tr>
+      <tr><td>장치(CCSS·TCMS)</td><td class="txt">화학약품 중앙공급장치 제조·설치 (직접 제조)</td><td class="num">16.5%</td><td class="txt">제조 · 상대적 고마진</td></tr>
+      <tr><td>산업플랜트</td><td class="txt">EPC (석유화학·2차전지 등) </td><td class="num">3.1%*</td><td class="txt">저마진 도급</td></tr>
+      <tr><td>신규(우주항공·원전·환경)</td><td class="txt">발사체 인프라·SMR·그린에너지 — 스토리 단계</td><td class="num">소액</td><td class="txt">옵션(미현금화)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*전사 매출 기준으로는 설비부문 95.3% / 산업플랜트 3.1% / 기타 1.6%. 배관 83.5% : CCSS 16.5%는 설비부문 내 비중. 출처: 사업보고서 기반 매체 집계(2022 3Q 기준 — <strong>최신 세그먼트 비중 재확인 필요, 미결</strong>)<span class="src">출처<span class="tip">한양이엔지 사업부문 비중: 설비 95.3%/플랜트 3.1%/기타 1.6%, 배관 83.5%/CCSS 16.5% (2022 3Q 누적, 매체 집계 2026-07-20 조회). 최신 분기 세그먼트는 DART 원문 대조 필요.</span></span>.</p>
+
+  <h3>고객 지도 — 삼성 생태계가 매출의 6할</h3>
+  <p>2022 3분기 별도 매출 기준 <strong>삼성전자·SK하이닉스·삼성물산이 약 60%</strong>를 차지<span class="src">출처<span class="tip">고객 집중도: 삼성전자·SK하이닉스·삼성물산 별도매출 약 60% (2022 3Q, 매체 집계). 삼성 의존도 높음. 에스티아이는 LG 의존.</span></span>. 반도체 팹 인프라는 <em>신뢰·트랙레코드·보안 락인</em>이 강해 신규 진입이 어렵고, 한양이엔지는 삼성 팹의 오랜 협력사다. 반대로 이는 <strong>삼성 capex 사이클에 실적이 완전히 동조</strong>한다는 뜻 — 삼성이 팹 착공을 미루면(2024~2025 P4 공백) 실적도 즉시 빠진다. SK하이닉스(M15/M16 청주·용인)·삼성 테일러(미국)로 고객을 넓히는 중.</p>
+
+  <h3>매출 인식 — 도급 진행률의 lumpy함</h3>
+  <p>배관·플랜트 도급은 <em>공사진행기준</em>으로 인식돼, 팹 착공→준공 사이클에 따라 분기 매출·마진이 출렁인다. 착공 초기엔 저마진, 훅업·CCSS 납품 구간에서 마진이 개선된다. 2025년 OPM 4.8% 바닥→1Q26 회복은 P4·테일러가 훅업 구간에 진입했다는 신호. <strong>BM의 임플리케이션:</strong> 이 회사의 실적 선행지표는 회계 매출이 아니라 <em>수주잔고와 고객 팹 착공 로드맵</em>이다(탭 04·06).</p>
+</section>
+
+<!-- ═══════════ TAB 3 제품·역량·해자 ═══════════ -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품군 · 핵심역량 · 해자 진위판별</div>
+  <h2 class="sec">해자 진위 — 진짜(점유율·락인) vs table-stakes(도급 역량)</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h4>✓ 진짜 해자 (구조적)</h4><p><strong>반도체 배관설비 국내 점유율 1위</strong> + 삼성 팹 20년 트랙레코드. 반도체 UHP 배관은 미세오염 0을 요구해 <em>검증된 협력사만 재발주</em> — 신규 진입 장벽·레퍼런스 락인이 실재한다.</p></div>
+    <div class="card"><h4>△ Table-stakes (경쟁사도 함)</h4><p>클린룸·플랜트 도급 시공 자체는 성도이엔지·신성이엔지·케이엔솔도 수행. CCSS도 에스티아이·씨앤지하이테크·오션브릿지와 경쟁 — <em>기술 차별화보다 트랙레코드·캐파 게임</em>.</p></div>
+    <div class="card acc"><h4>? 미검증 (옵션)</h4><p>우주항공(발사체 인프라)·원전(SMR)·그린에너지 확장은 <em>테마·수주 스토리 단계</em>로 손익 기여 미미. IBK 리포트 제목("우주로 확장하는 반도체 인프라 기업")의 서사 — 현금화 시점 불명, 밸류에 카운트 안 함.</p></div>
+  </div>
+
+  <h3>핵심 역량 KPI</h3>
+  <ul class="cl">
+    <li><strong>레퍼런스:</strong> 삼성 평택 P1~P4, 화성·기흥, 테일러(미국) / SK하이닉스 이천·청주 M14·M15·M16, 용인 — 국내 선단 팹 대부분에 인프라 납품 이력.</li>
+    <li><strong>수직 통합:</strong> 배관 시공(도급) + CCSS·TCMS 장치 <em>직접 제조</em> — 단순 도급사 대비 마진 방어·번들 수주 가능.</li>
+    <li><strong>재무 체력:</strong> 부채비율 48%·자기자본비율 68%·순현금 구조 — 저마진 EPC임에도 재무는 매우 견고, 대형 팹 프로젝트 운전자본 감내 가능<span class="src">출처<span class="tip">2025 부채비율 47.97%, 자기자본비율 67.58% (한경 재무요약). 순현금 추정 — NP/OP가 OP보다 높은 이유(금융수익).</span></span>.</li>
+  </ul>
+
+  <h3>지배구조 — 2세 승계 진행 중</h3>
+  <p>오너 2세 경영 승계가 신탁을 앞세워 본격화(2026.1 매체 보도)<span class="src">출처<span class="tip">"반도체·원전·우주항공 테마에 승계까지… 한양이엔지 최고가, 신탁 앞세운 2세 경영 본격화" (다음/매체 2026-01-28)</span></span>. 승계 국면은 <em>주주환원(배당) 유인</em>이 되기도 하나, 지분 이동·일감 관계사 거래 등 거버넌스 관전 포인트. 배당은 DPS 650원(2024)·수익률 2.1%로 자본재치고 준수.</p>
+</section>
+
+<!-- ═══════════ TAB 4 고객·capex 깔때기 ═══════════ -->
+<section class="panel" id="t4">
+  <div class="eyebrow">밸류체인 · 고객 capex → 매출 깔때기</div>
+  <h2 class="sec">반도체 capex → 한양이엔지 매출 전환 경로</h2>
+  <p>한양이엔지는 <strong>capex 깔때기의 '팹 건설·설비' 단계</strong>에 있다. 고객이 팹 투자를 결정하면 → 클린룸·인프라 시공(한양이엔지 진입) → 장비 반입·훅업(한양이엔지 CCSS·배관) → 양산. 즉 <em>장비사(원익IPS·주성 등)보다 앞단, 건설사보다 뒷단</em>에 위치해 팹 착공 초기부터 매출이 발생한다.</p>
+
+  <h3>고객별 팹 로드맵 — 2026~2027 매출 인식 파이프라인</h3>
+  <table>
+    <thead><tr><th>고객</th><th class="txt">프로젝트</th><th class="txt">단계 / 매출 인식</th></tr></thead>
+    <tbody>
+      <tr><td>삼성전자</td><td class="txt">평택 P4 (Phase 3·4), P5 클린룸 착수</td><td class="txt">2026 훅업·CCSS 인식 본격 — 실적 견인 핵심</td></tr>
+      <tr><td>삼성전자</td><td class="txt">테일러(미국 텍사스) 파운드리</td><td class="txt">2026 하반기~2027 수주·매출 발생 예상</td></tr>
+      <tr><td>SK하이닉스</td><td class="txt">청주 M15·M16 증설·유지보수</td><td class="txt">2026부터 매출 발생 예상</td></tr>
+      <tr><td>SK하이닉스</td><td class="txt">M15X · 용인 클러스터 1기 팹</td><td class="txt">2026~2027 착공→인프라 시공 파이프라인</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: 서울경제·SEN 등 매체 프로젝트 언급 종합(2026-07-20 조회)<span class="src">출처<span class="tip">삼성 P4 phase3/테일러, SK하이닉스 M15X·용인 훅업·CCSS 진행 (서울경제 SEN, 매체 종합). 구체 수주금액·인식시점은 회사 미공개.</span></span>. <strong>주의:</strong> 각 프로젝트의 개별 수주금액·마진은 회사가 상세 공개하지 않아 <em>매출 인식 규모는 추정</em>. 최신 수주잔고 정밀치는 미결(탭 06·10).</p>
+
+  <h3>capex 규모 — 판이 커진다</h3>
+  <div class="grid g2">
+    <div class="card"><h4>삼성전자 2026</h4><p>반도체 부문 설비투자 <strong>60조원+</strong> 전망. P4 1c D램 선단라인 마무리 + P5 클린룸 착수 + 테일러 파운드리<span class="src">출처<span class="tip">삼성 2026 반도체 capex 60조+ 전망, P4 phase2/4 1c D램 + P5 클린룸 착수, 테일러 (이투데이·글로벌이코노믹 2026)</span></span>.</p></div>
+    <div class="card"><h4>SK하이닉스 2026</h4><p>설비투자 2025 29조 → 2026 <strong>30조 중반</strong>. HBM4·AI 슈퍼사이클 대응 M15X·용인 증설<span class="src">출처<span class="tip">SK하이닉스 2026 capex 30조 중반 (2025 29조 대비 확대), HBM4·용인 (글로벌이코노믹 2026-01)</span></span>.</p></div>
+  </div>
+  <p>양대 고객 합산 capex가 사상 최대 구간에 진입 — <strong>팹 착공 물량 = 한양이엔지의 backlog 원천</strong>. 다만 capex는 <em>장비(HBM·wafer fab equipment)에 우선 쏠리고 건설·인프라는 시차·변동</em>이 있어, capex 증가가 곧바로 한양이엔지 매출 등비례는 아니다(전환율 리스크).</p>
+</section>
+
+<!-- ═══════════ TAB 5 산업·수급 겐또 ═══════════ -->
+<section class="panel" id="t5">
+  <div class="eyebrow">산업 성장성 · 수요공급 겐또</div>
+  <h2 class="sec">수요 함수 — "팹 착공 면적 × 인프라 원단위"</h2>
+  <p>한양이엔지 매출의 물리량 출발점은 <em>고객이 착공하는 팹의 클린룸 면적(㎡)</em>이고, 여기에 배관·훅업·CCSS의 <em>면적당 인프라 원단위(₩/㎡)</em>를 곱한 값이 TAM이다. 선단공정(3nm·1c D램·HBM)일수록 <strong>㎡당 배관·가스·케미컬 밀도가 높아져</strong> 원단위가 상승 — 미세화가 물량뿐 아니라 단가도 밀어올린다.</p>
+
+  <h3>강제된 수요인가?</h3>
+  <ul class="cl">
+    <li><strong>반(半) 강제 수요:</strong> AI·HBM 수요가 삼성·하이닉스의 팹 증설을 강제 → 팹을 지으면 인프라 시공은 <em>필수 선행 공정</em>(반도체를 만들려면 배관을 먼저 깔아야 함). 이 점에서 수요는 견고.</li>
+    <li><strong>단, 시점은 고객이 쥔다:</strong> 착공 타이밍·발주 속도는 삼성·하이닉스의 재무·수급 판단에 종속. 2024~2025 P4 지연이 실적 공백을 만든 전례 — <em>수요의 크기는 강제, 시점은 변동</em>.</li>
+    <li><strong>병목·가격결정력:</strong> 이 레이어는 경쟁사 다수(에스티아이·성도·신성·케이엔솔)라 <em>가격결정력은 발주처에 있다</em>. 한양이엔지의 우위는 점유율·트랙레코드지 프리미엄 마진이 아니다.</li>
+  </ul>
+
+  <div class="note">
+    <div class="h">겐또 — 2026E OP 850억은 어디서 오나</div>
+    2025 OP 537억 → 2026E 850억(+58%)의 몸통: ① <strong>P4·테일러 훅업 인식 본격화</strong>(공백 해소, +200억대) ② <strong>OPM 정상화</strong>(4.8%→6.9%, 착공초기 저마진 구간 통과) ③ 하이닉스 M15X·용인 초기 물량. 1Q26 OP 222억이 이미 연율 888억을 가리키므로 <em>850억은 공격적 가정이 아니라 1Q 런레이트의 보수적 연장</em>. 남는 스윙은 하반기 삼성 발주 속도.
+  </div>
+</section>
+
+<!-- ═══════════ TAB 6 실적·분기해부 ═══════════ -->
+<section class="panel" id="t6">
+  <div class="eyebrow">실적 · 분기 해부 · 이익의 질</div>
+  <h2 class="sec">연간 영업이익 경로 — 바닥은 2025, 변곡은 1Q26</h2>
+
+  <div class="chart">
+    <div class="ct">연간 영업이익 (억원) — 진한=실적, 연한=추정</div>
+    <div class="cs">2025 바닥(537억)은 삼성 P4 착공 공백. 2026E 850억은 회복(+구조 아님) — 원래 체력(2023~24 850억대)으로의 복귀</div>
+    <svg viewBox="0 0 620 240" role="img" aria-label="연간 영업이익 막대">
+      <line x1="40" y1="200" x2="600" y2="200" stroke="#D2C9B6" stroke-width="1"/>
+      <!-- max ref 950 -> scale: bar_h = val/950*160 ; base y=200 -->
+      <!-- 2023: 851 -> 143.3 -->
+      <rect x="70" y="56.7" width="70" height="143.3" fill="#2E6B5E" opacity="0.85"/>
+      <text x="105" y="48" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#1A1814">851</text>
+      <text x="105" y="216" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#7A7264">2023A</text>
+      <!-- 2024: 862 -> 145.2 -->
+      <rect x="175" y="54.8" width="70" height="145.2" fill="#2E6B5E" opacity="0.85"/>
+      <text x="210" y="46" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#1A1814">862</text>
+      <text x="210" y="216" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#7A7264">2024A</text>
+      <!-- 2025: 537 -> 90.4 -->
+      <rect x="280" y="109.6" width="70" height="90.4" fill="#B8472E" opacity="0.9"/>
+      <text x="315" y="101" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#B8472E" font-weight="600">537</text>
+      <text x="315" y="216" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#7A7264">2025A</text>
+      <!-- 2026E: 850 -> 143.2 -->
+      <rect x="385" y="56.8" width="70" height="143.2" fill="#9C7A2E" opacity="0.55"/>
+      <text x="420" y="48" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#9C7A2E" font-weight="600">850 E</text>
+      <text x="420" y="216" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#7A7264">2026E</text>
+      <!-- 2027E: 940 -> 158.3 -->
+      <rect x="490" y="41.7" width="70" height="158.3" fill="#9C7A2E" opacity="0.55"/>
+      <text x="525" y="33" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#9C7A2E" font-weight="600">940 E</text>
+      <text x="525" y="216" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#7A7264">2027E</text>
+    </svg>
+  </div>
+
+  <h3>분기 — 1Q26가 확인 사격</h3>
+  <table>
+    <thead><tr><th>분기</th><th class="num">매출(억)</th><th class="num">영업이익(억)</th><th class="num">OPM</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td>2025 연간</td><td class="num">11,182</td><td class="num">537</td><td class="num">4.8%</td><td class="txt">삼성 P4 공백 — 저마진 바닥</td></tr>
+      <tr><td>1Q25</td><td class="num">2,689</td><td class="num">118</td><td class="num">4.4%</td><td class="txt">전년 동기(추정)</td></tr>
+      <tr class="hl"><td>1Q26</td><td class="num">3,413</td><td class="num">222</td><td class="num">6.5%</td><td class="txt">매출 +26.9%, OP +88.6% — 훅업 인식 시작</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: 1Q26 매출 3,413억·OP 222억(+88.64%), 매체·기업정보 집계 2026-07-20<span class="src">출처<span class="tip">1Q26 매출 3,413억(+26.9%), 영업이익 222억(+88.64%). 1Q25 매출/OP는 역산 추정. 2Q26 이후 분기 시계열은 미확보(미결).</span></span>. <strong>2Q26 이후 분기 시계열은 미확보 — 8월 초 2Q26 발표가 최대 분기점.</strong></p>
+
+  <h3>이익의 질 — 걷어내고 볼 것</h3>
+  <ul class="cl">
+    <li><strong>NP/OP가 높다(순현금 효과):</strong> 2024 OP 862억 → 지배순익 763억(0.89). 부채비율 48%·순현금 구조라 <em>금융수익·낮은 이자비용</em>이 순익을 방어. 이익의 질은 나쁘지 않다.</li>
+    <li><strong>매출채권·미청구공사 주의:</strong> 도급 EPC 특성상 진행률 인식 → 운전자본·미청구공사 변동 점검 필요(원자료 미확보, 미결).</li>
+    <li><strong>일회성 없음(확인 범위):</strong> 2025 감익은 일회성이 아니라 <em>구조적 물량 공백</em> — 2026 회복도 그만큼 실체적.</li>
+  </ul>
+</section>
+
+<!-- ═══════════ TAB 7 컨센×주가 ═══════════ -->
+<section class="panel" id="t7">
+  <div class="eyebrow">C2 · 컨센 × 주가 × 멀티플 — 시장은 무엇을 믿고 있나</div>
+  <h2 class="sec">딥밸류에서 절반 되돌린 자리 — PER 3~4배 → fwd 7~8배</h2>
+  <p>이 종목의 밸류 역사는 명확하다. 2023·2024년 <strong>PER 3.4~3.7배·PBR 0.5배</strong>의 극단적 딥밸류(EPC 디스카운트 + 코스닥 소외)에 갇혀 있었다. 2026년 반도체 capex·AI 슈퍼사이클 서사로 <em>52주 고점 39,400원(≈2026E 10~11배)</em>까지 리레이팅됐다가, 지금 29,000원(fwd 7~8배)으로 되밀렸다. <strong>딥밸류→적정 사이 중간</strong>에 있다.</p>
+
+  <div class="chart">
+    <div class="ct">PER 밴드 — 현재가 vs 주요 좌표 (2026E 순익 660억 기준)</div>
+    <div class="cs">시총(억) = PER × 660. 현재 29,000(7.7x) / 고점 39,400(10.4x) / 매집 24,000(6.4x) / 딥밸류역사 3.5x</div>
+    <svg viewBox="0 0 620 170" role="img" aria-label="PER 밴드">
+      <line x1="40" y1="130" x2="600" y2="130" stroke="#D2C9B6" stroke-width="1"/>
+      <!-- x scale: PER 3 to 11 -> x = 60 + (per-3)/8*520 -->
+      <!-- deep value 3.5 -> 92.5 -->
+      <line x1="92" y1="40" x2="92" y2="130" stroke="#7A7264" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="92" y="32" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#7A7264">3.5x 역사바닥</text>
+      <!-- magic band 6.4 -> 281 -->
+      <rect x="255" y="45" width="52" height="85" fill="#2E6B5E" opacity="0.13"/>
+      <text x="281" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#2E6B5E">매집 6.4x</text>
+      <text x="281" y="38" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#2E6B5E">24천</text>
+      <!-- current 7.7 -> 365.5 -->
+      <line x1="365" y1="30" x2="365" y2="130" stroke="#B8472E" stroke-width="2"/>
+      <text x="365" y="24" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#B8472E" font-weight="600">현재 29천 · 7.7x</text>
+      <!-- base exit 8x -> 385 (2027 net, approx same visual) mark -->
+      <!-- high 10.4 -> 501 -->
+      <line x1="501" y1="45" x2="501" y2="130" stroke="#9C7A2E" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="501" y="38" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#9C7A2E">52주고점 39.4천·10.4x</text>
+    </svg>
+  </div>
+
+  <h3>컨센 반영률 게이지 — 무엇이 가격에 들어있나</h3>
+  <table>
+    <thead><tr><th>투자포인트</th><th class="txt">반영도</th><th class="txt">판정 근거</th></tr></thead>
+    <tbody>
+      <tr><td>P4·테일러 훅업 인식 (26E)</td><td class="txt"><span class="tag n">반영</span></td><td class="txt">1Q26 서프라이즈로 26E OP 회복은 가격에 반영 시작</td></tr>
+      <tr><td>OPM 정상화 (4.8→7%)</td><td class="txt"><span class="tag n">부분</span></td><td class="txt">1Q 6.5% 확인, 연간 유지 여부는 미검증</td></tr>
+      <tr><td>하이닉스 M15X·용인 본격 매출</td><td class="txt"><span class="tag b">미반영</span></td><td class="txt">2027 파이프라인 — 컨센 얇아 아직 미편입</td></tr>
+      <tr><td>우주항공·원전·미국(테일러) 확장</td><td class="txt"><span class="tag b">미반영</span></td><td class="txt">스토리 단계 — 상방 옵션</td></tr>
+      <tr><td>(다운) 삼성 capex 지연·건설 시차</td><td class="txt"><span class="tag s">미반영</span></td><td class="txt">컨센 하향 없음 — 시장 붕괴가 심리 위축시 리스크</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn">
+    <div class="h">컨센 감사 — 커버리지가 얇다</div>
+    한경 12MF EPS 3,208원(→순익 ~560억)은 <em>1Q26 서프라이즈를 아직 덜 반영</em>한 보수적·희소 컨센으로 보인다(집계 목표주가 미표시, 개별 언급 37,000·42,000 산재). 반면 1Q26 런레이트는 연 720억+를 가리킨다. 본 리서치는 그 중간인 <strong>660억[E]</strong>을 채택 — <em>이 구간은 컨센 자체가 불확실</em>하다는 점이 최대 데이터 갭이다. 8월 초 2Q26이 컨센을 재설정할 트리거.
+  </div>
+</section>
+
+<!-- ═══════════ TAB 8 경쟁·Peer ═══════════ -->
+<section class="panel" id="t8">
+  <div class="eyebrow">경쟁 구도 · Peer 컴프</div>
+  <h2 class="sec">반도체 인프라·설비 Peer — 파이는 커지는데 저PER 동반</h2>
+  <table>
+    <thead><tr><th>종목</th><th class="num">시총</th><th class="num">PER(TTM~26E)</th><th class="num">PBR</th><th class="txt">포지션 / 고객</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>한양이엔지 @29,000</td><td class="num">5,075억</td><td class="num">7.7x</td><td class="num">0.77</td><td class="txt">배관·훅업 1위 + CCSS · 삼성·하이닉스 60%</td></tr>
+      <tr><td>에스티아이 (039440)</td><td class="num">4,451억</td><td class="num">~7x E</td><td class="num">~1.0 E</td><td class="txt">CCSS·Wet System · LG 의존</td></tr>
+      <tr><td>성도이엔지 (037350)</td><td class="num">~2천억대 E</td><td class="num">4.5x</td><td class="num">~0.5</td><td class="txt">클린룸+플랜트 · 반도체 최저 PER</td></tr>
+      <tr><td>케이엔솔 (232680, 구 원방테크)</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="txt">클린룸 설비 · 재확인 요</td></tr>
+      <tr><td>신성이엔지 (011930)</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="txt">클린룸+태양광에너지</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: 에스티아이 시총 4,451억@28,700(알파스퀘어), 성도이엔지 PER 4.48배(더밸류뉴스), 2026-07-20 조회<span class="src">출처<span class="tip">에스티아이 039440 시총 4,451억·현재가 28,700 (알파스퀘어). 성도이엔지 037350 PER 4.48배 반도체 최저 (더밸류뉴스). 케이엔솔·신성이엔지 멀티플 미확인 — 실시간 컨센 재확인 필요.</span></span>. <strong>주의: peer 26E 멀티플은 실시간 컨센 재확인 필요(E 표기)</strong> — 자본재/설비 섹터는 전반적으로 PER 4~9배 저평가 구간.</p>
+
+  <h3>상대 판정</h3>
+  <div class="grid g3">
+    <div class="card"><h4>에스티아이 — CCSS 직접 경쟁·고객 상보</h4><p>CCSS+Wet 장비, LG 의존. 한양이엔지가 삼성, 에스티아이가 LG로 <em>고객이 갈려</em> 직접 출혈 경쟁보다 각자 진영 수혜. 시총·PER 유사 — <strong>위협도 중</strong>.</p></div>
+    <div class="card"><h4>성도이엔지 — 가장 싸다</h4><p>PER 4.5배로 최저지만 클린룸 도급 비중이 높아 <em>마진 변동성·순익 질</em>이 열위. 밸류 갭이 곧 매수 이유는 아님 — <strong>위협도 중하</strong>.</p></div>
+    <div class="card acc"><h4>한양이엔지 상대 우위</h4><p>배관·훅업 <em>점유율 1위</em> + CCSS 수직통합 + 순현금 재무. 프리미엄 근거는 <em>안정성·트랙레코드</em>지 성장 프리미엄이 아니다 — 그래서 밴드 상단(10배)은 Bull에서만.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ TAB 9 밸류·시나리오 ═══════════ -->
+<section class="panel" id="t9">
+  <div class="eyebrow">밸류에이션 · 시나리오 · 손익비</div>
+  <h2 class="sec">시나리오 BUILD — 가정 → 순익 → 출구배수 → TP → 확률</h2>
+  <table>
+    <thead><tr><th>가정 (드라이버)</th><th class="num">27E 순익</th><th class="txt">출구배수</th><th class="num">TP</th><th class="num">등락</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td><span class="est bull">BULL</span> capex 슈퍼사이클 지속 + 테일러·용인 본격 인식 + OPM 7.5%↑</td><td class="num">820억</td><td class="txt">10x (리레이팅 유지)</td><td class="num">47,000</td><td class="num up">+62%</td><td class="num">30%</td></tr>
+      <tr><td><span class="est">BASE</span> 26E 실현·27E 완만 성장, 시장 횡보 — 자본재 8배</td><td class="num">740억</td><td class="txt">8x (자본재 정상)</td><td class="num">33,000</td><td class="num up">+14%</td><td class="num">45%</td></tr>
+      <tr><td><span class="est bear">BEAR</span> 삼성 capex 지연·건설 시차 + EPC 저마진 회귀 + 코스닥 붕괴</td><td class="num">500억</td><td class="txt">6x (역사 하단)</td><td class="num">17,000</td><td class="num down">−41%</td><td class="num">25%</td></tr>
+      <tr class="tot"><td>EV (확률가중)</td><td class="num">—</td><td class="txt">0.30×47천+0.45×33천+0.25×17천</td><td class="num">33,200</td><td class="num up">+14.5%</td><td class="num">100%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">시총 기준(17.5M주). Base 8배 = 자본재/설비 섹터 정상 멀티플, Bull 10배 = capex 피크 리레이팅, Bear 6배 = 이 종목 역사 하단(2023~24는 3~4배였으나 실적 회복 반영해 6배). <strong>확률 근거:</strong> Bear 25% = 코스닥·반도체가 오늘 투매 국면이라 심리 위축·capex 지연 확률 낮지 않음. Bull 30% = 1Q 서프라이즈·capex 규모는 우호적이나 EPC 저마진이 순익 상단을 제약.</p>
+
+  <div class="note">
+    <div class="h">판독 — EV는 +14.5%지만 R/R이 문제</div>
+    현재가 29,000에서 EV 33,200은 <em>양(+)의 기대값</em>이다. 그러나 상방(Base 33천, +14%)보다 <strong>하방(Bear 17천, −41%)이 훨씬 깊다</strong> — 오늘처럼 시장이 무너지는 국면에선 R/R이 아래로 기울어 있다. 24,000 매집 시: 상방 Base +38%/하방 Bear −29%로 대칭 회복, 22,000 시 R/R 2:1↑. <strong>그래서 EV가 플러스여도 "지금 사라"가 아니라 "밴드에서 사라"가 정답.</strong>
+  </div>
+
+  <h3>홈그라운드 밴드 — 되돌림 목적지</h3>
+  <table>
+    <thead><tr><th>구간</th><th class="num">PER(26E순익)</th><th class="num">PBR</th><th class="txt">의미</th></tr></thead>
+    <tbody>
+      <tr><td>2023~24 역사바닥</td><td class="num">3.4~3.7x</td><td class="num">0.50</td><td class="txt">EPC 딥밸류·소외 (실적 저점 전)</td></tr>
+      <tr><td>1차 매집 24~25천</td><td class="num">6.4~6.6x</td><td class="num">~0.68</td><td class="txt">회복 실적 + 자본재 할인 균형</td></tr>
+      <tr class="hl"><td>현재 29,000</td><td class="num">7.7x</td><td class="num">0.77</td><td class="txt">딥밸류→적정 중간, Base 부근</td></tr>
+      <tr><td>52주 고점 39,400</td><td class="num">10.4x</td><td class="num">1.02</td><td class="txt">capex 피크 리레이팅 (Bull)</td></tr>
+    </tbody>
+  </table>
+  <p>멀티베거 3체크: 매출확장 ○(capex 램프) / 마진확장 △(OPM 4.8→7%, 자본재 천장) / <strong>멀티플확장 △(3.5→7.7배 이미 절반 소진)</strong>. 저점 대비 리레이팅은 상당 부분 진행됐고, 지금부터 살 수 있는 건 <em>이익 회복분과 배당(2.1%)</em>이지 멀티플 재확장이 아니다 — Bull에서도 10배까지만 채택한 이유.</p>
+</section>
+
+<!-- ═══════════ TAB 10 리스크·매매·KPI ═══════════ -->
+<section class="panel" id="t10">
+  <div class="eyebrow">리스크 · 매매 플랜 · 추적 KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th>리스크</th><th class="num">주가 영향</th><th class="num">12M 확률</th><th class="txt">메커니즘 / 관전 신호</th></tr></thead>
+    <tbody>
+      <tr><td>① 삼성 capex 지연·건설 시차</td><td class="num down">−25~40%</td><td class="num">30%</td><td class="txt">P4·P5 착공 밀리면 매출 공백 재현(2024~25 전례) · 삼성 분기 capex·팹 착공 뉴스</td></tr>
+      <tr><td>② 코스닥·반도체 투매 지속</td><td class="num down">−20~30%</td><td class="num">30%</td><td class="txt">오늘 −5.84% 진행 중 · 자본재 베타 + capex 심리 위축 · 코스닥 20일선</td></tr>
+      <tr><td>③ 2Q26 컨센 미스 (8월)</td><td class="num down">−15~25%</td><td class="num">20%</td><td class="txt">얇은 컨센·1Q 서프라이즈로 눈높이 상승 · OP 200억 하회시 과반응</td></tr>
+      <tr><td>④ 삼성 단일 발주처 집중</td><td class="num down">−10~20%</td><td class="num">15%</td><td class="txt">삼성 60% 노출 — 삼성 팹 전략 변화·발주 축소시 직격 · 관계사 거래</td></tr>
+      <tr><td>⑤ EPC 저마진 고착 (구조)</td><td class="num down">멀티플 −10~15%</td><td class="num">상시</td><td class="txt">물량 늘어도 OPM 5%대 고착시 자본재 디스카운트 지속 · 분기 OPM</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <table>
+    <thead><tr><th>상태</th><th class="txt">트리거 (if)</th><th class="txt">액션 (then)</th></tr></thead>
+    <tbody>
+      <tr><td>신규</td><td class="txt">24,000~25,000 진입 + 코스닥·반도체 투매 진정</td><td class="txt">1차 50bp 매집 (27E 6.4~6.6배)</td></tr>
+      <tr><td>신규</td><td class="txt">20,000~22,000 (52주 저점권)</td><td class="txt">2차 +100bp (합계 150bp 상한, R/R 2:1↑)</td></tr>
+      <tr><td>추격</td><td class="txt">2Q26 OP 230억+ & 수주잔고 반등 & 코스닥 20일선 회복</td><td class="txt">가격 불문 50bp (Base 상향 확인)</td></tr>
+      <tr><td>보유</td><td class="txt">현 보유분 (있다면)</td><td class="txt">홀드 — thesis 무손상, 배당·PBR 하방</td></tr>
+      <tr><td>축소</td><td class="txt">삼성 P4/P5 착공 지연 공식화 & 분기 OPM 5% 하회</td><td class="txt">보유분 절반 축소</td></tr>
+      <tr><td>이익실현</td><td class="txt">35,000+ (26E 10배 접근) 또는 fwd 10배</td><td class="txt">절반 실현, 후공정·소재 순환 검토</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note warn">
+    <div class="h">Thesis Break — 가격 불문 정리 (사실 기준)</div>
+    ① 삼성·하이닉스 반도체 capex 가이던스 <strong>하향 전환 + 팹 착공 2개 분기 연속 지연</strong> (수요 축 소멸) ② 수주잔고 <strong>2개 분기 연속 감소</strong> (물량 파이프 고갈) ③ OPM <strong>2개 분기 연속 5% 하회</strong> (EPC 저마진 함정 고착). 어느 것도 가격 조건이 아니다 — 가격은 시장이 정하지만 사실은 회사·고객이 증명한다.
+  </div>
+
+  <h2 class="sec">추적 KPI 대시보드</h2>
+  <table>
+    <thead><tr><th>KPI</th><th class="txt">최신치</th><th class="txt">보는 이유 / 경보선</th></tr></thead>
+    <tbody>
+      <tr><td>분기 영업이익 / OPM</td><td class="txt">1Q26 222억 / 6.5%</td><td class="txt">회복 지속성 · 경보: OP 200억↓ or OPM 5%↓</td></tr>
+      <tr><td>수주잔고</td><td class="txt">미확보(3Q 3,327억 추정·부분)</td><td class="txt">매출 선행지표 · 경보: 2분기 연속 감소</td></tr>
+      <tr><td>삼성 분기 반도체 capex</td><td class="txt">2026 60조+ 가이드</td><td class="txt">물량 원천 · 경보: 가이던스 하향</td></tr>
+      <tr><td>외국인 지분율</td><td class="txt">17.99% (7/20)</td><td class="txt">스마트머니 게이지 · 경보: 급감</td></tr>
+      <tr><td>코스닥 / 20일선</td><td class="txt">투매 진행 중</td><td class="txt">자본재 베타·매집 개시 조건</td></tr>
+    </tbody>
+  </table>
+
+  <h3>촉매 캘린더</h3>
+  <ul class="cl">
+    <li><strong>2026.8월 초</strong> — 2Q26 실적: OP 230억± & 수주잔고 확인 (최대 분기점, 얇은 컨센 재설정)</li>
+    <li><strong>2026.하반기</strong> — 삼성 테일러 팹 수주·매출 인식 시작 여부 / P5 클린룸 착공</li>
+    <li><strong>2026~2027</strong> — SK하이닉스 용인 클러스터 1기 팹 착공 → 인프라 발주</li>
+    <li><strong>다음 갱신:</strong> 2Q26 실적 발표 직후 (v2)</li>
+  </ul>
+
+  <h3>미결 — 지어내지 않고 남겨두는 것</h3>
+  <ul class="cl c2">
+    <li><strong>최신 수주잔고</strong> — 3Q "지난해" 3,327억(부분·매체 인용)만 확보, DART 최신 분기보고서 수주현황 원문 미대조</li>
+    <li><strong>2026E/2027E 컨센 정밀치</strong> — 커버리지 얇음(집계 목표주가 미표시), 한경 12MF EPS 3,208 vs 1Q 런레이트 720억 스프레드 → 순익 660억[E] 채택</li>
+    <li><strong>최신 세그먼트 비중</strong> — 배관 83.5%/CCSS 16.5%는 2022 3Q 기준, 최신 분기 재확인 필요</li>
+    <li><strong>2Q26 이후 분기 시계열·OCF·미청구공사</strong> — 이익의 질 정밀 점검용 원자료 미확보</li>
+    <li><strong>관계사 거래 비중</strong> — 한양그룹 내부거래·2세 승계 관련 거버넌스 정밀치</li>
+  </ul>
+
+  <div class="note in">
+    <div class="h">내 베팅 한 문장 + 그 베팅을 깨는 변수</div>
+    <strong>베팅:</strong> "한양이엔지의 이익 변곡(26E OP 850억)은 삼성·하이닉스 capex로 실현되지만, 저마진 자본재라 멀티플은 7~8배에 갇힌다 — 시장 붕괴가 만들어줄 24~25천이 그 이익을 27E 6.4배에 사는 자리다." <strong>깨는 변수:</strong> ① 삼성 capex 지연(이익 자체 훼손) ② 코스닥 V자 반등(밴드 미도달 — 추격 조건으로 대응) ③ 2Q 서프라이즈로 컨센 재설정(Base 상향) ④ EPC 저마진 고착. 퀄리티 한 단어: <em>"점유율 1위 인프라"</em>.
+  </div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 관망·매집대기</span><span class="pill">Base 33,000</span><span class="pill">매집밴드 24~25천 / 20~22천</span><span class="pill">추격조건 2Q OP 230억+ & 코스닥 안정</span><span class="pill">thesis break 삼성 capex하향·수주감소·OPM 5%↓</span></div>
+    RESEARCH LAB · 심층 리서치 v1 · 기준일 2026-07-20 · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 모든 추정 <span class="est">E</span> 태그, 추정/실측 구분. 이익·밸류 축 = 지배순익 + 시가총액.<br>
+    데이터 계보: 한경 마켓 재무요약(23A~25A 실적·EPS·ROE·PBR) · 알파스퀘어(현재가 29,000·시총 5,075억·17.5M주·외국인 18.0%·PBR 0.77, 2026-07-20) · itooza vscore(PER·DPS) · 서울경제 SEN·이투데이·글로벌이코노믹(고객 팹·capex) · 한국IR협의회(2026E OP 888억) · 더밸류뉴스(성도이엔지 PER) · 매체 종합(1Q26 매출 3,413억·OP 222억). 전 조회일 2026-07-20.<br>
+    <strong>본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.</strong> 컨센 커버리지가 얇아 26E·27E 추정 불확실성이 크며, 수주잔고·세그먼트 최신치는 미결로 남김.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>
