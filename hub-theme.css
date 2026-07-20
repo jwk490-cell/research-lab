@@ -96,6 +96,10 @@ html.ht-semietf{--red:#ef4444;--blue:#5a9bd8;--mut:#9aa2ad;--acc:#4d7df5;
 .ht-semietf th{background:#202128;color:#9aa2ad;font-size:11.5px}
 .ht-semietf td{border-top:1px solid #232530;font-size:12.5px}
 .ht-semietf tr:hover td{background:rgba(255,255,255,.03)}
+/* 상위10 하이라이트 — 라이트 크림(#fffdf5) 대신 액센트 틴트 */
+.ht-semietf tr.t10 td{background:rgba(77,125,245,.09) !important}
+.ht-semietf tr.t10:hover td{background:rgba(77,125,245,.15) !important}
+.ht-semietf tr[style*="fffdf5"]{background:rgba(77,125,245,.09) !important}
 .ht-semietf .btn{background:#1a1b20;border-color:#272930;color:#9aa2ad}
 .ht-semietf .btn:hover{color:#e9ebee}
 .ht-semietf .btn.on{background:#4d7df5;color:#1a1b20;border-color:#4d7df5}
