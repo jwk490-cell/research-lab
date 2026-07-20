@@ -155,7 +155,10 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
   .tgitem{flex:none}
 }
 
-/* ───────── 시황정리 ───────── */
+/* ───────── 韓/美 시황 ───────── */
+.mwtxt{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.74;color:var(--text)}
+.mwtxt .mwhead{display:block;font-size:14.5px;font-weight:800;margin-bottom:4px}
+.mwtxt .mwsec{color:var(--accent);font-weight:700}
 .wrapbody{display:flex;flex-direction:column;gap:14px;max-width:880px}
 .wrapsec{background:var(--surface);border:none;border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
 .wrapsec h3{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:8px}
@@ -297,7 +300,8 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="dd">전고대비</button>
     <button class="navitem" data-tab="ram">램값</button>
     <div class="navgroup">데일리</div>
-    <button class="navitem" data-tab="wrap">시황정리</button>
+    <button class="navitem" data-tab="krwrap">韓 시황</button>
+    <button class="navitem" data-tab="uswrap">美 시황</button>
     <button class="navitem" data-tab="supply">수급 대시보드</button>
     <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
     <button class="navitem" data-tab="sector">산업별 등락</button>
@@ -350,7 +354,8 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <section class="section">
         <h2>데일리</h2>
         <div class="grid">
-          <button class="card" data-go="wrap"><h3>시황정리 <span class="tag">매일 16시</span></h3><p>시황 채널 4곳 통합 요약 — 수급·매크로·섹터 이슈</p></button>
+          <button class="card" data-go="krwrap"><h3>韓 시황 <span class="tag">평일 15:50</span></h3><p>한국 마감 시황 — 지수·수급·업종·특징주 총정리</p></button>
+          <button class="card" data-go="uswrap"><h3>美 시황 <span class="tag">매일 아침</span></h3><p>밤사이 미국 증시 — 지수·섹터·특징주·매크로 총정리</p></button>
           <button class="card" data-go="supply"><h3>수급 대시보드 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
           <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
           <button class="card" data-go="sector"><h3>산업별 등락 <span class="tag">매일</span></h3><p>27개 업종 등락률과 업종 내 종목별 상세</p></button>
@@ -434,10 +439,16 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <div id="ramBody"></div>
     </section>
 
-    <section class="panel" id="tab-wrap">
-      <div class="ptitle">시황정리</div>
-      <div class="pdesc" id="wrapMeta">불러오는 중…</div>
-      <div class="wrapbody" id="wrapBody"></div>
+    <section class="panel" id="tab-krwrap">
+      <div class="ptitle">韓 시황</div>
+      <div class="pdesc" id="krwrapMeta">불러오는 중…</div>
+      <div class="wrapbody" id="krwrapBody"></div>
+    </section>
+
+    <section class="panel" id="tab-uswrap">
+      <div class="ptitle">美 시황</div>
+      <div class="pdesc" id="uswrapMeta">불러오는 중…</div>
+      <div class="wrapbody" id="uswrapBody"></div>
     </section>
 
     <section class="panel embed" id="tab-supply">
@@ -500,35 +511,40 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 <footer>© 2026 Research Lab — 단순 정보 제공 목적이며, 투자 판단의 근거가 아닙니다.</footer>
 
 <script>
-/* ── 시황정리: data/wrap.json 렌더 ── */
-let WRAP=null,wrapFetchedAt=0;
-async function loadWrap(){
-  if(WRAP&&Date.now()-wrapFetchedAt<300000)return;
-  const meta=document.getElementById('wrapMeta'),body=document.getElementById('wrapBody');
+/* ── 韓/美 시황: 마감시황 봇 출력 원문(data/krwrap.json·uswrap.json) 렌더 ── */
+const MW={
+  krwrap:{url:'data/krwrap.json',label:'韓 시황',note:'평일 15:50 한국 마감시황 봇이 작성'},
+  uswrap:{url:'data/uswrap.json',label:'美 시황',note:'매일 아침 미국 모닝시황 봇이 작성'}
+};
+async function loadMW(k){
+  const c=MW[k];
+  if(c.days&&Date.now()-c.at<300000)return;
+  const meta=document.getElementById(k+'Meta'),body=document.getElementById(k+'Body');
   try{
-    const res=await fetch('data/wrap.json?t='+Date.now(),{cache:'no-store'});
+    const res=await fetch(c.url+'?t='+Date.now(),{cache:'no-store'});
     if(!res.ok)throw new Error(res.status);
-    WRAP=await res.json();wrapFetchedAt=Date.now();
+    const j=await res.json();c.days=j.days||[];c.at=Date.now();
   }catch(e){
-    meta.textContent='시황 채널 4곳의 당일 글을 통합 요약합니다.';
-    body.innerHTML='<div class="empty"><b>아직 오늘 시황 요약이 없습니다</b>매 평일 16시에 자동 업데이트됩니다.</div>';
+    meta.textContent=c.note+'합니다.';
+    body.innerHTML='<div class="empty"><b>아직 게시된 시황이 없습니다</b>봇이 발행하면 30분 내 자동 업로드됩니다.</div>';
     return;
   }
-  const md=s=>esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
-  const dayHtml=d=>d.sections.map(s=>
-    `<div class="wrapsec"><h3>${esc(s.emoji)} ${esc(s.title)}</h3><ul>`
-    +s.bullets.map(b=>`<li>${md(b)}</li>`).join('')+'</ul></div>').join('')
-    +`<div class="wrapsrc">출처: ${d.sources.map(s=>`${esc(s.title)}(${s.count}건)`).join(' · ')} — 4개 채널 당일 게시글 통합 요약</div>`;
-  const wd=ds=>['일','월','화','수','목','금','토'][new Date(ds+'T00:00:00+09:00').getDay()];
-
-  const days=WRAP.days||[WRAP];
-  const latest=days[0];
-  meta.innerHTML=`<b>${latest.date}(${wd(latest.date)})</b> 장 마감 기준 · ${latest.updated.slice(11)} 작성 · 매 평일 16시 자동 업데이트 · 최근 ${days.length}거래일 보관`;
+  const wd=ds=>['일','월','화','수','목','금','토'][new Date('20'+ds.slice(0,2)+'-'+ds.slice(2,4)+'-'+ds.slice(4,6)+'T00:00:00+09:00').getDay()];
+  const fmt=t=>esc(t).split('\n').map((ln,i)=>{
+    const s=ln.trim();
+    if(i===0)return `<b class="mwhead">${ln}</b>`;
+    if(/^&lt;.+&gt;/.test(s)||/^\[.+\]/.test(s)||/^[■◆▶]/.test(s))return `<b class="mwsec">${ln}</b>`;
+    return ln;
+  }).join('\n');
+  const dayHtml=d=>`<div class="wrapsec"><div class="mwtxt">${fmt(d.text)}</div></div>`;
+  const days=c.days,latest=days[0];
+  if(!latest){meta.textContent=c.note+'합니다.';body.innerHTML='<div class="empty"><b>아직 게시된 시황이 없습니다</b></div>';return;}
+  meta.innerHTML=`<b>${latest.date}(${wd(latest.date)})</b> · ${esc(latest.mtime||'')} 게시 · ${c.note} · 최근 ${days.length}일 보관`;
   let html=dayHtml(latest);
   if(days.length>1){
-    html+='<div class="wrapdiv">지난 거래일</div>';
+    html+='<div class="wrapdiv">지난 시황</div>';
     days.slice(1).forEach(d=>{
-      html+=`<details class="wrapday"><summary>📅 ${esc(d.date)} (${wd(d.date)}) 시황정리</summary><div class="inner">${dayHtml(d)}</div></details>`;
+      html+=`<details class="wrapday"><summary>📅 ${esc(d.date)} (${wd(d.date)}) ${c.label}</summary><div class="inner">${dayHtml(d)}</div></details>`;
     });
   }
   body.innerHTML=html;
@@ -1074,7 +1090,7 @@ function openTab(tab){
   if(f&&!f.src){f.src=f.dataset.src;}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
-  if(tab==='wrap')loadWrap();
+  if(tab==='krwrap'||tab==='uswrap')loadMW(tab);
   if(tab==='raoni')raStart();
   if(tab==='indices')idxStart();
   if(tab==='caps')capsInit();
@@ -1125,7 +1141,7 @@ document.getElementById('menuBtn').addEventListener('click',()=>document.getElem
     const dark=document.documentElement.classList.toggle('dark');
     localStorage.setItem('rl-theme',dark?'dark':'light');sync();
     const cur=document.querySelector('.navitem.on');
-    if(cur){CAPS&&(wrapFetchedAt=0);openTab(cur.dataset.tab);}  /* 차트 축색 재렌더 */
+    if(cur)openTab(cur.dataset.tab);  /* 차트 축색 재렌더 */
   });
   sync();
 })();
