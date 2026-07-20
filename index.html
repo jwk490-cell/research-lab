@@ -199,6 +199,7 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
 .stc .s{font-size:10.5px;color:var(--faint);margin-top:3px}
 .stc .s.up{color:var(--up)}.stc .s.down{color:var(--down)}
 .cbar{width:74px;border-radius:10px 10px 4px 4px;margin:8px auto 0;box-shadow:var(--shadow)}
+main canvas{display:block;width:100%}
 .clegend{font-size:11px;color:var(--sub);margin-top:8px;display:flex;align-items:center;flex-wrap:wrap}
 .clegend i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
 .gauge{position:relative;height:7px;background:var(--bg);border:1px solid var(--line);border-radius:999px;margin-top:12px}
@@ -298,7 +299,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="gap">괴리율</button>
     <button class="navitem" data-tab="etfgap">ETF 괴리율</button>
     <button class="navitem" data-tab="dd">전고대비</button>
-    <button class="navitem" data-tab="ram">램값</button>
+    <button class="navitem" data-tab="ram">메모리 가격</button>
     <div class="navgroup">데일리</div>
     <button class="navitem" data-tab="krwrap">韓 시황</button>
     <button class="navitem" data-tab="uswrap">美 시황</button>
@@ -347,7 +348,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="gap"><h3>괴리율 <span class="tag">2010~</span></h3><p>삼성 보통/우선 괴리율 · SK스퀘어 NAV 할인율</p></button>
           <button class="card" data-go="etfgap"><h3>ETF 괴리율 <span class="tag">5분</span></h3><p>단일종목 레버리지·인버스 시장가 vs NAV 게이지</p></button>
           <button class="card" data-go="dd"><h3>전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이 + −15% 이상 하락 구간 기록</p></button>
-          <button class="card" data-go="ram"><h3>램값 <span class="tag">일별</span></h3><p>DRAM 현물가(DDR5·4·3) — DRAMeXchange 세션평균</p></button>
+          <button class="card" data-go="ram"><h3>메모리 가격 <span class="tag">일별</span></h3><p>DRAM·NAND 현물가/고정가 — DRAMeXchange, 과거 추이 포함</p></button>
         </div>
       </section>
 
@@ -434,7 +435,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     </section>
 
     <section class="panel" id="tab-ram">
-      <div class="ptitle">램값 <span style="font-size:12px;font-weight:600;color:var(--dim2)">DRAM 현물가 동향</span></div>
+      <div class="ptitle">메모리 가격 <span style="font-size:12px;font-weight:600;color:var(--dim2)">DRAM·NAND 현물가/고정가 동향</span></div>
       <div class="pdesc" id="ramMeta">불러오는 중…</div>
       <div id="ramBody"></div>
     </section>
@@ -728,7 +729,7 @@ const fmtJo=n=>{const j=n/1e12;return j>=1?j.toLocaleString('ko-KR',{maximumFrac
 function rngBar(el,cur,codes,onsel){el.innerHTML=codes.map(c=>`<button class="rng${c===cur?' on':''}" data-r="${c}">${c==='ALL'?'전체':c}</button>`).join('');
   el.onclick=e=>{const b=e.target.closest('.rng');if(b)onsel(b.dataset.r);};}
 async function getJson(path){const r=await fetch(path+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;return r.json();}
-let CAPS=null,DD=null,RAM=null;
+let CAPS=null,DD=null,MEM=null;
 async function needCaps(){if(!CAPS)CAPS=await getJson('data/caps.json');return CAPS;}
 async function needRa(){await raLoadRef();return raRef;}
 
@@ -1034,47 +1035,86 @@ async function termGlobal(){
 function termStart(){termLoad();clearInterval(termTimer);termTimer=setInterval(()=>{
   if(document.getElementById('tab-term').classList.contains('on')){raRefAt=0;termLoad();}else clearInterval(termTimer);},60000);}
 
-/* ══════════ 램값 ══════════ */
+/* ══════════ 메모리 가격 (DRAM·NAND 현물/고정) ══════════ */
+let memMode='dsp',memRng='6M',memSel={};
+const MEM_MODES=[['dsp','DRAM 현물'],['nsp','NAND 현물'],['dfx','DRAM 고정가'],['nfx','NAND 고정가']];
+const MEM_DAYS=864e5;
 async function ramLoad(){
-  if(!RAM)RAM=await getJson('data/ram.json').catch(()=>null);
+  if(!MEM)MEM=await getJson('data/memory.json').catch(()=>null);
+  const meta=document.getElementById('ramMeta');
+  if(!MEM){meta.textContent='DRAM·NAND 현물가/고정가 · 출처 DRAMeXchange';
+    document.getElementById('ramBody').innerHTML='<div class="empty"><b>아직 수집된 데이터가 없습니다</b>다음 일별 빌드에서 채워집니다.</div>';return;}
+  meta.innerHTML=`현물가(세션평균)·고정가(컨트랙트) · 단위 USD · 출처 DRAMeXchange · 업데이트 ${MEM.updated} · <span style="color:var(--dim2)">DRAM 현물 추이 2025-07~ · NAND 현물/고정가 추이는 2026-07-20부터 누적</span>`;
+  memRender();
+}
+function memRender(){
   const el=document.getElementById('ramBody');
-  if(!RAM||!RAM.items||!RAM.items.length){
-    document.getElementById('ramMeta').textContent='DRAM 현물가(스팟) · 출처 DRAMeXchange';
-    el.innerHTML='<div class="empty"><b>아직 수집된 데이터가 없습니다</b>다음 일별 빌드에서 채워집니다.</div>';return;}
-  document.getElementById('ramMeta').innerHTML=`DRAM 현물가(스팟·세션평균) · 단위 USD · 출처 DRAMeXchange · 업데이트 ${RAM.updated} · <span style="color:var(--dim2)">추이 히스토리는 2026-07-09부터 자체 수집</span>`;
-  const hist=RAM.history||[];
-  const chgOf=(name,daysAgo)=>{
-    if(hist.length<2)return null;
-    const target=hist.length-1-daysAgo;
-    if(target<0)return null;
-    const past=hist[target].items.find(i=>i.name===name);
-    const cur=RAM.items.find(i=>i.name===name);
-    return past&&cur?(cur.avg/past.avg-1)*100:null;};
+  const spot=memMode==='dsp'||memMode==='nsp';
+  const kind=(memMode==='dsp'||memMode==='dfx')?'dram':'nand';
+  const items=(spot?MEM.spot[kind]:MEM.fixed[kind])||[];
+  const hist=(MEM.history[spot?'spot':'fixed']||[]).filter(h=>h[kind]&&Object.keys(h[kind]).length);
   const fc=v=>v==null?'<span style="color:var(--dim2)">—</span>':`<span class="${v>=0?'up':'down'}">${v>=0?'▲':'▼'}${Math.abs(v).toFixed(2)}%</span>`;
-  const top=['DDR5 16Gb (2Gx8) 4800/5600','DDR4 16Gb (2Gx8) 3200','DDR4 8Gb (1Gx8) 3200'];
-  let html='<div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">';
-  for(const nm of top){
-    const it=RAM.items.find(i=>i.name===nm);if(!it)continue;
-    html+=`<div class="rcard" style="padding:16px 18px"><div style="font-size:12px;color:var(--dim);margin-bottom:6px">${nm}</div>
-      <div style="font-size:26px;font-weight:800">$${it.avg.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:3})} <span style="font-size:12px;color:var(--dim2)">USD</span></div>
-      <div style="font-size:11.5px;margin-top:6px">24h ${fc(chgOf(nm,1))} · 7일 ${fc(chgOf(nm,7))} · 30일 ${fc(chgOf(nm,30))}</div></div>`;}
+  const histAt=days=>{const cut=new Date(Date.now()-days*MEM_DAYS).toISOString().slice(0,10);
+    for(let i=hist.length-1;i>=0;i--)if(hist[i].date<=cut)return hist[i];return null;};
+  const chgOf=(nm,days)=>{const e=histAt(days),cur=items.find(i=>i.name===nm);
+    const past=e&&e[kind]&&e[kind][nm];return past&&cur?(cur.avg/past-1)*100:null;};
+  const fmt$=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:3});
+
+  let html=`<div class="rngwrap" id="memModeBar" style="margin-bottom:14px">${MEM_MODES.map(([k,l])=>`<button class="rng${k===memMode?' on':''}" data-m="${k}">${l}</button>`).join('')}</div>`;
+  if(!items.length){
+    html+='<div class="empty"><b>이 구분의 데이터가 아직 없습니다</b>다음 일별 빌드에서 채워집니다.</div>';
+    el.innerHTML=html;bindMemBar();return;}
+
+  html+='<div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">';
+  for(const it of items.slice(0,3)){
+    html+=`<div class="rcard" style="padding:16px 18px"><div style="font-size:12px;color:var(--dim);margin-bottom:6px">${esc(it.name)}</div>
+      <div style="font-size:26px;font-weight:800">${fmt$(it.avg)} <span style="font-size:12px;color:var(--dim2)">USD</span></div>
+      <div style="font-size:11.5px;margin-top:6px">${spot
+        ?`세션 ${fc(it.chg)} · 30일 ${fc(chgOf(it.name,30))} · 1년 ${fc(chgOf(it.name,365))}`
+        :`전월 ${fc(it.chg)} · 고가 ${fmt$(it.hi)} · 저가 ${fmt$(it.lo)} · 공표 ${esc(it.day||'—')}`}</div></div>`;}
   html+='</div>';
-  html+=`<div class="rcard" style="margin-top:14px"><h3 style="font-size:13.5px;margin-bottom:8px">📈 가격 추이 (세션평균)</h3><canvas id="ramCv" style="width:100%"></canvas>
-    <div class="clegend" id="ramLg"></div></div>`;
-  html+=`<div class="rcard" style="margin-top:14px"><h3 style="font-size:13.5px;margin-bottom:8px">💾 현물가 전체 시세</h3>
-    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">품목</th><th>현재가</th><th>24시간</th><th>7일</th><th>30일</th></tr></thead><tbody>
-    ${RAM.items.map(it=>`<tr><td style="text-align:left;font-weight:600">${esc(it.name)}</td><td>$${it.avg.toLocaleString('en-US',{maximumFractionDigits:3})}</td>
-      <td>${fc(chgOf(it.name,1))}</td><td>${fc(chgOf(it.name,7))}</td><td>${fc(chgOf(it.name,30))}</td></tr>`).join('')}</tbody></table></div></div>`;
+
+  const sel=memSel[memMode]||(memSel[memMode]=new Set(items.slice(0,4).map(i=>i.name)));
+  html+=`<div class="rcard" style="margin-top:14px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+      <h3 style="font-size:13.5px;margin:0">📈 ${spot?'현물가 추이 (세션평균)':'고정가 추이 (공표 평균가)'}</h3>
+      <div class="rngwrap" id="memRngBar" style="margin-left:auto"></div></div>
+    <div id="memChips" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">${items.map(i=>
+      `<button class="rng${sel.has(i.name)?' on':''}" data-n="${esc(i.name)}" style="font-size:11px;padding:4px 10px">${esc(i.name)}</button>`).join('')}</div>
+    <canvas id="memCv"></canvas><div class="clegend" id="memLg"></div></div>`;
+
+  html+=`<div class="rcard" style="margin-top:14px"><h3 style="font-size:13.5px;margin-bottom:8px">💾 ${spot?'현물가 전체 시세':'고정가 전체 시세'}</h3>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">품목</th>${spot
+      ?'<th>세션평균</th><th>세션변동</th><th>30일</th><th>90일</th><th>1년</th>'
+      :'<th>고가</th><th>저가</th><th>평균</th><th>전월대비</th><th>공표일</th>'}</tr></thead><tbody>
+    ${items.map(it=>`<tr><td style="text-align:left;font-weight:600">${esc(it.name)}</td>${spot
+      ?`<td>${fmt$(it.avg)}</td><td>${fc(it.chg)}</td><td>${fc(chgOf(it.name,30))}</td><td>${fc(chgOf(it.name,91))}</td><td>${fc(chgOf(it.name,365))}</td>`
+      :`<td>${fmt$(it.hi)}</td><td>${fmt$(it.lo)}</td><td>${fmt$(it.avg)}</td><td>${fc(it.chg)}</td><td style="color:var(--dim)">${esc(it.day||'—')}</td>`}</tr>`).join('')}
+    </tbody></table></div></div>`;
   el.innerHTML=html;
-  if(hist.length>=1){
-    const colors=['#3168f0','#f59e0b','#f04452','#8ab4f8','#b08ad6','#56d4dd','#f0a860'];
-    const L=hist.map(h=>h.date);
-    const series=RAM.items.slice(0,5).map((it,i)=>({label:it.name,color:colors[i%colors.length],w:1.6,
-      data:hist.map(h=>{const f=h.items.find(x=>x.name===it.name);return f?f.avg:null;})}));
-    lineChart(document.getElementById('ramCv'),{labels:L,h:260,series,
-      yfmt:v=>'$'+v.toFixed(0),xfmt:d=>d.slice(5)});
-    document.getElementById('ramLg').innerHTML=series.map(s=>`<i style="background:${s.color}"></i>${esc(s.label)}&nbsp;&nbsp;`).join('');
-  }
+  bindMemBar();
+  document.getElementById('memChips').onclick=e=>{const b=e.target.closest('[data-n]');if(!b)return;
+    const s=memSel[memMode];const n=b.dataset.n;
+    if(s.has(n)){if(s.size>1)s.delete(n);}else s.add(n);
+    memRender();};
+  rngBar(document.getElementById('memRngBar'),memRng,['1M','3M','6M','1Y','ALL'],r=>{memRng=r;memRender();});
+  memChart(hist,kind,items);
+}
+function bindMemBar(){
+  document.getElementById('memModeBar').onclick=e=>{const b=e.target.closest('[data-m]');if(b){memMode=b.dataset.m;memRender();}};
+}
+function memChart(hist,kind,items){
+  const cutDays={'1M':31,'3M':92,'6M':184,'1Y':366,'ALL':1e5}[memRng];
+  const cut=new Date(Date.now()-cutDays*MEM_DAYS).toISOString().slice(0,10);
+  const H=hist.filter(h=>h.date>=cut);
+  if(!H.length)return;
+  const colors=['#3168f0','#f59e0b','#f04452','#8ab4f8','#b08ad6','#56d4dd','#f0a860','#7fd18a','#e07ab8'];
+  const names=items.map(i=>i.name).filter(n=>memSel[memMode].has(n));
+  const series=names.map((n,i)=>({label:n,color:colors[i%colors.length],w:1.6,
+    data:H.map(h=>h[kind][n]!=null?h[kind][n]:null)}));
+  lineChart(document.getElementById('memCv'),{labels:H.map(h=>h.date),h:280,series,
+    yfmt:v=>'$'+(v>=100?v.toFixed(0):v.toFixed(1)),xfmt:d=>d.slice(2,7)});
+  document.getElementById('memLg').innerHTML=series.map(s=>`<i style="background:${s.color}"></i>${esc(s.label)}&nbsp;&nbsp;`).join('');
 }
 
 /* ── 탭 전환 (iframe은 첫 진입 시에만 로드) ── */
@@ -1125,6 +1165,11 @@ async function drLoad(){
 
 /* ── 모바일 메뉴 ── */
 document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('nav').classList.toggle('open'));
+
+/* ── 창 크기 변경 시 활성 탭 차트 재렌더 (캔버스 폭 재계산) ── */
+let _rsTimer=null;
+window.addEventListener('resize',()=>{clearTimeout(_rsTimer);
+  _rsTimer=setTimeout(()=>{const cur=document.querySelector('.navitem.on');if(cur)openTab(cur.dataset.tab);},250);});
 
 /* ── 시계 ── */
 (function(){
