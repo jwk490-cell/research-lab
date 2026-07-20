@@ -295,28 +295,30 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="indices">지수 <small>5초</small></button>
     <button class="navitem" data-tab="term">터미널</button>
     <button class="navitem" data-tab="quote">종목 분석</button>
-    <div class="navgroup">분석</div>
+    <div class="navgroup">시황</div>
+    <button class="navitem" data-tab="krwrap">韓 시황</button>
+    <button class="navitem" data-tab="uswrap">美 시황</button>
+    <button class="navitem" data-tab="sector">산업별 등락</button>
+    <button class="navitem" data-tab="disparity">50일 이격도</button>
+    <div class="navgroup">수급 · 모멘텀</div>
+    <button class="navitem" data-tab="supply">수급 대시보드</button>
+    <button class="navitem" data-tab="rs">RS 분석</button>
+    <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
+    <div class="navgroup">비교 · 밸류</div>
     <button class="navitem" data-tab="caps">시총비교</button>
     <button class="navitem" data-tab="gap">괴리율</button>
     <button class="navitem" data-tab="etfgap">ETF 괴리율</button>
     <button class="navitem" data-tab="dd">전고대비</button>
+    <div class="navgroup">매크로 데이터</div>
     <button class="navitem" data-tab="ram">메모리 가격</button>
-    <div class="navgroup">데일리</div>
-    <button class="navitem" data-tab="krwrap">韓 시황</button>
-    <button class="navitem" data-tab="uswrap">美 시황</button>
-    <button class="navitem" data-tab="supply">수급 대시보드</button>
-    <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
-    <button class="navitem" data-tab="sector">산업별 등락</button>
-    <button class="navitem" data-tab="disparity">50일 이격도</button>
-    <div class="navgroup">데이터</div>
     <button class="navitem" data-tab="export">수출 데이터</button>
     <button class="navitem" data-tab="corpexport">기업별 수출</button>
     <button class="navitem" data-tab="trade10">수출입 잠정치</button>
-    <button class="navitem" data-tab="backlog">수주잔고 <small>준비중</small></button>
     <div class="navgroup">리서치</div>
     <button class="navitem" data-tab="telegram">텔레그램 채널 요약</button>
     <button class="navitem" data-tab="taerin">태린이아빠</button>
     <button class="navitem" data-tab="deepresearch">심층 리서치</button>
+    <button class="navitem" data-tab="backlog">수주잔고 <small>준비중</small></button>
   </nav>
 
   <!-- ───────── 메인 콘텐츠 ───────── -->
@@ -344,35 +346,41 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       </section>
 
       <section class="section">
-        <h2>분석 <small>삼성전자 ↔ SK하이닉스</small></h2>
-        <div class="grid">
-          <button class="card" data-go="caps"><h3>시총비교 <span class="tag">2010~</span></h3><p>시가총액 추이 · 격차 · 비율 · 추월 필요주가</p></button>
-          <button class="card" data-go="gap"><h3>괴리율 <span class="tag">2010~</span></h3><p>삼성 보통/우선 괴리율 · SK스퀘어 NAV 할인율</p></button>
-          <button class="card" data-go="etfgap"><h3>ETF 괴리율 <span class="tag">5분</span></h3><p>단일종목 레버리지·인버스 시장가 vs NAV 게이지</p></button>
-          <button class="card" data-go="dd"><h3>전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이 + −15% 이상 하락 구간 기록</p></button>
-          <button class="card" data-go="ram"><h3>메모리 가격 <span class="tag">일별</span></h3><p>DRAM·NAND 현물가/고정가 — DRAMeXchange, 과거 추이 포함</p></button>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>데일리</h2>
+        <h2>시황</h2>
         <div class="grid">
           <button class="card" data-go="krwrap"><h3>韓 시황 <span class="tag">평일 15:50</span></h3><p>한국 마감 시황 — 지수·수급·업종·특징주 총정리</p></button>
           <button class="card" data-go="uswrap"><h3>美 시황 <span class="tag">매일 아침</span></h3><p>밤사이 미국 증시 — 지수·섹터·특징주·매크로 총정리</p></button>
-          <button class="card" data-go="supply"><h3>수급 대시보드 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
-          <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
           <button class="card" data-go="sector"><h3>산업별 등락 <span class="tag">매일</span></h3><p>27개 업종 등락률과 업종 내 종목별 상세</p></button>
           <button class="card" data-go="disparity"><h3>50일 이격도 <span class="tag">지표</span></h3><p>코스피/코스닥 — 130 과열 / 110 해소 콤보차트</p></button>
         </div>
       </section>
 
       <section class="section">
-        <h2>데이터</h2>
+        <h2>수급 · 모멘텀</h2>
         <div class="grid">
+          <button class="card" data-go="supply"><h3>수급 대시보드 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
+          <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
+          <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>비교 · 밸류 <small>삼성전자 ↔ SK하이닉스</small></h2>
+        <div class="grid">
+          <button class="card" data-go="caps"><h3>시총비교 <span class="tag">2010~</span></h3><p>시가총액 추이 · 격차 · 비율 · 추월 필요주가</p></button>
+          <button class="card" data-go="gap"><h3>괴리율 <span class="tag">2010~</span></h3><p>삼성 보통/우선 괴리율 · SK스퀘어 NAV 할인율</p></button>
+          <button class="card" data-go="etfgap"><h3>ETF 괴리율 <span class="tag">5분</span></h3><p>단일종목 레버리지·인버스 시장가 vs NAV 게이지</p></button>
+          <button class="card" data-go="dd"><h3>전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이 + −15% 이상 하락 구간 기록</p></button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>매크로 데이터</h2>
+        <div class="grid">
+          <button class="card" data-go="ram"><h3>메모리 가격 <span class="tag">일별</span></h3><p>DRAM·NAND 현물가/고정가 — DRAMeXchange, 과거 추이 포함</p></button>
           <button class="card" data-go="export"><h3>수출 데이터 <span class="tag">월간</span></h3><p>주요 품목별 수출 동향과 관련 종목 매핑</p></button>
           <button class="card" data-go="corpexport"><h3>기업별 수출 <span class="tag">월간</span></h3><p>관세청 확정통계로 상장사 196개 라인 수출액·판가 추적</p></button>
           <button class="card" data-go="trade10"><h3>수출입 잠정치 <span class="tag">10일 단위</span></h3><p>품목·국가별 YoY — 매월 11·21·1일 발표 즉시 반영</p></button>
-          <button class="card" data-go="backlog"><h3>수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 — 수집 방식 설계 중</p></button>
         </div>
       </section>
 
@@ -382,6 +390,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="telegram"><h3>텔레그램 채널 요약 <span class="tag">매시간</span></h3><p>18개 채널 당일 게시글 자동 수집 — 최신순 피드</p></button>
           <button class="card" data-go="taerin"><h3>태린이아빠 <span class="tag">피드</span></h3><p>태린이아빠 채널 아카이브</p></button>
           <button class="card" data-go="deepresearch"><h3>심층 리서치 <span class="tag">리포트</span></h3><p>종목·산업 심층 리서치 아카이브</p></button>
+          <button class="card" data-go="backlog"><h3>수주잔고 <span class="tag soon">준비중</span></h3><p>수주잔고 급증 기업 트래킹 — 수집 방식 설계 중</p></button>
         </div>
       </section>
     </section>
@@ -451,6 +460,12 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div id="qtDrop" style="position:absolute;top:100%;left:0;right:0;z-index:40;display:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-top:5px;box-shadow:var(--shadow);max-height:350px;overflow-y:auto"></div>
       </div>
       <div id="qtBody"><div class="empty"><b>종목을 검색해 선택하세요</b>코스피·코스닥 전 종목의 차트와 밸류에이션·컨센서스·수급을 볼 수 있습니다.</div></div>
+    </section>
+
+    <section class="panel" id="tab-rs">
+      <div class="ptitle">RS 분석 <span style="font-size:12px;font-weight:600;color:var(--dim2)">섹터·테마 ETF 상대강도 + 변동성 조정 모멘텀</span></div>
+      <div class="pdesc" id="rsMeta">불러오는 중…</div>
+      <div id="rsBody"></div>
     </section>
 
     <section class="panel" id="tab-krwrap">
@@ -1130,6 +1145,57 @@ function memChart(hist,kind,items){
   document.getElementById('memLg').innerHTML=series.map(s=>`<i style="background:${s.color}"></i>${esc(s.label)}&nbsp;&nbsp;`).join('');
 }
 
+/* ══════════ RS 분석 (섹터·테마 ETF 상대강도 — 태린이아빠 방식) ══════════ */
+let RS=null,rsMkt='kr',rsSort='navg';
+async function rsLoad(){
+  if(!RS){
+    try{RS=await getJson('data/rs.json');}
+    catch(e){document.getElementById('rsMeta').textContent='RS 데이터가 아직 없습니다 — 평일 17시 빌드 후 이용 가능합니다.';return;}
+  }
+  rsRender();
+}
+function rsRender(){
+  const mk=RS[rsMkt],items=[...(mk.items||[])];
+  const meta=document.getElementById('rsMeta'),body=document.getElementById('rsBody');
+  meta.innerHTML=`${esc(RS.method)} · 벤치마크 <b>${esc(mk.bench)}</b> · ${RS.updated} 갱신`;
+  const key=rsSort;
+  items.sort((a,b)=>((b[key]==null?-1e9:b[key])-(a[key]==null?-1e9:a[key])));
+  const leaders=mk.items.filter(r=>(r.navg||0)>=70);
+  const fmt=(v,d)=>v==null?'<span style="color:var(--dim2)">—</span>':v.toFixed(d==null?2:d);
+  const fRS=v=>v==null?'<span style="color:var(--dim2)">—</span>':`<span class="${v>=0?'up':'down'}">${v>0?'+':''}${v.toFixed(1)}</span>`;
+  const fN=v=>{if(v==null)return '<span style="color:var(--dim2)">—</span>';
+    const c=v>=90?'font-weight:800;color:var(--accent)':v>=70?'font-weight:700;color:var(--accent)':v<30?'color:var(--dim2)':'';
+    return `<span style="${c}">${v.toFixed(0)}</span>`;};
+  let html=`<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px">
+    <div class="rngwrap" id="rsMktBar">
+      <button class="rng${rsMkt==='kr'?' on':''}" data-k="kr">韓 한국 ETF</button>
+      <button class="rng${rsMkt==='us'?' on':''}" data-k="us">美 미국 ETF</button></div>
+    <div class="rngwrap" id="rsSortBar" style="margin-left:auto">
+      <button class="rng${rsSort==='navg'?' on':''}" data-s="navg">Norm 평균</button>
+      <button class="rng${rsSort==='srk'?' on':''}" data-s="srk">소티노</button>
+      <button class="rng${rsSort==='rs60'?' on':''}" data-s="rs60">RS 60일</button>
+      <button class="rng${rsSort==='rs250'?' on':''}" data-s="rs250">RS 250일</button></div></div>`;
+  html+=`<div class="rcard" style="padding:14px 18px;margin-bottom:14px">
+    <div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">주도 시그널 — Norm RS 평균 ≥ 70 (${leaders.length}개)</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">${leaders.map(r=>
+      `<span style="font-size:11.5px;padding:4px 10px;border-radius:999px;background:rgba(77,125,245,.12);color:var(--accent);font-weight:700" title="${esc(r.name)}">${esc(rsMkt==='us'?r.t:r.name)} ${r.navg.toFixed(0)}</span>`).join('')||'<span style="color:var(--dim2);font-size:12px">없음</span>'}</div></div>`;
+  html+=`<div class="rcard"><div style="overflow-x:auto"><table class="ddt"><thead><tr>
+    <th>#</th><th style="text-align:left">${rsMkt==='us'?'티커':'코드'}</th><th style="text-align:left">이름</th>
+    <th>RS 60d</th><th>RS 120d</th><th>RS 250d</th><th>RS 평균</th>
+    <th>N60</th><th>N120</th><th>N250</th><th>N평균</th><th>소티노</th><th>소티노%</th></tr></thead><tbody>
+    ${items.map((r,i)=>`<tr${(r.navg||0)>=70?' style="background:rgba(77,125,245,.07)"':''}>
+      <td style="color:var(--dim2)">${i+1}</td>
+      <td style="text-align:left;font-weight:700">${esc(r.t)}</td>
+      <td style="text-align:left">${esc(r.name)}</td>
+      <td>${fRS(r.rs60)}</td><td>${fRS(r.rs120)}</td><td>${fRS(r.rs250)}</td><td>${fRS(r.rsavg)}</td>
+      <td>${fN(r.n60)}</td><td>${fN(r.n120)}</td><td>${fN(r.n250)}</td><td>${fN(r.navg)}</td>
+      <td>${fmt(r.srt)}</td><td>${fN(r.srk)}</td></tr>`).join('')}</tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:10px">RS = 같은 기간 벤치마크 대비 상대수익(%) · Norm = 유니버스 내 백분위(0~100) · 소티노 = 60일 하방변동 대비 수익(연율) · ETF는 시그널용 — 주도 섹터 판별 후 개별 종목은 신고가·컨센 상향과 교집합으로 접근 (태린이아빠 방식)</div></div>`;
+  body.innerHTML=html;
+  document.getElementById('rsMktBar').onclick=e=>{const b=e.target.closest('[data-k]');if(b){rsMkt=b.dataset.k;rsRender();}};
+  document.getElementById('rsSortBar').onclick=e=>{const b=e.target.closest('[data-s]');if(b){rsSort=b.dataset.s;rsRender();}};
+}
+
 /* ══════════ 종목 분석 (전 종목 검색 + TradingView 차트 + 네이버 기본정보) ══════════ */
 let QT=null,qtSel=null,tvReady=null;
 function needTV(){
@@ -1230,6 +1296,7 @@ function openTab(tab){
   if(tab==='home')homeStart();
   if(tab==='krwrap'||tab==='uswrap')loadMW(tab);
   if(tab==='quote')qtLoad();
+  if(tab==='rs')rsLoad();
   if(tab==='raoni')raStart();
   if(tab==='indices')idxStart();
   if(tab==='caps')capsInit();
