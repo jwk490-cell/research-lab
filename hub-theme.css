@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   Research Lab — 공통 테마 (고급 금융 다크)
+   Research Lab — 공통 테마 (Claude Design 다크(항상 다크))
    모든 세부 페이지에 주입되어 ① Pretendard 통일 ② 본문 13px
    ③ 딥 잉크 다크 팔레트(허브 셸과 동일) ④ 둥근 모서리(13px)를 강제한다.
    주입: <html class="ht-supply|ht-sector|ht-disp|ht-osc|ht-export|ht-semietf">
@@ -10,15 +10,15 @@
 
 /* ── 다크 팔레트: 페이지들이 쓰는 CSS 변수 전부 덮어쓰기 ── */
 :root{
-  --bg:#0a0d13; --panel:#12161f; --panel2:#171c27; --line:#232a38;
-  --txt:#e9ecf3; --dim:#8b95a8; --dim2:#5a6478;
+  --bg:#101014; --panel:#1a1b20; --panel2:#202128; --line:#272930;
+  --txt:#e9ebee; --dim:#9aa2ad; --dim2:#6d7480;
   --up:#22c55e; --down:#ef4444; --dn:#ef4444;
-  --accent:#c9a24a; --kospi:#5a9bd8; --kosdaq:#c879e6; --warn:#e0a030;
-  --card:#12161f; --border:#232a38; --border2:#2b3342; --text:#e9ecf3;
-  --ink:#e9ecf3; --sub:#8b95a8;
-  --gold:#c9a24a; --teal:#2dd4bf; --red:#ef4444; --green:#22c55e;
+  --accent:#4d7df5; --kospi:#5a9bd8; --kosdaq:#c879e6; --warn:#e0a030;
+  --card:#1a1b20; --border:#272930; --border2:#31343d; --text:#e9ebee;
+  --ink:#e9ebee; --sub:#9aa2ad;
+  --gold:#4d7df5; --teal:#2dd4bf; --red:#ef4444; --green:#22c55e;
   --blue:#5a9bd8; --purple:#b08ad6;
-  --tx:#e9ecf3; --bar:#3d566e; --yoy:#e0a457; --mom:#56b4c8; --mma:#b08ad6;
+  --tx:#e9ebee; --bar:#3d566e; --yoy:#e0a457; --mom:#56b4c8; --mma:#b08ad6;
 }
 /* 수출 대시보드는 상승=빨강 / 하락=파랑 (한국 관례) */
 html.ht-export{--up:#ef4444; --dn:#5a9bd8}
@@ -28,7 +28,7 @@ html.ht-export{--up:#ef4444; --dn:#5a9bd8}
   font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",
     "Segoe UI",-apple-system,sans-serif !important;
 }
-body{font-size:13px;background:#0a0d13}
+body{font-size:13px;background:#101014}
 
 /* ── 둥근 모서리 통일 ── */
 .card,.section,.stat-card,.mcard,.dcard,.formula,.stock-list,.stock-info-box,
@@ -37,29 +37,29 @@ body{font-size:13px;background:#0a0d13}
 /* ════════ 수급 대시보드 (ht-supply) ════════ */
 .ht-supply body{font-size:13px}
 .ht-supply .sub{font-size:13px}
-.ht-supply .sub b{color:#cdd6e4}
+.ht-supply .sub b{color:#c6ccd4}
 .ht-supply .legend{font-size:12px}
 .ht-supply .tab{font-size:13.5px}
 .ht-supply .tab.on{color:var(--gold);border-bottom-color:var(--gold)}
 .ht-supply .btn{font-size:12.5px}
-.ht-supply .btn.on{background:var(--gold);color:#12161f;box-shadow:0 2px 8px rgba(201,162,74,.3)}
+.ht-supply .btn.on{background:var(--gold);color:#1a1b20;box-shadow:0 2px 8px rgba(77,125,245,.3)}
 .ht-supply .glabel{font-size:11.5px}
-.ht-supply .card{background:linear-gradient(180deg,#12161f,#0f131b)}
+.ht-supply .card{background:linear-gradient(180deg,#1a1b20,#17181d)}
 .ht-supply .card h3{font-size:13px;background:rgba(255,255,255,.02)}
 .ht-supply th{font-size:11px}
-.ht-supply td{font-size:12.5px;border-bottom:1px solid #1b212d}
+.ht-supply td{font-size:12.5px;border-bottom:1px solid #232530}
 .ht-supply tr:hover td{background:rgba(255,255,255,.03)}
 .ht-supply .rk{font-size:11.5px}
 .ht-supply .rk.top{color:var(--gold)}
 .ht-supply .nm{color:var(--txt)}
 .ht-supply .nm .code{font-size:10.5px}
 .ht-supply .slnk:hover{color:var(--gold)}
-.ht-supply .net{color:#c2ccdb}
-.ht-supply .badge{font-size:10.5px;color:#c9a24a;background:rgba(201,162,74,.12);border-color:rgba(201,162,74,.3)}
+.ht-supply .net{color:#c6ccd4}
+.ht-supply .badge{font-size:10.5px;color:#4d7df5;background:rgba(77,125,245,.12);border-color:rgba(77,125,245,.3)}
 .ht-supply .badge.sell{color:#f0a3a5;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3)}
 .ht-supply .badge.comm{color:#c9b3ee;background:rgba(176,138,214,.14);border-color:rgba(176,138,214,.32)}
 .ht-supply .commchip{background:rgba(176,138,214,.1);border-color:rgba(176,138,214,.32);color:#d9c8f2}
-.ht-supply .card.hl{border-color:rgba(201,162,74,.4);box-shadow:0 0 0 1px rgba(201,162,74,.18) inset}
+.ht-supply .card.hl{border-color:rgba(77,125,245,.4);box-shadow:0 0 0 1px rgba(77,125,245,.18) inset}
 .ht-supply .empty,.ht-supply .foot{font-size:12.5px}
 
 /* ════════ 산업별 등락 (ht-sector) ════════ */
@@ -69,15 +69,15 @@ body{font-size:13px;background:#0a0d13}
 .ht-sector .count,.ht-sector .top-stocks,.ht-sector .market-tag{font-size:12px}
 .ht-sector .stat-card .label{font-size:11.5px}
 .ht-sector .theme-row:hover,.ht-sector tr.stock-row:hover{background:rgba(255,255,255,.03)}
-.ht-sector .stock-list{background:#0d1119}
+.ht-sector .stock-list{background:#141519}
 .ht-sector .stock-list table{font-size:12.5px}
-.ht-sector .stock-list td{border-bottom:1px solid #1b212d}
-.ht-sector .stock-info-box{background:#0d1119}
-.ht-sector .stock-info-box .pill{background:#1b2130;color:#c2ccdb}
-.ht-sector .section a{color:#e9ecf3 !important}
+.ht-sector .stock-list td{border-bottom:1px solid #232530}
+.ht-sector .stock-info-box{background:#141519}
+.ht-sector .stock-info-box .pill{background:#232530;color:#c6ccd4}
+.ht-sector .section a{color:#e9ebee !important}
 .ht-sector .stock-info-box a{color:var(--gold) !important}
 .ht-sector tr.stock-row.open td:first-child{border-left-color:var(--gold)}
-.ht-sector tr.stock-info td{border-bottom:1px solid #1b212d !important}
+.ht-sector tr.stock-info td{border-bottom:1px solid #232530 !important}
 .ht-sector footer{font-size:12px}
 
 /* ════════ 50일 이격도 (ht-disp) ════════ */
@@ -88,28 +88,28 @@ body{font-size:13px;background:#0a0d13}
 .ht-disp .foot{font-size:12px}
 
 /* ════════ 반도체 ETF 수혜 (ht-semietf) — 44종 테이블 레이아웃 ════════ */
-html.ht-semietf{--red:#ef4444;--blue:#5a9bd8;--mut:#8b95a8;--acc:#c9a24a;
-  --ink:#e9ecf3;--line:#232a38;--bg:#0a0d13}
+html.ht-semietf{--red:#ef4444;--blue:#5a9bd8;--mut:#9aa2ad;--acc:#4d7df5;
+  --ink:#e9ebee;--line:#272930;--bg:#101014}
 .ht-semietf body{font-size:13px}
 .ht-semietf .sub{font-size:13px}
-.ht-semietf table{background:#12161f;border-color:#232a38}
-.ht-semietf th{background:#171c27;color:#8b95a8;font-size:11.5px}
-.ht-semietf td{border-top:1px solid #1b212d;font-size:12.5px}
+.ht-semietf table{background:#1a1b20;border-color:#272930}
+.ht-semietf th{background:#202128;color:#9aa2ad;font-size:11.5px}
+.ht-semietf td{border-top:1px solid #232530;font-size:12.5px}
 .ht-semietf tr:hover td{background:rgba(255,255,255,.03)}
-.ht-semietf .btn{background:#12161f;border-color:#232a38;color:#8b95a8}
-.ht-semietf .btn:hover{color:#e9ecf3}
-.ht-semietf .btn.on{background:#c9a24a;color:#12161f;border-color:#c9a24a}
-.ht-semietf .chip{background:#1b2130;color:#c2ccdb}
-.ht-semietf .note{background:#12161f;border-color:#232a38;color:#8b95a8;font-size:12.5px}
-.ht-semietf .rk{color:#5a6478}
-.ht-semietf #stkt th{background:#171c27}
+.ht-semietf .btn{background:#1a1b20;border-color:#272930;color:#9aa2ad}
+.ht-semietf .btn:hover{color:#e9ebee}
+.ht-semietf .btn.on{background:#4d7df5;color:#1a1b20;border-color:#4d7df5}
+.ht-semietf .chip{background:#232530;color:#c6ccd4}
+.ht-semietf .note{background:#1a1b20;border-color:#272930;color:#9aa2ad;font-size:12.5px}
+.ht-semietf .rk{color:#6d7480}
+.ht-semietf #stkt th{background:#202128}
 
 /* ════════ 수출 데이터 (ht-export) ════════ */
 .ht-export body{font-size:13px}
-.ht-export .nav.on{background:rgba(201,162,74,.14)}
+.ht-export .nav.on{background:rgba(77,125,245,.14)}
 .ht-export .nav.fix{background:var(--panel2)}
-.ht-export .nav.fix.on{background:rgba(201,162,74,.14)}
-.ht-export .rng button.on{background:rgba(201,162,74,.14);border-color:var(--gold);color:var(--gold)}
+.ht-export .nav.fix.on{background:rgba(77,125,245,.14)}
+.ht-export .rng button.on{background:rgba(77,125,245,.14);border-color:var(--gold);color:var(--gold)}
 .ht-export .ctt{background:rgba(18,22,31,.97)}
-.ht-export .badge.imp{color:var(--gold);border-color:rgba(201,162,74,.4)}
+.ht-export .badge.imp{color:var(--gold);border-color:rgba(77,125,245,.4)}
 .ht-export .axr{fill:#a98a5a}
