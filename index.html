@@ -1179,7 +1179,24 @@ function rsRender(){
     <div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">주도 시그널 — Norm RS 평균 ≥ 70 (${leaders.length}개)</div>
     <div style="display:flex;gap:6px;flex-wrap:wrap">${leaders.map(r=>
       `<span style="font-size:11.5px;padding:4px 10px;border-radius:999px;background:rgba(77,125,245,.12);color:var(--accent);font-weight:700" title="${esc(r.name)}">${esc(rsMkt==='us'?r.t:r.name)} ${r.navg.toFixed(0)}</span>`).join('')||'<span style="color:var(--dim2);font-size:12px">없음</span>'}</div></div>`;
-  html+=`<div class="rcard"><div style="overflow-x:auto"><table class="ddt"><thead><tr>
+  if(rsMkt==='kr'&&RS.krstocks){
+    const ks=RS.krstocks;
+    const fSgn=v=>v==null?'—':`<span class="${v>=0?'up':'down'}">${v>0?'+':''}${v.toFixed(1)}%</span>`;
+    html+=`<div class="rcard" style="padding:14px 18px;margin-bottom:14px">
+      <div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">개별 종목 주도주 — RS종합 상위 20 (시총 2,000억↑ ${ks.n_universe}종목 중)</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">${ks.leaders.map(r=>
+        `<span style="font-size:11.5px;padding:4px 10px;border-radius:999px;background:rgba(77,125,245,.12);color:var(--accent);font-weight:700" title="${r.c} · RS20 ${r.rs20}">${esc(r.n)} ${r.rsc.toFixed(0)}</span>`).join('')}</div></div>`;
+    html+=`<div class="rcard" style="margin-bottom:14px"><h3 style="font-size:13.5px;margin-bottom:8px">🌱 떠오르는 주도주 가능성 TOP 10 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">RS 가속 + 거래대금 — 기존 주도주 제외</span></h3>
+      <div style="overflow-x:auto"><table class="ddt"><thead><tr><th>#</th><th style="text-align:left">종목</th>
+      <th>가능성점수</th><th>RS가속</th><th>RS20</th><th>RS종합</th><th>거래대금(20일)</th><th>3개월 수익률</th></tr></thead><tbody>
+      ${ks.risers.map((r,i)=>`<tr><td style="color:var(--dim2)">${i+1}</td>
+        <td style="text-align:left;font-weight:700">${esc(r.n)} <span style="font-weight:400;color:var(--dim2);font-size:11px">${r.c}</span></td>
+        <td style="font-weight:800;color:var(--accent)">${r.score.toFixed(1)}</td>
+        <td>${fSgn(r.acc).replace('%','')}</td><td>${r.rs20.toFixed(1)}</td><td>${r.rsc.toFixed(1)}</td>
+        <td>${r.v20.toLocaleString('ko-KR')}억</td><td>${fSgn(r.r60)}</td></tr>`).join('')}</tbody></table></div>
+      <div style="font-size:11px;color:var(--dim2);margin-top:9px">RS20·RS종합 = 20일 / 3·6·12개월(0.5·0.3·0.2 가중) 수익률의 유니버스 백분위 · RS가속 = RS20 − RS종합 · 가능성점수 = 0.45×RS20 + 0.35×(50+가속) + 0.20×거래대금점수 · 조건: RS종합<85, RS20≥70, 거래대금 50억↑</div></div>`;
+  }
+  html+=`<div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">${rsMkt==='kr'?'섹터·테마 ETF 상대강도':'섹터·테마 ETF 상대강도'}</h3><div style="overflow-x:auto"><table class="ddt"><thead><tr>
     <th>#</th><th style="text-align:left">${rsMkt==='us'?'티커':'코드'}</th><th style="text-align:left">이름</th>
     <th>RS 60d</th><th>RS 120d</th><th>RS 250d</th><th>RS 평균</th>
     <th>N60</th><th>N120</th><th>N250</th><th>N평균</th><th>소티노</th><th>소티노%</th></tr></thead><tbody>
