@@ -1302,11 +1302,10 @@ function rsRender(){
 }
 
 /* ══════════ 종목 분석 (전 종목 검색 + TradingView 차트 + 네이버 기본정보) ══════════ */
-let QT=null,qtSel=null,tvReady=null;
-function needTV(){
-  if(!tvReady)tvReady=new Promise(res=>{const s=document.createElement('script');
-    s.src='https://s3.tradingview.com/tv.js';s.onload=res;document.head.appendChild(s);});
-  return tvReady;
+let QT=null,QTX=null,qtSel=null,qtCv='day';
+async function needExt(){
+  if(!QTX){try{QTX=await getJson('data/quotes_ext.json');}catch(e){QTX={s:{},idx:{}};}}
+  return QTX;
 }
 async function qtLoad(){
   if(!QT){
@@ -1345,7 +1344,11 @@ function qtRender(){
     <div style="font-size:13.5px">${qtChg(s.f)}</div>
     <div style="margin-left:auto;font-size:12.5px;color:var(--dim)">시가총액 <b style="color:var(--text)">${qtCap(s.v)}</b></div>
   </div>
-  <div class="rcard" style="padding:10px;margin-bottom:14px"><div id="qtTv" style="height:480px"></div></div>
+  <div class="rcard" style="padding:14px;margin-bottom:14px">
+    <div class="rngwrap" id="qtCvBar" style="margin-bottom:10px">${[['day','일봉'],['week','주봉'],['month','월봉'],['year3','3년'],['year10','10년']].map(([k,l])=>`<button class="rng${qtCv===k?' on':''}" data-cv="${k}">${l}</button>`).join('')}</div>
+    <div style="background:#fff;border-radius:12px;padding:8px"><img id="qtCvImg" alt="차트" style="width:100%;display:block" src="${qtCvUrl(s.c)}"></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:7px">차트: 네이버증권 (지연/종가 기준 이미지)</div>
+  </div>
   <div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:14px">
     <div class="rcard" style="padding:15px 18px"><div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">밸류에이션</div>
       <div style="font-size:12.5px;line-height:2">PER <b>${qtNum(s.per)}배</b> · 추정PER <b>${qtNum(s.cper)}배</b><br>PBR <b>${qtNum(s.pbr)}배</b> · 배당수익률 <b>${qtNum(s.dvr)}%</b></div></div>
@@ -1354,9 +1357,15 @@ function qtRender(){
     <div class="rcard" style="padding:15px 18px"><div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">52주 밴드</div>
       <div style="font-size:12.5px;line-height:2">고가 <b>${qtNum(s.h52,0)}</b> · 저가 <b>${qtNum(s.l52,0)}</b></div>
       ${pos52!=null?`<div style="height:6px;border-radius:4px;background:var(--line);margin-top:8px;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:${pos52.toFixed(1)}%;border-radius:4px;background:var(--accent)"></div></div><div style="font-size:11px;color:var(--dim2);margin-top:5px">저가 대비 ${pos52.toFixed(0)}% 위치</div>`:''}</div>
-    <div class="rcard" style="padding:15px 18px"><div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">외국인</div>
-      <div style="font-size:12.5px;line-height:2">보유비율 <b>${qtNum(s.fgn)}%</b></div></div>
+    <div class="rcard" style="padding:15px 18px"><div style="font-size:11.5px;color:var(--dim);margin-bottom:8px">기업 개요</div>
+      <div style="font-size:12.5px;line-height:2" id="qtOv">${s.sec?`업종 <b>${esc(s.sec)}</b><br>`:''}발행주식수 <b>${(s.v&&s.p)?qtShares(s.v,s.p):'—'}</b> · 외국인 <b>${qtNum(s.fgn)}%</b></div></div>
   </div>
+  <div class="rgrid2" id="qtBands" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr));margin-bottom:14px;display:none">
+    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">PER 밴드 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">월별 종가 × 연간 EPS(컨센 포함)</span></h3><canvas id="qtBandPer"></canvas><div class="clegend" id="qtBandPerLg"></div></div>
+    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">PBR 밴드 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">월별 종가 × 연간 BPS</span></h3><canvas id="qtBandPbr"></canvas><div class="clegend" id="qtBandPbrLg"></div></div>
+  </div>
+  <div id="qtFin" style="margin-bottom:14px"></div>
+  <div id="qtPeer" style="margin-bottom:14px"></div>
   <div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
     <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">투자자별 매매동향 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">순매수 주식수</span></h3>
       ${(s.deal&&s.deal.length)?`<table class="ddt"><thead><tr><th style="text-align:left">일자</th><th>외국인</th><th>기관</th><th>개인</th></tr></thead><tbody>
@@ -1369,12 +1378,101 @@ function qtRender(){
       :'<div style="font-size:12px;color:var(--dim2)">최근 리포트 없음</div>'}
       <div style="margin-top:10px"><a href="https://m.stock.naver.com/domestic/stock/${s.c}/total" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--accent);text-decoration:none">네이버증권에서 자세히 보기 →</a></div></div>
   </div>`;
-  needTV().then(()=>{
-    document.getElementById('qtTv').innerHTML='';
-    new TradingView.widget({container_id:'qtTv',symbol:'KRX:'+s.c,interval:'D',
-      timezone:'Asia/Seoul',theme:document.documentElement.classList.contains('dark')?'dark':'light',
-      style:'1',locale:'kr',autosize:true,hide_side_toolbar:false,allow_symbol_change:false,withdateranges:true});
-  });
+  document.getElementById('qtCvBar').onclick=e=>{const b=e.target.closest('[data-cv]');if(!b)return;
+    qtCv=b.dataset.cv;
+    document.querySelectorAll('#qtCvBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.cv===qtCv));
+    document.getElementById('qtCvImg').src=qtCvUrl(s.c);};
+  needExt().then(()=>qtExtRender(s));
+  qtPeerRender(s);
+}
+function qtCvUrl(code){
+  const path=(qtCv==='year3'||qtCv==='year10')?'area/'+qtCv:'candle/'+qtCv;
+  return `https://ssl.pstatic.net/imgfinance/chart/item/${path}/${code}.png?sidcode=${Math.floor(Date.now()/6e5)}`;
+}
+const qtShares=(vEok,p)=>{const n=vEok*1e8/p;return n>=1e8?(n/1e8).toFixed(2)+'억주':(n/1e4).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')+'만주';};
+function qtBandDraw(cv,lg,months,fin,key){
+  const byY={};fin.forEach(f=>{if(f[key]!=null&&f[key]>0)byY[f.y]=f[key];});
+  const years=Object.keys(byY).sort();
+  if(!years.length||months.length<12)return false;
+  const val=ym=>{const y='20'+ym.slice(0,2);let best=null;
+    for(const yy of years){if(yy<=y)best=yy;}
+    return byY[best==null?years[0]:best];};
+  const ratios=[];
+  months.forEach(([ym,c])=>{const v=val(ym);if(v>0&&c>0)ratios.push(c/v);});
+  if(ratios.length<12)return false;
+  const lo=Math.min(...ratios),hi=Math.max(...ratios);
+  if(!(hi>lo))return false;
+  const levels=[0,0.25,0.5,0.75,1].map(t=>lo+(hi-lo)*t);
+  const grey='rgba(140,150,165,.55)';
+  const series=levels.map(lv=>({color:grey,w:1,
+    data:months.map(([ym])=>{const v=val(ym);return v>0?v*lv:null;})}));
+  series.push({color:'#3168f0',w:2.2,data:months.map(m=>m[1])});
+  lineChart(cv,{labels:months.map(m=>m[0]),h:230,pl:52,series,
+    yfmt:v=>v>=1e4?(v/1e4).toFixed(1)+'만':v.toFixed(0),
+    xfmt:ym=>"'"+ym.slice(0,2)+'.'+ym.slice(2)});
+  lg.innerHTML=`<i style="background:#3168f0"></i>주가&nbsp;&nbsp;<span style="color:var(--dim2)">밴드 ${levels.map(l=>l.toFixed(1)+'x').join(' / ')} (${key==='eps'?'PER':'PBR'} 5년 최저~최고)</span>`;
+  return true;
+}
+function qtExtRender(s){
+  if(qtSel!==s.c)return; /* 렌더 사이 종목 변경 가드 */
+  const e=(QTX.s||{})[s.c];
+  const finEl=document.getElementById('qtFin');
+  if(!e){if(finEl)finEl.innerHTML='';return;}
+  /* 개요 보강: 평균거래대금 + 주가상승률(절대/상대) */
+  const ov=document.getElementById('qtOv');
+  if(ov&&e.avt!=null){
+    const idx=(QTX.idx||{})[s.m]||{};
+    const rel=(r,ir)=>(r==null||ir==null)?null:r-ir;
+    const cell=v=>v==null?'—':`<span class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(1)}%</span>`;
+    ov.innerHTML+=`<br>평균거래대금(20일) <b>${e.avt.toLocaleString('ko-KR')}억</b>
+      <table class="ddt" style="margin-top:7px"><thead><tr><th style="text-align:left">상승률</th><th>1개월</th><th>6개월</th><th>12개월</th></tr></thead>
+      <tbody><tr><td style="text-align:left">절대</td><td>${cell(e.r1)}</td><td>${cell(e.r6)}</td><td>${cell(e.r12)}</td></tr>
+      <tr><td style="text-align:left">상대</td><td>${cell(rel(e.r1,idx.r1))}</td><td>${cell(rel(e.r6,idx.r6))}</td><td>${cell(rel(e.r12,idx.r12))}</td></tr></tbody></table>`;
+  }
+  /* PER/PBR 밴드 */
+  if(e.m&&e.fin){
+    const wrap=document.getElementById('qtBands');
+    wrap.style.display='grid';
+    const ok1=qtBandDraw(document.getElementById('qtBandPer'),document.getElementById('qtBandPerLg'),e.m,e.fin,'eps');
+    const ok2=qtBandDraw(document.getElementById('qtBandPbr'),document.getElementById('qtBandPbrLg'),e.m,e.fin,'bps');
+    if(!ok1&&!ok2)wrap.style.display='none';
+    else{if(!ok1)document.getElementById('qtBandPer').parentElement.style.display='none';
+         if(!ok2)document.getElementById('qtBandPbr').parentElement.style.display='none';}
+  }
+  /* Financial Data (연간, 컨센서스 포함) */
+  if(e.fin&&e.fin.length&&finEl){
+    const F=e.fin;
+    const fmt=(v,d)=>v==null?'—':v.toLocaleString('ko-KR',{maximumFractionDigits:d==null?1:d});
+    const epsG=i=>{const a=F[i].eps,b=i>0?F[i-1].eps:null;
+      return (a!=null&&b!=null&&b!==0)?((a/Math.abs(b)-1)*100):null;};
+    const rows=[
+      ['매출액(억)',f=>fmt(f.rev,0)],['영업이익(억)',f=>fmt(f.op,0)],['지배주주순이익(억)',f=>fmt(f.ni,0)],
+      ['EPS(원)',f=>fmt(f.eps,0)],['EPS 증감률(%)',(f,i)=>{const g=epsG(i);return g==null?'—':`<span class="${g>=0?'up':'down'}">${g>=0?'+':''}${g.toFixed(1)}</span>`;}],
+      ['BPS(원)',f=>fmt(f.bps,0)],['PER(배)',f=>fmt(f.per)],['PBR(배)',f=>fmt(f.pbr)],
+      ['ROE(%)',f=>fmt(f.roe)],['부채비율(%)',f=>fmt(f.debt)],['주당배당금(원)',f=>fmt(f.dps,0)]];
+    finEl.innerHTML=`<div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">Financial Data <span style="font-size:10.5px;color:var(--dim2);font-weight:600">연간 · E = 컨센서스 추정</span></h3>
+      <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left"></th>
+      ${F.map(f=>`<th style="${f.c?'color:var(--accent)':''}">${f.y}${f.c?'E':''}</th>`).join('')}</tr></thead><tbody>
+      ${rows.map(([lbl,fn])=>`<tr><td style="text-align:left;font-weight:600;white-space:nowrap">${lbl}</td>
+        ${F.map((f,i)=>`<td style="${f.c?'background:rgba(77,125,245,.05)':''}">${fn(f,i)}</td>`).join('')}</tr>`).join('')}
+      </tbody></table></div></div>`;
+  }else if(finEl)finEl.innerHTML='';
+}
+function qtPeerRender(s){
+  const el=document.getElementById('qtPeer');if(!el)return;
+  if(!s.sec){el.innerHTML='';return;}
+  const peers=QT.stocks.filter(x=>x.sec===s.sec).sort((a,b)=>(b.v||0)-(a.v||0)).slice(0,8);
+  if(peers.length<2){el.innerHTML='';return;}
+  const fmt=v=>v==null?'—':v.toLocaleString('ko-KR',{maximumFractionDigits:1});
+  el.innerHTML=`<div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">Peer 비교 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">${esc(s.sec)} 시총 상위 · 컨센서스 기준</span></h3>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">종목</th><th>시총</th><th>등락률</th><th>PER</th><th>추정PER</th><th>PBR</th><th>배당(%)</th><th>외국인(%)</th></tr></thead><tbody>
+    ${peers.map(p=>`<tr${p.c===s.c?' style="background:rgba(77,125,245,.08)"':''}>
+      <td style="text-align:left;font-weight:${p.c===s.c?'800':'600'}"><a href="#" data-qc="${p.c}" style="color:${p.c===s.c?'var(--accent)':'var(--text)'};text-decoration:none">${esc(p.n)}</a></td>
+      <td>${qtCap(p.v)}</td><td>${qtChg(p.f)}</td><td>${fmt(p.per)}</td><td>${fmt(p.cper)}</td><td>${fmt(p.pbr)}</td><td>${fmt(p.dvr)}</td><td>${fmt(p.fgn)}</td></tr>`).join('')}
+    </tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:8px">업종 분류: 키움 업종(sector_cap) 기준 · 종목 클릭 시 이동</div></div>`;
+  el.querySelectorAll('[data-qc]').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();qtSel=a.dataset.qc;qtRender();}));
 }
 (function(){
   const inp=document.getElementById('qtSearch'),drop=document.getElementById('qtDrop');
