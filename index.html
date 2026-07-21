@@ -1311,7 +1311,7 @@ async function qtLoad(){
   if(!QT){
     try{QT=await getJson('data/quotes.json');}
     catch(e){document.getElementById('qtMeta').textContent='종목 데이터가 아직 없습니다 — 평일 16:20 빌드 후 이용 가능합니다.';return;}
-    document.getElementById('qtMeta').innerHTML=`코스피·코스닥 <b>${QT.stocks.length.toLocaleString()}종목</b> 검색 · 차트 TradingView(실시간) · 기본정보 네이버증권 <span style="color:var(--dim2)">${QT.updated} 갱신</span>`;
+    document.getElementById('qtMeta').innerHTML=`코스피·코스닥 <b>${QT.stocks.length.toLocaleString()}종목</b> 검색 · 차트 TradingView Lightweight(일봉 2년) · 기본정보 네이버증권 <span style="color:var(--dim2)">${QT.updated} 갱신</span>`;
   }
   if(qtSel)qtRender(); /* 테마 토글/리사이즈 재진입 시 차트 재생성 */
 }
