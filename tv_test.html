@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>tv test</title></head>
+<body style="background:#111;color:#eee">
+<h3>1) advanced KRX:005930</h3><div id="w1" style="height:300px"></div>
+<h3>2) symbol-overview KRX:005930</h3><div id="w2" style="height:260px"></div>
+<h3>3) mini KRX:000660</h3><div id="w3" style="height:200px"></div>
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script>
+new TradingView.widget({container_id:'w1',symbol:'KRX:005930',interval:'D',locale:'kr',autosize:true,theme:'dark'});
+</script>
+<div id="w2wrap"><div class="tradingview-widget-container"><div id="tvso"></div></div></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+{"symbols":[["삼성전자","KRX:005930|1Y"]],"width":"100%","height":260,"locale":"kr","colorTheme":"dark","autosize":false}
+</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+{"symbol":"KRX:000660","width":"100%","height":200,"locale":"kr","colorTheme":"dark"}
+</script>
+</body></html>
