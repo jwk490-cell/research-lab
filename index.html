@@ -301,7 +301,9 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="sector">산업별 등락</button>
     <button class="navitem" data-tab="disparity">50일 이격도</button>
     <div class="navgroup">수급 · 모멘텀</div>
-    <button class="navitem" data-tab="supply">수급 대시보드</button>
+    <button class="navitem" data-tab="supply">신고가, 투자자별 순매수 랭킹</button>
+    <button class="navitem" data-tab="krhigh">韓 52주 신고가</button>
+    <button class="navitem" data-tab="ushigh">美 52주 신고가</button>
     <button class="navitem" data-tab="rs">RS 분석</button>
     <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
     <div class="navgroup">비교 · 밸류</div>
@@ -358,7 +360,9 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <section class="section">
         <h2>수급 · 모멘텀</h2>
         <div class="grid">
-          <button class="card" data-go="supply"><h3>수급 대시보드 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
+          <button class="card" data-go="supply"><h3>신고가, 투자자별 순매수 랭킹 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
+          <button class="card" data-go="krhigh"><h3>韓 52주 신고가 <span class="tag">매일 16:20</span></h3><p>코스피·코스닥 당일 52주 신고가 도달 전 종목 — 거래대금순</p></button>
+          <button class="card" data-go="ushigh"><h3>美 52주 신고가 <span class="tag">매일 아침</span></h3><p>미국 세션 52주 신고가 종목 — 섹터별 분류, 시총·등락</p></button>
           <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
           <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
         </div>
@@ -460,6 +464,18 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div id="qtDrop" style="position:absolute;top:100%;left:0;right:0;z-index:40;display:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-top:5px;box-shadow:var(--shadow);max-height:350px;overflow-y:auto"></div>
       </div>
       <div id="qtBody"><div class="empty"><b>종목을 검색해 선택하세요</b>코스피·코스닥 전 종목의 차트와 밸류에이션·컨센서스·수급을 볼 수 있습니다.</div></div>
+    </section>
+
+    <section class="panel" id="tab-krhigh">
+      <div class="ptitle">韓 52주 신고가 <span style="font-size:12px;font-weight:600;color:var(--dim2)">당일 고가가 52주 최고가에 도달한 전 종목</span></div>
+      <div class="pdesc" id="khMeta">불러오는 중…</div>
+      <div id="khBody"></div>
+    </section>
+
+    <section class="panel" id="tab-ushigh">
+      <div class="ptitle">美 52주 신고가 <span style="font-size:12px;font-weight:600;color:var(--dim2)">최근 미국 세션 신고가 종목</span></div>
+      <div class="pdesc" id="uhMeta">불러오는 중…</div>
+      <div id="uhBody"></div>
     </section>
 
     <section class="panel" id="tab-rs">
@@ -1145,6 +1161,64 @@ function memChart(hist,kind,items){
   document.getElementById('memLg').innerHTML=series.map(s=>`<i style="background:${s.color}"></i>${esc(s.label)}&nbsp;&nbsp;`).join('');
 }
 
+/* ══════════ 韓 52주 신고가 (quotes.json — 당일 고가 ≥ 52주 최고가) ══════════ */
+async function khLoad(){
+  const meta=document.getElementById('khMeta'),body=document.getElementById('khBody');
+  if(!QT){
+    try{QT=await getJson('data/quotes.json');}
+    catch(e){meta.textContent='종목 데이터가 아직 없습니다 — 평일 16:20 빌드 후 이용 가능합니다.';return;}
+  }
+  const hits=QT.stocks.filter(s=>s.hi&&s.h52&&s.hi>=s.h52*0.9995)
+    .sort((a,b)=>((b.tv||0)-(a.tv||0)));
+  meta.innerHTML=`<b>${hits.length}종목</b>이 당일 고가 기준 52주 신고가 도달 · 기준 ${QT.updated} (평일 16:20 자동 갱신) · 거래대금순 · 출처 네이버증권`;
+  if(!hits.length){body.innerHTML='<div class="empty"><b>당일 52주 신고가 종목이 없습니다</b></div>';return;}
+  const f0=v=>v==null?'—':v.toLocaleString('ko-KR');
+  body.innerHTML=`<div class="rcard"><div style="overflow-x:auto"><table class="ddt"><thead><tr>
+    <th>#</th><th style="text-align:left">종목</th><th>종가</th><th>등락률</th><th>52주 고가</th><th>고가대비</th><th>거래대금</th><th>시총</th></tr></thead><tbody>
+    ${hits.map((s,i)=>{const pb=s.p&&s.h52?(s.p/s.h52-1)*100:null;
+      return `<tr><td style="color:var(--dim2)">${i+1}</td>
+      <td style="text-align:left;font-weight:700"><a href="#" data-qc="${s.c}" style="color:var(--text);text-decoration:none">${esc(s.n)}</a> <span style="font-weight:400;color:var(--dim2);font-size:11px">${s.c} · ${s.m==='KS'?'코스피':'코스닥'}</span></td>
+      <td>${f0(s.p)}</td><td>${qtChg(s.f)}</td><td>${f0(s.h52)}</td>
+      <td class="${pb>=0?'up':'down'}">${pb==null?'—':(pb>=0?'+':'')+pb.toFixed(1)+'%'}</td>
+      <td>${s.tv==null?'—':f0(Math.round(s.tv))+'억'}</td><td>${qtCap(s.v)}</td></tr>`;}).join('')}</tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:9px">고가대비 = 종가 ÷ 52주 고가 − 1 (당일 되돌림) · 종목명 클릭 시 종목 분석 탭으로 이동</div></div>`;
+  body.querySelectorAll('[data-qc]').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();qtSel=a.dataset.qc;openTab('quote');qtRender();}));
+}
+
+/* ══════════ 美 52주 신고가 (data/usnewhigh.json — TradingView 스캐너) ══════════ */
+let UH=null,uhSector='all';
+async function uhLoad(){
+  const meta=document.getElementById('uhMeta');
+  if(!UH){
+    try{UH=await getJson('data/usnewhigh.json');}
+    catch(e){meta.textContent='데이터가 아직 없습니다 — 매일 아침 06:40 빌드 후 이용 가능합니다.';return;}
+  }
+  uhRender();
+}
+function uhRender(){
+  const meta=document.getElementById('uhMeta'),body=document.getElementById('uhBody');
+  const items=UH.items||[];
+  const bySec={};items.forEach(r=>{bySec[r.sector]=(bySec[r.sector]||0)+1;});
+  const secs=Object.entries(bySec).sort((a,b)=>b[1]-a[1]);
+  const show=uhSector==='all'?items:items.filter(r=>r.sector===uhSector);
+  meta.innerHTML=`미국 세션 <b>${UH.session}</b> · <b>${items.length}종목</b> 신고가 · ${esc(UH.criteria)} · ${UH.updated} 갱신`;
+  body.innerHTML=`
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="uhSecBar">
+    <button class="rng${uhSector==='all'?' on':''}" data-sec="all" style="font-size:11.5px;padding:5px 11px">전체 ${items.length}</button>
+    ${secs.map(([s,n])=>`<button class="rng${uhSector===s?' on':''}" data-sec="${esc(s)}" style="font-size:11.5px;padding:5px 11px">${esc(s)} ${n}</button>`).join('')}</div>
+  <div class="rcard"><div style="overflow-x:auto"><table class="ddt"><thead><tr>
+    <th>#</th><th style="text-align:left">티커</th><th style="text-align:left">기업명</th><th style="text-align:left">섹터</th><th style="text-align:left">업종</th><th>시총($B)</th><th>등락률</th></tr></thead><tbody>
+    ${show.map((r,i)=>`<tr><td style="color:var(--dim2)">${i+1}</td>
+      <td style="text-align:left;font-weight:800">${esc(r.ticker)}</td>
+      <td style="text-align:left">${esc(r.nm)}</td>
+      <td style="text-align:left;color:var(--dim)">${esc(r.sector)}</td>
+      <td style="text-align:left;color:var(--dim2);font-size:11.5px">${esc(r.industry)}</td>
+      <td>${r.capB.toLocaleString('en-US')}</td>
+      <td class="${r.chg>=0?'up':'down'}">${r.chg>=0?'+':''}${r.chg.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>`;
+  document.getElementById('uhSecBar').onclick=e=>{const b=e.target.closest('[data-sec]');if(b){uhSector=b.dataset.sec;uhRender();}};
+}
+
 /* ══════════ RS 분석 (섹터·테마 ETF 상대강도 — 태린이아빠 방식) ══════════ */
 let RS=null,rsMkt='kr',rsSort='navg';
 async function rsLoad(){
@@ -1314,6 +1388,8 @@ function openTab(tab){
   if(tab==='krwrap'||tab==='uswrap')loadMW(tab);
   if(tab==='quote')qtLoad();
   if(tab==='rs')rsLoad();
+  if(tab==='krhigh')khLoad();
+  if(tab==='ushigh')uhLoad();
   if(tab==='raoni')raStart();
   if(tab==='indices')idxStart();
   if(tab==='caps')capsInit();
