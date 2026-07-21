@@ -1326,9 +1326,12 @@ function drawRsMap(cv,S){
     const up=p.r.chg5>=0;x.beginPath();x.arc(p.cx,p.cy,p.rr,0,7);
     x.fillStyle=up?'rgba(46,194,126,.62)':'rgba(240,68,82,.62)';x.fill();
     x.lineWidth=1;x.strokeStyle=up?'#2ec27e':'#f04452';x.stroke();});
-  // 라벨(시총 상위 위주로 겹침 완화: 반지름 큰 것 우선)
-  x.fillStyle=V('--text');x.font='600 11px Pretendard';x.textAlign='center';
-  rsMapGeo.pts.filter(p=>p.rr>=9).forEach(p=>{x.fillText(p.r.name.length>9?p.r.name.slice(0,8)+'…':p.r.name,p.cx,p.cy-p.rr-4);});
+  // 라벨: 큰 버블은 내부 중앙, 작은 버블은 위쪽
+  x.font='600 11px Pretendard';x.textAlign='center';
+  rsMapGeo.pts.filter(p=>p.rr>=9).forEach(p=>{
+    const nm=p.r.name.length>9?p.r.name.slice(0,8)+'…':p.r.name;
+    if(p.rr>=24){x.fillStyle='rgba(255,255,255,.92)';x.fillText(nm,p.cx,p.cy+3.5);}
+    else{x.fillStyle=V('--text');x.fillText(nm,p.cx,p.cy-p.rr-4);}});
   cv.onmousemove=e=>{if(!rsMapGeo)return;const rect=cv.getBoundingClientRect();
     const mx=e.clientX-rect.left,my=e.clientY-rect.top;
     let hit=null;for(const p of rsMapGeo.pts){if((mx-p.cx)**2+(my-p.cy)**2<=p.rr*p.rr){if(!hit||p.rr<hit.rr)hit=p;}}
