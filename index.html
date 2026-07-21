@@ -1168,7 +1168,7 @@ async function khLoad(){
     try{QT=await getJson('data/quotes.json');}
     catch(e){meta.textContent='종목 데이터가 아직 없습니다 — 평일 16:20 빌드 후 이용 가능합니다.';return;}
   }
-  const hits=QT.stocks.filter(s=>s.hi&&s.h52&&s.hi>=s.h52*0.9995)
+  const hits=QT.stocks.filter(s=>s.hi&&s.h52&&s.hi>=s.h52*0.9995&&(s.tv||0)>=1)
     .sort((a,b)=>((b.tv||0)-(a.tv||0)));
   meta.innerHTML=`<b>${hits.length}종목</b>이 당일 고가 기준 52주 신고가 도달 · 기준 ${QT.updated} (평일 16:20 자동 갱신) · 거래대금순 · 출처 네이버증권`;
   if(!hits.length){body.innerHTML='<div class="empty"><b>당일 52주 신고가 종목이 없습니다</b></div>';return;}
