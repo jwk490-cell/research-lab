@@ -494,6 +494,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <section class="panel" id="tab-rs">
       <div class="ptitle">RS 분석 <span style="font-size:12px;font-weight:600;color:var(--dim2)">섹터·테마 ETF 상대강도 + 변동성 조정 모멘텀</span></div>
       <div class="pdesc" id="rsMeta">불러오는 중…</div>
+      <div id="rsSectors"></div>
       <div id="rsBody"></div>
     </section>
 
@@ -1251,13 +1252,92 @@ function uhRender(){
 }
 
 /* ══════════ RS 분석 (섹터·테마 ETF 상대강도 — 태린이아빠 방식) ══════════ */
-let RS=null,rsMkt='kr',rsSort='navg';
+let RS=null,RSSEC=null,rsMkt='kr',rsSort='navg';
 async function rsLoad(){
   if(!RS){
     try{RS=await getJson('data/rs.json');}
     catch(e){document.getElementById('rsMeta').textContent='RS 데이터가 아직 없습니다 — 평일 17시 빌드 후 이용 가능합니다.';return;}
   }
+  if(RSSEC===null){try{RSSEC=await getJson('data/rs_sectors.json');}catch(e){RSSEC=false;}}
+  rsSecRender();
   rsRender();
+}
+/* ── 섹터 RS 로테이션(RS 맵) — RS 탭 상단 ── */
+function rsSecRender(){
+  const el=document.getElementById('rsSectors');if(!el)return;
+  if(!RSSEC||!RSSEC.sectors){el.innerHTML='';return;}
+  const S=RSSEC.sectors,bd=RSSEC.base_dt||'';
+  const dt=bd.length>=8?`${bd.slice(0,4)}.${bd.slice(4,6)}.${bd.slice(6,8)}`:bd;
+  const cap=v=>v.toLocaleString('ko-KR',{maximumFractionDigits:1})+'조';
+  const chg=v=>`<span style="color:${v>=0?'#2ec27e':'#f04452'}">${v>=0?'+':''}${v.toFixed(2)}%</span>`;
+  el.innerHTML=`
+  <div class="ptitle" style="font-size:16px;margin:2px 0 4px">섹터 로테이션 <span style="font-size:12px;font-weight:600;color:var(--dim2)">시장 대비 상대강도(RS)로 보는 섹터 로테이션</span></div>
+  <div class="rgrid2" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
+    <div class="rcard" style="padding:13px 16px"><div style="font-size:11.5px;color:var(--faint)">섹터</div><div style="font-size:20px;font-weight:800">${RSSEC.n_sec}개</div></div>
+    <div class="rcard" style="padding:13px 16px"><div style="font-size:11.5px;color:var(--faint)">합산 시총</div><div style="font-size:20px;font-weight:800">${RSSEC.total_cap.toLocaleString('ko-KR',{maximumFractionDigits:1})}조</div></div>
+    <div class="rcard" style="padding:13px 16px"><div style="font-size:11.5px;color:var(--faint)">기준일</div><div style="font-size:20px;font-weight:800">${dt}</div></div>
+  </div>
+  <div class="rcard" style="margin-bottom:14px">
+    <h3 style="font-size:13.5px;margin-bottom:2px">RS 맵 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">크기=시총 · 색=5일 등락 · 가로=장기RS(60일) · 세로=단기RS(10일)</span></h3>
+    <div style="position:relative"><canvas id="rsMapCv" style="width:100%"></canvas></div>
+    <div class="clegend" style="margin-top:4px"><i style="background:#2ec27e"></i>5일 상승&nbsp;&nbsp;<i style="background:#f04452"></i>5일 하락&nbsp;&nbsp;<span style="color:var(--dim2)">사분면: 부상(좌상) · 주도(우상) · 소외(좌하) · 쇠퇴(우하)</span></div>
+  </div>
+  <div class="rcard" style="margin-bottom:16px">
+    <h3 style="font-size:13.5px;margin-bottom:8px">산업(섹터) 구성 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">시총순</span></h3>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">섹터</th><th>강도</th><th>테마 수</th><th>섹터 시총</th><th>상대 비중</th><th>5일 등락</th><th>장기 RS</th><th>단기 RS</th></tr></thead><tbody>
+    ${S.map(r=>`<tr><td style="text-align:left;font-weight:700">${esc(r.name)}</td>
+      <td><span style="font-size:10.5px;color:${r.strong?'#2ec27e':'#e0a457'}">●</span> ${r.strong?'강세':'약세'}</td>
+      <td>${r.nth}개</td><td>${cap(r.cap)}</td><td>${r.w.toFixed(1)}%</td><td>${chg(r.chg5)}</td>
+      <td><b style="color:${r.rs_long>=50?'var(--accent)':'var(--dim2)'}">${r.rs_long}</b></td>
+      <td>${r.rs_short}</td></tr>`).join('')}
+    </tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:8px">장기/단기 RS = 60일/10일 시총가중 수익률의 섹터 내 백분위(0~100) · 강세=장기RS≥50 · 종목→테마→섹터(GICS 산업그룹) 집계</div>
+  </div>`;
+  drawRsMap(document.getElementById('rsMapCv'),S);
+}
+let rsMapGeo=null;
+function drawRsMap(cv,S){
+  if(!cv)return;
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||900,H=Math.max(360,Math.min(560,W*0.52));
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';
+  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),V=n=>cs.getPropertyValue(n).trim();
+  const P={l:44,r:16,t:14,b:30},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  const px=v=>P.l+IW*v/100, py=v=>P.t+IH*(1-v/100);
+  // 사분면 배경 + 라벨
+  x.fillStyle=V('--faint');x.globalAlpha=.5;
+  x.font='700 15px Pretendard';x.textAlign='center';
+  const q=[['부상',25,90,'미래 주도 후보'],['주도',75,90,'현재 시장 주도'],['소외',25,12,'관망'],['쇠퇴',75,12,'힘 빠지는 중']];
+  q.forEach(([t,qx,qy,sub])=>{x.fillText(t,px(qx),py(qy));x.font='400 10.5px Pretendard';x.fillText(sub,px(qx),py(qy)+15);x.font='700 15px Pretendard';});
+  x.globalAlpha=1;
+  // 중앙 십자선
+  x.strokeStyle=V('--line');x.lineWidth=1;x.setLineDash([4,4]);
+  x.beginPath();x.moveTo(px(50),P.t);x.lineTo(px(50),P.t+IH);x.moveTo(P.l,py(50));x.lineTo(P.l+IW,py(50));x.stroke();x.setLineDash([]);
+  // 축 라벨
+  x.fillStyle=V('--dim2');x.font='10px Pretendard';x.textAlign='center';
+  x.fillText('장기 RS (60거래일) →',W/2,H-8);
+  x.save();x.translate(12,H/2);x.rotate(-Math.PI/2);x.fillText('단기 RS (10거래일) →',0,0);x.restore();
+  // 버블
+  const cmax=Math.max(...S.map(r=>r.cap),1);
+  const rad=c=>Math.max(5,Math.sqrt(c/cmax)*44);
+  rsMapGeo={pts:S.map(r=>({r,cx:px(r.rs_long),cy:py(r.rs_short),rr:rad(r.cap)}))};
+  // 큰 버블 먼저(뒤에 깔리게)
+  [...rsMapGeo.pts].sort((a,b)=>b.rr-a.rr).forEach(p=>{
+    const up=p.r.chg5>=0;x.beginPath();x.arc(p.cx,p.cy,p.rr,0,7);
+    x.fillStyle=up?'rgba(46,194,126,.62)':'rgba(240,68,82,.62)';x.fill();
+    x.lineWidth=1;x.strokeStyle=up?'#2ec27e':'#f04452';x.stroke();});
+  // 라벨(시총 상위 위주로 겹침 완화: 반지름 큰 것 우선)
+  x.fillStyle=V('--text');x.font='600 11px Pretendard';x.textAlign='center';
+  rsMapGeo.pts.filter(p=>p.rr>=9).forEach(p=>{x.fillText(p.r.name.length>9?p.r.name.slice(0,8)+'…':p.r.name,p.cx,p.cy-p.rr-4);});
+  cv.onmousemove=e=>{if(!rsMapGeo)return;const rect=cv.getBoundingClientRect();
+    const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    let hit=null;for(const p of rsMapGeo.pts){if((mx-p.cx)**2+(my-p.cy)**2<=p.rr*p.rr){if(!hit||p.rr<hit.rr)hit=p;}}
+    const tt=document.getElementById('rstt')||(()=>{const d=document.createElement('div');d.id='rstt';
+      d.style.cssText='position:fixed;z-index:60;display:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:11.5px;line-height:1.5;color:var(--text);pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.4)';document.body.appendChild(d);return d;})();
+    if(!hit){tt.style.display='none';return;}
+    const r=hit.r;tt.innerHTML=`<b>${esc(r.name)}</b> ${r.strong?'<span style="color:#2ec27e">강세</span>':'<span style="color:#e0a457">약세</span>'}<br>시총 ${r.cap.toLocaleString('ko-KR',{maximumFractionDigits:1})}조 · 비중 ${r.w.toFixed(1)}%<br>장기RS <b>${r.rs_long}</b> · 단기RS <b>${r.rs_short}</b> · 5일 <span style="color:${r.chg5>=0?'#2ec27e':'#f04452'}">${r.chg5>=0?'+':''}${r.chg5.toFixed(2)}%</span>`;
+    tt.style.display='block';tt.style.left=Math.min(e.clientX+14,innerWidth-220)+'px';tt.style.top=(e.clientY+14)+'px';};
+  cv.onmouseleave=()=>{const tt=document.getElementById('rstt');if(tt)tt.style.display='none';};
 }
 function rsRender(){
   const mk=RS[rsMkt],items=[...(mk.items||[])];
