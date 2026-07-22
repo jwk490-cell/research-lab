@@ -76,7 +76,8 @@ main{flex:1;min-width:0;overflow-y:auto}
 .pdesc{color:var(--sub);font-size:13px;margin:7px 0 22px}
 
 /* ───────── 홈: 실시간 시세 카드 + 지수 스트립 ───────── */
-.quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.quote-grid{grid-template-columns:1fr}}
 .quote-card{background:var(--surface);border-radius:20px;padding:24px 26px;
   box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
 .quote-card .qhead{display:flex;justify-content:space-between;align-items:baseline}
@@ -341,6 +342,12 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel on" id="tab-home">
       <div class="quote-grid" id="homeQuotes">
+        <div class="quote-card"><div class="qhead"><div class="qname">코스피 <small>KOSPI</small></div><div class="badge-live">지수</div></div>
+          <div class="price-row"><div class="qprice num">—</div></div>
+          <div class="qmeta num">불러오는 중…</div></div>
+        <div class="quote-card"><div class="qhead"><div class="qname">코스닥 <small>KOSDAQ</small></div><div class="badge-live">지수</div></div>
+          <div class="price-row"><div class="qprice num">—</div></div>
+          <div class="qmeta num">불러오는 중…</div></div>
         <div class="quote-card"><div class="qhead"><div class="qname">삼성전자 <small>005930</small></div><div class="badge-live">5초 갱신</div></div>
           <div class="price-row"><div class="qprice num">—</div></div>
           <div class="qmeta num">불러오는 중…</div></div>
@@ -1951,20 +1958,34 @@ async function homeTick(){
         <span>펀딩비 <strong>${fund>=0?'+':''}${fund.toFixed(3)}%</strong></span>
         <span>미결제 <strong>$${oiUsd.toFixed(1)}M</strong></span></div></div>`;
   };
-  document.getElementById('homeQuotes').innerHTML=q('SMSN','SMSN')+q('SKHX','SKHX');
+  // 지수 실시간 추정(EWY×계수) + 선물
   const ewy=C('EWY'),kr=C('KR200');
   const coef=ref&&ref.kospi_coef;
   const em=parseFloat(ewy.markPx),ep=parseFloat(ewy.prevDayPx);
-  const est=coef?em*coef:null,estPct=ep?(em-ep)/ep*100:0;
+  const est=coef&&isFinite(em)?em*coef:null,estPct=ep?(em-ep)/ep*100:0;
   const km=parseFloat(kr.markPx),kp=parseFloat(kr.prevDayPx),kPct=kp?(km-kp)/kp*100:0;
-  if(!RAM){try{RAM=await getJson('data/ram.json');}catch(e){}}
+  // 코스피·코스닥 지수 카드 (네이버 지수 + 코스피는 EWY 실시간 추정 병기)
+  const ic=(key,label,short)=>{
+    const ix=(ref&&ref.indices&&ref.indices[key])||{};
+    if(ix.value==null)return `<div class="quote-card"><div class="qhead"><div class="qname">${label} <small>${short}</small></div><div class="badge-live">지수</div></div>
+      <div class="price-row"><div class="qprice num">—</div></div><div class="qmeta num">지수 로딩…</div></div>`;
+    const up=(ix.pct||0)>=0;
+    const meta=(key==='KOSPI'&&est)
+      ? `<span>실시간 추정 <strong class="${estPct>=0?'up':'down'}">${est.toLocaleString('ko-KR',{maximumFractionDigits:2})} (${estPct>=0?'+':''}${estPct.toFixed(2)}%)</strong> <small style="color:var(--faint)">EWY 환산</small></span>`
+      : `<span style="color:var(--faint)">네이버 지수 · 장중 5분 갱신</span>`;
+    return `<div class="quote-card"><div class="qhead"><div class="qname">${label} <small>${short}</small></div><div class="badge-live">${key==='KOSPI'&&est?'5초 추정':'지수'}</div></div>
+      <div class="price-row"><div class="qprice num ${up?'up':'down'}">${ix.value.toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+        <div class="qchange num ${up?'up':'down'}">${up?'+':''}${(ix.chg||0).toLocaleString('ko-KR',{maximumFractionDigits:2})} (${up?'+':''}${(ix.pct||0).toFixed(2)}%)</div></div>
+      <div class="qmeta num">${meta}</div></div>`;
+  };
+  document.getElementById('homeQuotes').innerHTML=ic('KOSPI','코스피','KOSPI')+ic('KOSDAQ','코스닥','KOSDAQ')+q('SMSN','SMSN')+q('SKHX','SKHX');
+  if(!MEM){try{MEM=await getJson('data/memory.json');}catch(e){}}
   let ddr='';
-  if(RAM&&RAM.items){const it=RAM.items.find(i=>i.name.startsWith('DDR5 16Gb'));
+  if(MEM&&MEM.spot&&MEM.spot.dram){const it=MEM.spot.dram.find(i=>i.name.startsWith('DDR5 16Gb'));
     if(it)ddr=`<div class="item"><span class="label">DDR5 16G 스팟</span><span class="value">$${it.avg.toFixed(2)}</span></div>`;}
   const cell=(lb,v,pct)=>`<div class="item"><span class="label">${lb}</span><span class="value">${v}${pct!=null?` <span class="${pct>=0?'up':'down'}">${pct>=0?'+':''}${pct.toFixed(2)}%</span>`:''}</span></div>`;
   document.getElementById('homeStrip').innerHTML=
-    (est?cell('코스피 (EWY 환산)',est.toLocaleString('ko-KR',{maximumFractionDigits:2}),estPct):'')
-    +cell('코스피200 선물 (KR200)',km.toLocaleString('ko-KR',{maximumFractionDigits:2}),kPct)
+    (isFinite(km)?cell('코스피200 선물 (KR200)',km.toLocaleString('ko-KR',{maximumFractionDigits:2}),kPct):'')
     +(rate?cell('USDT/KRW',Math.round(rate).toLocaleString('ko-KR'),null):'')
     +ddr;
 }
