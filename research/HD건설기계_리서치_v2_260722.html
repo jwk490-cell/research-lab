@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HD건설기계 267270 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">267270</span>
+    <span class="nm">HD건설기계 <small>HD Hyundai Construction Equipment · 건설기계 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩127,000</span>
+    <span>시총 ₩6.09조 · 26E PER 11x</span>
+    <span class="rating">비중확대 관심 · 매집 110,000~120,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PER밴드</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩127,000 (+3.9%)</span>
+  <span><b>52주</b> 73,400 ~ 227,000</span>
+  <span><b>외인</b> 17.5%</span>
+  <span><b>OPM 26E</b> 7.7%</span>
+  <span><b>ROE 26E</b> 14.8%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">국내 건설기계 양대사가 하나로 합쳐진 순간, 매출은 두 배가 되고 밸류는 반값이 됐다 — 사이클의 바닥에서 얻은 규모.</h1>
+  <p class="lead">HD건설기계는 2026년 1월 1일 <em>HD현대인프라코어를 흡수합병</em>하며 새 이름으로 출범한 국내 1위·글로벌 톱10 초중반 건설기계사다.<span class="src">합병 완료 2026-01-01, 인프라코어 1주 : 건설기계 0.1621707주<span class="tip">경인일보·블로터(2026) · 합병 후 연 매출 8조원대, 글로벌 순위 20위권→10위권 초중반</span></span> 굴착기·휠로더를 <strong>현대(HYUNDAI)·디벨론(DEVELON) 투트랙 브랜드</strong>로 북미·유럽·인도·중동·중남미에 판다. 합병으로 매출이 3.8조→9.2조로 두 배 뛰었고, 실적도 강하다 — 1Q26 영업이익 <strong>1,907억(+88.3%)·OPM 8.3%·순익 +193%</strong>. 그런데 밸류는 <strong>포워드 PER 11배</strong>. 주가는 73,400원→198,100원(4/27 고점, 약 2.7배)→127,000원(−36%)으로 눌렸다. <strong>테마가 아니라 규모·시너지·저밸류로 사는 사이클 성장주.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 110,000~120,000원 · Base 130,000 / Bull 170,000 / Bear 76,000 · 확률가중 EV ≈ 130,500원(+3%).</strong> 합병 통합 대형사·실적 상승 사이클(1Q OP +88%)·저밸류(포워드 PER 11x)로 손익비가 견조하다. 다만 건설기계는 <em>글로벌 인프라 사이클에 종속되는 경기민감재</em>라 Bear −40% 꼬리가 깊다 — 추격 금지, 눌림에서 분할. thesis break: 글로벌 건설 사이클 둔화·미국 관세 강행·통합 시너지 지연.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 2026년 매출·이익이 동시에 점프</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). <strong>2026E 매출 2배는 유기적 성장이 아니라 인프라코어 흡수합병에 따른 연결 확대</strong> — 성장률 해석 시 합병 효과와 순수 사이클 성장을 분리해야 한다(회사 가이던스 8.7~9.0조).</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">38,250</td><td class="num">2,572</td><td class="num">6.7%</td><td class="num">1,394</td><td class="num">7,077</td><td class="num">18x</td><td class="num">9.2%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">34,381</td><td class="num">1,904</td><td class="num">5.5%</td><td class="num">1,000</td><td class="num">5,277</td><td class="num">24x</td><td class="num">6.2%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">37,765</td><td class="num">1,709</td><td class="num">4.5%</td><td class="num">994</td><td class="num">5,613</td><td class="num">23x</td><td class="num">5.7%</td></tr>
+      <tr class="hl"><td class="txt">2026E<span class="est">합병</span></td><td class="num">92,117</td><td class="num">7,089</td><td class="num">7.7%</td><td class="num">5,292 <span class="est">E</span></td><td class="num">11,059</td><td class="num">11.0x</td><td class="num">14.8%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 127,000 ÷ 해당연도 EPS. 2024~2025 건설기계 다운사이클로 이익이 눌렸다가, 2026 합병+사이클 반등으로 OP 1,709→7,089억·OPM 4.5%→7.7% 도약. 1Q26 매출 2.30조(+22.1%)·영업익 1,907억(+88.3%, OPM 8.3%)로 컨센 상회.</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">2026E 매출 막대의 급점프는 합병 연결효과. 골드 라인(OPM)이 사이클 바닥(4.5%)에서 7.7%로 반등한다.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- Revenue max 92117 -> 210px, k=0.0022797. OP same scale -->
+      <!-- 2023 -->
+      <rect x="120" y="182.8" width="70" height="87.2" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="264.1" width="46" height="5.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="174" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">38,250</text>
+      <text x="219" y="258" text-anchor="middle" font-size="10.5" fill="#4bbf9a">2,572</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="191.6" width="70" height="78.4" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="265.7" width="46" height="4.3" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="183" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">34,381</text>
+      <text x="444" y="259" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,904</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="183.9" width="70" height="86.1" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="266.1" width="46" height="3.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="175" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">37,765</text>
+      <text x="669" y="260" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,709</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="253.8" width="46" height="16.2" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">92,117</text>
+      <text x="894" y="247" text-anchor="middle" font-size="10.5" fill="#4bbf9a">7,089</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E·합병</text>
+      <!-- OPM line: y=250-(OPM-4)*18 -->
+      <polyline points="155,201.4 380,223 605,241 830,183.4" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="201.4" r="4" fill="#cba24a"/><circle cx="380" cy="223" r="4" fill="#cba24a"/><circle cx="605" cy="241" r="4" fill="#cba24a"/><circle cx="830" cy="183.4" r="4" fill="#cba24a"/>
+      <text x="155" y="194" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">6.7%</text>
+      <text x="605" y="253" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">4.5% 바닥</text>
+      <text x="855" y="176" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.7%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정(합병)</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 합병으로 규모·시너지 확대</h3><p style="margin:6px 0">인프라코어 흡수로 매출 3.8조→9.2조, 글로벌 20위권→<strong>10위권 초중반</strong>. 굴착기·휠로더·미니·유압 제품군 70~80% 중복 → <strong>딜러망·부품·엔진·R&D 통합 시너지</strong>가 마진의 축.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 실적 상승 사이클</h3><p style="margin:6px 0">1Q26 OP <strong>+88.3%</strong>·OPM 8.3%·순익 +193%. 중동·아프리카(+68%)·중남미(+46%) 신흥시장 초대형 장비, 인도(군산·인천·인도·중국·브라질 생산). <strong>둔화 축이 있어도 신흥시장이 받친다.</strong></p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 밸류가 싸다</h3><p style="margin:6px 0">포워드 PER <strong>11배</strong>·PBR 1.29x. 캐터필러(~20x) 대비 크게 낮고, 코마츠·두산밥캣과 비슷. 시너지·사이클 지속이 확인되면 리레이팅 여지. 2.7배 급등 후 −36% 조정으로 진입 여지가 열렸다.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (사이클 규모주)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 글로벌 딜러망·브랜드·규모의 경제. 다만 캐터필러·코마츠·두산밥캣과의 경쟁이 상시라 '넓은 해자'는 아니다.</li>
+        <li><strong>현금창출:</strong> 합병으로 이익 레벨 두 배·OPM 개선. 사이클 바닥 통과 시 레버리지.</li>
+        <li><strong>사이클 노출:</strong> 건설·인프라 경기민감재 — 이게 A로 못 올라가는 핵심 이유. 규모는 커졌지만 사이클은 여전하다.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 합병 시너지(원가·딜러) 실현 + 신흥시장(중동·인도·중남미) 성장 지속 + 북미 수요 방어 + OPM 7%+ 유지.</li>
+        <li><strong>갈아타기:</strong> 북미 소형장비 순수 노출은 두산밥캣, 글로벌 대형·서비스 프리미엄은 캐터필러. HD건설기계는 '규모+저밸류+신흥시장'.</li>
+        <li><strong>즉시매도:</strong> 글로벌 건설 사이클 둔화 확인 / 미국 관세 강행 채산성 훼손 / 통합 잡음으로 시너지 지연 / OPM 5% 하회.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 국면에서 왜 HD건설기계인가</h2>
+  <p>건설기계 업종은 2024~2025 다운사이클을 지나 <strong>2026 합병+반등</strong>으로 이익 레벨이 점프한 국면이다. HD건설기계는 그중 <em>규모·저밸류·신흥시장 성장이 동시에 받쳐 손익비가 살아있는</em> 축이다. 반면 순수 밸류로 보면 캐터필러(~20x)는 프리미엄이 부담이고, 코마츠는 관세부담·FY26 매출 감소로 모멘텀이 약하다. HD건설기계의 상대 매력 = <em>"글로벌 톱10 규모를 PER 11x에 사는, 합병으로 커진 사이클 성장주"</em>. 단, 사이클 렌즈로 보면 <strong>진입 타이밍(눌림)</strong>이 종목 선택만큼 중요하다.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"미니~초대형 <strong>굴착기·휠로더 등 건설장비를 현대(HYUNDAI)·디벨론(DEVELON) 투트랙 브랜드로 전 세계 인프라·건설·광산 현장에 파는</strong>, HD현대인프라코어와 합쳐진 국내 1위·글로벌 톱10 초중반 건설기계사."</p>
+  <div class="note"><div class="h">디벨론(DEVELON)이란 — 두산인프라코어의 유산</div>디벨론은 옛 두산인프라코어(→현대두산인프라코어→HD현대인프라코어) 건설기계 브랜드로, 두산 이탈 후 새로 만든 이름이다. HD현대는 2021년 두산인프라코어를 인수했고, 2026년 <strong>HD현대인프라코어를 HD건설기계에 흡수합병</strong>하며 '현대(HYUNDAI)'와 '디벨론(DEVELON)' 두 브랜드를 한 지붕 아래 운영한다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 매출 구성·성장 드라이버·특성</h2>
+  <table>
+    <thead><tr><th class="txt">축</th><th class="txt">무엇</th><th class="num">방향</th><th class="txt">드라이버</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>굴착기·건설장비</strong></td><td class="txt">미니~대형 굴착기, 휠로더 (핵심)</td><td class="num">물량 사이클</td><td class="txt">글로벌 건설·인프라 발주 × ASP</td><td class="txt">경기민감·마진 스윙</td></tr>
+      <tr class="hl"><td class="txt"><strong>인프라코어 합병</strong></td><td class="txt">양대사 통합 → 매출 2배</td><td class="num">규모↑</td><td class="txt">캐파·딜러·부품·엔진 통합</td><td class="txt">시너지·원가절감 잠재</td></tr>
+      <tr><td class="txt"><strong>신흥시장·현지생산</strong></td><td class="txt">인도·중동·중남미 디벨론/현대</td><td class="num up">고성장</td><td class="txt">신흥국 인프라·광산 초대형 장비</td><td class="txt">성장·가격 민감</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">1Q26 지역별 매출: 중동·아프리카 <span class="up">+68.1%</span>·중남미 <span class="up">+46.3%</span>(광산 초대형 장비·인프라 투자). 북미는 수요 안정적이나 관세·가격경쟁으로 회복 제한적(2026 북미수요 −2.5% 11.6만대E). 생산거점: 울산·인천·군산(국내)+인도·중국·브라질·노르웨이(해외).<span class="src">1Q26 IR·딜사이트·블로터(2026)<span class="tip">회사 2026 매출 가이던스 8.7~9.0조, 권역장 8개 체제</span></span></p>
+
+  <div class="chart"><div class="ct">1Q26 지역별 매출 성장률 (YoY, %) — 신흥시장이 끌고 북미가 눌린다</div><div class="cs">중동·아프리카·중남미가 두 자릿수 후반~40%대 성장. 북미는 관세·가격경쟁으로 정체. 지역 믹스가 성장의 열쇠.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="20" x2="200" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, 1%=8px from x=200, max ~70 -->
+      <!-- 중동·아프리카 68.1 -->
+      <rect x="200" y="30" width="545" height="26" fill="#4bbf9a"/><text x="755" y="48" font-size="12" fill="#4bbf9a" font-weight="700">+68.1%</text><text x="192" y="48" text-anchor="end" font-size="11" fill="#eaecef">중동·아프리카</text>
+      <!-- 중남미 46.3 -->
+      <rect x="200" y="70" width="370" height="26" fill="#4bbf9a" opacity="0.85"/><text x="580" y="88" font-size="12" fill="#4bbf9a" font-weight="700">+46.3%</text><text x="192" y="88" text-anchor="end" font-size="11" fill="#eaecef">중남미</text>
+      <!-- 전사(합병효과 포함) +22.1 -->
+      <rect x="200" y="110" width="177" height="26" fill="#e78a5c" opacity="0.85"/><text x="387" y="128" font-size="12" fill="#e78a5c" font-weight="700">+22.1% (전사 매출)</text><text x="192" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">전사 (합병 포함)</text>
+      <!-- 인도·신흥 (정성 강세) -->
+      <rect x="200" y="150" width="230" height="26" fill="#4bbf9a" opacity="0.6"/><text x="440" y="168" font-size="11" fill="#bfc5ce">인프라 수요 강세</text><text x="192" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">인도·신흥</text>
+      <!-- 북미 정체 -->
+      <rect x="200" y="190" width="30" height="26" fill="#5a6472"/><text x="240" y="208" font-size="11" fill="#828b98">수요 안정·관세 불확실 (수요 −2.5%E)</text><text x="192" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">북미</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>신흥시장 고성장</span><span><i style="background:#e78a5c"></i>전사(합병효과 포함)</span><span><i style="background:#5a6472"></i>북미 정체</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(건설·인프라·광산)의 눈</h3><p style="margin:6px 0">"현장 가동률이 핵심이라 애프터·부품·딜러 접근성이 좋은 브랜드를 쓴다. 초대형 광산장비는 신뢰성·납기가 결정." → 딜러망·서비스가 판매 좌우.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(캐터필러·코마츠·밥캣)의 눈</h3><p style="margin:6px 0">"HD가 합병으로 규모를 키웠지만 북미·서비스는 여전히 우리 텃밭. 신흥시장·가격에서 뺏긴다." → 글로벌 다자 경쟁.</p></div>
+    <div class="card"><h3 style="margin-top:0">납품업체(부품·엔진·강재)의 눈</h3><p style="margin:6px 0">"통합으로 발주 물량이 커진다. 다만 통합 구매로 단가 압박·공급사 재편 가능." → 시너지의 원천이자 협상력 이동.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"합병 시너지(원가·딜러·R&D)를 본격화하고 신흥시장·초대형 장비로 믹스를 올린다. 관세는 가격정책으로 대응." → 규모의 질적 실현.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">규모·딜러망 (합병 후)</h3><p style="margin:0;font-size:12.5px">양대사 통합으로 글로벌 톱10 규모·광범위 딜러/서비스망 확보. 신규 진입·소형사에는 규모의 경제 장벽. 현금화: 진행 중.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">굴착기·유압 기술</h3><p style="margin:0;font-size:12.5px">굴착기·휠로더·유압 시스템은 캐터필러·코마츠·밥캣도 보유. 차별점은 가격·신흥시장 침투·현지생산. 현금화: 상시.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">합병 시너지 규모</h3><p style="margin:0;font-size:12.5px">원가·딜러·부품·엔진 통합 시너지의 실제 크기·속도는 아직 검증 전. 상방 옵션이자 실행 리스크. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조·합병 — HD현대 우산과 인프라코어 통합</h2>
+  <div class="chart"><div class="ct">지배구조 & 합병 다이어그램 (2026 출범 기준)</div><div class="cs">HD현대(지주) → HD현대사이트솔루션(건설기계 중간지주) → HD건설기계. 2026-01-01 HD현대인프라코어를 흡수합병(1:0.1621707).</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- HD현대 지주 -->
+      <rect x="60" y="30" width="200" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="160" y="52" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">HD현대 (267250)</text>
+      <text x="160" y="70" text-anchor="middle" font-size="10.5" fill="#828b98">그룹 지주사</text>
+      <!-- 중간지주 -->
+      <rect x="60" y="130" width="200" height="52" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="160" y="152" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">HD현대사이트솔루션</text>
+      <text x="160" y="170" text-anchor="middle" font-size="10.5" fill="#828b98">건설기계 중간지주</text>
+      <!-- 중심: HD건설기계 -->
+      <rect x="430" y="120" width="220" height="80" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="150" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">HD건설기계 (267270)</text>
+      <text x="540" y="172" text-anchor="middle" font-size="11" fill="#828b98">굴착기·휠로더 · 시총 6.09조</text>
+      <text x="540" y="189" text-anchor="middle" font-size="10.5" fill="#e78a5c">브랜드: 현대 + 디벨론</text>
+      <!-- 인프라코어 흡수 -->
+      <rect x="430" y="255" width="220" height="52" rx="5" fill="#22262f" stroke="#f0525f" stroke-dasharray="4 3"/>
+      <text x="540" y="277" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">HD현대인프라코어</text>
+      <text x="540" y="295" text-anchor="middle" font-size="10.5" fill="#f0525f">2026-01-01 흡수합병 (소멸)</text>
+      <!-- 통합 대형사 결과 -->
+      <rect x="820" y="120" width="200" height="80" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="150" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">통합 대형사</text>
+      <text x="920" y="170" text-anchor="middle" font-size="10.5" fill="#828b98">매출 3.8조→9.2조</text>
+      <text x="920" y="188" text-anchor="middle" font-size="10.5" fill="#4bbf9a">글로벌 20위권→10위권</text>
+      <!-- arrows -->
+      <line x1="160" y1="82" x2="160" y2="130" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="260" y1="156" x2="430" y2="156" stroke="#5a6472" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="540" y1="255" x2="540" y2="200" stroke="#f0525f" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="650" y1="160" x2="820" y2="160" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="345" y="150" text-anchor="middle" font-size="10" fill="#5a6472">지배</text>
+      <text x="600" y="235" text-anchor="middle" font-size="10" fill="#f0525f">1:0.1621707</text>
+      <text x="735" y="152" text-anchor="middle" font-size="10" fill="#e78a5c">규모 2배</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>제품군 70~80% 중복</strong>이던 계열 양대사를 하나로 합쳐 내부 중복을 제거했다는 게 합병의 핵심 논리다. 반대로 HD현대 계열 <em>중간지주(사이트솔루션) 산하</em>라 계열 자본배치·통합 비용·조직 리스크는 상시 점검 대상. 외인 지분 17.5%는 대형 사이클주로선 견조하나, 합병 착시(연결 매출 2배)를 걷어낸 <strong>유기 성장·시너지 실현</strong>이 리레이팅의 조건이다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 구조이고 무엇이 사이클인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">굴착기·건설장비(북미·유럽)</td><td class="txt"><strong>경기·인프라 사이클</strong></td><td class="txt">인프라·데이터센터 건설·금리·관세</td><td class="txt">중(사이클)</td></tr>
+      <tr><td class="txt">신흥시장(중동·인도·중남미)</td><td class="txt">인프라·광산 개발 수요</td><td class="txt">자원가격·인프라 투자·현지생산</td><td class="txt">높음(성장)</td></tr>
+      <tr><td class="txt">합병 시너지</td><td class="txt">내생 원가·통합 효과</td><td class="txt">딜러·부품·엔진 통합 속도</td><td class="txt">중(실행)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>세 엔진 중 <strong>신흥시장(중동·인도·중남미)이 구조 성장으로 하방을 받치고</strong>, 최대 매출축(북미·유럽 건설)은 경기 사이클·관세에 종속된다. 여기에 <strong>합병 시너지가 사이클과 무관한 내생 이익 개선</strong>을 얹는다. 즉 <em>사이클 다운사이드를 신흥시장·시너지가 완충하는</em> 구조 — 다만 규모가 커져도 본질은 경기민감재다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 마진 4.5%→7.7%의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">7.7<span class="u">%</span></div><div class="sub">4.5%(25)→7.7% 반등</div></div>
+    <div class="kpi"><div class="lab">PER 26E(포워드)</div><div class="val">11.0<span class="u">x</span></div><div class="sub">글로벌 peer 대비 저평가</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">1.29<span class="u">x</span></div><div class="sub">BPS 98,278</div></div>
+  </div>
+  <p>건설기계 마진은 <strong>가동률(물량)·지역 믹스·환율·강재가</strong>가 좌우한다. 다운사이클에 OPM이 4.5%까지 눌렸다가, 2026년 <strong>합병 시너지 + 신흥시장 믹스(초대형 장비) + 사이클 회복</strong>으로 7.7%로 반등. 초대형·광산 장비는 ASP·마진이 높아 <em>믹스가 마진을 밀어올리는</em> 구조지만, 북미 가격경쟁·관세가 상단을 누른다(2026 가격인상 5~6% 보류).</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +52.1억 · 연기금 +8.9억 · 투신 +20.8억</strong>(합산 시총대비 +0.13%). <em>사모 중심 대규모 유입</em>이 특징 — 외인소진율 <strong>17.5%</strong>. 4월 고점(198,100) 조정 뒤 기관이 <strong>합병 통합·저밸류 대형주</strong>를 담는 전형적 눌림 유입. 대형 사이클주 특성상 개별 수급보다 글로벌 건설·경기 심리가 상위 변수다.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">이익 레벨의 도약 — 사이클 바닥에서 합병으로 점프</h2>
+  <div class="chart"><div class="ct">영업이익 (막대, 억원) + OPM (라인, %) — 2024~2025 바닥, 2026E 도약</div><div class="cs">OP 2,572→1,904→1,709억으로 다운사이클을 내려오다, 2026E 7,089억으로 점프(합병+반등). OPM도 4.5%→7.7%.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- OP max 7089 -> 200px, k=0.02821, baseline 250 -->
+      <!-- 2023 2572 -> 72.6 -->
+      <rect x="130" y="177.4" width="90" height="72.6" fill="#4bbf9a" opacity="0.55"/>
+      <text x="175" y="169" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,572</text>
+      <text x="175" y="270" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 1904 -> 53.7 -->
+      <rect x="355" y="196.3" width="90" height="53.7" fill="#4bbf9a" opacity="0.55"/>
+      <text x="400" y="188" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">1,904</text>
+      <text x="400" y="270" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 1709 -> 48.2 (bottom) -->
+      <rect x="580" y="201.8" width="90" height="48.2" fill="#4bbf9a" opacity="0.55"/>
+      <text x="625" y="193" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">1,709</text>
+      <text x="625" y="270" text-anchor="middle" font-size="11" fill="#828b98">2025·바닥</text>
+      <!-- 2026E 7089 -> 200 -->
+      <rect x="805" y="50" width="90" height="200" fill="#4bbf9a" opacity="0.85" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="850" y="42" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">7,089</text>
+      <text x="850" y="270" text-anchor="middle" font-size="11" fill="#828b98">2026E·합병</text>
+      <!-- OPM line: y=230-(OPM-4)*20 -->
+      <polyline points="175,176 400,220 625,240 850,156" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="175" cy="176" r="4" fill="#cba24a"/><circle cx="400" cy="220" r="4" fill="#cba24a"/><circle cx="625" cy="240" r="4" fill="#cba24a"/><circle cx="850" cy="156" r="4" fill="#cba24a"/>
+      <text x="175" y="168" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">6.7%</text>
+      <text x="625" y="253" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">4.5%</text>
+      <text x="885" y="150" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.7%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정(합병)</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 통합 효과 본격화</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">2조3,049억</td><td class="num up">+22.1%</td><td class="txt">합병 연결 + 신흥시장</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">1,907억</td><td class="num up">+88.3%</td><td class="txt">OPM 8.3% — 통합·믹스 레버리지</td></tr>
+      <tr><td class="txt">순이익</td><td class="num">1,739억</td><td class="num up">+193.4%</td><td class="txt">이익 레벨 급점프</td></tr>
+      <tr><td class="txt">└ 중동·아프리카</td><td class="num">—</td><td class="num up">+68.1%</td><td class="txt">광산 초대형 장비·인프라 투자</td></tr>
+      <tr><td class="txt">└ 중남미</td><td class="num">—</td><td class="num up">+46.3%</td><td class="txt">신흥시장 인프라</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 합병 착시와 실질을 분리하라</h3>
+  <p>1Q26의 강력한 숫자(+88%·+193%)에는 <strong>인프라코어 연결이라는 합병 착시가 섞여 있다</strong>. 그럼에도 <em>OPM 8.3%는 순수 사이클 개선 + 신흥시장 믹스 + 초기 통합 효과</em>가 함께 만든 값이라 질이 나쁘지 않다. 다만 '전년比 두 배'라는 성장률은 유기적 성장률(그보다 완만)과 반드시 구분해야 하며, 통합 원가·조직 비용이 뒤늦게 들어올 수 있어 <strong>2~3분기 OPM의 지속성</strong>이 진짜 시험대다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PER 밴드</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">월간 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">90,300원 → 198,100원(4/27 고점, 합병 기대+실적) → 127,000원(−36%). 상승은 합병+반등 동반, 조정은 차익·사이클 우려. 실적선으로 회귀 중.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale: 70000..210000 -> y 250..40. y=250-(p-70000)*0.0015 -->
+      <line x1="55" y1="205" x2="1035" y2="205" stroke="#20242c"/><text x="48" y="208" text-anchor="end" font-size="9" fill="#5a6472">100k</text>
+      <line x1="55" y1="130" x2="1035" y2="130" stroke="#20242c"/><text x="48" y="133" text-anchor="end" font-size="9" fill="#5a6472">150k</text>
+      <line x1="55" y1="55" x2="1035" y2="55" stroke="#20242c"/><text x="48" y="58" text-anchor="end" font-size="9" fill="#5a6472">200k</text>
+      <!-- monthly closes: 90300,95000,105000,120000,130000,150000,165000,180000,198100,175000,150000,127000 -->
+      <polyline points="80,219.4 164,212.5 247,197.5 331,175 414,160 498,130 581,107.5 665,85 748,57.9 832,92.5 915,130 1000,164.5" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="498" cy="130" r="4" fill="#4bbf9a"/><text x="498" y="121" text-anchor="middle" font-size="9" fill="#4bbf9a">합병 출범(1/1)</text>
+      <circle cx="748" cy="57.9" r="4.5" fill="#f0525f"/><text x="748" y="49" text-anchor="middle" font-size="9" fill="#f0525f">198,100 고점(4/27)</text>
+      <circle cx="581" cy="107.5" r="4" fill="#cba24a"/><text x="581" y="98" text-anchor="middle" font-size="9" fill="#cba24a">1Q26 OP+88%</text>
+      <circle cx="1000" cy="164.5" r="4.5" fill="#e78a5c"/><text x="1000" y="181" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">127,000</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="748" y="272" font-size="9.5" fill="#828b98">'26.04</text><text x="980" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승은 합병 기대, 조정은 사이클 우려</h2>
+  <p>2025.08 90,300원 → 2026.04 198,100원(+119%)의 상승은 <strong>합병 시너지 기대와 실적 반등이 반반</strong>이었다(합병 출범·1Q26 OP +88%). 이후 −36% 조정은 차익실현 + <em>건설기계 사이클·관세 우려</em>가 멀티플을 눌렀지, 이익 훼손이 아니다. 시총 6.09조 ÷ 2026E 순익 5,292억 = <strong>PER 11.5배</strong>는, 글로벌 peer(캐터필러 ~20x) 대비 낮아 <em>시장이 합병 시너지·사이클 지속을 반신반의</em>한다는 뜻 — 확인되면 리레이팅 여지, 꺾이면 디레이팅.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">합병 기대로 코스피를 크게 아웃퍼폼했다가 되돌림. 절대 밸류(PER 11x)는 매력 구간 진입.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="190" x2="1035" y2="190" stroke="#353b47" stroke-width="1.5"/>
+      <!-- y=190-(v-80)*1.8 ; gridline 100 -->
+      <line x1="55" y1="154" x2="1035" y2="154" stroke="#20242c"/><text x="48" y="157" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="100" x2="1035" y2="100" stroke="#20242c"/><text x="48" y="103" text-anchor="end" font-size="9" fill="#5a6472">130</text>
+      <!-- HD건설기계 rebase: 100(Jan),110(Feb),120(Mar),132(Apr),117(May),100(Jun),85(Jul) -->
+      <polyline points="80,154 230,136 380,118 530,96.4 680,123.4 830,154 980,181" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="175" font-size="9.5" fill="#e78a5c" font-weight="700">HD건설기계 −15%</text>
+      <!-- KOSPI ~+5%: 100,101,103,104,105,104,105 -->
+      <polyline points="80,154 230,152.2 380,148.6 530,146.8 680,145 830,146.8 980,145" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="139" font-size="9.5" fill="#828b98">코스피 ~+5%</text>
+      <text x="80" y="210" font-size="9" fill="#828b98">'26.01</text><text x="530" y="210" font-size="9" fill="#828b98">'26.04 고점</text><text x="960" y="210" font-size="9" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+  <div class="note warn"><div class="h">컨센 감사 — 무엇이 안 들어갔나</div>컨센에 <strong>인프라코어 합병·매출 2배는 반영</strong>됐다. 그러나 <em>합병 시너지(원가·딜러 통합 효과)와 신흥시장(중동·인도·중남미) 초대형 장비 성장은 부분~미반영</em> — 상방 여지. 반대로 <strong>북미 관세·글로벌 건설 둔화</strong>는 아직 보수적으로만 반영돼, 사이클이 꺾이면 하향 리스크. 즉 컨센은 '합병은 알지만 시너지·사이클 방향은 관망' 상태.</div>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">글로벌 건설기계 경쟁구도 — 그리고 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 = HD건설기계</div><div class="cs">캐터필러가 프리미엄(~20x), 코마츠·두산밥캣은 HD건설기계와 비슷한 11x대. HD는 합병으로 규모를 키웠는데 밸류는 낮은 축.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="230" x2="200" y2="20" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, 1x=36px from x=200, max ~20 -->
+      <!-- HD건설기계 11 -->
+      <rect x="200" y="30" width="396" height="26" fill="#cba24a"/><text x="606" y="48" font-size="12" fill="#cba24a" font-weight="700">HD건설기계 11.0x</text><text x="192" y="48" text-anchor="end" font-size="11" fill="#eaecef">HD건설기계</text>
+      <!-- 두산밥캣 11 -->
+      <rect x="200" y="70" width="400" height="26" fill="#5a6472"/><text x="610" y="88" font-size="11" fill="#bfc5ce">~11x</text><text x="192" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">두산밥캣</text>
+      <!-- 코마츠 11 -->
+      <rect x="200" y="110" width="400" height="26" fill="#5a6472"/><text x="610" y="128" font-size="11" fill="#bfc5ce">~11x (관세부담)</text><text x="192" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">코마츠(日)</text>
+      <!-- 캐터필러 20 -->
+      <rect x="200" y="150" width="720" height="26" fill="#5a6472"/><text x="930" y="168" font-size="11" fill="#bfc5ce">~20x (프리미엄)</text><text x="192" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">캐터필러(US)</text>
+      <!-- ticks -->
+      <text x="200" y="200" text-anchor="middle" font-size="9" fill="#5a6472">0</text>
+      <text x="560" y="200" text-anchor="middle" font-size="9" fill="#5a6472">10x</text>
+      <text x="920" y="200" text-anchor="middle" font-size="9" fill="#5a6472">20x</text>
+    </svg>
+    <div class="lgd"><span style="color:var(--muted)">peer PER은 시점·소스에 따라 편차 — 방향성 참고용. CAT 2026 EPS $24.62(+29% YoY), 코마츠 FY26 매출·이익 감소 전망.</span></div>
+  </div>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">캐터필러 (미국·CAT)</h3><p style="margin:6px 0;font-size:12.5px">글로벌 1위. 건설·광산·에너지 전방위, 강력한 서비스·부품(애프터마켓) 이익. 2026 EPS +29% 전망·프리미엄 멀티플. 위협도 <strong>높음</strong>(규모·서비스).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">코마츠 (일본)</h3><p style="margin:6px 0;font-size:12.5px">글로벌 2위. 광산·건설 광범위. 다만 <strong>관세부담·FY26 매출/이익 감소</strong> 전망으로 모멘텀 약화. 밸류는 낮은 편. 위협도 <strong>중~높음</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">두산밥캣 (한국·241560)</h3><p style="margin:6px 0;font-size:12.5px">북미 소형장비(콤팩트) 강자. HD건설기계와 <strong>지역·제품 포트폴리오가 상호 보완적</strong>(HD=대형·신흥시장, 밥캣=북미 소형). 위협도 <strong>중</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 중국·신흥 경쟁</h3><p style="margin:6px 0;font-size:12.5px">SANY·XCMG 등 중국 업체가 가격으로 신흥시장을 공략. HD의 성장축(중동·중남미)과 겹쳐 <strong>가격경쟁 압력</strong>. 위협도 <strong>중</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">합병 시너지 + 북미 인프라/데이터센터 + 신흥국 점유 확대 + 사이클 상승, 2027 EPS ~13,000</td><td class="num">13,000 <span class="est bull">27E</span></td><td class="num">13x</td><td class="num up">170,000</td><td class="num">35%</td><td class="num up">+34%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E EPS 11,059 달성·시너지 점진 실현·OPM 7%대 유지</td><td class="num">11,059</td><td class="num">11~12x</td><td class="num">130,000</td><td class="num">40%</td><td class="num up">+2%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">건설기계 사이클 둔화 + 미국 관세 + 통합 잡음, 디레이팅</td><td class="num">8,500 <span class="est bear">E</span></td><td class="num">9x</td><td class="num down">76,000</td><td class="num">25%</td><td class="num down">−40%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">130,500</td><td class="num"></td><td class="num up">+3%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 127,000(흰선). 자체 밴드 Bear 76,000 ~ Bull 170,000, Base 130,000. 상방(+34%)이 하방(−40%)과 대칭에 가까운 사이클주 손익비.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale: 60000..190000 -> x 120..1030. x=120+(p-60000)*0.007 -->
+      <line x1="120" y1="150" x2="1030" y2="150" stroke="#353b47"/>
+      <!-- ticks -->
+      <text x="120" y="172" text-anchor="middle" font-size="9" fill="#5a6472">60k</text>
+      <text x="400" y="172" text-anchor="middle" font-size="9" fill="#5a6472">100k</text>
+      <text x="680" y="172" text-anchor="middle" font-size="9" fill="#5a6472">140k</text>
+      <text x="960" y="172" text-anchor="middle" font-size="9" fill="#5a6472">180k</text>
+      <!-- 자체 밴드 76000..170000 -->
+      <rect x="232" y="55" width="658" height="30" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="232" y="48" font-size="10" fill="#e78a5c">Bear 76k</text>
+      <text x="890" y="48" text-anchor="end" font-size="10" fill="#4bbf9a">Bull 170k</text>
+      <!-- Base marker 130000 -> x=610 -->
+      <line x1="610" y1="50" x2="610" y2="90" stroke="#cba24a" stroke-width="2.5"/><text x="610" y="103" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 130k</text>
+      <!-- 현재가 127000 -> x=589 -->
+      <line x1="589" y1="30" x2="589" y2="130" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="589" y="26" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 127,000</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓(합병)</h3><p style="margin:6px 0;font-size:12.5px">합병으로 매출 2배 확정. 유기 성장은 신흥시장이 견인. <strong>규모는 강함, 유기성은 사이클 의존</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">마진 확장 △</h3><p style="margin:6px 0;font-size:12.5px">OPM 4.5→7.7%. 시너지·믹스로 추가 여지 있으나 관세·가격경쟁·통합비용이 상단을 누른다.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 11x. 시너지·사이클 확인 시 13~14x 리레이팅 가능하나, 사이클 둔화 시 9x 디레이팅 리스크.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): 합병 시너지(원가·딜러 통합)의 본격 실현 / 북미 데이터센터·인프라 발주 / 신흥시장 초대형 장비 점유 확대 → 각 EPS +5~15%.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>건설기계 사이클 둔화</strong></td><td class="txt">글로벌 인프라·건설 위축 → 판매·가동률·마진 급감. PER 9x 디레이팅 −35%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>미국 관세</strong></td><td class="txt">관세 부과 시 북미 수출 채산성·수요 훼손. 가격인상 보류(2026)로 마진 흡수</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>합병 통합 잡음</strong></td><td class="txt">인프라코어 통합 비용·조직·시스템 리스크로 시너지 지연</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>환율·강재가</strong></td><td class="txt">원/달러·강재가 변동으로 마진 스윙(수출 비중 큼)</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>고점 후 변동성</strong></td><td class="txt">4/27 198,100 고점 −36% 조정. 사이클 심리 연동 추가 하락</td><td class="num">중~높음</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 110,000~120,000 눌림에서 분할(합병 대형주). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 2Q26 합병 실적·OPM 개선 확인 or 북미 인프라·신흥시장 신규 수주 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 시너지 가시화·신흥시장 성장 순항.</li>
+    <li><strong>축소:</strong> 글로벌 건설 사이클 둔화 / 미국 관세 강행 / OPM 5% 하회 / 통합 잡음.</li>
+    <li><strong>차익:</strong> 170,000+ 접근 시 부분 차익(Bull권).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">글로벌 굴착기 판매·북미 수요</td><td class="txt">물량 사이클 선행</td><td class="txt">북미 수요 −2.5% 대비 추가 악화</td></tr>
+      <tr><td class="txt">합병 실적·통합 원가</td><td class="txt">시너지 실현 여부</td><td class="txt">통합비용 급증 / 시너지 지연</td></tr>
+      <tr><td class="txt">신흥시장(중동·인도·중남미) 매출</td><td class="txt">성장축 유지</td><td class="txt">YoY 성장 둔화 반전</td></tr>
+      <tr><td class="txt">전사 OPM</td><td class="txt">믹스·마진 체력</td><td class="txt">7% → 5% 하회</td></tr>
+      <tr><td class="txt">미국 관세·환율</td><td class="txt">채산성·수요</td><td class="txt">관세 강행 / 원달러 급락</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 내내</td><td class="txt">인프라코어 합병 시너지 실현(원가·딜러·부품)</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(OPM·통합 실적 확인)</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">북미 인프라/데이터센터·인도·중동 수주</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">미국 관세·글로벌 건설 사이클 동향</td><td class="txt"><span class="tag n">양방향</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "국내 건설기계 양대사가 하나로 합쳐져 매출 2배·글로벌 톱10 규모가 됐는데, 시장은 사이클·관세 우려에 포워드 PER 11x로 눌러놨다. 그 값은 110,000~120,000에 분할로 사서 합병 시너지·신흥시장 성장 옵션을 기다린다."</strong><br>어떻게 맞나: 2Q 합병 실적·OPM 유지가 확인되고 신흥시장이 받치면 리레이팅으로 Bull 170k. 어떻게 틀리나: 글로벌 건설이 꺾이고 관세가 강행돼 OPM이 5% 아래로 내려가면 틀린다(축소). 한 단어: <em>"저밸류 규모"</em>. 남는 것: <strong>"테마가 아니라 규모·시너지·저밸류로 사는 사이클 성장주."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 130,000</span><span class="pill">매집밴드 110,000~120,000</span><span class="pill">Bull 170,000 / Bear 76,000</span><span class="pill">EV +3%</span><span class="pill">thesis break: 사이클 둔화·관세 강행·OPM 5% 하회</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기, 중장비/사이클 렌즈.<br>
+    데이터 계보: 시세·재무 = 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 127,000·시총 6조861억·추정PER 11.48x·2023~2026E 연간재무·PBR 1.29x·BPS 98,278) · siseJson 일봉(2025-08~2026-07-22, 고점 198,100@4/27·저점 73,400) · 합병(2026-01-01 HD현대인프라코어 흡수합병, 1주:0.1621707·글로벌 20위권→10위권 초중반·제품 중복 70~80%) = 경인일보·블로터·다음·삼성증권(2025-07) · 1Q26 매출 2조3,049억(+22.1%)·영업익 1,907억(+88.3%, OPM 8.3%)·순익 1,739억(+193.4%)·중동아프리카 +68.1%·중남미 +46.3% = 아주경제·굿모닝경제·브릿지경제·딜사이트(2026-04) · 2026 가이던스 8.7~9.0조·북미수요 −2.5%·가격인상 5~6% 보류 = 블로터·딜사이트 · peer(캐터필러 2026 EPS $24.62·프리미엄, 코마츠 FY26 감소, 두산밥캣 EPS $3.24) = Yahoo Finance·PitchBook · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·합병·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

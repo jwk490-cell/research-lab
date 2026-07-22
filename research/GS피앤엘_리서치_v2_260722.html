@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GS피앤엘 499790 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">499790</span>
+    <span class="nm">GS피앤엘 <small>GS P&amp;L · 파르나스호텔·프라임부동산 지주 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩38,000</span>
+    <span>시총 ₩7,536억 · 26E PER 14x · PBR 0.88</span>
+    <span class="rating">비중확대 관심 · 매집 34,000~37,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·밸류</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩38,000 (−1.8%)</span>
+  <span><b>52주</b> 33,300 ~ 69,900</span>
+  <span><b>PBR</b> 0.88x</span>
+  <span><b>OPM 26E</b> 19.9%</span>
+  <span><b>배당</b> 350→497E</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">호텔의 성장을 사면서 삼성동 프라임 부동산을 순자산 이하로 덤으로 받는 자리 — 5개월 만에 반토막 난 자산주다.</h1>
+  <p class="lead">GS피앤엘은 2024년 12월 GS리테일에서 인적분할한 <em>호텔·프라임부동산 지주</em>다. 그런데 지금 시장은 이 회사를 <strong>순자산보다 싸게(PBR 0.88)</strong> 매기고 있다 — 그랜드 인터컨티넨탈·웨스틴·나인트리 6개 호텔이 인바운드 관광 회복으로 <em>영업이익 +57%</em> 성장하는데, 삼성동 파르나스타워(장부 5,011억)·파르나스몰이라는 프라임 오피스가 밑을 받친다. 임대사업 OPM은 <strong>69%</strong>, 호텔은 인바운드 사이클의 레버리지. 주가는 상장 후 34,700원 → 64,600원(2/13)까지 갔다가 −41% 되돌린 38,000원(52주 저점권)으로, <strong>테마 프리미엄은 빠지고 실적·자산만 남았다.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 34,000~37,000원 · Base 39,000 / Bull 52,000 / Bear 25,000 · 확률가중 EV ≈ 40,050원(+5%, +배당).</strong> 실적 성장(OP +57%)·프라임 자산(PBR 0.88 하방)·첫 배당(350→497E) 세 축이 동시에 받치는 <em>저평가 회복주</em>. 상장 후 −41% 조정으로 손익비가 열렸다. 애널 목표가는 67,000~76,000(평균 ~71,250)으로 시장 컨센과 현재가의 괴리가 크다. thesis break: 인바운드 급랭·부동산/금리 악화·차입 부담·축산 마진 훼손.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 분할 첫 해 흑자, 이듬해 마진 점프</h2>
+  <p>단위 억원(EPS·DPS 원). 2024는 12월 한 달치 <strong>stub</strong>(비교 무의미), 2025 실측, 2026E 네이버 컨센(isConsensus=Y). 유통·건설과 달리 <strong>규모가 커질수록 마진이 좋아진다</strong> — 호텔 단가(ADR)·가동률(OCC) 상승과 임대(OPM 69%) 믹스의 힘. <em>PBR 0.88·첫 배당</em>을 병기해 자산·환원까지 한눈에.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">DPS</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2024A(stub)</td><td class="num">383</td><td class="num">△0</td><td class="num">—</td><td class="num">△11</td><td class="num">△49</td><td class="num">n/a</td><td class="num">—</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">4,817</td><td class="num">780</td><td class="num">16.2%</td><td class="num">299</td><td class="num">977</td><td class="num">39x</td><td class="num">350</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">6,152</td><td class="num">1,225</td><td class="num">19.9%</td><td class="num">817 <span class="est">E</span></td><td class="num">2,723</td><td class="num">14x</td><td class="num">497</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 38,000 ÷ 해당연도 EPS. PBR 0.88x(BPS 43,339). 2025→2026E 매출 +28%·영업익 +57%·OPM 16.2%→19.9%. 1Q26 매출 1,303억(+38%)·영업익 241억(+58.8%)으로 컨센(192억) 대폭 상회 — IBK "성장은 추정이 아닌 확정의 영역"(매수).</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">분할 첫 온전한 해(2025)에 흑자·고마진을 확인했고, 2026E는 인바운드 회복으로 마진이 한 단계 점프. 골드 라인(OPM)이 우상향한다. 2024는 stub이라 참고만.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- scale: rev max 6152 -> 210px, k=0.03414. baseline y=270 -->
+      <!-- 2024 stub 383 -->
+      <rect x="200" y="256.9" width="70" height="13.1" fill="#5a6472" opacity="0.7"/>
+      <text x="235" y="248" text-anchor="middle" font-size="11" fill="#828b98">383</text>
+      <text x="253" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024(stub)</text>
+      <!-- 2025 rev 4817 h=164.5 y=105.5 ; op 780 h=26.6 y=243.4 -->
+      <rect x="490" y="105.5" width="70" height="164.5" fill="#e78a5c" opacity="0.85"/>
+      <rect x="566" y="243.4" width="46" height="26.6" fill="#4bbf9a" opacity="0.9"/>
+      <text x="525" y="96" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,817</text>
+      <text x="589" y="235" text-anchor="middle" font-size="10.5" fill="#4bbf9a">780</text>
+      <text x="543" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E rev 6152 h=210 y=60 ; op 1225 h=41.8 y=228.2 -->
+      <rect x="780" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="856" y="228.2" width="46" height="41.8" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="815" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,152</text>
+      <text x="879" y="220" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,225</text>
+      <text x="815" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 16.2,19.9 -> y=270-opm*8.4 -->
+      <polyline points="525,133.9 815,102.8" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="525" cy="133.9" r="4" fill="#cba24a"/><circle cx="815" cy="102.8" r="4" fill="#cba24a"/>
+      <text x="525" y="125" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">16.2%</text>
+      <text x="855" y="97" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">19.9%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 실적 성장</h3><p style="margin:6px 0">2026E 매출 +28%·영업익 +57%, OPM 16→20%. 인바운드 관광 회복으로 <strong>호텔 ADR·가동률(OCC) 상승</strong> — IC호텔 1Q26 OCC 80.7%(전년 66.9%, +13.8%p). 웨스틴 재개관 효과까지 얹힌다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 프라임 자산</h3><p style="margin:6px 0">삼성동 <strong>파르나스타워(장부 5,011억)·파르나스몰·IC호텔(1.31조)</strong>. 총자산 2.46조. PBR 0.88배로 <em>순자산 이하 평가</em> — 자산가치가 두꺼운 하방을 만든다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 주주환원 초기</h3><p style="margin:6px 0">분할 후 <strong>첫 배당(350→497원E)</strong>. 밸류업·자산 재평가 여지가 남아있고, 상장 후 −41% 조정으로 진입 여지가 열렸다. EV +5%(+배당), Bear −34%.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 자산·사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (자산 두껍고 성장 가시)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 삼성동 프라임 입지·인터컨티넨탈/웨스틴 브랜드·인바운드 구조 회복. 자산+브랜드의 이중 방어(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> 임대 OPM 69%·호텔 고마진. 다만 분할 직후라 <em>차입 부담</em>이 순익을 눌러 B+로 제한.</li>
+        <li><strong>사이클 노출:</strong> 인바운드 관광·환율·부동산 금리에 종속 — 이게 A로 못 올리는 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 인바운드 2,100만+ 유지 + 호텔 ADR/OCC 상승 + 임대 안정 + 배당 확대.</li>
+        <li><strong>갈아타기:</strong> 순수 인바운드/카지노 노출을 원하면 파라다이스·롯데관광, 면세 대형이면 호텔신라로. GS피앤엘은 '호텔 성장 + 프라임 자산' 복합.</li>
+        <li><strong>즉시매도:</strong> 인바운드 급랭 / 오피스 공실·금리 급등 / 축산 마진 훼손 / 차입 리스크 부각.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 자산주로서의 위치</h2>
+  <p>순수 호텔·카지노주가 실적 변동성을 그대로 안는 반면, GS피앤엘은 <strong>삼성동 프라임 오피스·몰이라는 우량 부동산이 호텔 사이클의 변동성을 자산가치로 방어</strong>한다. 인바운드 회복 시 호텔 실적 레버리지 + 부동산 재평가의 이중 매력. 애널 목표가(평균 ~71,250)와 현재가 38,000의 큰 괴리는 <em>시장이 아직 분할·차입 노이즈를 걷어내지 못했다</em>는 뜻 — 그 간극이 곧 손익비다. GS피앤엘의 상대 매력 = <em>"성장을 사면서 프라임 부동산을 덤으로 받는 저PBR."</em></p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"서울·제주의 <strong>럭셔리·비즈니스 호텔(그랜드 인터컨티넨탈·웨스틴·나인트리)</strong>과 삼성동 <strong>프라임 오피스·쇼핑몰(파르나스타워/몰)</strong>을 운영하고 축산가공(후레쉬미트)까지 거느린, GS그룹 계열 호텔·부동산 지주."</p>
+  <div class="note"><div class="h">stub 함정 — 성장률은 2025→2026E로만</div>2024.12.2 인적분할이라 2024A(매출 383억)는 <strong>12월 한 달치 stub</strong>이다. 연간 비교·성장률은 <strong>2025A(매출 4,817억·영업익 780억)부터</strong> 유효. 트레일링 PER 39x도 상장 초기·비지배(후레쉬미트 49%) 배분으로 부풀려진 착시 — 밸류는 <em>포워드 PER 14x·PBR 0.88</em>로 본다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">비중·성격</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>파르나스호텔</strong></td><td class="txt">IC·웨스틴·제주·나인트리 6개</td><td class="num">매출 ~78%</td><td class="txt">객실수 × ADR × OCC × MICE/F&amp;B</td><td class="txt">인바운드 레버리지·회복 성장</td></tr>
+      <tr><td class="txt"><strong>파르나스타워·몰</strong></td><td class="txt">삼성동 프라임 오피스 임대 + 쇼핑몰</td><td class="num">OPM 69%</td><td class="txt">임대면적 × 임대료 × 공실률</td><td class="txt">안정·초고마진·자산가치</td></tr>
+      <tr><td class="txt"><strong>후레쉬미트(51%)</strong></td><td class="txt">종합 축산 제조·가공</td><td class="num">비지배 49%</td><td class="txt">물량 × 축산 단가 × 원가</td><td class="txt">저마진·원가 변동·비호텔</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">1Q26 부문별 매출: 그랜드 인터컨티넨탈(IC) 467억·웨스틴 317억·나인트리 223억·파르나스타워 임대 174억(영업익 121억)·제주+후레쉬미트 등 ~122억. 파르나스호텔 2025 별도매출 4,743억(+4.3%).<span class="src">1Q26 연결·부문공시<span class="tip">GS피앤엘 1Q26 IR·투자지표. 파르나스타워 임대 OPM 69.5%로 최고마진</span></span></p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원) — 호텔이 커지고, 임대가 마진을 받친다</div><div class="cs">호텔(인바운드 회복)이 성장을 끌고, 파르나스타워 임대(초고마진·안정)가 이익의 질을 받친다. 후레쉬미트는 소규모·저마진. 부문 스플릿은 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale: max total 6152 -> 200px, k=0.0325. baseline y=250 -->
+      <!-- 2025: 호텔 3767, 임대 700, 후레쉬 350 (total 4817) -->
+      <g>
+        <rect x="360" y="127.6" width="150" height="122.4" fill="#5a6472"/>
+        <rect x="360" y="104.8" width="150" height="22.8" fill="#cba24a"/>
+        <rect x="360" y="93.4" width="150" height="11.4" fill="#4bbf9a" opacity="0.9"/>
+        <text x="435" y="84" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,817</text>
+        <text x="435" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 호텔 5022, 임대 730, 후레쉬 400 (total 6152) -->
+      <g>
+        <rect x="640" y="86.8" width="150" height="163.2" fill="#5a6472" opacity="0.75"/>
+        <rect x="640" y="63.1" width="150" height="23.7" fill="#cba24a" opacity="0.75"/>
+        <rect x="640" y="50" width="150" height="13.1" fill="#4bbf9a" opacity="0.65"/>
+        <text x="715" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,152 <tspan font-size="10" fill="#828b98">E</tspan></text>
+        <text x="715" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>파르나스호텔</span><span><i style="background:#cba24a"></i>파르나스타워·몰 임대(초고마진)</span><span><i style="background:#4bbf9a"></i>후레쉬미트</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(투숙객·임차인)의 눈</h3><p style="margin:6px 0">"삼성동 코엑스·MICE 한복판이라 비즈니스·관광 다 잡힌다. 인터컨티넨탈/웨스틴 브랜드 프리미엄에 값을 낸다." → ADR·가동률 상승.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(호텔신라·파라다이스)의 눈</h3><p style="margin:6px 0">"GS피앤엘은 순수 호텔이 아니라 프라임 부동산까지 낀 복합. 자산가치로 하방을 받쳐 가격 경쟁에 덜 흔들린다." → 자산 차별화.</p></div>
+    <div class="card"><h3 style="margin-top:0">GS그룹·주주의 눈</h3><p style="margin:6px 0">"복잡한 사업구조에서 호텔·부동산을 떼어내 밸류업. 첫 배당으로 환원 시작, 저PBR 해소가 과제." → 밸류업 드라이브.</p></div>
+    <div class="card"><h3 style="margin-top:0">채권자·경영진의 눈</h3><p style="margin:6px 0">"분할 직후 차입이 발목. 호텔 현금흐름·임대수익으로 이자를 감당하며 재무를 정상화한다." → 차입 감축이 관전 포인트.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">삼성동 프라임 부동산</h3><p style="margin:0;font-size:12.5px">파르나스타워(장부 5,011억)·파르나스몰·IC호텔(1.31조). 코엑스·MICE 초입지는 대체 불가. 순자산 이하(PBR 0.88) 평가가 곧 안전마진. 현금화: 임대·자산 재평가.</p></div>
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">호텔 브랜드 + 인바운드</h3><p style="margin:0;font-size:12.5px">인터컨티넨탈·웨스틴 글로벌 브랜드 + 나인트리 자체 비즈니스호텔. 방한 외국인 역대최고(1,870만) 구조 회복의 직접 수혜. 현금화: 지금(ADR·OCC↑).</p></div>
+    <div class="card"><div class="tag s">저마진·비핵심</div><h3 style="margin:8px 0 6px">후레쉬미트(축산)</h3><p style="margin:0;font-size:12.5px">종합 축산 제조·가공 51%. 규모 작고 원가 변동 노출, 비지배 49%. 호텔·부동산 논지와 무관한 옵션. 현금화: 제한적.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — GS리테일 인적분할의 산물</h2>
+  <div class="chart"><div class="ct">지배구조 이동 (2024.12 분할 이후)</div><div class="cs">GS리테일 호텔·부동산 부문을 떼어내 GS피앤엘 신설. GS㈜·오너일가가 최대주주. 파르나스호텔·후레쉬미트를 자회사로 지배.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- left: origin & shareholder -->
+      <rect x="60" y="40" width="185" height="52" rx="5" fill="#22262f" stroke="#5a6472"/>
+      <text x="152" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">GS리테일 (007070)</text>
+      <text x="152" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">분할 전 모회사 · 유통</text>
+
+      <rect x="60" y="130" width="185" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="152" y="152" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">GS㈜ · 오너일가</text>
+      <text x="152" y="170" text-anchor="middle" font-size="10.5" fill="#828b98">최대주주 · 그룹 지배</text>
+
+      <rect x="60" y="220" width="185" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="152" y="240" text-anchor="middle" font-size="11" fill="#eaecef">기관·기타 주주</text>
+      <text x="152" y="256" text-anchor="middle" font-size="10.5" fill="#828b98">유통주식 · 상장 초기</text>
+
+      <!-- center: GS피앤엘 -->
+      <rect x="440" y="110" width="205" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="542" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">GS피앤엘 (499790)</text>
+      <text x="542" y="162" text-anchor="middle" font-size="11" fill="#828b98">호텔·부동산 지주 · 시총 7,536억</text>
+
+      <!-- right: subsidiaries -->
+      <rect x="830" y="60" width="200" height="66" rx="6" fill="#22262f" stroke="#e78a5c"/>
+      <text x="930" y="88" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">파르나스호텔 (100%)</text>
+      <text x="930" y="106" text-anchor="middle" font-size="10.5" fill="#828b98">호텔 6개 + 파르나스타워/몰</text>
+      <text x="930" y="120" text-anchor="middle" font-size="10.5" fill="#e78a5c">2025 매출 4,743억</text>
+
+      <rect x="830" y="164" width="200" height="66" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="930" y="192" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">후레쉬미트 (51%)</text>
+      <text x="930" y="210" text-anchor="middle" font-size="10.5" fill="#828b98">종합 축산 제조·가공</text>
+      <text x="930" y="224" text-anchor="middle" font-size="10.5" fill="#4bbf9a">비지배 49% · 소규모</text>
+
+      <!-- arrows -->
+      <line x1="245" y1="66" x2="440" y2="135" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <line x1="245" y1="156" x2="440" y2="146" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="245" y1="243" x2="440" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="645" y1="140" x2="830" y2="93" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="645" y1="155" x2="830" y2="197" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="335" y="90" text-anchor="middle" font-size="10" fill="#828b98">인적분할 2024.12</text>
+      <text x="342" y="140" text-anchor="middle" font-size="10" fill="#4bbf9a">최대주주</text>
+      <text x="737" y="106" text-anchor="middle" font-size="10" fill="#e78a5c">100%</text>
+      <text x="737" y="188" text-anchor="middle" font-size="10" fill="#4bbf9a">51%</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>GS그룹 지배 하 계열 지주</strong>라 자본배치·내부거래는 상시 점검 대상이나, 분할의 목적 자체가 <em>복잡한 사업구조 해소·밸류업</em>이라 저PBR 해소·주주환원 확대의 정책 유인이 있다. 후레쉬미트 51% 지분은 지주회사 행위제한을 아슬하게 충족하는 구조 — 지분 조정 여부가 잠재 이벤트.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">호텔(인바운드)</td><td class="txt"><strong>회복·구조 성장</strong></td><td class="txt">방한 외국인·MICE·ADR·OCC·중국 무비자</td><td class="txt">중(사이클·환율)</td></tr>
+      <tr><td class="txt">파르나스타워 임대</td><td class="txt">안정 수요</td><td class="txt">삼성동 프라임 공실률·임대료·금리</td><td class="txt">높음(계약·입지)</td></tr>
+      <tr><td class="txt">후레쉬미트(축산)</td><td class="txt">필수 소비</td><td class="txt">축산 단가·물량·원가</td><td class="txt">중(원가 변동)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>세 엔진 중 <strong>임대(안정)와 축산(필수)이 하방을 받치고</strong>, 최대 성장축(호텔)만 인바운드 사이클·환율에 종속된다. 즉 <em>다운사이드는 프라임 자산·안정 임대가 방어하고 업사이드는 인바운드 회복이 얹는</em> 비대칭 구조. 인바운드는 2025년 1,870만명(역대최고, 2019년 1,750만 상회)에서 2026E 2,100~2,200만명으로 구조 회복 중.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 마진·자산·환원의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">19.9<span class="u">%</span></div><div class="sub">임대 69% + 호텔 레버리지</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">0.88<span class="u">x</span></div><div class="sub">프라임 자산 &gt; 시총</div></div>
+    <div class="kpi"><div class="lab">배당(26E)</div><div class="val">497<span class="u">원</span></div><div class="sub">350원→확대·첫 배당</div></div>
+  </div>
+  <p>호텔은 고정비 사업이라 <strong>가동률(OCC)·단가(ADR)가 오르면 이익이 레버리지로 튄다</strong> — IC호텔 1Q26 OCC 80.7%(전년 66.9%). 파르나스타워 임대는 OPM 69%의 초고마진·안정 캐시카우. 규모가 커질수록 인바운드 레버리지가 마진을 밀어올리고, 프라임 부동산이 <em>순자산이라는 하방</em>을 만드는 이중 구조.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +0.4억 · 연기금 +3.1억 · 투신 +7.0억</strong>(합산 시총대비 +0.14%) — 투신 중심 소규모 유입. 52주 저점권에서 <strong>기관이 프라임 자산·성장주를 담기 시작하는 전형적 눌림 유입</strong>. 애널 목표가(평균 ~71,250)와 현재가(38,000)의 큰 괴리가 남아있는 만큼, 실적·배당 확인 시 재평가 수급이 붙을 자리.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">1Q26 부문별 매출 — 호텔이 끌고 임대가 받친다</h2>
+  <div class="chart"><div class="ct">1Q26 부문별 매출 (억원) — 연결 매출 1,303억(+38% YoY)</div><div class="cs">IC호텔이 최대(467억), 웨스틴 재개관(317억)이 가세. 파르나스타워 임대는 174억에 영업익 121억(OPM 69%)으로 이익의 질을 책임진다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="250" x2="200" y2="30" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, scale 1x=1.6px from x=200, max 467 -->
+      <!-- IC 467 w=747 -->
+      <rect x="200" y="40" width="747" height="26" fill="#e78a5c" opacity="0.9"/><text x="957" y="58" font-size="11.5" fill="#eaecef" font-weight="600">467억 (OP 92)</text><text x="192" y="58" text-anchor="end" font-size="11" fill="#bfc5ce">IC호텔</text>
+      <!-- 웨스틴 317 w=507 -->
+      <rect x="200" y="80" width="507" height="26" fill="#e78a5c" opacity="0.7"/><text x="717" y="98" font-size="11.5" fill="#bfc5ce">317억 (OP 2)</text><text x="192" y="98" text-anchor="end" font-size="11" fill="#bfc5ce">웨스틴</text>
+      <!-- 나인트리 223 w=357 -->
+      <rect x="200" y="120" width="357" height="26" fill="#5a6472"/><text x="567" y="138" font-size="11.5" fill="#bfc5ce">223억 (OP 43)</text><text x="192" y="138" text-anchor="end" font-size="11" fill="#bfc5ce">나인트리</text>
+      <!-- 파르나스타워 임대 174 w=278 -->
+      <rect x="200" y="160" width="278" height="26" fill="#cba24a"/><text x="488" y="178" font-size="11.5" fill="#cba24a" font-weight="600">174억 (OP 121 · OPM 69%)</text><text x="192" y="178" text-anchor="end" font-size="11" fill="#bfc5ce">파르나스타워</text>
+      <!-- 기타 제주+후레쉬 122 w=195 -->
+      <rect x="200" y="200" width="195" height="26" fill="#4bbf9a" opacity="0.7"/><text x="405" y="218" font-size="11.5" fill="#bfc5ce">~122억 (제주·후레쉬 등)</text><text x="192" y="218" text-anchor="end" font-size="11" fill="#bfc5ce">기타</text>
+      <text x="200" y="248" text-anchor="middle" font-size="9" fill="#5a6472">0</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>호텔(럭셔리)</span><span><i style="background:#5a6472"></i>비즈니스호텔</span><span><i style="background:#cba24a"></i>임대(초고마진)</span><span><i style="background:#4bbf9a"></i>기타·축산</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 인바운드 회복이 숫자로</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">1,303억</td><td class="num up">+38.0%</td><td class="txt">전년 944억 · 전 부문 성장</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">241억</td><td class="num up">+58.8%</td><td class="txt">전년 152억 · 컨센 192억 대폭 상회</td></tr>
+      <tr><td class="txt">└ IC호텔</td><td class="num">92억</td><td class="num up">OCC 80.7%</td><td class="txt">전년 66.9% → +13.8%p</td></tr>
+      <tr><td class="txt">└ 파르나스타워 임대</td><td class="num">121억</td><td class="num">OPM 69%</td><td class="txt">초고마진 캐시카우</td></tr>
+      <tr><td class="txt">지배순이익</td><td class="num">94억</td><td class="num up">+74.7%</td><td class="txt">비지배(후레쉬 49%) 차감 후</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 자산·현금흐름은 좋고, 순익은 차입에 눌린다</h3>
+  <p>영업이익(2025 780억)은 임대·호텔의 <strong>깨끗한 본업 이익</strong>이나, 지배순익(299억)이 크게 낮은 것은 <em>분할 직후 차입 이자·비지배 배분</em> 때문이다. 즉 손익의 노이즈는 '순익&lt;영업익' 방향의 정상 구조 + 차입 부담. 인바운드가 계속 이익을 밀어올리면 차입 감축과 함께 순익 레버리지가 커진다 — <em>영업으로 번 돈이 이자를 갚고 남는 구조로의 정상화</em>가 다음 관전 포인트.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · 밸류</div>
+  <h2 class="sec">주가 궤적 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">월간 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">34,700원 → 64,600원(2/13, +86%) → 38,000원(−41%). 상승은 실적·분할 재평가 동반, 조정은 급등 차익·관광/부동산 우려. 지금은 실적선으로 회귀.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale: price 30000..68000 -> y 250..40. k=0.005526 ; y=250-(p-30000)*0.005526 -->
+      <line x1="55" y1="194.7" x2="1035" y2="194.7" stroke="#20242c"/><text x="48" y="198" text-anchor="end" font-size="9" fill="#5a6472">40k</text>
+      <line x1="55" y1="139.5" x2="1035" y2="139.5" stroke="#20242c"/><text x="48" y="143" text-anchor="end" font-size="9" fill="#5a6472">50k</text>
+      <line x1="55" y1="84.2" x2="1035" y2="84.2" stroke="#20242c"/><text x="48" y="87" text-anchor="end" font-size="9" fill="#5a6472">60k</text>
+      <!-- path: 34700,36000,40000,45000,50000,58000,64600(peak),55000,54800,54000,45000,38000 -->
+      <polyline points="80,224 162,216.8 244,194.7 326,167.1 408,139.5 490,95.3 572,58.8 654,111.8 736,112.9 818,117.4 900,167.1 982,205.8" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="572" cy="58.8" r="4" fill="#f0525f"/><text x="572" y="50" text-anchor="middle" font-size="9" fill="#f0525f">64,600 고점(2/13)</text>
+      <circle cx="736" cy="112.9" r="4" fill="#4bbf9a"/><text x="736" y="104" text-anchor="middle" font-size="9" fill="#4bbf9a">1Q26 서프·TP 상향</text>
+      <circle cx="982" cy="205.8" r="4.5" fill="#e78a5c"/><text x="982" y="223" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">38,000</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="560" y="272" font-size="9.5" fill="#828b98">'26.02</text><text x="962" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승은 실적·분할 재평가, 조정은 프리미엄 정상화</h2>
+  <p>GS피앤엘의 +86% 상승은 <strong>실적 성장(분할 첫 해 흑자·1Q +58.8%)과 분할 후 재평가 기대가 동반</strong>했다. −41% 조정은 급등 차익실현·관광/부동산 우려·차입 노이즈이지 실적 훼손이 아니다. 현재 포워드 PER 14x·PBR 0.88x는 프라임 자산·성장 대비 <em>실적·순자산선으로 되돌아온 자리</em>. 애널 목표가(67,000~76,000)는 여전히 현재가를 크게 웃돈다.</p>
+
+  <div class="chart"><div class="ct">상대주가 (rebase=100, 2025.08 기준)</div><div class="cs">실적·분할 재평가로 KOSPI를 크게 아웃퍼폼했다가 되돌림. 절대 밸류(PBR 0.88)는 매력 구간 진입.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="120" x2="1035" y2="120" stroke="#20242c"/><text x="48" y="123" text-anchor="end" font-size="9" fill="#5a6472">150</text>
+      <line x1="55" y1="160" x2="1035" y2="160" stroke="#20242c"/><text x="48" y="163" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- GS피앤엘 rebase: start 100(34700), peak 186(64600), now 110(38000). map 100->160,186->91.2,110->152 -->
+      <!-- y=160-(v-100)*0.8 -->
+      <polyline points="80,160 300,143.2 500,102.4 572,91.2 700,116 850,140 982,152" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="982" y="146" font-size="9.5" fill="#e78a5c" font-weight="700">GS피앤엘 +10%</text>
+      <!-- KOSPI flat ~ +6% -->
+      <polyline points="80,160 300,158 500,155 572,153 700,154 850,155 982,155.2" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="982" y="169" font-size="9.5" fill="#828b98">KOSPI ~+6%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 반영되고 무엇이 빠졌나</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 매출 +28%·영업익 +57%</td><td class="txt">부분 반영</td></tr>
+      <tr><td class="txt">인바운드 관광·ADR/OCC 상승</td><td class="txt">부분 반영</td></tr>
+      <tr><td class="txt">삼성동 프라임 부동산 재평가</td><td class="txt down">미반영(자산 상방)</td></tr>
+      <tr><td class="txt">배당 확대·주주환원·밸류업</td><td class="txt down">부분~미반영</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">내재기대 역산: PBR 0.88은 삼성동 프라임 부동산·호텔 자산을 순자산 이하로 평가한 값. 인바운드 회복·배당 확대·자산 재평가가 확인되면 PBR 1x 이상 여지.</p>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">호텔·관광 인접군 — 그리고 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 = GS피앤엘</div><div class="cs">GS피앤엘 14x는 프라임 부동산(PBR 0.88)·호텔 성장(OP +57%) 감안 시 저평가 영역. peer PER은 시점·소스에 따라 편차 — 방향성 참고용.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="150" y1="210" x2="1030" y2="210" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, scale 1x=36px from x=150; max ~22 -->
+      <!-- GS피앤엘 14 w=504 -->
+      <rect x="150" y="30" width="504" height="26" fill="#cba24a"/><text x="664" y="48" font-size="12" fill="#cba24a" font-weight="700">GS피앤엘 14x · PBR 0.88</text><text x="145" y="48" text-anchor="end" font-size="11" fill="#eaecef">GS피앤엘</text>
+      <!-- 호텔신라 22 w=792 -->
+      <rect x="150" y="70" width="792" height="26" fill="#5a6472"/><text x="952" y="88" font-size="11" fill="#bfc5ce">~22x</text><text x="145" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">호텔신라(면세)</text>
+      <!-- 파라다이스 16 w=576 -->
+      <rect x="150" y="110" width="576" height="26" fill="#5a6472"/><text x="736" y="128" font-size="11" fill="#bfc5ce">~16x</text><text x="145" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">파라다이스(카지노)</text>
+      <!-- 롯데관광 18 w=648 -->
+      <rect x="150" y="150" width="648" height="26" fill="#5a6472"/><text x="808" y="168" font-size="11" fill="#bfc5ce">~18x</text><text x="145" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">롯데관광개발</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">GS피앤엘은 호텔+프라임 부동산 복합이라 순수 호텔·카지노 peer와 성격이 다르다. peer 멀티플은 방향성 참고용(실적·자산 구조 상이).</p>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">호텔신라 (008770)</h3><p style="margin:6px 0;font-size:12.5px">호텔+면세 대형. 면세 사이클·중국 따이궁 노출 큼. 브랜드·규모 우위나 <strong>면세 변동성</strong>이 실적을 흔든다. GS피앤엘은 면세 無·자산 방어.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">파라다이스 (034230)</h3><p style="margin:6px 0;font-size:12.5px">외국인 카지노+호텔. 인바운드·VIP 드랍액 직결. 관광 회복 수혜 공유하나 <strong>카지노 변동성</strong> 큼. GS피앤엘은 안정 임대가 하방.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">롯데관광개발 (032350)</h3><p style="margin:6px 0;font-size:12.5px">제주 드림타워 복합리조트+카지노. 고성장·고차입. GS피앤엘 제주는 아직 적자 — 제주 회복이 공통 촉매.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 프라임 오피스 리츠</h3><p style="margin:6px 0;font-size:12.5px">삼성동 파르나스타워 임대는 사실상 프라임 오피스 리츠 성격(OPM 69%). 순수 임대 노출을 원하면 오피스 리츠, <strong>성장+자산 복합</strong>이면 GS피앤엘.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">인바운드 붐 + 호텔 ADR/OCC 상승 + 부동산 재평가·배당 확대</td><td class="num">2,900 <span class="est bull">E</span></td><td class="num">18x</td><td class="num up">52,000</td><td class="num">35%</td><td class="num up">+37%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E EPS 2,723 달성·성장 지속, PER 14x + 배당</td><td class="num">2,723</td><td class="num">14x</td><td class="num">39,000</td><td class="num">40%</td><td class="num up">+3%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">관광 둔화 + 부동산 약세 + 축산 마진 압박·차입 부담</td><td class="num">2,200 <span class="est bear">E</span></td><td class="num">11x</td><td class="num down">25,000</td><td class="num">25%</td><td class="num down">−34%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">40,050</td><td class="num"></td><td class="num up">+5%</td></tr></tfoot>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">EV = 0.35×52,000 + 0.40×39,000 + 0.25×25,000 ≈ 40,050원(현재가 38,000 대비 +5%, +배당). 자체 밴드는 보수적 — 애널 컨센(67,000~76,000, 평균 ~71,250)은 인바운드·자산 재평가를 더 공격적으로 반영.</p>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 38,000(흰선). 자체 밴드 25,000~52,000(Base 39,000). 애널 밴드 67,000~76,000(평균 71,250)은 크게 위 — 자산·인바운드 재평가 기대. 하방은 순자산(PBR 0.88)이 방어.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale: 20000..80000 -> x 120..1030. k=0.01517 ; x=120+(v-20000)*0.01517 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">20k</text>
+      <text x="423" y="205" text-anchor="middle" font-size="9" fill="#5a6472">40k</text>
+      <text x="727" y="205" text-anchor="middle" font-size="9" fill="#5a6472">60k</text>
+      <text x="1030" y="205" text-anchor="middle" font-size="9" fill="#5a6472">80k</text>
+      <!-- 자체 밴드 25000..52000 -->
+      <rect x="195.9" y="40" width="409.5" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="196" y="34" font-size="10" fill="#e78a5c">Bear 25k</text>
+      <text x="605" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 52k</text>
+      <line x1="408.2" y1="36" x2="408.2" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="408" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 39k</text>
+      <!-- 애널 밴드 67000..76000, avg 71250 -->
+      <rect x="833" y="110" width="136.5" height="26" rx="4" fill="#4bbf9a" opacity="0.25"/>
+      <text x="833" y="104" font-size="10" fill="#4bbf9a">애널 저 67k</text>
+      <text x="969.5" y="104" text-anchor="end" font-size="10" fill="#4bbf9a">고 76k</text>
+      <line x1="897.5" y1="106" x2="897.5" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="897" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">평균 71.3k</text>
+      <!-- 현재가 38000 -->
+      <line x1="393.1" y1="20" x2="393.1" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="393" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 38,000</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">호텔(인바운드)+임대+웨스틴 재개관. 2026E +28%. <strong>확정에 가까운 성장</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 16→20%. 호텔 레버리지+임대 69%. 인바운드 지속 시 추가 여지.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 PER 14x·PBR 0.88. 자산 재평가·배당 확대·차입 감축 시 PBR 1x+ 여지, 관광/금리가 상한.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 기여(미반영): 삼성동 프라임 부동산 감정가 재평가 / 배당성향 상향·밸류업 / 제주 흑자전환 / 후레쉬미트 지분 조정 → 각 재평가 트리거.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>인바운드 관광 둔화</strong></td><td class="txt">방한 수요·MICE 위축 → 호텔 ADR·OCC 하락, 최대 성장축 둔화. 주가 −25%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>부동산·금리</strong></td><td class="txt">오피스 공실·금리 상승 → 임대수익·자산가치·이자 압박</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>차입 부담</strong></td><td class="txt">분할 직후 차입이 순익을 눌러 밸류업 지연. 재무 정상화 지체 시 디레이팅</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>축산(후레쉬미트) 마진</strong></td><td class="txt">원가·수급 변동으로 비호텔 부문 실적 변동</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>밸류업 실망</strong></td><td class="txt">배당·자산 재평가 미흡 시 저PBR(0.88) 지속</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 34,000~37,000 눌림에서 분할(자산·성장). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 2Q 호텔 ADR/OCC·영업익 성장 확인 or 배당 확대 공식화 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 인바운드 2,100만+ 유지·임대 안정·자산 재평가 진행.</li>
+    <li><strong>축소:</strong> 인바운드 급랭 / 부동산·금리 악화 / 축산 마진 훼손 / 차입 리스크 부각.</li>
+    <li><strong>차익:</strong> 52,000 접근 시 부분 차익. 애널 평균(71k) 접근 전까지 리레이팅 관찰.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">방한 외국인·MICE 지표</td><td class="txt">호텔 수요 선행</td><td class="txt">월간 방한객 YoY 둔화 전환</td></tr>
+      <tr><td class="txt">호텔 ADR·OCC</td><td class="txt">호텔 이익 레버리지</td><td class="txt">OCC 하락 반전 / ADR 정체</td></tr>
+      <tr><td class="txt">파르나스타워 공실·임대료</td><td class="txt">임대 캐시카우 안정</td><td class="txt">공실 상승 / 임대료 하락</td></tr>
+      <tr><td class="txt">배당·밸류업 정책</td><td class="txt">멀티플 재평가 트리거</td><td class="txt">배당 동결·환원 지연</td></tr>
+      <tr><td class="txt">순차입·이자비용</td><td class="txt">순익 정상화</td><td class="txt">차입 감축 지체 / 이자 급증</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(호텔 ADR·OCC·영업익 성장 확인)</td><td class="txt"><span class="tag b">핵심</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">인바운드 관광·MICE·중국 무비자 회복 지표</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">배당 확대·자산 재평가·밸류업 정책</td><td class="txt"><span class="tag b">상방</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">파르나스타워 임대·부동산 가치 부각·제주 흑전</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "인바운드 역대최고·호텔 OP +57% 성장을 사면서, 삼성동 프라임 부동산(파르나스타워 5,011억·IC호텔 1.31조)을 순자산 이하(PBR 0.88)에 덤으로 받는다. 시장은 분할·차입 노이즈에 눌려 애널 목표가(71k)의 절반값(38k)에 방치했다. 그 값을 34,000~37,000에 사서 인바운드·자산 재평가·배당 확대를 기다린다."</strong><br>어떻게 맞나: 인바운드 2,100만+ 유지·호텔 ADR/OCC 상승·배당 확대 중 하나만 켜져도 PBR 1x 리레이팅. 어떻게 틀리나: 관광이 급랭하고 부동산·금리가 꺾이며 차입이 순익을 계속 누르면 틀린다(축소). 한 단어: <em>"저PBR 자산주"</em>. 남는 것: <strong>"성장을 사면서 프라임 부동산을 덤으로 받는 자리."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(분할)</span><span class="pill">Base 39,000</span><span class="pill">매집밴드 34,000~37,000</span><span class="pill">Bull 52,000 / Bear 25,000</span><span class="pill">EV +5%(+배당)</span><span class="pill">애널 평균 71,250</span><span class="pill">thesis break: 인바운드 급랭·부동산/금리·차입</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 자산주는 순자산(PBR)이 하방. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기. 호텔·부동산 렌즈(ADR/OCC·임대·자산가치).<br>
+    데이터 계보: 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 38,000·시총 7,536억·추정PER 13.96x·PBR 0.88·BPS 43,339·DPS 350) · siseJson 일봉(2025-08~2026-07-22, 고점 64,600@2/13·저점 33,300) · 1Q26 매출 1,303억(+38%)·영업익 241억(+58.8%)·지배순익 94억(+74.7%)·IC호텔 467억(OCC 80.7%)·웨스틴 317억·나인트리 223억·파르나스타워 임대 174억(OP 121, OPM 69%) = 인베스팅·헤럴드·디지털투데이·뉴스퀘스트·IR · 파르나스호텔 2025 매출 4,743억(+4.3%)·IC 2,105억(+13%, OP 436억)·웨스틴 재개관 = 에프투데이·캐치 · 자산(총 2.46조·파르나스타워 5,011억·IC호텔 1.31조) = 씽크풀·밸류라인 · 인적분할(2024.12.2)·후레쉬미트 51% = 더벨·블로터 · 인바운드 2025 1,870만(역대최고)·2026E 2,100~2,200만·중국 671.9만(+22.6%)·무비자 = 트래블타임스·야놀자리서치 · 목표가 IBK 76,000·하나 72,000·신한 70,000·키움 67,000 = 각 증권사 리포트 · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·부문실적·자산·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

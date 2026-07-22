@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RF머트리얼즈 327260 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">327260</span>
+    <span class="nm">RF머트리얼즈 <small>RF Materials · 화합물 반도체 패키지 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩47,200</span>
+    <span>시총 ₩4,246억 · 26E PER 37x</span>
+    <span class="rating">비중확대 관심 · 매집 38,000~44,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PER밴드</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩47,200 (−0.5%)</span>
+  <span><b>52주</b> 5,562 ~ 126,600</span>
+  <span><b>외인</b> 18.98%</span>
+  <span><b>OPM 26E</b> 16.4%</span>
+  <span><b>ROE 26E</b> 19.3%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">18배 급등의 거품은 빠졌다 — 남은 건 AI 광모듈이라는 진짜 수요와 적자를 흑자로 뒤집은 마진 레버리지다.</h1>
+  <p class="lead">RF머트리얼즈는 레이저·통신 반도체 칩을 담아 보호·방열·신호연결하는 <em>화합물 반도체 패키지</em> 전문사다. 2024년까지 매출 445억·영업이익 0 안팎의 정체 기업이었는데, AI 데이터센터 광모듈의 핵심 부품인 <strong>펌프 레이저 패키지</strong>(Lumentum向) 수요 폭증과 중국산 통신부품 퇴출(디리스킹) 반사이익이 겹치며 <strong>영업익 0(23)→74(25)→156억E(26)</strong>로 인플렉션했다. 그 결과 작년 6,005원이던 주가가 올 5월 118,700원까지 <strong>18배</strong> 갔다가 −63% 조정, 지금 47,200원. 실적 성장의 질은 이 배치에서 상위권이지만, 이미 큰 상승 + <em>5월 유상증자(희석)</em> + 고변동이 걸린다. <strong>실적주로 눌림 분할이 정석.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 38,000~44,000원 · Base 51,500 / Bull 62,000 / Bear 27,500 · 확률가중 EV ≈ 49,200원(+4%).</strong> 실적 인플렉션은 진짜(영업익 0→156억E, OPM 11.5%→16.4%, 매출 +49%)지만, 18배 상승 뒤 포워드 PER 37x가 성장의 상당분을 이미 반영했고 증자 희석·Bear −42% 꼬리가 남는다. 추격이 아니라 조정 매집. thesis break: AI CAPEX/광모듈 사이클 둔화 · 800G 가격 붕괴 · 증설 램프 차질.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 적자 바닥에서 흑자 도약, 그리고 재도약</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 2024년 적자 바닥(−15억)에서 2025년 흑자전환(74억) → 2026E 다시 2배(156억)로, <strong>매출 성장과 마진 레버리지가 동시에</strong> 나온다 — 캐파 가동률 상승·믹스 개선의 힘.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">479</td><td class="num">0</td><td class="num">0%</td><td class="num down">−7</td><td class="num down">−78</td><td class="num">n/a</td><td class="num down">−1.5%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">445</td><td class="num down">−15</td><td class="num down">적자</td><td class="num down">−48</td><td class="num down">−551</td><td class="num">n/a</td><td class="num down">−11.2%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">641</td><td class="num">74</td><td class="num">11.5%</td><td class="num">71</td><td class="num">812</td><td class="num">58x</td><td class="num">15.1%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">955</td><td class="num">156</td><td class="num">16.4%</td><td class="num">132 <span class="est">E</span></td><td class="num">1,288</td><td class="num">37x</td><td class="num">19.3%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 47,200 ÷ 해당연도 EPS. 매출 CAGR(23→26E) +26%, 영업익은 0→156억으로 실질 무한대. 4Q25 매출 +41%·영업익 +554%, 1Q26 매출 +70%·영업익 +282%<span class="src">데일리인베스트·IR<span class="tip">분기 YoY, 흑자전환 초기 저기저 효과 포함</span></span> — 두 분기 연속 서프라이즈.</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">2024 적자 바닥 → 2025 흑자전환 → 2026E 마진 16.4%. 골드 라인(OPM)이 0에서 꺾여 올라가는 인플렉션.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- Revenue scale 955->210px, k=0.2199, base y=270 -->
+      <!-- 2023 rev479 -->
+      <rect x="120" y="164.7" width="70" height="105.3" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="269" width="46" height="1" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="156" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">479</text>
+      <text x="219" y="264" text-anchor="middle" font-size="10.5" fill="#4bbf9a">0</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 rev445, op-15 -->
+      <rect x="345" y="172.1" width="70" height="97.9" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="270" width="46" height="3.3" fill="#3c86f5" opacity="0.9"/>
+      <text x="380" y="163" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">445</text>
+      <text x="444" y="286" text-anchor="middle" font-size="10.5" fill="#3c86f5">−15</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 rev641, op74 -->
+      <rect x="570" y="129" width="70" height="141" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="253.7" width="46" height="16.3" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="120" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">641</text>
+      <text x="669" y="246" text-anchor="middle" font-size="10.5" fill="#4bbf9a">74</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E rev955, op156 -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="235.7" width="46" height="34.3" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">955</text>
+      <text x="894" y="228" text-anchor="middle" font-size="10.5" fill="#4bbf9a">156</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 0%(23),적자(24),11.5%(25),16.4%(26). y=250-opm*5.5 -->
+      <polyline points="155,250 380,268.7 605,186.75 830,159.8" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="250" r="4" fill="#cba24a"/><circle cx="380" cy="268.7" r="4" fill="#3c86f5"/><circle cx="605" cy="186.75" r="4" fill="#cba24a"/><circle cx="830" cy="159.8" r="4" fill="#cba24a"/>
+      <text x="605" y="179" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">11.5%</text>
+      <text x="830" y="152" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">16.4%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 실적 인플렉션은 진짜</h3><p style="margin:6px 0">영업익 0→74→156억E, OPM 11.5%→16.4%, 매출 +49%. 테마가 아니라 <strong>수주·계약(Lumentum 73억)</strong>이 뒷받침. 4Q25·1Q26 두 분기 연속 서프라이즈.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 이중 순풍 구조</h3><p style="margin:6px 0">AI 데이터센터 광증폭기(EDFA)용 <strong>펌프 레이저 패키지</strong> + 중국산 통신부품 퇴출로 <strong>비중국 공급사 프리미엄</strong>. 수요 축이 둘이라 한쪽이 흔들려도 받친다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 그러나 밸류·희석·변동성</h3><p style="margin:6px 0">18배 상승, 포워드 PER 37x, 5월 유상증자(신주 50만주·조달 419억) 희석, 52주 −63% 변동. → <strong>믿되 눌림에서 분할, 사이징 관리.</strong></p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (성장은 진짜, 검증 초기)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 밀폐형(Hermetic) 세라믹 패키지의 고신뢰성·인증. 광부품 밸류체인 후방의 병목 소재(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> 흑자전환 2년차 — OPM 16%대로 개선 중이나 아직 트랙레코드 짧음. 증설 재원은 자본이 아닌 증자로 조달.</li>
+        <li><strong>사이클 노출:</strong> 최대 성장축(펌프 레이저)이 AI CAPEX·광모듈 사이클에 종속 — 이게 A가 아닌 B+인 이유.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> Lumentum向 매출 26·27년 +80% 지속 + 증설 램프 정상 + 디리스킹 통신 점유 확대 + OPM 16%+ 유지.</li>
+        <li><strong>갈아타기:</strong> 광모듈 완제품 순수 노출은 오이솔루션, GaN RF 순수 노출은 모회사 RFHIC. RF머트리얼즈는 '광부품 후방 패키지 소재'.</li>
+        <li><strong>즉시매도:</strong> 800G/1.6T 광모듈 가격 붕괴 · 고객(Lumentum) 발주 급감 · 증설 지연/수율 미달 2분기 연속.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>수급 상위 종목 대부분이 4~7월 급등 후 큰 조정을 거친 눌림 국면이다. RF머트리얼즈는 그중 <strong>실적 성장의 질이 상위권</strong>(적자→흑자→재도약, 수주 기반)인 소수 그룹에 든다. 다만 밸류(포워드 37x)가 이미 성장을 상당분 반영하고 증자 희석이 걸려, '무조건 담기'가 아니라 <em>"실적은 믿되 가격은 기다린다"</em>는 조건부 관심. 순수 테마주(밸류가 미래를 통째로 당겨쓴 종목) 대비 손익비는 낫지만, 비츠로셀류(30% 마진·저부채·다축)의 <em>재무 안정성</em>에는 못 미친다 — 성장 탄력 vs 재무 체력의 트레이드오프.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"레이저·통신 반도체 칩을 담아 <strong>보호·방열·신호연결</strong>하는 화합물 반도체 패키지(세라믹/금속 밀폐 케이스)를 만들어, 광모듈·통신·우주 고객에 파는 <strong>부품 소재사</strong>. 완제품 광트랜시버보다 한 단계 후방에서, 패키지 병목이 곧 가격결정력이 되는 니치."</p>
+  <div class="note"><div class="h">패키지가 뭔가 — 오해 방지</div>RF머트리얼즈는 광모듈·레이저 '완제품'을 만드는 회사가 아니라, 그 안의 칩(펌프 레이저·RF 트랜지스터·메모리)을 담는 <strong>정밀 세라믹/금속 하우징</strong>을 만든다. AI 광통신의 광증폭 카드(EDFA) 안에 펌프 레이저가 있고, 그 레이저를 담는 밀폐 패키지가 RF머트리얼즈 몫. '누가 삽을 파느냐'가 아니라 '삽자루를 감싸는 특수 손잡이'를 만드는 격.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">방향</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>펌프 레이저 패키지</strong></td><td class="txt">데이터센터 광증폭기(EDFA)용, Lumentum向</td><td class="num up">26·27E<br>+80%↑</td><td class="txt">AI 트래픽 × 광모듈 대수 × ASP</td><td class="txt">최대 성장·사이클 노출</td></tr>
+      <tr><td class="txt"><strong>통신용 패키지</strong></td><td class="txt">기지국·네트워크 장비용 RF 패키지</td><td class="num up">점유↑</td><td class="txt">중국산 퇴출 × 비중국 공급 전환</td><td class="txt">정책·교체 수요, 반사이익</td></tr>
+      <tr><td class="txt"><strong>우주·특수</strong></td><td class="txt">우주급 다층 세라믹 메모리·CQFN 패키지</td><td class="num">옵션</td><td class="txt">누리호·방산·전력반도체 인증</td><td class="txt">고신뢰성 니치, 매출 미미</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">세그먼트별 매출 정밀 공시는 제한적 — 아래 스택은 리포트·IR 정성 코멘트를 반영한 추정 골격이다.<span class="src">est · 하나증권·데일리인베스트<span class="tip">회사 공식 세그먼트 세부수치 미공개, 방향성 중심 추정</span></span> 펌프 레이저가 2026 성장의 물리량 대부분을 담당.</p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원, 추정) — 펌프 레이저가 성장을 끈다</div><div class="cs">통신·RF 패키지(base)는 유지, 펌프 레이저(성장)가 빠르게 커지며 믹스를 고부가로 이동. 전 구간 est.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale max total 955 -> 200px, k=0.2094, base 250 -->
+      <!-- 2024: 통신280, 펌프120, 기타45 (445) -->
+      <g>
+        <rect x="200" y="191.4" width="150" height="58.6" fill="#5a6472"/>
+        <rect x="200" y="166.3" width="150" height="25.1" fill="#e78a5c" opacity="0.9"/>
+        <rect x="200" y="156.9" width="150" height="9.4" fill="#cba24a"/>
+        <text x="275" y="148" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">445</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025: 통신330, 펌프260, 기타51 (641) -->
+      <g>
+        <rect x="465" y="180.9" width="150" height="69.1" fill="#5a6472"/>
+        <rect x="465" y="126.5" width="150" height="54.4" fill="#e78a5c" opacity="0.9"/>
+        <rect x="465" y="115.8" width="150" height="10.7" fill="#cba24a"/>
+        <text x="540" y="107" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">641</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 통신400, 펌프480, 기타75 (955) -->
+      <g>
+        <rect x="730" y="166.2" width="150" height="83.8" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="65.7" width="150" height="100.5" fill="#e78a5c" opacity="0.65"/>
+        <rect x="730" y="50" width="150" height="15.7" fill="#cba24a" opacity="0.7"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">955</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>통신·RF 패키지</span><span><i style="background:#e78a5c"></i>펌프 레이저(광모듈)</span><span><i style="background:#cba24a"></i>우주·특수</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(Lumentum·통신장비사)의 눈</h3><p style="margin:6px 0">"광모듈 수요가 폭발하는데 밀폐 세라믹 패키지를 댈 검증된 비중국 공급사가 드물다. 병목이라 단가·물량 다 준다." → 락인·가격결정력.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(글로벌 패키지사)의 눈</h3><p style="margin:6px 0">"RF머트리얼즈는 RFHIC 그룹 GaN 생태계에 붙어 광·RF 패키지를 빠르게 확장 중. 인증·수율로 따라잡아야." → 진입장벽 존재.</p></div>
+    <div class="card"><h3 style="margin-top:0">주주·투자자의 눈</h3><p style="margin:6px 0">"실적은 진짜인데 18배 뒤 증자로 희석. 증설이 수요 확신인지 물량 함정인지가 관건." → 양날의 검.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"펌프 레이저 캐파가 병목 → 신공장 증설(유증 재원)로 램프. Lumentum向 26·27년 +80% 성장 목표. CPO·우주로 확장." → 질적+양적 성장.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">밀폐형 세라믹 패키지 인증</h3><p style="margin:0;font-size:12.5px">고신뢰성 Hermetic 패키지는 광모듈·우주·방산에서 장기 인증·레퍼런스가 필수. 병목 소재라 신규 진입에 시간·수율 장벽. 현금화: 지금.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">세라믹/금속 가공 기술</h3><p style="margin:0;font-size:12.5px">패키지 기본 공정은 글로벌 경쟁사도 보유. 차별점은 펌프 레이저·CPO용 고난도 밀폐 스펙과 RFHIC GaN 연계. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">우주·CPO 신규 애플리케이션</h3><p style="margin:0;font-size:12.5px">우주급 메모리 패키지(누리호 탑재)·CPO용 ELS 패키징 진출. 기술 레퍼런스는 확보했으나 매출 기여는 아직 옵션. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">제품 팩트 — 무엇을 만드나</h2>
+  <ul class="cl">
+    <li><strong>펌프 레이저 패키지(성장 핵심):</strong> 데이터센터 장거리 광통신의 광증폭기(EDFA)에 쓰이는 펌프 레이저를 담는 정밀 세라믹/금속 밀폐 패키지. Lumentum 73억 공급계약(2026.4~10)<span class="src">데일리인베스트·서치e종목<span class="tip">루멘텀向 매출 26·27년 각 80%+ 성장 전망</span></span>. 엔비디아 AI서버 광트랜시버용 방열 모듈도 Lumentum 경유 공급.</li>
+    <li><strong>통신용 패키지:</strong> 기지국·네트워크 장비용 RF 패키지. 미·유럽의 중국산 통신부품 퇴출(디리스킹)로 비중국 공급사 반사이익.</li>
+    <li><strong>우주·특수:</strong> 국내 최초 우주급 다층 세라믹 메모리 패키지(GaN/SiC 기반, 누리호 4차 E3T 위성 탑재), 초고주파용 CQFN 패키지(방산·항공우주·전력반도체).</li>
+  </ul>
+
+  <h2 class="sec">지배구조 — RFHIC(GaN) 그룹 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조 (2026 3Q 기준)</div><div class="cs">모회사 RFHIC(GaN RF 트랜지스터, 코스닥 218410)가 최대주주 41.54%(특관 포함 47.04%). GaN 반도체 ↔ 화합물 패키지의 수직 연계. 5월 유증에 RFHIC 100% 참여.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="40" width="180" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="150" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">RFHIC (218410)</text>
+      <text x="150" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">GaN RF 반도체 · 41.54%</text>
+
+      <rect x="60" y="120" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11.5" fill="#eaecef">특수관계인 포함</text>
+      <text x="150" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">그룹 합계 ~47.04%</text>
+
+      <rect x="60" y="200" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="220" text-anchor="middle" font-size="11" fill="#eaecef">조삼열 RFHIC 회장</text>
+      <text x="150" y="236" text-anchor="middle" font-size="10.5" fill="#828b98">기타비상무이사</text>
+
+      <rect x="430" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="530" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">RF머트리얼즈 (327260)</text>
+      <text x="530" y="162" text-anchor="middle" font-size="11" fill="#828b98">화합물 반도체 패키지 · 시총 4,246억</text>
+
+      <rect x="820" y="110" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="138" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">Lumentum (고객·美)</text>
+      <text x="920" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">펌프 레이저 · 광모듈 완제품</text>
+      <text x="920" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">73억 계약 · 26·27 +80%E</text>
+
+      <line x1="240" y1="66" x2="430" y2="135" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="240" y1="143" x2="430" y2="146" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="240" y1="223" x2="430" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="630" y1="146" x2="820" y2="146" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="335" y="92" text-anchor="middle" font-size="10" fill="#4bbf9a">지분 41.5%</text>
+      <text x="725" y="138" text-anchor="middle" font-size="10" fill="#e78a5c">패키지 공급</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>모회사 RFHIC(GaN RF 반도체)와의 수직 생태계</strong>가 기술·고객 시너지의 원천이자, 동시에 <em>계열 자본배치·내부거래</em>가 상시 점검 대상이다. 5월 유증에 최대주주가 100% 참여한 건 신공장 증설(수요 확신)의 신호로 긍정적이나, 개인 유동주주 입장에선 희석이다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">펌프 레이저(광모듈)</td><td class="txt">AI CAPEX 사이클</td><td class="txt">AI 트래픽·800G/1.6T 광모듈·데이터센터 투자</td><td class="txt">중(사이클, 강함)</td></tr>
+      <tr><td class="txt">통신 패키지</td><td class="txt">정책 + 교체 수요</td><td class="txt">디리스킹(중국산 퇴출)·기지국 교체</td><td class="txt">중~높음</td></tr>
+      <tr><td class="txt">우주·특수</td><td class="txt">구조·인증 수요</td><td class="txt">우주 개발·방산·전력반도체 인증</td><td class="txt">높음(반복, 규모 작음)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>성장의 물리량은 <strong>펌프 레이저(광모듈 사이클)에 집중</strong>돼 있고, 통신·우주가 하방을 일부 받친다. 비츠로셀처럼 하방이 두껍게 방어되는 구조는 아니다 — <em>업사이드는 광모듈이 폭발적으로 얹지만, 광모듈 사이클이 꺾이면 최대 성장축이 함께 흔들린다.</em> "수요가 끝이 없다"(하나증권)는 낙관과 사이클 리스크가 공존.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 마진 레버리지의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 25A→26E</div><div class="val">11.5→16.4<span class="u">%</span></div><div class="sub">가동률·믹스 개선</div></div>
+    <div class="kpi"><div class="lab">매출 26E</div><div class="val">+49<span class="u">%</span></div><div class="sub">955억 (955 vs 641)</div></div>
+    <div class="kpi"><div class="lab">외인소진율</div><div class="val">18.98<span class="u">%</span></div><div class="sub">배치 상위·글로벌 테마</div></div>
+  </div>
+  <p>패키지 소재는 캐파 병목 시 <strong>가격결정력</strong>이 생긴다 — 광모듈 완제품보다 후행하지만 밀폐 세라믹은 대체 공급사가 적다. 매출이 커지며 <em>고정비 레버리지 + 펌프 레이저(고부가) 믹스 확대</em>가 OPM을 11.5→16.4%로 밀어올린다. 증설(유증 재원)로 병목을 풀면 성장이 지속되나, 증설 램프·수율이 곧 마진의 물리량이라 실행 리스크가 상존.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +2.2억 · 연기금 +7.4억 · 투신 +4.5억</strong>(합산 시총대비 +0.33%). 고점 −63% 조정 국면에서 기관이 담기 시작. 외인소진율 <strong>18.98%</strong>로 이 배치 중 높은 편 — 광모듈 글로벌 테마 연동으로 외인 관심이 붙는다. 18배 급등 후 조정 구간에서 기관·외인이 실적주를 저점 매집하는 전형적 눌림 유입이나, 5월 신주 상장 물량 소화 여부가 단기 수급 변수.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">적자에서 도약으로 — 연간 궤적</h2>
+  <div class="chart"><div class="ct">매출 & 영업이익 궤적 (억원)</div><div class="cs">매출 479→445→641→955E, 영업익 0→−15→74→156E. 2024 적자 바닥을 찍고 두 라인이 동시에 위로 꺾인다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="240" x2="1030" y2="240" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="170" x2="1030" y2="170" stroke="#262a33"/><line x1="60" y1="100" x2="1030" y2="100" stroke="#262a33"/>
+      <!-- scale max 955 -> ~190px, k=0.2094, base 240 -->
+      <!-- 매출 line: 479,445,641,955 at x 120,400,680,960 -->
+      <polyline points="120,139.7 400,146.8 680,105.8 960,40" fill="none" stroke="#e78a5c" stroke-width="2.5"/>
+      <circle cx="120" cy="139.7" r="4" fill="#e78a5c"/><circle cx="400" cy="146.8" r="4" fill="#e78a5c"/><circle cx="680" cy="105.8" r="4" fill="#e78a5c"/><circle cx="960" cy="40" r="4.5" fill="#e78a5c"/>
+      <text x="120" y="131" text-anchor="middle" font-size="10.5" fill="#e78a5c">479</text>
+      <text x="960" y="32" text-anchor="middle" font-size="10.5" fill="#e78a5c" font-weight="700">955E</text>
+      <!-- 영업익 line: 0,-15,74,156 -->
+      <polyline points="120,240 400,243.1 680,224.5 960,207.3" fill="none" stroke="#4bbf9a" stroke-width="2.5"/>
+      <circle cx="120" cy="240" r="3.5" fill="#4bbf9a"/><circle cx="400" cy="243.1" r="3.5" fill="#3c86f5"/><circle cx="680" cy="224.5" r="3.5" fill="#4bbf9a"/><circle cx="960" cy="207.3" r="4.5" fill="#4bbf9a"/>
+      <text x="400" y="256" text-anchor="middle" font-size="10" fill="#3c86f5">−15</text>
+      <text x="960" y="200" text-anchor="middle" font-size="10.5" fill="#4bbf9a" font-weight="700">156E</text>
+      <text x="120" y="272" text-anchor="middle" font-size="10" fill="#828b98">2023</text>
+      <text x="400" y="272" text-anchor="middle" font-size="10" fill="#828b98">2024</text>
+      <text x="680" y="272" text-anchor="middle" font-size="10" fill="#828b98">2025</text>
+      <text x="960" y="272" text-anchor="middle" font-size="10" fill="#828b98">2026E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span style="color:var(--muted)">2024 영업익 적자 바닥</span></div>
+  </div>
+
+  <h2 class="sec">분기 해부 — 두 분기 연속 서프라이즈</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">4Q25 YoY</th><th class="num">1Q26 YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num up">+41%</td><td class="num up">+70%</td><td class="txt">펌프 레이저·통신 동반</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num up">+554%</td><td class="num up">+282%</td><td class="txt">저기저 + 마진 레버리지</td></tr>
+      <tr><td class="txt">주요 동인</td><td class="txt">광모듈 수요</td><td class="txt">Lumentum向 램프</td><td class="txt">캐파 가동률 상승</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">분기 YoY는 흑자전환 초기의 저기저 효과를 포함 — 절대 증가율보다 <strong>추세의 방향</strong>과 매출 레벨(분기 200억대 진입)을 보는 게 맞다.<span class="src">데일리인베스트·IR<span class="tip">회사 분기 절대치는 공시 기준, 본 표는 YoY 성장률 중심</span></span></p>
+
+  <h3>이익의 질 — 개선 중이나 검증 초기</h3>
+  <p>2025A 당기순익 104억이 영업익 74억보다 큰데, 이는 영업외 이익·법인세 효과 때문 — <strong>경상 이익력은 지배순익 71억</strong>으로 봐야 한다. 즉 순익 숫자가 영업익보다 튀는 '노이즈'가 일부 있어, 손익의 질은 비츠로셀(영업익>순익의 깨끗한 구조)만큼 깔끔하진 않다. 다만 <em>2년 연속 매출·마진 동반 상승</em>은 이익력이 구조적으로 개선되고 있다는 신호. 관건은 흑자 트랙레코드가 아직 2년으로 짧다는 점.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PER 밴드</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주봉 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">6,005원 → 118,700원(5/12, 18배) → 43,850원(7/20, −63%) → 47,200원. 상승은 실적+테마 동반, 조정은 급등 차익. 지금은 실적선으로 회귀.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale: 5000..120000 -> y 250..40. k=0.001826 ; y=250-(p-5000)*0.001826 -->
+      <line x1="55" y1="222.6" x2="1035" y2="222.6" stroke="#20242c"/><text x="48" y="225.6" text-anchor="end" font-size="9" fill="#5a6472">25k</text>
+      <line x1="55" y1="149.6" x2="1035" y2="149.6" stroke="#20242c"/><text x="48" y="152.6" text-anchor="end" font-size="9" fill="#5a6472">65k</text>
+      <line x1="55" y1="76.6" x2="1035" y2="76.6" stroke="#20242c"/><text x="48" y="79.6" text-anchor="end" font-size="9" fill="#5a6472">105k</text>
+      <!-- path monthly closes: 6005,7500,14000,25000,40000,55000,48000,62000,95000,118700,70000,43850,47200 -->
+      <polyline points="80,248.2 156.7,245.4 233.3,233.6 310,213.5 386.7,186.1 463.3,158.7 540,171.5 616.7,145.9 693.3,85.7 770,42.5 846.7,131.3 923.3,179.1 1000,173" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="233.3" cy="233.6" r="4" fill="#4bbf9a"/><text x="233" y="224" text-anchor="middle" font-size="9" fill="#4bbf9a">엔비디아 수주</text>
+      <circle cx="386.7" cy="186.1" r="4" fill="#cba24a"/><text x="386.7" y="177" text-anchor="middle" font-size="9" fill="#cba24a">하나 신고가 리포트</text>
+      <circle cx="770" cy="42.5" r="4.5" fill="#f0525f"/><text x="770" y="33" text-anchor="middle" font-size="9" fill="#f0525f">118,700 고점·유증</text>
+      <circle cx="1000" cy="173" r="4.5" fill="#e78a5c"/><text x="1000" y="190" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">47,200</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="760" y="272" font-size="9.5" fill="#828b98">'26.05</text><text x="980" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 절반은 실적, 절반은 테마</h2>
+  <p>RF머트리얼즈의 18배 상승은 <strong>실적(적자→흑자→재도약)과 멀티플(광모듈 테마·엔비디아·디리스킹 프리미엄)이 둘 다</strong> 작동했다. 5월 이후 −63% 조정은 과열 멀티플의 정상화이지 실적 훼손이 아니다. 현재 포워드 PER 37x는 성장률(+49%)을 감안하면 과하진 않으나, 이미 성장의 상당분을 반영한 수준. <em>'실적 성장은 유효한데 멀티플 거품은 상당 부분 빠진'</em> 국면 — 실적주로 재평가받을 수 있는 구간이되, 추가 디레이팅 리스크(사이클·희석)가 하방에 남는다.</p>
+  <div class="note warn"><div class="h">추정치 분산 주의 — 컨센 vs 하나</div>2026E EPS가 소스별로 크게 갈린다: <strong>네이버 컨센 1,288원(순익 132억)</strong> vs <strong>하나증권 목표가 산정 EPS 775원</strong>(보수적, 증자 후 주식수·지배 기준 추정). 하나는 26E BPS 6,158×타깃 PBR 4.5 + 26E EPS 775×피어 PER 40으로 목표가 15만원을 냈다. 같은 회사에 EPS 추정이 1.7배 벌어졌다는 건 <em>불확실성이 그만큼 크다</em>는 뜻 — 본 리포트는 컨센 1,288을 Base로 쓰되 하방 시나리오에 보수 추정을 반영했다.</div>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">테마 랠리로 코스닥을 크게 아웃퍼폼했다가 −63% 되돌림. 연초 대비로는 되레 언더퍼폼 구간까지 회귀.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="43.5" x2="1035" y2="43.5" stroke="#20242c"/><text x="48" y="46.5" text-anchor="end" font-size="9" fill="#5a6472">220</text>
+      <line x1="55" y1="146.7" x2="1035" y2="146.7" stroke="#20242c"/><text x="48" y="149.7" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- RF rebase idx: 100,130,180,216,150,95,86 ; y=200-(idx-40)*0.889 -->
+      <polyline points="80,146.7 230,120 380,75.6 530,43.5 680,102.2 830,151.1 980,159.1" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="153" font-size="9.5" fill="#e78a5c" font-weight="700">RF머트리얼즈 −14%</text>
+      <!-- KOSDAQ ~+8% -->
+      <polyline points="80,146.7 230,145 380,142 530,140 680,141 830,140 980,139.6" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="132" font-size="9.5" fill="#828b98">코스닥 ~+8%</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">광부품 밸류체인 위치 — 그리고 밸류 비교</h2>
+  <p>직접 동일 사업(펌프 레이저 밀폐 패키지) 상장 peer는 드물다. 광모듈 밸류체인 인접군과 모회사 GaN, 고객사로 좌표를 잡는다.</p>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 = RF머트리얼즈</div><div class="cs">광부품·GaN peer 대비 37x는 성장률(+49%) 감안 시 과하지 않으나 프리미엄 영역. 시점·소스별 편차 큼 — 방향성 참고.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="180" y1="230" x2="1030" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1x=20px from x=180; max ~40 -->
+      <!-- RF 37 -->
+      <rect x="180" y="30" width="740" height="26" fill="#cba24a"/><text x="930" y="48" font-size="12" fill="#cba24a" font-weight="700">37x</text><text x="175" y="48" text-anchor="end" font-size="11" fill="#eaecef">RF머트리얼즈</text>
+      <!-- RFHIC 35 -->
+      <rect x="180" y="70" width="700" height="26" fill="#5a6472"/><text x="890" y="88" font-size="11" fill="#bfc5ce">35x</text><text x="175" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">RFHIC(모회사·GaN)</text>
+      <!-- Lumentum 30 -->
+      <rect x="180" y="110" width="600" height="26" fill="#5a6472"/><text x="790" y="128" font-size="11" fill="#bfc5ce">30x</text><text x="175" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">Lumentum(고객·美)</text>
+      <!-- Coherent 28 -->
+      <rect x="180" y="150" width="560" height="26" fill="#5a6472"/><text x="750" y="168" font-size="11" fill="#bfc5ce">28x</text><text x="175" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">Coherent(美)</text>
+      <!-- 오이솔루션 25 -->
+      <rect x="180" y="190" width="500" height="26" fill="#5a6472"/><text x="690" y="208" font-size="11" fill="#bfc5ce">25x</text><text x="175" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">오이솔루션(광트랜시버)</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">peer PER은 시점·소스에 따라 편차가 크다 — 방향성 참고용. RF머트리얼즈 37x = 현재가 47,200 ÷ 26E EPS 1,288 기준.</p>
+
+  <h2 class="sec">경쟁·밸류체인 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc2"><h3 style="margin-top:0">RFHIC (모회사·GaN RF)</h3><p style="margin:6px 0;font-size:12.5px">GaN 전력·RF 트랜지스터. RF머트리얼즈 지분 41.5%. 경쟁이 아니라 <strong>수직 생태계</strong> — 화합물 반도체 칩과 패키지의 상하 연계.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">Lumentum·Coherent·Furukawa (고객·상위)</h3><p style="margin:6px 0;font-size:12.5px">펌프 레이저 주요 제조사. RF머트리얼즈는 이 중 <strong>Lumentum向 패키지 공급</strong>. 고객이자 밸류체인 상위 — 고객 집중이 양날.</p></div>
+    <div class="card"><h3 style="margin-top:0">오이솔루션 (광트랜시버)</h3><p style="margin:6px 0;font-size:12.5px">광모듈 완제품(트랜시버). RF머트리얼즈보다 밸류체인 상위. 완제품 사이클에 직접 노출 vs 패키지 후방.</p></div>
+    <div class="card"><h3 style="margin-top:0">글로벌 세라믹 패키지사</h3><p style="margin:6px 0;font-size:12.5px">Kyocera 등 일본계. 밀폐 세라믹 패키지 전통 강자. RF머트리얼즈는 니치·비중국·GaN 연계로 침투. 위협도 <strong>중~높음</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">광모듈 수요 지속 + 증설 램프 + 디리스킹 점유 확대, 2027 매출 1,400억+·EPS ~1,700</td><td class="num">1,700 <span class="est bull">27E</span></td><td class="num">36x</td><td class="num up">62,000</td><td class="num">35%</td><td class="num up">+31%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E 컨센 달성(EPS 1,288, 희석 후 소폭 하향)·PER 40x</td><td class="num">1,288</td><td class="num">40x</td><td class="num">51,500</td><td class="num">40%</td><td class="num up">+9%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">광모듈 사이클 둔화 + 증자 희석 + 멀티플 언와인드</td><td class="num">1,100 <span class="est bear">E</span></td><td class="num">25x</td><td class="num down">27,500</td><td class="num">25%</td><td class="num down">−42%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">49,200</td><td class="num"></td><td class="num up">+4%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 47,200(흰선). 자체 밴드 27,500~62,000(Base 51,500). 하나증권 목표 15만원은 공격적 상단 — 추정 분산이 크다.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 20000..155000 -> x 120..1030. k=0.006741 ; x=120+(v-20000)*0.006741 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">20k</text>
+      <text x="322" y="205" text-anchor="middle" font-size="9" fill="#5a6472">50k</text>
+      <text x="659" y="205" text-anchor="middle" font-size="9" fill="#5a6472">100k</text>
+      <text x="996" y="205" text-anchor="middle" font-size="9" fill="#5a6472">150k</text>
+      <!-- 자체 밴드 27500..62000 -->
+      <rect x="170.5" y="40" width="232.6" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="170" y="34" font-size="10" fill="#e78a5c">Bear 27.5k</text>
+      <text x="403" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 62k</text>
+      <line x1="332.3" y1="36" x2="332.3" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="332" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 51.5k</text>
+      <!-- 애널(하나) 밴드 51500..150000 -->
+      <rect x="332.3" y="110" width="663.8" height="26" rx="4" fill="#4bbf9a" opacity="0.22"/>
+      <text x="333" y="104" font-size="10" fill="#4bbf9a">컨센권 51.5k</text>
+      <text x="996" y="104" text-anchor="end" font-size="10" fill="#4bbf9a">하나 목표 150k(공격적)</text>
+      <line x1="332.3" y1="106" x2="332.3" y2="140" stroke="#4bbf9a" stroke-width="2.5"/>
+      <!-- 현재가 47200 -->
+      <line x1="303.3" y1="20" x2="303.3" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="303" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 47,200</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">펌프 레이저 Lumentum向 26·27 +80%E. 매출 CAGR +26%. <strong>강함</strong>(단, 사이클 의존).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 11.5→16.4%. 가동률·믹스. 추가 여지 있으나 증설 램프·수율이 관건.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 37x. 이미 프리미엄. 사이클·희석 리스크가 상한 — 추가 리레이팅보단 이익 성장이 주가 동력.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): CPO용 ELS 패키징 상업화 / 우주·CQFN 신규 애플리케이션 / 디리스킹 통신 점유 추가 확대 → 각 EPS +5~15%. 반대로 <strong>증자 희석(주식수 +5~6%)</strong>은 EPS를 소폭 깎는다.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>광모듈 사이클 둔화</strong></td><td class="txt">AI CAPEX 조정 시 펌프 레이저 수요 감소 → 성장률 급락·PER 25x 디레이팅 −40%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>유상증자 희석</strong></td><td class="txt">신주 50만주(조달 419억) → EPS 5~6% 희석·단기 수급 부담. 발행가 재산정 변수</td><td class="num">확정(진행)</td></tr>
+      <tr><td class="txt"><strong>고점 −63% 후 재조정</strong></td><td class="txt">18배 상승 후 변동성 극심, 테마 냉각 시 추가 하락</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>고객 집중</strong></td><td class="txt">Lumentum 등 소수 대형 고객 의존, 발주 변동에 실적 민감</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>증설 지연·수율</strong></td><td class="txt">캐파 램프 차질 시 2026E 성장 미달·마진 훼손</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 38,000~44,000 눌림에서 분할(실적주). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 신주 상장·수급 소화 확인 후 + 증설 가동·추가 광모듈 수주 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> Lumentum向 램프 순항·2Q 마진 확인.</li>
+    <li><strong>축소:</strong> AI CAPEX/광모듈 사이클 둔화(고객 발주 감소·800G 가격 붕괴) / 증설 수율 미달 2분기.</li>
+    <li><strong>차익:</strong> 60,000+ 재급등은 차익 관리(자체 Bull권).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">Lumentum·광모듈 고객 수주</td><td class="txt">펌프 레이저 매출 선행</td><td class="txt">신규 수주 공백·발주 감소</td></tr>
+      <tr><td class="txt">800G/1.6T 광모듈 가격</td><td class="txt">사이클 강도</td><td class="txt">가격 급락(공급과잉 신호)</td></tr>
+      <tr><td class="txt">분기 매출·YoY</td><td class="txt">성장 실현</td><td class="txt">분기 200억대 이탈</td></tr>
+      <tr><td class="txt">전사 OPM</td><td class="txt">마진 레버리지</td><td class="txt">16% → 12% 하회</td></tr>
+      <tr><td class="txt">증설 가동·수율</td><td class="txt">캐파 램프</td><td class="txt">일정 지연·수율 미달</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 하반기</td><td class="txt">펌프 레이저 캐파 증설 완료·가동(매출 +49% 실현)</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">Lumentum 등 광모듈 고객 추가 수주</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(마진 레버리지 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">진행중</td><td class="txt">유상증자 납입·신주 상장</td><td class="txt"><span class="tag s">희석(단기)</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "AI 광모듈이라는 진짜 수요를 등에 업고 적자를 흑자로 뒤집은 패키지 소재사가, 18배 급등·−63% 조정을 거쳐 실적선으로 돌아왔다. 그 값은 38,000~44,000에 분할로 사서 증설 램프와 Lumentum向 +80% 성장을 기다린다."</strong><br>어떻게 맞나: 증설 가동·2Q 마진 확인·추가 수주 중 둘만 켜져도 컨센권 재평가. 어떻게 틀리나: 광모듈 사이클이 꺾이고 800G 가격이 붕괴하면 최대 성장축이 함께 흔들려 틀린다(축소). 한 단어: <em>"밀폐 해자"</em>. 남는 것: <strong>"실적은 믿되, 가격과 희석은 기다린다."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 51,500</span><span class="pill">매집밴드 38,000~44,000</span><span class="pill">Bull 62,000 / Bear 27,500</span><span class="pill">EV +4%</span><span class="pill">thesis break: 광모듈 사이클 둔화·800G 가격 붕괴·증설 차질</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 47,200·시총 4,246억·PER 44.65x(트레일링)/36.8x(26E포워드)·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 118,700@5/12·저점 6,005). 펌프 레이저·Lumentum 73억·EDFA·엔비디아 방열모듈·디리스킹·우주 다층세라믹(누리호 4차)·CQFN·4Q25 +41%/+554%·1Q26 +70%/+282% = 하나증권(3/12·목표 12만→15만)·데일리인베스트·서치e종목·디일렉·뉴시스. 유상증자(신주 50만주·1차 발행가 83,900·조달 419억·최대주주 RFHIC 100% 참여) = 데이터투자·블로터(5월). 지배구조(RFHIC 41.54%·특관 47.04%·조삼열 기타비상무이사) = 2026 3Q 사업보고서·비즈니스포스트. 추정치 분산: 컨센 EPS 1,288 vs 하나 산정 EPS 775 — 본 리포트 Base=컨센, Bear에 보수 반영. 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·수주·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

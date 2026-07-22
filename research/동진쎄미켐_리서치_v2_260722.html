@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>동진쎄미켐 005290 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">005290</span>
+    <span class="nm">동진쎄미켐 <small>Dongjin Semichem · 반도체 소재 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩42,300</span>
+    <span>시총 ₩2.16조 · 26E PER ~15.7x</span>
+    <span class="rating">비중확대 관심 · 매집 37,000~41,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·밸류분해</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩42,300 (+0.4%)</span>
+  <span><b>52주</b> 27,950 ~ 72,200</span>
+  <span><b>PER 26E</b> ~15.7x</span>
+  <span><b>OPM 26E</b> ~18%E</span>
+  <span><b>PBR</b> 1.91x</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">일본이 40년 쥐고 있던 문 두 개가 동시에 열린다 — 매출은 박스권인데 이익만 +85% 튀어오른 이유다.</h1>
+  <p class="lead">동진쎄미켐은 삼성전자·SK하이닉스에 <em>웨이퍼에 회로를 새기는 감광액(포토레지스트)</em>과 <em>표면을 갈아내는 연마액(CMP 슬러리)</em>을 파는 국산 반도체 소재 1티어다. 스토리의 핵심은 규모가 아니라 <strong>두 개의 해자가 같은 해에 열린다</strong>는 것 — ① 2026년 1월 <strong>EUV 포토레지스트 국내 최초 양산</strong>(일본 JSR·TOK·신에츠 독점에 첫 균열)<span class="src">디일렉 · 삼성전자 EUV 라인 공급<span class="tip">2024.12 EUV 포지티브 PR 공급 개시 → 네거티브 PR 양산 착수. SK하이닉스와도 EUV PR 국산화 협력.</span></span>, ② <strong>SK하이닉스 HBM CMP 슬러리 진입</strong>(솔브레인 독점 붕괴)<span class="src">디일렉·디지털투데이<span class="tip">퀄테스트 완료 후 2026 1Q부터 소량 공급 개시. HBM 적층수 증가로 슬러리 소모 급증.</span></span>. 여기에 저마진 발포제를 물적분할(동진이노켐, 2026.1.1)해 <strong>순수 전자재료사</strong>로 재편했다. 주가는 72,200원에서 42,300원으로 −41% — <strong>구조적 국산화 성장주가 반도체 조정에 눌린 자리.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(분할매집) · 매집밴드 37,000~41,000원 · Base 42,500 / Bull 56,000 / Bear 26,000 · 확률가중 EV ≈ 43,900원(+4%).</strong> 순수 기대값은 완만하나, EUV PR·HBM CMP라는 <em>구조적 국산화 옵션</em> + 실적 인플렉션(1Q26 순익 +85%) + 합리적 밸류(포워드 PER ~15.7x·PBR 1.9x)로 손익비가 견조. 이 배치에서 <em>재무·스토리 품질이 상위</em>. thesis break: EUV 양산·수율 지연 / 메모리 사이클 급랭 / 일본 경쟁사 가격·기술 대응으로 국산화 침투 정체.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 매출은 박스권, 이익이 반등한다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E는 <strong>1Q26 실적 연율화 추정</strong>(네이버 연간 2026E 공란 → 1Q 실적·계절성으로 자체 추정, 확정 컨센 아님). 규모(매출)가 커지는 회사가 아니라 <strong>믹스(EUV PR·HBM CMP)가 이익을 밀어올리는</strong> 회사다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">13,099</td><td class="num">1,762</td><td class="num">13.5%</td><td class="num">1,273</td><td class="num">2,476</td><td class="num">17x</td><td class="num">17.0%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">11,128</td><td class="num">1,754</td><td class="num">15.8%</td><td class="num">1,548</td><td class="num">3,010</td><td class="num">14x</td><td class="num">17.2%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">11,941</td><td class="num">1,724</td><td class="num">14.4%</td><td class="num">991</td><td class="num">1,927</td><td class="num">22x</td><td class="num">9.5%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">~13,000 <span class="est">E</span></td><td class="num">~2,400 <span class="est">E</span></td><td class="num">~18%</td><td class="num">~2,200 <span class="est">E</span></td><td class="num">~2,700</td><td class="num">~15.7x</td><td class="num">~13%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 42,300 ÷ 해당연도 EPS. 매출 CAGR(23→26E)은 사실상 0%(박스권)이나, <strong>1Q26 순익 +85.2%</strong>·영업익 +39.4%로 이익 궤적이 꺾여 올라간다. 2025A 순익 급감(−36%)엔 일부 일회성·소재 단가가 섞여 있어 26E 비교 시 정상화 필요.</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">비츠로셀류의 '규모 성장'과 정반대. 매출 막대는 1.1~1.3조에 갇혀 있고, 골드 라인(OPM)과 영업익이 2025 저점을 찍고 2026E로 반등한다.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- Revenue max 13,099 -> 210px, k=0.01603. Bars from y=270 -->
+      <!-- 2023 -->
+      <rect x="120" y="60" width="70" height="210" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="241.7" width="46" height="28.3" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="51" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">13,099</text>
+      <text x="219" y="233" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,762</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="91.6" width="70" height="178.4" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="241.9" width="46" height="28.1" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="82" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">11,128</text>
+      <text x="444" y="233" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,754</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="78.6" width="70" height="191.4" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="242.4" width="46" height="27.6" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="69" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">11,941</text>
+      <text x="669" y="234" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,724</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="61.6" width="70" height="208.4" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="231.5" width="46" height="38.5" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="52" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">13,000</text>
+      <text x="894" y="223" text-anchor="middle" font-size="10.5" fill="#4bbf9a">2,400</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line 13.5,15.8,14.4,18.0 -> y=270-(opm-10)*9 -->
+      <polyline points="155,238.5 380,217.8 605,230.4 830,198" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="238.5" r="4" fill="#cba24a"/><circle cx="380" cy="217.8" r="4" fill="#cba24a"/><circle cx="605" cy="230.4" r="4" fill="#cba24a"/><circle cx="830" cy="198" r="4" fill="#cba24a"/>
+      <text x="155" y="252" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">13.5%</text>
+      <text x="830" y="190" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">~18%E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 해자가 열린다</h3><p style="margin:6px 0">EUV PR 국산화 첫 양산 + HBM CMP 진입은 <strong>일본 독점·솔브레인 독점을 동시에 깨는</strong> 구조적 국산화 스토리. 공급망 안보·삼성 국산화 정책이 뒤를 민다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 실적이 뒷받침</h3><p style="margin:6px 0">1Q26 매출 +13%·영업익 +39%·<strong>순익 +85%</strong>. 발포제 분할로 저마진 희석이 빠지며 전자재료 단일 마진 가시성↑. 이익 궤적이 저점을 찍고 반등.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 밸류가 과열 아님</h3><p style="margin:6px 0">포워드 PER <strong>~15.7x</strong>·PBR 1.9x·배당 1.5%. EUV PR·HBM이라는 프리미엄 옵션 대비 과하지 않다. 고점 −41% 조정으로 진입 여지.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: A− (가격과 분리)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> EUV PR은 국내 유일급 양산 지위·수년 인증. 진짜 해자. CMP는 진입은 했으나 아직 점유 초기(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> OPM 14~18%로 소재업 중 상위, 배당 확대(120→200→650). razor-razorblade형 소모품 반복성.</li>
+        <li><strong>사이클 노출:</strong> 매출이 삼성·SK 가동률/메모리 업황에 종속 — 이게 A를 A−로 깎는 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> EUV PR 삼성 채택 물량 확대 + HBM CMP 점유 상승 + 메모리 업황 유지 → 이익 레벨업 지속.</li>
+        <li><strong>갈아타기:</strong> HBM 순수 노출을 원하면 솔브레인(슬러리·식각), 공정화학 순수는 이엔에프. 동진은 '노광 소재(EUV PR) 국산화 유일'이 차별점.</li>
+        <li><strong>즉시매도:</strong> EUV 양산·수율 지연 확인 / 메모리 급랭 / 일본 경쟁사 가격대응으로 침투 정체 2분기.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>반도체 소재 국산화군에서 동진쎄미켐은 <strong>이익 인플렉션(1Q +85%)·밸류(PER ~15x)·해자(EUV PR 유일)가 동시에 받쳐 손익비가 살아있는</strong> 소수에 든다. 솔브레인(HBM 슬러리·식각 강자)·이엔에프(공정화학)와 겹치되 <em>노광 소재라는 결이 다른 축</em>을 쥔 게 차별점. 반면 스토리만 앞서고 실적이 못 따라오는 테마 소재주 대비, 동진은 <em>"국산화가 곧 숫자로 찍히기 시작한"</em> 자리다. 상대 매력 = <strong>테마가 아니라 이익 반등으로 사는 EUV·HBM 국산화.</strong></p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"반도체를 만들 때 웨이퍼에 회로를 새기고(포토레지스트) 표면을 갈아내는(CMP 슬러리) <strong>공정 소모 소재</strong>를, 삼성전자·SK하이닉스에 공급하는 국산 소재 1티어. 웨이퍼가 흐를수록·미세화될수록 팔리는 razor-razorblade."</p>
+  <div class="note"><div class="h">소모 소재의 본질 — 규모가 아니라 믹스</div>매출은 1.1~1.3조 박스권이지만, 성장은 <strong>범용 PR → EUV PR, 신규 HBM CMP</strong>라는 고부가 믹스 고도화에서 나온다. 세계 4번째로 반도체 PR을 자체 개발(1989)한 소재 원조 기업으로, 국산화 침투가 남은 활주로다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">위상</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>포토레지스트(PR·EUV)</strong></td><td class="txt">노광 공정 감광액. EUV용 국내 최초 양산</td><td class="num">핵심 해자</td><td class="txt">삼성 EUV 라인 채택 물량 × ASP × 국산화율</td><td class="txt">최고부가·일본 독점 균열</td></tr>
+      <tr><td class="txt"><strong>CMP 슬러리(HBM)</strong></td><td class="txt">웨이퍼 평탄화 연마액. SK하이닉스 HBM 진입</td><td class="num">신규 옵션</td><td class="txt">HBM 캐파·적층수 × 슬러리 점유</td><td class="txt">고성장·솔브레인 독점 균열</td></tr>
+      <tr><td class="txt"><strong>기타 전자재료</strong></td><td class="txt">신너·현상액·공정화학 소모품, 디스플레이 소재</td><td class="num">안정 기반</td><td class="txt">팹 가동률 × 출하량 연동</td><td class="txt">반복·가동률 연동</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">발포제 부문은 2026.1.1 물적분할(동진이노켐)로 분리 — 2026년 이후 실적은 <strong>순수 전자재료 단일</strong> 기준.<span class="src">전자신문·아시아경제<span class="tip">발포제=저마진 화학, 분리로 전자재료 마진 가시성·전문성↑. 과거 연결과 동일기준 비교 주의.</span></span> 아래 제품 구성 비중은 공개 세그먼트가 제한적이라 추정치.</p>
+
+  <div class="chart"><div class="ct">제품 구성 추정 (억원) — 고부가(EUV PR·HBM CMP)가 커진다</div><div class="cs">반도체 공정화학·PR이 기반, EUV PR·HBM CMP(골드)가 얇지만 빠르게 커지며 마진을 끌어올린다. 세그먼트 미공개로 비중은 추정(est).</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- max total 13,000 -> 200px, k=0.01538 -->
+      <!-- 2024: 반도체7200(110.7), 디스플레이3500(53.8), CMP/신428(6.6) tot 11,128 -->
+      <g>
+        <rect x="200" y="139.3" width="150" height="110.7" fill="#5a6472"/>
+        <rect x="200" y="85.5" width="150" height="53.8" fill="#e78a5c" opacity="0.9"/>
+        <rect x="200" y="78.9" width="150" height="6.6" fill="#cba24a"/>
+        <text x="275" y="70" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">11,128</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025: 반도체7760(119.4), 디스3580(55.1), CMP/신601(9.2) tot 11,941 -->
+      <g>
+        <rect x="465" y="130.6" width="150" height="119.4" fill="#5a6472"/>
+        <rect x="465" y="75.5" width="150" height="55.1" fill="#e78a5c" opacity="0.9"/>
+        <rect x="465" y="66.3" width="150" height="9.2" fill="#cba24a"/>
+        <text x="540" y="57" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">11,941</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 반도체8300(127.7), 디스3700(56.9), CMP/EUV1000(15.4) tot 13,000 -->
+      <g>
+        <rect x="730" y="122.3" width="150" height="127.7" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="65.4" width="150" height="56.9" fill="#e78a5c" opacity="0.65"/>
+        <rect x="730" y="50" width="150" height="15.4" fill="#cba24a" opacity="0.75"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">13,000E</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>반도체 공정화학·범용</span><span><i style="background:#e78a5c"></i>PR(디스플레이·반도체)</span><span><i style="background:#cba24a"></i>EUV PR·HBM CMP(고부가)</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(삼성·SK하이닉스)의 눈</h3><p style="margin:6px 0">"일본 단일 공급망은 리스크(2019 수출규제 학습). 검증된 국산 대안이면 <strong>이원화</strong>로 협상력·안보를 챙긴다." → 국산화 채택 유인.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(JSR·TOK·솔브레인)의 눈</h3><p style="margin:6px 0">"EUV PR은 우리 아성. 동진이 수율·물량을 어디까지 올리나가 관건. 가격·기술로 방어한다." → 침투 속도가 승부처.</p></div>
+    <div class="card"><h3 style="margin-top:0">납품업체(소재·전구체)의 눈</h3><p style="margin:6px 0">"EUV PR·HBM 슬러리는 특수 원료. 물량 늘면 우리도 큰다. 다만 초고순도라 진입장벽." → 공급망 좁음.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"발포제 떼어내 전자재료 순수화. EUV PR·HBM으로 이익 레벨업. 삼성·SK 국산화 흐름에 올라탄다." → 질적 성장 전략.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">EUV PR 국산화 (유일급)</h3><p style="margin:0;font-size:12.5px">EUV 감광액은 세계 3~4개사만 양산. 동진이 국내 최초 양산·삼성 라인 진입. 재인증·수율 장벽이 시간 해자. 현금화: 램프 초입.</p></div>
+    <div class="card"><div class="tag n">Table-stakes +</div><h3 style="margin:8px 0 6px">HBM CMP 슬러리</h3><p style="margin:0;font-size:12.5px">CMP 슬러리는 솔브레인이 강자. 동진은 SK하이닉스 진입으로 독점을 깼으나 아직 점유 초기. 차별점은 이원화 수요. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">차세대 소재·신사업</h3><p style="margin:0;font-size:12.5px">2차전지 소재 등 신규 언급. 아직 매출 기여 미미 — 옵션으로만. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 · 사업 재편 — 동진홀딩스 → 동진쎄미켐 → 동진이노켐</h2>
+  <div class="chart"><div class="ct">지배구조 & 발포제 물적분할 (2025.12·2026.1 기준)</div><div class="cs">동진홀딩스(오너 지주)가 최대주주. 2026.1.1 발포제 부문을 동진이노켐(100% 자회사)으로 물적분할 → 동진쎄미켐은 순수 전자재료사로 재편.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="40" width="180" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="150" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">동진홀딩스</text>
+      <text x="150" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">오너 지주 · 32.49%</text>
+
+      <rect x="60" y="120" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11.5" fill="#eaecef">특수관계인 합산</text>
+      <text x="150" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">최대주주 등 ~38.62%</text>
+
+      <rect x="60" y="200" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="220" text-anchor="middle" font-size="10.5" fill="#eaecef">동진장학연구재단 3.66%</text>
+      <text x="150" y="236" text-anchor="middle" font-size="10.5" fill="#eaecef">명부산업 등 특수관계</text>
+
+      <!-- center -->
+      <rect x="430" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="530" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">동진쎄미켐 (005290)</text>
+      <text x="530" y="162" text-anchor="middle" font-size="11" fill="#828b98">순수 전자재료 · 시총 2.16조</text>
+
+      <!-- subsidiary -->
+      <rect x="820" y="110" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="138" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">동진이노켐</text>
+      <text x="920" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">발포제 · 2026.1.1 물적분할</text>
+      <text x="920" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">100% 자회사 · 저마진 분리</text>
+
+      <line x1="240" y1="66" x2="430" y2="135" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="240" y1="143" x2="430" y2="146" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="240" y1="223" x2="430" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="630" y1="146" x2="820" y2="146" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="335" y="92" text-anchor="middle" font-size="10" fill="#4bbf9a">지분 32.49%</text>
+      <text x="725" y="138" text-anchor="middle" font-size="10" fill="#e78a5c">분할·100%</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: 창업주 <strong>이부섭 회장 별세(2025.2)</strong> 이후 이준혁 회장 승계 체제. 동진홀딩스(오너 55.7% 보유) 산하 지배구조로 <em>계열 자본배치·물적분할 후 주주환원</em>이 상시 점검 대상. 회사는 분할과 함께 <strong>주주환원 강화(배당 확대)</strong>를 명시했다.<span class="src">아시아경제·나무위키<span class="tip">2025.12.31 기준 동진홀딩스 32.49%, 특수관계인 합산 38.62%. 물적분할 가결 시 주주환원 강화 방침 발표.</span></span> 자본잠식·CB·경영권 분쟁은 없음.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 성장인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">EUV PR (노광)</td><td class="txt"><strong>국산화 침투 성장</strong></td><td class="txt">삼성 EUV 라인·채택 물량·공급망 안보</td><td class="txt">높음(진입장벽)</td></tr>
+      <tr><td class="txt">HBM CMP 슬러리</td><td class="txt">국산화 + AI 사이클</td><td class="txt">HBM 캐파·적층수·SK하이닉스 이원화</td><td class="txt">중~높음</td></tr>
+      <tr><td class="txt">공정화학·기타 소재</td><td class="txt">가동률 연동 강제</td><td class="txt">팹 가동률·출하량·메모리 업황</td><td class="txt">중(사이클)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심 — 반도체 소부장 렌즈</div>동진의 성장은 두 물리량의 곱이다: <strong>① 국산화 침투율(EUV PR·HBM CMP가 일본/솔브레인을 얼마나 뺏나) × ② 반도체 가동률(팹이 얼마나 도나)</strong>. 가동률은 메모리 사이클에 종속되지만, <em>국산화 침투는 사이클과 무관하게 우상향하는 별도 벡터</em> — 다운사이클에도 침투가 이익을 방어하는 비대칭 구조.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 이익 레버리지의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">~18<span class="u">%E</span></div><div class="sub">발포제 분할·믹스 개선</div></div>
+    <div class="kpi"><div class="lab">ROE 26E</div><div class="val">~13<span class="u">%</span></div><div class="sub">25 저점 9.5%서 반등</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">1.91<span class="u">x</span></div><div class="sub">소재 성장주 합리적</div></div>
+  </div>
+  <p>공정 소재는 소모품이지만 <strong>범용이 아니라 인증품</strong>이라 교체가 어렵다. EUV PR은 고객 라인에 한 번 인증되면 재인증 리스크로 안 바꾼다(락인). 고부가(EUV PR·HBM CMP) 비중이 늘수록 <em>믹스가 마진을 밀어올리고</em>, 저마진 발포제를 떼어내며 <em>희석이 제거</em>된 게 2026E 마진 반등의 두 축.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +5.3억 · 연기금 +17.7억 · 투신 +21.3억</strong>(합산 시총대비 +0.21%). 세 기관이 동시 순매수, 투신·연기금 중심. 반도체 소재 조정(고점 −41%) 구간에서 <em>기관이 퀄리티 국산화주를 담는</em> 전형적 눌림 유입이다. 삼성·SK 국산화 정책 수혜·이익 인플렉션이 기관 매수 명분.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">이익 궤적 — 2025 저점을 찍고 반등한다</h2>
+  <div class="chart"><div class="ct">영업이익 & 지배순이익 (억원)</div><div class="cs">영업익은 1,700억대에서 완만하지만, 지배순익이 2025년 급감(991억) 후 2026E로 점프(~2,200E). 1Q26 순익 +85%가 그 초입.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- max 2400 -> 200px, k=0.0833. y=250-val*0.0833 -->
+      <!-- OP: 1762,1754,1724,2400 -->
+      <polyline points="180,103.2 450,103.9 720,106.4 990,50" fill="none" stroke="#e78a5c" stroke-width="2.5"/>
+      <circle cx="180" cy="103.2" r="3.5" fill="#e78a5c"/><circle cx="450" cy="103.9" r="3.5" fill="#e78a5c"/><circle cx="720" cy="106.4" r="3.5" fill="#e78a5c"/><circle cx="990" cy="50" r="4.5" fill="#e78a5c"/>
+      <text x="990" y="42" text-anchor="middle" font-size="10.5" fill="#e78a5c" font-weight="700">2,400E</text>
+      <!-- 지배순익: 1273,1548,991,2200 -->
+      <polyline points="180,144 450,121 720,167.4 990,66.7" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="180" cy="144" r="3.5" fill="#cba24a"/><circle cx="450" cy="121" r="3.5" fill="#cba24a"/><circle cx="720" cy="167.4" r="4.5" fill="#cba24a"/><circle cx="990" cy="66.7" r="4.5" fill="#cba24a"/>
+      <text x="720" y="184" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">991 (저점)</text>
+      <text x="990" y="82" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">2,200E</text>
+      <!-- x labels -->
+      <text x="180" y="272" text-anchor="middle" font-size="10" fill="#828b98">2023</text>
+      <text x="450" y="272" text-anchor="middle" font-size="10" fill="#828b98">2024</text>
+      <text x="720" y="272" text-anchor="middle" font-size="10" fill="#828b98">2025</text>
+      <text x="990" y="272" text-anchor="middle" font-size="10" fill="#828b98">2026E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>영업이익</span><span><i style="background:#cba24a"></i>지배순이익</span><span style="color:var(--muted)">2026E=1Q 연율화 추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 이익이 매출을 앞질렀다</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">3,281억</td><td class="num up">+13.2%</td><td class="txt">가동률·믹스 개선</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">666억</td><td class="num up">+39.4%</td><td class="txt">OPM 20.3% — 레버리지</td></tr>
+      <tr><td class="txt">당기순이익</td><td class="num">669억</td><td class="num up">+85.2%</td><td class="txt">영업레버리지 + 금융·일회성 정상화</td></tr>
+      <tr class="hl"><td class="txt">지배주주순익</td><td class="num">683억</td><td class="num up">+82.1%</td><td class="txt">전자재료 순수 재편 효과</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">출처: 디지털투데이·데이터투자(2026-05 공시). 1Q26 매출 3,280.86억·영업익 665.93억·순익 668.99억·지배순익 682.59억.</p>
+  <h3>이익의 질 — 반등이 구조적인가</h3>
+  <p>매출 +13%인데 영업익 +39%·순익 +85% — <strong>영업레버리지(고정비 위 고부가 믹스)</strong>가 작동한다. 순익이 영업익보다 크게 튄 데엔 2025년 순익 급감(991억, −36%)의 <em>기저·일회성 정상화</em>가 섞여 있어, 순익 +85%를 곧이곧대로 연간에 대입하면 과대추정 위험. 다만 방향(믹스·발포제 분할로 마진 가시성↑)은 실적이 스토리를 따라오기 시작했다는 신호로 읽는다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · 밸류 분해</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주가 궤적 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">29,650원(8월) → 1월 급등(EUV·HBM 기대) → 66,000원(5/26 고점) → 42,300원(−36%). 상승은 국산화 기대(멀티플)+실적 회복, 조정은 반도체 소재 섹터 되돌림.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 25000..70000 -> y 250..40. k=0.004667. y=250-(p-25000)*0.004667 -->
+      <line x1="55" y1="226.7" x2="1035" y2="226.7" stroke="#20242c"/><text x="48" y="230" text-anchor="end" font-size="9" fill="#5a6472">30k</text>
+      <line x1="55" y1="133.3" x2="1035" y2="133.3" stroke="#20242c"/><text x="48" y="136" text-anchor="end" font-size="9" fill="#5a6472">50k</text>
+      <line x1="55" y1="40" x2="1035" y2="40" stroke="#20242c"/><text x="48" y="43" text-anchor="end" font-size="9" fill="#5a6472">70k</text>
+      <!-- path 12 monthly closes -->
+      <polyline points="80,228.3 163,212.7 246,198.7 329,170.7 412,133.3 495,96 578,138 661,156.7 744,119.3 827,58.7 910,142.7 990,169.3" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="495" cy="96" r="4" fill="#4bbf9a"/><text x="495" y="87" text-anchor="middle" font-size="9" fill="#4bbf9a">1월 국산화 랠리</text>
+      <circle cx="827" cy="58.7" r="4.5" fill="#f0525f"/><text x="827" y="49" text-anchor="middle" font-size="9" fill="#f0525f">66,000 고점 5/26</text>
+      <circle cx="744" cy="119.3" r="4" fill="#cba24a"/><text x="744" y="110" text-anchor="middle" font-size="9" fill="#cba24a">1Q26 +85%</text>
+      <circle cx="990" cy="169.3" r="4.5" fill="#e78a5c"/><text x="990" y="186" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">42,300</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="820" y="272" font-size="9.5" fill="#828b98">'26.05</text><text x="965" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 절반은 기대, 조정은 정상화</h2>
+  <p>2025년 8월 29,650원 → 2026년 5월 66,000원(+123%)까지의 상승은 <strong>실적 회복(1Q +85%)과 멀티플(EUV PR·HBM 국산화 기대)이 반반</strong>이었다. 이후 −36% 조정은 반도체 소재 섹터 전반의 멀티플 되돌림이지 실적 훼손이 아니다. 현재 포워드 PER ~15.7x·PBR 1.9x는 <em>국산화 옵션을 감안하면 과열이 빠진 합리적 구간</em>. 내재기대 역산: 시총 2.156조 ÷ 2026E 순익 ~2,200억 = PER ~15~16x — 소재 대장 대비 EUV·HBM 프리미엄 대비 과하지 않다.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">국산화 랠리로 코스닥·반도체지수를 아웃퍼폼했다가 되돌림. 절대 밸류는 매력 구간 재진입. (지수는 추정)</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="120.5" x2="1035" y2="120.5" stroke="#20242c"/><text x="48" y="123.5" text-anchor="end" font-size="9" fill="#5a6472">150</text>
+      <line x1="55" y1="155" x2="1035" y2="155" stroke="#20242c"/><text x="48" y="158" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- 동진 rebase: y=155-(v-100)*0.7 -->
+      <polyline points="80,155 250,158 430,150 560,117.9 700,140 990,159.2" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="990" y="153" font-size="9.5" fill="#e78a5c" font-weight="700">동진쎄미켐 ~+swing</text>
+      <!-- SOX ~+15 -->
+      <polyline points="80,155 300,151 500,146 700,148 990,144.5" fill="none" stroke="#4bbf9a" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="990" y="139" font-size="9.5" fill="#4bbf9a">필라델피아반도체 ~+15E</text>
+      <!-- KOSDAQ ~+6 -->
+      <polyline points="80,155 300,157 500,153 700,152 990,150.8" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="990" y="167" font-size="9.5" fill="#828b98">코스닥 ~+6E</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 가격에 안 들어가 있나</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="num">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">실적 회복(1Q +85%)·발포제 분할</td><td class="num up">반영</td></tr>
+      <tr><td class="txt">EUV PR 양산 램프·삼성 채택 확대</td><td class="num down">부분~미반영(핵심 상방)</td></tr>
+      <tr><td class="txt">HBM CMP 슬러리 점유 확대</td><td class="num down">부분~미반영(상방)</td></tr>
+      <tr><td class="txt">메모리 업황 강세(HBM·DRAM)</td><td class="num">부분 반영</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">네이버 연간 2026E 추정치 공란 → 정식 증권 컨센 부재. 본 리포트 2026E는 1Q 연율화 자체 추정으로, EUV 램프·HBM 물량 확대는 아직 숫자에 온전히 반영되지 않은 <strong>미반영 상방</strong>.</p>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">반도체 소재 국산화 인접군 — 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 = 동진쎄미켐</div><div class="cs">소재 peer 대비 동진 ~15.7x는 EUV PR 유일 지위·이익 인플렉션 감안 시 과하지 않다. PER은 시점·소스별 편차 — 방향성 참고용(est).</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="150" y1="230" x2="1030" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1x=30px from x=150 -->
+      <!-- 동진 15.7 -->
+      <rect x="150" y="30" width="471" height="26" fill="#cba24a"/><text x="631" y="48" font-size="12" fill="#cba24a" font-weight="700">동진쎄미켐 ~15.7x</text><text x="145" y="48" text-anchor="end" font-size="11" fill="#eaecef">동진쎄미켐</text>
+      <!-- 솔브레인 13 -->
+      <rect x="150" y="70" width="390" height="26" fill="#5a6472"/><text x="550" y="88" font-size="11" fill="#bfc5ce">~13x</text><text x="145" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">솔브레인</text>
+      <!-- 이엔에프 10 -->
+      <rect x="150" y="110" width="300" height="26" fill="#5a6472"/><text x="460" y="128" font-size="11" fill="#bfc5ce">~10x</text><text x="145" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">이엔에프테크</text>
+      <!-- 한솔케미칼 14 -->
+      <rect x="150" y="150" width="420" height="26" fill="#5a6472"/><text x="580" y="168" font-size="11" fill="#bfc5ce">~14x</text><text x="145" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">한솔케미칼</text>
+      <!-- JSR(일본) 20 참고 -->
+      <rect x="150" y="190" width="600" height="26" fill="#5a6472" opacity="0.7"/><text x="760" y="208" font-size="11" fill="#bfc5ce">~20x</text><text x="145" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">JSR(일본·참고)</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">peer PER은 시점·소스에 따라 편차가 크다 — 절대치보다 상대 위치 참고용. TOK·신에츠 등 일본 소재사는 EUV PR 글로벌 독점 진영으로 국산화 대상.</p>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">솔브레인 (국내)</h3><p style="margin:6px 0;font-size:12.5px">식각액 1위 + CMP 슬러리·프리커서 강자. HBM CMP 독점을 동진에 일부 내주는 중. 위협도 <strong>높음</strong>(슬러리 직접 경쟁).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">이엔에프테크놀로지 (국내)</h3><p style="margin:6px 0;font-size:12.5px">공정화학(신너·현상액·식각) 소모품. 동진과 공정화학에서 겹침, 노광 소재는 비경쟁. 위협도 <strong>중</strong>. 별도 커버.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">JSR·TOK·신에츠 (일본)</h3><p style="margin:6px 0;font-size:12.5px">EUV PR 글로벌 독점 3사. 동진의 국산화 대상이자 방어 주체 — 가격·기술 대응 속도가 침투 승부처. 위협도 <strong>높음</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 삼성·SK 국산화 정책</h3><p style="margin:6px 0;font-size:12.5px">고객이 곧 국산화 후원자. 이원화 유인이 동진에 순풍. 경쟁이 아니라 <strong>수요 측 동력</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">EUV PR 램프 + HBM CMP 점유 확대 + 메모리 강세, 2026 순익 ~2,400억</td><td class="num">2,800 <span class="est bull">E</span></td><td class="num">20x</td><td class="num up">56,000</td><td class="num">35%</td><td class="num up">+32%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026 순익 ~2,000~2,200억·EPS ~2,500, PER 17x</td><td class="num">2,500</td><td class="num">17x</td><td class="num">42,500</td><td class="num">45%</td><td class="num up">+0.5%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">EUV 양산 지연 + 메모리 조정 + 일본 경쟁, EPS 2,000·PER 13x</td><td class="num">2,000 <span class="est bear">E</span></td><td class="num">13x</td><td class="num down">26,000</td><td class="num">20%</td><td class="num down">−39%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">43,900</td><td class="num"></td><td class="num up">+4%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 42,300(흰선). 자체 시나리오 밴드 Bear 26,000 ~ Bull 56,000, Base 42,500. 정식 증권 컨센 부재(네이버 공란)로 애널 밴드 미표기.</div>
+    <svg viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 20000..60000 -> x 120..1030. k=0.02275. x=120+(v-20000)*0.02275 -->
+      <line x1="120" y1="150" x2="1030" y2="150" stroke="#353b47"/>
+      <text x="120" y="172" text-anchor="middle" font-size="9" fill="#5a6472">20k</text>
+      <text x="347.5" y="172" text-anchor="middle" font-size="9" fill="#5a6472">30k</text>
+      <text x="575" y="172" text-anchor="middle" font-size="9" fill="#5a6472">40k</text>
+      <text x="802.5" y="172" text-anchor="middle" font-size="9" fill="#5a6472">50k</text>
+      <text x="1030" y="172" text-anchor="middle" font-size="9" fill="#5a6472">60k</text>
+      <!-- 자체 밴드 26000..56000 -->
+      <rect x="256.5" y="55" width="682.5" height="30" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="256" y="48" font-size="10" fill="#e78a5c">Bear 26k</text>
+      <text x="939" y="48" text-anchor="end" font-size="10" fill="#e78a5c">Bull 56k</text>
+      <line x1="631.9" y1="50" x2="631.9" y2="90" stroke="#cba24a" stroke-width="2.5"/><text x="631" y="104" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 42.5k</text>
+      <!-- 현재가 42300 -->
+      <line x1="627.3" y1="30" x2="627.3" y2="130" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="627" y="26" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 42,300</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card"><h3 style="margin-top:0">매출 확장 △</h3><p style="margin:6px 0;font-size:12.5px">매출 1.1~1.3조 박스권. 규모 성장은 제한적 — 국산화 침투가 늘려야 확장. <strong>보통</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">발포제 분할 + EUV·HBM 고부가 믹스. OPM 14→18%E, ROE 9.5→13%. <strong>강함</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">멀티플 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">EUV PR 유일 지위·HBM 국산화 프리미엄. 채택 확대 확인 시 17→20x+ 리레이팅 여지.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): EUV PR 삼성 채택 물량 급확대 / HBM CMP 점유 상승 / 차세대 소재 상업화 → 각 EPS +5~15%.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>EUV PR 양산·채택 지연</strong></td><td class="txt">일본 대비 수율·물량 격차로 램프 지연 시 리레이팅 근거 약화. 주가 −25%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>메모리 사이클 둔화</strong></td><td class="txt">DRAM·HBM 조정 시 소재 소모량·단가 압박, 가동률 연동 매출 하향</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>일본 경쟁사 대응</strong></td><td class="txt">JSR·TOK 가격·기술 개선으로 국산화 침투 정체</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>고객 집중</strong></td><td class="txt">삼성·SK하이닉스 의존, 발주·단가 협상력 열위</td><td class="num">상시</td></tr>
+      <tr><td class="txt"><strong>분할 후 실적 가시성</strong></td><td class="txt">발포제 분할로 기준 변동, 단기 비교 혼선·2025 순익 기저</td><td class="num">낮음~중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 37,000~41,000 눌림에서 분할(국산화 소재 편입). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> EUV PR 삼성 채택 확대·HBM CMP 물량 뉴스 or 2Q26 전자재료 마진 확인 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 메모리 업황 유지·국산화 채택 순항.</li>
+    <li><strong>축소:</strong> EUV 양산·수율 지연 확인 / 메모리 급랭 / 침투 정체 2분기.</li>
+    <li><strong>차익:</strong> 56,000 접근 시 부분 차익(Bull 상단).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">EUV PR 삼성 채택 라인·물량</td><td class="txt">핵심 국산화 침투 실현</td><td class="txt">채택 확대 뉴스 공백 지속</td></tr>
+      <tr><td class="txt">HBM CMP 슬러리 SK하이닉스 물량</td><td class="txt">신규 옵션 현금화</td><td class="txt">소량 공급서 확대 정체</td></tr>
+      <tr><td class="txt">전자재료 단일 OPM(분할 후)</td><td class="txt">믹스·마진 체력</td><td class="txt">OPM 15% 하회</td></tr>
+      <tr><td class="txt">메모리 업황·삼성/SK capex</td><td class="txt">가동률·소모량 선행</td><td class="txt">DRAM·HBM 조정 국면</td></tr>
+      <tr><td class="txt">지배순익 YoY</td><td class="txt">이익 인플렉션 지속</td><td class="txt">기저 소멸 후 YoY 둔화</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 내내</td><td class="txt">EUV PR 양산 램프·삼성 채택 확대</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">HBM CMP 슬러리 SK하이닉스 물량 확대</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(전자재료 단일 마진 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">메모리 업황·삼성/SK capex 동향</td><td class="txt"><span class="tag n">양방향</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "일본이 40년 쥐고 있던 EUV 감광액 문을 국내 최초로 열고, 솔브레인 독점이던 HBM 슬러리에도 발을 들인 소재사가, 저마진 발포제를 떼어내며 이익이 +85% 튀기 시작했는데, 시장은 고점 −41% 조정 뒤 포워드 PER 15.7x에 방치했다. 그 값은 37,000~41,000에 사서 EUV 채택·HBM 물량 옵션을 기다린다."</strong><br>어떻게 맞나: 분할 매수 후 EUV PR 삼성 채택 확대·HBM CMP 물량 중 하나만 켜져도 Bull 56k. 어떻게 틀리나: EUV 양산이 수율에서 막히고 메모리가 급랭하면 틀린다(축소). 한 단어: <em>"국산화 침투"</em>. 남는 것: <strong>"매출이 아니라 믹스로, 테마가 아니라 이익 반등으로 사는 EUV·HBM 국산화."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(분할)</span><span class="pill">Base 42,500</span><span class="pill">매집밴드 37,000~41,000</span><span class="pill">Bull 56,000 / Bear 26,000</span><span class="pill">EV +4%</span><span class="pill">thesis break: EUV 양산지연·메모리 급랭·일본 경쟁</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기, 반도체 소부장 렌즈(국산화 침투율·가동률).<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 42,300·시총 2.16조·PER 16.75x·EPS 2,525·PBR 1.91x·BPS 22,109·DPS 650·52주 27,950~72,200·2023~2025 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 66,000@5/26·저점 27,950) · 1Q26 매출 3,281억(+13.2%)·영업익 666억(+39.4%)·순익 669억(+85.2%)·지배순익 683억(+82.1%) = 디지털투데이·데이터투자 · EUV PR 국내 최초 양산·삼성 공급·SK하이닉스 협력 = 디일렉·EBN·etnews · HBM CMP 슬러리 SK하이닉스 진입(솔브레인 독점 균열) = 디일렉·디지털투데이 · 발포제 물적분할(동진이노켐 2026.1.1) = 전자신문·아시아경제 · 지배구조(동진홀딩스 32.49%·특수관계인 38.62%·이부섭 회장 별세 2025.2) = 아시아경제·나무위키 · 종합 분석 = siglab·needinfo · 수급 = 사용자 제공(07-22). 2026E는 1Q 연율화 자체 추정(네이버 컨센 공란). 삼각검증: 시세·재무·소재 스토리 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

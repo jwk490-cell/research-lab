@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>성호전자 043260 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">043260</span>
+    <span class="nm">성호전자 <small>Sungho Electronics · 필름콘덴서+CPO장비 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩18,010</span>
+    <span>시총 ₩1.29조 · 26E PSR 4.3x</span>
+    <span class="rating">관망·트레이딩(고위험·소액) · 매집 13,000~15,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기·이익의질</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>현재가</b> ₩18,010 (+5.9%)</span>
+  <span><b>52주</b> 1,021 ~ 59,600</span>
+  <span><b>4/14 종가</b> 53,200 (고점 대비 −66%)</span>
+  <span><b>OPM 26E</b> 15.0% (추정)</span>
+  <span><b>순익</b> ≫ 영업익 = 파생평가 노이즈</span>
+  <span><b>오버행</b> CB/BW 38.96%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">58배 오르고 −70% 빠진 자리 — 진짜 분기 영업이익은 32억인데, 순이익은 3,195억이라고 적혀 있다.</h1>
+  <p class="lead">성호전자는 업력 50년의 <em>필름 콘덴서·전원공급장치(PSU)</em> 부품사다. 여기에 광트랜시버 얼라인먼트 장비사 <strong>에이디에스테크</strong>를 2,800억에 인수하며 <strong>국내 유일 CPO(공동패키징광학) 관련주</strong><span class="src">신한·메리츠·대신<span class="tip">신한 "국내 유일 CPO 관련주", 메리츠 "엔비디아 생태계 진입·CPO 밸류체인 핵심 축", 대신 "광 I/O 핵심 수혜주"</span></span>로 재포장돼, 작년 <strong>1,021원 동전주가 4월 59,600원까지 약 58배</strong> 폭등했다가 18,010원으로 <strong>−70%</strong> 되돌렸다. 문제는 재무제표다 — 2025년 순이익 910억이 영업이익 76억의 <strong>12배</strong>, 1Q26 순이익 3,195억은 분기 영업이익 32억의 <strong>약 100배</strong>. 이 착시의 정체는 <em>전환사채·BW 콜옵션 파생상품평가이익</em>이라는 비현금 '종이 이익'이다. 스토리는 실재하나 <strong>이 배치에서 가장 투기적인 이름</strong>이다.</p>
+
+  <div class="note warn"><div class="h">자체 교차검증 경고 — 반드시 읽을 것</div>
+  <ul class="cl">
+    <li><strong>순이익 이상치의 정체(핵심):</strong> 2025년 금융수익 1,381억 중 <strong>파생상품평가이익 1,208억(87.5%)</strong>이 CB·BW <em>매도청구권(콜옵션)</em> 평가에서 나온 <strong>비현금성 종이 이익</strong>.<span class="src">stockhandbook·bizwatch<span class="tip">BW 원가 27억→658억(25배), CB 50억→약 2,000억 평가. 1Q26 순익 3,195억 vs 영업익 32억</span></span> PER 3~4배는 <strong>함정</strong> — 밸류는 영업이익·매출(PSR)·EV/영업익 축으로만.</li>
+    <li><strong>초변동성:</strong> 52주 1,021~59,600(58배)·현재 18,010(고점 −70%). 하루 급등락 상시, 포지션·손절 난이도 최상.</li>
+    <li><strong>컨센 신뢰도 낮음:</strong> 2026E 순익 2,867억E는 파생평가 반복 가정 — 그대로 신뢰 불가. 본 리포트는 <strong>영업익 453억E</strong>를 실적 기준선으로 사용.</li>
+    <li><strong>오버행:</strong> 1월 발행 CB 500억+BW 300억(전환가 2,895원) 전량 전환 시 신주 2,763만주 = <strong>상장주식의 38.96%</strong> 희석.<span class="src">이투데이·블로터<span class="tip">전환·행사가 2,895원, 콜옵션 100% 회사/지정자 부여</span></span></li>
+  </ul>
+  <span style="font-size:11px;color:var(--muted)">라이브 데이터(네이버 API 2026-07-22) + 웹 리서치(메리츠·신한·대신·bizwatch·이투데이) 기반 자동 작성 후 자체 교차검증. 초고위험 종목.</span></div>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>관망 / 트레이딩 관심(고위험·소액) · 매집밴드 13,000~15,000원 · Base 17,000 / Bull 28,000 / Bear 10,000 · 확률가중 EV ≈ 18,200원(+1%).</strong> 필름콘덴서 고부가화(영업익 63→453억E)와 CPO 옵션은 실재하나, <em>순익 노이즈·58배-then-70% 변동성·38.96% 오버행</em>이 밸류 신뢰도를 압도한다. 정규 비중 부적합 — <strong>소액·눌림·트레이딩</strong>으로만. thesis break: 영업익 레버리지 미실현 / 파생평가 반전 / 오버행 출회 / 테마 냉각.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 순익은 못 믿고, 영업익·매출로만 본다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센. <strong>순익 열은 파생평가 노이즈로 참고만</strong> — 이 배치에서 비츠로셀(순익&lt;영업익, 깨끗)과 정반대 극이다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">순익(이상치)</th><th class="num">EPS</th><th class="num">PSR*</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">2,081</td><td class="num">259</td><td class="num">12.4%</td><td class="num">177 †</td><td class="num">331</td><td class="num">—</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">2,073</td><td class="num">63</td><td class="num">3.0%</td><td class="num">81 †</td><td class="num">138</td><td class="num">—</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">2,316</td><td class="num">76</td><td class="num">3.3%</td><td class="num up">910 †</td><td class="num">1,341</td><td class="num">—</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">3,020</td><td class="num">453 <span class="est">E</span></td><td class="num">15.0%</td><td class="num up">2,867 †</td><td class="num">4,021</td><td class="num">4.3x</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PSR = 시총 1.29조 ÷ 매출. †순익이 영업익의 6~12배 = <strong>대규모 영업외(CB·BW 콜옵션 파생평가)</strong>. 1Q26 본업 매출 660억·영업익 32억(OPM 4.8%)이나 순이익은 3,195억 — 100배 괴리. 2025 본업 연결 영업이익은 별도 집계 84억(+33% YoY)로도 보도되나, 본 표는 v1 스파인(76억) 유지.</p>
+
+  <div class="chart"><div class="ct">영업 손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">안정 궤도가 아니다. OPM이 12→3→3→15%로 <strong>V자로 요동</strong> — 2026E의 급반등은 컨센 시나리오이며 실현 미검증(점선=추정).</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- 2023 -->
+      <rect x="120" y="125.3" width="70" height="144.7" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="252.0" width="46" height="18.0" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="116" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,081</text>
+      <text x="219" y="245" text-anchor="middle" font-size="10.5" fill="#4bbf9a">259</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="125.8" width="70" height="144.2" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="265.6" width="46" height="4.4" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="116" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,073</text>
+      <text x="444" y="260" text-anchor="middle" font-size="10.5" fill="#4bbf9a">63</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="108.9" width="70" height="161.1" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="264.7" width="46" height="5.3" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="99" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,316</text>
+      <text x="669" y="259" text-anchor="middle" font-size="10.5" fill="#4bbf9a">76</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.55" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="238.5" width="46" height="31.5" fill="#4bbf9a" opacity="0.55" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">3,020</text>
+      <text x="894" y="231" text-anchor="middle" font-size="10.5" fill="#4bbf9a">453E</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 12.4,3.0,3.3,15.0 -> y=270-opm*10 -->
+      <polyline points="155,146 380,240 605,237 830,120" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="146" r="4" fill="#cba24a"/><circle cx="380" cy="240" r="4" fill="#cba24a"/><circle cx="605" cy="237" r="4" fill="#cba24a"/><circle cx="830" cy="120" r="4" fill="#cba24a"/>
+      <text x="155" y="138" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">12.4%</text>
+      <text x="380" y="255" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">3.0%</text>
+      <text x="830" y="112" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">15.0%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">① 영업 성장은 방향 맞음</h3><p style="margin:6px 0">매출 2,073→3,020억E, 영업익 63→453억E(OPM 3%→15%). 필름콘덴서 고부가화(증착필름 내재화)와 ADS테크 편입이 <strong>외형·이익 레버리지</strong>를 만든다. 단 2024·2025 OPM 3%대에서의 급반등이라 <strong>실현 검증 필수</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 옵션은 매력(미검증)</h3><p style="margin:6px 0">전기차·ESS·태양광 필름콘덴서 + <strong>CPO(엔비디아 멜라녹스 공급 ADS테크)</strong>. 국내 유일 CPO 관련주 타이틀. 2027~2028 폭발 추정이나 <strong>아직 옵션</strong>(t7·t8).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 재무·변동성이 압도</h3><p style="margin:6px 0">순익 이상치(파생평가)·58배-then-70% 변동성·<strong>38.96% CB/BW 오버행</strong>·무자본 M&A 논란. 이 셋이 밸류 신뢰도를 압도해 <em>정규 비중을 막는다</em>.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: C+ (스토리는 A, 재무·거버넌스는 D)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 필름콘덴서 증착필름 내재화(원가), ADS테크 얼라인먼트 장비(CPO)는 유망하나 검증 초기. 진짜 해자는 아직 좁다(t3 3버킷).</li>
+        <li><strong>현금창출:</strong> 본업 OPM 3~5%로 얇다. 순익의 대부분이 <strong>비현금 파생평가</strong> — 현금흐름과 괴리.</li>
+        <li><strong>거버넌스:</strong> 메자닌·SPC를 활용한 무자본 M&A와 38.96% 오버행이 A를 D로 깎는 핵심.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 분기 영업익 레버리지(OPM 15%) 확인 + ADS테크 CPO 실매출 가시화 + 오버행 소화.</li>
+        <li><strong>갈아타기:</strong> 순수 CPO/광 밸류체인이면 검증된 광부품주로, 필름콘덴서 순수 노출이면 삼화콘덴서·뉴인텍으로. 성호는 '테마 옵션+재무 노이즈' 복합.</li>
+        <li><strong>즉시매도:</strong> 파생평가 반전으로 순익 급감 / 대량 오버행 출회 / 영업익 미실현 / 테마 냉각.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>수급 상위 배치에서 성호전자는 <strong>가장 투기적인 극(極)</strong>이다. 반대편 극에는 <em>비츠로셀</em>이 있다 — 순익&lt;영업익의 깨끗한 손익, OPM 30%, 38.96% 같은 오버행 없음. 성호는 순익≫영업익(파생평가), 본업 OPM 3~5%, 오버행 38.96%로 <strong>정확히 반대 성질</strong>이다. 스토리(CPO)의 상방 옵션값은 인정하되, <em>"숫자가 아니라 구조로 만들어진 순익"</em>이라는 점에서 정규 비중이 아니라 소액 트레이딩 대상이다.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"전기를 저장·평활하는 <strong>필름 콘덴서</strong>와 전원공급장치를 만들어 전기차·ESS·태양광·전자기기에 팔고(본업, 얇은 마진), 인수한 <strong>광트랜시버 얼라인먼트 장비사(ADS테크)</strong>로 데이터센터 CPO까지 넓히려는 — 옛 동전주에서 테마 성장주로 변신 중인 부품사."</p>
+  <div class="note"><div class="h">본업 vs 옵션 — 헷갈리지 말 것</div>성호전자의 <strong>돈은 아직 본업(콘덴서·파워)에서 얇게</strong> 나온다(1Q26 영업익 32억). 순이익 대부분(3,195억)은 사업이 아니라 <strong>CB·BW 콜옵션 파생평가</strong>라는 비현금 항목이다. CPO(ADS테크)는 2027~2028에야 실매출이 폭발한다는 <em>추정</em>이다. 즉 지금 재무제표의 '이익'은 세 개의 서로 다른 것이 뒤섞여 있다 — 얇은 본업, 비현금 파생평가, 미래 옵션.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>콘덴서(필름)</strong></td><td class="txt">DTV·PC·가전 + 전기차·ESS·태양광 인버터용 필름콘덴서, <strong>증착필름 자체 생산</strong></td><td class="txt">전방 Q(전동화·재생E) × 고부가 믹스 × ASP</td><td class="txt">본업 축·얇은 마진(원가 내재화로 개선)</td></tr>
+      <tr><td class="txt"><strong>파워(PSU)</strong></td><td class="txt">프린터·가전·산업용 전원공급장치</td><td class="txt">세트 물량 × 단가</td><td class="txt">안정·성숙, 저마진</td></tr>
+      <tr class="hl"><td class="txt"><strong>CPO·광장비(옵션)</strong></td><td class="txt">ADS테크 — 광트랜시버 액티브 얼라인먼트 장비(엔비디아 멜라녹스 공급)</td><td class="txt">AI DC 광I/O 수요 × 1.6T 전환 × 수율장비 수주</td><td class="txt">고성장·고변동 옵션, 2027~ 폭발 추정</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">ADS테크 2025 매출 635억·순익 256억(1년 만에 매출 6배·순익 25배). 매출 추정 2026 714억 → 2027 5,914억 → 2028 1조863억.<span class="src">메리츠(양승수)·한국M&A경제<span class="tip">성호 연결 추정: 2028 매출 1조2,977억·영업익 3,698억</span></span></p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원) — CPO 옵션이 본업을 압도하는 그림(추정)</div><div class="cs">본업(콘덴서·파워)은 2,300억대 정체. 2027E부터 ADS테크(CPO)가 본업의 2배 이상으로 폭증한다는 <strong>메리츠 추정</strong> — 옵션의 크기이자, 그만큼 실현 리스크의 크기다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale max 8314 -> 200px k=0.02406 -->
+      <!-- 2025: 본업2316, CPO0 -->
+      <g>
+        <rect x="200" y="194.3" width="150" height="55.7" fill="#5a6472"/>
+        <text x="275" y="185" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,316</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 본업2306, CPO714 -->
+      <g>
+        <rect x="465" y="194.5" width="150" height="55.5" fill="#5a6472"/>
+        <rect x="465" y="177.3" width="150" height="17.2" fill="#e78a5c" opacity="0.9"/>
+        <text x="540" y="168" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">3,020</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+      <!-- 2027E: 본업2400, CPO5914 -->
+      <g>
+        <rect x="730" y="192.3" width="150" height="57.7" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="50" width="150" height="142.3" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">~8,300E</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2027E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>본업(콘덴서·파워)</span><span><i style="background:#e78a5c"></i>CPO·광장비(ADS테크)</span><span style="color:var(--muted)">점선=메리츠 추정</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(세트·인버터·AI DC)의 눈</h3><p style="margin:6px 0">"필름콘덴서는 검증된 부품을 쓴다. ADS테크 얼라인먼트 장비는 광트랜시버 수율을 좌우해 엔비디아 생태계가 찾는다." → 본업 락인 약, CPO 장비는 스펙 락인.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(삼화·뉴인텍·광장비사)의 눈</h3><p style="margin:6px 0">"필름콘덴서는 우리도 한다(뉴인텍·삼화). CPO 얼라인먼트는 성호가 ADS테크로 선점했지만 검증 초기." → 본업 레드오션, 옵션 선점.</p></div>
+    <div class="card"><h3 style="margin-top:0">채권자·CB 투자자의 눈</h3><p style="margin:6px 0">"전환가 2,895원 CB·BW를 주가 급등이 종이돈으로 바꿔줬다. 콜옵션은 회사가 100% 쥐고, 나머지는 시장에 오버행." → 자본구조가 곧 리스크.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진(박 대표)의 눈</h3><p style="margin:6px 0">"메자닌·SPC(어메이징홀딩스)로 자기자본 최소 투입하며 ADS테크를 삼켰다. 주가 급등 자체가 자금조달이었다." → 창의적이나 무자본 M&A 논란.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자(부분)</div><h3 style="margin:8px 0 6px">증착필름 내재화</h3><p style="margin:0;font-size:12.5px">필름콘덴서 핵심 원재료 증착필름을 자체 생산 → 원가·품질 경쟁력. 다만 삼화·뉴인텍도 필름콘덴서를 하는 <strong>제한적 해자</strong>. 현금화: 지금(얇게).</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">필름콘덴서·PSU 기술</h3><p style="margin:0;font-size:12.5px">전원공급장치·범용 필름콘덴서는 성숙·경쟁 시장. 차별점은 전기차·ESS 고부가 전환 속도. 현금화: 진행(저마진).</p></div>
+    <div class="card acc"><div class="tag s">미검증(옵션)</div><h3 style="margin:8px 0 6px">CPO 얼라인먼트(ADS테크)</h3><p style="margin:0;font-size:12.5px">엔비디아 멜라녹스 공급 이력·1.6T CPO 얼라인먼트 공동개발. 상방은 크나 <strong>실매출·수익성 검증 초기</strong>. 현금화: 2027~ 추정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — 메자닌·SPC로 짜인 무자본 M&A 구조</h2>
+  <div class="chart"><div class="ct">지배구조 & 인수 구조 (2026 상반기 기준)</div><div class="cs">박 대표 → 서룡전자(38.35%) → 성호전자 → ADS테크(87.5%). SPC '어메이징홀딩스'와 메자닌으로 자기자본 최소 투입. 하단에 38.96% CB/BW 오버행.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- 박 대표 -->
+      <rect x="60" y="30" width="170" height="46" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="145" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">박 대표 (오너)</text>
+      <text x="145" y="66" text-anchor="middle" font-size="10.5" fill="#828b98">서룡전자 100% 보유</text>
+      <!-- 서룡전자 -->
+      <rect x="60" y="120" width="170" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="145" y="140" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">서룡전자</text>
+      <text x="145" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">최대주주 38.35%</text>
+      <!-- 특수관계인 -->
+      <rect x="60" y="210" width="170" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="145" y="230" text-anchor="middle" font-size="11.5" fill="#eaecef">특수관계인 합산</text>
+      <text x="145" y="246" text-anchor="middle" font-size="10.5" fill="#828b98">~55.23%</text>
+      <!-- 성호전자 center -->
+      <rect x="430" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="530" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">성호전자 (043260)</text>
+      <text x="530" y="162" text-anchor="middle" font-size="11" fill="#828b98">필름콘덴서·PSU · 시총 1.29조</text>
+      <!-- ADS테크 -->
+      <rect x="820" y="70" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="98" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">에이디에스테크</text>
+      <text x="920" y="116" text-anchor="middle" font-size="10.5" fill="#828b98">CPO 얼라인먼트 장비 · 87.5%</text>
+      <text x="920" y="132" text-anchor="middle" font-size="10.5" fill="#4bbf9a">2,800억 인수 · 2/13 종결</text>
+      <!-- SPC -->
+      <rect x="820" y="165" width="200" height="46" rx="6" fill="#22262f" stroke="#353b47"/>
+      <text x="920" y="185" text-anchor="middle" font-size="11.5" fill="#eaecef">SPC 어메이징홀딩스</text>
+      <text x="920" y="201" text-anchor="middle" font-size="10.5" fill="#828b98">성호 70억+매도자 우선주 64억</text>
+      <!-- 오버행 -->
+      <rect x="430" y="245" width="200" height="56" rx="6" fill="#22262f" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="530" y="266" text-anchor="middle" font-size="11.5" fill="#e78a5c" font-weight="600">CB 500억 + BW 300억</text>
+      <text x="530" y="282" text-anchor="middle" font-size="10.5" fill="#828b98">전환가 2,895원 · 콜옵션 100% 회사</text>
+      <text x="530" y="297" text-anchor="middle" font-size="10.5" fill="#f0525f">전량전환 시 오버행 38.96%</text>
+      <!-- arrows -->
+      <line x1="145" y1="76" x2="145" y2="120" stroke="#4bbf9a" stroke-width="1.8" marker-end="url(#ar)"/>
+      <line x1="230" y1="143" x2="430" y2="146" stroke="#5a6472" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="230" y1="230" x2="430" y2="160" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="630" y1="140" x2="820" y2="110" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="630" y1="160" x2="820" y2="185" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="530" y1="182" x2="530" y2="245" stroke="#e78a5c" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#ar)"/>
+      <text x="335" y="138" text-anchor="middle" font-size="10" fill="#5a6472">지분 38.35%</text>
+      <text x="725" y="118" text-anchor="middle" font-size="10" fill="#e78a5c">인수 87.5%</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <div class="note warn"><div class="h">거버넌스 관전 포인트</div><strong>"27억이 658억으로, 50억 CB가 2,000억으로."</strong> 성호전자는 M&A 발표가 만든 주가 급등(2,000→50,000원)으로 BW·CB의 파생가치를 부풀려 그것을 인수대금으로 전환하는 <em>메자닌 레버리지</em>를 썼다. 창의적이지만, ① <strong>순이익의 실체가 비현금 파생평가</strong>이고 ② <strong>38.96% 오버행</strong>이 상존하며 ③ 파이낸셜투데이는 이를 <em>"극단적 레버리지 빚투·무자본 M&A"</em>로 규정했다. 오너 지배력(콜옵션 100%)과 소액주주 희석이 동시에 걸린 구조 — 상시 점검 대상.</div>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">필름콘덴서(전기차·ESS·태양광)</td><td class="txt">구조 수요(전동화·재생E)</td><td class="txt">EV·ESS·태양광 인버터 채택 × 고부가 믹스</td><td class="txt">중(경쟁 다수)</td></tr>
+      <tr><td class="txt">파워(PSU)</td><td class="txt">교체·세트 수요</td><td class="txt">프린터·가전 물량</td><td class="txt">중(성숙·저마진)</td></tr>
+      <tr class="hl"><td class="txt">CPO 얼라인먼트(ADS테크)</td><td class="txt"><strong>구조 성장(AI DC)</strong></td><td class="txt">AI 데이터센터 광I/O · 1.6T 전환 · 엔비디아 CPO 로드맵</td><td class="txt">높음(선점)·단 검증 초기</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><div class="h">겐또의 핵심</div>전방(전동화·재생E·AI DC)은 모두 <strong>구조 수요</strong>가 맞다. 그러나 성호전자의 <em>실제 수혜 규모·마진은 아직 입증 초기</em>다. 본업은 경쟁이 치열해 마진이 얇고, 최대 상방(CPO)은 2027~2028 추정에 걸려 있다. 즉 <strong>수요는 진짜, 수혜의 크기·시점은 미검증</strong>. 여기에 투기 수급이 펀더멘털보다 주가를 크게 흔든다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 영업익 기준으로만</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">본업 OPM</div><div class="val">3~5<span class="u">%</span></div><div class="sub">1Q26 영업익 32억(매출 660억)</div></div>
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">15.0<span class="u">%</span></div><div class="sub">컨센 급반등 — 미검증</div></div>
+    <div class="kpi"><div class="lab">EV/영업익 26E</div><div class="val">~28<span class="u">x</span></div><div class="sub">영업익 453억E 기준</div></div>
+  </div>
+  <p>순이익 지표(PER 3~4배·ROE 46~59%)는 전부 <strong>파생평가 착시</strong>라 유닛 이코노믹스로 쓸 수 없다. 실체는 <em>본업 OPM 3~5%의 얇은 부품업</em>에, CPO라는 고배수 옵션이 얹힌 구조. 밸류는 오직 <strong>영업이익·매출(PSR)·EV/영업익</strong>으로만 판단한다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +1.0억 · 연기금 +5.9억 · 투신 +13.5억</strong>(합산 시총대비 +0.16%) — 투신 중심 유입. −70% 조정 뒤 반등에서 기관이 일부 담지만, <strong>전 동전주 특유의 개인·테마·투기 수급이 지배적</strong>이다. 38.96% 오버행이 반등의 천장 역할을 할 수 있어, 수급은 언제든 급반전 가능한 좌표다.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부 · 이익의 질</div>
+  <h2 class="sec">영업이익률 궤적 — 안정 궤도가 아니다</h2>
+  <div class="chart"><div class="ct">영업이익 & OPM 궤적 (억원 / %)</div><div class="cs">영업익 259→63→76→453E, OPM 12.4→3.0→3.3→15.0%. <strong>2024~2025 급감 후 2026E 급반등</strong>이라는 요동 — 이익 궤도의 예측 가능성이 낮다는 신호다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- OP bars scale max 453 -> 190px k=0.4194 baseline 250 -->
+      <!-- 2023 259->108.6 ; 2024 63->26.4 ; 2025 76->31.9 ; 2026E 453->190 -->
+      <rect x="140" y="141.4" width="90" height="108.6" fill="#4bbf9a" opacity="0.85"/>
+      <text x="185" y="132" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">259</text>
+      <text x="185" y="268" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <rect x="370" y="223.6" width="90" height="26.4" fill="#4bbf9a" opacity="0.85"/>
+      <text x="415" y="214" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">63</text>
+      <text x="415" y="268" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <rect x="600" y="218.1" width="90" height="31.9" fill="#4bbf9a" opacity="0.85"/>
+      <text x="645" y="208" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">76</text>
+      <text x="645" y="268" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <rect x="830" y="60" width="90" height="190" fill="#4bbf9a" opacity="0.55" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="875" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">453E</text>
+      <text x="875" y="268" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 12.4,3.0,3.3,15.0 -> y=250-opm*11 -->
+      <polyline points="185,113.6 415,217 645,213.7 875,85" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="185" cy="113.6" r="4" fill="#cba24a"/><circle cx="415" cy="217" r="4" fill="#cba24a"/><circle cx="645" cy="213.7" r="4" fill="#cba24a"/><circle cx="875" cy="85" r="4" fill="#cba24a"/>
+      <text x="185" y="105" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">12.4%</text>
+      <text x="415" y="233" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">3.0%</text>
+      <text x="875" y="77" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">15.0%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 본업 32억, 그런데 순이익 3,195억</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">660억</td><td class="txt">본업(콘덴서·파워) 중심</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">32억</td><td class="txt">OPM ~4.8% — <strong>본업의 진짜 체력</strong></td></tr>
+      <tr class="hl"><td class="txt">당기순이익</td><td class="num up">3,195억</td><td class="txt">영업익의 <strong>약 100배</strong> — 파생평가</td></tr>
+      <tr><td class="txt">└ 파생상품평가이익(25A)</td><td class="num">1,208억</td><td class="txt">금융수익 1,381억의 87.5% (CB·BW 콜옵션)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>이익의 질 — 낮다, 그리고 비현금이다</h3>
+  <p>비츠로셀·유통·건설과 정반대로, 성호전자는 <strong>순익이 영업익보다 수십~수백 배 튀는 극단적 노이즈</strong>를 가진다. 그 정체는 <em>전환사채·BW 매도청구권(콜옵션)의 파생상품평가이익</em> — 주가가 오르면 커지고 내리면 사라지는 <strong>비현금 '종이 이익'</strong>이다. 실제로 2025년 금융수익 1,381억 중 1,208억(87.5%)이 여기서 나왔다. 즉 <strong>순이익은 사업이 번 게 아니라 자본구조와 주가가 만든 숫자</strong>다. 이익의 질 관점에서 이 배치 최하위이며, 이것이 판정을 '관망·소액 트레이딩'으로 고정하는 결정적 이유다.</p>
+  <div class="note warn"><div class="h">함정 주의</div>PER 3.08x·ROE 46~59%는 매력적으로 보이지만 <strong>전부 파생평가 착시</strong>다. 주가가 하락하면 파생부채·평가손으로 뒤집혀 순익이 급감할 수 있다. <em>절대 순익·PER로 밸류하지 말 것.</em></div>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이 — 58배 then −70%</h2>
+  <div class="chart"><div class="ct">주가 궤적 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">1,046원 → 53,200원(4/14 종가, 장중 고점 59,600) → 18,010원(−66%). 상승은 실적이 아니라 <strong>CPO 테마·품절주 수급·파생 잭팟</strong>이 주도했다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 1000..60000 -> y 250..40 k=(250-40)/59000=0.003559 ; y=250-(p-1000)*0.003559 -->
+      <line x1="55" y1="215.4" x2="1035" y2="215.4" stroke="#20242c"/><text x="48" y="218" text-anchor="end" font-size="9" fill="#5a6472">10k</text>
+      <line x1="55" y1="144.2" x2="1035" y2="144.2" stroke="#20242c"/><text x="48" y="147" text-anchor="end" font-size="9" fill="#5a6472">30k</text>
+      <line x1="55" y1="73.0" x2="1035" y2="73.0" stroke="#20242c"/><text x="48" y="76" text-anchor="end" font-size="9" fill="#5a6472">50k</text>
+      <!-- monthly-ish closes: 1046,2000,3000,5200,8000,16800,25000,40000,53200,35000,28000,18010 x 80..980 step ~82 -->
+      <polyline points="80,249.8 162,246.4 244,242.9 326,235.0 408,225.1 490,193.7 572,164.6 654,111.2 736,64.4 818,128.9 900,153.9 980,189.4" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- markers -->
+      <circle cx="490" cy="193.7" r="4" fill="#4bbf9a"/><text x="490" y="185" text-anchor="middle" font-size="9" fill="#4bbf9a">ADS인수·CPO</text>
+      <circle cx="736" cy="64.4" r="4.5" fill="#f0525f"/><text x="736" y="55" text-anchor="middle" font-size="9.5" fill="#f0525f">53,200 (고점 59,600)</text>
+      <circle cx="900" cy="153.9" r="4" fill="#cba24a"/><text x="900" y="145" text-anchor="middle" font-size="9" fill="#cba24a">파생 재평가 하락</text>
+      <circle cx="980" cy="189.4" r="4.5" fill="#e78a5c"/><text x="980" y="206" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">18,010</text>
+      <text x="80" y="270" font-size="9.5" fill="#828b98">'25.08</text><text x="654" y="270" font-size="9.5" fill="#828b98">'26.04</text><text x="960" y="270" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 수급·테마가 지배</h2>
+  <p>비츠로셀의 급등이 '실적 반·멀티플 반'이었다면, 성호전자의 58배는 <strong>거의 전부가 멀티플(테마·수급)</strong>이었다. 본업 영업익은 2024~2025 내내 60~80억으로 얇았는데 시총은 1,000억 미만에서 <strong>1.3조로 팽창</strong>했고, 여기에 파생 잭팟(순익 3,195억)이 '싸 보이는 PER'의 착시를 더했다. −70% 조정은 <em>펀더멘털 훼손이 아니라 과도한 멀티플·파생 착시의 정상화</em>다. 지금도 EV/영업익 ~28배는 CPO의 큰 성장을 이미 당겨 반영한 자리다.</p>
+
+  <div class="chart"><div class="ct">2026 상대주가 (rebase=100, 1월 = 16,800원 기준)</div><div class="cs">테마 랠리로 코스닥을 압도적으로 아웃퍼폼(피크 +217%)했다가 되돌림. 현재 +7% — 실적선이 아니라 <strong>테마 사이클</strong>의 흔적.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="80" x2="1035" y2="80" stroke="#20242c"/><text x="48" y="83" text-anchor="end" font-size="9" fill="#5a6472">300</text>
+      <line x1="55" y1="160" x2="1035" y2="160" stroke="#20242c"/><text x="48" y="163" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- 성호 rebase: y=200-(idx)*0.4 ; 100->160,317->73.2,107->157.2 -->
+      <polyline points="80,160 240,144 400,124 560,73.2 720,117.2 880,143.2 980,157.2" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <circle cx="560" cy="73.2" r="4" fill="#f0525f"/><text x="560" y="65" text-anchor="middle" font-size="9" fill="#f0525f">+217%</text>
+      <text x="980" y="151" font-size="9.5" fill="#e78a5c" font-weight="700">성호 +7%</text>
+      <!-- KOSDAQ ~+5% -->
+      <polyline points="80,160 400,158 560,155 720,156 980,158" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="171" font-size="9.5" fill="#828b98">코스닥 ~+5%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇을 믿고 무엇을 버리나</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영</th><th class="txt">본 리포트 판단</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 영업익 급증(453억E·OPM 15%)</td><td class="txt">선반영</td><td class="txt"><span class="tag n">미검증 — 분기 확인 필요</span></td></tr>
+      <tr><td class="txt">순익 2,867억E(파생평가 포함)</td><td class="txt">반영</td><td class="txt"><span class="tag s">신뢰 불가 — 폐기</span></td></tr>
+      <tr><td class="txt">ADS테크 CPO 실매출(2027~)</td><td class="txt">일부</td><td class="txt"><span class="tag b">상방 옵션 — 아직 옵션</span></td></tr>
+      <tr><td class="txt">38.96% 오버행·재무 투명성</td><td class="txt">미반영</td><td class="txt"><span class="tag s">하방 리스크</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">두 개의 전장 — 필름콘덴서(레드오션) & CPO(선점 옵션)</h2>
+  <div class="chart"><div class="ct">2026E PSR 비교 (배) — 순익 노이즈로 PER 대신 PSR로 비교</div><div class="cs">PER은 성호의 파생평가 때문에 무의미. PSR로 보면 성호 4.3x는 필름콘덴서 peer(삼화·뉴인텍)보다 높고, 그 프리미엄의 근거는 순전히 <strong>CPO 옵션</strong>이다.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="170" y1="210" x2="1030" y2="210" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1x=170px from x=170; max ~4.5 -> use k=170 -->
+      <!-- 성호전자 4.3 -> 731 -->
+      <rect x="170" y="30" width="731" height="26" fill="#cba24a"/><text x="911" y="48" font-size="12" fill="#cba24a" font-weight="700">성호전자 4.3x</text><text x="165" y="48" text-anchor="end" font-size="11" fill="#eaecef">성호전자</text>
+      <!-- 뉴인텍 ~3.0 -> 510 -->
+      <rect x="170" y="72" width="510" height="26" fill="#5a6472"/><text x="690" y="90" font-size="11" fill="#bfc5ce">~3.0x</text><text x="165" y="90" text-anchor="end" font-size="11" fill="#bfc5ce">뉴인텍</text>
+      <!-- 삼화콘덴서 ~1.8 -> 306 -->
+      <rect x="170" y="114" width="306" height="26" fill="#5a6472"/><text x="486" y="132" font-size="11" fill="#bfc5ce">~1.8x</text><text x="165" y="132" text-anchor="end" font-size="11" fill="#bfc5ce">삼화콘덴서</text>
+      <!-- 동양이엔피 ~0.7 -> 119 -->
+      <rect x="170" y="156" width="119" height="26" fill="#5a6472"/><text x="299" y="174" font-size="11" fill="#bfc5ce">~0.7x</text><text x="165" y="174" text-anchor="end" font-size="11" fill="#bfc5ce">동양이엔피</text>
+    </svg>
+    <div class="lgd"><span style="color:var(--muted)">PSR은 시점·소스에 따라 편차 — 방향성 참고용. peer 수치는 근사.</span></div>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">성호전자 PSR 4.3x는 순수 필름콘덴서 사업 가치로는 정당화되지 않는다. 그 격차 전부가 <strong>CPO(ADS테크) 옵션 프리미엄</strong>이며, 그래서 이 종목은 '콘덴서주'가 아니라 '테마 옵션주'로 거래된다.</p>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">삼화콘덴서</h3><p style="margin:6px 0;font-size:12.5px">MLCC·필름콘덴서 대형(전장 중심). 규모·안정성 우위. 성호 대비 <strong>본업 체력·재무 투명성 우월</strong>, 단 CPO 스토리는 없음.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">뉴인텍</h3><p style="margin:6px 0;font-size:12.5px">전기차용 필름콘덴서 순수 노출. 성호와 <strong>필름콘덴서 직접 경쟁</strong>. EV 사이클 민감.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">동양이엔피 · 성문전자</h3><p style="margin:6px 0;font-size:12.5px">PSU·콘덴서 인접. 저PSR 부품주. 성호와 본업 성격 유사하나 테마 프리미엄 없음.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 광 I/O·CPO 밸류체인</h3><p style="margin:6px 0;font-size:12.5px">엔비디아 CPO 로드맵의 광부품·얼라인먼트 밸류체인. 성호(ADS테크)는 이 안에서 <strong>장비(수율) 포지션</strong>으로 차별화 — 검증되면 재평가, 지연되면 옵션 소멸.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 순익 아닌 매출·영업익 축으로</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="txt">밸류 축</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">필름콘덴서 EV/ESS 수주 확대 + 영업익 레버리지(OPM 15%) 실현 + CPO 상업화 기대, 테마 재점화</td><td class="txt">PSR 리레이팅</td><td class="num up">28,000</td><td class="num">30%</td><td class="num up">+55%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">영업 성장은 나오나 순익 노이즈·오버행·변동성 지속, 레인지</td><td class="txt">현 PSR 유지</td><td class="num">17,000</td><td class="num">40%</td><td class="num down">−6%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">2026E 영업익 미실현 + 파생평가 반전(순익 급감) + 오버행 출회 + 테마 냉각</td><td class="txt">디레이팅</td><td class="num down">10,000</td><td class="num">30%</td><td class="num down">−44%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">18,200</td><td class="num up">+1%</td></tr></tfoot>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">EV = 0.30×28,000 + 0.40×17,000 + 0.30×10,000 ≈ 18,200원. 기대값은 공정가치 부근이나 <strong>양쪽 꼬리가 극단</strong>(Bull +55%·Bear −44%)이고 재무 신뢰도가 낮다 → 정규 비중 부적합, 매집 13,000~15,000에서 소액 트레이딩.</p>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 18,010(흰선). 자체 밴드 Bear 10,000 ~ Bull 28,000, Base 17,000. 하방·상방이 모두 넓은 <strong>극단 대칭</strong> — 손익비가 아니라 변동성이 특징인 자리.</div>
+    <svg viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 5000..32000 -> x 120..1030 k=(1030-120)/27000=0.0337 ; x=120+(p-5000)*0.0337 -->
+      <line x1="120" y1="165" x2="1030" y2="165" stroke="#353b47"/>
+      <text x="120" y="185" text-anchor="middle" font-size="9" fill="#5a6472">5k</text>
+      <text x="457" y="185" text-anchor="middle" font-size="9" fill="#5a6472">15k</text>
+      <text x="794" y="185" text-anchor="middle" font-size="9" fill="#5a6472">25k</text>
+      <text x="1020" y="185" text-anchor="middle" font-size="9" fill="#5a6472">~31k</text>
+      <!-- band 10000..28000 -->
+      <rect x="288.5" y="55" width="607.1" height="30" rx="4" fill="#e78a5c" opacity="0.26"/>
+      <text x="288" y="48" font-size="10" fill="#e78a5c">Bear 10k</text>
+      <text x="895" y="48" text-anchor="end" font-size="10" fill="#e78a5c">Bull 28k</text>
+      <!-- Base 17000 -->
+      <line x1="524.4" y1="50" x2="524.4" y2="90" stroke="#cba24a" stroke-width="2.5"/><text x="524" y="103" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 17k</text>
+      <!-- 현재가 18010 -->
+      <line x1="558.5" y1="25" x2="558.5" y2="145" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="558" y="20" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 18,010</text>
+      <!-- 매집밴드 13000~15000 -->
+      <rect x="389.6" y="118" width="67.4" height="14" rx="3" fill="#4bbf9a" opacity="0.4"/>
+      <text x="423" y="112" text-anchor="middle" font-size="9" fill="#4bbf9a">매집 13~15k</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 △</h3><p style="margin:6px 0;font-size:12.5px">본업은 2,300억대 정체. 폭발은 <strong>CPO(ADS테크) 추정</strong>에 전적으로 의존 — 실현되면 강, 지연되면 없음.</p></div>
+    <div class="card"><h3 style="margin-top:0">마진 확장 △</h3><p style="margin:6px 0;font-size:12.5px">OPM 3%→15%E는 급반등 추정. 본업 3~5%에서 실제로 올라오는지 <strong>분기 검증 필수</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">멀티플 확장 ✗(위험)</h3><p style="margin:6px 0;font-size:12.5px">이미 PSR 4.3x·EV/영업익 28x로 <strong>미래를 당겨써</strong> 있음. 오버행·순익 노이즈가 오히려 디레이팅 압력.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 기여(미반영): ADS테크 1.6T CPO 대형 수주 / 필름콘덴서 EV·ESS 대형 수주 / 재무 투명성 개선. 실현 시 상방 크나, 셋 다 <strong>확인 전까지는 옵션</strong>.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>재무 노이즈·파생평가 반전</strong></td><td class="txt">주가 하락 시 CB·BW 콜옵션 평가손 → 순익 급감·신뢰도·주가 타격</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>급등 후 되돌림(이익 미실현)</strong></td><td class="txt">58배 급등·−70% 조정 전례. OPM 15% 추정 미달 시 밸류 붕괴 −40%</td><td class="num">높음</td></tr>
+      <tr><td class="txt"><strong>오버행 출회</strong></td><td class="txt">CB/BW 전량전환 시 상장주식 38.96% 희석. 전환가 2,895원 → 대량 차익 물량</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>CPO 상업화 지연</strong></td><td class="txt">ADS테크 2027~ 실매출이 지연되면 프리미엄(PSR 4.3x)의 근거 소멸</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>투기 수급·유동성</strong></td><td class="txt">개인·테마 수급 지배, 하루 급등락 상시</td><td class="num">상시</td></tr>
+      <tr><td class="txt"><strong>거버넌스(무자본 M&A)</strong></td><td class="txt">메자닌·SPC 레버리지 구조, 소액주주 희석·이해상충 상시 점검</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then (소액·트레이딩 전제)</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 13,000~15,000 눌림에서 <strong>소액</strong>(고위험 감안 20~30bp)만. 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 분기 영업익 레버리지(OPM 15%) 확인 → 소폭 추가.</li>
+    <li><strong>트레이딩 확대:</strong> ADS테크 CPO 상업 계약·대형 필름콘덴서 수주 확인 시.</li>
+    <li><strong>축소·정리:</strong> 파생평가 반전·영업익 미실현·대량 오버행 출회·테마 냉각 → 즉시.</li>
+    <li><strong>차익:</strong> 급등 시 빠른 차익(투기 변동성). 28,000 접근 시 부분 차익.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">분기 <strong>영업이익·OPM</strong>(순익 아님)</td><td class="txt">본업 레버리지 실현</td><td class="txt">OPM 15% 추정 대비 미달</td></tr>
+      <tr><td class="txt">ADS테크 CPO 수주·실매출</td><td class="txt">최대 성장 옵션 실현</td><td class="txt">2027 매출 추정 대비 지연</td></tr>
+      <tr><td class="txt">재무 투명성(파생평가 비중)</td><td class="txt">순익의 질</td><td class="txt">순익≫영업익 지속(비현금)</td></tr>
+      <tr><td class="txt">CB/BW 전환·오버행 진행</td><td class="txt">수급 천장</td><td class="txt">대량 전환·매도 출회</td></tr>
+      <tr><td class="txt">필름콘덴서 EV·ESS 수주잔고</td><td class="txt">본업 성장</td><td class="txt">수주 공백</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 분기별</td><td class="txt">영업익 레버리지(OPM 15% 추정) 실적 확인</td><td class="txt"><span class="tag n">핵심(검증)</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">전기차·ESS 필름콘덴서 대형 수주</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2027 접근</td><td class="txt">ADS테크 CPO·1.6T 광트랜시버 양산 가시화</td><td class="txt"><span class="tag b">상방 옵션</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">CB/BW 전환·오버행 진행, 재무제표 주석(파생평가)</td><td class="txt"><span class="tag s">양방향(주로 하방)</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note warn"><div class="h">내 베팅 한 문장</div><strong>베팅: "필름콘덴서 본업(OPM 3~5%)에 CPO(ADS테크)라는 진짜 옵션이 얹혔지만, 순이익은 사업이 아니라 CB·BW 콜옵션 파생평가가 만든 종이 숫자이고, 38.96% 오버행과 58배-then-70% 변동성이 밸류 신뢰도를 압도한다. 그래서 이 이름은 사는 게 아니라, 13,000~15,000에서 소액으로 트레이딩하는 것이다."</strong><br>어떻게 맞나: 분기 영업익 OPM 15%가 실제로 찍히고 CPO 실매출이 붙으면 재평가. 어떻게 틀리나: 파생평가가 반전되고 오버행이 쏟아지면 −40% 이상(정리). 한 단어: <em>"종이 이익"</em>. 남는 것: <strong>"스토리는 진짜, 그러나 숫자는 못 믿는다 — 소액·눌림·트레이딩."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 관망·트레이딩(고위험·소액)</span><span class="pill">Base 17,000</span><span class="pill">매집밴드 13,000~15,000</span><span class="pill">Bull 28,000 / Bear 10,000</span><span class="pill">EV +1%</span><span class="pill">thesis break: 파생반전·오버행·영업익 미실현·테마냉각</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 밸류는 <strong>영업이익·매출(PSR)·EV/영업익</strong> 축으로만 — 순이익은 CB·BW 콜옵션 파생평가 노이즈라 폐기. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 18,010·시총 1.29조·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 52주 1,021~59,600·4/14 종가 53,200) · 순익 이상치 원인(2025 금융수익 1,381억 중 파생상품평가이익 1,208억=CB·BW 콜옵션·1Q26 매출660/영업32/순익3,195억) = stockhandbook·bizwatch · CB 500억+BW 300억·전환가 2,895원·오버행 38.96%·최대주주 서룡전자 38.35%(박 대표)·특관 55.23% = 이투데이·블로터·뉴스톱 · ADS테크 87.5% 2,800억 인수·SPC 어메이징홀딩스·엔비디아 멜라녹스 공급·CPO 얼라인먼트·매출추정 2026 714/2027 5,914/2028 1조863억·성호연결 2028 매출1조2,977·OP3,698억 = 메리츠(양승수)·신한·대신·한국M&A경제 · 필름콘덴서 증착필름 내재화·경쟁사(삼화콘덴서·뉴인텍·동양이엔피·성문전자) = 위키·핀포인트·CNews · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·M&A구조·리포트 다중소스, 순익·2026E 이익은 신뢰도 낮아 영업익 기준 병기.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGC에너지 005090 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">005090</span>
+    <span class="nm">SGC에너지 <small>SGC Energy · 발전·건설 지주 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩42,350</span>
+    <span>시총 ₩6,102억 · PBR 0.89x · 26E PER 24.7x</span>
+    <span class="rating">비중확대 관심 · 매집 33,000~38,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·재평가</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>현재가</b> ₩42,350 (+12.2%)</span>
+  <span><b>52주</b> 20,150 ~ 73,700</span>
+  <span><b>PBR</b> 0.89x (BPS 47,635)</span>
+  <span><b>배당</b> 3.07% (DPS 1,300)</span>
+  <span><b>부채비율</b> 339%</span>
+  <span><b>OPM 26E</b> 6.1%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">순자산 밑에서 거래되는 발전 지주가, 자기 발전소 옆에 4.5조짜리 AI 데이터센터를 짓겠다고 했다 — 딥밸류가 성장 옵션을 손에 쥔 자리.</h1>
+  <p class="lead">SGC에너지는 열과 전기를 파는 <em>집단에너지·바이오매스 열병합 발전</em>에 건설·부동산·유리를 얹은 SGC그룹 지주다. 매력은 두 겹이다 — 아래로는 <strong>PBR 0.89배(순자산 하회)·배당수익률 3.07%</strong>가 하방을 받치고<span class="src">네이버 API 26-07-22 · BPS 47,635<span class="tip">현재가 42,350 ÷ BPS 47,635 = 0.89x. DPS 1,300 / 42,350 = 3.07%</span></span>, 위로는 <strong>군산 300MW급 AI 데이터센터</strong>가 재평가 옵션을 얹는다. 자기 발전소로 전력을 대고 바닷물로 식히는 '전력 자급 DC' 구조다<span class="src">한국경제·투데이에너지 26-02-03<span class="tip">전북 군산 국가제2산단 SGC그린파워 부지 3.5만평, KT·미래에셋증권 협력, 총 300MW·투자 4.5조 추산</span></span>. 여기에 유가 상승·우드칩 하락으로 발전 스프레드가 벌어지며 2025년 적자에서 <strong>1Q26 영업익 +102.7%·순익 흑전</strong>으로 돌아섰다. 주가는 20,150 → 68,600(4/23) → 42,350. <strong>자산·배당으로 사서 데이터센터 옵션을 기다린다.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 33,000~38,000원 · Base 43,000 / Bull 58,000 / Bear 28,000 · 확률가중 EV ≈ 44,500원(+5%, +배당 3%).</strong> PBR 0.89 자산가치와 배당이 다운사이드를 제한하고, 군산 300MW AI DC와 발전 스프레드 회복이 상방 트리거. 다만 <em>부채비율 339%</em>에 4.5조 규모 DC capex가 얹히는 레버리지가 옵션의 이면 리스크. thesis break: SMP 재악화로 발전 재적자 / DC 인허가·자금조달 무산 / 재무구조 악화로 배당 축소.</div>
+
+  <div class="note warn"><div class="h">자체 교차검증 — 반드시 짚을 두 가지</div>
+  <ul class="cl">
+    <li><strong>2025 적자 → 트레일링 PER 무의미:</strong> 2025A 지배순익 −614억(적자전환, OP −49.5%)<span class="src">FnGuide·기업분석 26-03<span class="tip">2025 매출 +4.5%, OP −49.5%, 순익 적자전환. 건설·부동산 매출↑에도 원가부담</span></span>. 밸류는 <em>2026E 회복(EPS 1,716·PER 24.7x)</em>과 <em>PBR 0.89·배당 3%</em>(자산·현금흐름) 축으로만 판단.</li>
+    <li><strong>고부채 + capex 이중부담:</strong> 부채비율 339%(발전·건설 자본집약)에 300MW DC(투자 4.5조 추산)가 단계적으로 얹힌다. JV(KT·미래에셋)·프로젝트 파이낸싱으로 온발란스 부담을 얼마나 덜어내는지가 옵션 실현의 관건.</li>
+  </ul></div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 적자를 지나 회복으로, 그러나 밸류의 축은 자산·배당</h2>
+  <p>단위 억원(EPS·DPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 발전·건설 지주라 <strong>매출은 2.4~3조로 크지만 이익률은 낮고 변동적</strong> — 2025년 발전 스프레드 악화로 적자에 빠졌다가 2026년 흑자로 복귀한다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">DPS</th><th class="num">PBR</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">30,241</td><td class="num">1,068</td><td class="num">3.5%</td><td class="num">421</td><td class="num">2,879</td><td class="num">1,700</td><td class="num">0.55x</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">23,550</td><td class="num">1,896</td><td class="num">8.1%</td><td class="num">650</td><td class="num">4,512</td><td class="num">1,700</td><td class="num">0.47x</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">24,607</td><td class="num">958</td><td class="num">3.9%</td><td class="num down">−614</td><td class="num down">−4,259</td><td class="num">1,300</td><td class="num">0.45x</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">26,295</td><td class="num">1,614</td><td class="num">6.1%</td><td class="num">290 <span class="est">E</span></td><td class="num">1,716</td><td class="num">1,433</td><td class="num">0.89x</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*2026E 지배순익(네이버 '−', 추정 ~290억E)은 회복 초기치. 1Q26 영업익 356억(+102.7%)·순익 50억(흑자전환). 2025 적자는 발전 스프레드 악화+건설 원가부담. 배당은 3% 수준 유지.</p>
+
+  <div class="chart"><div class="ct">손익 회복 궤적 — 영업이익(막대, 억원) + 지배순익(라인, 억원)</div><div class="cs">순익 라인이 2025년 제로선 아래로 내려갔다가(적자) 2026E에 다시 올라온다. 흑전이 핵심 스토리.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- zero line -->
+      <line x1="60" y1="225.4" x2="1030" y2="225.4" stroke="#353b47" stroke-width="1.5"/>
+      <text x="52" y="229" text-anchor="end" font-size="9" fill="#5a6472">0</text>
+      <!-- gridlines -->
+      <line x1="60" y1="126.8" x2="1030" y2="126.8" stroke="#20242c"/><text x="52" y="130" text-anchor="end" font-size="9" fill="#5a6472">1,000</text>
+      <line x1="60" y1="50.4" x2="1030" y2="50.4" stroke="#20242c"/><text x="52" y="54" text-anchor="end" font-size="9" fill="#5a6472">1,900</text>
+      <!-- OP bars, centers 180/430/680/930 -->
+      <rect x="145" y="126.8" width="70" height="98.6" fill="#4bbf9a" opacity="0.9"/>
+      <text x="180" y="120" text-anchor="middle" font-size="11" fill="#4bbf9a">1,068</text>
+      <rect x="395" y="50.4" width="70" height="175" fill="#4bbf9a" opacity="0.9"/>
+      <text x="430" y="43" text-anchor="middle" font-size="11" fill="#4bbf9a">1,896</text>
+      <rect x="645" y="136.9" width="70" height="88.5" fill="#4bbf9a" opacity="0.9"/>
+      <text x="680" y="130" text-anchor="middle" font-size="11" fill="#4bbf9a">958</text>
+      <rect x="895" y="76.4" width="70" height="149" fill="#4bbf9a" opacity="0.55" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="930" y="69" text-anchor="middle" font-size="11" fill="#4bbf9a">1,614</text>
+      <!-- 순익 line: 421->186.5, 650->165.4, -614->282.1, 290->198.6 -->
+      <polyline points="180,186.5 430,165.4 680,282.1 930,198.6" fill="none" stroke="#e78a5c" stroke-width="2.6"/>
+      <circle cx="180" cy="186.5" r="4" fill="#e78a5c"/><circle cx="430" cy="165.4" r="4" fill="#e78a5c"/><circle cx="680" cy="282.1" r="4.5" fill="#e78a5c"/><circle cx="930" cy="198.6" r="4" fill="#e78a5c"/>
+      <text x="180" y="179" text-anchor="middle" font-size="9.5" fill="#e78a5c">421</text>
+      <text x="680" y="296" text-anchor="middle" font-size="9.5" fill="#f0525f" font-weight="700">−614 적자</text>
+      <text x="930" y="191" text-anchor="middle" font-size="9.5" fill="#e78a5c" font-weight="700">290E</text>
+      <!-- x labels -->
+      <text x="180" y="312" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <text x="430" y="312" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <text x="680" y="312" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <text x="930" y="312" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#e78a5c"></i>지배순익</span><span style="color:var(--muted)">점선/반투명=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 자산·배당 하방</h3><p style="margin:6px 0">PBR <strong>0.89배(순자산 이하)</strong>·배당수익률 <strong>3.07%</strong>. 발전소·부지·건설 자산이 다운사이드를 받치는 딥밸류. 5년째 PBR 0.5배 안팎에서 거래되던 방치주라 <em>바닥이 두껍다</em>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 실적 회복</h3><p style="margin:6px 0">2025 적자 → 2026 흑전. 유가↑·우드칩↓로 발전 스프레드 확대, REC 발급 증가, 건설 백로그 안정. <strong>1Q26 OP +102.7%·순익 흑전</strong>이 궤도를 확인했다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 데이터센터 옵션</h3><p style="margin:6px 0">군산 <strong>300MW AI DC</strong>(투자 4.5조 추산·KT·미래에셋 JV). 전력을 파는 회사가 전력을 가장 많이 쓰는 DC를 직접 짓는 <em>수직결합</em> — 장기 EPS·멀티플 재평가 재료.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (자산·현금흐름형 지주 + 성장 옵션)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 집단에너지(규제·지역독점)·발전 자산·군산 부지. 유틸리티형 안정 현금흐름.</li>
+        <li><strong>현금창출:</strong> 발전 열·전기 판매 + 건설 백로그. 배당 3% 지속. 다만 이익률 낮고 스프레드 변동.</li>
+        <li><strong>레버리지:</strong> 부채 339% + DC capex가 B+를 A로 못 올리는 핵심 제약.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시축소</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 발전 스프레드 회복 지속 + 300MW DC 인허가·전력계약·자금조달 가시화 + PBR 1x 수렴.</li>
+        <li><strong>갈아타기:</strong> DC 비상발전 순수 노출을 원하면 지엔씨에너지, 집단에너지 대형은 지역난방공사. SGC는 '딥밸류 유틸 + DC 옵션' 하이브리드.</li>
+        <li><strong>즉시축소:</strong> SMP 재악화로 발전 재적자 / DC 무산·지연 / 재무 악화로 배당 축소.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>수급 상위주 다수가 4~7월 급등 후 큰 조정을 거친 눌림 국면이다. SGC에너지는 그중 <strong>자산가치(PBR&lt;1)·배당이 하방을 받쳐 손실 위험이 구조적으로 제한된</strong> 소수 그룹에 든다. 순수 성장 테마주(멀티플이 미래를 통째로 당겨쓴 종목)와 달리, <em>"떨어져도 순자산이 받치고, 오르면 데이터센터가 얹는"</em> 비대칭 손익비가 이 종목의 상대 매력이다. 다만 고부채라 '완전한 안전마진'은 아니고, DC 옵션이 켜지지 않으면 다시 딥밸류로 회귀하는 정체 리스크가 상대 열위.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"열과 전기를 파는 <strong>집단에너지·바이오매스 열병합 발전</strong>과 건설·부동산·유리를 하는 SGC그룹 지주로, 보유 발전소·군산 부지를 활용해 <strong>전력 자급형 AI 데이터센터</strong>로 확장하려는 에너지·인프라 회사."</p>
+  <div class="note"><div class="h">이익의 구조 — 매출≠이익≠성장</div>매출은 2.4~3조(발전·건설 규모)로 크지만 <strong>이익률이 낮고 발전 스프레드에 따라 요동</strong>친다(2025 적자). 성장·재평가는 규모가 아니라 <strong>300MW 데이터센터</strong>에서 나온다 — 전력을 파는 회사가 전력을 가장 많이 쓰는 DC를 직접 지어 수직결합하는 구조가 스토리의 핵심.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 무엇으로 벌고, 무엇으로 큰가</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="txt">매출 비중(개략)</th><th class="txt">수익 방정식</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>발전·에너지</strong></td><td class="txt">집단에너지(지역난방)·바이오매스 열병합</td><td class="txt">~30% <span class="est">est</span></td><td class="txt">(SMP+열판매) − 연료비(우드칩·유연탄) + REC·탄소배출권</td><td class="txt">규제·필수 수요, 스프레드 변동</td></tr>
+      <tr class="hl"><td class="txt"><strong>건설·부동산</strong></td><td class="txt">SGC이앤씨 EPC·플랜트·토목·주택</td><td class="txt">~55% <span class="est">est</span></td><td class="txt">수주 백로그 × 진행률 − 공사원가</td><td class="txt">매출 최대, 원가부담에 마진 얇음</td></tr>
+      <tr><td class="txt"><strong>유리·기타</strong></td><td class="txt">SGC솔루션(도어글라스·산업용 유리)·물류</td><td class="txt">~12% <span class="est">est</span></td><td class="txt">유리 P×Q(도어글라스 증설)</td><td class="txt">투자 확대 중, 안정 기여</td></tr>
+      <tr><td class="txt"><strong>AI 데이터센터</strong> <span class="tag n">신규</span></td><td class="txt">군산 300MW(1단계 40MW 모듈형)</td><td class="txt">2028~ <span class="est">E</span></td><td class="txt">임대·코로케이션 + 전력 자급 마진</td><td class="txt">재평가 옵션, capex 집약</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">비중은 개략 추정(정확한 부문별 분해는 사업보고서 확인 필요). 건설·부동산이 매출 최대, 발전·에너지·유리가 뒤를 잇는 구조.<span class="src">FnGuide·catch 기업분석<span class="tip">"주요 매출은 건설 및 부동산에서 발생, 발전·에너지·유리가 뒤를 잇는다"</span></span></p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원, 개략) — 건설이 규모, 발전이 이익 변동, DC가 미래</div><div class="cs">건설·부동산(회색)이 매출 몸통, 발전·에너지(주황)가 스프레드로 이익을 좌우. 2028E 데이터센터(골드 점선)가 새 층으로 얹힌다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale: max total ~26300 -> 200px, k=0.0076 -->
+      <!-- 2024: 건설12900, 발전7100, 유리3550 (23550) -->
+      <g>
+        <rect x="180" y="151.9" width="150" height="98.1" fill="#5a6472"/>
+        <rect x="180" y="97.9" width="150" height="54" fill="#e78a5c" opacity="0.9"/>
+        <rect x="180" y="70.9" width="150" height="27" fill="#cba24a"/>
+        <text x="255" y="62" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">23,550</text>
+        <text x="255" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025: 건설13500, 발전7400, 유리3700 (24607) -->
+      <g>
+        <rect x="465" y="147.4" width="150" height="102.6" fill="#5a6472"/>
+        <rect x="465" y="91.2" width="150" height="56.2" fill="#e78a5c" opacity="0.9"/>
+        <rect x="465" y="63" width="150" height="28.2" fill="#cba24a"/>
+        <text x="540" y="54" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">24,607</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 건설14400, 발전7900, 유리4000 (26295) -->
+      <g>
+        <rect x="750" y="140.6" width="150" height="109.4" fill="#5a6472" opacity="0.78"/>
+        <rect x="750" y="80.6" width="150" height="60" fill="#e78a5c" opacity="0.62"/>
+        <rect x="750" y="50" width="150" height="30.6" fill="#cba24a" opacity="0.7"/>
+        <text x="825" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">26,295E</text>
+        <text x="825" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>건설·부동산</span><span><i style="background:#e78a5c"></i>발전·에너지</span><span><i style="background:#cba24a"></i>유리·기타</span><span style="color:var(--muted)">비중=개략 추정</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">전력·열 소비자(산단·지역난방)의 눈</h3><p style="margin:6px 0">"집단에너지는 지역 독점·필수 인프라. 열·전기를 안정적으로 공급받는 대신 SGC를 못 바꾼다." → 규제형 락인.</p></div>
+    <div class="card"><h3 style="margin-top:0">DC 파트너(KT·미래에셋)의 눈</h3><p style="margin:6px 0">"입지·전력·냉각(해양심층수)이 다 갖춰진 부지. SGC가 전력을 자급하니 PUE·전력조달 리스크가 낮다." → JV로 capex 분담.</p></div>
+    <div class="card"><h3 style="margin-top:0">채권단·투자자의 눈</h3><p style="margin:6px 0">"부채 339%에 4.5조 DC. PF·JV로 온발란스를 덜지 못하면 재무·배당 여력이 압박된다." → 자금조달 구조가 관건.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진(SGC그룹)의 눈</h3><p style="margin:6px 0">"발전+부지+건설 EPC 역량을 묶어 DC로 수직 확장. 저평가 자산을 성장 자산으로 재평가받자." → 지주 자산배치 승부.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">집단에너지 지역독점</h3><p style="margin:0;font-size:12.5px">산업단지 열·전기 공급은 허가·인프라 기반의 지역 독점. 신규 진입이 사실상 불가, 규제형 안정 현금흐름. 현금화: 지금.</p></div>
+    <div class="card acc2"><div class="tag b">진짜 해자(자산)</div><h3 style="margin:8px 0 6px">발전 자산·군산 부지</h3><p style="margin:0;font-size:12.5px">발전소·부지·건설 자산이 PBR&lt;1의 근거. 바다 인접·자가발전 부지는 DC 입지로 재활용되는 <strong>희소 자산</strong>. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증(옵션)</div><h3 style="margin:8px 0 6px">AI 데이터센터</h3><p style="margin:0;font-size:12.5px">300MW DC는 인허가·전력계약·자금조달·가동이 남은 옵션. 실체화 전까진 이익 기여 0. 현금화: 2028E~.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — SGC그룹(구 삼광글라스) 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조 — 오너 2세 → SGC에너지 → 사업 자회사 + DC JV</div><div class="cs">이복영 회장(OCI 창업주 이회림 차남) 일가. 2020년 삼광글라스·군장에너지·이테크건설 3자 합병으로 지주 SGC에너지 출범. 오너 2세 이우성·이원준이 1·2대 주주.</div>
+    <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- top: owner family -->
+      <rect x="440" y="20" width="200" height="50" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="540" y="41" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">이복영 회장 일가</text>
+      <text x="540" y="59" text-anchor="middle" font-size="10.5" fill="#828b98">2세 이우성·이원준 (1·2대주주)</text>
+      <!-- center: SGC에너지 -->
+      <rect x="430" y="120" width="220" height="74" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="150" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">SGC에너지 (005090)</text>
+      <text x="540" y="171" text-anchor="middle" font-size="10.5" fill="#828b98">지주 · 발전·건설·유리 · 시총 6,102억</text>
+      <text x="540" y="186" text-anchor="middle" font-size="10" fill="#4bbf9a">2020 3자합병(삼광글라스+군장에너지+이테크건설)</text>
+      <!-- arrow owner->company -->
+      <line x1="540" y1="70" x2="540" y2="120" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="580" y="98" text-anchor="middle" font-size="10" fill="#4bbf9a">지배</text>
+      <!-- subsidiaries row -->
+      <rect x="70" y="250" width="180" height="60" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="160" y="273" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">SGC그린파워</text>
+      <text x="160" y="290" text-anchor="middle" font-size="10" fill="#828b98">군산 발전 · DC 부지</text>
+      <text x="160" y="303" text-anchor="middle" font-size="10" fill="#e78a5c">바이오매스 열병합</text>
+      <rect x="290" y="250" width="180" height="60" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="380" y="273" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">SGC이앤씨</text>
+      <text x="380" y="290" text-anchor="middle" font-size="10" fill="#828b98">건설·EPC·플랜트·주택</text>
+      <rect x="510" y="250" width="180" height="60" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="600" y="273" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">SGC솔루션</text>
+      <text x="600" y="290" text-anchor="middle" font-size="10" fill="#828b98">유리·도어글라스</text>
+      <!-- DC JV -->
+      <rect x="750" y="240" width="230" height="80" rx="6" fill="#1a1d25" stroke="#cba24a" stroke-width="1.6" stroke-dasharray="5 3"/>
+      <text x="865" y="264" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">군산 300MW AI DC</text>
+      <text x="865" y="282" text-anchor="middle" font-size="10" fill="#828b98">1단계 40MW · 2026말 착공 · 2028 1Q 가동</text>
+      <text x="865" y="298" text-anchor="middle" font-size="10" fill="#cba24a">KT · 미래에셋증권 협력 · 투자 4.5조 추산</text>
+      <text x="865" y="313" text-anchor="middle" font-size="10" fill="#828b98">해양심층수 냉각 · 자가발전 전력</text>
+      <!-- arrows company -> subs -->
+      <line x1="470" y1="194" x2="180" y2="250" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="520" y1="194" x2="390" y2="250" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="560" y1="194" x2="600" y2="250" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="620" y1="190" x2="800" y2="240" stroke="#cba24a" stroke-width="1.8" marker-end="url(#ar)"/>
+      <text x="710" y="210" text-anchor="middle" font-size="10" fill="#cba24a">부지·전력 활용</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: 2020년 3자 합병으로 <strong>증여 없이 3세(2세) 승계</strong>가 완성된 구조라, 오너 일가의 지배력은 확고하다<span class="src">아시아경제·글로벌이코노믹<span class="tip">삼광글라스·군장에너지·이테크건설 3자 합병으로 이우성·이원준이 SGC에너지 1·2대 주주 등극</span></span>. 지주로서 <em>계열 자본배치·내부거래·DC 자금조달 구조</em>가 상시 점검 대상이며, 특히 300MW DC를 어떤 지분·PF 구조로 담느냐가 소액주주 가치에 직결된다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 옵션인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">집단에너지·발전</td><td class="txt"><strong>규제·필수 수요</strong></td><td class="txt">지역난방 수요·SMP·연료비(우드칩)·REC</td><td class="txt">높음(규제 방어)</td></tr>
+      <tr><td class="txt">건설·부동산</td><td class="txt">경기·수주 수요</td><td class="txt">EPC 발주·주택 경기·공사원가</td><td class="txt">중(경기 민감)</td></tr>
+      <tr><td class="txt">AI 데이터센터</td><td class="txt"><strong>AI 전력 구조 수요</strong></td><td class="txt">AI 연산 폭증·전력·입지·냉각 병목</td><td class="txt">구조 성장(옵션)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심 — 에너지·유틸리티 렌즈</div>SGC의 하방은 <strong>규제형 집단에너지</strong>(방어)가 받치고, 상방은 <strong>AI 전력 구조수요(DC)</strong>가 얹는다. AI 데이터센터의 진짜 병목은 GPU가 아니라 <em>전력·입지·냉각</em>인데, SGC는 자가발전·바다 인접 부지로 이 셋을 다 쥐었다. 산업단지 집단에너지가 'AI 전력난'의 해법으로 재조명되는 흐름<span class="src">전기신문 26-02<span class="tip">"AI 데이터센터 전력·입지 한계…산단 집단에너지 재조명"</span></span>의 정중앙에 서 있다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 딥밸류 유틸리티의 KPI</h2>
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">6.1<span class="u">%</span></div><div class="sub">발전 스프레드 회복</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">0.89<span class="u">x</span></div><div class="sub">순자산 하회(하방)</div></div>
+    <div class="kpi"><div class="lab">배당수익률</div><div class="val">3.07<span class="u">%</span></div><div class="sub">DPS 1,300</div></div>
+    <div class="kpi"><div class="lab">부채비율</div><div class="val up">339<span class="u">%</span></div><div class="sub">고부채(리스크)</div></div>
+  </div>
+  <p>집단에너지·발전은 <strong>규제형 필수 수요</strong>라 매출 방어력은 높지만, 이익은 <em>SMP−연료비 스프레드</em>에 좌우돼 변동성이 크다(2025 적자가 그 증거). 유가↑·우드칩↓ 조합이 스프레드를 벌리고 REC·탄소배출권(CCU·액화탄산)이 보태면 발전 마진이 회복된다. 밸류의 안전판은 이익이 아니라 <strong>PBR&lt;1 자산가치</strong>이고, 그 위에 DC라는 성장 옵션이 얹히는 구조다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +5.4억 · 연기금 +2.6억 · 투신 +1.3억</strong>(합산 시총대비 +0.15%) — 사모 중심 유입. 37,650원 조정 뒤 <strong>+12.2% 반등</strong>에서 기관이 딥밸류·DC 옵션주를 담는 그림. 급등 후 68,600 → 42,350(−38%) 되돌림 구간에서, 순자산·배당·데이터센터 기대가 겹치는 자리로 수급이 돌아오는 초입.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">발전 스프레드·흑전 궤적 — 유가↑·우드칩↓가 마진을 벌린다</h2>
+  <div class="chart"><div class="ct">발전 마진 스프레드 개념도 — 유가·SMP(상승) vs 연료비 우드칩(하락)</div><div class="cs">방향성 개념도. 2025년 좁았던 스프레드(적자)가 2026년 유가↑·우드칩↓로 벌어지며(흑전) 발전 이익이 회복된다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- x: 5 periods 24 / 1H25 / 2H25 / 1H26 / 2H26E, x=140..960 -->
+      <!-- 유가/SMP line (up): high end -->
+      <polyline points="140,150 345,175 550,165 755,120 960,95" fill="none" stroke="#e78a5c" stroke-width="2.6"/>
+      <circle cx="140" cy="150" r="3.5" fill="#e78a5c"/><circle cx="345" cy="175" r="3.5" fill="#e78a5c"/><circle cx="550" cy="165" r="3.5" fill="#e78a5c"/><circle cx="755" cy="120" r="3.5" fill="#e78a5c"/><circle cx="960" cy="95" r="4.5" fill="#e78a5c"/>
+      <text x="960" y="87" text-anchor="middle" font-size="10" fill="#e78a5c" font-weight="700">유가·SMP↑</text>
+      <!-- 우드칩 연료비 line (down) -->
+      <polyline points="140,150 345,155 550,175 755,195 960,205" fill="none" stroke="#4bbf9a" stroke-width="2.6"/>
+      <circle cx="140" cy="150" r="3.5" fill="#4bbf9a"/><circle cx="345" cy="155" r="3.5" fill="#4bbf9a"/><circle cx="550" cy="175" r="3.5" fill="#4bbf9a"/><circle cx="755" cy="195" r="3.5" fill="#4bbf9a"/><circle cx="960" cy="205" r="4.5" fill="#4bbf9a"/>
+      <text x="960" y="222" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">우드칩 연료비↓</text>
+      <!-- spread shading between at 2H26 -->
+      <rect x="900" y="95" width="120" height="110" fill="#cba24a" opacity="0.14"/>
+      <text x="895" y="150" text-anchor="end" font-size="10" fill="#cba24a" font-weight="700">스프레드 확대</text>
+      <!-- x labels -->
+      <text x="140" y="270" text-anchor="middle" font-size="10" fill="#828b98">2024</text>
+      <text x="345" y="270" text-anchor="middle" font-size="10" fill="#828b98">1H25</text>
+      <text x="550" y="270" text-anchor="middle" font-size="10" fill="#828b98">2H25(적자)</text>
+      <text x="755" y="270" text-anchor="middle" font-size="10" fill="#828b98">1H26(흑전)</text>
+      <text x="960" y="270" text-anchor="middle" font-size="10" fill="#828b98">2H26E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>유가·SMP(수취)</span><span><i style="background:#4bbf9a"></i>우드칩 연료비(지출)</span><span style="color:var(--muted)">개념도·방향성</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 흑자전환의 첫 확인</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">영업이익</td><td class="num">356억</td><td class="num up">+102.7%</td><td class="txt">발전 스프레드 회복이 견인</td></tr>
+      <tr><td class="txt">지배순익</td><td class="num">50억</td><td class="num up">흑자전환</td><td class="txt">2025 적자 → 흑전 첫 분기</td></tr>
+      <tr><td class="txt">└ 발전·에너지</td><td class="num txt">개선</td><td class="num up">스프레드↑</td><td class="txt">유가↑·우드칩↓, REC 발급 증가</td></tr>
+      <tr><td class="txt">└ 건설·부동산</td><td class="num txt">유지</td><td class="num">원가부담</td><td class="txt">매출 견조, 마진 제한적</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">1Q26 SMP 약세에도 원재료(우드칩) 단가 하락 + REC 발급량 증가로 발전 이익 개선.<span class="src">하나증권 26-03-24 · 디지털투데이<span class="tip">"1Q SMP 약세에도 마진 점차 회복. 유가 상승·우드칩 하락으로 발전 스프레드 확대 가능"</span></span></p>
+
+  <h3>이익의 질 — 회복은 맞지만, 스프레드 의존이 함정</h3>
+  <p>2025년 적자는 발전 스프레드 악화 + 건설 원가부담이 겹친 결과로, <strong>구조적 훼손이 아니라 사이클성 부진</strong>에 가깝다(발전은 규제형 필수 수요라 매출은 유지됐다). 다만 회복 역시 <em>유가·SMP·우드칩이라는 외생 변수</em>에 크게 기대므로, 이익의 질은 '깨끗하지만 변동적'이다. 그래서 이 종목의 진짜 안전판은 회복 이익이 아니라 <strong>PBR&lt;1 자산과 배당</strong>이고, 재평가의 방아쇠는 이익이 아니라 <strong>데이터센터</strong>다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · 재평가</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">월말 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">20,150(딥밸류 방치) → DC 발표(2/3) 급등 → 68,600(4/23, +240%) → 42,350(고점 −38%). 상승은 실적보다 데이터센터 재평가가 주도.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale p18000..70000 -> y250..40, k=0.004038 -->
+      <line x1="55" y1="201.5" x2="1035" y2="201.5" stroke="#20242c"/><text x="48" y="205" text-anchor="end" font-size="9" fill="#5a6472">30k</text>
+      <line x1="55" y1="120.8" x2="1035" y2="120.8" stroke="#20242c"/><text x="48" y="124" text-anchor="end" font-size="9" fill="#5a6472">50k</text>
+      <line x1="55" y1="40" x2="1035" y2="40" stroke="#20242c"/><text x="48" y="44" text-anchor="end" font-size="9" fill="#5a6472">70k</text>
+      <!-- path -->
+      <polyline points="80,237.9 162,233.8 244,235.9 326,229.8 408,219.7 490,209.6 572,153.1 654,112.7 736,45.7 818,92.5 900,141.0 980,151.7" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- markers -->
+      <circle cx="572" cy="153.1" r="4" fill="#4bbf9a"/><text x="572" y="144" text-anchor="middle" font-size="9" fill="#4bbf9a">DC 발표 2/3</text>
+      <circle cx="736" cy="45.7" r="4.5" fill="#f0525f"/><text x="736" y="37" text-anchor="middle" font-size="9" fill="#f0525f">68,600 고점 4/23</text>
+      <circle cx="980" cy="151.7" r="4.5" fill="#e78a5c"/><text x="980" y="168" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">42,350</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08 (20,150 저점권)</text><text x="640" y="272" font-size="9.5" fill="#828b98">'26.04</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 재평가의 정체</h2>
+  <p>SGC의 주가 폭등은 실적이 아니라 <strong>300MW AI 데이터센터 재평가 기대</strong>가 주도했다. 2025년 하반기 <strong>PBR 0.45배</strong>(딥밸류 방치)에서 데이터센터 발표(2/3) 후 급등, 고점에선 순자산을 넘었다가 조정으로 <strong>PBR 0.89배</strong>로 내려앉았다. 즉 상승은 이익 개선(적자→290억E)만으로 설명이 안 되고, <em>발전소 옆 부지가 AI 시대에 데이터센터로 재평가받는</em> 자산가치 재산정이 본질이다. −38% 조정은 그 기대의 정상화이지 자산가치 훼손이 아니다 — 여전히 PBR&lt;1로 순자산 이하다.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">DC 테마로 코스피를 크게 아웃퍼폼했다가 되돌림. 절대 밸류(PBR&lt;1)는 여전히 매력 구간.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="93.4" x2="1035" y2="93.4" stroke="#20242c"/><text x="48" y="97" text-anchor="end" font-size="9" fill="#5a6472">200</text>
+      <line x1="55" y1="160" x2="1035" y2="160" stroke="#20242c"/><text x="48" y="163" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- SGC rebase: Jan100->160, Feb150->126.7, Mar186->102.7, Apr245->63.3, May204->90.6, Jun161->119.3, Jul151->126 -->
+      <polyline points="80,160 230,126.7 380,102.7 530,63.3 680,90.6 830,119.3 980,126" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="120" font-size="9.5" fill="#e78a5c" font-weight="700">SGC +51%</text>
+      <!-- KOSPI flat ~+8 -->
+      <polyline points="80,160 230,159 380,157 530,155 680,156 830,154 980,154.7" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="169" font-size="9.5" fill="#828b98">코스피 ~+8%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 반영, 무엇이 미반영</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 발전 스프레드 회복·흑전</td><td class="txt">부분 반영</td></tr>
+      <tr><td class="txt">건설·부동산 백로그 안정</td><td class="txt up">반영</td></tr>
+      <tr><td class="txt">자산가치·배당(하방)</td><td class="txt up">반영</td></tr>
+      <tr><td class="txt">군산 300MW AI 데이터센터</td><td class="txt down">부분~미반영 (핵심 상방)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">2026E EPS 1,716·PER 24.7x는 발전 회복은 담았으나 300MW DC의 장기 이익 기여는 크게 반영하지 않았다. 시장은 데이터센터를 '반신반의' 중 — 옵션 상방 여지가 남아 있다.</p>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">딥밸류 유틸 + DC 옵션 — PBR으로 본 상대 위치</h2>
+  <div class="chart"><div class="ct">PBR 비교 (배) — 골드 = SGC에너지</div><div class="cs">에너지·유틸리티 렌즈에선 PBR이 자산가치의 척도. SGC 0.89x는 순자산 이하로, DC 옵션을 감안하면 재평가 여지.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="210" x2="1030" y2="210" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1.0x = 320px from x=200; -->
+      <!-- SGC 0.89 -->
+      <rect x="200" y="30" width="285" height="26" fill="#cba24a"/><text x="495" y="48" font-size="12" fill="#cba24a" font-weight="700">SGC에너지 0.89x</text><text x="195" y="48" text-anchor="end" font-size="11" fill="#eaecef">SGC에너지</text>
+      <!-- 지역난방공사 0.35 -->
+      <rect x="200" y="70" width="112" height="26" fill="#5a6472"/><text x="322" y="88" font-size="11" fill="#bfc5ce">~0.35x</text><text x="195" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">지역난방공사</text>
+      <!-- 지엔씨에너지 2.5 (성장주) -->
+      <rect x="200" y="110" width="800" height="26" fill="#5a6472"/><text x="1010" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">~2.5x</text><text x="195" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">지엔씨에너지</text>
+      <!-- 한국전력 0.4 -->
+      <rect x="200" y="150" width="128" height="26" fill="#5a6472"/><text x="338" y="168" font-size="11" fill="#bfc5ce">~0.4x</text><text x="195" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">한국전력</text>
+      <!-- 1.0x reference -->
+      <line x1="520" y1="20" x2="520" y2="200" stroke="#e78a5c" stroke-width="1.4" stroke-dasharray="4 3"/><text x="520" y="16" text-anchor="middle" font-size="9.5" fill="#e78a5c">순자산 1.0x</text>
+    </svg>
+    <div class="lgd"><span style="color:var(--muted)">PBR은 시점·소스에 따라 편차 — 방향성 참고용(개략)</span></div>
+  </div>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">지엔씨에너지 (119850)</h3><p style="margin:6px 0;font-size:12.5px">데이터센터 <strong>비상발전기 EPC</strong> 국내 주도 + 연료전지·바이오가스. 2026 OP ~342억E<span class="src">한국투자·흥국증권<span class="tip">비상발전기 EPC 26년 342억, 26~27 평균 426억E. 바이오가스법 시행령 수혜</span></span>. SGC와 달리 '장비 공급'. 위협도 <strong>낮음</strong>(포지션 상이·오히려 DC 밸류체인 동반).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">지역난방공사 (071320)</h3><p style="margin:6px 0;font-size:12.5px">집단에너지 대형(공기업). 규모·안정성 우위, PBR ~0.35x 딥밸류. SGC는 소형이나 <strong>DC 옵션·오너 지주</strong>가 차별점. 위협도 <strong>중</strong>(집단에너지 경합).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">한국전력 (015760)</h3><p style="margin:6px 0;font-size:12.5px">전력 도매·요금 정책의 배경 변수. 유가↑ 국면에서 발전사(SGC)는 웃고 한전은 부담<span class="src">하나증권 26-05<span class="tip">"유가 100달러 시대…발전사 웃고 한국전력 부담"</span></span>. 위협 아닌 <strong>매크로 렌즈</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 대형 DC 사업자</h3><p style="margin:6px 0;font-size:12.5px">네이버·삼성SDS·글로벌 하이퍼스케일러. SGC는 '전력·입지 제공자'로 <strong>협력/임차</strong> 관계. 경쟁이 아니라 수요처.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">근거</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">발전 스프레드 확대 + 300MW DC 착공·전력계약 가시화, 2027 EPS ~3,000 + DC 재평가 프리미엄</td><td class="num">PBR ~1.2x <span class="est bull">27E</span></td><td class="num up">58,000</td><td class="num">35%</td><td class="num up">+37%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026 흑자 회복(EPS 1,716)·건설 안정, PBR 1x 수렴 + 배당, DC 부분 반영</td><td class="num">PBR ~0.9x</td><td class="num">43,000</td><td class="num">40%</td><td class="num up">+2%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">SMP 약세 재발 + DC 지연·무산 + 고부채 부담, 딥밸류 회귀</td><td class="num">PBR ~0.6x <span class="est bear">E</span></td><td class="num down">28,000</td><td class="num">25%</td><td class="num down">−34%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="3">확률가중 기대값 (EV) · +배당 ~3%</td><td class="num">44,500</td><td class="num"></td><td class="num up">+5%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 42,350(흰선). 자체 밴드 28,000~58,000. 하나증권 TP 61,000. 순자산(BPS 47,635)이 Base 위 하방 지지선.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 20000..70000 -> x 120..1030, k=0.01820 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">20k</text>
+      <text x="484" y="205" text-anchor="middle" font-size="9" fill="#5a6472">40k</text>
+      <text x="848" y="205" text-anchor="middle" font-size="9" fill="#5a6472">60k</text>
+      <!-- 자체 밴드 28000..58000 -->
+      <rect x="265.6" y="40" width="546" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="266" y="34" font-size="10" fill="#e78a5c">Bear 28k</text>
+      <text x="812" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 58k</text>
+      <line x1="538.6" y1="36" x2="538.6" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="539" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 43k</text>
+      <!-- 하나 TP 61000 -->
+      <line x1="866.2" y1="100" x2="866.2" y2="150" stroke="#4bbf9a" stroke-width="2.5"/><text x="866" y="96" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">하나 TP 61k</text>
+      <!-- BPS 47635 지지선 -->
+      <line x1="623.0" y1="110" x2="623.0" y2="150" stroke="#5a6472" stroke-width="1.6" stroke-dasharray="4 3"/><text x="623" y="164" text-anchor="middle" font-size="9.5" fill="#828b98">순자산 BPS 47.6k</text>
+      <!-- 현재가 42350 -->
+      <line x1="527.0" y1="20" x2="527.0" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="527" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 42,350</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">자산 재평가 ✓</h3><p style="margin:6px 0;font-size:12.5px">PBR 0.45→0.89x, 순자산 수렴 여지 + 발전소 옆 부지가 DC 자산으로 재산정. <strong>가장 확실한 축</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">이익 회복 △</h3><p style="margin:6px 0;font-size:12.5px">적자→흑전은 확인, 그러나 스프레드 의존으로 변동적. 안정적 이익 성장은 아직 미검증.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플·옵션 △</h3><p style="margin:6px 0;font-size:12.5px">300MW DC가 켜지면 유틸리티→성장 인프라로 리레이팅. 지연·무산 시 딥밸류 회귀. 상하방 모두 DC에 달림.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS·NAV 기여(미반영): 300MW DC 임대·코로케이션 수익 / 부지 가치 재평가 / 발전-DC 전력 자급 시너지 → 실체화 시 목표가·NAV 상향 요인.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>데이터센터 지연·무산</strong></td><td class="txt">300MW DC 인허가·전력계약·자금조달 차질 → 재평가 근거 소멸. 주가 −25%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>발전 스프레드 악화</strong></td><td class="txt">SMP 약세·연료비 상승 재발 → 다시 적자 위험(2025 전례)</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>고부채·capex 부담</strong></td><td class="txt">부채 339% + DC 4.5조 투자 → 이자·재무 부담, 배당 여력 압박</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>급등 후 되돌림</strong></td><td class="txt">4월 고점 −38% 조정 전례. DC 테마 냉각 시 추가 하락</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>건설·부동산 경기</strong></td><td class="txt">EPC·주택 수주·마진 둔화, 원가부담 지속</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 33,000~38,000 눌림에서 분할(자산·배당 안전판). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 군산 300MW DC 인허가·전력계약·자금조달 가시화 or 발전 스프레드 회복 확인 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 2Q26 흑자 지속·PBR&lt;1 유지·배당 안정.</li>
+    <li><strong>축소:</strong> SMP 재악화로 발전 재적자 / DC 무산·지연 / 재무 악화로 배당 축소.</li>
+    <li><strong>차익:</strong> 58,000(하나 TP권) 접근 시 부분 차익.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">군산 300MW DC 진척</td><td class="txt">재평가 옵션 실현</td><td class="txt">인허가·착공(2026말) 지연</td></tr>
+      <tr><td class="txt">발전 스프레드(SMP−우드칩)</td><td class="txt">발전 이익 선행</td><td class="txt">SMP 약세+연료비 반등 동시</td></tr>
+      <tr><td class="txt">분기 영업익·흑자 지속</td><td class="txt">회복 궤도 확인</td><td class="txt">재차 적자 전환</td></tr>
+      <tr><td class="txt">부채비율·이자보상배율</td><td class="txt">재무 체력·배당 여력</td><td class="txt">부채 급증 / 배당 축소 시사</td></tr>
+      <tr><td class="txt">PBR·수급(사모·연기금)</td><td class="txt">자산 재평가·기관 유입</td><td class="txt">PBR 0.6x 하회 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 하반기</td><td class="txt">군산 300MW AI DC 인허가·전력계약·자금조달 가시화</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(흑자 지속·마진 회복 확인)</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2026년 말</td><td class="txt">DC 1단계 40MW 착공</td><td class="txt"><span class="tag b">가시성</span></td></tr>
+      <tr><td class="txt">2027년 초</td><td class="txt">연간 배당(3% 수준)</td><td class="txt"><span class="tag n">중립~긍정(하방)</span></td></tr>
+      <tr><td class="txt">2028년 1Q</td><td class="txt">DC 1단계 운영 개시</td><td class="txt"><span class="tag b">재평가</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "순자산 밑에서(PBR 0.89) 배당 3% 주면서 거래되는 발전 지주가, 자기 발전소 옆 바닷가 부지에 4.5조짜리 300MW AI 데이터센터를 KT·미래에셋과 짓겠다고 했다. 자산·배당이 하방을 받치니 33,000~38,000에 분할로 사서, 발전 스프레드 회복과 데이터센터 옵션을 기다린다."</strong><br>어떻게 맞나: 발전 흑전 지속 + DC 착공·전력계약 중 하나만 켜져도 순자산(BPS 47.6k)·하나 TP(61k)로 리레이팅. 어떻게 틀리나: SMP 재악화로 발전이 다시 적자에 빠지고 부채·capex 부담에 DC가 지연·무산되면 딥밸류로 회귀한다(축소). 한 단어: <em>"전력 자급 DC 옵션"</em>. 남는 것: <strong>"떨어지면 순자산이 받치고, 오르면 데이터센터가 얹는다."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 43,000</span><span class="pill">매집밴드 33,000~38,000</span><span class="pill">Bull 58,000 / Bear 28,000</span><span class="pill">EV +5%(+배당 3%)</span><span class="pill">thesis break: SMP 재악화·DC 무산·배당 축소</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 에너지·유틸리티 렌즈(스프레드·자산가치·배당). 밸류=자산(PBR)×옵션(DC), 알파는 저평가 자산의 재평가 방아쇠를 먼저 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 42,350·시총 6,102억·PBR 0.89·추정PER 24.68x·DPS 1,300·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 68,600@4/23·저점 20,150) · 군산 300MW AI DC(3.5만평·투자 4.5조 추산·KT·미래에셋 협력·1단계 40MW·2026말 착공·2028 1Q 가동·해양심층수 냉각) = 한국경제·투데이에너지·헤럴드경제(26-02-03) · 1Q26 영업익 356억(+102.7%)·순익 흑전·발전 스프레드(유가↑·우드칩↓·REC) = 하나증권(26-03-24)·디지털투데이 · 2025 적자(OP −49.5%·순익 적자전환) = FnGuide · 지배구조(3자합병·이복영 회장·이우성/이원준) = 아시아경제·글로벌이코노믹 · 하나 TP 61,000 = 마켓인 · peer(지엔씨에너지 26 OP 342억E·지역난방공사) = 한국투자·흥국증권 · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·DC·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

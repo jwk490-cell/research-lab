@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>레인보우로보틱스 277810 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">277810</span>
+    <span class="nm">레인보우로보틱스 <small>Rainbow Robotics · 휴머노이드·협동로봇 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩478,500</span>
+    <span>시총 ₩9.3조 · 26E PSR ~155x</span>
+    <span class="rating">관망(눌림목 대기) · 매집 320,000~380,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·밸류분해</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩478,500 (+16.3%)</span>
+  <span><b>52주</b> 249,500 ~ 979,000</span>
+  <span><b>삼성 지분</b> 35.0%</span>
+  <span><b>PSR 26E</b> ~155x</span>
+  <span><b>PBR</b> 69.8x</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">지위는 진짜, 가격은 미래를 통째로 당겨썼다 — 삼성이 최대주주인 한국 휴머노이드 대장을, PSR 155배에 추격하지 않는다.</h1>
+  <p class="lead">레인보우로보틱스는 <em>삼성전자가 35.0% 지분의 최대주주</em>인 한국 휴머노이드·협동로봇 대장주다.<span class="src">삼성 콜옵션 행사·2024말 지분 35.0%·연결 자회사 편입<span class="tip">elec4·뉴스스페이스 2025. 삼성전자 2023년 868억 투자(14.7%)→콜옵션 행사</span></span> 삼성 반도체팹 무인화 프로젝트에 협동로봇과 휴머노이드 프로토타입(RB-Y1)을 공급하고, '<strong>삼성=손 모듈(핸드 랩) / 레인보우=플랫폼·이동·제어</strong>'라는 R&D 분업이 가시화됐다. 스토리는 이 배치에서 가장 강력하다. 문제는 오직 <strong>가격</strong> — 2026E 매출 600억인데 시총 9.3조로 <strong>PSR ~155배·PBR 70배</strong>, 이익 기반 PER은 무의미하다. 주가는 260,000원→979,000원(약 3.8배)→375,000원(고점 −57%)→오늘 +16.3%(478,500)로 초변동. <strong>주도주 지위는 진짜지만 밸류가 미래를 통째로 당겨써, 진입은 눌림에서만.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>관망(눌림목 대기) · 매집밴드 320,000~380,000원 · Bull 750,000 / Base 450,000 / Bear 280,000 · 확률가중 EV ≈ 512,500원(+7%).</strong> 이 수급 배치에서 <em>주도주 지위(삼성 백킹·거래대금 최대)는 최상위</em>지만, 밸류(PSR ~155x·PBR 70x)는 배치 최극단이라 이익이 아니라 TAM·삼성 내러티브로만 지지된다. Bear 꼬리(−41%)가 깊고 +16% 스파이크 추격은 손익비 열위. thesis break: 삼성 양산 파트너십 기대 미달 / 휴머노이드 양산 지연 / 320,000 이탈.</div>
+
+  <h2 class="sec">밸류에이션 궤적 — 이익이 없으니 PSR·매출로 본다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 컨센(네이버 isConsensus=Y). PER축은 이익이 사실상 없어 성립 불가 — <strong>이 종목은 PSR·TAM 축으로만 밸류를 읽는다.</strong> 매출은 4배로 늘지만 시총 9.3조를 정당화하려면 수년 내 매출 수천억~조 단위(휴머노이드 양산)가 필요하다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">YoY</th><th class="num">영업익</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PSR*</th><th class="num">PER</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">153</td><td class="num">—</td><td class="num down">−446</td><td class="num down">−8</td><td class="num">−47</td><td class="num">—</td><td class="num">적자</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">193</td><td class="num up">+26%</td><td class="num down">−30</td><td class="num">21</td><td class="num">110</td><td class="num">—</td><td class="num">n/m</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">341</td><td class="num up">+77%</td><td class="num down">−25</td><td class="num">14</td><td class="num">73</td><td class="num">—</td><td class="num">n/m</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">600</td><td class="num up">+76%</td><td class="num">40 <span class="est">E</span></td><td class="num">150 <span class="est">E</span></td><td class="num">773</td><td class="num">~155x</td><td class="num">500x+</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PSR = 현 시총 9.3조 ÷ 해당연도 매출. 2026E가 첫 영업흑자(40억E)이나 시총 대비 극히 작다. 1Q26 매출 90.6억(+116.6%)·영업손실 15.7억·순손실 9.0억 — 매출은 급증, 이익은 아직 씨앗.</p>
+
+  <div class="chart"><div class="ct">매출·PSR 궤적 (막대, 억원) — 이익이 아니라 매출·TAM을 산다</div><div class="cs">매출은 3년 3.9배로 급증하나 절대 규모는 여전히 작다. 2026E에도 PSR ~155배 — 밸류는 매출이 아니라 '휴머노이드 양산 시대의 잠재 TAM'을 당겨쓴 값.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- rev max 600 -> 210px, k=0.35, base y=270 -->
+      <rect x="130" y="216.45" width="90" height="53.55" fill="#e78a5c" opacity="0.85"/>
+      <text x="175" y="207" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">153</text>
+      <text x="175" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <rect x="355" y="202.45" width="90" height="67.55" fill="#e78a5c" opacity="0.85"/>
+      <text x="400" y="193" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">193</text>
+      <text x="400" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <rect x="580" y="150.65" width="90" height="119.35" fill="#e78a5c" opacity="0.85"/>
+      <text x="625" y="141" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">341</text>
+      <text x="625" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <rect x="805" y="60" width="90" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="850" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">600</text>
+      <text x="850" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- PSR callout -->
+      <rect x="770" y="88" width="160" height="24" rx="4" fill="#cba24a" opacity="0.16" stroke="#cba24a"/>
+      <text x="850" y="104" text-anchor="middle" font-size="11" fill="#cba24a" font-weight="700">PSR ~155x</text>
+      <text x="850" y="130" text-anchor="middle" font-size="9.5" fill="#828b98">시총 9.3조 ÷ 매출</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출(억원)</span><span style="color:var(--gold)">골드 박스=2026E PSR</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <div class="chart"><div class="ct">손익 궤적 — 영업이익 (억원): 적자 축소 → 첫 흑자 초입</div><div class="cs">2023 대규모 적자(−446)에서 손실이 빠르게 줄어 2026E 첫 흑자(+40E). 다만 시총 9.3조 대비 이익은 '씨앗' 수준 — 밸류 근거가 될 수 없다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- zero line y=90, k=0.381 -->
+      <line x1="60" y1="90" x2="1030" y2="90" stroke="#353b47" stroke-width="1.5"/>
+      <text x="1030" y="84" text-anchor="end" font-size="9.5" fill="#5a6472">0</text>
+      <rect x="130" y="90" width="90" height="169.9" fill="#5a6472"/>
+      <text x="175" y="274" text-anchor="middle" font-size="11" fill="#f0525f" font-weight="600">−446</text>
+      <text x="175" y="80" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <rect x="355" y="90" width="90" height="11.4" fill="#5a6472"/>
+      <text x="400" y="116" text-anchor="middle" font-size="11" fill="#bfc5ce">−30</text>
+      <text x="400" y="80" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <rect x="580" y="90" width="90" height="9.5" fill="#5a6472"/>
+      <text x="625" y="114" text-anchor="middle" font-size="11" fill="#bfc5ce">−25</text>
+      <text x="625" y="80" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <rect x="805" y="74.8" width="90" height="15.2" fill="#4bbf9a"/>
+      <text x="850" y="66" text-anchor="middle" font-size="11" fill="#4bbf9a" font-weight="700">+40E</text>
+      <text x="850" y="114" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>영업적자</span><span><i style="background:#4bbf9a"></i>영업흑자(첫)</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 지위 = 배치 최상위</h3><p style="margin:6px 0">삼성전자 최대주주(35.0%)·로봇 수직계열화의 핵심. RB-Y1 휴머노이드·협동로봇·사족보행 풀 라인업, 반도체팹 무인화 실증. <strong>한국 휴머노이드 대표주</strong>이자 거래대금 이 배치 최대급.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 실적 인플렉션 초입</h3><p style="margin:6px 0">매출 +76%·첫 영업흑자(2026E). 1Q26 매출 +116.6%(삼성 반도체팹 협동로봇·휴머노이드 프로토타입). <strong>삼성향 매출이 2024 14억→2025 104억(7.2배)</strong>으로 폭증. 다만 이익은 아직 씨앗.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 가격이 미래를 전부 당겨씀</h3><p style="margin:6px 0">PSR 155배는 '휴머노이드 대량양산 + 레인보우가 그 대장'을 <strong>이미 반영</strong>. 실현이 지연되면 반토막 여지(2월→7월 −57% 전례). 밸류는 PER이 아닌 <em>PSR·TAM 축</em>으로만 성립.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 지위와 가격을 분리한다</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (지위 A / 가격 C)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 삼성 백킹(자금력·초기 대형 고객·손 모듈 협업)이 결정적. 기술은 table-stakes, 양산 경쟁력은 미검증.</li>
+        <li><strong>현금창출:</strong> 아직 적자(1Q26 영업손실 15.7억). 흑자 초입이나 규모 미미 — 성장 투자 국면.</li>
+        <li><strong>사이클 노출:</strong> 이익이 없어 밸류는 TAM·테마 심리가 결정 — 물리적 AI 사이클이 변동성 원천. 이게 B+를 만든 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시 관망</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 삼성 휴머노이드 양산 파트너 확정 + RB-Y1 반도체팹 대량 투입 + 휴머노이드 TAM 개화.</li>
+        <li><strong>갈아타기:</strong> 협동로봇 완제품 순수 노출이면 두산로보틱스, 액추에이터(관절) 순수 노출이면 로보티즈. 레인보우는 '삼성 백킹 완제품 플랫폼'.</li>
+        <li><strong>즉시 관망:</strong> +16% 스파이크 추격 / 삼성 파트너십 기대 미달 / 320,000 이탈 시 축소.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 무엇이 다른가</h2>
+  <p>수급 상위 종목은 대부분 4~7월 급등 후 큰 조정을 거친 눌림 국면이다. 그중 레인보우로보틱스는 <strong>주도주 지위(삼성 백킹·거래대금 최대)는 최상위</strong>지만 밸류(PSR 155x·PBR 70x)가 배치에서 가장 극단이라, 비츠로셀(PER 17x·OPM 30%처럼 '숫자로 사는' 종목)과 정반대 극에 선다. 레인보우의 상대 매력 = <em>"실적이 아니라 삼성 백킹 + 휴머노이드 TAM 옵션을 사는, 손익비를 눌림에서만 여는 대장주"</em>. 로보티즈가 '관절(액추에이터)'이라면 레인보우는 '완제품 플랫폼(RB-Y1)'이며, <strong>삼성 백킹이 결정적 차별점</strong>이자 동시에 최대 하방 리스크(기대 미달 시 낙폭도 최대)다.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"협동로봇·사족보행로봇·<strong>휴머노이드(RB-Y1)</strong>를 만들고, <strong>삼성전자의 로봇 수직계열화 파트너</strong>로서 반도체 공장 무인화와 차세대 이동형 로봇을 함께 개발하는 한국 로봇 대표사."</p>
+  <div class="note"><div class="h">이 종목이 파는 것 = 실적이 아니라 옵션</div>매출은 153억(2023)→600억E(2026)로 4배지만 절대 규모는 작고, 이익은 이제 막 흑자 초입. 시장이 사는 건 실적이 아니라 <strong>삼성 백킹 + 휴머노이드 양산 시대의 잠재 TAM</strong>이다. 즉 밸류는 '삼성이 로봇을 대규모 양산하면 그 중심에 레인보우가 있다'는 <em>옵션 가치</em>가 전부.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 세 라인업</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="txt">위치</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>협동로봇(cobot)</strong></td><td class="txt">사람과 협업하는 산업용 로봇팔</td><td class="txt">매출의 현재 기반</td><td class="txt">글로벌 CAGR ~18.9%, 이익 미미</td></tr>
+      <tr class="hl"><td class="txt"><strong>휴머노이드(RB-Y1)</strong></td><td class="txt">이동형 양팔 휴머노이드 플랫폼</td><td class="txt"><strong>성장 핵심</strong></td><td class="txt">삼성 핸드 랩 결합·반도체팹 투입 검증</td></tr>
+      <tr><td class="txt"><strong>사족보행·이동 플랫폼</strong></td><td class="txt">차세대 이동형 로봇</td><td class="txt">경쟁력 축</td><td class="txt">물류·제조 이동 자동화</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">RB-Y1은 쿠팡 물류센터 투입 등 실증 사례가 이어지며 'K-로보틱스 분기점'으로 거론된다.<span class="src">뉴스스페이스·데일리머니 2026<span class="tip">삼성 '핸드 랩' 신설·RB-Y1 반도체 라인 투입, K-Humanoid Alliance(2025.4 출범) 참여</span></span> '삼성=손 모듈 / 레인보우=플랫폼·이동·제어' 분업.</p>
+
+  <div class="chart"><div class="ct">매출 성장 스택 (억원) — 삼성향이 폭증하며 성장을 견인</div><div class="cs">삼성전자향 매출이 2024 14억 → 2025 104억(7.2배) → 2026E ~250억E로 급증. 전체 매출의 성장은 사실상 삼성 프로젝트가 만든다 — 백킹의 깊이이자 의존의 위험.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- max total 600 -> 200px, k=0.3333, base y=250 -->
+      <!-- 2023 total153, 삼성5 -->
+      <rect x="125" y="248.3" width="100" height="1.7" fill="#e78a5c" opacity="0.9"/>
+      <rect x="125" y="199" width="100" height="49.3" fill="#5a6472"/>
+      <text x="175" y="190" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">153</text>
+      <text x="175" y="272" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 total193, 삼성14.4 -->
+      <rect x="345" y="245.2" width="100" height="4.8" fill="#e78a5c" opacity="0.9"/>
+      <rect x="345" y="185.7" width="100" height="59.5" fill="#5a6472"/>
+      <text x="395" y="176" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">193</text>
+      <text x="395" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 total341, 삼성104 -->
+      <rect x="565" y="215.3" width="100" height="34.7" fill="#e78a5c" opacity="0.9"/>
+      <rect x="565" y="136.3" width="100" height="79" fill="#5a6472"/>
+      <text x="615" y="127" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">341</text>
+      <text x="615" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <text x="615" y="238" text-anchor="middle" font-size="9.5" fill="#161616" font-weight="700">삼성104</text>
+      <!-- 2026E total600, 삼성250E -->
+      <rect x="785" y="166.7" width="100" height="83.3" fill="#e78a5c" opacity="0.65" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="785" y="50" width="100" height="116.7" fill="#5a6472" opacity="0.75"/>
+      <text x="835" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">600</text>
+      <text x="835" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <text x="835" y="212" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">삼성 ~250E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>삼성전자향</span><span><i style="background:#5a6472"></i>기타 매출</span><span style="color:var(--muted)">2026E 삼성향=추정</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">최대고객·모회사(삼성)의 눈</h3><p style="margin:6px 0">"반도체팹 무인화에 협동로봇·휴머노이드를 투입한다. 손 모듈은 우리가, 플랫폼·이동·제어는 레인보우가. 로봇 수직계열화의 축." → 강한 초기 수요·레퍼런스.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(두산·로보티즈·Figure)의 눈</h3><p style="margin:6px 0">"레인보우는 삼성 백킹으로 자금·고객이 남다르다. 그러나 양산·글로벌 트랙레코드는 아직 미검증." → K-로봇 경쟁 심화.</p></div>
+    <div class="card"><h3 style="margin-top:0">주주(기관·개인)의 눈</h3><p style="margin:6px 0">"삼성 대장주라 사고 싶은데 PSR 155배가 부담. 양산 뉴스에 급등, 지연에 급락하는 초변동주." → 눌림 대기 심리.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"삼성과의 협력 심화가 최우선. RB-Y1 상업화·라인업 확장으로 휴머노이드 양산 시대를 선점." → 스토리 주도의 성장.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">삼성 백킹</h3><p style="margin:0;font-size:12.5px">최대주주(35.0%)·연결 자회사. 자금력·초기 대형 고객(반도체팹)·손 모듈 협업. 다른 휴머노이드주가 못 가진 <strong>수요 가시성·자본</strong>. 현금화: 진행 중.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">로봇 기술(RB-Y1·제어)</h3><p style="margin:0;font-size:12.5px">이동형 양팔 플랫폼·협동로봇·사족보행. 기술 자체는 두산·로보티즈·글로벌도 보유. 차별점은 삼성 결합·완제품 통합. 현금화: 초기.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">양산 경쟁력</h3><p style="margin:0;font-size:12.5px">휴머노이드 대량양산·원가·수율·글로벌 판매는 아직 실증 전. 밸류의 핵심 전제이나 <strong>가장 불확실</strong>. 현금화: 미정(2027~).</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — 삼성전자 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조·R&D 분업 다이어그램 (2026 기준)</div><div class="cs">삼성전자가 35.0% 최대주주로 연결 자회사 편입. '삼성=손 모듈(핸드 랩) / 레인보우=플랫폼·이동·제어'의 수직계열화 분업이 밸류의 근거이자 의존의 축.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- 삼성전자 -->
+      <rect x="60" y="110" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a" stroke-width="2"/>
+      <text x="160" y="140" text-anchor="middle" font-size="14" fill="#eaecef" font-weight="700">삼성전자</text>
+      <text x="160" y="162" text-anchor="middle" font-size="10.5" fill="#828b98">최대주주 35.0% · 연결 자회사</text>
+      <!-- 삼성 핸드 랩 -->
+      <rect x="60" y="30" width="200" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="160" y="50" text-anchor="middle" font-size="11.5" fill="#eaecef">삼성 '핸드 랩'</text>
+      <text x="160" y="66" text-anchor="middle" font-size="10.5" fill="#828b98">손 모듈(hand) 개발</text>
+      <!-- 레인보우 center -->
+      <rect x="430" y="110" width="220" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">레인보우로보틱스 (277810)</text>
+      <text x="540" y="162" text-anchor="middle" font-size="11" fill="#828b98">플랫폼·이동·제어 · 시총 9.3조</text>
+      <!-- 제품 라인업 right -->
+      <rect x="820" y="40" width="200" height="46" rx="5" fill="#22262f" stroke="#e78a5c"/>
+      <text x="920" y="60" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">휴머노이드 RB-Y1</text>
+      <text x="920" y="76" text-anchor="middle" font-size="10" fill="#e78a5c">반도체팹·물류 투입</text>
+      <rect x="820" y="123" width="200" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="920" y="143" text-anchor="middle" font-size="12" fill="#eaecef">협동로봇(cobot)</text>
+      <text x="920" y="159" text-anchor="middle" font-size="10" fill="#828b98">현 매출 기반</text>
+      <rect x="820" y="206" width="200" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="920" y="226" text-anchor="middle" font-size="12" fill="#eaecef">사족보행·이동</text>
+      <text x="920" y="242" text-anchor="middle" font-size="10" fill="#828b98">차세대 플랫폼</text>
+      <!-- arrows -->
+      <line x1="260" y1="146" x2="430" y2="146" stroke="#4bbf9a" stroke-width="2.5" marker-end="url(#ar)"/>
+      <text x="345" y="138" text-anchor="middle" font-size="10" fill="#4bbf9a">지분 35.0%</text>
+      <line x1="160" y1="76" x2="160" y2="110" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="260" y1="60" x2="430" y2="128" stroke="#e78a5c" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+      <text x="360" y="80" text-anchor="middle" font-size="9.5" fill="#e78a5c">손+플랫폼 결합</text>
+      <line x1="650" y1="130" x2="820" y2="63" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="650" y1="146" x2="820" y2="146" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="650" y1="162" x2="820" y2="229" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>삼성전자가 최대주주(35.0%)이자 최대고객</strong>이라는 이중 지위가 이 종목의 전부다. 강점은 자금·수요·기술 시너지, 리스크는 <em>삼성 로봇 전략의 방향·속도에 밸류가 종속</em>된다는 점. 정확한 양산 파트너십 범위는 '최대주주·손 모듈 협업'까지만 공식 확인되며, 그 이상은 시장의 선반영이다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 잠재인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">가시성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">삼성 반도체팹 무인화</td><td class="txt"><strong>확정 초기수요</strong></td><td class="txt">삼성 로봇 수직계열화·팹 자동화 CapEx</td><td class="txt">높음(레퍼런스)</td></tr>
+      <tr class="hl"><td class="txt">휴머노이드 양산(TAM)</td><td class="txt"><strong>잠재·선투자 수요</strong></td><td class="txt">글로벌 휴머노이드 개화·삼성/현대차/테슬라 로드맵</td><td class="txt">낮음(2027~)</td></tr>
+      <tr><td class="txt">협동로봇</td><td class="txt">산업 자동화 수요</td><td class="txt">제조 자동화·인건비·리쇼어링</td><td class="txt">중(경쟁 심화)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심 — '곡괭이'가 아니라 '금맥 자체'에 베팅</div>휴머노이드는 아직 <strong>선투자·잠재 수요</strong>다. 글로벌 시장 추정치는 편차가 크다 — Goldman Sachs $38B(2035, 140만대), Macquarie $139B, 2030년 ~$15B(CAGR 39%).<span class="src">Goldman·Macquarie·MarketsandMarkets 2025<span class="tip">공식 글로벌 수치는 없음. 하드웨어·SW·서비스 집계 방식에 따라 상이</span></span> 레인보우는 삼성이라는 강력한 초기 고객·모회사가 있어 <em>수요 가시성·자금력에서 다른 휴머노이드주보다 우위</em>지만, 밸류가 이미 TAM 개화를 당겨써 지연 시 극단 조정.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 아직 '이익'이 아니라 '매출·지분'</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">6.7<span class="u">%</span></div><div class="sub">첫 흑자 초입(40억E)</div></div>
+    <div class="kpi"><div class="lab">PSR 26E</div><div class="val">~155<span class="u">x</span></div><div class="sub">배치 최극단</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">69.8<span class="u">x</span></div><div class="sub">BPS 6,851 · 자산아님</div></div>
+  </div>
+  <p>협동로봇·휴머노이드는 아직 <strong>규모의 경제·양산 원가 곡선 이전</strong> 단계라 유닛 이코노믹스가 확립되지 않았다. 1Q26도 매출은 +116.6%인데 영업손실(15.7억) 지속 — <em>성장 투자가 이익을 앞선다.</em> 밸류는 '언젠가 대량양산 시 마진이 열린다'는 미래 유닛 이코노믹스를 선반영한 값.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +9.0억 · 연기금 +58.3억 · 투신 +95.3억</strong>(합산 시총대비 +0.18%) — 연기금·투신이 대규모 순매수. 거래대금 <strong>5,455억</strong>으로 이 배치 <em>최대급 거래대금</em>, 조정(375k) 뒤 반등에서 기관이 대장주를 재편입하는 그림. 다만 하루 ±16%·거래대금 5천억의 초변동성은 지수·테마 심리에 연동돼 급등락 — 추격보다 눌림 유입이 손익비상 유리.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">매출 급증 궤적 — 분기·연간 두 축</h2>
+  <div class="chart"><div class="ct">매출 급증 (억원) — 1Q26 +116.6%, 연간 2026E +76%</div><div class="cs">1Q25 41.8억 → 1Q26 90.6억(+116.6%, 분기 최대). 연간 2025 341억 → 2026E 600억(+76%). 삼성 반도체팹 협동로봇·휴머노이드 프로토타입 공급이 견인.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- max 600 -> 200px, k=0.3333, base 250 -->
+      <!-- 분기 pair -->
+      <rect x="150" y="236.1" width="110" height="13.9" fill="#4bbf9a" opacity="0.85"/>
+      <text x="205" y="228" text-anchor="middle" font-size="11" fill="#eaecef" font-weight="600">41.8</text>
+      <text x="205" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">1Q25</text>
+      <rect x="300" y="219.8" width="110" height="30.2" fill="#4bbf9a"/>
+      <text x="355" y="211" text-anchor="middle" font-size="11" fill="#eaecef" font-weight="600">90.6</text>
+      <text x="355" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">1Q26</text>
+      <text x="280" y="185" text-anchor="middle" font-size="12" fill="#4bbf9a" font-weight="700">+116.6%</text>
+      <!-- 연간 pair -->
+      <rect x="620" y="136.3" width="110" height="113.7" fill="#e78a5c" opacity="0.85"/>
+      <text x="675" y="127" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">341</text>
+      <text x="675" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">2025A</text>
+      <rect x="770" y="50" width="110" height="200" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="825" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">600</text>
+      <text x="825" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">2026E</text>
+      <text x="750" y="30" text-anchor="middle" font-size="12" fill="#e78a5c" font-weight="700">+76%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>분기 매출</span><span><i style="background:#e78a5c"></i>연간 매출</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 매출은 두 배, 이익은 아직 씨앗</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">1Q25</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">90.6억</td><td class="num">41.8억</td><td class="num up">+116.6%</td><td class="txt">분기 최대·삼성 프로젝트 견인</td></tr>
+      <tr><td class="txt">└ 삼성전자향</td><td class="num">24.1억</td><td class="num">—</td><td class="num">비중 26.6%</td><td class="txt">반도체팹 협동로봇·휴머노이드 프로토타입</td></tr>
+      <tr><td class="txt">영업손익</td><td class="num down">−15.7억</td><td class="num down">−14.0억</td><td class="num">적자 지속</td><td class="txt">성장 투자 국면(적자 소폭 확대)</td></tr>
+      <tr><td class="txt">순손익</td><td class="num down">−9.0억</td><td class="num down">−7.3억</td><td class="num">적자 지속</td><td class="txt">이익화는 아직 초입</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">2025년 삼성전자향 매출 104억(전년 대비 7.2배). 1Q26 삼성 의존도 26.6%.<span class="src">이코노믹리뷰·다음 2026<span class="tip">1Q26 매출 90.6억(+116.6%)·영업손실 15.7억·순손실 9.0억</span></span></p>
+  <h3>이익의 질 — 아직 없다, 그것이 이 종목의 본질</h3>
+  <p>비츠로셀·디케이티처럼 '깨끗한 손익'을 논할 단계가 아니다. 레인보우는 <strong>매출이 두 배로 늘어도 영업손실이 지속</strong>되는 성장 투자 국면 — 2026E 첫 흑자(40억E)도 시총 9.3조 대비 씨앗이다. 즉 <em>이익의 질이 아니라 '삼성과의 협력 심화·양산 뉴스'가 주가 트리거</em>이고, 분기 실적은 스토리 확인용이지 밸류 근거가 아니다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · 밸류 분해</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주봉 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">260,000원 → 880,000원(2/26 고점, 3.8배) → 375,000원(7/20, 고점 −57%) → 478,500원(7/22 +16.3%). 상승·조정 모두 실적이 아니라 삼성 휴머노이드 내러티브·멀티플이 만든다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- price 200k..1000k -> y 250..40. k=0.0002625 ; y=250-(p-200000)*0.0002625 -->
+      <line x1="55" y1="197.5" x2="1035" y2="197.5" stroke="#20242c"/><text x="48" y="200.5" text-anchor="end" font-size="9" fill="#5a6472">400k</text>
+      <line x1="55" y1="145" x2="1035" y2="145" stroke="#20242c"/><text x="48" y="148" text-anchor="end" font-size="9" fill="#5a6472">600k</text>
+      <line x1="55" y1="92.5" x2="1035" y2="92.5" stroke="#20242c"/><text x="48" y="95.5" text-anchor="end" font-size="9" fill="#5a6472">800k</text>
+      <polyline points="80,234.25 149,223.75 218,210 287,192.25 356,158.1 425,118.75 494,71.5 563,87.25 632,145 701,171.25 770,192.25 839,204.1 980,176.9" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- markers -->
+      <circle cx="494" cy="71.5" r="4" fill="#f0525f"/><text x="494" y="62" text-anchor="middle" font-size="9.5" fill="#f0525f">880k 고점(2/26)</text>
+      <circle cx="632" cy="145" r="4" fill="#cba24a"/><text x="632" y="136" text-anchor="middle" font-size="9" fill="#cba24a">RB-Y1 팹투입</text>
+      <circle cx="839" cy="204.1" r="4" fill="#4bbf9a"/><text x="839" y="220" text-anchor="middle" font-size="9" fill="#4bbf9a">375k 저점(7/20)</text>
+      <circle cx="980" cy="176.9" r="4.5" fill="#e78a5c"/><text x="980" y="168" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">478,500</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="494" y="272" font-size="9.5" fill="#828b98">'26.02</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 거의 전부는 멀티플</h2>
+  <p>비츠로셀 같은 '실적+멀티플 반반' 상승과 정반대다. 레인보우의 260k→880k(3.8배) 상승 중 <strong>실적 기여는 미미</strong> — 거의 전부 멀티플·삼성 휴머노이드 내러티브다. <em>PBR이 20배대에서 70배로 뛴 것</em>이 이를 압축한다. 2월 고점 후 −57% 조정은 극단 밸류의 정상화이지 실적 훼손이 아니며, 지금은 그 되돌림 뒤 재변동 국면. 알파증류소 Hold·목표가 750,000원(현재가 +57%)으로 상방은 있으나 등급은 보수적.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">테마 랠리로 코스닥을 크게 아웃퍼폼했다가 −57% 되돌림. 절대·상대 모두 초변동 — 방향은 삼성 양산 뉴스가 결정.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="85" x2="1035" y2="85" stroke="#20242c"/><text x="48" y="88" text-anchor="end" font-size="9" fill="#5a6472">150</text>
+      <line x1="55" y1="135" x2="1035" y2="135" stroke="#20242c"/><text x="48" y="138" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="185" x2="1035" y2="185" stroke="#20242c"/><text x="48" y="188" text-anchor="end" font-size="9" fill="#5a6472">50</text>
+      <!-- 레인보우: Jan 700k=100 -> y135; peak 880k=125.7 -> y109.3; Jul20 375k=53.6 -> y181.4; Jul22 478.5k=68.4 -> y166.6 -->
+      <polyline points="80,135 300,109.3 480,118 640,150 800,178 839,181.4 980,166.6" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="160" font-size="9.5" fill="#e78a5c" font-weight="700">레인보우 −32%</text>
+      <polyline points="80,135 300,132 500,128 700,126 900,124 980,123" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="118" font-size="9.5" fill="#828b98">코스닥 ~+12%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 반영, 무엇이 선반영인가</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영 상태</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">삼성 백킹·2026 매출 급증(1Q +116.6%)</td><td class="txt"><span class="tag b">반영</span></td></tr>
+      <tr><td class="txt">RB-Y1 반도체팹 대량 투입</td><td class="txt"><span class="tag n">부분 반영</span></td></tr>
+      <tr><td class="txt">삼성 휴머노이드 양산 파트너 확정(핵심)</td><td class="txt"><span class="tag s">선반영(미확정)</span></td></tr>
+      <tr><td class="txt">글로벌 휴머노이드 시장 개화</td><td class="txt"><span class="tag s">미반영(옵션)</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">내재기대 역산: 시총 9.3조 ÷ 2026E 매출 600억 = PSR 155배는 '수년 내 매출 수천억~조 도달(휴머노이드 양산) + 레인보우가 그 대장'을 이미 가격에 넣은 값. 실현이 늦거나 삼성 파트너십이 기대만 못하면 큰 폭 조정.</p>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">K-로봇 경쟁 지형 — 그리고 밸류(PSR) 비교</h2>
+  <div class="chart"><div class="ct">PSR 비교 (배) — 골드 바 = 레인보우로보틱스</div><div class="cs">레인보우 ~155배는 국내 로봇 peer(두산·로보티즈) 대비도 최극단. 산업용 로봇(ABB·화낙)의 수 배~십수 배와는 차원이 다른 '휴머노이드 옵션 프리미엄'.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="210" y1="230" x2="1030" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale max155 -> (1030-210)=820px, k=5.29 -->
+      <rect x="210" y="30" width="820" height="26" fill="#cba24a"/><text x="1030" y="48" text-anchor="end" font-size="12" fill="#161616" font-weight="700">~155x</text><text x="205" y="48" text-anchor="end" font-size="11" fill="#eaecef">레인보우로보틱스</text>
+      <rect x="210" y="70" width="423" height="26" fill="#5a6472"/><text x="643" y="88" font-size="11" fill="#bfc5ce">~80x</text><text x="205" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">로보티즈 <tspan class="est">E</tspan></text>
+      <rect x="210" y="110" width="317" height="26" fill="#5a6472"/><text x="537" y="128" font-size="11" fill="#bfc5ce">~60x</text><text x="205" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">두산로보틱스 <tspan class="est">E</tspan></text>
+      <rect x="210" y="150" width="42" height="26" fill="#5a6472"/><text x="262" y="168" font-size="11" fill="#bfc5ce">~8x</text><text x="205" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">ABB·화낙(산업로봇)</text>
+    </svg>
+    <div class="lgd"><span style="color:var(--muted)">PSR = 시총 ÷ 매출. peer PSR은 시점·매출 추정에 따라 편차 — 방향성 참고용(<span class="est">E</span>=자체 추정).</span></div>
+  </div>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">로보티즈 (108490 · 시총 ~4.0조)</h3><p style="margin:6px 0;font-size:12.5px">휴머노이드 <strong>액추에이터(관절) 순수 플레이</strong>. 2026 하반기 AI Sapiens·Dynamixel-Q 출시, 우즈벡 신공장으로 생산량 +67%. 레인보우와 '부품 vs 완제품' 보완·경쟁.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">두산로보틱스 (454910 · 시총 ~4.5조)</h3><p style="margin:6px 0;font-size:12.5px">국내 협동로봇 <strong>완제품 1위</strong>·세계 4위(중국 제외). ONExia 인수로 북미 공략. 레인보우와 협동로봇 직접 경쟁, 삼성 백킹은 없음.</p></div>
+    <div class="card"><h3 style="margin-top:0">Tesla·Figure·Boston Dynamics</h3><p style="margin:6px 0;font-size:12.5px">글로벌 휴머노이드 벤치마크(Optimus·Atlas). 자본·SW·양산에서 앞선 경쟁·기준. 레인보우의 '아틀라스 대항마' 서사는 기대이자 검증 과제.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — K-Humanoid Alliance</h3><p style="margin:6px 0;font-size:12.5px">2025.4 출범, 정부·학계·제조사 연합. 레인보우·로보티즈·현대차 등 참여. 국가 차원 휴머노이드 R&D는 <strong>공동 상승 요인</strong>이자 경쟁 촉진.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">밸류 축</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">삼성 휴머노이드 양산 파트너 확정 + RB-Y1 대량 투입 + 휴머노이드 붐, '삼성 로봇 대장' 프리미엄 유지</td><td class="num">PSR 유지 <span class="est bull">TAM</span></td><td class="num up">750,000</td><td class="num">35%</td><td class="num up">+57%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E 매출 600억 성장하나 극단 밸류 점진 정상화, 레인지</td><td class="num">PSR ~120x</td><td class="num">450,000</td><td class="num">40%</td><td class="num down">−6%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">휴머노이드 양산 지연 + 극단 밸류 언와인드, PSR 80배권</td><td class="num">PSR ~80x <span class="est bear">E</span></td><td class="num down">280,000</td><td class="num">25%</td><td class="num down">−41%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="3">확률가중 기대값 (EV)</td><td class="num">512,500</td><td class="num"></td><td class="num up">+7%</td></tr></tfoot>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">EV = 0.35×750,000 + 0.40×450,000 + 0.25×280,000 = 약 512,500원(현재가 478,500 대비 +7%). 상방은 매력적이나 밸류가 배치 최극단이고 Bear 꼬리(−41%)가 깊다 — 추격 금지·눌림 대기.</p>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 478,500(흰선). 애널(알파증류소) Hold·TP 750,000. 자체 밴드 280,000~750,000. 상방은 넓으나 Bear 하방 −41% 꼬리가 깊고, EV는 +7%에 그친다.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- price 200k..800k -> x 120..1030. k=0.001517 ; x=120+(p-200000)*0.001517 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">200k</text>
+      <text x="423.4" y="205" text-anchor="middle" font-size="9" fill="#5a6472">400k</text>
+      <text x="726.8" y="205" text-anchor="middle" font-size="9" fill="#5a6472">600k</text>
+      <text x="1030" y="205" text-anchor="middle" font-size="9" fill="#5a6472">800k</text>
+      <!-- 자체 밴드 280k..750k -->
+      <rect x="241.4" y="40" width="713" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="241" y="34" font-size="10" fill="#e78a5c">Bear 280k</text>
+      <text x="954.4" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 750k</text>
+      <line x1="499.3" y1="36" x2="499.3" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="499" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 450k</text>
+      <!-- 애널 TP 750k (Hold, single) -->
+      <line x1="954.4" y1="106" x2="954.4" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="954" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">애널 TP 750k(Hold)</text>
+      <!-- EV 512.5k -->
+      <line x1="594.1" y1="106" x2="594.1" y2="140" stroke="#bfc5ce" stroke-width="1.5" stroke-dasharray="3 2"/><text x="594" y="152" text-anchor="middle" font-size="9.5" fill="#bfc5ce">EV 512.5k</text>
+      <!-- 현재가 478.5k -->
+      <line x1="542.6" y1="20" x2="542.6" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="542" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 478,500</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">삼성 프로젝트로 +76%·1Q +116.6%. 절대 규모는 작으나 방향은 <strong>강함</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">마진 확장 △</h3><p style="margin:6px 0;font-size:12.5px">첫 흑자 초입(OPM 6.7%E). 양산 전이라 마진 곡선은 <strong>미검증</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 ✗</h3><p style="margin:6px 0;font-size:12.5px">PSR 155·PBR 70 — 이미 극단. 여기서 추가 확장은 어렵고 <strong>정상화 압력</strong>이 우세.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 기여(미반영): 삼성 양산 파트너 공식화 / RB-Y1 상업 매출화 / 글로벌 휴머노이드 붐 → 각 밸류 리레이팅. 단, 이 옵션들이 밸류에 '이미' 상당 부분 선반영된 게 함정.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>휴머노이드 양산 지연</strong></td><td class="txt">TAM 실현 지연 시 PSR 155→80배 디레이팅, 주가 −40%+</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>극단 밸류 되돌림</strong></td><td class="txt">2월→7월 −57% 조정 전례. 테마 냉각 시 반복</td><td class="num">높음</td></tr>
+      <tr><td class="txt"><strong>삼성 파트너십 기대 미달</strong></td><td class="txt">양산 파트너 확정 지연·범위 축소 시 리레이팅 근거 약화</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>이익 부재·밸류 정당화</strong></td><td class="txt">순익 150억E로 9.3조 지지 어려움, 실적 미스 시 급락</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>초변동성</strong></td><td class="txt">하루 ±16%·거래대금 5천억, 지수·심리 연동 급등락</td><td class="num">상시</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 320,000~380,000 눌림에서 분할(주도주 편입). 급등 추격·+16% 스파이크 추격 금지.</li>
+    <li><strong>추가:</strong> 삼성 휴머노이드 양산 파트너 확정·RB-Y1 대량 투입 공시 → 추가·홀딩.</li>
+    <li><strong>홀딩:</strong> 2Q26 매출 성장·흑자 전환 확인 → thesis 강화.</li>
+    <li><strong>축소:</strong> 양산 지연·테마 냉각으로 320,000 이탈 → 축소.</li>
+    <li><strong>차익:</strong> 750,000+ 접근은 차익 관리(극단 밸류). 사이징은 초변동 감안 축소.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 무엇으로 thesis를 검증하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선 / 트리거</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">삼성 양산 파트너십 공식화</td><td class="txt">밸류의 핵심 근거</td><td class="txt">확정 시 상방 / 지연 시 디레이팅</td></tr>
+      <tr><td class="txt">RB-Y1 반도체팹 투입 규모</td><td class="txt">상업 매출화 선행</td><td class="txt">프로토타입→양산 전환 여부</td></tr>
+      <tr><td class="txt">삼성전자향 매출·비중</td><td class="txt">백킹 깊이</td><td class="txt">2025 104억→2026E 성장 지속</td></tr>
+      <tr><td class="txt">분기 매출·흑자 전환</td><td class="txt">실적 인플렉션</td><td class="txt">2Q26 흑자·성장 확인</td></tr>
+      <tr><td class="txt">거래대금·기관 수급</td><td class="txt">주도주 지위</td><td class="txt">대금 급감·기관 이탈 시 경계</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">상시</td><td class="txt">삼성 휴머노이드 양산 파트너십·RB-Y1 대량 투입 발표</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">삼성 반도체팹 무인화 프로젝트 확대</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(매출 성장·흑자 전환 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">글로벌 휴머노이드 이벤트(테슬라·엔비디아·Figure)</td><td class="txt"><span class="tag n">변동성 원천</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "삼성전자가 35%를 쥔 한국 휴머노이드 대장이, 반도체팹 무인화로 매출을 두 배씩 늘리는 건 진짜다. 그러나 시장은 그 '양산 시대'를 PSR 155배로 이미 통째로 당겨썼다 — 지위는 사되 가격은 320,000~380,000 눌림에서만 산다."</strong><br>어떻게 맞나: 삼성 양산 파트너 확정·RB-Y1 대량 투입 중 하나만 켜져도 애널 TP 750k. 어떻게 틀리나: 양산이 늦어지고 테마가 식으면 2월→7월처럼 반토막(축소). 한 단어: <em>"삼성 옵션"</em>. 남는 것: <strong>"지위는 진짜, 가격은 미래 — 추격 대신 눌림."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 관망(눌림목 대기)</span><span class="pill">Base 450,000</span><span class="pill">매집밴드 320,000~380,000</span><span class="pill">Bull 750,000 / Bear 280,000</span><span class="pill">EV 512,500(+7%)</span><span class="pill">thesis break: 삼성 양산 기대 미달·양산 지연·320k 이탈</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 이 종목은 주가=이익×멀티플이 성립 불가 — <em>PSR·TAM 축</em>으로만 밸류를 읽는다. 알파는 삼성 양산 스토리의 실현 속도를 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 478,500·시총 9.3조·PBR 69.84x·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 880,000@2/26·저점 253,500) · 삼성 지분 35.0%·콜옵션 행사·연결 자회사 편입 = elec4·뉴스스페이스(2025) · 1Q26 매출 90.6억(+116.6%)·영업손실 15.7억·순손실 9.0억·삼성향 24.1억(26.6%)·2025 삼성향 104억(7.2배) = 이코노믹리뷰·다음(2026) · RB-Y1 반도체팹/쿠팡 투입·핸드 랩·K-Humanoid Alliance(2025.4) = 뉴스스페이스·데일리머니 · 목표가 750,000(Hold) = 알파증류소 · peer 시총(로보티즈 ~4.0조·두산로보틱스 ~4.5조) = fnguide·증권플러스 · 휴머노이드 TAM(Goldman $38B@2035·2030 ~$15B) = Goldman·MarketsandMarkets · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·삼성 협력·peer 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

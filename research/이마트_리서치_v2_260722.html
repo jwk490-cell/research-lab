@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이마트 139480 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">139480</span>
+    <span class="nm">이마트 <small>E-mart · 대형마트·유통지주 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩81,700</span>
+    <span>시총 ₩2.25조 · PBR 0.19x · 26E PER 15.7x</span>
+    <span class="rating">비중확대 관심 · 매집 71,000~78,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PBR밴드</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>현재가</b> ₩81,700 (+2.2%)</span>
+  <span><b>52주</b> 61,000 ~ 137,500</span>
+  <span><b>외인</b> 25.87%</span>
+  <span><b>PBR</b> 0.19x</span>
+  <span><b>배당</b> 2,500원 (3.06%)</span>
+  <span><b>OPM 26E</b> 1.85%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">순자산의 5분의 1 값에 거래되는 유통 1위 — 14년 만의 최대 분기이익이 알린 건 '성장'이 아니라 '정상화', 그리고 재평가의 시작이다.</h1>
+  <p class="lead">이마트는 국내 대형마트 1위이자 트레이더스·SSG닷컴·G마켓·이마트24·스타벅스코리아·조선호텔을 거느린 <em>신세계그룹 유통 지주</em>다. 스토리는 단순하다 — <strong>본업 턴어라운드 + 극단 저평가</strong>. 2023~2024년 적자(신세계건설 손상)에서 2025년 <strong>흑자전환</strong>(연결 영업익 +585%)했고, 2026년 영업익 +67%로 회복이 가속된다. 1Q26 영업익 1,783억원은 <em>14년 만의 1분기 최대</em>, 별도 영업익은 8년 만의 최대치다<span class="src">1Q26 OP 1,783억 +11.9%, 별도 8년만 최대<span class="tip">머니투데이·인사이트 2026-05-13 · 트레이더스 총매출 1조601억 역대최고·OP 478억</span></span>. 그런데도 주가는 <strong>PBR 0.19배</strong> — 부동산·자회사를 얹은 순자산의 5분의 1 값이다. 61,000원→127,600원(2/11)→81,700원. <strong>본업이 도는 자산주, 눌림 분할.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 71,000~78,000원 · Base 85,000 / Bull 110,000 / Bear 62,000 · 확률가중 EV ≈ 88,000원(+8%, +배당 ~3%).</strong> 밸류의 핵심은 이익이 아니라 <em>자산(PBR 0.19)·배당(3.06%)이 만드는 두꺼운 하방</em>과, 본업 턴어라운드·밸류업이 여는 재평가 상방이다. IBK 목표가 104,000원(+27%). thesis break: 이커머스(쿠팡) 구조 잠식 심화 / 본업 OPM 개선 정체 / 밸류업·자산유동화 실망.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 적자의 계곡을 지나 흑자 정상화로</h2>
+  <p>단위 억원(EPS·DPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 유통업의 숙명 — <strong>매출은 29조로 거대하나 OPM 1~2%의 저마진</strong>. 그래서 이 종목의 밸류 축은 손익이 아니라 <em>PBR 0.19·배당 3%</em>의 자산·환원이고, 손익은 '폭발'이 아니라 '정상화'의 확인이다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">DPS</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">294,722</td><td class="num down">−469</td><td class="num">적자</td><td class="num down">−891</td><td class="num down">−3,196</td><td class="num">n/a</td><td class="num">2,000</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">290,209</td><td class="num">471</td><td class="num">0.2%</td><td class="num down">−5,900</td><td class="num down">−21,166 <span class="est bear">일회성</span></td><td class="num">n/a</td><td class="num">2,000</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">289,704</td><td class="num">3,225</td><td class="num">1.11%</td><td class="num">1,362</td><td class="num">4,921</td><td class="num">16.6x</td><td class="num">2,500</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">292,202</td><td class="num">5,406</td><td class="num">1.85%</td><td class="num">1,570 <span class="est">E</span></td><td class="num">5,218</td><td class="num">15.7x</td><td class="num">2,725 <span class="est">E</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 81,700 ÷ 해당연도 EPS. 영업익 −469→471→3,225→5,406E(+585% 흑전 후 +67%). 2024A 지배순손실은 <strong>신세계건설 손상·대손(대손충당금 2,462억)</strong> 등 일회성이 대부분 — 경상 이익력 기준은 2025A부터. PBR 0.19배는 순자산 대비 극단 저평가.</p>
+
+  <div class="chart"><div class="ct">영업이익 회복 궤적 (막대, 억원) + OPM (라인, %)</div><div class="cs">적자(2023) → 흑전(2024~25) → +67%(2026E). 골드 라인(OPM)이 저마진 안에서 우상향한다. 점선=컨센 추정.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- zero line at y=235 -->
+      <line x1="60" y1="235" x2="1030" y2="235" stroke="#353b47" stroke-width="1.5"/>
+      <text x="52" y="239" text-anchor="end" font-size="9" fill="#5a6472">0</text>
+      <!-- gridlines positive: 2000(y=166.6),4000(y=98.1) k=0.03422 -->
+      <line x1="60" y1="166.6" x2="1030" y2="166.6" stroke="#20242c"/><text x="52" y="170" text-anchor="end" font-size="9" fill="#5a6472">2,000</text>
+      <line x1="60" y1="98.1" x2="1030" y2="98.1" stroke="#20242c"/><text x="52" y="101" text-anchor="end" font-size="9" fill="#5a6472">4,000</text>
+      <!-- 2023: -469 -> 16.1px below zero -->
+      <rect x="135" y="235" width="90" height="16.1" fill="#3c86f5" opacity="0.75"/>
+      <text x="180" y="266" text-anchor="middle" font-size="11.5" fill="#3c86f5" font-weight="600">−469</text>
+      <text x="180" y="300" text-anchor="middle" font-size="11" fill="#828b98">2023A</text>
+      <!-- 2024: 471 -> 16.1px above -->
+      <rect x="385" y="218.9" width="90" height="16.1" fill="#e78a5c" opacity="0.85"/>
+      <text x="430" y="210" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">471</text>
+      <text x="430" y="300" text-anchor="middle" font-size="11" fill="#828b98">2024A</text>
+      <!-- 2025: 3225 -> 110.4px -->
+      <rect x="635" y="124.6" width="90" height="110.4" fill="#e78a5c" opacity="0.85"/>
+      <text x="680" y="116" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">3,225</text>
+      <text x="680" y="300" text-anchor="middle" font-size="11" fill="#828b98">2025A</text>
+      <!-- 2026E: 5406 -> 185px -->
+      <rect x="885" y="50" width="90" height="185" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="930" y="42" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">5,406</text>
+      <text x="930" y="300" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: -0.16,0.16,1.11,1.85  y=235-opm*35 -->
+      <polyline points="180,240.6 430,229.4 680,196.2 930,170.3" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="180" cy="240.6" r="4" fill="#cba24a"/><circle cx="430" cy="229.4" r="4" fill="#cba24a"/><circle cx="680" cy="196.2" r="4" fill="#cba24a"/><circle cx="930" cy="170.3" r="4" fill="#cba24a"/>
+      <text x="680" y="189" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">1.11%</text>
+      <text x="930" y="163" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">1.85%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>영업이익</span><span><i style="background:#3c86f5"></i>영업손실</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 극단 저평가 = 두꺼운 하방</h3><p style="margin:6px 0"><strong>PBR 0.19배</strong> — 순자산(부동산·자회사)의 1/5 값. BPS 43만원대. 배당 3.06%까지 겹쳐 <strong>자산가치·환원이 하방을 두껍게 받친다</strong>. '떨어져도 자산이 받는' 딥밸류.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 본업 턴어라운드</h3><p style="margin:6px 0">영업익 적자→흑전→<strong>2026E +67%</strong>. 1Q26 별도 영업익 8년 만 최대. 패션·뷰티 고마진 믹스·광고수익·판관비 효율·점포 리뉴얼(일산 스타필드마켓 방문 +104%)이 엔진.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 밸류업·주주환원</h3><p style="margin:6px 0">밸류업 대표 저PBR주. 2월 기업가치 제고계획 발표가 재평가 랠리의 방아쇠였다. <strong>자산 유동화·배당 확대</strong>가 멀티플 드라이버. 정책 순풍 위에 서 있다.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (자산주·회복주)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 대형마트 1위 규모·전국 부동산·그룹 유통 인프라. 다만 이커머스가 그 해자를 침식 중(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> 매출 29조의 안정적 현금흐름·배당 지속. 그러나 OPM 1~2%로 이익 절대치는 시총 대비 작다.</li>
+        <li><strong>구조 리스크:</strong> 쿠팡·알리의 채널 이동 압력 — 이게 A가 아닌 B+로 묶는 요인. 방어는 자산·회복·환원으로.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시축소</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 본업 영업익 개선 지속 + 밸류업(자산유동화·환원) 실행 + 자회사(SSG·G마켓) 적자 축소.</li>
+        <li><strong>갈아타기:</strong> 순수 백화점·면세는 신세계(004170)로, 이커머스 성장은 쿠팡으로. 이마트는 '자산·회복·환원의 딥밸류 복합'.</li>
+        <li><strong>즉시축소:</strong> 이커머스 잠식으로 기존점 역성장 + OPM 개선 정체 / 밸류업 계획 공회전 / 신세계건설 재부담.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 유통 재평가 축 안에서</h2>
+  <p>2월 밸류업 랠리로 유통 저PBR주가 동반 재평가됐다가 되돌림 중이다. 이마트는 그 안에서 <strong>자산·본업회복·배당이 동시에 받쳐 손익비가 살아있는</strong> 딥밸류다. 롯데쇼핑(백화점·마트 혼합)·현대백화점과 함께 저PBR 재평가 후보이나, 이마트는 <em>스타벅스코리아·트레이더스라는 성장 옵션</em>과 <em>SSG닷컴·G마켓 적자 축소라는 손익 개선 여지</em>를 함께 쥔다. 상대 매력 = <em>"싸게 사서 회복과 밸류업을 기다리는 자산주"</em>.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"대형마트·창고형매장을 축으로 온라인·편의점·호텔·스타벅스까지 거느린 <strong>신세계그룹 유통 지주</strong>로, 막대한 부동산·자회사를 깔고 <em>본업 수익성을 회복</em> 중인 딥밸류 리테일러."</p>
+  <div class="note"><div class="h">매출 ≠ 이익 ≠ 가치 — 분리해서 볼 것</div>매출은 <strong>29조원</strong>대로 거대하나 OPM 1~2%의 저마진(유통업 숙명). 성장이 아니라 <strong>회복·효율화</strong>가 이익 스토리이고, <strong>가치의 큰 축은 손익이 아니라 자산</strong>(PBR 0.19). 즉 '이익 성장주'가 아니라 <em>'본업 회복 + 자산 재평가 + 주주환원'의 복합</em>.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 무엇이 이익을 만들고 무엇이 갉아먹나</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="txt">손익 방향</th><th class="txt">역할</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>할인점(이마트 본체)</strong></td><td class="txt">대형마트 1위·패션/뷰티/그로서리</td><td class="txt"><span class="up">흑자·개선</span> 25A OP 872억</td><td class="txt">턴어라운드 엔진(믹스·광고·판관비)</td></tr>
+      <tr class="hl"><td class="txt"><strong>트레이더스</strong></td><td class="txt">창고형 할인점</td><td class="txt"><span class="up">성장·흑자</span> 1Q26 총매출 1조601억</td><td class="txt">최고 성장 채널·역대최고 경신</td></tr>
+      <tr><td class="txt"><strong>SSG닷컴·G마켓</strong></td><td class="txt">이커머스</td><td class="txt"><span class="down">적자(축소 관건)</span></td><td class="txt">구조 경쟁·손익 개선 여지</td></tr>
+      <tr><td class="txt"><strong>스타벅스코리아·조선호텔</strong></td><td class="txt">F&B·호텔·레저</td><td class="txt">캐시카우·성장 옵션</td><td class="txt">지분가치·현금흐름</td></tr>
+      <tr><td class="txt"><strong>이마트24·신세계건설</strong></td><td class="txt">편의점·건설</td><td class="txt"><span class="down">부담(정상화 중)</span></td><td class="txt">2024 손실의 진앙(건설)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">본업(할인점·트레이더스)은 흑자·회복, 이커머스(SSG·G마켓)와 건설은 적자·부담. <strong>연결 이익 = 본업 회복분 − 자회사 적자</strong>. 자회사 적자 축소가 곧 연결 이익 레버리지.<span class="src">자회사 손익<span class="tip">SSG닷컴 25A 영업손실 1,178억(확대)·G마켓 누적 손실 1,648억 = 뉴스스페이스·경향 2026 · 할인점 25A OP 872억·트레이더스 1Q26 총매출 1조601억 = 디지털투데이</span></span></p>
+
+  <div class="chart"><div class="ct">연결 매출 구성 (억원, 근사) — 본업이 절대다수, 이익은 본업이 만든다</div><div class="cs">할인점+트레이더스가 매출의 대부분. 온라인·기타는 규모 대비 손익 기여가 마이너스라 '축소가 곧 개선'.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- total ~290000 -> 200px. k=0.00069. 할인점~165000(113.9), 트레이더스~48000(33.1), 온라인~40000(27.6), 기타~37000(25.5) stacked -->
+      <g>
+        <rect x="430" y="136.1" width="220" height="113.9" fill="#e78a5c" opacity="0.9"/>
+        <rect x="430" y="103.0" width="220" height="33.1" fill="#cba24a"/>
+        <rect x="430" y="75.4" width="220" height="27.6" fill="#5a6472"/>
+        <rect x="430" y="49.9" width="220" height="25.5" fill="#3c4048"/>
+        <text x="540" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">연결 매출 ~29조원</text>
+      </g>
+      <!-- labels right -->
+      <text x="670" y="197" font-size="11" fill="#e78a5c">할인점(이마트 본체) ~57%</text>
+      <text x="670" y="123" font-size="11" fill="#cba24a">트레이더스 ~17%</text>
+      <text x="670" y="93" font-size="11" fill="#bfc5ce">온라인(SSG·G마켓) ~14%</text>
+      <text x="670" y="66" font-size="11" fill="#9aa2ad">기타(편의점·호텔·건설 등) ~12%</text>
+      <text x="410" y="197" text-anchor="end" font-size="10.5" fill="#828b98">흑자 본업</text>
+      <text x="410" y="90" text-anchor="end" font-size="10.5" fill="#828b98">적자·부담</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>할인점</span><span><i style="background:#cba24a"></i>트레이더스</span><span><i style="background:#5a6472"></i>온라인</span><span><i style="background:#3c4048"></i>기타</span><span style="color:var(--muted)">비중=근사</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객의 눈</h3><p style="margin:6px 0">"장보기는 쿠팡·마켓컬리로 옮겼지만, 신선·대량·체험(트레이더스·스타필드마켓)은 여전히 오프라인." → 방어는 되지만 트래픽 이동 압력.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(쿠팡)의 눈</h3><p style="margin:6px 0">"온라인 침투로 대형마트 파이를 뺏는다. 이마트의 반격은 가격·리뉴얼·자체 온라인(SSG)." → 구조적 압박자.</p></div>
+    <div class="card"><h3 style="margin-top:0">주주·행동주의의 눈</h3><p style="margin:6px 0">"PBR 0.19는 자산을 시장이 안 쳐준다는 뜻. 밸류업·자산유동화·환원 확대로 갭을 메워라." → 재평가 촉매 압력.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"본업 수익성부터 정상화(믹스·비용). 신세계건설 안정화·이커머스 적자 축소. 밸류업으로 시장 신뢰 회복." → 정상화 로드맵.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자(자산)</div><h3 style="margin:8px 0 6px">전국 부동산·1위 규모</h3><p style="margin:0;font-size:12.5px">대형마트 1위 점포망·물류·전국 요지 부동산. 대체 불가한 자산 기반이 PBR 0.19의 안전판. 현금화: 유동화 시.</p></div>
+    <div class="card"><div class="tag n">침식 중</div><h3 style="margin:8px 0 6px">오프라인 채널 지배력</h3><p style="margin:0;font-size:12.5px">과거의 해자였으나 쿠팡·알리의 온라인 이동으로 약화. 리뉴얼·가격·트레이더스로 방어 중. 현금화: 방어전.</p></div>
+    <div class="card"><div class="tag s">옵션</div><h3 style="margin:8px 0 6px">밸류업·자산 재평가</h3><p style="margin:0;font-size:12.5px">자산유동화·환원 강화로 저PBR 갭 축소. 아직 계획 단계 — 실행되면 멀티플 리레이팅. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — 신세계그룹 유통 지주 이마트</h2>
+  <div class="chart"><div class="ct">지배구조·자회사 지도 (2026 기준, 근사)</div><div class="cs">정용진 회장 등 오너 일가가 이마트를 지배하고, 이마트가 유통 자회사군을 거느리는 구조. 스타벅스·트레이더스는 캐시/성장, SSG·G마켓·건설은 정상화 대상.</div>
+    <svg viewBox="0 0 1080 360" xmlns="http://www.w3.org/2000/svg">
+      <!-- owner -->
+      <rect x="440" y="20" width="200" height="46" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="540" y="40" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">정용진 회장·오너 일가</text>
+      <text x="540" y="57" text-anchor="middle" font-size="10.5" fill="#828b98">최대주주 (특수관계인 포함 ~28%)</text>
+      <!-- emart center -->
+      <rect x="430" y="120" width="220" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="150" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">이마트 (139480)</text>
+      <text x="540" y="172" text-anchor="middle" font-size="10.5" fill="#828b98">유통 지주 · 시총 2.25조 · PBR 0.19</text>
+      <line x1="540" y1="66" x2="540" y2="120" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <!-- subsidiaries row -->
+      <!-- 트레이더스 (사업부) -->
+      <rect x="40" y="250" width="150" height="64" rx="5" fill="#22262f" stroke="#cba24a"/>
+      <text x="115" y="272" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">트레이더스</text>
+      <text x="115" y="289" text-anchor="middle" font-size="9.5" fill="#cba24a">사업부 · 성장·흑자</text>
+      <text x="115" y="304" text-anchor="middle" font-size="9.5" fill="#828b98">1Q26 총매출 1조601억</text>
+      <!-- 스타벅스 SCK -->
+      <rect x="205" y="250" width="150" height="64" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="280" y="272" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">스타벅스코리아</text>
+      <text x="280" y="289" text-anchor="middle" font-size="9.5" fill="#4bbf9a">SCK컴퍼니 · 캐시카우</text>
+      <text x="280" y="304" text-anchor="middle" font-size="9.5" fill="#828b98">지분 67.5%</text>
+      <!-- SSG닷컴 -->
+      <rect x="370" y="250" width="150" height="64" rx="5" fill="#22262f" stroke="#3c86f5"/>
+      <text x="445" y="272" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">SSG닷컴</text>
+      <text x="445" y="289" text-anchor="middle" font-size="9.5" fill="#3c86f5">이커머스 · 적자축소 관건</text>
+      <text x="445" y="304" text-anchor="middle" font-size="9.5" fill="#828b98">25A 영업손 1,178억</text>
+      <!-- G마켓 -->
+      <rect x="535" y="250" width="150" height="64" rx="5" fill="#22262f" stroke="#3c86f5"/>
+      <text x="610" y="272" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">G마켓</text>
+      <text x="610" y="289" text-anchor="middle" font-size="9.5" fill="#3c86f5">오픈마켓 · 정상화</text>
+      <text x="610" y="304" text-anchor="middle" font-size="9.5" fill="#828b98">누적 손실 1,648억</text>
+      <!-- 이마트24 -->
+      <rect x="700" y="250" width="150" height="64" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="775" y="272" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">이마트24</text>
+      <text x="775" y="289" text-anchor="middle" font-size="9.5" fill="#828b98">편의점 · 손익 부담</text>
+      <text x="775" y="304" text-anchor="middle" font-size="9.5" fill="#828b98">정상화 진행</text>
+      <!-- 신세계건설 -->
+      <rect x="865" y="250" width="150" height="64" rx="5" fill="#22262f" stroke="#f0525f"/>
+      <text x="940" y="272" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">신세계건설</text>
+      <text x="940" y="289" text-anchor="middle" font-size="9.5" fill="#f0525f">100% · 2024 손실 진앙</text>
+      <text x="940" y="304" text-anchor="middle" font-size="9.5" fill="#828b98">안정화 대상</text>
+      <!-- connectors -->
+      <line x1="470" y1="192" x2="115" y2="250" stroke="#5a6472" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="500" y1="192" x2="280" y2="250" stroke="#5a6472" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="530" y1="192" x2="445" y2="250" stroke="#5a6472" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="555" y1="192" x2="610" y2="250" stroke="#5a6472" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="585" y1="192" x2="775" y2="250" stroke="#5a6472" stroke-width="1.4" marker-end="url(#ar)"/>
+      <line x1="610" y1="192" x2="940" y2="250" stroke="#5a6472" stroke-width="1.4" marker-end="url(#ar)"/>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: 이마트는 <strong>그룹 유통 지주</strong>라 자회사 손익이 연결로 흘러든다 — <em>스타벅스·트레이더스(플러스)</em> vs <em>SSG·G마켓·건설(마이너스)</em>의 순차감. 저PBR의 상당 부분은 시장이 이 <strong>자회사 적자·건설 리스크를 할인</strong>했기 때문. 반대로 자산유동화·자회사 정상화가 확인되면 그 할인이 되돌려질 여지가 크다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 방어되고 무엇이 이동하나</h2>
+  <table>
+    <thead><tr><th class="txt">축</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">그로서리(신선·필수)</td><td class="txt"><strong>필수 소비</strong></td><td class="txt">가구수·물가·신선 신뢰</td><td class="txt">높음(방어적)</td></tr>
+      <tr><td class="txt">비식품(패션·가전 등)</td><td class="txt">재량 소비 + 채널 이동</td><td class="txt">소비경기·이커머스 침투</td><td class="txt">낮음(온라인 이동)</td></tr>
+      <tr><td class="txt">창고형(트레이더스)</td><td class="txt">대량·가치소비</td><td class="txt">객단가·회원·물가</td><td class="txt">중~높음(성장)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>수요의 <strong>바닥(그로서리)은 필수라 방어</strong>되지만, 비식품은 온라인으로 이동하는 구조적 압력. 그래서 회복은 '성장'이 아니라 <em>믹스(패션·뷰티 고마진)·광고수익·판관비 효율·리뉴얼</em>에서 나온다. 상방은 손익이 아니라 <strong>자산 재평가(밸류업)</strong>가 얹는 비대칭 — 하방은 자산·배당이, 상방은 정책·회복이.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 저마진, 그러나 극단 저PBR</h2>
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">1.85<span class="u">%</span></div><div class="sub">유통 저마진(회복 중)</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">0.19<span class="u">x</span></div><div class="sub">순자산의 1/5 — 극단 저평가</div></div>
+    <div class="kpi"><div class="lab">배당수익률</div><div class="val">3.06<span class="u">%</span></div><div class="sub">DPS 2,500원·안정</div></div>
+    <div class="kpi"><div class="lab">26E PER</div><div class="val">15.7<span class="u">x</span></div><div class="sub">EPS 5,218 기준</div></div>
+  </div>
+  <p>대형마트는 저마진(OPM 1~2%)이라 <strong>이익으로 가치를 매기면 비싸 보이지만, 자산으로 매기면 극단적으로 싸다</strong>. razor 격인 그로서리 반복수요 위에 부동산·자회사가 얹혀 <em>PBR 0.19</em>. 이익률 0.2%p 개선이 영업익 +수백억으로 레버리지되는 저마진 구조라, 본업 정상화의 이익 탄력은 오히려 크다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +3.8억 · 연기금 +28.1억 · 투신 +0.1억</strong>(합산 시총대비 +0.14%) — 연기금 중심 유입. 외인소진율 <strong>25.87%</strong>로 저PBR·밸류업 대표주로서 관심이 유지된다. 2월 재평가 랠리(127,600) 후 −36% 조정 구간에서 <em>연기금·기관이 딥밸류 회복주를 담는</em> 전형적 눌림 유입.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">지배순익 궤적 — 적자의 계곡(2024)을 지나</h2>
+  <div class="chart"><div class="ct">지배 순이익 (억원) — 2024 대규모 손실은 일회성, 방향은 정상화</div><div class="cs">2024A −5,900억은 신세계건설 손상·대손(대손충당금 2,462억)이 주범. 2025 흑전(1,362억)·2026E ~1,570억으로 경상 이익력 회복. 점선=컨센 추정.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- zero line at y=90 -->
+      <line x1="60" y1="90" x2="1030" y2="90" stroke="#353b47" stroke-width="1.5"/>
+      <text x="52" y="94" text-anchor="end" font-size="9" fill="#5a6472">0</text>
+      <!-- gridline negative -4000 (y=90+101.9=191.9) k=0.02548 -->
+      <line x1="60" y1="191.9" x2="1030" y2="191.9" stroke="#20242c"/><text x="52" y="195" text-anchor="end" font-size="9" fill="#5a6472">−4,000</text>
+      <!-- 2023: -891 -> 22.7px below -->
+      <rect x="135" y="90" width="90" height="22.7" fill="#3c86f5" opacity="0.7"/>
+      <text x="180" y="128" text-anchor="middle" font-size="11.5" fill="#3c86f5" font-weight="600">−891</text>
+      <text x="180" y="300" text-anchor="middle" font-size="11" fill="#828b98">2023A</text>
+      <!-- 2024: -5900 -> 150.3px -->
+      <rect x="385" y="90" width="90" height="150.3" fill="#3c86f5" opacity="0.85"/>
+      <text x="430" y="256" text-anchor="middle" font-size="11.5" fill="#3c86f5" font-weight="600">−5,900</text>
+      <text x="430" y="273" text-anchor="middle" font-size="9.5" fill="#828b98">일회성(건설 손상·대손)</text>
+      <text x="430" y="300" text-anchor="middle" font-size="11" fill="#828b98">2024A</text>
+      <!-- 2025: 1362 -> 34.7px above -->
+      <rect x="635" y="55.3" width="90" height="34.7" fill="#e78a5c" opacity="0.85"/>
+      <text x="680" y="46" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">1,362</text>
+      <text x="680" y="300" text-anchor="middle" font-size="11" fill="#828b98">2025A</text>
+      <!-- 2026E: 1570 -> 40px above -->
+      <rect x="885" y="50" width="90" height="40" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="930" y="42" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">1,570E</text>
+      <text x="930" y="300" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>흑자(경상 회복)</span><span><i style="background:#3c86f5"></i>적자(일회성 포함)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 14년 만의 1분기 최대</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">연결 영업이익</td><td class="num">1,783억</td><td class="num up">+11.9%</td><td class="txt">2012년 이후 <strong>14년 만 1Q 최대</strong></td></tr>
+      <tr><td class="txt">별도 영업이익</td><td class="num">—</td><td class="num up">+9.7%</td><td class="txt">8년 만 최대(매출 +1.9%의 5배 속도)</td></tr>
+      <tr><td class="txt">└ 트레이더스 총매출</td><td class="num">1조601억</td><td class="num up">역대최고</td><td class="txt">OP 478억 — 창고형 성장</td></tr>
+      <tr><td class="txt">└ 일산점(스타필드마켓)</td><td class="num">방문 +104%</td><td class="num up">리뉴얼</td><td class="txt">공간 혁신 효과 검증</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 본업 회복은 실체, 그러나 절대치는 작다</h3>
+  <p>1Q26 서프라이즈는 <strong>매출보다 이익이 빨랐다</strong>는 데 의미가 있다 — 가격·상품·공간 혁신과 판관비 효율로 <em>본업 수익성이 실제로 개선</em>됐다. 다만 전사 OPM은 여전히 1~2%대라 순익 절대 규모(연 1,500억대)는 시총 2.25조 대비 작다. 그래서 이익은 <strong>'밸류의 근거'라기보다 '자산 재평가의 트리거'</strong> — 본업이 돈다는 증거가 저PBR 갭을 좁히는 명분이 된다. 2024 −5,900억 같은 순익 노이즈(건설 손상)는 경상에서 배제하고 봐야 한다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PBR 밴드</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주가 궤적 (2025.08 ~ 2026.07, 근사)</div><div class="cs">61,000(저점) → 127,600(2/11, 밸류업+실적 재평가) → 81,700(−36%). 상승은 밸류업·흑전 동반, 조정은 차익·유통 우려. 지금은 재평가 이전 딥밸류로 회귀.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 55000..132000 -> y 250..40. k=0.002727 -->
+      <line x1="55" y1="236.4" x2="1035" y2="236.4" stroke="#20242c"/><text x="48" y="239" text-anchor="end" font-size="9" fill="#5a6472">60k</text>
+      <line x1="55" y1="181.8" x2="1035" y2="181.8" stroke="#20242c"/><text x="48" y="185" text-anchor="end" font-size="9" fill="#5a6472">80k</text>
+      <line x1="55" y1="127.3" x2="1035" y2="127.3" stroke="#20242c"/><text x="48" y="130" text-anchor="end" font-size="9" fill="#5a6472">100k</text>
+      <line x1="55" y1="72.8" x2="1035" y2="72.8" stroke="#20242c"/><text x="48" y="76" text-anchor="end" font-size="9" fill="#5a6472">120k</text>
+      <!-- path 12 monthly closes -->
+      <polyline points="80,187.3 161.8,209.1 243.6,228.2 325.5,233.6 407.3,214.5 489.1,176.4 570.9,51.9 652.7,94.5 734.5,132.7 816.4,154.6 898.2,170.9 980,177.2" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- markers -->
+      <circle cx="325.5" cy="233.6" r="4" fill="#3c86f5"/><text x="325.5" y="248" text-anchor="middle" font-size="9" fill="#3c86f5">61,000 저점</text>
+      <circle cx="489.1" cy="176.4" r="4" fill="#4bbf9a"/><text x="489.1" y="167" text-anchor="middle" font-size="9" fill="#4bbf9a">밸류업 발표</text>
+      <circle cx="570.9" cy="51.9" r="4.5" fill="#f0525f"/><text x="570.9" y="43" text-anchor="middle" font-size="9.5" fill="#f0525f" font-weight="700">127,600 고점(2/11)</text>
+      <circle cx="734.5" cy="132.7" r="4" fill="#cba24a"/><text x="734.5" y="123" text-anchor="middle" font-size="9" fill="#cba24a">1Q26 서프</text>
+      <circle cx="980" cy="177.2" r="4.5" fill="#e78a5c"/><text x="980" y="194" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">81,700</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="570" y="288" font-size="9.5" fill="#828b98">'26.02</text><text x="958" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 주역은 '밸류업 기대'</h2>
+  <p>이마트의 2월 랠리(+80%)는 이익(흑전·실적)보다 <strong>멀티플(밸류업·저PBR 재평가 기대)</strong>이 더 큰 몫이었다. −36% 되돌림은 그 기대가 <em>실행 확인 전에 앞서갔다가</em> 정상화된 것. 현재 PBR 0.19는 <strong>재평가 랠리 이전 딥밸류로 회귀</strong>한 자리 — 본업 회복이 지속되고 밸류업이 실체화되면 PBR 0.25~0.3배로만 올라도 큰 상방(IBK TP 104,000).</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">밸류업 랠리로 KOSPI를 크게 아웃퍼폼했다가 되돌림. 절대 밸류(PBR 0.19)는 다시 매력 구간.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="182" x2="1035" y2="182" stroke="#20242c"/><text x="48" y="185" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="92" x2="1035" y2="92" stroke="#20242c"/><text x="48" y="95" text-anchor="end" font-size="9" fill="#5a6472">150</text>
+      <!-- 이마트 rebase: 100,156,137,120,110,101,99.6  y=200-(v-90)*1.8 -->
+      <polyline points="80,182 230,81.2 380,115.4 530,146 680,164 830,180.2 980,182.7" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="176" font-size="9.5" fill="#e78a5c" font-weight="700">이마트 ~0%</text>
+      <circle cx="230" cy="81.2" r="3.5" fill="#f0525f"/><text x="230" y="74" text-anchor="middle" font-size="9" fill="#f0525f">+56% 고점</text>
+      <!-- KOSPI ~ +5% -->
+      <polyline points="80,182 230,178.4 380,174.8 530,176.6 680,172.4 830,174.2 980,173" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="167" font-size="9.5" fill="#828b98">KOSPI ~+5%</text>
+    </svg>
+  </div>
+
+  <div class="note warn"><div class="h">컨센 감사 — 무엇이 가격에 안 들어갔나</div><strong>컨센은 본업 흑전·영업익 회복은 부분 반영하나, ① 부동산·자회사 자산 재평가(밸류업), ② 자회사 적자 축소의 손익 레버리지는 대체로 미반영.</strong> 즉 컨센의 PER·EPS 프레임은 '저마진 유통'만 보고 '자산주·정책 수혜'를 덜 본다 — 재평가 여지가 여기에 숨어 있다.</div>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">유통 저PBR 3파전 — 그리고 이커머스 압박자</h2>
+  <div class="chart"><div class="ct">PBR 비교 (배) — 골드 = 이마트, 유통 오프라인 저PBR 클러스터</div><div class="cs">이마트 0.19는 오프라인 유통 중에서도 최저권. 밸류업 재평가 시 갭 축소 여지가 가장 크다. 쿠팡은 성장 프리미엄(PBR 무의미)으로 별도.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="210" x2="1030" y2="210" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1 PBR = 1600px from x=200; max 0.45 -> 720 -->
+      <!-- 이마트 0.19 -->
+      <rect x="200" y="30" width="304" height="26" fill="#cba24a"/><text x="514" y="48" font-size="12" fill="#cba24a" font-weight="700">이마트 0.19x</text><text x="195" y="48" text-anchor="end" font-size="11" fill="#eaecef">이마트</text>
+      <!-- 롯데쇼핑 0.28 -->
+      <rect x="200" y="70" width="448" height="26" fill="#5a6472"/><text x="658" y="88" font-size="11" fill="#bfc5ce">0.28x</text><text x="195" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">롯데쇼핑</text>
+      <!-- 현대백화점 0.30 -->
+      <rect x="200" y="110" width="480" height="26" fill="#5a6472"/><text x="690" y="128" font-size="11" fill="#bfc5ce">0.30x</text><text x="195" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">현대백화점</text>
+      <!-- 신세계 0.42 -->
+      <rect x="200" y="150" width="672" height="26" fill="#5a6472"/><text x="882" y="168" font-size="11" fill="#bfc5ce">0.42x</text><text x="195" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">신세계</text>
+    </svg>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px">PBR은 시점·소스에 따라 편차 — 방향성 참고용. 쿠팡은 흑자 성장주로 PBR 프레임 부적합(별도).</div>
+  </div>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">쿠팡 (미국상장·구조 경쟁자)</h3><p style="margin:6px 0;font-size:12.5px">이커머스 1위. 로켓배송 물류 해자로 오프라인 트래픽·비식품을 잠식. 흑자 성장주로 <strong>이마트 저마진의 근원적 압박자</strong>. 위협도 <strong>높음</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">롯데쇼핑 (백화점·마트)</h3><p style="margin:6px 0;font-size:12.5px">백화점·할인점 혼합. 이마트와 유사한 저PBR 재평가 후보이나 마트 경쟁력은 이마트 우위. 위협도 <strong>중</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">신세계 (004170·그룹 형제)</h3><p style="margin:6px 0;font-size:12.5px">백화점·면세. 이마트와 함께 <strong>그룹 유통 재평가 축</strong>. 경쟁이 아니라 밸류업 동반. 별도 커버.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 알리·테무</h3><p style="margin:6px 0;font-size:12.5px">중국계 초저가 크로스보더. 비식품 저가 공세로 마진 압박. 규제·품질이 변수. 위협도 <strong>중</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">PBR</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">본업 회복 지속 + 밸류업(자산유동화·환원) 실행 + 자회사 가치 부각, PBR 0.25~0.3x 재평가(IBK TP권)</td><td class="num">~0.26x</td><td class="num up">110,000</td><td class="num">35%</td><td class="num up">+35%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E 영업익 +67% 달성·PBR 0.2x 유지 + 배당</td><td class="num">~0.20x</td><td class="num">85,000</td><td class="num">40%</td><td class="num up">+4%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">이커머스 경쟁 심화 + 본업 정체 + 밸류업 실망, 저PBR 지속</td><td class="num">~0.15x</td><td class="num down">62,000</td><td class="num">25%</td><td class="num down">−24%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="3">확률가중 기대값 (EV) + 배당 ~3%</td><td class="num">88,000</td><td class="num"></td><td class="num up">+8%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 81,700(흰선). IBK TP 104,000(+27%). 자체 밴드 62,000~110,000. 자산·배당이 하방을, 밸류업·회복이 상방을 만든다.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 55000..115000 -> x 120..1030. k=0.015167 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="195.8" y="205" text-anchor="middle" font-size="9" fill="#5a6472">60k</text>
+      <text x="499.2" y="205" text-anchor="middle" font-size="9" fill="#5a6472">80k</text>
+      <text x="802.5" y="205" text-anchor="middle" font-size="9" fill="#5a6472">100k</text>
+      <!-- 자체 밴드 62000..110000 -->
+      <rect x="226.2" y="40" width="728" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="226" y="34" font-size="10" fill="#e78a5c">Bear 62k</text>
+      <text x="954" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 110k</text>
+      <line x1="575" y1="36" x2="575" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="575" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 85k</text>
+      <!-- EV 88000 marker -->
+      <line x1="620.5" y1="70" x2="620.5" y2="96" stroke="#4bbf9a" stroke-width="2"/><text x="620.5" y="110" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">EV 88k</text>
+      <!-- IBK TP 104000 -->
+      <line x1="863.2" y1="110" x2="863.2" y2="150" stroke="#4bbf9a" stroke-width="2.5"/><text x="863.2" y="124" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">IBK TP 104k</text>
+      <!-- 현재가 81700 -->
+      <line x1="525" y1="20" x2="525" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="525" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 81,700</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 △</h3><p style="margin:6px 0;font-size:12.5px">매출 29조 정체(채널 이동). 성장은 트레이더스·리뉴얼로 방어. <strong>구조적 확장은 제한</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 적자→1.85%. 믹스·광고·판관비. 저마진 레버리지로 이익 탄력은 크다. <strong>회복 진행</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 ✓✓</h3><p style="margin:6px 0;font-size:12.5px">PBR 0.19 → 밸류업·자산 재평가가 <strong>가장 큰 상방</strong>. 0.25~0.3x만 가도 큰 폭. 핵심 드라이버.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 가치(미반영): 자산유동화(부동산 매각·리츠화) / 스타벅스·트레이더스 가치 부각 / SSG·G마켓 적자 축소 → 각 순자산·손익 재평가 촉매.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>이커머스 구조 경쟁</strong></td><td class="txt">쿠팡·알리 점유 확대 → 오프라인 트래픽·비식품 마진 잠식. 본업 회복 상쇄</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>본업 회복 정체</strong></td><td class="txt">OPM 개선 둔화 시 턴어라운드 스토리 약화, 저PBR 고착</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>밸류업 실망</strong></td><td class="txt">자산유동화·환원 미흡 시 재평가 트리거 부재 → PBR 0.19 지속</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>신세계건설·자회사 재부담</strong></td><td class="txt">건설 손상 재발·이커머스 적자 확대 시 연결 순익 재훼손</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>소비 경기 둔화</strong></td><td class="txt">내수 위축 시 그로서리·재량소비 동반 약화</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 71,000~78,000(2025 저점권) 눌림 분할. 자산·배당이 안전판. 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 밸류업 계획(자산유동화·환원) 발표 or 2Q26 본업 영업익 개선 지속 → 비중 확대(재평가).</li>
+    <li><strong>홀딩:</strong> 트레이더스 성장·할인점 흑자 유지·SSG/G마켓 적자 축소 확인.</li>
+    <li><strong>축소:</strong> 이커머스 잠식으로 기존점 역성장 + OPM 정체 / 밸류업 공회전 / 건설 재부담.</li>
+    <li><strong>차익:</strong> 110,000(IBK TP권) 접근 시 부분 차익.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">기존점 성장(SSS)·할인점 OP</td><td class="txt">본업 회복 실체</td><td class="txt">기존점 역성장 전환</td></tr>
+      <tr><td class="txt">전사 OPM</td><td class="txt">믹스·비용 체력</td><td class="txt">개선 정체·재하락</td></tr>
+      <tr><td class="txt">밸류업 계획·자산유동화</td><td class="txt">재평가 트리거</td><td class="txt">계획 공회전·연기</td></tr>
+      <tr><td class="txt">SSG닷컴·G마켓 영업손익</td><td class="txt">연결 이익 레버리지</td><td class="txt">적자 재확대</td></tr>
+      <tr><td class="txt">외인·연기금 수급</td><td class="txt">밸류업 수급</td><td class="txt">25.87%에서 큰 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(본업 영업익 개선 지속 확인)</td><td class="txt"><span class="tag b">핵심</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">밸류업 계획(자산유동화·주주환원 강화)</td><td class="txt"><span class="tag b">상방(재평가)</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">자회사(스타벅스·트레이더스·SSG) 가치 부각</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2027년 초</td><td class="txt">연간 배당(3% 수준)·환원 확대</td><td class="txt"><span class="tag n">중립~긍정(하방)</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "유통 1위의 부동산·자회사를 얹은 순자산이 PBR 0.19에 방치됐는데, 본업은 14년 만의 최대 분기이익으로 돌아섰고 밸류업이 재평가의 명분을 준다. 그 값을 71,000~78,000에 사서 자산·배당의 하방을 깔고 회복·밸류업 옵션을 기다린다."</strong><br>어떻게 맞나: 분할 매수 후 본업 영업익 개선 지속·밸류업 실행 중 하나만 켜져도 PBR 0.25~0.3x, IBK TP 104,000. 어떻게 틀리나: 쿠팡 잠식으로 본업이 다시 꺾이고 밸류업이 공회전하면 저PBR이 고착된다(축소). 한 단어: <em>"자산 재평가"</em>. 남는 것: <strong>"싸고, 돌아서고, 정책 순풍 — 본업이 도는 자산주."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 85,000</span><span class="pill">매집밴드 71,000~78,000</span><span class="pill">Bull 110,000 / Bear 62,000</span><span class="pill">EV +8%(+배당 3%)</span><span class="pill">IBK TP 104,000</span><span class="pill">thesis break: 이커머스 잠식·OPM 정체·밸류업 실망</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 리테일 렌즈(SSS·자산가치·PBR·밸류업). 저마진 유통은 이익보다 자산·환원이 밸류 축. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 81,700·시총 2.25조·추정PER 15.66x·PBR 0.19·2023~2026E 연간재무·DPS 2,500) · siseJson 일봉(2025-08~2026-07-22, 고점 127,600@2/11·저점 61,000) · 1Q26 연결 영업익 1,783억(+11.9%, 14년만 1Q 최대)·별도 +9.7%(8년만 최대)·트레이더스 총매출 1조601억(역대최고)·일산 스타필드마켓 방문 +104.3% = 머니투데이·인사이트·디지털투데이(2026-05-13) · 2024 순손실=신세계건설 손상·대손충당금 2,462억(창사이래 최대 순손실)·SSG닷컴 25A 영업손 1,178억·G마켓 누적손 1,648억·할인점 25A OP 872억 = 딜사이트·경향·뉴스스페이스(2026) · 목표가 IBK 104,000·PBR 0.19 저평가 = IBK투자증권·한국금융신문(2026) · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·실적·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>
