@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나노 187790 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+tfoot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c;padding:8px 10px}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">187790</span>
+    <span class="nm">나노 <small>NANO · SCR 탈질촉매 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩3,275</span>
+    <span>시총 ₩1,010억 · 26E PER 13x</span>
+    <span class="rating">비중확대 관심 · 매집 2,700~3,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>현재가</b> ₩3,275 (−12.2%)</span>
+  <span><b>거래량</b> 524만주 (평소 10~20배)</span>
+  <span><b>52주</b> 1,685 ~ 7,560</span>
+  <span><b>외인</b> 4.5%→1.97%(당일 −78만주)</span>
+  <span><b>OPM 26E</b> 7.7%</span>
+  <span><b>ROE 26E</b> 16.2%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">스토리는 진짜, 증거는 아직 상징적 — 반복 교체되는 촉매 소모품에 규제·AI전력 순풍이 붙었지만, 재무 이력은 부실 탈출 직후다.</h1>
+  <p class="lead">나노는 굴뚝·엔진의 질소산화물(NOx)을 질소·물로 바꾸는 <em>SCR 탈질촉매</em>를, 원료→촉매→평가→재생까지 한 손에 쥔 <strong>세계 유일의 일괄 전문기업</strong>이다.<span class="src">네이버 기업개요<span class="tip">"SCR 탈질촉매 원료부터 촉매·평가·재생 기술까지 모두 확보한 세계 유일의 전문 기업" · 2026-07-22</span></span> 촉매는 3~5년 주기로 갈아 끼우는 <strong>razor-razorblade 소모품</strong>이라 설치 base가 쌓일수록 교체 매출이 안정 현금이 된다. 여기에 선박엔진(IMO 규제)·AI 데이터센터 온사이트 발전(가스터빈)·석유화학 세 축의 수요가 동시에 붙었다. 그러나 주가는 올해 3,470원 → <strong>7,280원(5/22, +110%)</strong> → 2,770원(7/14, −62%)의 초고변동 테마 궤적을 그렸고, 어제(7/21) 북미 데이터센터 첫 SCR 수주($4M) 공시로 +30% 상한가, 오늘은 −12% 대량거래(524만주)로 되받았다. <strong>바로 그 워시아웃 날 국내 기관이 담고 외국인은 던졌다</strong> — 손바뀜의 한복판이다.</p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(트레이딩·눌림 분할) · 매집밴드 2,700~3,000원 · Base 3,650 / Bull 5,700 / Bear 1,760 · 확률가중 EV ≈ 3,790원(+16%).</strong> 기대값은 플러스이나 Bear 꼬리가 −46%로 매우 깊고, 시총 1,010억의 <em>초소형·초고변동 테마주</em>다. 사이즈는 소액(30~50bp), 진입은 추격이 아니라 눌림에서. thesis break: 데이터센터 후속 수주 6개월 내 부재 / AI 전력 테마 붕괴 재개 / 2Q26 별도 SCR 매출 성장 꺾임.</div>
+
+  <div class="note warn"><div class="h">먼저 알고 볼 것 — 재무 3대 착시</div>
+  <strong>① 2024년 순익 227억은 실력이 아니다.</strong> 영업익 17억의 13배인 이 순익은 부채 구조조정發 일회성(부채비율 2023년 11,213% → 2024년 181%로 정상화). ROE 142%·PER 1.5x는 착시. <strong>경상 이익력의 진짜 베이스는 2025A(영업익 55억·순익 지배 70억)부터.</strong> <strong>② 트레일링 PER 40.9x</strong>(EPS 80)는 최근 12개월 이익 저점 반영으로 부풀려진 값 — 판단 축은 <strong>포워드 26E PER ~13x</strong>(컨센 EPS 248). <strong>③ 연결≠별도</strong>: 연결 매출은 자동차부품·TiO2 자회사가 눌러 정체돼 보이나, SCR 본업(별도)은 최근 매출 299억(+83%)·영업익 62억(+382%)로 강하다.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 부실 탈출 → 이익 회복 → 매출 성장 원년</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 유통·건설과 달리 나노의 서사는 <strong>세 국면의 전환</strong>이다 — ①자본잠식 위기(2023) → ②재무·영업 정상화(2024~2025) → ③매출이 처음으로 1,100억대로 뛰는 성장 원년(2026E).</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">881</td><td class="num">16</td><td class="num">1.8%</td><td class="num down">−53</td><td class="num down">−176</td><td class="num">n/a</td><td class="num down">부실†</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">886</td><td class="num">17</td><td class="num">1.9%</td><td class="num">227 ‡</td><td class="num">735</td><td class="num">4.5x‡</td><td class="num">142%‡</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">857</td><td class="num">55</td><td class="num">6.5%</td><td class="num">70</td><td class="num">228</td><td class="num">14.4x</td><td class="num">19.0%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">1,135</td><td class="num">88</td><td class="num">7.7%</td><td class="num">75 <span class="est">E</span></td><td class="num">248</td><td class="num">13.2x</td><td class="num">16.2%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 3,275 ÷ 해당연도 EPS. †2023 부채비율 11,213%(사실상 자본잠식). ‡2024 순익·ROE·PER은 부채 구조조정 일회성 이익으로 왜곡 — 경상 이익력의 베이스 아님. 증권 일부는 2026E를 매출 1,243억·영업익 130억으로 더 공격적으로 봄(Bull 재료).</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">매출은 880억대에서 정체하다 2026E 1,135억으로 점프. 골드 라인(OPM)이 1.8%→7.7%로 회복하는 게 이 그림의 본질.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="198.3" x2="1030" y2="198.3" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="126.7" x2="1030" y2="126.7" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="55" x2="1030" y2="55" stroke="#262a33" stroke-width="1"/>
+      <text x="52" y="201" text-anchor="end" font-size="9" fill="#5a6472">400</text>
+      <text x="52" y="130" text-anchor="end" font-size="9" fill="#5a6472">800</text>
+      <text x="52" y="58" text-anchor="end" font-size="9" fill="#5a6472">1,200</text>
+      <!-- 2023 -->
+      <rect x="150" y="112.2" width="70" height="157.8" fill="#e78a5c" opacity="0.85"/>
+      <rect x="226" y="267.1" width="46" height="2.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="185" y="104" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">881</text>
+      <text x="249" y="262" text-anchor="middle" font-size="10.5" fill="#4bbf9a">16</text>
+      <text x="211" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="370" y="111.3" width="70" height="158.7" fill="#e78a5c" opacity="0.85"/>
+      <rect x="446" y="267.0" width="46" height="3.0" fill="#4bbf9a" opacity="0.9"/>
+      <text x="405" y="103" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">886</text>
+      <text x="469" y="262" text-anchor="middle" font-size="10.5" fill="#4bbf9a">17</text>
+      <text x="431" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="590" y="116.5" width="70" height="153.5" fill="#e78a5c" opacity="0.85"/>
+      <rect x="666" y="260.1" width="46" height="9.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="625" y="108" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">857</text>
+      <text x="689" y="255" text-anchor="middle" font-size="10.5" fill="#4bbf9a">55</text>
+      <text x="651" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="810" y="66.6" width="70" height="203.4" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="886" y="254.2" width="46" height="15.8" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="845" y="58" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">1,135</text>
+      <text x="909" y="249" text-anchor="middle" font-size="10.5" fill="#4bbf9a">88</text>
+      <text x="871" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line -->
+      <polyline points="188,227.0 408,224.6 628,114.7 848,86.1" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="188" cy="227.0" r="4" fill="#cba24a"/><circle cx="408" cy="224.6" r="4" fill="#cba24a"/><circle cx="628" cy="114.7" r="4" fill="#cba24a"/><circle cx="848" cy="86.1" r="4" fill="#cba24a"/>
+      <text x="188" y="219" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">1.8%</text>
+      <text x="848" y="78" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.7%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 구조적 수요는 진짜</h3><p style="margin:6px 0">SCR 촉매는 설치 후 3~5년 주기로 갈아 끼우는 소모품(razor-razorblade). 선박(IMO 규제)·데이터센터 온사이트 발전·석유화학 세 축에서 <strong>규제·구조 수요</strong>가 동시에 는다. 설치 base가 곧 반복매출의 저수지.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 이익 방향은 위</h3><p style="margin:6px 0">부실 탈출(2023) → 2025 영업 정상화(OPM 6.5%) → 2026E 88~130억으로 성장. 신공장(고밀도 촉매) 가동으로 <strong>레버리지</strong>가 큰 국면. 별도 SCR 영업익 +382%가 본업의 힘을 보여준다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 그러나 증거는 상징적</h3><p style="margin:6px 0">북미 데이터센터 첫 수주 $4M(약 54억)은 '기술 검증·문 열림'이지 실적 체인저가 아직 아니다. <strong>후속 반복 수주가 나와야 리레이팅</strong>. 그때까지는 테마 베타로 출렁인다.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B (스토리 A / 증거·재무 C)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> SCR 원료~촉매~평가~재생 일괄·국산화·소모품 반복성. 진짜 축은 있으나 글로벌 대형 촉매社와의 규모 격차가 상한(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> 부실 탈출 직후·무배당·부채 136%. 재무 체력은 아직 얇다 — 증자 희석 리스크 상존.</li>
+        <li><strong>사이클 노출:</strong> 최대 상방인 데이터센터 축이 레퍼런스 1건 — 옵션에 가깝다. 이게 A를 B로 깎는 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 데이터센터 SCR 후속 반복 수주 + 선박 SCR 신규 + 2Q26 별도 매출 성장 지속 + OPM 7%대 유지.</li>
+        <li><strong>갈아타기:</strong> 데이터센터 전력 순수 노출을 원하면 발전기(지엔씨에너지), 전지 노출이면 비츠로셀로. 나노는 '촉매 소모품 + 테마 베타'.</li>
+        <li><strong>즉시매도:</strong> 6개월 내 후속 수주 부재 / 2Q26 별도 매출 성장 꺾임 / AI 전력 테마 붕괴 재개.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 테마 안에서 나노를</h2>
+  <p>'AI 데이터센터 전력' 테마는 발전기(지엔씨에너지)·전지(비츠로셀)·촉매(나노)로 갈린다. 나노는 그중 <strong>시총이 가장 작아(1,010억) 테마 시 탄력이 크지만, 유동성·재무·단일 소형사 변동성이 가장 약점</strong>이다. 비츠로셀(시총 1.3조·OPM 30%·글로벌 top-3)이 '숫자로 사는 퀄리티'라면, 나노는 <em>"스토리로 사되 숫자가 아직 따라와야 하는 옵션"</em>이다. 그래서 판정도 갈린다 — 나노는 <strong>소액·눌림·트레이딩</strong>, 사이즈업은 후속 수주 확인 이후.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"굴뚝·엔진에서 나오는 질소산화물(NOx)을 질소·물로 바꾸는 <strong>SCR 탈질촉매</strong>를 원료부터 재생까지 일괄 생산해, 설치 후 <strong>3~5년마다 갈아 끼우는 소모품</strong>으로 파는 회사."</p>
+  <div class="note"><div class="h">SCR이 뭔가 — 30초 브리핑</div>SCR(Selective Catalytic Reduction, 선택적 촉매 환원)은 세라믹·금속 담체 촉매에 배기가스를 통과시켜 NOx를 무해한 질소·물로 바꾸는 대기오염 저감 기술이다. 촉매는 성능이 열화돼 <strong>주기 교체가 필수</strong> — 이게 반복 매출의 원천이다. 최근 나노는 <strong>고밀도 촉매</strong>(좁은 공간 고효율)로 데이터센터 가스터빈용 시장에 진입했다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 연결의 함정과 본업의 힘</h2>
+  <p>연결 매출 구성(최근 기준)은 <strong>SCR 탈질촉매 41.1% · 자동차부품 37.8% · TiO2(이산화티타늄) 21.1%</strong>다.<span class="src">FnGuide/fnguide·서치 e종목<span class="tip">연결 매출 구성 SCR촉매 41.14%·자동차부품 37.78%·TiO2 21.08% · 자동차부품·TiO2는 저마진 자회사(중국법인 등)</span></span> 자동차부품·TiO2는 저마진 자회사(중국법인 등)라 연결 실적을 눌러 정체돼 보이게 한다. <strong>투자 포인트는 오직 SCR 본업(별도)</strong> — 여기서 매출 +83%·영업익 +382%가 나온다.</p>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">연결 비중</th><th class="txt">드라이버</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>SCR 탈질촉매</strong></td><td class="txt">플레이트·허니컴·고밀도 촉매(NOx 저감)</td><td class="num">41.1%</td><td class="txt">선박 IMO·데이터센터 발전·석유화학</td><td class="txt">본업·성장축·반복교체</td></tr>
+      <tr><td class="txt"><strong>자동차부품</strong></td><td class="txt">자회사(중국법인 등) 부품</td><td class="num">37.8%</td><td class="txt">전방 완성차 물량</td><td class="txt">저마진·연결 희석</td></tr>
+      <tr><td class="txt"><strong>TiO2</strong></td><td class="txt">이산화티타늄 원료(촉매 담체 뿌리)</td><td class="num">21.1%</td><td class="txt">원료 가격·내부 소화</td><td class="txt">범용·수직통합 뿌리</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">1999년 나노입자 촉매용 이산화티타늄 원료 기술로 설립 → SCR 촉매 국산화. TiO2(원료)에서 시작해 촉매까지 수직화한 게 '세계 유일 일괄' 서사의 뿌리. 연결/별도 괴리는 자회사 저마진 사업 탓.</p>
+
+  <div class="chart"><div class="ct">연결 부문별 매출 스택 (억원) — 성장은 SCR에서만 나온다</div><div class="cs">자동차부품·TiO2(회색·초록)는 정체, SCR(주황)이 커지며 믹스를 본업 중심으로 이동. 26E 세그먼트 배분은 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="167" x2="1030" y2="167" stroke="#262a33"/><text x="52" y="170" text-anchor="end" font-size="9" fill="#5a6472">500</text>
+      <line x1="60" y1="83.5" x2="1030" y2="83.5" stroke="#262a33"/><text x="52" y="86" text-anchor="end" font-size="9" fill="#5a6472">1,000</text>
+      <!-- 2025 total 857 -->
+      <g>
+        <rect x="300" y="191.3" width="150" height="58.7" fill="#e78a5c" opacity="0.9"/>
+        <rect x="300" y="137.3" width="150" height="54.0" fill="#5a6472"/>
+        <rect x="300" y="107.2" width="150" height="30.2" fill="#4bbf9a" opacity="0.85"/>
+        <text x="375" y="98" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">857</text>
+        <text x="375" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+        <text x="375" y="225" text-anchor="middle" font-size="9.5" fill="#161616" font-weight="700">SCR 352</text>
+      </g>
+      <!-- 2026E total 1135 -->
+      <g>
+        <rect x="650" y="146.0" width="150" height="104.0" fill="#e78a5c" opacity="0.62" stroke="#e78a5c" stroke-dasharray="4 3"/>
+        <rect x="650" y="93.0" width="150" height="53.0" fill="#5a6472" opacity="0.75"/>
+        <rect x="650" y="60.8" width="150" height="32.2" fill="#4bbf9a" opacity="0.6"/>
+        <text x="725" y="52" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">1,135</text>
+        <text x="725" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+        <text x="725" y="202" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">SCR 624E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>SCR 탈질촉매(본업)</span><span><i style="background:#5a6472"></i>자동차부품</span><span><i style="background:#4bbf9a"></i>TiO2</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(선박·발전·플랜트)의 눈</h3><p style="margin:6px 0">"촉매는 성능이 열화되니 주기적으로 갈아야 한다. 검증된 공급사를 안 바꾼다. 국산화로 납기·가격이 좋으면 나노를 쓴다." → 반복 교체 락인.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(Cormetech·JM)의 눈</h3><p style="margin:6px 0">"나노는 아시아 기반 소형사. 규모·글로벌 레퍼런스는 우리가 앞선다. 다만 가스터빈 고밀도 촉매에서 침투 중." → 글로벌 대형 vs 국산 소형.</p></div>
+    <div class="card"><h3 style="margin-top:0">가스터빈 메이커(TOP3)의 눈</h3><p style="margin:6px 0">"데이터센터 온사이트 발전 붐. SCR 촉매 공급처를 다변화하고 싶다. 나노가 스펙·가격을 맞추면 밸류체인에 넣는다." → 신규 채널 개방.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"고밀도 촉매 자동화 신공장 준공. 데이터센터·선박이 구조 성장. 후속 물량 영업 중. 오너 지분 확대로 주주가치." → 성장 드라이브.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">원료~촉매~재생 일괄 국산화</h3><p style="margin:0;font-size:12.5px">TiO2 원료부터 촉매·평가·재생까지 수직 보유(회사 주장 "세계 유일"). 소모품 반복성 + 국산화 납기·가격. 현금화: 지금(별도 +382%).</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">고밀도 촉매 기술</h3><p style="margin:0;font-size:12.5px">가스터빈용 고밀도 촉매는 글로벌 대형사도 보유. 차별점은 신공장 자동화 원가·가격 경쟁력. 현금화: 진행(DC 첫 수주).</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">데이터센터 밸류체인 편입</h3><p style="margin:0;font-size:12.5px">글로벌 TOP3 가스터빈 메이커 정식 편입 여부 — 첫 프로젝트 1건뿐. 반복 수주 나와야 해자로 승격. 현금화: 옵션.</p></div>
+  </div>
+
+  <h2 class="sec">제품 라인 — 어디에 어떤 촉매가 들어가나</h2>
+  <table>
+    <thead><tr><th class="txt">전방</th><th class="txt">촉매 형태</th><th class="txt">수요 트리거</th><th class="txt">단계</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">선박엔진</td><td class="txt">플레이트·허니컴 SCR</td><td class="txt">IMO Tier III·신조/개조선 장착</td><td class="txt">본업·확대</td></tr>
+      <tr class="hl"><td class="txt">데이터센터 발전</td><td class="txt">고밀도 SCR(가스터빈)</td><td class="txt">AI 온사이트 발전·비상발전 CAPEX</td><td class="txt">신규·첫 수주</td></tr>
+      <tr><td class="txt">석유화학·플랜트</td><td class="txt">플레이트 SCR</td><td class="txt">탈질설비 신증설·촉매 교체</td><td class="txt">본업·프로젝트</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">지배구조 — 창업자 오너, 그러나 지분이 얇다</h2>
+  <div class="chart"><div class="ct">지배구조 개요 (2026-07-22 기준)</div><div class="cs">창업자 신동우 대표가 최대주주이나 오너 지분율이 낮고(CB 콜옵션·장내매수로 확대 시도), 소액주주·개인 수급이 지배. 외인 4.5%로 낮음. 종속회사는 중국법인 등 3사.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="40" width="180" height="52" rx="5" fill="#22262f" stroke="#e78a5c"/>
+      <text x="150" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">신동우 대표</text>
+      <text x="150" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">창업자·최대주주 · 지분 얇음</text>
+
+      <rect x="60" y="120" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11.5" fill="#eaecef">소액주주·개인</text>
+      <text x="150" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">유통물량 다수 · 테마 수급</text>
+
+      <rect x="60" y="200" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="220" text-anchor="middle" font-size="11" fill="#eaecef">외국인 4.5%</text>
+      <text x="150" y="236" text-anchor="middle" font-size="11" fill="#3c86f5">당일 −78만주 순매도</text>
+
+      <!-- center: 나노 -->
+      <rect x="430" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="530" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">나노 (187790)</text>
+      <text x="530" y="162" text-anchor="middle" font-size="11" fill="#828b98">SCR 탈질촉매 · 시총 1,010억</text>
+
+      <!-- subsidiaries -->
+      <rect x="820" y="110" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="138" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">종속 3사(중국법인 등)</text>
+      <text x="920" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">자동차부품·TiO2</text>
+      <text x="920" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">연결 저마진 · 별도가 본업</text>
+
+      <line x1="240" y1="66" x2="430" y2="135" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="240" y1="143" x2="430" y2="146" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="240" y1="223" x2="430" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="630" y1="146" x2="820" y2="146" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="335" y="92" text-anchor="middle" font-size="10" fill="#e78a5c">최대주주(오너)</text>
+      <text x="725" y="138" text-anchor="middle" font-size="10" fill="#4bbf9a">연결 종속</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>오너 지분이 얇다</strong>는 건 양날의 검이다 — 2021년 이래 신동우 대표가 CB 콜옵션·장내매수로 지분 확대 의지를 밝혀 왔으나,<span class="src">뉴시스 2021<span class="tip">신동우 대표 "지분 낮아 CB 콜옵션 행사·장내 매수로 꾸준히 늘리겠다" · 흑자전환·주주가치 제고 언급</span></span> 여전히 유통물량이 많아 <em>테마 수급에 취약</em>하다. 무배당·부채 136%로 재무 체력이 얇아 성장 자금 조달 시 증자 희석 리스크도 상시 점검 대상.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 사이클인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">선박 SCR</td><td class="txt"><strong>강제(규제) 수요</strong></td><td class="txt">IMO Tier III·신조/개조선 장착 의무</td><td class="txt">높음</td></tr>
+      <tr><td class="txt">석유화학·플랜트</td><td class="txt">교체·규제 수요</td><td class="txt">탈질설비·촉매 교체주기</td><td class="txt">높음(반복)</td></tr>
+      <tr class="hl"><td class="txt">데이터센터 발전</td><td class="txt">AI CAPEX 사이클 수요</td><td class="txt">온사이트 발전(가스터빈)·비상발전 붐</td><td class="txt">초기(레퍼런스 1건)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심 — 결정변수 2+1</div><strong>① 설치 base × 교체주기(반복 Q)</strong> = 선박·플랜트에 깔린 SCR 설비 수 × 3~5년 = 반복 매출의 바닥. <strong>② 데이터센터 전력 CAPEX(신규 성장 Q)</strong> = AI 온사이트 발전·비상발전 붐이 고밀도 촉매의 새 수요원, 글로벌 가스터빈 TOP3向 레퍼런스가 관문. <strong>③ 마진(C)</strong> = 부실 탈출 직후라 원가·가동률 정상화가 이익의 스윙 — 별도 +382%가 레버리지를 증명하나, 소형사라 소수 프로젝트 손익이 실적을 흔든다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 소모품의 경제학</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 25A→26E</div><div class="val">6.5→7.7<span class="u">%</span></div><div class="sub">부실 탈출 후 회복·정상화</div></div>
+    <div class="kpi"><div class="lab">별도 영업익 YoY</div><div class="val">+382<span class="u">%</span></div><div class="sub">본업 SCR 레버리지</div></div>
+    <div class="kpi"><div class="lab">부채비율</div><div class="val">136<span class="u">%</span></div><div class="sub">얇은 체력·무배당</div></div>
+  </div>
+  <p>SCR 촉매는 <strong>범용이 아니라 인증·주기교체품</strong>이라 설치 base가 커질수록 교체 매출이 안정 현금이 된다(razor-razorblade). 다만 나노는 마진 절대치(OPM 7%대)가 비츠로셀(30%)·글로벌 대형사보다 낮고, 연결에 저마진 자회사가 섞여 있어 <em>믹스 개선(별도 SCR 비중 확대)이 곧 마진 스토리</em>다. 신공장 가동률 상승이 다음 레버리지 포인트.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 손바뀜</h2>
+  <p>7/22 <strong>−12.2% · 거래량 524만주</strong>(평소 20~60만의 10~20배) 워시아웃 당일, 국내 기관이 순매수(+34.3만주, 사모 중심 유입)로 개인 투매를 받아냈다.<span class="src">네이버 API 투자자별<span class="tip">2026-07-22 기관 +342,741주·개인 +435,276주·외국인 −780,939주 · 사용자 집계 사모+9.3억·연기금+1.1억·투신+0.3억</span></span> 어제 +30% 상한가(DC 수주) 뒤 급락을 기관이 흡수한 <strong>수급 빈집→유입 전환</strong> 신호. 단, <em>외국인은 당일 −78만주 순매도로 소진율이 4.5%→1.97%로 급락</em>했다 — 빈집을 채우는 건 국내 기관·개인이고, 외국인은 오히려 이탈한 그림이라 손바뀜의 질은 절반짜리다. 외인 비중 자체가 낮아 수급은 국내가 좌우.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">이익 회복 궤적 — 매출은 정체, 이익률이 돌아섰다</h2>
+  <div class="chart"><div class="ct">영업이익 (막대, 억원) + OPM (라인, %) — 2023~2026E</div><div class="cs">매출은 880억대 정체였으나 영업익은 16→17→55→88억으로 뛰었다. 진짜 변화는 마진의 회복, 그리고 2026E 매출 성장의 개시.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="170" x2="1030" y2="170" stroke="#262a33"/><text x="52" y="173" text-anchor="end" font-size="9" fill="#5a6472">40</text>
+      <line x1="60" y1="90" x2="1030" y2="90" stroke="#262a33"/><text x="52" y="93" text-anchor="end" font-size="9" fill="#5a6472">80</text>
+      <!-- OP bars: scale 100 -> 200px, k=2. base 250 -->
+      <!-- 2023 OP16 ->32px -->
+      <rect x="140" y="218" width="90" height="32" fill="#4bbf9a" opacity="0.85"/>
+      <text x="185" y="210" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">16</text>
+      <text x="185" y="272" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 OP17 ->34 -->
+      <rect x="360" y="216" width="90" height="34" fill="#4bbf9a" opacity="0.85"/>
+      <text x="405" y="208" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">17</text>
+      <text x="405" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 OP55 ->110 -->
+      <rect x="580" y="140" width="90" height="110" fill="#4bbf9a" opacity="0.9"/>
+      <text x="625" y="132" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">55</text>
+      <text x="625" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E OP88 ->176 -->
+      <rect x="800" y="74" width="90" height="176" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="845" y="66" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">88</text>
+      <text x="845" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line 1.8,1.9,6.5,7.7 -> scale 10->200px base250 -->
+      <polyline points="185,214 405,212 625,120 845,96" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="185" cy="214" r="4" fill="#cba24a"/><circle cx="405" cy="212" r="4" fill="#cba24a"/><circle cx="625" cy="120" r="4" fill="#cba24a"/><circle cx="845" cy="96" r="4" fill="#cba24a"/>
+      <text x="185" y="206" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">1.8%</text>
+      <text x="625" y="112" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">6.5%</text>
+      <text x="845" y="88" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.7%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">본업 해부 — 연결 뒤에 숨은 별도의 힘</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">최근</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">연결 매출(2025A)</td><td class="num">857억</td><td class="num down">−3.3%</td><td class="txt">자회사 저마진 부문이 눌림</td></tr>
+      <tr class="hl"><td class="txt">└ 별도 매출</td><td class="num">299억</td><td class="num up">+83%</td><td class="txt">SCR 본업 모멘텀(회사 밝힘)</td></tr>
+      <tr class="hl"><td class="txt">└ 별도 영업익</td><td class="num">62억</td><td class="num up">+382%</td><td class="txt">신공장·믹스 개선 레버리지</td></tr>
+      <tr><td class="txt">연결 영업익(2025A)</td><td class="num">55억</td><td class="num up">흑자정상화</td><td class="txt">OPM 1.9%→6.5%</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 2025부터가 진짜, 그러나 얇다</h3>
+  <p>2024년 순익 227억(영업익의 13배)은 부채 구조조정 일회성 이익으로, <strong>영업으로 번 돈이 아니다</strong>. 반대로 2025A는 영업익 55억 · 지배순익 70억으로 <em>영업이 곧 이익</em>인 정상 구조로 돌아왔다 — 이익의 질은 2025년부터 신뢰 가능하다. 다만 비지배(자회사) 순손실(−22억)이 있어 지배순익>연결순익인 구조이고, 무배당·얇은 재무라 <strong>소수 프로젝트 손익으로 분기 이익이 급변</strong>할 수 있다. 2026E 성장의 관건은 데이터센터·선박 SCR 신규 수주의 매출 전환 속도.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">2026 YTD 종가 (원, 주간 샘플)</div><div class="cs">3,470원 → 7,280원(5/22, +110%) → 2,770원(7/14, −62%) → DC수주로 3,730 → 오늘 3,275. 상승은 거의 전부 멀티플(테마) 확장이었다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="229.0" x2="1035" y2="229.0" stroke="#20242c"/><text x="48" y="232" text-anchor="end" font-size="9" fill="#5a6472">3천</text>
+      <line x1="55" y1="187.0" x2="1035" y2="187.0" stroke="#20242c"/><text x="48" y="190" text-anchor="end" font-size="9" fill="#5a6472">4천</text>
+      <line x1="55" y1="145.0" x2="1035" y2="145.0" stroke="#20242c"/><text x="48" y="148" text-anchor="end" font-size="9" fill="#5a6472">5천</text>
+      <line x1="55" y1="103.0" x2="1035" y2="103.0" stroke="#20242c"/><text x="48" y="106" text-anchor="end" font-size="9" fill="#5a6472">6천</text>
+      <line x1="55" y1="61.0" x2="1035" y2="61.0" stroke="#20242c"/><text x="48" y="64" text-anchor="end" font-size="9" fill="#5a6472">7천</text>
+      <polyline points="70.0,209.3 128.8,214.5 187.5,196.4 246.2,187.0 305.0,195.8 363.8,153.2 422.5,189.1 481.2,212.4 540.0,123.6 598.8,91.2 657.5,49.2 716.2,132.4 775.0,174.4 833.8,203.8 892.5,238.7 951.2,198.3 1010.0,217.4" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <circle cx="540.0" cy="123.6" r="4" fill="#cba24a"/><text x="540" y="115" text-anchor="middle" font-size="9" fill="#cba24a">테마 점화</text>
+      <circle cx="657.5" cy="49.2" r="4.5" fill="#f0525f"/><text x="657" y="41" text-anchor="middle" font-size="9" fill="#f0525f">7,280 고점</text>
+      <circle cx="892.5" cy="238.7" r="4" fill="#3c86f5"/><text x="892" y="252" text-anchor="middle" font-size="9" fill="#3c86f5">2,770 저점</text>
+      <circle cx="951.2" cy="198.3" r="4" fill="#4bbf9a"/><text x="951" y="190" text-anchor="middle" font-size="9" fill="#4bbf9a">DC수주 +30%</text>
+      <circle cx="1010.0" cy="217.4" r="4.5" fill="#e78a5c"/><text x="1010" y="234" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">3,275</text>
+      <text x="70" y="272" font-size="9.5" fill="#828b98">'26.01</text><text x="540" y="272" font-size="9.5" fill="#828b98">'26.05</text><text x="1000" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 거의 전부가 멀티플</h2>
+  <p>비츠로셀의 5배가 '실적 반·멀티플 반'이었다면, 나노의 +110%는 <strong>거의 전부 멀티플(테마) 확장</strong>이었다 — 2025 실적(지배순익 70억)은 크게 안 변했는데 주가만 2배 갔다가 반토막. 즉 이 종목은 실적 리레이팅이 아니라 <em>'AI 데이터센터 전력' 내러티브의 베타</em>로 움직였고, 지금은 그 거품이 빠진 뒤 <strong>실적(2026E 성장)이 멀티플을 따라올 수 있는지 시험받는 국면</strong>이다.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">테마 랠리로 코스닥을 크게 아웃퍼폼(피크 +110%)했다가 되돌림. 지금은 연초 대비 −6%로 되돌아왔다. 코스닥 라인은 방향성 참고용 근사.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="49.4" x2="1035" y2="49.4" stroke="#20242c"/><text x="48" y="52" text-anchor="end" font-size="9" fill="#5a6472">200</text>
+      <line x1="55" y1="146.5" x2="1035" y2="146.5" stroke="#20242c"/><text x="48" y="149" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <polyline points="70.0,146.5 258.0,109.1 446.0,39.9 634.0,123.3 822.0,166.1 1010.0,151.9" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="1010" y="145" text-anchor="end" font-size="9.5" fill="#e78a5c" font-weight="700">나노 −6%</text>
+      <polyline points="70.0,146.5 258.0,143.6 446.0,140.6 634.0,142.6 822.0,141.6 1010.0,138.7" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="1010" y="133" text-anchor="end" font-size="9.5" fill="#828b98">코스닥 ~+8%(근사)</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 값에 들어있나</h2>
+  <p>현 시총 1,010억은 2026E 지배순익 75억 기준 <strong>포워드 PER ~13.5x</strong> — 소형 성장주로 과하지 않다. 그러나 이는 '2026E 컨센(매출 1,135억) 달성 + 성장 지속'을 전제한 값이라, 데이터센터 후속 수주가 안 나오면 멀티플이 10배 아래로 눌릴 여지가 있다.</p>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2025 영업 정상화(OPM 6.5%)</td><td class="txt up">반영</td></tr>
+      <tr><td class="txt">2026E 매출 성장(→1,135억)·선박 SCR</td><td class="txt">부분 반영</td></tr>
+      <tr><td class="txt">북미 데이터센터 후속 반복 수주</td><td class="txt down">미반영(상방 옵션)</td></tr>
+      <tr><td class="txt">글로벌 가스터빈 TOP3 밸류체인 정식 편입</td><td class="txt down">미반영(옵션)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">SCR 촉매 순수 peer는 드물다 — 테마 인접군과 비교</h2>
+  <div class="chart"><div class="ct">2026E 포워드 PER 비교 (배) — 골드 = 나노</div><div class="cs">순수 SCR 촉매 상장 peer가 국내에 드물어(대부분 대기업 사업부·비상장) 'AI 데이터센터 전력' 테마 인접군과 참고 비교. PER은 시점·소스 편차 있는 방향성 참고값.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="230" x2="1030" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- 나노 13.2 -->
+      <rect x="200" y="30" width="528" height="26" fill="#cba24a"/><text x="738" y="48" font-size="12" fill="#cba24a" font-weight="700">나노 13.2x</text><text x="195" y="48" text-anchor="end" font-size="11" fill="#eaecef">나노(SCR촉매)</text>
+      <!-- Ultralife proxy 15 (특수배터리) -->
+      <rect x="200" y="70" width="600" height="26" fill="#5a6472"/><text x="810" y="88" font-size="11" fill="#bfc5ce">15x</text><text x="195" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">비츠로셀(전지 인접)</text>
+      <!-- 비츠로셀 17 -->
+      <rect x="200" y="110" width="680" height="26" fill="#5a6472"/><text x="890" y="128" font-size="11" fill="#bfc5ce">17x</text><text x="195" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">비츠로셀 26E</text>
+      <!-- 지엔씨에너지 18 -->
+      <rect x="200" y="150" width="720" height="26" fill="#5a6472"/><text x="930" y="168" font-size="11" fill="#bfc5ce">18x</text><text x="195" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">지엔씨에너지(발전)</text>
+      <!-- 참고: 글로벌 촉매 대형 -->
+      <rect x="200" y="190" width="760" height="26" fill="#5a6472" opacity="0.55"/><text x="970" y="208" font-size="11" fill="#bfc5ce">해외 대형</text><text x="195" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">Cormetech·JM(비교참고)</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">Cormetech·Johnson Matthey는 해외 대형 촉매社(비상장/대기업)로 직접 PER 비교 아닌 전방 파트너/경쟁 관계 — 막대는 위치 참고용. 나노 13.2x는 성장 초기·소형 프리미엄 감안 시 테마 인접군 대비 낮은 편이나, 재무·유동성 디스카운트가 정당한 구간.</p>
+
+  <h2 class="sec">경쟁·인접사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">Cormetech / Johnson Matthey (해외 대형)</h3><p style="margin:6px 0;font-size:12.5px">글로벌 SCR 촉매 선두. 규모·레퍼런스 압도. 나노에겐 전방 밸류체인 파트너이자 경쟁. 위협도 <strong>높음</strong>(글로벌 물량·신뢰성).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">지엔씨에너지 (데이터센터 발전 EPC)</h3><p style="margin:6px 0;font-size:12.5px">데이터센터 비상발전 EPC 점유 ~70%. 시총 4,000억대. '전력' 테마의 순수·대형 플레이. 나노는 그 안의 <strong>촉매 부품</strong> — 경쟁 아닌 인접.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">비츠로셀 (리튬일차전지·방산)</h3><p style="margin:6px 0;font-size:12.5px">시총 1.3조·OPM 30%·글로벌 top-3. 같은 '전력·에너지' 테마에 묶이나 재무 퀄리티는 압도. '숫자로 사는' 대안.</p></div>
+    <div class="card"><h3 style="margin-top:0">나노의 상대 위치</h3><p style="margin:6px 0;font-size:12.5px">SCR 촉매 국산화 순수 소형 플레이. 강점=반복성·낮은 시총(테마 탄력), 약점=유동성·재무·소형 변동성. 가스터빈 TOP3 편입 확인 시 디스카운트 축소 여지.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">데이터센터 SCR 반복 수주 + 선박 규제 수요, 2027 순익 ~110억, 글로벌 가스터빈 밸류체인 편입 인정</td><td class="num">357 <span class="est bull">27E</span></td><td class="num">16x</td><td class="num up">5,700</td><td class="num">30%</td><td class="num up">+74%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E 컨센(매출 1,135억·영업익 88억) 대체로 달성, 순익 75~85억, 성장 지속</td><td class="num">260</td><td class="num">14x</td><td class="num">3,650</td><td class="num">45%</td><td class="num up">+11%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">테마 소멸 + DC 후속 부재 + 소형 마진 실망, 순익 ~50억</td><td class="num">160 <span class="est bear">E</span></td><td class="num">11x</td><td class="num down">1,760</td><td class="num">25%</td><td class="num down">−46%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">3,790</td><td class="num"></td><td class="num up">+16%</td></tr></tfoot>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">EV = 0.30×5,700 + 0.45×3,650 + 0.25×1,760 = 약 3,790원(현재가 3,275 대비 +16%). 기대값은 플러스이나 Bear 꼬리(−46%)가 깊고 변동성이 극단적이다.</p>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 3,275(흰선). 매집밴드 2,700~3,000(주황 음영). 시나리오 밴드 Bear 1,760 ~ Bull 5,700. 하방 꼬리가 깊어 소액·눌림 원칙.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="250.0" y="205" text-anchor="middle" font-size="9" fill="#5a6472">2천</text>
+      <text x="510.0" y="205" text-anchor="middle" font-size="9" fill="#5a6472">4천</text>
+      <text x="770.0" y="205" text-anchor="middle" font-size="9" fill="#5a6472">6천</text>
+      <text x="1030.0" y="205" text-anchor="middle" font-size="9" fill="#5a6472">8천</text>
+      <!-- 시나리오 밴드 1760..5700 -->
+      <rect x="218.8" y="60" width="512.2" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="218" y="54" font-size="10" fill="#3c86f5">Bear 1,760</text>
+      <text x="731" y="54" text-anchor="end" font-size="10" fill="#f0525f">Bull 5,700</text>
+      <line x1="464.5" y1="56" x2="464.5" y2="90" stroke="#cba24a" stroke-width="2.5"/><text x="464" y="102" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 3,650</text>
+      <!-- 매집밴드 2700..3000 -->
+      <rect x="341.0" y="120" width="39.0" height="26" rx="3" fill="#4bbf9a" opacity="0.35"/>
+      <text x="360" y="114" text-anchor="middle" font-size="9.5" fill="#4bbf9a">매집 2,700~3,000</text>
+      <!-- 현재가 3275 -->
+      <line x1="415.8" y1="30" x2="415.8" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="415.8" y="26" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 3,275</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 △</h3><p style="margin:6px 0;font-size:12.5px">880억 정체 → 2026E 1,135억으로 개시. 지속 여부는 DC·선박 신규 수주에 달림. <strong>확인 필요</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 1.9→7.7%. 별도 +382% 레버리지. 다만 절대치가 낮고 연결 자회사가 희석.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 13x. 후속 수주·밸류체인 편입 시 16x+ 가능하나, 테마 소멸 시 10x 아래로 디레이팅.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): 데이터센터 후속 반복 수주 / 글로벌 가스터빈 TOP3 정식 편입 / 선박 SCR 대형 수주 → 각 리레이팅 트리거. 반대로 증자 시 희석은 하방 옵션.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>테마 소멸·급등 되돌림</strong></td><td class="txt">올해 −62% 붕괴 전례. AI 전력 테마 식으면 PER 10배 이하 디레이팅, 주가 −40%+</td><td class="num">높음</td></tr>
+      <tr><td class="txt"><strong>데이터센터 후속 수주 부재</strong></td><td class="txt">$4M 단발로 끝나면 리레이팅 근거 소멸, 성장 스토리 훼손</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>소형사 실적 변동성</strong></td><td class="txt">소수 프로젝트 손익으로 분기 이익 급변, 컨센 미스 빈발</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>재무 체력·증자 희석</strong></td><td class="txt">부실 탈출 직후(부채 136%)·무배당, 성장 자금 조달 시 희석</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>유동성·외인 이탈</strong></td><td class="txt">외인 4.5%→1.97%(당일)·시총 1,010억, 하루 ±12%가 일상 — 물량·손절 관리 난이도</td><td class="num">상시</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 2,700~3,000 눌림에서 소액(초소형·고변동 감안 30~50bp) 분할. 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 북미 DC 후속 수주 공시 → 50bp 추가·홀딩.</li>
+    <li><strong>강화:</strong> 2Q26(8월) 별도 SCR 매출 성장 확인 → thesis 강화.</li>
+    <li><strong>정리:</strong> 6개월 내 후속 수주 무 · 2Q 매출 성장 꺾임 → 즉시 정리.</li>
+    <li><strong>차익:</strong> 재차 5,000원 위 급등은 차익 관리(테마 베타).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">DC SCR 후속 수주</td><td class="txt">밸류체인 편입·리레이팅 핵심</td><td class="txt">6개월 내 부재</td></tr>
+      <tr><td class="txt">별도 SCR 분기매출·YoY</td><td class="txt">본업 성장 실현</td><td class="txt">성장 꺾임·YoY 둔화</td></tr>
+      <tr><td class="txt">선박 SCR·석유화학 수주</td><td class="txt">반복매출 저수지 확대</td><td class="txt">신규 수주 공백</td></tr>
+      <tr><td class="txt">연결/별도 OPM</td><td class="txt">믹스·마진 체력</td><td class="txt">별도 OPM 하락 반전</td></tr>
+      <tr><td class="txt">기관·외인 수급</td><td class="txt">손바뀜의 질</td><td class="txt">기관 유입 중단·외인 추가 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">상시(하반기)</td><td class="txt">북미 데이터센터 SCR 후속 수주(회사 "후속 물량 영업 중")</td><td class="txt"><span class="tag b">상방 핵심</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(별도 SCR 모멘텀·매출 성장 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">선박엔진 SCR 신규 수주·석유화학 촉매 프로젝트</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">AI 데이터센터 전력 테마 뉴스(가스터빈·온사이트 발전)</td><td class="txt"><span class="tag s">변동성 원천</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "3~5년마다 갈아 끼우는 SCR 촉매 소모품에 선박 규제·AI 데이터센터 전력이라는 구조 순풍이 붙었고, 부실 탈출 뒤 별도 본업이 +382%로 살아났다. 시장은 급등 −62% 뒤 포워드 PER 13x에 방치했지만, 증거(후속 수주)는 아직 1건뿐이다. 그 값은 2,700~3,000에 소액으로 사서 후속 수주를 기다린다."</strong><br>어떻게 맞나: 눌림 분할 후 DC 후속 수주 또는 2Q 별도 성장 중 하나만 켜져도 Base 3,650~Bull 5,700. 어떻게 틀리나: 6개월 내 후속 수주가 없고 테마가 재차 붕괴하면 틀린다(즉시 정리, Bear 1,760). 한 단어: <em>"반복 교체"</em>. 남는 것: <strong>"스토리는 사되, 추격 아닌 눌림·소액으로."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(트레이딩·눌림)</span><span class="pill">Base 3,650</span><span class="pill">매집밴드 2,700~3,000</span><span class="pill">Bull 5,700 / Bear 1,760</span><span class="pill">EV +16%</span><span class="pill">thesis break: 후속 수주 6M 부재·테마 붕괴·2Q 성장 꺾임</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기. 판정·시나리오·목표가·확률은 v1과 동일 유지.<br>
+    데이터 계보: 시세·컨센·재무 = 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 조회 · 현재가 3,275·시총 1,010억·트레일링 PER 40.94x/EPS 80·PBR 2.49·BPS 1,316·2023~2026E 연간재무·2026E 컨센 매출 1,135억/영업익 88억 isConsensus=Y·무배당) · 일봉 = api.finance.naver.com siseJson(2026-01~07-22 · YTD 고점 종가 7,280@5/22·저점 2,770@7/14·당일 5,240,768주) · 투자자별 = 네이버 API(2026-07-22 기관 +342,741·개인 +435,276·외인 −780,939주, 외인소진율 4.50%→1.97%) + 사용자 제공(사모+9.3억·연기금+1.1억·투신+0.3억) · 북미 데이터센터 SCR $400만(글로벌 TOP3 가스터빈 메이커 적용 복합단지·온사이트 가스터빈·후속 영업 중) = 뉴스핌(2026-07-21) · 2026E 매출 1,243억/영업익 130억 전망 = 아시아경제 클릭e종목(2025-11) · 연결 매출구성 SCR 41.1%/자동차부품 37.8%/TiO2 21.1% = FnGuide·서치e종목 · 별도 매출 299억(+83%)·영업익 62억(+382%) = 증권 코멘트 · "SCR 원료~재생 일괄 세계유일"·고밀도 촉매 신공장·종속 3사(중국법인 등) = 네이버 기업개요 · 오너 지분 확대 의지 = 뉴시스(2021) · 커버리지 = 키움증권 "커지는 시장, 집중되는 수혜"(2026-03-06). 삼각검증: 시세·재무·수주·리포트 다중소스 수렴, 이익전망은 컨센/증권 이원 병기.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가온전선 000500 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">000500</span>
+    <span class="nm">가온전선 <small>Gaon Cable · 전선/케이블 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩209,500</span>
+    <span>시총 ₩3.47조 · 26E PER 49x(시총÷순익)</span>
+    <span class="rating">관망(눌림목 대기) · 매집 155,000~175,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·밸류분해</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,385 (07-22)</span>
+  <span><b>현재가</b> ₩209,500 (+15.7%)</span>
+  <span><b>52주</b> 29,229 ~ 352,860</span>
+  <span><b>외인</b> 1.33%</span>
+  <span><b>OPM 26E</b> 3.6%</span>
+  <span><b>ROE 26E</b> 13.2%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">매출은 2년 새 두 배가 됐지만 마진은 3%대에 갇힌 회사 — 시장은 아직 손익에 없는 '고압·턴키 도약'을 PER 49배에 선지불했다.</h1>
+  <p class="lead">가온전선은 구리·알루미늄을 뽑아 <em>전선·케이블</em>을 파는 LS그룹 계열 종합 전선사다. AI 데이터센터·북미 전력망 붐으로 '전력의 동맥'인 <strong>초고압/전력 케이블·버스덕트</strong> 수요가 폭증하며 작년 33,618원이 올 5월 <strong>352,860원(약 10배)</strong>까지 급등했다 극심한 휩쏘 끝에 209,500원. 미국 자회사 LSCUS의 <em>버스덕트 4조원대 파이프라인</em>·북미 전력케이블 6,456억(+25%)·데이터센터 캐파 2배 증설 등 스토리는 진짜다. 그러나 <strong>전사 영업이익률이 여전히 3.6%</strong>에 불과한 저마진 전선업인데 포워드 PER(시총÷순익)은 <strong>~49배</strong> — 테마·프록시 프리미엄이 미래를 통째로 당겨썼다. <strong>테마 대장으로 관심은 유지하되, 진입은 눌림에서.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>관망(눌림목 대기) · 매집밴드 155,000~175,000원 · Bull 280,000 / Base 200,000 / Bear 130,000 · 확률가중 EV ≈ 203,000원(−3%).</strong> 수요 구조(데이터센터·전력망)와 매출 성장은 진짜지만, 저마진(OPM 3.6%) 대비 밸류(PER 49x)가 과열이고 오늘 +15.7%는 추격 부담. 다만 <em>1H26 영업레버리지(영업익 +41.8% > 매출 +27.3%)</em>가 초기 마진 반전 신호라 '저마진 고착' 논지에 균열이 생긴 점은 우호적. thesis 성립: 2Q OPM 4%대 정착·대형 고압/버스덕트 수주 지속. thesis break: OPM 3%대 재고착·테마 냉각·구리 급변.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 규모는 2배, 마진은 3%대 정체(막 반등 시도)</h2>
+  <p>단위 억원. 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 유통·건설처럼 <strong>덩치는 커졌으나 마진 구조는 저마진</strong> — 매출은 구리가 연동으로 명목 성장이 부풀 수 있다. PER은 주식수·EPS 정합 이슈(하단)를 피해 <em>시총÷순익 축</em>으로만 판단한다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">14,986</td><td class="num">437</td><td class="num">2.9%</td><td class="num">179</td><td class="num">—</td><td class="num">5.6%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">17,271</td><td class="num">450</td><td class="num">2.6%</td><td class="num">254</td><td class="num">—</td><td class="num">6.5%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">25,457</td><td class="num">792</td><td class="num">3.1%</td><td class="num">514</td><td class="num">67x</td><td class="num">11.0%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">29,455</td><td class="num">1,060</td><td class="num">3.6%</td><td class="num">702 <span class="est">E</span></td><td class="num">49x</td><td class="num">13.2%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 시총 3.47조 ÷ 해당연도 순익. CAGR(23→26E): 매출 +25%, 영업익 +34%, 순익 +58%. 1Q26 매출 7,636억(+19.4%)·영업익 278억(+27.2%)·OPM 3.64%, 1H26 누적 매출 1조6,330억(+27.3%)·영업익 640억(+41.8%)·OPM 3.92%로 마진 개선 초입.</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">매출 막대는 급성장하나 골드 라인(OPM)은 2.9→2.6% 저점 뒤 3.1→3.6% 반등. 마진은 '정체 후 회복' 국면. 26E는 컨센.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- 2023 -->
+      <rect x="120" y="163.1" width="70" height="106.9" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="220.5" width="46" height="49.5" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="154" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">14,986</text>
+      <text x="219" y="212" text-anchor="middle" font-size="10.5" fill="#4bbf9a">437</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="146.9" width="70" height="123.1" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="219.1" width="46" height="50.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="138" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">17,271</text>
+      <text x="444" y="211" text-anchor="middle" font-size="10.5" fill="#4bbf9a">450</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="88.5" width="70" height="181.5" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="180.3" width="46" height="89.7" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="80" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">25,457</text>
+      <text x="669" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">792</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="150" width="46" height="120" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="52" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">29,455</text>
+      <text x="894" y="142" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,060</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: y=150-(opm-2.5)*70 -->
+      <polyline points="155,122 380,143 605,108 830,73" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="122" r="4" fill="#cba24a"/><circle cx="380" cy="143" r="4" fill="#cba24a"/><circle cx="605" cy="108" r="4" fill="#cba24a"/><circle cx="830" cy="73" r="4" fill="#cba24a"/>
+      <text x="155" y="114" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">2.9%</text>
+      <text x="380" y="158" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">2.6%</text>
+      <text x="605" y="100" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">3.1%</text>
+      <text x="830" y="65" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">3.6%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익(별도 스케일)</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+  <p style="font-size:11px;color:var(--muted)">영업이익 막대는 저마진 가시화를 위해 매출과 별도 스케일. 매출 대비 영업익은 3% 안팎에 불과함에 유의.</p>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 수요 구조는 진짜</h3><p style="margin:6px 0">AI 데이터센터(엔비디아-아이렌 텍사스 2GW 등)·북미 전력망 노후 교체로 초고압 케이블·버스덕트 수요가 <strong>구조적으로 증가</strong>. LSCUS 버스덕트 2030년까지 최대 4조원 파이프라인.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 실적도 성장 중</h3><p style="margin:6px 0">매출 15조→25조(2025)·2026E 29.5조, 북미 전력케이블 +25%. <strong>1H26 영업익 +41.8%</strong>로 매출(+27.3%)보다 빨라 <em>영업레버리지가 막 켜졌다</em>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 저마진×고밸류 불일치</h3><p style="margin:6px 0">OPM 3.6% 전선업이 시총 3.47조·PER 49x. 시장은 '고압/턴키 믹스로 마진 도약(→5%+)'을 <strong>선반영</strong>했는데, 손익엔 아직 초입(3.6%). → 눌림 대기.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B (가격과 분리)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> LS그룹 초고압 밸류체인 접근성·LSCUS 미국 현지생산·버스덕트 선점. 진짜 해자는 '그룹·현지화'이지 제품 독점은 아님.</li>
+        <li><strong>현금창출:</strong> 매출 규모는 크나 OPM 3%대라 절대 이익(순익 700억대)은 얇다. 구리가 연동 명목 매출.</li>
+        <li><strong>사이클 노출:</strong> 구리가·데이터센터 발주 타이밍에 lumpy — B를 B+로 못 올리는 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시회피</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 2Q26 OPM 4%대 정착 + 버스덕트·초고압 대형 수주 지속 + 데이터센터 캐파 가동.</li>
+        <li><strong>갈아타기:</strong> 초고압·해저 순수 노출을 원하면 대한전선(HVDC 상장 대형), 초고압 대장은 비상장 LS전선. 가온은 'LS계열·종합·미국 버스덕트'.</li>
+        <li><strong>즉시회피:</strong> OPM 3%대 재고착 / 데이터센터 전력 테마 냉각 / 구리 급락으로 재고손익 훼손.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 테마 안에서 누구를</h2>
+  <p>데이터센터·전력망 테마의 전선주(대한전선·대원전선·가온전선)는 대부분 5월 급등 후 큰 조정을 거친 고변동 국면이다. 가온전선의 상대 매력 = <em>"LS계열·미국 버스덕트 선점"</em>이라는 스토리와 1H26 영업레버리지. 반면 <strong>OPM 3.6%에 PER 49x</strong>는 마진 도약을 통째로 당겨쓴 값이라, 마진이 검증되기 전엔 관망이 답이다. 순수 초고압·해저 노출이면 대한전선, 중저압 테마 탄력이면 대원전선. 가온은 <em>'마진이 숫자로 나타나는지'를 사는 검증 베팅</em>.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"구리·알루미늄을 뽑아 전력·통신·산업용 <strong>전선과 케이블</strong>을 만들어 파는 LS그룹 계열 종합 전선사로, 성장축이 데이터센터·전력망용 <strong>초고압/전력 케이블·버스덕트</strong>로 이동 중인 <em>저마진→고마진 전환 시도 기업</em>."</p>
+  <div class="note"><div class="h">매출 ≠ 이익 ≠ 성장 — 분리해서 볼 것</div>매출은 2023년 15조원대에서 2025년 25조원대로 급증했지만, 이는 <strong>구리가 연동 명목 성장(원자재가+물량)</strong>이 상당하다. 진짜 알파는 규모가 아니라 <strong>고압·턴키·버스덕트 믹스가 얼마나 빨리 커져 OPM을 끌어올리느냐</strong>. 2026E OPM 3.6%(+0.5%p)와 1H26 영업익 +41.8%가 그 초입 신호이나 절대치는 아직 3%대.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 저마진 규모 vs 고마진 성장축</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="txt">마진</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>일반전선·권선·통신</strong></td><td class="txt">배전·건설·산업용 범용 전선(기존 매출 대부분)</td><td class="txt">저(스프레드)</td><td class="txt">구리가 × 물량 × 가공마진</td><td class="txt">규모 크나 이익률 낮음</td></tr>
+      <tr class="hl"><td class="txt"><strong>초고압/전력 케이블</strong></td><td class="txt">154kV~ 송배전·데이터센터·반도체클러스터. 턴키(공급+시공)</td><td class="txt">중~고</td><td class="txt">고압 수주잔고 × 턴키 비중 × ASP</td><td class="txt">비전2030 초고압 40%+ 목표</td></tr>
+      <tr class="hl"><td class="txt"><strong>버스덕트(LSCUS)</strong></td><td class="txt">데이터센터 내부 배전설비 'AI의 혈관'. 미국 빅테크 장기계약</td><td class="txt">고(성장)</td><td class="txt">빅테크 DC 캐파 × 계약(4조/~2030)</td><td class="txt">수백억→수천억 급증축</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">세그먼트별 정확 매출 배분은 원문 미공개 — 아래 스택은 '일반 vs 전력·초고압·버스덕트' 2분류 근사(<span class="est">EST</span>). 북미향 전력케이블 6,456억(+25%)은 확인치, 나머지 배분은 추정.<span class="src">근거<span class="tip">1Q26 분기보고서·IR·언론(더퍼블릭·뉴데일리·getnews). 세그먼트 세부 배분은 미공개라 근사</span></span></p>
+
+  <div class="chart"><div class="ct">부문 매출 스택 (억원) — 고부가(전력·초고압·버스덕트) 비중이 커진다</div><div class="cs">일반전선(저마진)은 유지, 전력·초고압·버스덕트(고마진)가 빠르게 커지며 믹스를 개선. 배분은 근사(EST).</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale max 29455 -> 200px k=0.006790 -->
+      <!-- 2024 total 17271: base 12953, 전력 4318 -->
+      <g>
+        <rect x="200" y="162" width="150" height="88" fill="#5a6472"/>
+        <rect x="200" y="132.7" width="150" height="29.3" fill="#e78a5c" opacity="0.9"/>
+        <text x="275" y="123" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">17,271</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025 total 25457: base 17820, 전력 7637 -->
+      <g>
+        <rect x="465" y="129" width="150" height="121" fill="#5a6472"/>
+        <rect x="465" y="77.1" width="150" height="51.9" fill="#e78a5c" opacity="0.9"/>
+        <text x="540" y="68" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">25,457</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E total 29455: base 19735, 전력 9720 -->
+      <g>
+        <rect x="730" y="116" width="150" height="134" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="50" width="150" height="66" fill="#e78a5c" opacity="0.65"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">29,455</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>일반전선·권선·통신(저마진)</span><span><i style="background:#e78a5c"></i>전력·초고압·버스덕트(고마진, EST)</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(전력사·데이터센터)의 눈</h3><p style="margin:6px 0">"AI 데이터센터 전력 공급이 급하다. 검증된 초고압 케이블·버스덕트를 안정 공급할 곳이 필요. LSCUS 현지생산이면 납기·관세 유리." → 구조 수요.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(대한전선·해외)의 눈</h3><p style="margin:6px 0">"가온은 LS계열 프리미엄과 미국 버스덕트 선점이 강점. 순수 초고압·해저는 우리(대한전선)·LS전선이 위. 턴키·현지화로 붙는다." → 경쟁 심화.</p></div>
+    <div class="card"><h3 style="margin-top:0">모회사(LS전선)의 눈</h3><p style="margin:6px 0">"가온을 자회사로 편입(81.64%→90%)해 (주)LS→LS전선→가온 지배구조 단순화. LSCUS 현물출자로 미국 성장을 가온에 실었다." → 계열 정렬.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"비전2030으로 초고압 40%+·고부가 구조 완성. 데이터센터 캐파 2배·2500sqmm 태도체 확대. 마진을 숫자로 증명할 시점." → 질적 전환 도전.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">LS계열 + 미국 현지생산(LSCUS)</h3><p style="margin:0;font-size:12.5px">LS전선 초고압 밸류체인 접근성 + 미국 내 버스덕트·전력케이블 현지생산. 관세·납기·빅테크 접점이 후발 대비 우위. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">전선 제조 기술</h3><p style="margin:0;font-size:12.5px">구리 신선·압출·권선은 대한전선·대원전선도 보유. 초고압(154kV·2500sqmm)은 진입장벽 있으나 국내 다수 경쟁. 현금화: 지금.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">고마진 믹스 전환</h3><p style="margin:0;font-size:12.5px">턴키·버스덕트로 OPM 5%+ 도약이 밸류의 핵심 전제. 1H26 +41.8% 초입 신호뿐, 아직 구조적 마진 도약 미검증 — 옵션. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — (주)LS → LS전선 → 가온전선 → LSCUS</h2>
+  <div class="chart"><div class="ct">지배구조 이동 (2026 1Q 기준)</div><div class="cs">LS전선이 최대주주(81.64%, 자사주 매입 후 90.2% 목표). LSCUS는 LS전선 82% 현물출자로 가온전선 100% 자회사 편입 — 미국 성장을 가온에 실었다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- (주)LS -->
+      <rect x="40" y="120" width="150" height="52" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="115" y="142" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">(주)LS</text>
+      <text x="115" y="160" text-anchor="middle" font-size="10.5" fill="#828b98">그룹 지주회사</text>
+      <!-- LS전선 -->
+      <rect x="250" y="115" width="170" height="62" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="335" y="140" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">LS전선 (비상장)</text>
+      <text x="335" y="158" text-anchor="middle" font-size="10.5" fill="#828b98">초고압·해저 국내1위</text>
+      <!-- 가온전선 center -->
+      <rect x="480" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="580" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">가온전선 (000500)</text>
+      <text x="580" y="162" text-anchor="middle" font-size="11" fill="#828b98">종합전선 · 시총 3.47조</text>
+      <!-- LSCUS -->
+      <rect x="800" y="110" width="210" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="905" y="138" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">LSCUS (미국)</text>
+      <text x="905" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">버스덕트·전력케이블</text>
+      <text x="905" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">100% 자회사 · 성장엔진</text>
+      <!-- arrows -->
+      <line x1="190" y1="146" x2="250" y2="146" stroke="#5a6472" stroke-width="1.8" marker-end="url(#ar)"/>
+      <line x1="420" y1="146" x2="480" y2="146" stroke="#4bbf9a" stroke-width="2.2" marker-end="url(#ar)"/>
+      <line x1="680" y1="146" x2="800" y2="146" stroke="#e78a5c" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="220" y="138" text-anchor="middle" font-size="10" fill="#7a8290">지배</text>
+      <text x="450" y="138" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">81.64%</text>
+      <text x="740" y="138" text-anchor="middle" font-size="10" fill="#e78a5c" font-weight="700">100%</text>
+      <!-- footnote box -->
+      <rect x="250" y="215" width="430" height="46" rx="5" fill="#181b22" stroke="#353b47"/>
+      <text x="465" y="235" text-anchor="middle" font-size="10.5" fill="#bfc5ce">자사주 매입(699억·141.9만주) 완료 시 LS전선 지분</text>
+      <text x="465" y="251" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">81.64% → 90.2% (상폐엔 선 그음)</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>LS전선 지분 90%대 상향</strong>은 (주)LS→LS전선→가온의 지주 체제 단순화·경영 투명성엔 긍정이나, <em>유통주식수 축소·상폐 관측</em>이 오가는 국면이라 소액주주 관점의 자본배치·무상증자(7/23 신주상장) 영향은 상시 점검 대상. LSCUS 100% 편입으로 미국 버스덕트 성장이 온전히 가온 손익에 잡히는 구조가 된 점이 v1 대비 확정된 핵심 진전.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">섹터 결정변수 — 무엇이 알파인가</h2>
+  <table>
+    <thead><tr><th class="txt">변수</th><th class="txt">성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">초고압/턴키·버스덕트 믹스</td><td class="txt"><strong>마진 알파</strong></td><td class="txt">북미 6,456억(+25%)·데이터센터 캐파 2배·버스덕트 4조</td><td class="txt">핵심(마진 도약 여부)</td></tr>
+      <tr><td class="txt">구리가격(원가·스프레드)</td><td class="txt">명목 매출·재고손익</td><td class="txt">LME 구리·환율</td><td class="txt">중(스윙 원천)</td></tr>
+      <tr><td class="txt">LS전선 프록시 프리미엄</td><td class="txt">멀티플</td><td class="txt">초고압 대장 비상장 → 상장 대체 수급</td><td class="txt">과열 요인</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>전선업의 알파는 <strong>물량(저마진)이 아니라 고압·턴키·버스덕트 믹스</strong>다. 데이터센터·전력망은 '강제·구조 수요'라 방어력이 있으나, 케이블은 프로젝트·발주 타이밍에 매출이 <em>lumpy</em>. 캐파 2배 증설과 버스덕트 4조 파이프라인은 수요 확신의 선행지표이나, <strong>그것이 OPM에 얼마나 빨리 나타나는지가 밸류를 가른다.</strong></div>
+
+  <h2 class="sec">유닛 이코노믹스 — 저마진의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">3.6<span class="u">%</span></div><div class="sub">저마진 전선업(+0.5%p)</div></div>
+    <div class="kpi"><div class="lab">PER 26E(시총÷순익)</div><div class="val">49<span class="u">x</span></div><div class="sub">테마·프록시 프리미엄</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">12.5<span class="u">x</span></div><div class="sub">BPS 16,828 · 고밸류</div></div>
+  </div>
+  <p>전선은 <strong>구리가 연동 스프레드 사업</strong>이라 매출이 커져도 마진이 자동으로 오르지 않는다. 가격결정력은 고압·턴키·버스덕트 같은 <em>차별화 제품</em>에서만 생긴다. 규모가 커질수록 고부가 믹스가 늘어야 마진이 오르는데, 아직 OPM 3%대 — <strong>'믹스가 마진을 밀어올리는' 선순환은 초기 단계</strong>다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +3.9억 · 연기금 +36.9억 · 투신 +72.2억</strong>(합산 시총대비 +0.33%)로 <em>연기금·투신이 대규모로 담았다</em>. 외인소진율 <strong>1.33%</strong>로 극히 낮아 국내 기관·개인 수급이 주도 — 글로벌 니치가 아니라 <strong>국내 테마 대장</strong> 성격이다. 오늘 +15.7%·거래대금 2,433억은 5월 급등·−50% 조정 뒤 테마 대장 재편입 흐름이나, 외인 부재는 수급의 지속성 리스크(개인·테마 의존).</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">분기 궤적 — 매출·마진 동시 상승, '정체' 논지에 균열</h2>
+  <div class="chart"><div class="ct">분기 매출 (막대, 억원) + OPM (라인, %)</div><div class="cs">1Q25→1Q26→2Q26 매출이 6,393→7,636→8,694억으로, OPM은 3.43→3.64→4.16%로 동반 상승. 영업레버리지가 막 켜진 그림.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- rev scale max 8694 -> 180px k=0.02070 -->
+      <!-- 1Q25 -->
+      <rect x="190" y="117.6" width="120" height="132.4" fill="#e78a5c" opacity="0.85"/>
+      <text x="250" y="108" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,393</text>
+      <text x="250" y="272" text-anchor="middle" font-size="11" fill="#828b98">1Q25</text>
+      <!-- 1Q26 -->
+      <rect x="480" y="91.9" width="120" height="158.1" fill="#e78a5c" opacity="0.9"/>
+      <text x="540" y="82" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">7,636</text>
+      <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">1Q26</text>
+      <!-- 2Q26 -->
+      <rect x="770" y="70" width="120" height="180" fill="#e78a5c"/>
+      <text x="830" y="60" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">8,694</text>
+      <text x="830" y="272" text-anchor="middle" font-size="11" fill="#828b98">2Q26</text>
+      <!-- OPM line y=230-(opm-3.0)*80 -->
+      <polyline points="250,195.6 540,178.8 830,137.2" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="250" cy="195.6" r="4.5" fill="#cba24a"/><circle cx="540" cy="178.8" r="4.5" fill="#cba24a"/><circle cx="830" cy="137.2" r="4.5" fill="#cba24a"/>
+      <text x="250" y="188" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">3.43%</text>
+      <text x="540" y="171" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">3.64%</text>
+      <text x="830" y="129" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">4.16%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>분기 매출</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">2Q26 = 1H누적−1Q</span></div>
+  </div>
+
+  <h2 class="sec">1H26 해부 — 미국이 끌고, 마진이 따라온다</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">1H26 누적</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">7,636억</td><td class="num">16,330억</td><td class="num up">+27.3%</td><td class="txt">미국 데이터센터 수출·LSCUS 성장</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">278억</td><td class="num">640억</td><td class="num up">+41.8%</td><td class="txt">매출보다 빠름 = 레버리지</td></tr>
+      <tr><td class="txt">OPM</td><td class="num">3.64%</td><td class="num">3.92%</td><td class="num up">+0.4%p</td><td class="txt">2Q 단독 4.16% — 개선 가속</td></tr>
+      <tr class="hl"><td class="txt">└ 버스덕트(LSCUS)</td><td class="num">수백→수천억</td><td class="num">급증</td><td class="num up">폭증</td><td class="txt">빅테크 장기계약·4조 파이프라인</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 매출은 명목, 마진 반전이 관건</h3>
+  <p>매출 급증의 상당 부분은 <strong>구리가 연동 명목 성장</strong>이라 액면 그대로 받으면 안 된다. 진짜 검증 포인트는 <em>영업익이 매출보다 빠르게(1H +41.8% vs +27.3%) 늘고 있다는 것</em> — 고압·버스덕트 믹스가 실제 마진을 밀어올리기 시작했다는 첫 증거다. 다만 절대 OPM은 여전히 4% 안팎이라, PER 49x가 요구하는 'OPM 5%+ 구조 도약'까진 <strong>2~3개 분기 더 확인이 필요</strong>하다. 이 확인 여부가 관망→편입의 스위치.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · 밸류 분해</div>
+  <h2 class="sec">주가 경로 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주가 경로 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">33,618원 → 352,860원(5월, 약 10배) → 174,100원(7/20, −51%) → 209,500원(7/22). 상승의 대부분은 멀티플(테마·프록시), 실적 기여는 일부.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 20k..360k -> y 250..40 k=0.0006176 -->
+      <line x1="55" y1="200.6" x2="1035" y2="200.6" stroke="#20242c"/><text x="48" y="204" text-anchor="end" font-size="9" fill="#5a6472">100k</text>
+      <line x1="55" y1="138.8" x2="1035" y2="138.8" stroke="#20242c"/><text x="48" y="142" text-anchor="end" font-size="9" fill="#5a6472">200k</text>
+      <line x1="55" y1="77.1" x2="1035" y2="77.1" stroke="#20242c"/><text x="48" y="80" text-anchor="end" font-size="9" fill="#5a6472">300k</text>
+      <polyline points="80,241.6 175,237.6 270,228.4 400,206.8 500,175.9 640,44.4 760,108 890,154.8 980,133" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- events -->
+      <circle cx="640" cy="44.4" r="4" fill="#f0525f"/><text x="640" y="36" text-anchor="middle" font-size="9" fill="#f0525f">352,860 고점(5월)</text>
+      <circle cx="500" cy="175.9" r="4" fill="#cba24a"/><text x="500" y="167" text-anchor="middle" font-size="9" fill="#cba24a">1Q26 최대실적</text>
+      <circle cx="890" cy="154.8" r="4" fill="#3c86f5"/><text x="890" y="146" text-anchor="middle" font-size="9" fill="#3c86f5">174,100(−51%)</text>
+      <circle cx="980" cy="133" r="4.5" fill="#e78a5c"/><text x="980" y="150" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">209,500</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="640" y="272" font-size="9.5" fill="#828b98">'26.05</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 대부분은 멀티플</h2>
+  <p>이 약 10배 상승 중 실적 기여(순익 179→514억, ~3배)는 일부일 뿐, <strong>대부분은 멀티플(테마·프록시 프리미엄) 확장</strong>이다. PBR이 0.8배(2023)에서 <strong>12.5배(현재)</strong>로 뛴 게 이를 압축적으로 보여준다. 5월 −51% 조정은 멀티플 거품의 부분 정상화이지 실적 훼손은 아니다. 다만 현재 PER 49x(시총÷순익)는 <em>OPM 3.6% 전선업 기준으론 여전히 '앞으로 순익 2~3배 도약'을 요구</em>하는 값이라, 실적선까지 온전히 회귀했다고 보기 어렵다.</p>
+
+  <div class="chart"><div class="ct">2026 상대주가 (rebase=100, 연초 기준, EST)</div><div class="cs">테마 랠리로 코스피를 압도적으로 아웃퍼폼했다 되돌림. 절대 밸류(PER 49x)는 여전히 부담 구간.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="190" x2="1035" y2="190" stroke="#353b47" stroke-width="1.5"/>
+      <!-- index 80..480 -> y 190..40 k=0.375 -->
+      <line x1="55" y1="182.5" x2="1035" y2="182.5" stroke="#20242c"/><text x="48" y="186" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="107.5" x2="1035" y2="107.5" stroke="#20242c"/><text x="48" y="111" text-anchor="end" font-size="9" fill="#5a6472">300</text>
+      <polyline points="80,182.5 250,150 500,43.7 640,80 800,130 980,115.4" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="109" font-size="9.5" fill="#e78a5c" font-weight="700">가온전선 +179%</text>
+      <polyline points="80,182.5 400,181 700,180 980,179.5" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="193" font-size="9.5" fill="#828b98">코스피 ~+8%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 반영됐나</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출 규모 성장(→29.5조원대)</td><td class="txt"><span class="up">반영</span></td></tr>
+      <tr><td class="txt">북미 전력케이블 +25%·버스덕트 수주</td><td class="txt">부분 반영</td></tr>
+      <tr><td class="txt">초고압/턴키 믹스發 OPM 도약(→5%+)</td><td class="txt"><span class="down">선반영(미검증, 핵심 리스크)</span></td></tr>
+      <tr><td class="txt">LS전선 프록시 프리미엄</td><td class="txt"><span class="up">반영(과열 요인)</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">전선주 포지셔닝 — 초고압 순수도 × 밸류 부담</h2>
+  <div class="chart"><div class="ct">포지셔닝 맵 — x: 초고압·고압 순수 노출 / y: 밸류·테마 프리미엄 (버블≈시총)</div><div class="cs">가온은 '중간 순수도·고밸류'. 순수 초고압·해저는 대한전선·(비상장)LS전선, 중저압 테마 탄력은 대원전선.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- axes -->
+      <line x1="120" y1="270" x2="1010" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="120" y1="40" x2="120" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <text x="565" y="298" text-anchor="middle" font-size="10.5" fill="#828b98">초고압·고압 순수 노출 →</text>
+      <text x="105" y="150" text-anchor="middle" font-size="10.5" fill="#828b98" transform="rotate(-90 105 150)">↑ 밸류·테마 프리미엄</text>
+      <!-- 대원전선: 저순수도 x280, 고밸류 y70, 소형 -->
+      <circle cx="280" cy="80" r="26" fill="#3c86f5" opacity="0.35" stroke="#3c86f5"/>
+      <text x="280" y="84" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="600">대원전선</text>
+      <text x="280" y="120" text-anchor="middle" font-size="9.5" fill="#828b98">중저압·테마급등(+380%)</text>
+      <!-- 가온전선: mid x540, 고밸류 y95, 중형 -->
+      <circle cx="540" cy="100" r="40" fill="#e78a5c" opacity="0.35" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="98" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="700">가온전선</text>
+      <text x="540" y="114" text-anchor="middle" font-size="9.5" fill="#e78a5c">PER49x·PBR12.5x</text>
+      <text x="540" y="155" text-anchor="middle" font-size="9.5" fill="#828b98">LS계열·미국 버스덕트</text>
+      <!-- 대한전선: 고순수도 x800, 중밸류 y160, 대형 -->
+      <circle cx="800" cy="165" r="38" fill="#4bbf9a" opacity="0.32" stroke="#4bbf9a"/>
+      <text x="800" y="163" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">대한전선</text>
+      <text x="800" y="178" text-anchor="middle" font-size="9.5" fill="#4bbf9a">HVDC·해저 진입</text>
+      <text x="800" y="215" text-anchor="middle" font-size="9.5" fill="#828b98">컨센TP 평균 43k</text>
+      <!-- LS전선 비상장: 최고순수도 x930, y210 dashed -->
+      <circle cx="930" cy="215" r="30" fill="none" stroke="#828b98" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <text x="930" y="213" text-anchor="middle" font-size="10.5" fill="#bfc5ce" font-weight="600">LS전선</text>
+      <text x="930" y="228" text-anchor="middle" font-size="9" fill="#828b98">비상장·프록시대상</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">위치는 정성 판단(초고압 순수도·밸류 부담). peer PER은 시점·소스별 편차가 커 정확 수치 비교는 지양 — 방향성 참고용. 대한전선 컨센 TP 평균 43,000(SK 61,000·하나 60,000·KB 44,000).<span class="src">근거<span class="tip">economic22·bullstory·threads(2026) 및 v1. TP는 소스별 상이</span></span></p>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">대한전선 (001440)</h3><p style="margin:6px 0;font-size:12.5px">국내 2위 전선·해저케이블. <strong>HVDC(초고압직류송전) 본격 진입</strong>. 상장된 초고압·해저 순수 노출로는 드문 대안. 위협도 <strong>높음</strong>(순수 초고압).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">대원전선</h3><p style="margin:6px 0;font-size:12.5px">중저압 전력케이블 내수 기반. 초고압 비중은 낮으나 테마 탄력이 커 <strong>+380% 급등</strong> 전례. 밸류 과열 우려. 위협도 <strong>중</strong>(세그먼트 상이).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">LS전선 (비상장)</h3><p style="margin:6px 0;font-size:12.5px">초고압·해저 국내 1위 <strong>프록시 대상</strong>. 비상장이라 상장 계열(가온·LS에코에너지)로 수급이 몰리는 프리미엄의 원천. 가온의 모회사(81.64%).</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — LS에코에너지</h3><p style="margin:6px 0;font-size:12.5px">LS전선 해외 수익을 일부 공유하는 또 다른 상장 계열. 가온과 함께 'LS 프록시 바스켓'으로 동조 — 경쟁이자 <strong>동반 수급</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">함의 순익</th><th class="num">함의 PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">데이터센터·전력망 슈퍼사이클 + 턴키/버스덕트로 OPM 5%+ 도약, 2027 순익 1,000억+, 테마 프리미엄 유지</td><td class="num">1,000+ <span class="est bull">27E</span></td><td class="num">~46x</td><td class="num up">280,000</td><td class="num">30%</td><td class="num up">+34%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E 순익 702억 달성·성장 지속하나 OPM 3~4%대 확인, 멀티플 완만 정상화</td><td class="num">702 <span class="est">E</span></td><td class="num">~49x</td><td class="num">200,000</td><td class="num">40%</td><td class="num down">−5%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">테마 과열 해소 + 저마진 재확인 + 구리 변동, PER ~30x 디레이팅</td><td class="num">640 <span class="est bear">E</span></td><td class="num">~30x</td><td class="num down">130,000</td><td class="num">30%</td><td class="num down">−38%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">203,000</td><td class="num"></td><td class="num down">−3%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 209,500(흰선)이 EV(203,000)를 소폭 상회. 하방(130k)이 상방(280k)만큼 열려 있어 손익비가 매력적이지 않다 — 눌림 대기 근거.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 100k..300k -> x 120..1030 k=0.00455 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">100k</text>
+      <text x="347" y="205" text-anchor="middle" font-size="9" fill="#5a6472">150k</text>
+      <text x="575" y="205" text-anchor="middle" font-size="9" fill="#5a6472">200k</text>
+      <text x="802" y="205" text-anchor="middle" font-size="9" fill="#5a6472">250k</text>
+      <text x="1030" y="205" text-anchor="middle" font-size="9" fill="#5a6472">300k</text>
+      <!-- 시나리오 밴드 130k..280k -->
+      <rect x="256.5" y="55" width="682.5" height="26" rx="4" fill="#e78a5c" opacity="0.24"/>
+      <text x="256" y="49" font-size="10" fill="#3c86f5">Bear 130k</text>
+      <text x="939" y="49" text-anchor="end" font-size="10" fill="#4bbf9a">Bull 280k</text>
+      <line x1="575" y1="51" x2="575" y2="85" stroke="#cba24a" stroke-width="2.5"/><text x="575" y="97" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 200k</text>
+      <!-- EV 203k -->
+      <line x1="583.7" y1="115" x2="583.7" y2="150" stroke="#4bbf9a" stroke-width="2.5"/><text x="584" y="163" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">EV 203k</text>
+      <!-- 현재가 209,500 -->
+      <line x1="618.2" y1="30" x2="618.2" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="618" y="26" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 209,500</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">데이터센터·전력망·버스덕트로 매출 CAGR +25%. <strong>강함</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">마진 확장 △(미검증)</h3><p style="margin:6px 0;font-size:12.5px">OPM 2.6→3.6%, 2Q26 4.16%로 반등 중이나 <strong>절대 3~4%대</strong>. PER 49x가 요구하는 5%+ 구조 도약은 아직 미검증 — <em>핵심 리스크</em>.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 ✗</h3><p style="margin:6px 0;font-size:12.5px">이미 PER 49x·PBR 12.5x로 <strong>선반영·과열</strong>. 추가 확장보다 디레이팅 위험이 큼.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 기여(미반영): 버스덕트 4조 파이프라인 조기 가동 / 초고압 2500sqmm 대형 수주 / LS 지주 재편 모멘텀 → 각 순익·멀티플 상방. 반대로 마진 미검증 시 옵션 소멸.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>마진 도약 미실현</strong></td><td class="txt">OPM 3%대 고착 시 PER 49x 정당화 실패 → 30x 디레이팅 −35%</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>테마 과열 되돌림</strong></td><td class="txt">5월 −51% 전례. 데이터센터 전력 테마 냉각 시 급락</td><td class="num">높음</td></tr>
+      <tr><td class="txt"><strong>구리가격 변동</strong></td><td class="txt">원자재 급변 시 재고손익·스프레드 훼손, 명목 매출 착시</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>발주 lumpiness</strong></td><td class="txt">프로젝트 타이밍에 분기 실적 변동, 컨센 미스</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>수급·유동성</strong></td><td class="txt">외인 1.33%·개인 테마 의존, 무상증자(7/23)·자사주로 유통주 변동, 하루 ±15%</td><td class="num">상시</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 155,000~175,000 눌림에서 분할(5월 조정·7월 저점 지지대). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 2Q26 OPM 4%대 정착 확인 or 대형 초고압/버스덕트 수주 공시 → 편입·확대.</li>
+    <li><strong>홀딩:</strong> 미국 데이터센터 수출 순항·LSCUS 버스덕트 램프업 지속.</li>
+    <li><strong>축소:</strong> OPM 3%대 재고착 / 데이터센터 테마 냉각 / 구리 급락+재고손익.</li>
+    <li><strong>차익:</strong> 250,000+ 재급등은 차익 관리(고변동 프록시).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">전사 OPM(분기)</td><td class="txt">고압/버스덕트 믹스 마진 반영</td><td class="txt">2Q 4.16% → 3%대 회귀</td></tr>
+      <tr><td class="txt">초고압/버스덕트 수주·믹스</td><td class="txt">마진 도약의 물리량</td><td class="txt">대형 수주 공백·믹스 정체</td></tr>
+      <tr><td class="txt">LSCUS 매출·버스덕트 램프</td><td class="txt">미국 성장축 실현</td><td class="txt">빅테크 발주 지연</td></tr>
+      <tr><td class="txt">구리가격(LME)</td><td class="txt">원가·재고손익·명목매출</td><td class="txt">급등락 시 스프레드 훼손</td></tr>
+      <tr><td class="txt">데이터센터 캐파 2배 가동시점</td><td class="txt">공급능력 선행</td><td class="txt">증설 지연·가동 순연</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 하반기</td><td class="txt">북미 데이터센터 전력케이블 캐파 2배 증설·가동</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">대형 초고압/버스덕트 수주 공시(고마진 믹스)</td><td class="txt"><span class="tag b">긍정(마진 검증)</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적 확정(OPM 4%대 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">2026-07-23</td><td class="txt">무상증자 신주 상장(유통주·권리락)</td><td class="txt"><span class="tag n">변동성</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">구리가격·데이터센터 전력 테마 뉴스</td><td class="txt"><span class="tag s">변동성 원천</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "데이터센터·전력망 수요는 진짜이고 LSCUS 버스덕트·미국 성장이 1H26 영업레버리지(+41.8%)로 막 나타나기 시작했지만, OPM 3.6% 전선업에 PER 49x는 마진 5%+ 도약을 통째로 당겨쓴 값이다. 그 검증 전까진 155,000~175,000 눌림에서만 산다."</strong><br>어떻게 맞나: 2Q OPM 4%대 정착·대형 수주가 이어져 마진 도약이 숫자로 증명되면 밴드 상단에서 편입, Bull 280k. 어떻게 틀리나: 유통주·구리·테마 변동에 OPM이 3%대로 되돌아가면 PER 49x가 무너진다(축소). 한 단어: <em>"검증 대기"</em>. 남는 것: <strong>"스토리는 진짜, 마진은 아직 증명 중 — 값을 낮춰 산다."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 관망(눌림목 대기)</span><span class="pill">Base 200,000</span><span class="pill">매집밴드 155,000~175,000</span><span class="pill">Bull 280,000 / Bear 130,000</span><span class="pill">EV −3%</span><span class="pill">thesis break: OPM 3%대 재고착·테마 냉각·구리 급변</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기. 밸류는 주식수·EPS 정합 이슈를 피해 <em>시총÷순익 축</em>으로만 판단.<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 209,500·시총 3.47조·2023~2026E 연간재무·2026E 컨센) · siseJson 일봉(2025-08~2026-07-22, 고점 352,860@5월·저점 29,229) · 1Q26 매출 7,636억(+19.4%)·영업익 278억(+27.2%)·OPM 3.64%, 1H26 매출 16,330억(+27.3%)·영업익 640억(+41.8%)·OPM 3.92% = 이뉴스투데이·전자신문·매일일보·인베스팅 · 북미 전력케이블 6,456억(+25%)·데이터센터 캐파 2배·버스덕트 4조(~2030)·비전2030 초고압40% = ftoday·더퍼블릭·뉴데일리·getnews·서울경제 · 지배구조(LS전선 81.64%→90.2%·LSCUS 82%현물출자 100%편입·무상증자 7/23) = 일요신문·LS홀딩스·더벨 · 경쟁사(대한전선 TP평균43k·대원전선) = economic22·bullstory · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·수주·지배구조 다중소스 수렴. 미결: 세그먼트 정확 배분·정확 주식수(무증 전후)·2027 순익.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디케이티 290550 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">290550</span>
+    <span class="nm">디케이티 <small>DKT · BH그룹 전장 부품 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩23,650</span>
+    <span>시총 ₩4,730억 · 26E PER 13x</span>
+    <span class="rating">비중확대 관심 · 매집 19,000~22,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PER밴드</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>현재가</b> ₩23,650 (+8.0%)</span>
+  <span><b>52주</b> 6,540 ~ 34,950</span>
+  <span><b>PER 26E</b> ~13.1x</span>
+  <span><b>PER 27E</b> ~9.5x</span>
+  <span><b>OPM 26E</b> 5.9%</span>
+  <span><b>ROE 26E</b> 16.3%</span>
+  <span><b>최대주주</b> 비에이치 外 50.5%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">테마 프리미엄 없이 수주로 사는 성장주 — 포워드 PER 12배에 무선충전 2.8조가 깔려 있고, 로봇 충전은 공짜로 딸려 온다.</h1>
+  <p class="lead">디케이티는 <em>BH(비에이치) 그룹</em> 전장 밸류체인의 부품사다. 스마트폰·자동차·로봇에 들어가는 <strong>무선충전(WPC)·OLED 디스플레이·배터리 제어(BMS) 모듈</strong>을 만든다. 이 수급 배치에서 <em>가장 밸류가 합리적</em>인 이름 — 2026E 포워드 PER 12~13배인데, ① 차량 무선충전 수주잔고 <strong>2조 8,000억</strong>(2026~2030)<span class="src">2.8조 · 연 5,000억 내외 분산인식<span class="tip">하나증권·뉴스프라임 2026.02~03</span></span>, ② 차량 OLED 확정수주 3,300억(2026~2028), ③ ESS BMS 104→518억, ④ <strong>휴머노이드·소형 로봇용 충전 모듈</strong>(북미 A사 샘플→양산)이라는 네 개의 성장 엔진을 동시에 돌린다. 실적도 이미 인플렉션(1Q26 영업익 +260%). 6,540원 → 34,950원(5배) 뒤 −41% 조정했으나 19,000원 지지 위에서 재상승 — <strong>테마가 아니라 수주로 뒷받침되는, 손익비가 살아있는 성장주.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(분할매집) · 매집밴드 19,000~22,000원 · Base 27,000 / Bull 40,000 / Bear 15,000 · 확률가중 EV ≈ 29,150원(+23%).</strong> 이 배치(수급 상위)에서 <em>밸류가 가장 매력적</em>이면서 수주잔고로 미래 매출 바닥이 깔려 있다. 급등 후 −41% 조정으로 손익비가 열렸다. thesis break: 완성차 전방 수요 급랭 · 전장 OPM 붕괴(5% 하회) · 로봇 충전 양산 무산.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 2년 연속 이익 급증 궤도</h2>
+  <p>단위 억원(EPS 원). 2024~2025 실측, 2026~2027 컨센·증권 추정. 유통·건설과 달리 <strong>수주잔고가 매출의 바닥을 깔아</strong> 예측 가능성이 높다 — 2026E 매출 +24%, 2027E 영업익 +100%.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2024A</td><td class="num">4,033</td><td class="num">231</td><td class="num">5.7%</td><td class="num">269</td><td class="num">1,380</td><td class="num">17x</td><td class="num">17.1%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">4,258</td><td class="num">216</td><td class="num">5.1%</td><td class="num">232</td><td class="num">1,159</td><td class="num">20x</td><td class="num">12.1%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">5,280</td><td class="num">313</td><td class="num">5.9%</td><td class="num">358 <span class="est">E</span></td><td class="num">1,800</td><td class="num">13.1x</td><td class="num">16.3%</td></tr>
+      <tr><td class="txt">2027E</td><td class="num">7,023</td><td class="num">497</td><td class="num">7.1%</td><td class="num">500 <span class="est">E</span></td><td class="num">2,500</td><td class="num">9.5x</td><td class="num">18%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 23,650 ÷ 해당연도 EPS. 하나증권 자체추정은 2026 매출 5,192억·OP 249억, 2027 매출 7,231억·OP 510억(+105%)으로 방향 동일. CAGR(24→27E): 매출 +20%, 영업익 +29%. 1Q26 매출 1,156억(+33.8%)·영업익 88억(+260%)으로 이익 인플렉션 확인.</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">매출이 5,280→7,023억으로 뛰는 동안 OPM도 5%대에서 7%대로 반등. 저마진 구조지만 믹스 개선으로 마진 레버리지가 켜진다. 26E·27E는 추정.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- Revenue max 7023 -> 210px, k=0.0299 -->
+      <!-- 2024 -->
+      <rect x="120" y="149.4" width="70" height="120.6" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="263.1" width="46" height="6.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="140" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,033</text>
+      <text x="219" y="257" text-anchor="middle" font-size="10.5" fill="#4bbf9a">231</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="345" y="142.7" width="70" height="127.3" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="263.5" width="46" height="6.5" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="133" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,258</text>
+      <text x="444" y="257" text-anchor="middle" font-size="10.5" fill="#4bbf9a">216</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="570" y="112.1" width="70" height="157.9" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="646" y="260.6" width="46" height="9.4" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="605" y="103" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">5,280</text>
+      <text x="669" y="254" text-anchor="middle" font-size="10.5" fill="#4bbf9a">313</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- 2027E -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="255.1" width="46" height="14.9" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">7,023</text>
+      <text x="894" y="249" text-anchor="middle" font-size="10.5" fill="#4bbf9a">497</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2027E</text>
+      <!-- OPM line: 5.7,5.1,5.9,7.1 -> y = 270 - opm*22 -->
+      <polyline points="155,144.6 380,157.8 605,140.2 830,113.8" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="144.6" r="4" fill="#cba24a"/><circle cx="380" cy="157.8" r="4" fill="#cba24a"/><circle cx="605" cy="140.2" r="4" fill="#cba24a"/><circle cx="830" cy="113.8" r="4" fill="#cba24a"/>
+      <text x="155" y="136" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">5.7%</text>
+      <text x="830" y="105" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.1%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 밸류가 싸다</h3><p style="margin:6px 0">2026E PER 12~13배·2027E ~9배. 성장률(매출 +24%·순익 2026E +54%·2027E +100%)과 수주잔고를 감안하면 <strong>이 배치에서 가장 매력적인 밸류</strong>. PEG가 1을 크게 밑돈다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 가시성 있는 성장</h3><p style="margin:6px 0">무선충전 <strong>2.8조</strong> + OLED <strong>3,300억</strong> 확정수주가 향후 매출 바닥을 깐다. 완성차 양산 스케줄에 물린 부품이라, 잔고가 곧 미래 매출. 테마주와 결정적으로 다른 지점.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 공짜 옵션</h3><p style="margin:6px 0">로봇 충전 모듈(휴머노이드·소형 로봇 북미 A사 샘플→양산)은 현 밸류에 <strong>거의 미반영</strong>된 상방. ESS BMS 5배 성장도 부분 반영. 물리적 AI 옵션을 저가에 품었다.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (가격과 분리)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 계열(BH EVS) 밸류체인 락인 + 완성차 장기 인증. 진짜 해자라기보단 '체인 내 자리'.</li>
+        <li><strong>현금창출:</strong> OPM 5~6% 저마진. 밸류 매력은 마진이 아니라 <em>저PER·성장률·옵션</em>에서 나온다.</li>
+        <li><strong>성장 가시성:</strong> 수주잔고 2.8조가 곧 미래 매출 — 이 배치에서 드물게 바닥이 깔린 성장주.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> WPC 수주 매출 인식 순항 + Auto OLED 북미 공급(4Q26) + 로봇 충전 양산 개시.</li>
+        <li><strong>갈아타기:</strong> FPCB 대형 순수 노출을 원하면 모회사 비에이치, 무선충전 순수면 아모텍·켐트로닉스로. 디케이티는 '저밸류 + 로봇 옵션'.</li>
+        <li><strong>즉시매도:</strong> 전방 완성차 수요 급랭 / OPM 5% 하회 / 로봇 양산 무산 + 수주 이연.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>수급 상위 배치는 대부분 4~7월 급등 후 큰 조정을 거친 눌림 국면이다. 그중 <strong>실적·밸류·수주가 동시에 받쳐 손익비가 살아있는</strong> 소수 그룹(비츠로셀·디케이티)에 디케이티가 든다. 비츠로셀이 '30% 마진의 퀄리티'라면 디케이티는 <em>'저마진이지만 수주잔고와 로봇 옵션을 PER 12배에 사는' 손익비 게임</em>이다. 레인보우로보틱스(PSR 155x)·로보티즈(PSR 50x)처럼 밸류가 미래를 통째로 당겨쓴 이름들과 정반대로, 디케이티는 <strong>이 배치에서 밸류 매력 · 손익비가 최상위</strong>다.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"스마트폰·자동차·로봇에 들어가는 <strong>무선충전·디스플레이·배터리 제어 모듈</strong>을 만들어, BH그룹 전장 밸류체인(비에이치 EVS)과 함께 완성차·전자 고객에 공급하는 FPCA 기반 전장 부품사."</p>
+  <div class="note"><div class="h">FPCA 기반 → 4개 전방으로 확장</div>디케이티의 뿌리는 모바일용 <strong>FPCA(연성회로 실장) 종합 모듈</strong>과 배터리 보호회로(PCM)다. 이 요소기술을 지렛대로 (1) 차량 무선충전(WPC), (2) 차량·IT OLED, (3) ESS BMS, (4) 로봇 충전으로 전방을 넓히는 중. <em>단순 신규 매출이 아니라 사업 성격 자체가 모바일→전장·로봇으로 이동</em>하는 체질 개선이 핵심.</div>
+
+  <h2 class="sec">4개 성장엔진 세그먼트 딥다이브</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">무엇</th><th class="num">규모·궤적</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>① 차량 무선충전(WPC)</strong></td><td class="txt">차량 내 스마트폰 무선충전 모듈(계열 BH EVS 연계)</td><td class="num">잔고 2.8조<br>907→1,493<span class="up">+65%</span></td><td class="txt">수주잔고 × 완성차 양산 스케줄 × ASP</td><td class="txt">성장 핵심·잔고 가시성</td></tr>
+      <tr><td class="txt"><strong>② 차량·IT OLED</strong></td><td class="txt">차량용/IT OLED 디스플레이 모듈(SMT·채널 확대)</td><td class="num">확정 3,300억<br>Auto 396→1,170</td><td class="txt">모델 채택 수 × 패널 ASP × 믹스</td><td class="txt">4Q26 북미 공급·고부가</td></tr>
+      <tr><td class="txt"><strong>③ ESS BMS</strong></td><td class="txt">에너지저장장치 배터리관리(PCM 기반 상용화)</td><td class="num">104→518<span class="up">+400%</span></td><td class="txt">셀 3사 수주 × 베트남·조지아 캐파</td><td class="txt">신성장·원가경쟁력</td></tr>
+      <tr><td class="txt"><strong>④ 로봇 충전(옵션)</strong></td><td class="txt">휴머노이드·소형 로봇용 충전 모듈(WPC·BMS·FPCA 융합)</td><td class="num">샘플→양산<br>공짜 옵션</td><td class="txt">북미 A사 양산 채택 여부(0 or 1)</td><td class="txt">물리적 AI 옵션·밸류 미반영</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">WPC/OLED 수치는 하나증권 자체추정(억원). ESS BMS 국내 셀 3사 전량 고객화·베트남 전용라인·북미 조지아 셋업. 로봇 충전은 WPC·ESS BMS·FPCA 세 기술이 만나는 확장 사업.<span class="src">하나증권 2026.02.23 · 뉴스프라임 2026.03<span class="tip">Auto 2026 1,530억(+29%)→2027 2,894억(+89%). IT OLED 2026 243억→2027 698억(+188%)</span></span></p>
+
+  <div class="chart"><div class="ct">부문 매출 스택 (억원) — 전장 믹스가 커진다</div><div class="cs">모바일·기타(기존)는 유지, 전장(무선충전·OLED)이 빠르게 커지며 매출 규모와 마진을 끌어올린다. ESS·로봇은 성장 옵션. 26E·27E는 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- max total 7023 -> 200px, k=0.02847 -->
+      <!-- 2025: 기타3138, 전장1000, ESS120 (4258) -->
+      <g>
+        <rect x="200" y="160.7" width="150" height="89.3" fill="#5a6472"/>
+        <rect x="200" y="132.2" width="150" height="28.5" fill="#e78a5c" opacity="0.9"/>
+        <rect x="200" y="128.8" width="150" height="3.4" fill="#cba24a"/>
+        <text x="275" y="120" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,258</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 기타3157, 전장1773, ESS350 (5280) -->
+      <g>
+        <rect x="465" y="160.1" width="150" height="89.9" fill="#5a6472" opacity="0.8"/>
+        <rect x="465" y="109.6" width="150" height="50.5" fill="#e78a5c" opacity="0.65"/>
+        <rect x="465" y="99.6" width="150" height="10.0" fill="#cba24a" opacity="0.75"/>
+        <text x="540" y="91" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">5,280</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+      <!-- 2027E: 기타2831, 전장3592, ESS600 (7023) -->
+      <g>
+        <rect x="730" y="169.4" width="150" height="80.6" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="67.1" width="150" height="102.3" fill="#e78a5c" opacity="0.6"/>
+        <rect x="730" y="50" width="150" height="17.1" fill="#cba24a" opacity="0.7"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">7,023</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2027E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>전장(무선충전·OLED)</span><span><i style="background:#cba24a"></i>ESS·로봇</span><span><i style="background:#5a6472"></i>모바일·기타(기존)</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(완성차·전자)의 눈</h3><p style="margin:6px 0">"차량 전장 부품은 재인증 비용·리스크가 크다. 양산 승인 받은 공급사를 안 바꾼다. 무선충전·OLED 침투가 늘수록 물량도 는다." → 락인 + 침투 확대.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(아모텍·켐트로닉스)의 눈</h3><p style="margin:6px 0">"디케이티는 BH그룹 밸류체인·계열 물량이라는 진입로가 있다. 순수 부품 경쟁으론 뚫기 어렵다." → 계열 프리미엄.</p></div>
+    <div class="card"><h3 style="margin-top:0">모회사(비에이치)의 눈</h3><p style="margin:6px 0">"EVS JV(56:44)로 LG 차량 무선충전 사업을 품었다. 디케이티는 그룹 전장 확장의 실행 축." → 그룹 전략 종속·수혜 양면.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"모바일 FPCA 요소기술을 전장·ESS·로봇으로 확장. 2026이 신사업 본격화 원년. 로봇 충전이 멀티플 재평가의 열쇠." → 체질 개선 성장.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">완성차 장기 인증 + 계열 락인</h3><p style="margin:0;font-size:12.5px">차량 전장은 양산 승인·재인증 장벽이 높고, BH EVS 계열 밸류체인이 물량을 실어준다. 한 번 들어가면 잘 안 빠진다. 현금화: 지금(WPC 잔고).</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">FPCA·무선충전 기술</h3><p style="margin:0;font-size:12.5px">무선충전·FPCA 요소기술은 아모텍·켐트로닉스도 보유. 차별점은 계열 진입로·전장 침투 트랙레코드. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">로봇 충전 모듈</h3><p style="margin:0;font-size:12.5px">북미 A사 샘플→양산 '계획'. 채택 시 멀티플 재평가, 미채택 시 옵션 소멸. 아직 매출 0 — 옵션으로만. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — BH그룹 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조 (2025 사업보고서 기준)</div><div class="cs">최대주주 비에이치 外 2인 50.51%. 모회사 비에이치가 전장 밸류체인 정점, EVS JV(비에이치 56%·디케이티 44%)로 LG 차량 무선충전 사업을 품었다.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- 비에이치 (모회사) -->
+      <rect x="60" y="40" width="190" height="52" rx="5" fill="#22262f" stroke="#e78a5c" stroke-width="1.5"/>
+      <text x="155" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">비에이치 (090460)</text>
+      <text x="155" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">BH그룹 지주격 · FPCB 대형</text>
+
+      <rect x="60" y="120" width="190" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="155" y="140" text-anchor="middle" font-size="11.5" fill="#eaecef">비에이치 外 2인</text>
+      <text x="155" y="156" text-anchor="middle" font-size="10.5" fill="#4bbf9a">최대주주 합계 50.51%</text>
+
+      <rect x="60" y="194" width="190" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="155" y="214" text-anchor="middle" font-size="11" fill="#eaecef">외국인 2.25% · 기타</text>
+      <text x="155" y="230" text-anchor="middle" font-size="10.5" fill="#828b98">유통물량 소액주주</text>
+
+      <!-- center: 디케이티 -->
+      <rect x="435" y="110" width="210" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">디케이티 (290550)</text>
+      <text x="540" y="162" text-anchor="middle" font-size="11" fill="#828b98">전장 부품 · 시총 4,730억</text>
+
+      <!-- EVS JV -->
+      <rect x="820" y="110" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="138" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">비에이치 EVS</text>
+      <text x="920" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">차량 무선충전 JV(2022 설립)</text>
+      <text x="920" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">BH 56% · 디케이티 44%</text>
+
+      <!-- arrows -->
+      <line x1="250" y1="66" x2="435" y2="135" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="250" y1="143" x2="435" y2="146" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="250" y1="217" x2="435" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="645" y1="146" x2="820" y2="146" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="342" y="92" text-anchor="middle" font-size="10" fill="#e78a5c">최대주주 50.5%</text>
+      <text x="732" y="138" text-anchor="middle" font-size="10" fill="#4bbf9a">공동 출자 JV</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: 디케이티는 <strong>비에이치(모회사) 밸류체인 종속</strong>이 양날의 칼이다. 긍정 — 그룹 전장 전략(EVS JV·LG 무선충전 사업 인수)의 실행 축으로 <em>계열 물량·수주 진입로</em>를 확보. 부정 — 계열 내부거래·물량 배분·마진이 상시 점검 대상이며, 전방(완성차)과 계열 양쪽에 실적이 종속된다. 외국인 지분 2.25%로 아직 글로벌 인지도는 낮아 <em>재평가 여지</em>가 남아 있다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">차량 무선충전(WPC)</td><td class="txt"><strong>구조적 침투 확대</strong></td><td class="txt">차량 전장화·프리미엄화·완성차 양산 물량</td><td class="txt">높음(잔고 2.8조)</td></tr>
+      <tr><td class="txt">차량·IT OLED</td><td class="txt">채택 확대 + 믹스 고도화</td><td class="txt">OLED 침투율·북미 고객 채택·ASP</td><td class="txt">중~높음(확정수주)</td></tr>
+      <tr><td class="txt">ESS BMS</td><td class="txt">신규 성장 수요</td><td class="txt">글로벌 ESS 투자·셀 3사 수주·북미 캐파</td><td class="txt">중(신규 램프)</td></tr>
+      <tr><td class="txt">로봇 충전</td><td class="txt">옵션(0 or 1)</td><td class="txt">휴머노이드 붐·북미 A사 양산 채택</td><td class="txt">낮음(미검증)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>네 엔진 중 <strong>둘(WPC·OLED)은 확정수주로 하방을 받치고</strong>, ESS·로봇은 성장 옵션이다. 즉 <em>다운사이드는 수주잔고가 방어하고 업사이드는 신사업이 얹는</em> 비대칭 구조. 다만 완성차 전방 수요라는 사이클 종속이 저마진과 함께 밸류 상한을 만든다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 저마진을 무엇으로 보완하나</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">5.9<span class="u">%</span></div><div class="sub">전장 저마진 구조</div></div>
+    <div class="kpi"><div class="lab">매출 CAGR 24→27E</div><div class="val">+20<span class="u">%</span></div><div class="sub">수주잔고 기반</div></div>
+    <div class="kpi"><div class="lab">PER 26E</div><div class="val">13<span class="u">x</span></div><div class="sub">저PER = 밸류 근거</div></div>
+  </div>
+  <p>차량 전장 부품은 OPM 5~6%로 절대 마진이 낮다. 그래서 이 회사의 밸류 매력은 <strong>마진이 아니라 저PER·성장률·옵션</strong>에서 나온다. 다만 규모의 경제 + 고부가(Auto OLED·로봇) 믹스로 OPM이 2027E 7%대로 오르는 <em>마진 레버리지</em>가 켜지는지가 관건. 저마진이라도 수주잔고가 매출을 예측 가능하게 만든다는 게 이 회사의 질(質)이다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +1.3억 · 연기금 +5.0억 · 투신 +7.5억</strong>(합산 시총대비 +0.29%) — 세 기관 동시 순매수. 6/24 저점(19,310) 이후 재상승 국면에서 기관이 담는 그림으로, 테마 워시아웃이 아니라 <em>실적·수주 기반 재평가</em> 성격. 외국인 소진율은 2.25%로 아직 낮아 글로벌 수급이 붙을 여지가 남아 있다.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">무선충전·OLED 성장 궤적 — 두 로켓</h2>
+  <div class="chart"><div class="ct">WPC(무선충전) & Auto OLED 매출 (억원)</div><div class="cs">WPC 907→1,493억(26E→27E), Auto OLED 396→1,170억. 둘 다 가파르게 커지며 전장 믹스를 고부가로 이동. 2027년 누적 수주잔고 4,300억 확보.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- scale max 1493 -> 200px k=0.1340 -->
+      <!-- WPC: 25 ~600(169.6), 26 907(128.5), 27 1493(50) -->
+      <polyline points="200,169.6 565,128.5 930,50" fill="none" stroke="#e78a5c" stroke-width="2.5"/>
+      <circle cx="200" cy="169.6" r="3.5" fill="#e78a5c"/><circle cx="565" cy="128.5" r="3.5" fill="#e78a5c"/><circle cx="930" cy="50" r="4.5" fill="#e78a5c"/>
+      <text x="930" y="42" text-anchor="middle" font-size="10.5" fill="#e78a5c" font-weight="700">1,493E</text>
+      <text x="200" y="162" text-anchor="middle" font-size="9.5" fill="#828b98">~600</text>
+      <text x="565" y="121" text-anchor="middle" font-size="9.5" fill="#e78a5c">907</text>
+      <!-- Auto OLED: 25 ~100(236.6), 26 396(196.9), 27 1170(93.2) -->
+      <polyline points="200,236.6 565,196.9 930,93.2" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="200" cy="236.6" r="3.5" fill="#cba24a"/><circle cx="565" cy="196.9" r="3.5" fill="#cba24a"/><circle cx="930" cy="93.2" r="4.5" fill="#cba24a"/>
+      <text x="930" y="85" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">1,170E</text>
+      <text x="565" y="189" text-anchor="middle" font-size="9.5" fill="#cba24a">396</text>
+      <!-- x labels -->
+      <text x="200" y="272" text-anchor="middle" font-size="10" fill="#828b98">2025</text>
+      <text x="565" y="272" text-anchor="middle" font-size="10" fill="#828b98">2026E</text>
+      <text x="930" y="272" text-anchor="middle" font-size="10" fill="#828b98">2027E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>WPC(무선충전)</span><span><i style="background:#cba24a"></i>Auto OLED</span><span style="color:var(--muted)">하나증권 추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 이익 인플렉션 점화</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">1,156억</td><td class="num up">+33.8%</td><td class="txt">전장·신사업 고른 성장</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">88억</td><td class="num up">+260%</td><td class="txt">규모 레버리지 + 믹스 개선</td></tr>
+      <tr><td class="txt">└ 전장(WPC·OLED)</td><td class="num txt" style="text-align:right">램프업</td><td class="num up">고성장</td><td class="txt">계열 EVS·완성차 물량 확대</td></tr>
+      <tr><td class="txt">└ ESS·신사업</td><td class="num txt" style="text-align:right">초기</td><td class="num up">가속</td><td class="txt">셀 3사 수주 반영 시작</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 실적으로 리레이팅되는 궤도</h3>
+  <p>2023년 순익 저점(44억) → 2024~2025년 매출 4,000억대 안착 → 2026E 순익 +54% → 2027E 다시 +100%. <strong>수주잔고가 뒷받침하는 2년 연속 이익 급증</strong>은 이 배치에서 드문 그림이다. 영업이익이 튀는 노이즈(일회성·금융손익 착시) 없이 <em>본업 매출 확대가 곧 이익 성장</em>으로 이어지는 깨끗한 궤적 — 테마가 아니라 실적으로 리레이팅될 수 있는 몇 안 되는 이름.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PER 밴드</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주봉 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">6,620원 → 33,000원(5/14, 5배) → 19,310원(6/24, −41%) → 23,650원(7/22). 상승은 실적+로봇 테마 동반, 조정은 급등 차익. 지금은 19,000 지지 위 재상승.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 6000..35000 -> y 250..40. k=0.007241 ; y=250-(p-6000)*0.007241 -->
+      <line x1="55" y1="221.0" x2="1035" y2="221.0" stroke="#20242c"/><text x="48" y="224" text-anchor="end" font-size="9" fill="#5a6472">10k</text>
+      <line x1="55" y1="148.6" x2="1035" y2="148.6" stroke="#20242c"/><text x="48" y="151" text-anchor="end" font-size="9" fill="#5a6472">20k</text>
+      <line x1="55" y1="76.2" x2="1035" y2="76.2" stroke="#20242c"/><text x="48" y="79" text-anchor="end" font-size="9" fill="#5a6472">30k</text>
+      <!-- path monthly closes -->
+      <polyline points="80,245.5 162,239.1 244,234.1 326,228.3 408,217.4 490,212.3 572,214.0 654,192.1 736,163.1 818,54.5 900,151.7 980,122.4" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="654" cy="192.1" r="4" fill="#4bbf9a"/><text x="654" y="183" text-anchor="middle" font-size="9" fill="#4bbf9a">로봇샘플(3/9)</text>
+      <circle cx="818" cy="54.5" r="4" fill="#f0525f"/><text x="818" y="46" text-anchor="middle" font-size="9" fill="#f0525f">33,000 고점(5/14)</text>
+      <circle cx="900" cy="151.7" r="4" fill="#cba24a"/><text x="900" y="168" text-anchor="middle" font-size="9" fill="#cba24a">19,310 저점(6/24)</text>
+      <circle cx="980" cy="122.4" r="4.5" fill="#e78a5c"/><text x="980" y="113" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">23,650</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="800" y="272" font-size="9.5" fill="#828b98">'26.05</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 되돌림은 거품, 실적은 온전</h2>
+  <p>디케이티의 5배 상승은 <strong>실적(순익 급증·1Q26 +260%)과 멀티플(로봇 충전·휴머노이드 테마)이 함께</strong>였다. 5월 이후 −41% 조정은 멀티플 거품의 정상화이지 실적 훼손이 아니다. 현재 23,650원은 <em>PER 12~13배로 성장률(+24%) 대비 저평가 영역</em>이라, 이 종목의 되돌림은 '거품 붕괴'가 아니라 '눌림'으로 해석된다. 시장은 아직 로봇 충전·ESS 옵션을 거의 반영하지 않았다.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">로봇·전장 재평가로 코스닥을 크게 아웃퍼폼했다가 되돌림. 절대 밸류(PER 12x)는 매력 구간으로 회귀.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="80" x2="1035" y2="80" stroke="#20242c"/><text x="48" y="83" text-anchor="end" font-size="9" fill="#5a6472">300</text>
+      <line x1="55" y1="120" x2="1035" y2="120" stroke="#20242c"/><text x="48" y="123" text-anchor="end" font-size="9" fill="#5a6472">200</text>
+      <line x1="55" y1="160" x2="1035" y2="160" stroke="#20242c"/><text x="48" y="163" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- 디케이티 rebase: y=200-idx*0.4. Jan100,Feb98,Mar125,Apr161,May295,Jun172,Jul211 -->
+      <polyline points="80,160 230,160.8 380,150 530,135.6 640,82 800,131.2 980,115.6" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="109" font-size="9.5" fill="#e78a5c" font-weight="700">디케이티 +111%</text>
+      <!-- KOSDAQ flat ~+6% -->
+      <polyline points="80,160 300,158.8 500,158 640,157.6 800,157.8 980,157.6" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="171" font-size="9.5" fill="#828b98">코스닥 ~+6%</text>
+    </svg>
+  </div>
+
+  <div class="note warn"><div class="h">컨센 감사 — 무엇이 아직 가격에 없나</div>
+  <table style="margin:8px 0 0">
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">무선충전 2.8조 잔고·매출 성장</td><td class="txt"><span class="tag b">반영</span></td></tr>
+      <tr><td class="txt">차량 OLED 북미 공급(4Q26)</td><td class="txt"><span class="tag n">부분 반영</span></td></tr>
+      <tr><td class="txt">ESS BMS 5배 성장(104→518억)</td><td class="txt"><span class="tag s">부분~미반영</span></td></tr>
+      <tr><td class="txt">로봇 충전 모듈 양산(휴머노이드)</td><td class="txt"><span class="tag s">미반영(핵심 옵션)</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">무선충전·전장 부품 인접군 — 그리고 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 = 디케이티</div><div class="cs">무선충전·전장 부품 peer 대비 디케이티 13x는 성장률(+24%)·수주잔고·로봇 옵션 감안 시 저평가 영역. 방향성 참고용.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="170" y1="215" x2="1030" y2="215" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1x=32px from x=170; max ~22 -->
+      <!-- 디케이티 13 -->
+      <rect x="170" y="30" width="416" height="24" fill="#cba24a"/><text x="596" y="47" font-size="12" fill="#cba24a" font-weight="700">디케이티 13x</text><text x="164" y="47" text-anchor="end" font-size="11" fill="#eaecef">디케이티</text>
+      <!-- 비에이치 8 -->
+      <rect x="170" y="70" width="256" height="24" fill="#5a6472"/><text x="436" y="87" font-size="11" fill="#bfc5ce">8x</text><text x="164" y="87" text-anchor="end" font-size="11" fill="#bfc5ce">비에이치(모회사)</text>
+      <!-- 아모텍 15 -->
+      <rect x="170" y="110" width="480" height="24" fill="#5a6472"/><text x="660" y="127" font-size="11" fill="#bfc5ce">15x</text><text x="164" y="127" text-anchor="end" font-size="11" fill="#bfc5ce">아모텍</text>
+      <!-- 켐트로닉스 20 -->
+      <rect x="170" y="150" width="640" height="24" fill="#5a6472"/><text x="820" y="167" font-size="11" fill="#bfc5ce">20x</text><text x="164" y="167" text-anchor="end" font-size="11" fill="#bfc5ce">켐트로닉스</text>
+      <!-- 대덕전자/기판 peer 12 -->
+      <rect x="170" y="190" width="384" height="24" fill="#5a6472"/><text x="564" y="207" font-size="11" fill="#bfc5ce">12x</text><text x="164" y="207" text-anchor="end" font-size="11" fill="#bfc5ce">전장부품 평균</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">peer PER은 시점·소스·추정치에 따라 편차가 크다 — 절대값이 아닌 방향성 참고용. 디케이티는 저PER + 수주잔고 + 로봇 옵션이 결합된 이례적 조합.</p>
+
+  <h2 class="sec">경쟁사·밸류체인 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">비에이치 (모회사·090460)</h3><p style="margin:6px 0;font-size:12.5px">FPCB 대형·애플 OLED 소재. 디케이티의 최대주주이자 EVS JV 파트너. 경쟁이 아니라 <strong>밸류체인 상단·자본 지원</strong>. LG 차량 무선충전 사업을 그룹으로 인수.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">아모텍</h3><p style="margin:6px 0;font-size:12.5px">무선충전·안테나·전장 부품. WPC 시장의 국내 경쟁군. 위협도 <strong>중</strong>(순수 부품 경쟁, 계열 진입로는 열위).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">켐트로닉스</h3><p style="margin:6px 0;font-size:12.5px">무선충전·박막·자율주행 부품. 밸류 높은 편. 위협도 <strong>중</strong>(무선충전 겹치나 전방·기술 스택 상이).</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 로봇 부품군</h3><p style="margin:6px 0;font-size:12.5px">휴머노이드 충전 표준이 열리면 로봇 부품주와 경쟁·협업. 디케이티는 <strong>충전 모듈 니치</strong>로 저평가 진입.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">2026E 달성 + OLED 북미 + 로봇 충전 양산 + ESS 램프, 2027 순익 497억</td><td class="num">2,500 <span class="est bull">27E</span></td><td class="num">16x</td><td class="num up">40,000</td><td class="num">35%</td><td class="num up">+69%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E EPS 1,800 달성·수주잔고 순항, PER 15x</td><td class="num">1,800</td><td class="num">15x</td><td class="num">27,000</td><td class="num">45%</td><td class="num up">+14%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">전장 마진 압박 + 수주 이연 + 로봇 지연, EPS 1,500·PER 10x</td><td class="num">1,500 <span class="est bear">E</span></td><td class="num">10x</td><td class="num down">15,000</td><td class="num">20%</td><td class="num down">−37%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">29,150</td><td class="num"></td><td class="num up">+23%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 23,650(흰선). 증권 목표가 DS 34,000·KB 16,000(편차 큼). 자체 밴드 15,000~40,000. 6월 저점 19,000이 매집대.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 10000..42000 -> x 120..1030. k=0.02844 ; x=120+(v-10000)*0.02844 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <!-- ticks -->
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">10k</text>
+      <text x="404" y="205" text-anchor="middle" font-size="9" fill="#5a6472">20k</text>
+      <text x="689" y="205" text-anchor="middle" font-size="9" fill="#5a6472">30k</text>
+      <text x="973" y="205" text-anchor="middle" font-size="9" fill="#5a6472">40k</text>
+      <!-- 자체 밴드 15000..40000 -->
+      <rect x="262.2" y="40" width="711.0" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="262" y="34" font-size="10" fill="#e78a5c">Bear 15k</text>
+      <text x="973" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 40k</text>
+      <line x1="603.5" y1="36" x2="603.5" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="603" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 27k</text>
+      <!-- 증권 밴드 KB16000..DS34000 -->
+      <rect x="290.6" y="110" width="511.9" height="26" rx="4" fill="#4bbf9a" opacity="0.25"/>
+      <text x="291" y="104" font-size="10" fill="#4bbf9a">KB 16k</text>
+      <text x="802" y="104" text-anchor="end" font-size="10" fill="#4bbf9a">DS 34k</text>
+      <line x1="546.6" y1="106" x2="546.6" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="547" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">중간 25k</text>
+      <!-- 현재가 23650 -->
+      <line x1="508.2" y1="20" x2="508.2" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="508" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 23,650</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">WPC·OLED·ESS·로봇 4축. CAGR +20%, 수주잔고 2.8조가 바닥. <strong>강함</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 △</h3><p style="margin:6px 0;font-size:12.5px">OPM 5→7%. 고부가 믹스(Auto OLED·로봇)로 소폭 개선 여지. 전장 저마진이 상한.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">현 13x. 로봇 충전 양산·휴머노이드 재평가 시 16x+. 실적으로 리레이팅 가능.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): 로봇 충전 북미 A사 양산 채택 / ESS BMS 북미(조지아) 램프 / Auto OLED 2nd 모델 확대 → 각 EPS +10~30%. 로봇 옵션이 켜지면 밸류 앵커가 PER에서 PSR·TAM으로 이동.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>완성차 전방 수요 둔화</strong></td><td class="txt">차량 양산 물량 감소 → 무선충전·OLED 매출 이연, 성장률 하향. 주가 −25%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>전장 저마진 압박</strong></td><td class="txt">OPM 5~6%에서 원가·경쟁 심화 시 이익 훼손. 마진 레버리지 소멸</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>로봇 충전 양산 무산·지연</strong></td><td class="txt">북미 A사 미채택 시 옵션 소멸·멀티플 디레이팅(밸류엔 거의 미반영)</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>계열 의존</strong></td><td class="txt">BH그룹·EVS 물량·내부거래·마진 배분에 실적 종속</td><td class="num">상시</td></tr>
+      <tr><td class="txt"><strong>급등 후 변동성</strong></td><td class="txt">5배 상승·−41% 조정 전례. 테마 냉각 시 추가 하락</td><td class="num">중~높음</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 19,000~22,000 눌림에서 분할(6월 저점 지지대·가시성 있는 성장주). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 로봇 충전 양산 공시 or 2Q26 무선충전·ESS 매출 램프 확인 → 비중 확대·홀딩.</li>
+    <li><strong>홀딩:</strong> WPC 수주잔고 인식 순항·OLED 북미 공급 온트랙.</li>
+    <li><strong>축소:</strong> 전방 완성차 수요 급랭 / OPM 5% 하회 / 로봇 양산 무산 + 수주 이연.</li>
+    <li><strong>차익:</strong> 35,000+ 재도달은 부분 차익(전고점 권역).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">무선충전 매출 인식·수주잔고</td><td class="txt">최대 성장축 실현</td><td class="txt">분기 인식 정체·잔고 감소</td></tr>
+      <tr><td class="txt">로봇 충전 양산 채택</td><td class="txt">핵심 옵션 현실화(0→1)</td><td class="txt">양산 무산·무기한 지연</td></tr>
+      <tr><td class="txt">Auto OLED 북미 공급(4Q26)</td><td class="txt">고부가 믹스·마진</td><td class="txt">4Q26 공급 지연</td></tr>
+      <tr><td class="txt">ESS BMS 분기매출·YoY</td><td class="txt">신성장 램프</td><td class="txt">셀 3사 수주 공백</td></tr>
+      <tr><td class="txt">전사 OPM</td><td class="txt">마진 레버리지 체력</td><td class="txt">5% 하회</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 상반기~하반기</td><td class="txt">로봇 충전 모듈 북미 A사 양산 개시(휴머노이드 옵션)</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">2026년 4Q</td><td class="txt">차량 OLED 북미 고객사 공급 시작</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(무선충전·ESS 램프 확인)</td><td class="txt"><span class="tag n">긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">무선충전·전장 신규 수주 공시</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "BH그룹 전장 밸류체인의 부품사가 무선충전 2.8조·OLED 3,300억 확정수주를 깔고 매출 +24%로 성장하는데, 시장은 급등 되돌림 뒤 포워드 PER 12~13배에 방치했다 — 로봇 충전이라는 휴머노이드 옵션은 공짜로 딸려 온다. 그 값을 19,000~22,000에 분할로 산다."</strong><br>어떻게 맞나: 매집 후 로봇 충전 양산·OLED 북미 공급·2Q 램프 중 하나만 켜져도 Base 27k, 옵션 켜지면 40k. 어떻게 틀리나: 전방 완성차 수요가 급랭하고 OPM이 5% 아래로 내려가면 틀린다(축소). 한 단어: <em>"수주 가시성"</em>. 남는 것: <strong>"테마가 아니라 수주로 사는 손익비."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(분할)</span><span class="pill">Base 27,000</span><span class="pill">매집밴드 19,000~22,000</span><span class="pill">Bull 40,000 / Bear 15,000</span><span class="pill">EV +23%</span><span class="pill">thesis break: 전방 급랭·OPM 5%↓·로봇 무산</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 23,650·시총 4,730억·PER 14.39x·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 33,000@5/14·저점 6,620) · 1Q26 매출 1,156억(+33.8%)·영업익 88억(+260%) · 무선충전 2.8조(2026~2030)·OLED 3,300억(2026~2028)·ESS 104→518억·WPC 907→1,493억·Auto OLED 396→1,170억·2027E 매출 7,023억(하나 7,231)/영업익 497억(하나 510억, +105%) = 하나증권(2026.02.23 Not Rated 적정가치 10,970)·DS투자증권(TP 34,000 매수)·KB증권(TP 16,000)·리딩투자증권·뉴스프라임(2026.02~06) · 지배구조(최대주주 비에이치 外 2인 50.51%·외국인 2.25%·EVS JV 비에이치 56:디케이티 44) = 2025 사업보고서 · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·수주·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

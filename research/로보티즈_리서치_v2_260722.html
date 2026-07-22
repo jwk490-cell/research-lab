@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로보티즈 108490 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">108490</span>
+    <span class="nm">로보티즈 <small>ROBOTIS · 휴머노이드 액추에이터 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩219,500</span>
+    <span>시총 ₩3.22조 · 26E PSR ~50x</span>
+    <span class="rating">관망(눌림목 대기) · 매집 155,000~185,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PSR</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩219,500 (+11.4%)</span>
+  <span><b>52주</b> 73,036 ~ 464,000</span>
+  <span><b>외인</b> 7.63%</span>
+  <span><b>PSR 26E</b> ~50x</span>
+  <span><b>컨센TP</b> 387,600 (+77%)</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">로봇이 관절을 사려면 이 회사를 거친다 — 그런데 시장은 그 관절값에 이미 '휴머노이드 대량양산 시대'를 통째로 얹어놨다.</h1>
+  <p class="lead">로보티즈는 국내 유일에 가까운 <em>휴머노이드 로봇 액추에이터(관절 구동장치)</em> 순수 플레이다. 다이나믹셀(Dynamixel)로 테슬라·구글·LG전자가 테스트·구매하는 글로벌 레퍼런스를 확보했고, 액추에이터 주문이 2025년 40만개 → 2026년 <strong>100만개+</strong>로 인플렉션 중이다.<span class="src">뉴스핌 26.04.23 · 프라임경제<span class="tip">기존 X·P·Y 30만개 + 신규 Q시리즈(우즈벡) 20만개 본생산, 주문 기준 100만개+</span></span> 문제는 <strong>가격</strong>이다. 작년 8월 74,000원 → 올 6월 405,000원(<strong>+447%</strong>) → 7월 20일 184,200원(−55%) → 현재 219,500원. 이익은 거의 없어(2025A 순익 51억) PER은 무의미하고, 판단 축은 <strong>매출·TAM = PSR ~50배</strong>다. 물리적 AI에 전부를 건 값이라 스토리가 조금만 지연돼도 되돌림이 크다.</p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>관망 — 눌림목 대기 · 매집밴드 155,000~185,000원 · Bull 320,000 / Base 225,000 / Bear 130,000 · 확률가중 EV ≈ 234,500원(+7%).</strong> 휴머노이드 주도주 지위는 진짜지만, 6배 급등이 미래 이익을 상당 부분 선지불했다. Base 업사이드가 사실상 0이고 Bear 꼬리(−41%)가 깊어 <em>손익비가 추격에 불리</em>하다. 곡괭이(picks-and-shovels) 포지션이라 특정 OEM 성패엔 덜 종속되나, PSR 50배는 '양산 시대 도래 + 로보티즈가 그 관절 공급자'를 이미 반영. thesis break: 양산 지연 / 대형 OEM 내재화 / 테마 언와인드.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 매출은 가속, 이익은 아직 얇다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 이 종목의 특이점: <strong>이익이 아니라 매출·물량(Q)이 스토리</strong>다. 2025년 흑자전환했으나 순익 51억은 시총 3.2조를 정당화하기엔 작다 — 시장이 사는 건 2027~2030년 <em>휴머노이드 양산 시대의 액추에이터 물량</em>이다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PSR*</th><th class="num">PER*</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">291</td><td class="num down">−53</td><td class="num">적자</td><td class="num down">−14</td><td class="num">−107</td><td class="num">—</td><td class="num">N/A</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">300</td><td class="num down">−30</td><td class="num">적자</td><td class="num down">−31</td><td class="num">−240</td><td class="num">—</td><td class="num">N/A</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">389</td><td class="num">33</td><td class="num">8.6%</td><td class="num">51</td><td class="num">377</td><td class="num">~83x</td><td class="num">582x</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">646 <span class="up">+66%</span></td><td class="num">24 <span class="est">E</span></td><td class="num">3.7%†</td><td class="num">50 <span class="est">E</span></td><td class="num">408</td><td class="num">~50x</td><td class="num">~538x</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PSR = 현 시총 3.22조 ÷ 매출. PER = 현재가 219,500 ÷ EPS. †2026E OPM 급락은 <strong>1Q26 자기주식 교부 117.8억(일회성, 판관비)</strong> 탓 — 구조적 마진 악화 아님. 매출 CAGR(23→26E) +30%, 26E 단독 +66% 가속.</p>
+
+  <div class="chart"><div class="ct">손익·PSR 궤적 — 매출(막대, 억원) ↑ vs PSR(라인, 배) ↓</div><div class="cs">이 종목의 밸류 정상화 경로는 단 하나 — 매출이 커져서 PSR을 아래로 눌러야 한다. 골드 라인(PSR)이 우하향할수록 밸류 부담이 준다.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="205" x2="1030" y2="205" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="140" x2="1030" y2="140" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="75" x2="1030" y2="75" stroke="#262a33" stroke-width="1"/>
+      <!-- revenue bars: max 646 -> 210px, k=0.325 -->
+      <rect x="135" y="175.4" width="90" height="94.6" fill="#e78a5c" opacity="0.85"/>
+      <text x="180" y="166" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">291</text>
+      <text x="180" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <rect x="375" y="172.5" width="90" height="97.5" fill="#e78a5c" opacity="0.85"/>
+      <text x="420" y="163" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">300</text>
+      <text x="420" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <rect x="615" y="143.6" width="90" height="126.4" fill="#e78a5c" opacity="0.85"/>
+      <text x="660" y="134" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">389</text>
+      <text x="660" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <rect x="855" y="60" width="90" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="900" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">646E</text>
+      <text x="900" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- PSR line: y=260-(psr-40)*2.4 ; 110,107,82,50 -->
+      <polyline points="180,92 420,99.2 660,159.2 900,236" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="180" cy="92" r="4" fill="#cba24a"/><circle cx="420" cy="99.2" r="4" fill="#cba24a"/><circle cx="660" cy="159.2" r="4" fill="#cba24a"/><circle cx="900" cy="236" r="4" fill="#cba24a"/>
+      <text x="180" y="84" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">110x</text>
+      <text x="900" y="228" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">50x</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출(좌)</span><span><i style="background:#cba24a"></i>PSR(우, 현 시총÷매출)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 기술·고객 = 최상위</h3><p style="margin:6px 0">다이나믹셀은 로봇 관절 구동의 <strong>글로벌 표준급 제품</strong>. 테슬라·구글·LG전자가 실제 테스트·구매. 휴머노이드 전 관절 대응 라인업 보유 = 진짜 주도주. AI 사피엔스 내재화율 <strong>97%</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 물량 인플렉션 시작</h3><p style="margin:6px 0">액추에이터 주문 40만(2025)→<strong>100만개+</strong>(2026). 우즈벡 신공장 하반기 가동(Q시리즈 20만+X/P/Y 30만). 중국 휴머노이드 10만대+ 생산 계획이 곧 액추에이터 수요.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 그러나 가격이 미래를 당겨씀</h3><p style="margin:6px 0">PSR 50배는 '양산 시대 도래 + 로보티즈가 관절 공급자'를 이미 상당 부분 반영. TAM 실현이 지연되면 멀티플이 <strong>30배로 절반 압축</strong>. → 관심 유지, 진입은 눌림.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 사업의 질과 가격의 분리</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (기술 A, 이익·밸류 C)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 다OEM 납품 가능한 액추에이터 표준·설계-in 레퍼런스. 곡괭이 포지션(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> 아직 얇다(순익 50억대). 지금은 캐파·신제품 투자 국면 — Q(물량)가 이익보다 먼저.</li>
+        <li><strong>밸류:</strong> PSR 50배는 이익이 아니라 미래 TAM을 산 값 — 이게 B+를 만드는 유일한 하향 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 액추에이터 100만개+ 실현 + 글로벌 휴머노이드 OEM BOM 설계-in + 2027 매출 1,000억+.</li>
+        <li><strong>갈아타기:</strong> 완제품 휴머노이드 노출을 원하면 레인보우로보틱스·두산로보틱스. 로보티즈는 '누가 이기든 관절'을 파는 부품주.</li>
+        <li><strong>즉시매도:</strong> 양산 지연·테마 냉각으로 150,000 이탈 / 대형 OEM 내재화 확인 / 2Q26 물량 트랙 미달.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>휴머노이드·물리적 AI 테마 배치에서 로보티즈는 <strong>기술·레퍼런스가 가장 검증된 부품주</strong>지만, 동시에 <em>밸류가 미래를 통째로 당겨쓴</em> 축이다. 완제품 대장(레인보우로보틱스 PSR 446배)보다는 오히려 '싼' 편이나, 절대 수준(50배)은 반도체 소부장(5~15배)·일반 성장주(2~8배)를 압도한다. 곡괭이 포지션의 구조적 매력은 인정하되, 사는 자리는 <em>"테마 대장주 재편입 눌림(155k~185k)"</em>이지 6배 급등 뒤 추격이 아니다. 셀사이드(컨센 TP 평균 387,600·교보 460,000)는 양산 실현을 거의 확정으로 프라이싱 — 나는 그 확률을 할인한다(6번 탭 컨센 감사).</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"로봇의 '관절'인 <strong>액추에이터(다이나믹셀)</strong>를 만들어 전 세계 로봇·휴머노이드 개발사에 파는 부품 회사이자, 그 부품으로 자율주행·양팔 로봇 완제품(개미·AI Worker)과 두뇌(AI Sapiens)까지 올라가는 로봇 플랫폼."</p>
+  <div class="note"><div class="h">부품 vs 완제품 — 헷갈리지 말 것</div>로보티즈는 <strong>부품(액추에이터) 순수 플레이</strong>다. 레인보우로보틱스·두산로보틱스가 '로봇을 만드는 회사'라면, 로보티즈는 '그 로봇의 관절을 파는 회사' — 곡괭이(picks-and-shovels) 포지션. 특정 OEM 승패에 덜 종속되고 다(多)OEM 납품이 가능한 게 강점이다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">25→26E</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>액추에이터</strong></td><td class="txt">다이나믹셀(X·P·Y·Q). 모터+감속기+제어기+센서 일체 스마트 구동 모듈</td><td class="num">비중 ~77%</td><td class="txt">출하량(만개) × 대당 관절수 × ASP</td><td class="txt">성장 엔진·물량 인플렉션</td></tr>
+      <tr><td class="txt"><strong>로봇 완제품</strong></td><td class="txt">자율주행 '개미'(배송)·양팔 'AI Worker'·휴머노이드 'AI Sapiens'</td><td class="num">비중 ~23%</td><td class="txt">플랫폼 채택 × 상업화 시점</td><td class="txt">옵션·수직확장, 매출 미미</td></tr>
+      <tr><td class="txt"><strong>두뇌·SW</strong></td><td class="txt">AI Sapiens 소스코드 오픈, 연구 생태계</td><td class="num">간접</td><td class="txt">생태계 락인 → 부품 재수요</td><td class="txt">비매출·해자 형성용</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">세그먼트 비중은 추정(회사 공시 세그 분해 제한적). 휴머노이드 1대에 관절 20~40개 → 대당 액추에이터 콘텐츠가 크다. 중국 매출 비중 상승이 액추에이터 성장을 견인.<span class="src">회사 IR·뉴스핌<span class="tip">공개 세그먼트 미세분 — 액추에이터/완제품 비중은 est</span></span></p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원) — 액추에이터가 성장을 끈다</div><div class="cs">완제품·플랫폼은 옵션(미미), 매출 램프의 몸통은 다이나믹셀 액추에이터. 26E는 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale max 646 -> 200px, k=0.3096 -->
+      <!-- 2024: 액추210, 완제품90 (300) -->
+      <g>
+        <rect x="200" y="185.0" width="150" height="65.0" fill="#5a6472"/>
+        <rect x="200" y="157.1" width="150" height="27.9" fill="#e78a5c" opacity="0.9"/>
+        <text x="275" y="148" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">300</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025: 액추290, 완제품99 (389) -->
+      <g>
+        <rect x="465" y="160.2" width="150" height="89.8" fill="#5a6472"/>
+        <rect x="465" y="129.5" width="150" height="30.7" fill="#e78a5c" opacity="0.9"/>
+        <text x="540" y="120" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">389</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 액추500, 완제품146 (646) -->
+      <g>
+        <rect x="730" y="95.2" width="150" height="154.8" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="50.0" width="150" height="45.2" fill="#e78a5c" opacity="0.65"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">646E</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>액추에이터(다이나믹셀)</span><span><i style="background:#e78a5c"></i>완제품·플랫폼</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(휴머노이드 OEM·연구소)의 눈</h3><p style="margin:6px 0">"관절은 어차피 필요하다. 검증된 다이나믹셀로 빨리 프로토타입을 만들고, 양산 BOM에 설계-in하면 개발 리스크가 준다." → 락인.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(하모닉드라이브·중국)의 눈</h3><p style="margin:6px 0">"중국은 물량·가격으로, 하모닉은 정밀 감속기로 압박. 로보티즈는 우즈벡 저원가 + 통합 모듈로 방어." → 원가 전쟁.</p></div>
+    <div class="card"><h3 style="margin-top:0">파트너(LG전자)의 눈</h3><p style="margin:6px 0">"2대주주(6.6%)이자 우즈벡 공장 지분투자 검토·AI Sapiens 공동개발. 로봇 선행연구의 관절 파트너." → 전략 동맹.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진(김병수 대표)의 눈</h3><p style="margin:6px 0">"부품→완제품→두뇌 수직화. 소스코드 오픈으로 생태계를 키워 관절 재수요를 만든다. 우즈벡으로 캐파·원가 동시 잡기." → 플랫폼화.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">설계-in 레퍼런스 · 곡괭이</h3><p style="margin:0;font-size:12.5px">테슬라·구글·LG·연구소가 이미 다이나믹셀로 개발. 관절이 BOM에 설계-in되면 재설계 비용이 커 락인. 다OEM 납품 = 특정 승자에 덜 종속. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">액추에이터 통합 기술</h3><p style="margin:0;font-size:12.5px">모터+감속기+제어 일체화는 하모닉드라이브·중국사도 보유. 차별점은 라인업 폭·통합 모듈·소프트웨어. 현금화: 지금(경쟁 심화).</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">완제품 휴머노이드</h3><p style="margin:0;font-size:12.5px">AI Sapiens(130cm·30kg·천만원대)·AI Worker. 연구용 채택은 확대(휴머노이드 챌린지 대상)나 상업 매출은 미미. 옵션으로만. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">제품 라인업 — 관절부터 완제품·두뇌까지</h2>
+  <ul class="cl">
+    <li><strong>다이나믹셀 X·P·Y:</strong> 기존 주력 라인. 2026년 30만개 생산 계획. 로봇 개발·양산의 '레고 블록'.</li>
+    <li><strong>다이나믹셀-Q(신규·QDD):</strong> 준직구동(Quasi-Direct-Drive) 양산 전용. 4Q부터 우즈벡 본생산 20만개 목표 — 원가·물량 대응의 핵심.</li>
+    <li><strong>AI Sapiens:</strong> 다이나믹셀-Q 탑재 소형 휴머노이드(내재화율 97%). 보행·점프·외발서기·달리기 구현. 소스코드 오픈 → 생태계 확장. 정식 출시·가격 미정.<span class="src">AI타임스·디지틀조선 26.06<span class="tip">키 130cm·30kg대·천만원대, 프로토타입 공개</span></span></li>
+    <li><strong>AI Worker·개미:</strong> 양팔 작업형·자율주행 배송. '2026 휴머노이드 로봇 챌린지' 본선 절반 이상이 AI Worker 플랫폼 채택(서울대 ROBI팀 대상).</li>
+  </ul>
+
+  <h2 class="sec">지배구조 — 창업자 최대주주 + LG전자 전략 동맹</h2>
+  <div class="chart"><div class="ct">지배구조·전략 관계 (2026 상반기 기준)</div><div class="cs">김병수 대표가 최대주주(23.85%). LG전자가 2대주주(6.60%)이자 우즈벡 액추에이터 공장 지분투자 검토·AI Sapiens 공동개발 파트너.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="40" width="180" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="150" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">김병수 대표</text>
+      <text x="150" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">창업자·최대주주 · 23.85%</text>
+
+      <rect x="60" y="120" width="180" height="46" rx="5" fill="#22262f" stroke="#e78a5c"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11.5" fill="#eaecef">LG전자</text>
+      <text x="150" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">2대주주 · 6.60%</text>
+
+      <rect x="60" y="200" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="220" text-anchor="middle" font-size="11" fill="#eaecef">기관·외국인·개인</text>
+      <text x="150" y="236" text-anchor="middle" font-size="10.5" fill="#828b98">외인소진율 7.63% · 유동물량</text>
+
+      <rect x="430" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="530" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">로보티즈 (108490)</text>
+      <text x="530" y="162" text-anchor="middle" font-size="11" fill="#828b98">휴머노이드 액추에이터 · 시총 3.22조</text>
+
+      <rect x="820" y="60" width="200" height="66" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="86" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">우즈벡 액추에이터 공장</text>
+      <text x="920" y="104" text-anchor="middle" font-size="10.5" fill="#828b98">Q시리즈 4Q 본생산 20만개</text>
+      <text x="920" y="119" text-anchor="middle" font-size="10.5" fill="#4bbf9a">LG전자 지분투자 검토(MOU)</text>
+
+      <rect x="820" y="150" width="200" height="66" rx="6" fill="#22262f" stroke="#353b47"/>
+      <text x="920" y="176" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">완제품·두뇌</text>
+      <text x="920" y="194" text-anchor="middle" font-size="10.5" fill="#828b98">AI Sapiens · AI Worker · 개미</text>
+      <text x="920" y="209" text-anchor="middle" font-size="10.5" fill="#cba24a">수직확장 · 생태계 락인</text>
+
+      <line x1="240" y1="66" x2="430" y2="135" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="240" y1="143" x2="430" y2="146" stroke="#e78a5c" stroke-width="1.8" marker-end="url(#ar)"/>
+      <line x1="240" y1="223" x2="430" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="630" y1="140" x2="820" y2="95" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="630" y1="155" x2="820" y2="183" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="335" y="92" text-anchor="middle" font-size="10" fill="#4bbf9a">23.85%</text>
+      <text x="335" y="120" text-anchor="middle" font-size="10" fill="#e78a5c">6.60% + 협력</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>LG전자의 6.6% 지분 + 우즈벡 공장 지분투자 검토</strong>는 단순 재무투자가 아니라 <em>액추에이터 조달·휴머노이드 선행개발의 전략 동맹</em>이다(로봇선행연구소 협력). 반대로 창업자 지분 23.85%에 유동물량이 많아 <em>테마 심리에 따른 변동성</em>이 크고, 과거 유상증자·자기주식 교부(1Q26 117.8억)처럼 <em>주주가치 희석·비용 이벤트</em>가 반복될 수 있다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 기대인가</h2>
+  <table>
+    <thead><tr><th class="txt">결정변수</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt">액추에이터 출하량(Q)</td><td class="txt"><strong>물리적 성장의 전부</strong></td><td class="txt">40만→100만개+ 실현·양산 발주 전환</td><td class="txt">중(기대수요)</td></tr>
+      <tr><td class="txt">고객 채택 폭·깊이</td><td class="txt">레퍼런스→BOM 설계-in</td><td class="txt">글로벌 OEM 양산 표준 채택</td><td class="txt">높음(락인)</td></tr>
+      <tr><td class="txt">멀티플(내러티브)</td><td class="txt">테마 심리</td><td class="txt">물리적 AI 사이클·엔비디아/테슬라 이벤트</td><td class="txt">낮음(변동성)</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn"><div class="h">겐또의 핵심</div>휴머노이드는 아직 <strong>'선(先)투자·잠재 수요'</strong> 단계 — 강제 수요가 아니라 기대 수요라 사이클에 민감하다. 다만 로보티즈는 <em>'누가 이기든 관절은 필요하다'</em>는 곡괭이 포지션이라 특정 OEM 성패엔 덜 종속. 하방을 받치는 건 '기대'이지 '계약'이 아니라는 게 비츠로셀(구조·반복 수요)과의 결정적 차이다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 물량이 곧 스토리</h2>
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">액추 주문 26E</div><div class="val">100<span class="u">만개+</span></div><div class="sub">25년 40만 → +150%</div></div>
+    <div class="kpi"><div class="lab">우즈벡 Q 목표</div><div class="val">20<span class="u">만개</span></div><div class="sub">4Q 본생산·양산 전용</div></div>
+    <div class="kpi"><div class="lab">OPM 25A</div><div class="val">8.6<span class="u">%</span></div><div class="sub">흑전 초기·얇음</div></div>
+    <div class="kpi"><div class="lab">대당 관절수</div><div class="val">20~40<span class="u">개</span></div><div class="sub">휴머노이드 1대 콘텐츠</div></div>
+  </div>
+  <p>휴머노이드 1대당 관절 20~40개 → <strong>대당 액추에이터 콘텐츠가 크다</strong>. 중국이 2026년 휴머노이드 10만대+ 생산을 목표해 시장이 전년比 ~7배 커지면 최소 <strong>230만개+ 신규 액추에이터 수요</strong>가 발생한다는 추정.<span class="src">프라임경제 26.04<span class="tip">중국 휴머노이드 양산 시나리오 기반 수요 추정</span></span> 로보티즈는 우즈벡 저원가 생산으로 중국 대비 동등/저가에 고품질을 겨눈다. 다만 이익률(OPM 8.6%)은 아직 얇아 <em>Q(물량)가 P(가격)·M(마진)보다 먼저</em> 온다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +21.8억 · 연기금 +42.9억 · 투신 +69.3억</strong>(합산 시총대비 +0.42%) — 세 기관이 동시에 대규모 순매수. 절대금액이 커 <em>'테마 대장주 재편입'</em> 성격이다. 조정(184k) 뒤 반등 국면(+11.4%)에서 기관이 휴머노이드 대표주를 담는 그림. 외인소진율 7.63%로 아직 낮아 <strong>외국인 유입 여지</strong>가 남아있다(상방 재료). 다만 유동물량이 많고 테마 심리 의존이 커 하루 ±10% 변동이 일상.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">매출 성장 궤적 — 물량 램프가 몸통</h2>
+  <div class="chart"><div class="ct">매출(막대, 억원) + 액추에이터 출하(라인, 만개)</div><div class="cs">2023~24 정체(291~300) → 2025 흑전(389) → 2026E +66%(646) → 2027E 물량 램프로 1,000억+ 지향. 출하량이 성장의 방아쇠.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="202.4" x2="1030" y2="202.4" stroke="#262a33"/><line x1="60" y1="154.8" x2="1030" y2="154.8" stroke="#262a33"/><line x1="60" y1="107.1" x2="1030" y2="107.1" stroke="#262a33"/>
+      <!-- revenue bars max 1050 -> 200px k=0.1905 ; centers 150,340,530,720,910 w80 -->
+      <rect x="110" y="194.6" width="80" height="55.4" fill="#e78a5c" opacity="0.85"/><text x="150" y="186" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">291</text><text x="150" y="270" text-anchor="middle" font-size="10" fill="#828b98">2023</text>
+      <rect x="300" y="192.9" width="80" height="57.1" fill="#e78a5c" opacity="0.85"/><text x="340" y="184" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">300</text><text x="340" y="270" text-anchor="middle" font-size="10" fill="#828b98">2024</text>
+      <rect x="490" y="175.9" width="80" height="74.1" fill="#e78a5c" opacity="0.85"/><text x="530" y="167" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">389</text><text x="530" y="270" text-anchor="middle" font-size="10" fill="#828b98">2025</text>
+      <rect x="680" y="126.9" width="80" height="123.1" fill="#e78a5c" opacity="0.85"/><text x="720" y="118" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">646E</text><text x="720" y="270" text-anchor="middle" font-size="10" fill="#828b98">2026E</text>
+      <rect x="870" y="50" width="80" height="200" fill="#e78a5c" opacity="0.55" stroke="#e78a5c" stroke-dasharray="4 3"/><text x="910" y="42" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">1,050E</text><text x="910" y="270" text-anchor="middle" font-size="10" fill="#828b98">2027E</text>
+      <!-- units line right axis y=250-units*0.95 ; 2025:40,2026E:100,2027E:180 at x=530,720,910 -->
+      <polyline points="530,212 720,155 910,79" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="530" cy="212" r="4" fill="#cba24a"/><circle cx="720" cy="155" r="4" fill="#cba24a"/><circle cx="910" cy="79" r="4.5" fill="#cba24a"/>
+      <text x="530" y="204" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">40만</text>
+      <text x="720" y="147" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">100만</text>
+      <text x="910" y="71" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">180만E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출(좌, 억원)</span><span><i style="background:#cba24a"></i>액추에이터 출하(우, 만개)</span><span style="color:var(--muted)">점선/E=추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 매출은 성장, 이익은 일회성으로 적자전환</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">1Q25</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">118.4억</td><td class="num">102.2억</td><td class="num up">+15.8%</td><td class="txt">액추에이터·중국 견인</td></tr>
+      <tr><td class="txt">영업손익</td><td class="num down">−118.4억</td><td class="num">+8.3억</td><td class="num down">적자전환</td><td class="txt">자기주식 교부 일회성</td></tr>
+      <tr><td class="txt">순손익</td><td class="num down">−99.5억</td><td class="num">+12.0억</td><td class="num down">적자전환</td><td class="txt">—</td></tr>
+      <tr class="hl"><td class="txt">└ 자기주식 교부</td><td class="num down">−117.8억</td><td class="num">—</td><td class="num">일회성</td><td class="txt">임직원 성과보상, 판관비 반영</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">1월 26일 자기주식 117.8억 교부분이 1Q 판관비에 반영돼 적자전환. 이 일회성을 제외하면 실질 영업손익은 소폭 흑자 수준. 연간 컨센 OP 24억은 2~4분기 회복을 전제 — <strong>실행 리스크로 KPI 추적 필요</strong>.<span class="src">이데일리 26.05<span class="tip">1Q26 매출 118.4억·영업손실 118.4억·순손실 99.5억·자기주식 117.8억</span></span></p>
+  <h3>이익의 질 — 아직 '증명 전'</h3>
+  <p>비츠로셀(OPM 30%·깨끗한 손익)과 정반대 극이다. 로보티즈는 <strong>흑자전환 첫해(2025 OPM 8.6%)</strong>를 지났을 뿐이고, 2026년은 일회성 비용·설비투자로 이익이 다시 얇아진다. 즉 <em>이익의 질을 논하기엔 이르고, 지금은 '물량이 이익으로 전환되는지'를 확인하는 국면</em>. 시장이 PSR로 밸류하는 이유가 여기 있다 — 이익 궤도가 아직 신뢰구간 밖.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PSR</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주가 경로 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">74,000원 → 405,000원(6/2, +447%) → 184,200원(7/20, −55%) → 219,500원(7/22). 상승은 거의 전부 멀티플·테마, 조정은 과열 해소. 실적 기여는 미미.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="250" x2="1035" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 70000..410000 -> y250..40 k=0.0006176 ; y=250-(p-70000)*0.0006176 -->
+      <line x1="55" y1="188.2" x2="1035" y2="188.2" stroke="#20242c"/><text x="48" y="191" text-anchor="end" font-size="9" fill="#5a6472">170k</text>
+      <line x1="55" y1="126.5" x2="1035" y2="126.5" stroke="#20242c"/><text x="48" y="129" text-anchor="end" font-size="9" fill="#5a6472">270k</text>
+      <line x1="55" y1="64.7" x2="1035" y2="64.7" stroke="#20242c"/><text x="48" y="67" text-anchor="end" font-size="9" fill="#5a6472">370k</text>
+      <!-- monthly closes: 74000,95000,110000,130000,150000,175000,200000,250000,300000,360000,405000,340000,184200,219500 x 80..1000 -->
+      <polyline points="80,247.5 150,234.6 220,225.3 290,212.9 360,200.6 430,185.2 500,169.7 570,138.8 640,157.9 710,71.8 780,43.1 850,84.5 920,179.5 1000,157.7" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <circle cx="500" cy="169.7" r="4" fill="#4bbf9a"/><text x="500" y="161" text-anchor="middle" font-size="9" fill="#4bbf9a">100만개 뉴스</text>
+      <circle cx="640" cy="157.9" r="4" fill="#cba24a"/><text x="640" y="149" text-anchor="middle" font-size="9" fill="#cba24a">AI사피엔스</text>
+      <circle cx="780" cy="43.1" r="4.5" fill="#f0525f"/><text x="780" y="34" text-anchor="middle" font-size="9.5" fill="#f0525f">405,000 고점</text>
+      <circle cx="920" cy="179.5" r="4" fill="#3c86f5"/><text x="920" y="196" text-anchor="middle" font-size="9" fill="#3c86f5">184,200 (−55%)</text>
+      <circle cx="1000" cy="157.7" r="4.5" fill="#e78a5c"/><text x="1000" y="149" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">219,500</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="640" y="272" font-size="9.5" fill="#828b98">'26.04</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 거의 전부가 멀티플</h2>
+  <p>단일 실적주와 달리, 로보티즈의 6배 상승 중 <strong>실적 기여는 미미</strong>(순익 50억대)하고 <em>거의 전부 멀티플·내러티브 확장</em>이었다 — 물리적 AI 테마의 국내 대표 순수 플레이 프리미엄. 시총 3.2조 ÷ 2026E 매출 646억 = <strong>PSR 50배</strong>는, 시장이 '수년 내 매출 수천억~조 단위 도달(휴머노이드 양산)'을 이미 가격에 넣었다는 뜻. 실현되면 정당화되지만, 지연·실망 시 <strong>30배로 디레이팅</strong>(주가 −40%) 여지.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">테마 랠리로 코스닥을 압도적 아웃퍼폼했다가 되돌림. 현재도 연초 대비 +25% 우위지만 고점(+131%) 대비 반토막.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <!-- y=200-(idx-80)*0.9 ; 100->182,231->64.1,125->159.5 -->
+      <line x1="55" y1="182" x2="1035" y2="182" stroke="#20242c"/><text x="48" y="185" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="118" x2="1035" y2="118" stroke="#20242c"/><text x="48" y="121" text-anchor="end" font-size="9" fill="#5a6472">171(고점권)</text>
+      <!-- 로보티즈: jan100,feb114,mar143,apr171,may205,jun231(peak),jul125 -->
+      <polyline points="80,182 230,169.4 380,143.3 520,118.1 640,87.5 730,64.1 900,152.9 980,159.5" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="153" font-size="9.5" fill="#e78a5c" font-weight="700">로보티즈 +25%</text>
+      <!-- KOSDAQ flat ~+5% -->
+      <polyline points="80,182 380,180 640,177 900,178 980,177.5" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="192" font-size="9.5" fill="#828b98">코스닥 ~+5%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 셀사이드는 양산을 '확정'으로 프라이싱한다</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영 상태</th><th class="txt">내 견해</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2025 흑전·2026 매출 +66%</td><td class="txt"><span class="tag b">반영</span></td><td class="txt">동의 — 물량 램프는 진행 중</td></tr>
+      <tr><td class="txt">액추 40만→100만개 램프</td><td class="txt"><span class="tag n">부분 반영</span></td><td class="txt">주문≠양산 발주, 전환 확인 필요</td></tr>
+      <tr><td class="txt">글로벌 OEM 양산 BOM 설계-in</td><td class="txt"><span class="tag b">사실상 확정 프라이싱</span></td><td class="txt"><strong>과도</strong> — 확정 레퍼런스 미공개</td></tr>
+      <tr><td class="txt">완제품 상업화(AI Worker·개미)</td><td class="txt"><span class="tag s">옵션</span></td><td class="txt">매출화 시점 불명, 할인</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">셀사이드 목표주가 평균 <strong>387,600원</strong>(교보 460,000 최고·다올 435,000·현재가 대비 +77%). 이 낙관은 '휴머노이드 양산 실현'을 거의 확정으로 놓은 값 — 다올은 밸류 기준을 12M forward로 바꿔 성장 가시성을 더 빨리 반영했다. 나는 그 확률을 할인해 <em>Base 225,000</em>으로 본다. 셀사이드가 맞으면 나는 보수적이었던 것이고, 양산이 1~2년 밀리면 셀사이드가 앞서간 것이다.</p>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">휴머노이드 밸류 지형 — 로보티즈는 '싼 극단'이다</h2>
+  <div class="chart"><div class="ct">2026E PSR 비교 (배) — 골드 = 로보티즈</div><div class="cs">PSR 50배는 절대 극단이지만, 완제품 대장 레인보우로보틱스(446배) 대비 오히려 낮다. 부품주 특성상 매출 인식이 빨라 상대적으로 '덜 비싸다'.</div>
+    <svg viewBox="0 0 1080 250" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="220" x2="1010" y2="220" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 0..460 -> x200..1010 (810px) k=1.761 -->
+      <!-- 레인보우 446 -->
+      <rect x="200" y="34" width="785" height="26" fill="#5a6472"/><text x="990" y="52" font-size="11" fill="#bfc5ce">446x</text><text x="195" y="52" text-anchor="end" font-size="11" fill="#bfc5ce">레인보우로보틱스</text>
+      <!-- 로보티즈 50 (gold) -->
+      <rect x="200" y="80" width="88" height="26" fill="#cba24a"/><text x="298" y="98" font-size="12" fill="#cba24a" font-weight="700">로보티즈 50x</text><text x="195" y="98" text-anchor="end" font-size="11" fill="#eaecef" font-weight="700">로보티즈</text>
+      <!-- 두산로보틱스 13 -->
+      <rect x="200" y="126" width="23" height="26" fill="#5a6472"/><text x="233" y="144" font-size="11" fill="#bfc5ce">13x</text><text x="195" y="144" text-anchor="end" font-size="11" fill="#bfc5ce">두산로보틱스</text>
+      <!-- 협동로봇 중위 28 -->
+      <rect x="200" y="172" width="49" height="26" fill="#5a6472" opacity="0.7"/><text x="259" y="190" font-size="11" fill="#bfc5ce">28x</text><text x="195" y="190" text-anchor="end" font-size="11" fill="#bfc5ce">협동로봇 중위</text>
+    </svg>
+    <div class="lgd"><span style="color:var(--muted)">PSR은 시점·매출 가정에 따라 편차 — 방향성 참고용. 레인보우 15.2조/두산 PSR은 2026E 매출 기준.</span></div>
+  </div>
+
+  <h2 class="sec">경쟁·인접 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">레인보우로보틱스 (277810)</h3><p style="margin:6px 0;font-size:12.5px">협동로봇·이족보행 휴머노이드 <strong>완제품</strong>. 삼성전자 지분투자. 시총 15.2조·PSR 446배. 성격이 다름(완제품 vs 부품) — 로보티즈는 그 로봇의 관절 공급자.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">두산로보틱스 (454910)</h3><p style="margin:6px 0;font-size:12.5px">협동로봇 완제품, 코스피 유일 로봇주. PSR 13배(피어 미디언 수준). 서비스로봇 확장 거론. 로보티즈보다 밸류는 낮으나 휴머노이드 순수성은 약함.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">하모닉드라이브 (일본·6324)</h3><p style="margin:6px 0;font-size:12.5px">정밀 감속기·액추에이터 <strong>글로벌 강자</strong> = 로보티즈의 직접 벤치·전방 경쟁. 성능·원가 경쟁의 기준선. 로보티즈는 통합 모듈·저원가(우즈벡)로 차별화.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 대형 OEM 내재화</h3><p style="margin:6px 0;font-size:12.5px">테슬라 등 대형 OEM이 액추에이터를 <strong>자체 개발(in-house)</strong>하면 로보티즈 물량이 상실될 수 있다. 곡괭이 포지션의 최대 구조 리스크.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지 (PSR·TAM 축)</h2>
+  <p style="font-size:12px;color:var(--muted)">이익이 얇아 PER은 무의미 → <strong>매출·PSR과 TAM 실현 확률</strong>로 밸류한다. 목표가 = 2027E 매출 × 적용 PSR ÷ 주식수(~14.7백만주).</p>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">27E 매출</th><th class="num">PSR</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">양산 인플렉션 현실화, 100만개+ 실현·글로벌 OEM 설계-in, 대표주 프리미엄 유지</td><td class="num">1,200 <span class="est bull">27E</span></td><td class="num">40x</td><td class="num up">320,000</td><td class="num">35%</td><td class="num up">+46%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">26E 매출 646억 달성·성장 지속하나 멀티플이 극단에서 점진 정상화 → 레인지</td><td class="num">950</td><td class="num">35x</td><td class="num">225,000</td><td class="num">40%</td><td class="num up">+3%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">양산 지연·테마 냉각, 고밸류 모멘텀 언와인드 → PSR 30배권 디레이팅</td><td class="num">750 <span class="est bear">E</span></td><td class="num">26x</td><td class="num down">130,000</td><td class="num">25%</td><td class="num down">−41%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">234,500</td><td class="num"></td><td class="num up">+7%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 219,500(흰선). 자체 밴드 130k~320k, Base 225k. 셀사이드 밴드 330k~460k, 평균 387.6k — 셀사이드가 자체 Bull보다도 위. 컨센이 양산을 확정 프라이싱한다는 방증.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 100000..480000 -> x120..1030 (910px) k=0.002395 ; x=120+(v-100000)*0.002395 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">100k</text>
+      <text x="359.5" y="205" text-anchor="middle" font-size="9" fill="#5a6472">200k</text>
+      <text x="599" y="205" text-anchor="middle" font-size="9" fill="#5a6472">300k</text>
+      <text x="838.5" y="205" text-anchor="middle" font-size="9" fill="#5a6472">400k</text>
+      <!-- 자체 밴드 130k..320k -->
+      <rect x="191.9" y="40" width="455.1" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="192" y="34" font-size="10" fill="#e78a5c">Bear 130k</text>
+      <text x="647" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 320k</text>
+      <line x1="419.4" y1="36" x2="419.4" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="419" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 225k</text>
+      <!-- 셀사이드 밴드 330k..460k avg 387.6k -->
+      <rect x="671" y="110" width="311.2" height="26" rx="4" fill="#4bbf9a" opacity="0.25"/>
+      <text x="671" y="104" font-size="10" fill="#4bbf9a">셀사이드 저 330k</text>
+      <text x="982.2" y="104" text-anchor="end" font-size="10" fill="#4bbf9a">교보 460k</text>
+      <line x1="809" y1="106" x2="809" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="809" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">평균 387.6k</text>
+      <!-- 현재가 219500 -->
+      <line x1="406.3" y1="20" x2="406.3" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="406" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 219,500</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">액추 40만→100만개+, 26E +66%. 물량 인플렉션 초입. <strong>강함</strong>(단, 주문의 양산 전환 확인 필요).</p></div>
+    <div class="card"><h3 style="margin-top:0">마진 확장 △</h3><p style="margin:6px 0;font-size:12.5px">OPM 8.6%(25A)에서 확장 잠재는 있으나, 우즈벡 초기·일회성·투자로 26E 저하. 규모의 경제 실현은 27년 이후.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 ✗</h3><p style="margin:6px 0;font-size:12.5px">현 PSR 50배. <strong>이미 극단</strong> — 추가 리레이팅보다 정상화 압력이 크다. 상방은 매출로, 하방은 멀티플로.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 기여(미반영): 글로벌 OEM 대형 발주 설계-in / 완제품(AI Worker·개미) 상업화 / 중국 휴머노이드 폭발 수혜 → 실현 시 Bull 시나리오 상향. 반대로 대형 OEM 내재화는 Bear 하향 트리거.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>휴머노이드 양산 지연</strong></td><td class="txt">테마 실현 지연 시 PSR 50→30배 디레이팅, 주가 −40%</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>고점 대비 급등 되돌림</strong></td><td class="txt">6월 −55% 조정 전례. 테마 심리 냉각 시 재차 대폭 조정</td><td class="num">높음</td></tr>
+      <tr><td class="txt"><strong>대형 OEM 액추에이터 내재화</strong></td><td class="txt">테슬라·주요 OEM 자체 개발 시 물량 상실, 성장 스토리 훼손</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>이익 얇음·밸류 정당화 실패</strong></td><td class="txt">순익 50억 규모로 PSR 50배 지지 어려움, 일회성·투자로 이익 지연</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>변동성·수급·희석</strong></td><td class="txt">테마 대장주로 하루 ±10% 일상. 유상증자·자기주식 교부 등 희석 이벤트</td><td class="num">상시</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 155,000~185,000 눌림에서 분할 편입(주도주 편입). 6배 급등 추격 금지. 사이징은 고변동 감안 축소.</li>
+    <li><strong>추가:</strong> 글로벌 OEM 양산 설계-in/대형 발주 공시 → 밴드 상단에서도 소액 추가.</li>
+    <li><strong>홀딩:</strong> 2Q26 액추에이터 물량 100만개 트랙 확인 → thesis 강화.</li>
+    <li><strong>축소:</strong> 테마 냉각으로 150,000 이탈 / 양산 지연 확인 / 대형 OEM 내재화.</li>
+    <li><strong>차익:</strong> 재차 320,000+ 급등은 차익 관리(셀사이드 평균권 접근).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">액추에이터 출하량(만개)</td><td class="txt">물리적 성장의 전부</td><td class="txt">100만개 트랙 미달</td></tr>
+      <tr><td class="txt">우즈벡 Q시리즈 가동률</td><td class="txt">양산·원가 대응</td><td class="txt">4Q 본생산 지연</td></tr>
+      <tr><td class="txt">글로벌 OEM 설계-in 뉴스</td><td class="txt">핵심 상방(락인)</td><td class="txt">2분기 연속 무소식</td></tr>
+      <tr><td class="txt">분기 OPM·일회성 제외 손익</td><td class="txt">이익 전환 검증</td><td class="txt">2H26 흑자 미회복</td></tr>
+      <tr><td class="txt">외인소진율</td><td class="txt">글로벌 수급</td><td class="txt">7.63%에서 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 하반기</td><td class="txt">우즈벡 Q시리즈 본생산·AI Sapiens 진전</td><td class="txt"><span class="tag b">상방 트리거</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">글로벌 휴머노이드 OEM(테슬라·LG 등) 양산 발주·설계-in</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(액추 물량·중국 매출·일회성 제외 손익)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">물리적 AI·휴머노이드 테마 흐름(엔비디아·테슬라 이벤트)</td><td class="txt"><span class="tag s">변동성 원천</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "로봇이 관절을 사려면 거쳐야 하는 국내 유일급 부품주가, 액추에이터 40만→100만개 인플렉션에 진입했다. 그런데 시장은 그 관절값에 이미 '휴머노이드 대량양산 시대'를 통째로 얹어(PSR 50배) 놨다. 그 값은 155,000~185,000 눌림에서 사서 양산·설계-in 옵션을 기다린다."</strong><br>어떻게 맞나: 100만개 트랙 확인 + 글로벌 OEM 설계-in 중 하나만 켜져도 셀사이드 평균 387k로. 어떻게 틀리나: 양산이 1~2년 밀리고 테마가 식으면 PSR 30배로 눌려 −40%. 한 단어: <em>"곡괭이"</em>. 남는 것: <strong>"기술은 진짜, 가격이 미래를 당겨썼다 — 사는 자리는 눌림."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 관망(눌림목 대기)</span><span class="pill">Base 225,000</span><span class="pill">매집밴드 155,000~185,000</span><span class="pill">Bull 320,000 / Bear 130,000</span><span class="pill">EV +7%</span><span class="pill">thesis break: 양산 지연·OEM 내재화·테마 언와인드</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 이익이 얇은 성장주 → 주가=매출×PSR, 알파는 TAM 실현 확률을 컨센보다 다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 시세·컨센·재무 = 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 219,500·시총 3.22조·추정PER 537.99x·추정EPS 408·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 405,000@6/2·저점 73,913@2025-08-21) · 1Q26 매출 118.4억(+15.8%)·영업손실 118.4억·순손실 99.5억·자기주식 교부 117.8억 = 이데일리(26.05) · 액추 40만→100만개·우즈벡 Q시리즈 20만개/X·P·Y 30만개·중국 휴머노이드 수혜 = 뉴스핌·프라임경제(26.04) · AI Sapiens(130cm·30kg·천만원대·내재화율 97%)·AI Worker 챌린지 대상 = AI타임스·디지틀조선·뉴스핌(26.06~07) · 지배구조(김병수 23.85%·LG전자 6.60%·우즈벡 지분투자 MOU) = 로봇신문·시사저널e·다음(26.06) · 컨센 목표주가 평균 387,600(교보 460,000·다올 435,000) = 뉴스핌·한경컨센서스(26.06) · Peer PSR(레인보우 446x/두산 13x) = 증권 리포트 · 수급(사모·연기금·투신) = 사용자 제공(07-22). 삼각검증: 시세·재무·수주·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

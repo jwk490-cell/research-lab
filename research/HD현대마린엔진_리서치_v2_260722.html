@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HD현대마린엔진 071970 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">071970</span>
+    <span class="nm">HD현대마린엔진 <small>HD Hyundai Marine Engine · 중형 선박엔진(힘센) (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩64,600</span>
+    <span>시총 ₩2.19조 · 26E PER 17x</span>
+    <span class="rating">비중확대 관심 · 매집 53,000~58,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>현재가</b> ₩64,600 (+11.0%)</span>
+  <span><b>52주</b> 52,500 ~ 118,200</span>
+  <span><b>고점대비</b> −45%</span>
+  <span><b>OPM 26E</b> 25.1%</span>
+  <span><b>PBR</b> 4.4x</span>
+  <span><b>가동률</b> 92.6%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">배의 심장을 만드는 회사에서 마진이 폭발했다 — 매출은 51% 늘었는데 영업이익률은 7.5%에서 25%로 뛰었다.</h1>
+  <p class="lead">HD현대마린엔진은 신조선의 심장인 <em>중형(중속) 선박엔진 '힘센(HiMSEN)'</em>과 엔진 부품을 만드는 HD현대 계열 엔진사다. 조선 슈퍼사이클의 순도 높은 수혜주인데, 재무제표를 보면 단순 물량 성장주가 아니라 <strong>영업 레버리지가 폭발하는 사이클 승자</strong>처럼 생겼다 — 매출 +51%, 그리고 <strong>영업이익률이 7.5%→25.1%로 3배 이상</strong> 뛴다<span class="src">OPM 7.5%(23A)→25.1%(26E), 고선가 수주의 프리미엄 ASP 인식<span class="tip">네이버 연간재무 · 하나/메리츠/KTB 리포트(26.01~05)</span></span>. 고선가 시대에 체결한 프리미엄 엔진 수주가 매출로 흐르며 ASP가 계단식으로 오르고, 캐파 140만 마력은 가동률 92.6%로 사실상 풀가동. 수주잔고는 2027년까지 차 있다. 주가는 115,500원(4/27 고점)까지 갔다가 52,900원(7/20)으로 −54% 조정 후 오늘 +11%. <strong>실적 모멘텀은 이 배치 최상위권, 사이클 피크·고PBR(4.4x)을 감안해 눌림 분할.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할매집) · 매집밴드 53,000~58,000원 · Bull 90,000 / Base 63,000 / Bear 36,000 · 확률가중 EV ≈ 65,700원(+2%).</strong> 실적 모멘텀(매출 +51%·OP +101%·ASP↑)은 이 배치 최상위이나, 순익 정상화(2025 일회성 소멸)·고PBR·사이클 피크로 순수 기대값은 제한적이고 Bear −44% 꼬리가 깊다. 추격보다 조정 매집. thesis break: 신조 발주 급감 / OPM 20% 하회 / 캐파 미증설 상태의 물량 상한.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 매출·마진이 동시에 뛴다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 증권 컨센(네이버 추정 + 하나·메리츠·KTB). 조선 슈퍼사이클의 프리미엄이 엔진 단으로 흘러들며 <strong>규모가 커질수록 마진이 폭발</strong>한다 — 고선가 수주 ASP가 원가 위로 얹히는 영업 레버리지의 힘.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">2,444</td><td class="num">184</td><td class="num">7.5%</td><td class="num">316</td><td class="num">1,108</td><td class="num">—</td><td class="num">15.2%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">3,158</td><td class="num">332</td><td class="num">10.5%</td><td class="num">758</td><td class="num">2,458</td><td class="num">26x</td><td class="num">28.3%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">4,024</td><td class="num">759</td><td class="num">18.9%</td><td class="num">1,651 †</td><td class="num">4,867</td><td class="num">13x</td><td class="num">41.4%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">6,087</td><td class="num">1,527</td><td class="num">25.1%</td><td class="num">1,266 <span class="est">E</span></td><td class="num">3,730</td><td class="num">17x</td><td class="num">22.9%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 64,600 ÷ 해당연도 EPS. CAGR(23→26E): 매출 +36%, 영업익 +102%. † <strong>2025A 순익 1,651억은 영업익 759억을 크게 상회(영업외 일회성 이익 포함)</strong> → 2026E 순익은 정상화로 감소하나 <strong>영업익은 +101% 급증</strong>. 트레일링 EPS 5,288 &gt; 포워드 EPS 3,730인 것도 같은 이유(순익 착시). 밸류는 영업익·EV 축 병행이 정도.</p>
+
+  <div class="note warn"><div class="h">순익 착시 — 반드시 영업익으로 볼 것</div>이 종목의 밸류를 트레일링 순익(1,651억)으로 잡으면 <strong>과대평가</strong>된다. 2025 순익엔 영업외 일회성이 섞여 있어, 2026엔 순익이 되레 줄어든다(1,651→1,266E). <em>영업 실적은 급성장(OP 759→1,527억)이나 순익은 정상화</em>. 따라서 포워드 PER 17x·영업익 기준 EV/EBIT로 봐야 성장 대비 밸류가 정확히 보인다.</div>
+
+  <div class="chart"><div class="ct">매출·영업익 폭발 궤적 (막대, 억원) + OPM (라인, %)</div><div class="cs">막대(매출·영업익)가 함께 커지는데, 골드 라인(OPM)이 7.5%→25%로 수직 상승한다. 이 종목의 알파는 '마진 폭발'.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- Revenue max 6087 -> 210px, k=0.0345 ; OP same scale -->
+      <!-- 2023 -->
+      <rect x="120" y="185.7" width="70" height="84.3" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="263.7" width="46" height="6.3" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="177" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,444</text>
+      <text x="219" y="256" text-anchor="middle" font-size="10.5" fill="#4bbf9a">184</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="161.1" width="70" height="108.9" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="258.6" width="46" height="11.4" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="152" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">3,158</text>
+      <text x="444" y="251" text-anchor="middle" font-size="10.5" fill="#4bbf9a">332</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="131.2" width="70" height="138.8" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="243.8" width="46" height="26.2" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="122" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,024</text>
+      <text x="669" y="236" text-anchor="middle" font-size="10.5" fill="#4bbf9a">759</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="217.3" width="46" height="52.7" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,087</text>
+      <text x="894" y="210" text-anchor="middle" font-size="10.5" fill="#4bbf9a">1,527</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 7.5,10.5,18.9,25.1 -> y=230-opm*5.5 -->
+      <polyline points="155,188.75 380,172.25 605,126.05 830,91.95" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="188.75" r="4" fill="#cba24a"/><circle cx="380" cy="172.25" r="4" fill="#cba24a"/><circle cx="605" cy="126.05" r="4" fill="#cba24a"/><circle cx="830" cy="91.95" r="4" fill="#cba24a"/>
+      <text x="150" y="181" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.5%</text>
+      <text x="830" y="84" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">25.1%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(라인)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 마진 폭발 = 실적</h3><p style="margin:6px 0">OPM 7.5%→25.1%. 고선가 시대에 체결한 수주가 <strong>프리미엄 ASP로 인식</strong>되며 영업익 +101%. 이건 테마가 아니라 손익계산서에 찍힌 숫자다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 가시성 높다</h3><p style="margin:6px 0">2026 매출의 <strong>54%가 2025년 고ASP 수주분</strong>, 수주잔고 2027까지, 가동률 92.6% 풀가동. 향후 1~2년 실적 궤도가 이미 상당 부분 확정.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 그러나 사이클·밸류 균형추</h3><p style="margin:6px 0">PBR 4.4x·순익 정상화·조선 발주 둔화 시 마진 되돌림. 25% OPM은 <strong>고선가 인식의 피크성</strong>일 수 있어 지속성 검증 필요.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (사이클 승자, 단 사이클재)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 힘센 중속엔진 레퍼런스·HD현대 계열 물량·글로벌 인증. 순수 중형엔진 플레이의 마진·ROE 우위.</li>
+        <li><strong>현금창출:</strong> OPM 25%·ROE 41%(25A)·풀가동 레버리지. 사이클 상승 구간의 최대 수혜.</li>
+        <li><strong>사이클 노출:</strong> 조선 발주에 후행하는 사이클재 — 이게 A가 아니라 B+인 이유. 발주 꺾이면 되돌림.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 슈퍼사이클 지속 + ASP 사다리 상승 + 캐파 증설로 물량 상한 해소 + OPM 25%대 유지.</li>
+        <li><strong>갈아타기:</strong> 조선 본체 노출이면 HD현대중공업, 데이터센터 중속엔진 순수 노출이면 STX엔진. 마린엔진은 '조선용 중형엔진 농축 베팅'.</li>
+        <li><strong>즉시매도:</strong> 글로벌 신조 발주 급감 / OPM 20% 하회(마진 되돌림) / 대형 신규 수주 2분기 연속 공백.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 사이클 렌즈로</h2>
+  <p>조선 엔진·기자재군은 2024~2026 슈퍼사이클로 대부분 급등 후 4~7월 큰 조정을 거쳤다. HD현대마린엔진은 그중 <strong>마진 폭발·풀가동·수주잔고 가시성이 가장 선명한</strong> 순수 중형엔진 플레이다. 다만 조선 본체(HD현대중공업)보다 사이클 레버리지가 큰 만큼 하강 시 되돌림도 크고, PBR 4.4x는 사이클 상단 밸류의 부담이다. 상대 매력 = <em>"조선 슈퍼사이클의 마진을 가장 농축해 담은 엔진주, 단 눌림에서만"</em>.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"배의 심장인 <strong>중형(중속) 선박엔진 '힘센(HiMSEN)'</strong>과 크랭크샤프트 등 엔진 부품을 만들어 국내외 조선소에 납품하는, 조선 슈퍼사이클에 직접 올라탄 HD현대 계열 엔진사."</p>
+  <div class="note"><div class="h">중형(중속) 엔진 = 발전·추진용 · 대형(저속)과 구분</div>선박엔진은 저속(대형 메인 추진, HD현대중공업·한화엔진 본업)과 중속(중형, 발전·보조추진·특수선)으로 나뉜다. HD현대마린엔진은 <strong>중속 힘센 엔진 순수 플레이</strong> — 조선 본체가 아니라 그 안의 '엔진 부품 공급사'다. 옛 STX중공업 엔진사업이 2023년 HD현대(HD한국조선해양) 산하로 편입된 곳.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">방향</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>엔진(핵심)</strong></td><td class="txt">중속 힘센 엔진(신조선 발전·추진용)</td><td class="num up">+++</td><td class="txt">조선 수주 × ASP 사다리 × 가동률</td><td class="txt">고성장·고마진, 사이클 레버리지</td></tr>
+      <tr><td class="txt"><strong>엔진 부품</strong></td><td class="txt">크랭크샤프트 등 핵심 부품</td><td class="num up">++</td><td class="txt">엔진 물량 연동 + 외판</td><td class="txt">엔진과 동반, 물량 성장</td></tr>
+      <tr><td class="txt"><strong>부품·서비스(AS)</strong></td><td class="txt">애프터마켓·유지보수</td><td class="num">+</td><td class="txt">운항 선대 × 교체주기</td><td class="txt">상대적 안정, 반복</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">매출 대부분이 엔진·엔진부품(신조 연동). AS 비중은 상대적으로 작아 조선 사이클 후행 성격이 강하다.<span class="src">사업보고서 · IR<span class="tip">세그먼트 정량 세부는 미공개 — 방향성 중심</span></span></p>
+
+  <div class="chart"><div class="ct">매출 스택 — 엔진 vs 부품·서비스 (억원, 근사)</div><div class="cs">엔진(핵심)이 고ASP 수주 인식으로 빠르게 커지며 전체 매출을 2.5배로 끌어올린다. 색이 곧 사이클 레버리지. 26E는 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- max total 6087 -> 200px, k=0.03285 -->
+      <!-- 2024: 엔진2400, 부품·서비스758 (3158) -->
+      <g>
+        <rect x="200" y="225.1" width="150" height="24.9" fill="#5a6472"/>
+        <rect x="200" y="146.3" width="150" height="78.8" fill="#e78a5c" opacity="0.9"/>
+        <text x="275" y="137" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">3,158</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025: 엔진3100, 부품924 (4024) -->
+      <g>
+        <rect x="465" y="219.6" width="150" height="30.4" fill="#5a6472"/>
+        <rect x="465" y="117.8" width="150" height="101.8" fill="#e78a5c" opacity="0.9"/>
+        <text x="540" y="109" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">4,024</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 엔진4870, 부품1217 (6087) -->
+      <g>
+        <rect x="730" y="210" width="150" height="40" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="50" width="150" height="160" fill="#e78a5c" opacity="0.62" stroke="#e78a5c" stroke-dasharray="4 3"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,087</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>엔진·엔진부품(신조)</span><span><i style="background:#5a6472"></i>부품·서비스(AS)</span><span style="color:var(--muted)">엔진/부품 배분은 근사·추정</span></div>
+  </div>
+
+  <div class="note in"><div class="h">ASP 사다리 — 이 회사의 진짜 알파</div>매출이 3년새 2.5배로 느는 것보다 <strong>이익률이 더 빨리 뛰는 것</strong>이 핵심이다. 고선가 시대에 수주한 프리미엄 엔진이 원가 위로 ASP를 얹으며 인식된다. 2026 매출의 수주연도 믹스가 <strong>2023(6%)→2024(40%)→2025(54%)</strong>로 고ASP 비중이 계단식 상승 — 뒤로 갈수록 마진이 좋아지는 '사다리' 구조다.</div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(조선소)의 눈</h3><p style="margin:6px 0">"신조선엔 엔진이 반드시 필요하다. 검증된 힘센에 슬롯이 꽉 찼으니 지금 가격이라도 확보해야 한다." → 풀가동·가격결정력.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(한화엔진·STX엔진)의 눈</h3><p style="margin:6px 0">"저속은 한화, 함정·중속은 STX. HD현대 계열 수직계열화가 판을 키운다. 한화도 중속 재진출을 검토." → 경쟁 재점화.</p></div>
+    <div class="card"><h3 style="margin-top:0">소재·부품업체의 눈</h3><p style="margin:6px 0">"엔진 물량 늘면 크랭크샤프트·주단조 수요도 큰다. 다만 대형 정밀부품이라 공급망이 좁다." → 병목이 곧 진입장벽.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진(HD현대)의 눈</h3><p style="margin:6px 0">"슈퍼사이클 물량을 마진 지키며 소화. 계열 조선소 안정 기반 + 중국 민영조선소 외판 확대. 캐파가 관건." → 물량 상한 = 증설 여부.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">힘센 레퍼런스 + 계열 물량</h3><p style="margin:0;font-size:12.5px">중속 힘센의 오랜 운항 레퍼런스와 HD현대 계열 조선소의 안정 수요. 신조 엔진은 신뢰성·납기·인증이 진입장벽. 현금화: 지금.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">중속엔진 제조 기술</h3><p style="margin:0;font-size:12.5px">중속 디젤·듀얼퓨얼 기술은 STX엔진·글로벌사도 보유. 차별점은 캐파·계열 슬롯·ASP 협상력. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">사이클 지속성</h3><p style="margin:0;font-size:12.5px">현 25% OPM이 사이클 하강 후에도 유지될지는 미검증. 고선가 인식의 피크성 마진일 가능성. 현금화: 사이클 종속.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — HD현대 조선부문 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조 (2024.7 기업결합 승인 · HD한국조선해양 계열 편입)</div><div class="cs">옛 STX중공업 엔진사업 → 2023.7 HD한국조선해양이 지분 35% 인수 → 2024.7 공정위 승인으로 HD현대 조선부문 중간지주 산하 편입.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- HD현대 지주 -->
+      <rect x="60" y="30" width="190" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="155" y="52" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">HD현대 (지주)</text>
+      <text x="155" y="70" text-anchor="middle" font-size="10.5" fill="#828b98">그룹 지주회사</text>
+      <!-- HD한국조선해양 -->
+      <rect x="60" y="124" width="190" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="155" y="146" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">HD한국조선해양</text>
+      <text x="155" y="164" text-anchor="middle" font-size="10.5" fill="#828b98">조선부문 중간지주 · 최대주주</text>
+      <!-- 옛 STX중공업 -->
+      <rect x="60" y="218" width="190" height="46" rx="5" fill="#1a1d25" stroke="#353b47"/>
+      <text x="155" y="238" text-anchor="middle" font-size="11" fill="#bfc5ce">옛 STX중공업 엔진사업</text>
+      <text x="155" y="254" text-anchor="middle" font-size="10" fill="#828b98">2023.7 편입 · 前 STX그룹</text>
+      <!-- center: 마린엔진 -->
+      <rect x="435" y="115" width="210" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="145" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">HD현대마린엔진</text>
+      <text x="540" y="167" text-anchor="middle" font-size="11" fill="#828b98">071970 · 중속 힘센 · 시총 2.19조</text>
+      <!-- customers -->
+      <rect x="830" y="60" width="200" height="66" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="930" y="86" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">HD현대 계열 조선소</text>
+      <text x="930" y="104" text-anchor="middle" font-size="10.5" fill="#4bbf9a">안정 수요 기반</text>
+      <text x="930" y="118" text-anchor="middle" font-size="10" fill="#828b98">HD현대중공업·삼호·미포</text>
+      <rect x="830" y="176" width="200" height="66" rx="6" fill="#22262f" stroke="#353b47"/>
+      <text x="930" y="202" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">중국 민영 조선소</text>
+      <text x="930" y="220" text-anchor="middle" font-size="10.5" fill="#e78a5c">외판 확대 · 2026.1~3 수주</text>
+      <text x="930" y="234" text-anchor="middle" font-size="10" fill="#828b98">243 / 622 / 335억</text>
+      <!-- arrows -->
+      <line x1="155" y1="82" x2="155" y2="124" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="155" y1="218" x2="155" y2="176" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="250" y1="150" x2="435" y2="151" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="645" y1="140" x2="830" y2="98" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="645" y1="162" x2="830" y2="205" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="342" y="143" text-anchor="middle" font-size="10" fill="#4bbf9a">지분 35%</text>
+      <text x="738" y="112" text-anchor="middle" font-size="10" fill="#4bbf9a">엔진 납품</text>
+      <text x="738" y="196" text-anchor="middle" font-size="10" fill="#e78a5c">엔진 납품</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>HD현대 조선부문(HD한국조선해양) 산하</strong>라 계열 조선소 물량이 실적의 안정 기반이자, 동시에 <em>계열 내 거래가격(엔진 ASP)·자본배치</em>가 상시 점검 대상이다. 데이터센터용 중속엔진 테마(HD현대중공업의 22MW 힘센 미국 데이터센터 공급 등)는 <strong>그룹 힘센 브랜드 전반</strong>의 재료지만, 그 계약 주체는 마린엔진이 아닌 HD현대중공업이다 — 마린엔진은 어디까지나 '조선용 중형엔진' 순수 플레이로 봐야 한다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">결정변수</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt">수주잔고 × ASP 사다리</td><td class="txt"><strong>확정 매출(가시성)</strong></td><td class="txt">고선가 수주 인식·연도별 믹스(54/40/6)</td><td class="txt">높음(2027까지)</td></tr>
+      <tr><td class="txt">가동률·캐파</td><td class="txt">물량 상한·레버리지</td><td class="txt">140만 마력 캐파·가동률 92.6%·증설 여부</td><td class="txt">중(풀가동)</td></tr>
+      <tr><td class="txt">조선 발주 사이클</td><td class="txt">사이클 수요(후행)</td><td class="txt">클락슨 선가지수·LNG·환경규제 교체발주</td><td class="txt">중(사이클)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심 — 후행 사이클재</div>엔진은 조선 발주에 <strong>1~2년 후행</strong>한다. 지금은 2023~2024 고선가 수주가 매출로 흘러 <em>다운사이드가 수주잔고로 방어되고, 업사이드는 ASP 사다리가 얹는</em> 국면. 반대로 신조 발주가 꺾이면 시차를 두고 엔진 수주가 둔화된다 — 그래서 조선 발주(클락슨 선가지수·LNG 발주)가 이 종목의 진짜 선행지표다.</div>
+  <p style="font-size:11.5px;color:var(--muted)">클락슨 신조선가지수는 2025년 말 기준 193pt대(역사적 고점 상회)로 추정되고, 카타르 LNG선 인도는 2026년 16척→2027년 26척으로 정점을 향한다. 2023~2024 고선가 물량의 매출 반영이 <strong>2026년 본격화</strong>되는 시점.<span class="src">쉬핑뉴스넷·클락슨리서치 인용(2026)<span class="tip">선가지수·LNG 인도 스케줄은 업계 추정</span></span></p>
+
+  <h2 class="sec">유닛 이코노믹스 — 마진 폭발의 정체</h2>
+  <div class="grid g4">
+    <div class="kpi"><div class="lab">가동률</div><div class="val">92.6<span class="u">%</span></div><div class="sub">사실상 풀가동</div></div>
+    <div class="kpi"><div class="lab">캐파</div><div class="val">140<span class="u">만마력</span></div><div class="sub">증설 시 물량 상방</div></div>
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">25.1<span class="u">%</span></div><div class="sub">7.5%→25.1% 폭발</div></div>
+    <div class="kpi"><div class="lab">ROE 25A</div><div class="val">41.4<span class="u">%</span></div><div class="sub">사이클 피크 수익성</div></div>
+  </div>
+  <p>엔진은 신조선당 반드시 필요한 미션크리티컬 부품이라, 슬롯이 꽉 찬 풀가동 국면에선 <strong>가격결정력이 생긴다</strong>. 고선가 수주 ASP가 고정비 위로 얹히며 <em>물량이 아니라 믹스·단가가 마진을 밀어올리는</em> 영업 레버리지가 극대화. 다만 이 마진은 캐파(140만 마력) 상한과 사이클에 묶여 있어, 추가 상방은 증설, 하방은 발주 둔화에 달렸다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +11.8억 · 연기금 +30.5억 · 투신 +3.7억</strong>(합산 시총대비 +0.21%) — 연기금 중심 유입. 52주 저점(52,900, 7/20) 반등에서 기관이 담는 그림으로, <strong>+11.0%·거래량 증가</strong>와 함께 조선 슈퍼사이클 재관심이 붙었다. 4월 고점(115,500) 대비 −45% 구간에서 기관이 사이클 승자를 다시 담는 전형적 눌림 유입.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">OPM 도약 궤적 — 마진이 로켓이다</h2>
+  <div class="chart"><div class="ct">영업이익 (막대, 억원) + OPM (라인, %)</div><div class="cs">영업익 184→1,527억(23→26E, +8배), OPM 7.5→25.1%. 매출 성장보다 마진 도약이 더 가파른 게 이 종목의 정체.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- OP bars max 1527 -> 200px, k=0.131 ; bar width 90 centered at 160,380,600,820 -->
+      <rect x="115" y="225.9" width="90" height="24.1" fill="#4bbf9a" opacity="0.85"/>
+      <rect x="335" y="206.5" width="90" height="43.5" fill="#4bbf9a" opacity="0.85"/>
+      <rect x="555" y="150.6" width="90" height="99.4" fill="#4bbf9a" opacity="0.85"/>
+      <rect x="775" y="50" width="90" height="200" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="160" y="219" text-anchor="middle" font-size="11" fill="#bfc5ce">184</text>
+      <text x="380" y="199" text-anchor="middle" font-size="11" fill="#bfc5ce">332</text>
+      <text x="600" y="143" text-anchor="middle" font-size="11" fill="#bfc5ce">759</text>
+      <text x="820" y="43" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">1,527</text>
+      <!-- OPM line: y=250-opm*7.5 -->
+      <polyline points="160,193.75 380,171.25 600,108.25 820,61.75" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="160" cy="193.75" r="4" fill="#cba24a"/><circle cx="380" cy="171.25" r="4" fill="#cba24a"/><circle cx="600" cy="108.25" r="4" fill="#cba24a"/><circle cx="820" cy="61.75" r="4" fill="#cba24a"/>
+      <text x="160" y="186" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">7.5%</text>
+      <text x="600" y="100" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">18.9%</text>
+      <text x="820" y="54" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">25.1%</text>
+      <text x="160" y="270" text-anchor="middle" font-size="10" fill="#828b98">2023</text>
+      <text x="380" y="270" text-anchor="middle" font-size="10" fill="#828b98">2024</text>
+      <text x="600" y="270" text-anchor="middle" font-size="10" fill="#828b98">2025</text>
+      <text x="820" y="270" text-anchor="middle" font-size="10" fill="#828b98">2026E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(라인)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 비수기에도 이익률 개선</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">QoQ</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">1,335억</td><td class="num up">+20.3%</td><td class="txt">비수기에도 고ASP 수주 인식</td></tr>
+      <tr><td class="txt">이익률</td><td class="num">개선</td><td class="num up">↑</td><td class="txt">전분기 대비 추가 개선(하나증권)</td></tr>
+      <tr><td class="txt">수주연도 믹스</td><td class="num">54/40/6</td><td class="num">—</td><td class="txt">2025/2024/2023 수주분 비중(고ASP↑)</td></tr>
+      <tr><td class="txt">가동률</td><td class="num">92.6%</td><td class="num">—</td><td class="txt">풀가동, 물량 상한 근접</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 영업익은 진짜, 순익은 착시</h3>
+  <p>이 종목에서 조심할 것은 순익이다. <strong>2025A 순익 1,651억은 영업익 759억을 크게 웃돌았는데(영업외 일회성 포함)</strong>, 2026엔 순익이 되레 1,266억E로 줄어든다. 즉 <em>영업으로 번 이익(OP +101%)이 진짜 성장이고, 순익 급증은 일회성 노이즈</em>였다. 트레일링 EPS 5,288 &gt; 포워드 3,730의 역전도 여기서 나온다 — 밸류는 반드시 <strong>영업익·EV 축</strong>으로 봐야 한다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주가 궤적 (2025.08 ~ 2026.07, 수정주가·재구성)</div><div class="cs">64,700원 → 115,500원(4/27, 고점) → 52,900원(7/20, −54%) → 64,600원(7/22, +11%). 상승은 실적+사이클 프리미엄 동반, 조정은 사이클 피크 우려·차익.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 50000..120000 -> y 250..40. k=0.003 ; y=250-(p-50000)*0.003 -->
+      <line x1="55" y1="220" x2="1035" y2="220" stroke="#20242c"/><text x="48" y="223" text-anchor="end" font-size="9" fill="#5a6472">60k</text>
+      <line x1="55" y1="130" x2="1035" y2="130" stroke="#20242c"/><text x="48" y="133" text-anchor="end" font-size="9" fill="#5a6472">90k</text>
+      <line x1="55" y1="40" x2="1035" y2="40" stroke="#20242c"/><text x="48" y="43" text-anchor="end" font-size="9" fill="#5a6472">120k</text>
+      <polyline points="80,205.9 155,190 230,166 305,184 380,160 455,136 530,115 605,85 680,53.5 755,115 830,175 905,241.3 980,206.2" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="680" cy="53.5" r="4.5" fill="#f0525f"/><text x="680" y="45" text-anchor="middle" font-size="9" fill="#f0525f">115,500 고점 4/27</text>
+      <circle cx="905" cy="241.3" r="4.5" fill="#3c86f5"/><text x="905" y="233" text-anchor="middle" font-size="9" fill="#3c86f5">52,900 저점 7/20</text>
+      <circle cx="980" cy="206.2" r="4.5" fill="#e78a5c"/><text x="980" y="224" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">64,600</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="605" y="272" font-size="9.5" fill="#828b98">'26.04</text><text x="945" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 되돌림은 사이클 프리미엄의 정상화</h2>
+  <p>2025년 8월 64,700원에서 2026년 4월 115,500원(고점)까지의 상승은 <strong>실적(영업익 급증)과 사이클 멀티플이 동반</strong>했다. 4월 이후 −54% 조정은 조선 사이클 피크 우려·차익실현이지 실적 훼손이 아니다. 순익 착시(2025 일회성)를 걷어내고 <em>영업익 기준</em>으로 보면 현 밸류(포워드 PER 17x·영업익 1,527억E)는 성장(+101%)·풀가동 대비 사이클 상단치곤 과하지 않다. 다만 PBR 4.4x는 여전히 피크 밸류의 부담.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">슈퍼사이클 랠리로 급등했다가 되돌림. 지수(KOSPI) 대비 변동성이 크다 — 사이클 레버리지의 양면.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="195" x2="1035" y2="195" stroke="#353b47" stroke-width="1.5"/>
+      <!-- index 60..140 -> y 195..45. k=1.875 ; y=195-(v-60)*1.875 -->
+      <line x1="55" y1="120" x2="1035" y2="120" stroke="#20242c"/><text x="48" y="123" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="45" x2="1035" y2="45" stroke="#20242c"/><text x="48" y="48" text-anchor="end" font-size="9" fill="#5a6472">140</text>
+      <!-- 마린엔진: Jan100,Feb108,Mar118,Apr131(peak),May108,Jun85,Jul-low60,Jul-now73 -->
+      <polyline points="80,120 210,105 340,86.25 470,61.9 600,105 730,148.1 880,195 980,170.6" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="470" y="54" text-anchor="middle" font-size="9" fill="#f0525f">+31% 고점</text>
+      <text x="980" y="163" font-size="9.5" fill="#e78a5c" font-weight="700">−27% YTD</text>
+      <!-- KOSPI flat ~+5% -->
+      <polyline points="80,120 340,117 600,113 880,111 980,110.6" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="103" font-size="9.5" fill="#828b98">KOSPI ~+5%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 반영/미반영인가</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 매출 +51%·OP +101%·마진 25%</td><td class="txt"><span class="tag b">반영</span></td></tr>
+      <tr><td class="txt">수주잔고 2027 ASP 상승</td><td class="txt"><span class="tag n">부분 반영</span></td></tr>
+      <tr><td class="txt">캐파 증설·풀가동 레버리지</td><td class="txt"><span class="tag s">부분~미반영</span></td></tr>
+      <tr><td class="txt">2027+ 사이클 지속성</td><td class="txt"><span class="tag s">미반영(양방향)</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">선박엔진 경쟁 지형 — 그리고 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E 포워드 PER 비교 (배) — 골드 = HD현대마린엔진</div><div class="cs">조선 엔진·본체 peer 대비 17x. 마진(25%)·성장(+101%) 감안 시 사이클 상단치곤 합리적. 순익 착시 감안해 방향성 참고용.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="180" y1="230" x2="1030" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, 1x=40px from x=180 -->
+      <rect x="180" y="30" width="680" height="26" fill="#cba24a"/><text x="870" y="48" font-size="12" fill="#cba24a" font-weight="700">17x</text><text x="175" y="48" text-anchor="end" font-size="11" fill="#eaecef">HD현대마린엔진</text>
+      <rect x="180" y="70" width="600" height="26" fill="#5a6472"/><text x="790" y="88" font-size="11" fill="#bfc5ce">15x</text><text x="175" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">한화엔진</text>
+      <rect x="180" y="110" width="800" height="26" fill="#5a6472"/><text x="990" y="128" font-size="11" fill="#bfc5ce">20x</text><text x="175" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">STX엔진</text>
+      <rect x="180" y="150" width="760" height="26" fill="#5a6472"/><text x="950" y="168" font-size="11" fill="#bfc5ce">19x</text><text x="175" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">HD현대중공업</text>
+      <rect x="180" y="190" width="520" height="26" fill="#5a6472"/><text x="710" y="208" font-size="11" fill="#bfc5ce">13x</text><text x="175" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">HD한국조선해양</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">peer PER은 시점·소스·순익 정의(일회성 포함 여부)에 따라 편차가 크다 — 방향성 참고용. HD현대마린엔진은 순익 착시로 트레일링 PER이 낮게(13x) 보이므로 포워드 기준(17x) 사용.</p>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">한화엔진 (前 HSD엔진)</h3><p style="margin:6px 0;font-size:12.5px">저속(대형 메인) 엔진 본업, 3년치 일감 확보. <strong>중속엔진 10년 만에 재진출 검토</strong> — HD현대 중심 판을 흔들 잠재 위협. 위협도 <strong>중~높음</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">STX엔진</h3><p style="margin:6px 0;font-size:12.5px">중속·함정용 엔진·소나 강자, 해경·해군 함정 독점적 위치. 데이터센터 중속엔진 테마 수혜. 위협도 <strong>중</strong>(니치·함정 특화).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">HD현대중공업 (계열)</h3><p style="margin:6px 0;font-size:12.5px">조선 본체·저속엔진 자체 생산. 힘센 브랜드로 데이터센터(22MW 33대, 6,271억) 진출. 경쟁이 아니라 <strong>계열 시너지</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">글로벌 (MAN·WinGD·바르질라)</h3><p style="margin:6px 0;font-size:12.5px">엔진 라이선스·설계 원천. 국내 3사는 라이선스 생산·자체모델 병행. 위협보다는 <strong>기술 생태계</strong> 축.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">슈퍼사이클 지속 + ASP·마진 상승 + 증설, 2027 OP 2,000억+</td><td class="num">~5,000 <span class="est bull">27E</span></td><td class="num">18x</td><td class="num up">90,000</td><td class="num">35%</td><td class="num up">+39%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E EPS 3,730 달성·마진 25% 유지</td><td class="num">3,730</td><td class="num">17x</td><td class="num">63,000</td><td class="num">40%</td><td class="num down">−2%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">조선 발주 둔화 + 마진 정상화(OPM 15%대) + 고PBR 디레이팅</td><td class="num">3,000 <span class="est bear">E</span></td><td class="num">12x</td><td class="num down">36,000</td><td class="num">25%</td><td class="num down">−44%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">65,700</td><td class="num"></td><td class="num up">+2%</td></tr></tfoot>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">EV = 0.35×90,000 + 0.40×63,000 + 0.25×36,000 = 약 65,700원(현재가 64,600 대비 +2%). 실적 모멘텀은 최상위이나 순익 정상화·사이클 피크·고PBR로 순수 기대값은 제한적, Bear −44% 꼬리가 깊다.</p>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 64,600(흰선). 자체 밴드 Bear 36k ~ Bull 90k. 매집밴드 53~58k(7월 저점권). 하방(−44%)이 상방(+39%)만큼 깊은 대칭 — 눌림에서만 손익비.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 30000..95000 -> x 120..1030. k=0.014 ; x=120+(v-30000)*0.014 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">30k</text>
+      <text x="400" y="205" text-anchor="middle" font-size="9" fill="#5a6472">50k</text>
+      <text x="680" y="205" text-anchor="middle" font-size="9" fill="#5a6472">70k</text>
+      <text x="960" y="205" text-anchor="middle" font-size="9" fill="#5a6472">90k</text>
+      <!-- 자체 밴드 36k..90k -->
+      <rect x="204" y="60" width="756" height="26" rx="4" fill="#e78a5c" opacity="0.26"/>
+      <text x="204" y="54" font-size="10" fill="#e78a5c">Bear 36k</text>
+      <text x="960" y="54" text-anchor="end" font-size="10" fill="#e78a5c">Bull 90k</text>
+      <line x1="582" y1="56" x2="582" y2="90" stroke="#cba24a" stroke-width="2.5"/><text x="582" y="102" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 63k</text>
+      <!-- 매집밴드 53k..58k -->
+      <rect x="442" y="120" width="70" height="26" rx="4" fill="#4bbf9a" opacity="0.30"/>
+      <text x="477" y="114" text-anchor="middle" font-size="10" fill="#4bbf9a">매집 53~58k</text>
+      <line x1="619.8" y1="116" x2="619.8" y2="150" stroke="#4bbf9a" stroke-width="2.5"/><text x="619" y="162" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">EV 65.7k</text>
+      <!-- 현재가 64600 -->
+      <line x1="604.4" y1="30" x2="604.4" y2="172" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="604" y="26" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 64,600</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 — 매출·마진은 확장, 멀티플은 사이클</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">수주잔고 2027까지·믹스 고ASP화. 매출 CAGR +36%. <strong>강함</strong>(단 캐파 상한).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 7.5→25%. 이미 큰 도약을 완료 — <strong>추가 여지는 제한적</strong>이고 되돌림 리스크가 상방보다 크다.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 17x·PBR 4.4x. 사이클 상단이라 재평가보다 <strong>디레이팅 압력</strong>이 더 현실적. 멀티플은 사이클이 결정.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): 캐파 증설로 물량 상한 해소 / 그룹 힘센 데이터센터 테마 낙수 / 중국 외판 확대 → 각 EPS +5~15%. 반대로 사이클 하강은 마진·멀티플 동시 압축(더블 카운트).</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>조선 발주 사이클 둔화</strong></td><td class="txt">신조 발주 감소 → 1~2년 후 엔진 수주 둔화, 마진 되돌림. Bear −44%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>마진 피크 아웃</strong></td><td class="txt">25% OPM은 고선가 인식의 피크성, 정상화(15%대) 시 이익 하향</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>고PBR 디레이팅</strong></td><td class="txt">PBR 4.4x, 사이클 우려 부각 시 밸류 압축</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>캐파 상한</strong></td><td class="txt">가동률 92.6% 풀가동, 증설 없이는 물량 상방 제한</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>경쟁 재점화</strong></td><td class="txt">한화엔진 중속 재진출·STX엔진 확장 시 ASP 협상력 훼손</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>환율·급등락</strong></td><td class="txt">원/달러 하락 시 채산성 훼손·4월 고점 −54% 조정 전례</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 53,000~58,000(7월 저점권) 눌림에서 분할. 급등 추격 금지(사이클 레버리지 종목).</li>
+    <li><strong>추가:</strong> 2Q26 OPM 25%대 확인 or 대형 엔진 신규 수주 or 캐파 증설 발표 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 수주잔고 2027 유지·풀가동 지속·ASP 사다리 상승.</li>
+    <li><strong>축소:</strong> 글로벌 신조 발주 급감 / OPM 20% 하회 / 대형 수주 2분기 연속 공백.</li>
+    <li><strong>차익:</strong> 90,000 접근 시 부분 차익(Bull 상단·사이클 피크 경계).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">글로벌 신조 발주·클락슨 선가지수</td><td class="txt">엔진 수주 선행(1~2년)</td><td class="txt">발주량 급감 / 선가 하락 반전</td></tr>
+      <tr><td class="txt">엔진 수주잔고·연도별 ASP</td><td class="txt">매출·마진 가시성</td><td class="txt">신규 수주 ASP 하락 전환</td></tr>
+      <tr><td class="txt">가동률·캐파 증설 여부</td><td class="txt">물량 상한·레버리지</td><td class="txt">증설 지연 + 수요 초과</td></tr>
+      <tr><td class="txt">분기 OPM</td><td class="txt">마진 지속성</td><td class="txt">25% → 20% 하회</td></tr>
+      <tr><td class="txt">기관·연기금 수급</td><td class="txt">사이클 심리</td><td class="txt">저점 반등 유입 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(OPM 25%대·ASP 상승 지속 확인)</td><td class="txt"><span class="tag n">핵심</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">대형 엔진 신규 수주(중국·글로벌 조선소)</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">캐파 증설 발표(풀가동 해소)</td><td class="txt"><span class="tag b">상방</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">글로벌 신조선 발주 동향(사이클 선행지표)</td><td class="txt"><span class="tag s">양방향</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "배의 심장을 만드는 회사에서 매출이 51% 느는데 영업이익률이 7.5%→25%로 폭발했고, 수주잔고는 2027까지 차 있으며 풀가동이다. 시장은 4월 고점 −45% 되돌림 뒤 포워드 PER 17x에 다시 담기 시작했다. 그 값은 53,000~58,000 눌림에서 사서 2Q OPM과 신규 수주를 기다린다."</strong><br>어떻게 맞나: 분할 매수 후 OPM 25%대 유지 + 대형 수주 지속 중 하나만 켜져도 Bull 90k. 어떻게 틀리나: 글로벌 신조 발주가 꺾이고 마진이 20% 아래로 정상화되면 틀린다(사이클 후행·축소). 한 단어: <em>"ASP 사다리"</em>. 남는 것: <strong>"조선 슈퍼사이클의 마진을 가장 농축해 담은 엔진주, 단 눌림에서만."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 63,000</span><span class="pill">매집밴드 53,000~58,000</span><span class="pill">Bull 90,000 / Bear 36,000</span><span class="pill">EV +2%</span><span class="pill">thesis break: 신조 발주 급감·OPM 20% 하회·수주 공백</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 사이클재는 수주잔고·ASP사다리·가동률 렌즈. 순익 착시(2025 일회성) 제거 후 영업익·EV 축 병행. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 64,600·시총 2.19조·추정PER 17.32x·2023~2026E 연간재무·PBR 4.39·BPS 14,731) · siseJson 일봉(2025-08~2026-07-22, 고점 115,500@4/27·저점 52,900@7/20) · 1Q26 매출 1,335억(+20.3%QoQ)·수주연도 믹스 54/40/6·가동률 92.6%·캐파 140만 마력·중국 조선소 수주(243/622/335억) = 하나·메리츠·KTB 리포트(2026.01~05) · 힘센 중속 글로벌 점유율·한화엔진 중속 재진출·데이터센터 22MW 힘센(HD현대중공업)·지배구조(HD한국조선해양 35%, 2024.7 기업결합)·클락슨 선가지수 193pt·카타르 LNG 인도 = 웹리서치(블로터·아시아경제·더벨·쉬핑뉴스넷·나무위키, 2025~2026) · 수급 = 사용자 제공(2026-07-22). 삼각검증: 시세·재무·수주·리포트·웹 다중소스 수렴. 2026E 순익·영업외 일회성 세부·ASP 정량·캐파 증설계획은 미공개 → 추정/정성 표기.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK오션플랜트 100090 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">100090</span>
+    <span class="nm">SK오션플랜트 <small>SK Oceanplant · 해상풍력 하부구조물 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩14,430</span>
+    <span>시총 ₩9,016억 · 26E PER ~20x</span>
+    <span class="rating">비중확대 관심 · 매집 12,500~13,500</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩14,430 (+7.5%)</span>
+  <span><b>52주</b> 12,500 ~ 31,600</span>
+  <span><b>PBR</b> 1.09x</span>
+  <span><b>OPM 26E</b> 10.3%</span>
+  <span><b>수주잔고</b> 1.24조(풍력 9,702억)</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">매출이 줄었는데 이익이 늘었다 — 저마진 강관·조선을 걷어내고 고마진 해상풍력만 남기는, 매각 노이즈에 눌린 구조물 회사.</h1>
+  <p class="lead">구 삼강엠앤티, SK에코플랜트 계열의 <em>해상풍력 하부구조물(재킷·모노파일)</em> + 후육강관 + 특수선 제조사다. 이 종목의 핵심은 '매출이 줄어도 이익이 는다' — 저마진 강관·조선을 축소하고 고마진 해상풍력으로 믹스가 옮겨가며 <strong>영업이익률이 6.2%→10.3%로 도약</strong>한다.<span class="src">1Q26 OPM 9.7%(4Q25 7.9%)<span class="tip">1Q26 매출 1,746억(−32%)·영업익 169억(+53%)·순익 98.6억(+130%). OPM은 해상풍력 매출 비중 확대로 개선 — 비즈니스포스트·디지털투데이 26.05</span></span> 손에 잡히는 근거는 <strong>수주잔고 1조2,385억 중 해상풍력이 9,702억(78%)</strong> — 이미 채워진 고마진 백로그다. 그런데 주가는 SK그룹 <em>지분 매각 노이즈</em>와 풍력 프로젝트 지연 우려로 31,600원→12,920원(−59%)까지 빠졌다가 14,430원. 증권가 목표가는 25,000원(미래에셋·삼성 BUY), PBR 1.09x로 순자산 부근.</p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 12,500~13,500원 · Bull 24,000 / Base 15,000 / Bear 9,000 · 확률가중 EV ≈ 16,650원(+15%).</strong> 마진 도약은 실적으로 확인(1Q OP +53%), 수주잔고 78%가 고마진 풍력, PBR 1.09x가 다운사이드 완충, 증권가 TP 25,000원(+73%)이 지지. thesis break: <em>매각 노이즈 재점화 / 해상풍력 프로젝트 대규모 지연 / OPM 8% 하회.</em></div>
+
+  <h2 class="sec">컨센 손익 한 장 — 매출은 줄고, 이익률은 뛴다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센(isConsensus=Y). 유통·건설과 정반대로 <strong>매출이 줄어드는데 영업익은 늘어난다</strong> — 저마진(강관·조선) 물량을 줄이고 고마진(해상풍력 하부구조물)만 남기는 '수익성 중심 재편'의 힘.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">9,258</td><td class="num">756</td><td class="num">8.2%</td><td class="num">575</td><td class="num">1,041</td><td class="num">13.9x</td><td class="num">9.5%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">6,626</td><td class="num">418</td><td class="num">6.3%</td><td class="num">169</td><td class="num">277</td><td class="num">52x</td><td class="num">2.3%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">9,654</td><td class="num">595</td><td class="num">6.2%</td><td class="num">375</td><td class="num">625</td><td class="num">23x</td><td class="num">5.0%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">6,832</td><td class="num">702</td><td class="num">10.3%</td><td class="num">449 <span class="est">E</span></td><td class="num">719</td><td class="num">20x</td><td class="num">5.4%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 14,430 ÷ 해당연도 EPS. 2026E는 <strong>매출 −29%(9,654→6,832)에도 영업익 +18%(595→702)</strong> — 저마진 매출을 걷어낸 결과. 1Q26 매출 1,746억(−32% YoY)·영업익 169억(+53%)·순익 98.6억(+130%)로 마진 재편 실증.</p>
+
+  <div class="chart"><div class="ct">매출↓ vs 마진↑ 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">주황 막대(매출)는 25→26E 줄어드는데 골드 라인(OPM)은 6.2%→10.3%로 뛴다. 이 '엇갈림'이 이 종목의 전부다.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- revenue k=0.02175, baseline 270 -->
+      <!-- 2023 -->
+      <rect x="120" y="68.6" width="70" height="201.4" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="253.6" width="46" height="16.4" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="60" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">9,258</text>
+      <text x="219" y="248" text-anchor="middle" font-size="10" fill="#4bbf9a">756</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="125.9" width="70" height="144.1" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="260.9" width="46" height="9.1" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="117" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,626</text>
+      <text x="444" y="255" text-anchor="middle" font-size="10" fill="#4bbf9a">418</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="60" width="70" height="210" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="257.1" width="46" height="12.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="52" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">9,654</text>
+      <text x="669" y="251" text-anchor="middle" font-size="10" fill="#4bbf9a">595</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="121.4" width="70" height="148.6" fill="#e78a5c" opacity="0.55" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="254.7" width="46" height="15.3" fill="#4bbf9a" opacity="0.55" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="113" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,832</text>
+      <text x="894" y="249" text-anchor="middle" font-size="10" fill="#4bbf9a">702</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: y=270-(opm-4)*22 -->
+      <polyline points="155,177.6 380,219.4 605,221.6 830,131.4" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="177.6" r="4" fill="#cba24a"/><circle cx="380" cy="219.4" r="4" fill="#cba24a"/><circle cx="605" cy="221.6" r="4" fill="#cba24a"/><circle cx="830" cy="131.4" r="4.5" fill="#cba24a"/>
+      <text x="155" y="169" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">8.2%</text>
+      <text x="605" y="235" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">6.2%</text>
+      <text x="830" y="123" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">10.3%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 마진 도약은 실증</h3><p style="margin:6px 0">매출 줄어도 OPM 6.2%→10.3%, 1Q26 영업익 +53%·순익 +130%. 고마진 해상풍력 하부구조물 믹스가 <strong>숫자로 확인</strong>됐다. 수주잔고 78%가 풍력이라 지속성도 있다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 본업은 구조 수요</h3><p style="margin:6px 0">대만·일본에서 <strong>약 2GW 하부구조물 수주 실적</strong>, 한국 해풍법 시행 + 유럽 OSS 자켓. 부유식 전용 생산설비(고성)까지 2026 완공. <strong>발주 파이프라인은 우상향</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 디스카운트는 노이즈</h3><p style="margin:6px 0">SK에코플랜트 <strong>지분 36.98% 매각(디오션 우협)</strong>이 오버행. 지자체 반대·지방선거로 지연되며 주가를 순자산까지 눌렀다. 해소=멀티플 정상화의 트리거.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (재편 진행형)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 대형 하부구조물 생산 캐파(고성)·실적 레퍼런스(대만 펭미아오)·SK 브랜드. 진짜 해자(아래 3버킷).</li>
+        <li><strong>현금창출:</strong> PBR 1.09x·마진 두 자릿수 진입. 저마진 걷어내며 이익률 질 개선.</li>
+        <li><strong>사이클/정책 노출:</strong> 해상풍력 프로젝트 타이밍·정책에 종속 — 이게 A가 아니라 B+인 이유.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 매각 노이즈 해소 + 대만·유럽 하부구조물 신규 수주 + OPM 10%대 유지.</li>
+        <li><strong>갈아타기:</strong> 풍력 타워 순수 노출이면 씨에스윈드, 모노파일이면 GS엔텍·세아제강. SK오션은 '재킷·부유식 하부구조물 + 후육강관 복합'.</li>
+        <li><strong>즉시매도:</strong> OPM 8% 하회(믹스 되돌림) / 매각 무산·재점화 / 풍력 프로젝트 2분기 연속 이연.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 자리에서 무엇을 사나</h2>
+  <p>해상풍력 밸류체인에서 씨에스윈드(타워)는 이미 대형·고밸류, GS엔텍(모노파일)은 초기 진입, SK오션플랜트는 <strong>재킷·부유식 하부구조물 실적을 이미 낸 아시아 리더</strong>다. 그중 SK오션은 <em>매각 노이즈로 순자산까지 눌린 유일한 종목</em>이라, 실적(마진 도약)·밸류(PBR 1.1x)·촉매(노이즈 해소)가 동시에 살아있는 손익비 우위 자리다. 상대 매력 = <em>"성장이 아니라 노이즈로 눌린 고마진 재편주."</em></p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"바다에 풍력터빈을 세우는 <strong>하부구조물(재킷·모노파일·부유식)</strong>과 대형 <strong>후육강관</strong>·특수선을 만드는, SK그룹 계열의 해양·에너지 구조물 제조사."</p>
+  <div class="note"><div class="h">매출 ≠ 이익 ≠ 성장 — 분리해서 봐라</div>매출은 강관·조선 규모가 크지만 이익은 얇고, <strong>해상풍력 하부구조물은 매출 비중보다 이익 비중이 크다</strong>. 그래서 저마진 매출을 줄이고 고마진 풍력으로 옮기면 매출은 감소해도 영업익은 증가한다. 알파는 '풍력 하부구조물 수주잔고와 그 마진'에 있다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장성·마진·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="txt">방향</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="txt"><strong>해상풍력 하부구조물</strong></td><td class="txt">재킷·모노파일·부유식(대만·일본·유럽·한국)</td><td class="txt"><span class="up">비중↑</span></td><td class="txt">프로젝트 발주 × 기당 단가 × 캐파</td><td class="txt">최고마진·구조수요</td></tr>
+      <tr><td class="txt"><strong>후육강관(LSAW)</strong></td><td class="txt">두꺼운 대형 강관 — 에너지·플랜트·인프라</td><td class="txt">유지</td><td class="txt">에너지·인프라 수주 × 후판가</td><td class="txt">중마진·사이클</td></tr>
+      <tr><td class="txt"><strong>특수선·조선</strong></td><td class="txt">특수 선박 건조</td><td class="txt"><span class="down">축소</span></td><td class="txt">수주잔고 소진 × 물량</td><td class="txt">저마진(믹스에서 배제 중)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">기말 수주잔고 <strong>총 1조2,385억 중 해상풍력 9,702억(78%)</strong>.<span class="src">수주잔고 구성<span class="tip">해상풍력이 백로그의 78%를 차지 — 미래 매출·마진의 질을 규정. 경남신문·핀포인트뉴스 26년</span></span> 특수선 매출↓·해상풍력 매출↑ 재편이 공식 코멘트로 확인.</p>
+
+  <div class="chart"><div class="ct">부문 매출 스택 (억원, 추정) — 고마진 풍력이 커지고 저마진이 빠진다</div><div class="cs">해상풍력(골드)은 유지·확대, 강관·조선(회색)이 빠지며 총매출은 줄지만 마진은 오른다. 세부 배분은 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- k=0.02072, baseline 250 -->
+      <!-- 2024 total 6626: 조선2526 / 강관2300 / 풍력1800 -->
+      <g>
+        <rect x="200" y="197.7" width="150" height="52.3" fill="#5a6472"/>
+        <rect x="200" y="150.0" width="150" height="47.7" fill="#e78a5c" opacity="0.9"/>
+        <rect x="200" y="112.7" width="150" height="37.3" fill="#cba24a"/>
+        <text x="275" y="104" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,626</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025 total 9654: 조선2654 / 강관3000 / 풍력4000 -->
+      <g>
+        <rect x="465" y="195.0" width="150" height="55.0" fill="#5a6472"/>
+        <rect x="465" y="132.8" width="150" height="62.2" fill="#e78a5c" opacity="0.9"/>
+        <rect x="465" y="49.9" width="150" height="82.9" fill="#cba24a"/>
+        <text x="540" y="42" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">9,654</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E total 6832: 조선932 / 강관1600 / 풍력4300 -->
+      <g>
+        <rect x="730" y="230.7" width="150" height="19.3" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="197.5" width="150" height="33.2" fill="#e78a5c" opacity="0.6"/>
+        <rect x="730" y="108.4" width="150" height="89.1" fill="#cba24a" opacity="0.75"/>
+        <text x="805" y="100" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,832</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#cba24a"></i>해상풍력 하부구조물(고마진)</span><span><i style="background:#e78a5c"></i>후육강관</span><span><i style="background:#5a6472"></i>특수선·조선</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(풍력 디벨로퍼·EPC)의 눈</h3><p style="margin:6px 0">"15MW급 초대형 터빈을 97m·2,700t 재킷으로 지지해야 한다. 검증된 캐파·납기 있는 공급사가 몇 없다." → 대형 프로젝트 락인.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(Sif·GS엔텍·세아)의 눈</h3><p style="margin:6px 0">"유럽은 모노파일 80%, 우린 거기 강하다. SK오션은 재킷·부유식으로 아시아를 잡는다." → 공법별 분할 경쟁.</p></div>
+    <div class="card"><h3 style="margin-top:0">모회사(SK에코플랜트)의 눈</h3><p style="margin:6px 0">"리밸런싱 마무리 단계. 제값 못 받으면 급히 넘길 이유 없다. 원매자와 가격 줄다리기 중." → 매각 지연·오버행.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"저마진 조선 걷어내고 고마진 풍력에 집중. 부유식 설비까지 증설해 캐파로 성장." → 질적 재편.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">대형 하부구조물 캐파·레퍼런스</h3><p style="margin:0;font-size:12.5px">97m·2,700t 재킷을 양산하는 대형 야드·크레인·해상 물류는 신규 진입 장벽. 대만 펭미아오 납품 실적이 레퍼런스. 현금화: 지금.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">후육강관·용접 기술</h3><p style="margin:0;font-size:12.5px">강관·용접 자체는 세아·GS·유럽사도 보유. 차별점은 재킷·부유식 대형 구조물 통합 역량. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">부유식·유럽 확장</h3><p style="margin:0;font-size:12.5px">고성 부유식 전용설비(2026 완공, 연 4,500톤급 40기), 유럽 OSS 자켓 수주 기대. 아직 실적 미반영 — 옵션. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — SK에코플랜트 우산, 그리고 매각 테이블</h2>
+  <div class="chart"><div class="ct">지배구조 & 매각 구도 (2026 기준)</div><div class="cs">SK에코플랜트가 경영권 지분 36.98% 보유. 디오션 컨소시엄이 우선협상대상자 — 지자체 반대·지방선거로 지연되며 오버행.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- SK에코플랜트 -->
+      <rect x="60" y="115" width="200" height="66" rx="6" fill="#22262f" stroke="#4bbf9a" stroke-width="1.5"/>
+      <text x="160" y="143" text-anchor="middle" font-size="13" fill="#eaecef" font-weight="600">SK에코플랜트</text>
+      <text x="160" y="162" text-anchor="middle" font-size="10.5" fill="#828b98">모회사 · 지분 36.98%</text>
+      <!-- 중앙 SK오션플랜트 -->
+      <rect x="440" y="108" width="200" height="80" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="540" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">SK오션플랜트</text>
+      <text x="540" y="160" text-anchor="middle" font-size="11" fill="#828b98">100090 · 시총 9,016억</text>
+      <text x="540" y="176" text-anchor="middle" font-size="10.5" fill="#4bbf9a">해상풍력 하부구조물</text>
+      <!-- 디오션 컨소시엄 -->
+      <rect x="820" y="60" width="200" height="66" rx="6" fill="#22262f" stroke="#cba24a" stroke-dasharray="4 3"/>
+      <text x="920" y="88" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">디오션 컨소시엄</text>
+      <text x="920" y="107" text-anchor="middle" font-size="10.5" fill="#cba24a">우선협상대상자(매수측)</text>
+      <!-- 부유식 설비 -->
+      <rect x="820" y="170" width="200" height="66" rx="6" fill="#22262f" stroke="#353b47"/>
+      <text x="920" y="198" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">고성 부유식 설비</text>
+      <text x="920" y="217" text-anchor="middle" font-size="10.5" fill="#828b98">2026 완공 · 연 40기</text>
+      <!-- arrows -->
+      <line x1="260" y1="148" x2="440" y2="148" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="350" y="140" text-anchor="middle" font-size="10" fill="#4bbf9a">지분 36.98%</text>
+      <line x1="640" y1="135" x2="820" y2="95" stroke="#cba24a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+      <text x="735" y="108" text-anchor="middle" font-size="10" fill="#cba24a">매각 협상(지연)</text>
+      <line x1="640" y1="160" x2="820" y2="200" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="735" y="195" text-anchor="middle" font-size="10" fill="#828b98">증설 투자</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>매각 4,000억원대 중후반에 지분 36.98%</strong>. SK에코플랜트는 리밸런싱 마무리 단계라 급하지 않고, 원매자는 해상풍력 불확실성을 명분으로 가격을 깎으려 해 협상이 평행선.<span class="src">매각 구도<span class="tip">디오션 컨소시엄 우협 3차례 연장, 4월 이내 종료 예정. 지자체 인수 반대·6월 지방선거로 노이즈 지속 — 블로터·파이낸셜뉴스·네이트 26년</span></span> <em>"제값 못 받으면 안 넘긴다"</em>는 게 핵심 — 헐값 매각 리스크는 낮으나 <strong>불확실성 자체가 멀티플 디스카운트</strong>다.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">해상풍력 하부구조물</td><td class="txt"><strong>정책·에너지전환 구조수요</strong>(프로젝트성)</td><td class="txt">대만·유럽·한국 해풍 정책·발주 타이밍</td><td class="txt">높음(구조)·타이밍 변동</td></tr>
+      <tr><td class="txt">후육강관</td><td class="txt">에너지·인프라 사이클</td><td class="txt">유가·플랜트 투자·후판가</td><td class="txt">중(사이클)</td></tr>
+      <tr><td class="txt">특수선·조선</td><td class="txt">축소 중(믹스 배제)</td><td class="txt">기존 수주잔고 소진</td><td class="txt">낮음(전략적 축소)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심 — 방향은 구조, 분기는 프로젝트</div>해상풍력은 <strong>에너지전환·정책이 미는 구조 수요</strong>지만 <em>인허가·계통·금리에 따라 프로젝트가 자주 지연</em>돼 매출 인식이 lumpy하다. 즉 방향은 우상향인데 <strong>분기 실적은 프로젝트 인식 타이밍에 좌우</strong>된다 — 2026E 매출 감소도 일부 이 이연 영향. 수주잔고 78%가 풍력이라 바닥은 두껍다.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 마진 도약의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">10.3<span class="u">%</span></div><div class="sub">6.2%(25)→도약</div></div>
+    <div class="kpi"><div class="lab">PBR</div><div class="val">1.09<span class="u">x</span></div><div class="sub">순자산 근접(하방)</div></div>
+    <div class="kpi"><div class="lab">수주잔고 中 풍력</div><div class="val">78<span class="u">%</span></div><div class="sub">9,702억 / 1.24조</div></div>
+  </div>
+  <p>하부구조물은 <strong>범용 강구조물이 아니라 프로젝트 맞춤 대형 제작품</strong>이라 기당 단가·마진이 높다. 15MW급 터빈용 재킷 한 기가 97m·2,700t — 소수 대형 야드만 만든다. 저마진 조선을 걷어내고 이 고마진 물량으로 채우면 <em>믹스가 마진을 밀어올리는</em> 재편이 성립한다. 다만 마진의 지속성은 '신규 수주로 백로그를 이어가느냐'에 달렸다.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +10.1억 · 연기금 +3.6억 · 투신 +5.8억</strong>(합산 시총대비 +0.22%). 52주 저점권(12,920, 7/14)에서 반등하며 기관 유입, +7.5%·거래량 248만주로 관심 회복 초입. −59% 조정 후 <strong>저점 매집 성격</strong> — 매각 노이즈로 눌린 자리를 기관이 담기 시작한 전형적 눌림 유입.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">마진 도약 궤적 — 매출이 아니라 OPM을 봐라</h2>
+  <div class="chart"><div class="ct">영업이익률(OPM) 궤적 (%, 연간) — 26E 두 자릿수 진입</div><div class="cs">2024 저점(6.3%) 이후 재편으로 2026E 10.3%. 분기로는 4Q25 7.9% → 1Q26 9.7%로 이미 방향 전환.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="185" x2="1030" y2="185" stroke="#262a33"/><line x1="60" y1="120" x2="1030" y2="120" stroke="#262a33"/><line x1="60" y1="55" x2="1030" y2="55" stroke="#262a33"/>
+      <text x="52" y="253" text-anchor="end" font-size="9" fill="#5a6472">4%</text>
+      <text x="52" y="123" text-anchor="end" font-size="9" fill="#5a6472">8%</text>
+      <text x="52" y="58" text-anchor="end" font-size="9" fill="#5a6472">10%</text>
+      <!-- OPM: 8.2,6.3,6.2,10.3 ; y=250-(opm-4)*24 -->
+      <polyline points="150,149.2 400,194.8 650,197.2 900,98.8" fill="none" stroke="#cba24a" stroke-width="3"/>
+      <circle cx="150" cy="149.2" r="4.5" fill="#cba24a"/><circle cx="400" cy="194.8" r="4.5" fill="#cba24a"/><circle cx="650" cy="197.2" r="4.5" fill="#cba24a"/><circle cx="900" cy="98.8" r="5.5" fill="#cba24a"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11" fill="#cba24a" font-weight="700">8.2%</text>
+      <text x="400" y="212" text-anchor="middle" font-size="11" fill="#cba24a" font-weight="700">6.3%</text>
+      <text x="650" y="214" text-anchor="middle" font-size="11" fill="#cba24a" font-weight="700">6.2%</text>
+      <text x="900" y="89" text-anchor="middle" font-size="12" fill="#cba24a" font-weight="700">10.3%E</text>
+      <text x="150" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">2023</text>
+      <text x="400" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">2024</text>
+      <text x="650" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">2025</text>
+      <text x="900" y="272" text-anchor="middle" font-size="10.5" fill="#828b98">2026E</text>
+      <!-- 1Q26 annotation -->
+      <line x1="775" y1="40" x2="775" y2="250" stroke="#4bbf9a" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+      <text x="775" y="36" text-anchor="middle" font-size="9.5" fill="#4bbf9a">1Q26 9.7% (4Q25 7.9%)</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 매출은 빠졌는데 이익은 뛰었다</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">1,746억</td><td class="num down">−32.1%</td><td class="txt">저마진 물량 축소 + 풍력 인식 타이밍</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">169억</td><td class="num up">+52.7%</td><td class="txt">OPM 9.7% — 믹스 개선 레버리지</td></tr>
+      <tr class="hl"><td class="txt">순이익</td><td class="num">98.6억</td><td class="num up">+129.9%</td><td class="txt">영업 레버리지 + 금융손익 개선</td></tr>
+      <tr><td class="txt">OPM(vs 4Q25)</td><td class="num">9.7%</td><td class="num up">+1.8%p</td><td class="txt">4Q25 7.9% → 해상풍력 비중 확대</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 재편이 만든 진짜 개선</h3>
+  <p>매출 −32%에도 영업익 +53%·순익 +130%는 <strong>일회성이 아니라 믹스 전환의 결과</strong>다. 유통·건설처럼 순익이 영업익보다 튀는 노이즈가 아니라, <em>고마진 하부구조물이 저마진을 대체하며 마진이 구조적으로 오른</em> 깨끗한 개선. 관건은 이 마진을 2026 내내·2027로 <strong>신규 수주가 이어가느냐</strong> — 수주잔고 78%(풍력 9,702억)가 그 바닥을 받친다.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주봉 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">고점 31,600 → 저점 12,920(7/14, −59%) → 14,430. 실적은 안 무너졌는데 주가만 반토막 — 매각 노이즈·풍력 지연發 디레이팅.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale price 12000..32000 -> y 250..40 ; y=250-(p-12000)*0.0105 -->
+      <line x1="55" y1="218.5" x2="1035" y2="218.5" stroke="#20242c"/><text x="48" y="221" text-anchor="end" font-size="9" fill="#5a6472">15k</text>
+      <line x1="55" y1="166" x2="1035" y2="166" stroke="#20242c"/><text x="48" y="169" text-anchor="end" font-size="9" fill="#5a6472">20k</text>
+      <line x1="55" y1="113.5" x2="1035" y2="113.5" stroke="#20242c"/><text x="48" y="116" text-anchor="end" font-size="9" fill="#5a6472">25k</text>
+      <line x1="55" y1="61" x2="1035" y2="61" stroke="#20242c"/><text x="48" y="64" text-anchor="end" font-size="9" fill="#5a6472">30k</text>
+      <polyline points="80,92.5 170,44.2 290,103 430,145 560,187 680,208 840,240.3 980,224.5" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- markers -->
+      <circle cx="170" cy="44.2" r="4" fill="#f0525f"/><text x="170" y="35" text-anchor="middle" font-size="9" fill="#f0525f">31,600 고점</text>
+      <circle cx="430" cy="145" r="4" fill="#cba24a"/><text x="430" y="136" text-anchor="middle" font-size="9" fill="#cba24a">매각 우협·지연</text>
+      <circle cx="840" cy="240.3" r="4.5" fill="#3c86f5"/><text x="840" y="253" text-anchor="middle" font-size="9" fill="#3c86f5">12,920 저점(7/14)</text>
+      <circle cx="980" cy="224.5" r="4.5" fill="#e78a5c"/><text x="980" y="216" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">14,430</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="560" y="272" text-anchor="middle" font-size="9.5" fill="#828b98">'26.03</text><text x="965" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 하락의 대부분은 디레이팅</h2>
+  <p>2025 순익(375억)은 크게 나빠지지 않았는데 주가는 31,600→12,920으로 −59%. <strong>이익 훼손이 아니라 멀티플 디레이팅</strong> — 매각 노이즈(오버행) + 풍력 지연 우려가 얹혔다. 즉 실적이 무너진 게 아니라 <em>심리·거버넌스 디스카운트</em>라, 노이즈가 해소되고 수주가 확인되면 <strong>멀티플 되돌림(리레이팅)</strong> 여지가 크다. 현재 PBR 1.09x·PER 20x는 '풍력 성장 반신반의 + 매각 상존'을 반영한 값.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">매각 노이즈·풍력 지연으로 코스피를 크게 언더퍼폼. 절대 밸류(PBR 1.1x)는 매력 구간 진입.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="160" x2="1035" y2="160" stroke="#20242c"/><text x="48" y="163" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="120" x2="1035" y2="120" stroke="#20242c"/><text x="48" y="123" text-anchor="end" font-size="9" fill="#5a6472">110</text>
+      <!-- SK오션 rebase: 100->160 ; y=200-v*0.4 ; low 59->176.4, now 66->173.6 -->
+      <polyline points="80,160 300,164 500,169 700,173 860,176.4 980,173.6" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="169" font-size="9.5" fill="#e78a5c" font-weight="700">SK오션 −34%</text>
+      <!-- KOSPI ~ +5% -->
+      <polyline points="80,160 300,159 500,158 700,157 860,156.5 980,156" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="150" font-size="9.5" fill="#828b98">코스피 ~+3%</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">컨센 감사 — 무엇이 가격에 안 들어와 있나</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센/주가 반영</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 마진 도약(OPM 10%)</td><td class="txt">부분 반영</td></tr>
+      <tr><td class="txt">매각 노이즈 해소</td><td class="txt"><span class="down">미반영(디스카운트 상존)</span></td></tr>
+      <tr><td class="txt">대만·유럽 하부구조물 신규 수주</td><td class="txt"><span class="down">미반영(핵심 상방)</span></td></tr>
+      <tr><td class="txt">부유식 설비(고성) 가동</td><td class="txt"><span class="down">미반영(2027+ 옵션)</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">해상풍력 밸류체인 — 공법별 분할 경쟁, 그리고 밸류</h2>
+  <div class="chart"><div class="ct">PBR 비교 (배, 추정·방향성) — 골드 = SK오션플랜트</div><div class="cs">SK오션 1.09x는 풍력 밸류체인에서 순자산 근접 저평가 영역. 씨에스윈드(타워)·Sif(모노파일 세계1위)는 프리미엄.</div>
+    <svg viewBox="0 0 1080 250" xmlns="http://www.w3.org/2000/svg">
+      <line x1="180" y1="220" x2="1030" y2="220" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale 1x=180px from x=180 ; max ~3 -->
+      <!-- SK오션 1.09 -->
+      <rect x="180" y="30" width="196" height="26" fill="#cba24a"/><text x="386" y="48" font-size="12" fill="#cba24a" font-weight="700">SK오션플랜트 1.09x</text><text x="172" y="48" text-anchor="end" font-size="11" fill="#eaecef">SK오션플랜트</text>
+      <!-- 씨에스윈드 2.3 -->
+      <rect x="180" y="70" width="414" height="26" fill="#5a6472"/><text x="604" y="88" font-size="11" fill="#bfc5ce">~2.3x</text><text x="172" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">씨에스윈드(타워)</text>
+      <!-- Sif 3.0 -->
+      <rect x="180" y="110" width="540" height="26" fill="#5a6472"/><text x="730" y="128" font-size="11" fill="#bfc5ce">~3.0x</text><text x="172" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">Sif(네덜란드·모노파일)</text>
+      <!-- 세아제강 0.5 -->
+      <rect x="180" y="150" width="90" height="26" fill="#5a6472"/><text x="280" y="168" font-size="11" fill="#bfc5ce">~0.5x</text><text x="172" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">세아제강(강관)</text>
+      <!-- GS엔텍 n/a -->
+      <rect x="180" y="190" width="270" height="26" fill="#5a6472" opacity="0.5"/><text x="460" y="208" font-size="10.5" fill="#828b98">GS엔텍(모노파일 신규진입)</text><text x="172" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">GS엔텍</text>
+    </svg>
+    <p style="font-size:11px;color:var(--muted);margin-top:6px">PBR은 시점·소스별 편차 — 방향성 참고용. Sif는 세계 1위 모노파일, GS엔텍은 Sif와 기술제휴로 모노파일 신규 진입.</p>
+  </div>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">씨에스윈드 (풍력 타워 글로벌 1위)</h3><p style="margin:6px 0;font-size:12.5px">터빈을 세우는 '타워'. SK오션은 그 아래 '하부구조물'로 밸류체인 위치가 다름. 경쟁이 아니라 <strong>동일 프로젝트 내 다른 부품</strong>. 규모·밸류 프리미엄.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">Sif (네덜란드·모노파일 세계 1위)</h3><p style="margin:6px 0;font-size:12.5px">유럽 모노파일 시장 지배. 유럽 하부구조물 80%가 모노파일. SK오션의 유럽 진출 시 <strong>직접 경쟁</strong>. 위협도 높음(유럽).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">GS엔텍 (모노파일 신규 진입)</h3><p style="margin:6px 0;font-size:12.5px">울산 설비를 모노파일로 전환, Sif 기술제휴·3,000억 투자. 국내 모노파일 경쟁자. SK오션은 <strong>재킷·부유식으로 차별화</strong>. 위협도 중.</p></div>
+    <div class="card"><h3 style="margin-top:0">세아제강·EEW (강관 기반)</h3><p style="margin:6px 0;font-size:12.5px">강관사의 모노파일 진출. 후육강관은 SK오션과 겹치나, 대형 재킷 통합은 SK오션 우위. 위협도 중.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">멀티플</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">매각 노이즈 해소 + 대만·유럽 대형 수주 + 마진 지속, 2027 OP 900억+</td><td class="num">1,100 <span class="est bull">27E</span></td><td class="num">PER 22x</td><td class="num up">24,000</td><td class="num">35%</td><td class="num up">+66%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E EPS 719 달성·OPM 10% 유지, 노이즈 상존으로 PER 20x</td><td class="num">719</td><td class="num">PER 20x</td><td class="num">15,000</td><td class="num">40%</td><td class="num up">+4%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">풍력 지연 + 매각 노이즈 재점화 + 수주 공백, EPS 500·PER 15x</td><td class="num">500 <span class="est bear">E</span></td><td class="num">PER 15x</td><td class="num down">9,000</td><td class="num">25%</td><td class="num down">−38%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">16,650</td><td class="num"></td><td class="num up">+15%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 14,430(흰선). 애널 TP 25,000(미래에셋·삼성 유지). 자체 밴드 9,000~24,000. PBR 1.1x 하방이 두껍다.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale 8000..26000 -> x 120..1030 ; k=0.05056 ; x=120+(v-8000)*0.05056 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="221" y="205" text-anchor="middle" font-size="9" fill="#5a6472">10k</text>
+      <text x="474" y="205" text-anchor="middle" font-size="9" fill="#5a6472">15k</text>
+      <text x="726" y="205" text-anchor="middle" font-size="9" fill="#5a6472">20k</text>
+      <text x="979" y="205" text-anchor="middle" font-size="9" fill="#5a6472">25k</text>
+      <!-- 자체 밴드 9000..24000 -->
+      <rect x="170.6" y="40" width="758.3" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="171" y="34" font-size="10" fill="#e78a5c">Bear 9k</text>
+      <text x="929" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 24k</text>
+      <line x1="473.9" y1="36" x2="473.9" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="474" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 15k</text>
+      <!-- 애널 TP 25,000 -->
+      <rect x="928.9" y="110" width="50.6" height="26" rx="4" fill="#4bbf9a" opacity="0.3"/>
+      <line x1="979.5" y1="106" x2="979.5" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="979" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">애널 TP 25k (+73%)</text>
+      <!-- 현재가 14,430 -->
+      <line x1="445.1" y1="20" x2="445.1" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="445" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 14,430</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 △</h3><p style="margin:6px 0;font-size:12.5px">단기 매출은 저마진 축소로 <strong>감소</strong>. 성장은 신규 풍력 수주로 백로그를 이어가야 성립. 프로젝트 타이밍 의존.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 6.2→10.3%. 고마진 하부구조물 믹스. <strong>강함</strong> — 이 배치의 핵심 근거.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 ◎</h3><p style="margin:6px 0;font-size:12.5px">매각 노이즈 해소 = <strong>디레이팅 되돌림</strong>. PBR 1.1x→정상화 시 가장 큰 상방. 트리거는 노이즈 해소·대형 수주.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 기여(미반영): 부유식 설비(고성) 가동 / 유럽 OSS 자켓 대형 수주 / 매각 프리미엄 인수 → 각 밸류 +10~20%.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>매각 노이즈 재점화</strong></td><td class="txt">디오션 협상 결렬·재추진 시 오버행·디스카운트 지속. 주가 −20%+</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>해상풍력 프로젝트 지연</strong></td><td class="txt">인허가·계통·금리로 발주·인식 이연 → 매출 공백·컨센 미스</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>수주 공백</strong></td><td class="txt">대형 신규 수주 부재 시 백로그 소진·2027 성장 정체·마진 되돌림</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>강재(후판)가격</strong></td><td class="txt">원가 변동으로 마진 스윙 — 고정가 계약 시 특히</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>글로벌 풍력 정책 후퇴</strong></td><td class="txt">미·유럽 정책 둔화 시 발주 축소 — 구조 수요 훼손</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 12,500~13,500 눌림에서 분할(순자산 근접·마진 개선 베팅). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 매각 노이즈 해소 or 대만·유럽 대형 하부구조물 수주 공시 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 2Q26 OPM 10%대 지속 확인·수주잔고 유지.</li>
+    <li><strong>축소:</strong> OPM 8% 하회 / 매각 무산·재점화 / 풍력 프로젝트 2분기 연속 이연.</li>
+    <li><strong>차익:</strong> 24,000+ 접근(애널 TP권) 시 부분 차익.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">해상풍력 하부구조물 신규 수주</td><td class="txt">백로그·미래 매출·마진의 바닥</td><td class="txt">2분기 연속 공백</td></tr>
+      <tr><td class="txt">수주잔고(총·풍력)</td><td class="txt">이익 지속성</td><td class="txt">1.24조 → 소진 반전</td></tr>
+      <tr><td class="txt">전사 OPM(분기)</td><td class="txt">믹스·마진 체력</td><td class="txt">10% → 8% 하회</td></tr>
+      <tr><td class="txt">SK에코 지분 매각 진행</td><td class="txt">멀티플 디스카운트 해소</td><td class="txt">무산·재협상 노이즈</td></tr>
+      <tr><td class="txt">기관 수급(사모·연기금)</td><td class="txt">저점 유입 지속성</td><td class="txt">순매도 전환</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">상시</td><td class="txt">SK에코플랜트 지분 매각 노이즈 해소</td><td class="txt"><span class="tag b">핵심 트리거(멀티플)</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">대만·유럽·한국 대형 하부구조물 수주</td><td class="txt"><span class="tag b">핵심 상방</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(OPM 10%대 지속 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">2026년 말</td><td class="txt">고성 부유식 전용설비 완공·가동</td><td class="txt"><span class="tag b">가시성(2027+)</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "매출이 줄어도 OPM이 6.2→10.3%로 뛰고 수주잔고 78%가 고마진 풍력인 하부구조물 리더가, SK그룹 지분 매각 노이즈와 풍력 지연 우려에 PBR 1.1x·순자산까지 눌렸다. 그 값은 12,500~13,500에 사서 노이즈 해소와 대형 수주를 기다린다."</strong><br>어떻게 맞나: 매각 노이즈 해소 or 대만·유럽 대형 수주 하나만 켜져도 애널 TP 25k 방향. 어떻게 틀리나: 매각 재점화 + 풍력 지연으로 백로그가 소진되고 OPM이 8% 아래로 내려가면 틀린다(축소). 한 단어: <em>"노이즈 디스카운트"</em>. 남는 것: <strong>"성장이 아니라 노이즈로 눌린 고마진 재편주."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 15,000</span><span class="pill">매집밴드 12,500~13,500</span><span class="pill">Bull 24,000 / Bear 9,000</span><span class="pill">EV +15%</span><span class="pill">thesis break: 매각 재점화·풍력 지연·OPM 8% 하회</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기. 전력기기/EPC 렌즈(수주잔고·백로그).<br>
+    데이터 계보: 네이버 모바일증권 API(2026-07-22 · 현재가 14,430·시총 9,016억·추정PER 20x·PBR 1.09·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 31,600·저점 12,920@7/14) · 1Q26 매출 1,746억(−32.1%)·영업익 169억(+52.7%)·순익 98.6억(+129.9%)·OPM 9.7%(4Q25 7.9%) = 디지털투데이·비즈니스포스트·한국경제 26.05 · 수주잔고 1조2,385억(해상풍력 9,702억)·대만 펭미아오1 재킷(97m·2,700t·15MW 베스타스)·약 2GW 실적·고성 부유식설비(2026 완공·연 40기) = 경남신문·핀포인트뉴스·워크투데이 · 매각(디오션 컨소시엄 우협·지분 36.98%·4,000억대 중후반·지자체 반대·지방선거 지연) = 블로터·파이낸셜뉴스·네이트 · 목표가 25,000·"매각 노이즈 해소 이후 빛날 본업" = 미래에셋·삼성증권 Corp day 리포트 · 경쟁(Sif·GS엔텍·씨에스윈드·세아제강) = FETV·비즈니스포스트 · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·수주·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>
