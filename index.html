@@ -1276,7 +1276,7 @@ function rsSecRender(){
   const S=RSSEC.sectors,bd=RSSEC.base_dt||'';
   const dt=bd.length>=8?`${bd.slice(0,4)}.${bd.slice(4,6)}.${bd.slice(6,8)}`:bd;
   const cap=v=>v.toLocaleString('ko-KR',{maximumFractionDigits:1})+'조';
-  const chg=v=>`<span style="color:${v>=0?'#2ec27e':'#f04452'}">${v>=0?'+':''}${v.toFixed(2)}%</span>`;
+  const chg=v=>`<span class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(2)}%</span>`;
   el.innerHTML=`
   <div class="ptitle" style="font-size:16px;margin:2px 0 4px">섹터 로테이션 <span style="font-size:12px;font-weight:600;color:var(--dim2)">시장 대비 상대강도(RS)로 보는 섹터 로테이션</span></div>
   <div class="rgrid2" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
@@ -1287,13 +1287,13 @@ function rsSecRender(){
   <div class="rcard" style="margin-bottom:14px">
     <h3 style="font-size:13.5px;margin-bottom:2px">RS 맵 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">크기=시총 · 색=5일 등락 · 가로=장기RS(60일) · 세로=단기RS(10일)</span></h3>
     <div style="position:relative"><canvas id="rsMapCv" style="width:100%"></canvas></div>
-    <div class="clegend" style="margin-top:4px"><i style="background:#2ec27e"></i>5일 상승&nbsp;&nbsp;<i style="background:#f04452"></i>5일 하락&nbsp;&nbsp;<span style="color:var(--dim2)">사분면: 부상(좌상) · 주도(우상) · 소외(좌하) · 쇠퇴(우하)</span></div>
+    <div class="clegend" style="margin-top:4px"><i style="background:var(--up)"></i>5일 상승&nbsp;&nbsp;<i style="background:var(--down)"></i>5일 하락&nbsp;&nbsp;<span style="color:var(--dim2)">사분면: 부상(좌상) · 주도(우상) · 소외(좌하) · 쇠퇴(우하)</span></div>
   </div>
   <div class="rcard" style="margin-bottom:16px">
     <h3 style="font-size:13.5px;margin-bottom:8px">산업(섹터) 구성 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">시총순</span></h3>
     <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">섹터</th><th>강도</th><th>테마 수</th><th>섹터 시총</th><th>상대 비중</th><th>5일 등락</th><th>장기 RS</th><th>단기 RS</th></tr></thead><tbody>
     ${S.map(r=>`<tr><td style="text-align:left;font-weight:700">${esc(r.name)}</td>
-      <td><span style="font-size:10.5px;color:${r.strong?'#2ec27e':'#e0a457'}">●</span> ${r.strong?'강세':'약세'}</td>
+      <td><span style="font-size:10.5px;color:${r.strong?'#e0a457':'var(--dim2)'}">●</span> ${r.strong?'강세':'약세'}</td>
       <td>${r.nth}개</td><td>${cap(r.cap)}</td><td>${r.w.toFixed(1)}%</td><td>${chg(r.chg5)}</td>
       <td><b style="color:${r.rs_long>=50?'var(--accent)':'var(--dim2)'}">${r.rs_long}</b></td>
       <td>${r.rs_short}</td></tr>`).join('')}
@@ -1305,47 +1305,51 @@ function rsSecRender(){
 let rsMapGeo=null;
 function drawRsMap(cv,S){
   if(!cv)return;
-  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||900,H=Math.max(360,Math.min(560,W*0.52));
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||900,H=Math.max(400,Math.min(580,W*0.56));
   cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';
   const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
   const cs=getComputedStyle(document.documentElement),V=n=>cs.getPropertyValue(n).trim();
-  const P={l:44,r:16,t:14,b:30},IW=W-P.l-P.r,IH=H-P.t-P.b;
-  const px=v=>P.l+IW*v/100, py=v=>P.t+IH*(1-v/100);
-  // 사분면 배경 + 라벨
-  x.fillStyle=V('--faint');x.globalAlpha=.5;
-  x.font='700 15px Pretendard';x.textAlign='center';
-  const q=[['부상',25,90,'미래 주도 후보'],['주도',75,90,'현재 시장 주도'],['소외',25,12,'관망'],['쇠퇴',75,12,'힘 빠지는 중']];
-  q.forEach(([t,qx,qy,sub])=>{x.fillText(t,px(qx),py(qy));x.font='400 10.5px Pretendard';x.fillText(sub,px(qx),py(qy)+15);x.font='700 15px Pretendard';});
+  const UP=V('--up')||'#f04452',DN=V('--down')||'#3485fa';                 // 상승 빨강 / 하락 파랑
+  const P={l:48,r:20,t:16,b:34},IW=W-P.l-P.r,IH=H-P.t-P.b,PAD=6;           // 가장자리 인셋
+  const sc=v=>PAD+(100-2*PAD)*Math.max(0,Math.min(100,v))/100;
+  const px=v=>P.l+IW*sc(v)/100, py=v=>P.t+IH*(1-sc(v)/100);
+  // 사분면 라벨 (코너, 아주 옅게 → 버블과 겹쳐도 방해 안 되게)
+  x.textAlign='center';x.globalAlpha=.20;x.fillStyle=V('--faint');
+  [['부상','미래 주도 후보',17,90],['주도','현재 시장 주도',83,90],['소외','관망',17,10],['쇠퇴','힘 빠지는 중',83,10]]
+    .forEach(([t,sub,qx,qy])=>{x.font='800 14px Pretendard';x.fillText(t,px(qx),py(qy));x.font='500 10px Pretendard';x.fillText(sub,px(qx),py(qy)+14);});
   x.globalAlpha=1;
-  // 중앙 십자선
+  // 십자선(50 기준)
   x.strokeStyle=V('--line');x.lineWidth=1;x.setLineDash([4,4]);
   x.beginPath();x.moveTo(px(50),P.t);x.lineTo(px(50),P.t+IH);x.moveTo(P.l,py(50));x.lineTo(P.l+IW,py(50));x.stroke();x.setLineDash([]);
-  // 축 라벨
+  // 축
   x.fillStyle=V('--dim2');x.font='10px Pretendard';x.textAlign='center';
-  x.fillText('장기 RS (60거래일) →',W/2,H-8);
-  x.save();x.translate(12,H/2);x.rotate(-Math.PI/2);x.fillText('단기 RS (10거래일) →',0,0);x.restore();
-  // 버블
+  x.fillText('장기 RS (60거래일) →',W/2,H-9);
+  x.save();x.translate(14,H/2);x.rotate(-Math.PI/2);x.fillText('단기 RS (10거래일) →',0,0);x.restore();
+  // 버블: 완만한 스케일 + 상한 축소(51% 반도체가 코너를 다 덮지 않도록)
   const cmax=Math.max(...S.map(r=>r.cap),1);
-  const rad=c=>Math.max(5,Math.sqrt(c/cmax)*44);
+  const rad=c=>7+Math.pow(c/cmax,0.42)*18;                                 // 최대 ~25px
   rsMapGeo={pts:S.map(r=>({r,cx:px(r.rs_long),cy:py(r.rs_short),rr:rad(r.cap)}))};
-  // 큰 버블 먼저(뒤에 깔리게)
-  [...rsMapGeo.pts].sort((a,b)=>b.rr-a.rr).forEach(p=>{
-    const up=p.r.chg5>=0;x.beginPath();x.arc(p.cx,p.cy,p.rr,0,7);
-    x.fillStyle=up?'rgba(46,194,126,.62)':'rgba(240,68,82,.62)';x.fill();
-    x.lineWidth=1;x.strokeStyle=up?'#2ec27e':'#f04452';x.stroke();});
-  // 라벨: 큰 버블은 내부 중앙, 작은 버블은 위쪽
-  x.font='600 11px Pretendard';x.textAlign='center';
-  rsMapGeo.pts.filter(p=>p.rr>=9).forEach(p=>{
-    const nm=p.r.name.length>9?p.r.name.slice(0,8)+'…':p.r.name;
-    if(p.rr>=24){x.fillStyle='rgba(255,255,255,.92)';x.fillText(nm,p.cx,p.cy+3.5);}
-    else{x.fillStyle=V('--text');x.fillText(nm,p.cx,p.cy-p.rr-4);}});
+  const order=[...rsMapGeo.pts].sort((a,b)=>b.rr-a.rr);                    // 큰 것 먼저(뒤에)
+  order.forEach(p=>{const up=p.r.chg5>=0;x.beginPath();x.arc(p.cx,p.cy,p.rr,0,7);
+    x.fillStyle=up?'rgba(240,68,82,.74)':'rgba(52,133,250,.74)';x.fill();
+    x.lineWidth=1.2;x.strokeStyle=up?UP:DN;x.stroke();});
+  // 라벨: 큰 버블 우선, 위/아래/옆 후보 중 안 겹치는 곳에만(겹치면 생략 → 호버로)
+  x.font='600 11px Pretendard';
+  const placed=[];const fits=b=>!placed.some(o=>!(b[2]<o[0]||b[0]>o[2]||b[3]<o[1]||b[1]>o[3]));
+  order.forEach(p=>{if(p.rr<8.5)return;
+    const nm=p.r.name.length>8?p.r.name.slice(0,7)+'…':p.r.name;
+    const w=x.measureText(nm).width;
+    for(const [lx,ly] of [[p.cx,p.cy-p.rr-6],[p.cx,p.cy+p.rr+13],[p.cx+p.rr+w/2+5,p.cy+4],[p.cx-p.rr-w/2-5,p.cy+4]]){
+      const b=[lx-w/2-2,ly-11,lx+w/2+2,ly+3];
+      if(lx-w/2<P.l-2||lx+w/2>W-P.r+2)continue;
+      if(fits(b)){placed.push(b);x.textAlign='center';x.fillStyle=V('--text');x.fillText(nm,lx,ly);break;}}});
   cv.onmousemove=e=>{if(!rsMapGeo)return;const rect=cv.getBoundingClientRect();
     const mx=e.clientX-rect.left,my=e.clientY-rect.top;
     let hit=null;for(const p of rsMapGeo.pts){if((mx-p.cx)**2+(my-p.cy)**2<=p.rr*p.rr){if(!hit||p.rr<hit.rr)hit=p;}}
     const tt=document.getElementById('rstt')||(()=>{const d=document.createElement('div');d.id='rstt';
       d.style.cssText='position:fixed;z-index:60;display:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:11.5px;line-height:1.5;color:var(--text);pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.4)';document.body.appendChild(d);return d;})();
     if(!hit){tt.style.display='none';return;}
-    const r=hit.r;tt.innerHTML=`<b>${esc(r.name)}</b> ${r.strong?'<span style="color:#2ec27e">강세</span>':'<span style="color:#e0a457">약세</span>'}<br>시총 ${r.cap.toLocaleString('ko-KR',{maximumFractionDigits:1})}조 · 비중 ${r.w.toFixed(1)}%<br>장기RS <b>${r.rs_long}</b> · 단기RS <b>${r.rs_short}</b> · 5일 <span style="color:${r.chg5>=0?'#2ec27e':'#f04452'}">${r.chg5>=0?'+':''}${r.chg5.toFixed(2)}%</span>`;
+    const r=hit.r;tt.innerHTML=`<b>${esc(r.name)}</b> ${r.strong?'<span style="color:#e0a457">강세</span>':'<span style="color:var(--dim2)">약세</span>'}<br>시총 ${r.cap.toLocaleString('ko-KR',{maximumFractionDigits:1})}조 · 비중 ${r.w.toFixed(1)}%<br>장기RS <b>${r.rs_long}</b> · 단기RS <b>${r.rs_short}</b> · 5일 <span class="${r.chg5>=0?'up':'down'}">${r.chg5>=0?'+':''}${r.chg5.toFixed(2)}%</span>`;
     tt.style.display='block';tt.style.left=Math.min(e.clientX+14,innerWidth-220)+'px';tt.style.top=(e.clientY+14)+'px';};
   cv.onmouseleave=()=>{const tt=document.getElementById('rstt');if(tt)tt.style.display='none';};
 }
