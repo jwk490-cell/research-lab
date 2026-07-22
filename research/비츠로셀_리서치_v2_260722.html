@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비츠로셀 082920 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">082920</span>
+    <span class="nm">비츠로셀 <small>Vitzrocell · 리튬일차전지 (KOSDAQ) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩29,250</span>
+    <span>시총 ₩1.33조 · 26E PER 17x</span>
+    <span class="rating">비중확대 관심 · 매집 25,000~28,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PER밴드</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩29,250 (+0.9%)</span>
+  <span><b>52주</b> 12,591 ~ 67,800</span>
+  <span><b>외인</b> 31.9%</span>
+  <span><b>OPM 26E</b> 30.0%</span>
+  <span><b>ROE 26E</b> 21.3%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">고마진이 취미가 아니라 체질인 회사 — 5배 급등의 거품은 빠졌고, 남은 건 30% 마진과 세 개의 성장 엔진이다.</h1>
+  <p class="lead">비츠로셀은 한 번 쓰고 버리는 <em>리튬일차전지</em>의 글로벌 top-3다. 그런데 재무제표를 보면 소모품 회사가 아니라 <strong>특수 소재 독점기업</strong>처럼 생겼다 — 영업이익률 30%<span class="src">28.5%(25A)→30.0%(26E), OPM 3년 연속 상승<span class="tip">네이버 연간재무 · IM증권 26.01.12</span></span>, ROE 21%, 부채비율 12%. 스마트그리드(계량기)·오일가스 시추(고온전지)·방산(앰플·열전지) 세 시장 모두 <strong>10~20년 장기 인증</strong>이 진입장벽이라 한 번 들어가면 안 빠진다. 주가는 12,843원에서 64,100원까지 5배 갔다가 −54% 되돌린 자리(29,250원)로, <strong>테마 거품은 빠지고 실적·밸류만 남았다.</strong></p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(분할매집) · 매집밴드 25,000~28,000원 · Base 34,000 / Bull 50,000 / Bear 18,000 · 확률가중 EV ≈ 35,600원(+22%).</strong> 이 배치(수급 상위 18종목)에서 <em>재무 품질이 가장 높은 축</em>이면서 밸류(포워드 PER 17x, PEG&lt;0.7)가 성장률 대비 싸다. 급등 후 −54% 조정으로 손익비가 열렸다. thesis break: 미국 시추 급감·유가 붕괴 / 방산 수주 공백 / OPM 25% 하회.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 매출·이익·마진이 3년 연속 동반 상승</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 증권 컨센(네이버 추정PER 공란 → IM·신한·리딩 컨센 사용). 유통업·건설과 달리 <strong>규모가 커질수록 마진이 좋아진다</strong> — 고부가(고온전지·방산) 믹스 확대의 힘.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">1,762</td><td class="num">377</td><td class="num">21.4%</td><td class="num">361</td><td class="num">826</td><td class="num">35x</td><td class="num">17.3%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">2,108</td><td class="num">519</td><td class="num">24.6%</td><td class="num">513</td><td class="num">1,136</td><td class="num">26x</td><td class="num">19.9%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">2,431</td><td class="num">693</td><td class="num">28.5%</td><td class="num">569</td><td class="num">1,256</td><td class="num">23x</td><td class="num">18.6%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">3,060</td><td class="num">916</td><td class="num">30.0%</td><td class="num">763 <span class="est">E</span></td><td class="num">1,700</td><td class="num">17x</td><td class="num">21.3%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 29,250 ÷ 해당연도 EPS. CAGR(23→26E): 매출 +20%, 영업익 +34%, 순익 +28%. 1Q26 매출 683억(+26.6%)·영업익 203억(+34.5%)으로 연간 컨센 궤도.</p>
+
+  <div class="chart"><div class="ct">손익 궤적 — 매출·영업익 (막대, 억원) + OPM (라인, %)</div><div class="cs">규모와 마진이 함께 올라가는 드문 그림. 골드 라인(OPM)이 우상향한다.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- axes -->
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <!-- gridlines -->
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33" stroke-width="1"/>
+      <!-- 4 year groups. Revenue max 3060 -> scale 210px = 3060 => k=0.0686 -->
+      <!-- 2023 -->
+      <rect x="120" y="149.1" width="70" height="120.9" fill="#e78a5c" opacity="0.85"/>
+      <rect x="196" y="244.1" width="46" height="25.9" fill="#4bbf9a" opacity="0.9"/>
+      <text x="155" y="140" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">1,762</text>
+      <text x="219" y="236" text-anchor="middle" font-size="10.5" fill="#4bbf9a">377</text>
+      <text x="181" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <!-- 2024 -->
+      <rect x="345" y="125.4" width="70" height="144.6" fill="#e78a5c" opacity="0.85"/>
+      <rect x="421" y="234.4" width="46" height="35.6" fill="#4bbf9a" opacity="0.9"/>
+      <text x="380" y="116" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,108</text>
+      <text x="444" y="226" text-anchor="middle" font-size="10.5" fill="#4bbf9a">519</text>
+      <text x="406" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <!-- 2025 -->
+      <rect x="570" y="103.2" width="70" height="166.8" fill="#e78a5c" opacity="0.85"/>
+      <rect x="646" y="222.5" width="46" height="47.5" fill="#4bbf9a" opacity="0.9"/>
+      <text x="605" y="94" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,431</text>
+      <text x="669" y="214" text-anchor="middle" font-size="10.5" fill="#4bbf9a">693</text>
+      <text x="631" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <!-- 2026E -->
+      <rect x="795" y="60" width="70" height="210" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <rect x="871" y="207.2" width="46" height="62.8" fill="#4bbf9a" opacity="0.6" stroke="#4bbf9a" stroke-dasharray="4 3"/>
+      <text x="830" y="50" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">3,060</text>
+      <text x="894" y="199" text-anchor="middle" font-size="10.5" fill="#4bbf9a">916</text>
+      <text x="856" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 21.4,24.6,28.5,30.0 -> y = 270 - opm*7 -->
+      <polyline points="155,120.2 380,97.8 605,70.5 830,60" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="155" cy="120.2" r="4" fill="#cba24a"/><circle cx="380" cy="97.8" r="4" fill="#cba24a"/><circle cx="605" cy="70.5" r="4" fill="#cba24a"/><circle cx="830" cy="60" r="4" fill="#cba24a"/>
+      <text x="155" y="112" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">21.4%</text>
+      <text x="900" y="55" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">30.0%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>매출</span><span><i style="background:#4bbf9a"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 재무 품질 = 배치 최상위</h3><p style="margin:6px 0">OPM 30%·ROE 21%·부채비율 12%. 이 수급 배치 18종목 중 <strong>이익의 질과 재무 체력이 가장 좋다</strong>. razor형 소모품(계량기·시추·군용은 교체 수요)이라 반복성도 있다.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② 세 개의 성장 엔진</h3><p style="margin:6px 0">고온전지(미국 시추) 75→716억E, 방산(앰플·열전지) 16→476억E, 스마트그리드(Badger 3년 436억). <strong>한 축이 둔화해도 나머지가 받친다</strong>는 게 단일 테마주와의 결정적 차이.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 밸류·손익비</h3><p style="margin:6px 0">포워드 PER 17x에 성장률 +26% → <strong>PEG&lt;0.7</strong>. 신한 TP 70,000·애널 평균 50,667. 5배 급등 후 −54% 조정으로 진입 여지가 열렸다. EV +22%, Bear −38%.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: A− (가격과 분리)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 10~20년 장기 인증·글로벌 top-3·극한환경 신뢰성. 진짜 해자(아래 3버킷 참조).</li>
+        <li><strong>현금창출:</strong> OPM 30%·저부채·배당(260원). 자기자본으로 성장.</li>
+        <li><strong>사이클 노출:</strong> 고온전지가 미국 시추/유가에 종속 — 이게 A를 A−로 깎는 유일한 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 고온전지 미국 시추 확대 지속 + 방산 비중 30% 도달 + 마진 30% 유지.</li>
+        <li><strong>갈아타기:</strong> 방산 순수 노출을 원하면 한화에어로·LIG넥스원, 미국 시추 순수 노출이면 오일서비스로. 비츠로셀은 '고마진 니치 복합'.</li>
+        <li><strong>즉시매도:</strong> OPM 25% 하회(믹스 악화) / 유가 급락+시추 급감 / 방산 수주 공백 2분기 연속.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 이 배치 안에서 누구를</h2>
+  <p>수급 상위 18종목은 대부분 4~7월 급등 후 큰 조정을 거친 눌림 국면이다. 그중 <strong>실적·밸류·재무가 동시에 받쳐 손익비가 살아있는</strong> 소수 그룹(비츠로셀·디케이티)에 비츠로셀이 든다. 반면 레인보우로보틱스(PSR 155x)·로보티즈(PSR 50x)·가온전선(OPM 3.6%에 PER 49x)은 밸류가 미래를 통째로 당겨써 관망이 답이다. 비츠로셀의 상대 매력 = <em>"테마가 아니라 숫자로 사는 30% 마진"</em>.</p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"극한 환경(고온 시추공·군용 유도무기·스마트 계량기)에서 <strong>10년 이상 교체 없이 작동해야 하는 리튬일차전지</strong>를 만들어, 신뢰성이 곧 진입장벽인 시장에 파는 고마진 니치 배터리 리더."</p>
+  <div class="note"><div class="h">일차전지 vs 이차전지 — 헷갈리지 말 것</div>비츠로셀은 2차전지(EV·ESS, 충전형)가 아니라 <strong>1차전지(한 번 쓰고 버리는 고성능 전지)</strong>다. 경쟁 상대는 삼성SDI·LG엔솔이 아니라 프랑스 Saft·미국 Ultralife. 시장은 작지만(니치) 대체가 어려워 마진이 높다.</div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">25→26E</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>스마트그리드</strong></td><td class="txt">계량기·IoT용 장수명 전지(Bobbin型 다수)</td><td class="num">비중 ~56%</td><td class="txt">미터 교체주기 × 계약(Badger 436억/3년)</td><td class="txt">안정·반복, 마진 중상</td></tr>
+      <tr><td class="txt"><strong>고온전지</strong></td><td class="txt">석유·가스 시추공(고온·고압)</td><td class="num">500→716<br><span class="up">+43%</span></td><td class="txt">미국 리그 카운트 × 시추심도 × ASP</td><td class="txt">고마진·미국 시추 사이클</td></tr>
+      <tr class="hl"><td class="txt"><strong>방산(앰플·열전지)</strong></td><td class="txt">유도무기·군용 즉응 전원</td><td class="num">360→476<br><span class="up">+29%</span></td><td class="txt">방산 예산 × 유도무기 양산 × 수주</td><td class="txt">최고마진·지정학 구조수요</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">2025년 3Q 누적 리튬일차전지 제품 구성: Bobbin型 73.6%·Wound型 4.7%·고온전지 19.8%·기타(앰플 등) — 리튬일차전지가 전체 매출의 91.7%.<span class="src">2025 3Q 사업보고서 · IR<span class="tip">비중은 제품군별, 세그먼트 시장과 일부 교차</span></span></p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원) — 고부가 믹스가 커진다</div><div class="cs">스마트그리드(안정)는 유지, 고온전지·방산(고마진)이 빠르게 커지며 마진을 끌어올린다. 26E는 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale: max total 3060 -> 200px, k=0.0654 -->
+      <!-- 2024: 일반1420, 고온329, 방산359 (total2108) -->
+      <g>
+        <rect x="200" y="157.1" width="150" height="92.9" fill="#5a6472"/>
+        <rect x="200" y="135.6" width="150" height="21.5" fill="#e78a5c" opacity="0.9"/>
+        <rect x="200" y="112.1" width="150" height="23.5" fill="#cba24a"/>
+        <text x="275" y="103" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,108</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025: 일반1571, 고온500, 방산360 (2431) -->
+      <g>
+        <rect x="465" y="147.3" width="150" height="102.7" fill="#5a6472"/>
+        <rect x="465" y="114.6" width="150" height="32.7" fill="#e78a5c" opacity="0.9"/>
+        <rect x="465" y="91.1" width="150" height="23.5" fill="#cba24a"/>
+        <text x="540" y="82" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">2,431</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E: 일반1868, 고온716, 방산476 (3060) -->
+      <g>
+        <rect x="730" y="127.8" width="150" height="122.2" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="80.9" width="150" height="46.8" fill="#e78a5c" opacity="0.65"/>
+        <rect x="730" y="50" width="150" height="31.1" fill="#cba24a" opacity="0.7"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">3,060</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>스마트그리드·일반</span><span><i style="background:#e78a5c"></i>고온전지(시추)</span><span><i style="background:#cba24a"></i>방산(앰플·열전지)</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(계량기·시추·방산)의 눈</h3><p style="margin:6px 0">"이 전지가 10년 뒤에도 작동해야 한다. 재인증 비용·리스크가 크니 검증된 공급사를 안 바꾼다." → 락인.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(Saft·Ultralife)의 눈</h3><p style="margin:6px 0">"비츠로셀은 한국·아시아 기반에 미국(시추·방산) 침투 중. 가격·납기로 점유를 뺏긴다." → 글로벌 3파전.</p></div>
+    <div class="card"><h3 style="margin-top:0">납품업체(소재)의 눈</h3><p style="margin:6px 0">"리튬·전해질 특수소재. 물량 늘면 우리도 큰다. 다만 극한 스펙이라 아무나 못 댄다." → 공급망 좁음.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진의 눈</h3><p style="margin:6px 0">"미국 시추·방산이 구조 성장. Innova 인수로 고온전지 팩까지 수직화. 마진 지키며 캐파 확장." → 질적 성장.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">10~20년 장기 인증</h3><p style="margin:0;font-size:12.5px">계량기·시추·방산 모두 수년~수십년 신뢰성 인증이 필수. 신규 진입에 시간·레퍼런스 장벽. 현금화: 지금.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">리튬 화학 기술</h3><p style="margin:0;font-size:12.5px">Li-SOCl2·CFx 등 화학은 Saft·Ultralife도 보유. 차별점은 극한 스펙·팩 통합(Innova). 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">2차전지 신사업</h3><p style="margin:0;font-size:12.5px">차세대 이차전지 소재 진출 언급. 아직 매출 기여 미미 — 옵션으로만. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — 비츠로그룹 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조 이동 (2025 3Q 기준)</div><div class="cs">비츠로테크(그룹 지주격)가 최대주주. 글로벌 기관(Fidelity·Swedbank)이 이례적으로 높은 지분 — 니치 글로벌 리더로 인정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- boxes -->
+      <rect x="60" y="40" width="180" height="52" rx="5" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="150" y="62" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">비츠로테크</text>
+      <text x="150" y="80" text-anchor="middle" font-size="10.5" fill="#828b98">그룹 지주격 · 34.22%</text>
+
+      <rect x="60" y="120" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="140" text-anchor="middle" font-size="11.5" fill="#eaecef">특수관계인 등</text>
+      <text x="150" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">그룹 합계 ~37.79%</text>
+
+      <rect x="60" y="200" width="180" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="150" y="220" text-anchor="middle" font-size="11" fill="#eaecef">Fidelity 9.15%</text>
+      <text x="150" y="236" text-anchor="middle" font-size="11" fill="#eaecef">Swedbank Robur 8.41%</text>
+
+      <!-- center: 비츠로셀 -->
+      <rect x="430" y="110" width="200" height="72" rx="6" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="530" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">비츠로셀 (082920)</text>
+      <text x="530" y="162" text-anchor="middle" font-size="11" fill="#828b98">리튬일차전지 · 시총 1.33조</text>
+
+      <!-- Innova subsidiary -->
+      <rect x="820" y="110" width="200" height="72" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="920" y="138" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">Innova Power (캐나다)</text>
+      <text x="920" y="156" text-anchor="middle" font-size="10.5" fill="#828b98">고온전지 팩 · 2025.10 인수</text>
+      <text x="920" y="172" text-anchor="middle" font-size="10.5" fill="#4bbf9a">수직통합 · 연 20억+ 추가</text>
+
+      <!-- arrows -->
+      <line x1="240" y1="66" x2="430" y2="135" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="240" y1="143" x2="430" y2="146" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="240" y1="223" x2="430" y2="158" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="630" y1="146" x2="820" y2="146" stroke="#e78a5c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="335" y="92" text-anchor="middle" font-size="10" fill="#4bbf9a">지분 34.2%</text>
+      <text x="725" y="138" text-anchor="middle" font-size="10" fill="#e78a5c">100% 자회사</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>글로벌 기관 지분이 17%+</strong>(Fidelity+Swedbank)라는 건 니치 시장의 글로벌 리더십을 외부가 인정한다는 신호다. 반대로 그룹 지주(비츠로테크) 산하라 <em>계열 자본배치·내부거래</em>는 상시 점검 대상.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">고온전지(시추)</td><td class="txt">에너지 사이클 + 미국 정책</td><td class="txt">유가·리그카운트·트럼프 2.0 화석연료</td><td class="txt">중(사이클)</td></tr>
+      <tr><td class="txt">방산(앰플·열전지)</td><td class="txt"><strong>구조 수요</strong></td><td class="txt">지정학·방산예산·유도무기 양산</td><td class="txt">높음</td></tr>
+      <tr><td class="txt">스마트그리드</td><td class="txt">교체·인프라 수요</td><td class="txt">계량기 교체주기·장기계약</td><td class="txt">높음(반복)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>세 엔진 중 <strong>둘(방산·스마트그리드)은 구조·반복 수요</strong>라 하방을 받치고, 최대 성장축(고온전지)만 미국 시추 사이클에 종속된다. 즉 <em>다운사이드는 방어되고 업사이드는 시추가 얹는</em> 비대칭 구조.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 마진 30%의 정체</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">GPM 추정</div><div class="val">~40%<span class="u">대</span></div><div class="sub">극한 스펙·인증 프리미엄</div></div>
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">30.0<span class="u">%</span></div><div class="sub">고부가 믹스 확대</div></div>
+    <div class="kpi"><div class="lab">부채비율</div><div class="val">12<span class="u">%</span></div><div class="sub">자기자본 성장</div></div>
+  </div>
+  <p>일차전지는 소모품이지만 <strong>범용이 아니라 인증품</strong>이라 가격결정력이 있다. 계량기는 교체주기(razor-razorblade), 시추·방산은 미션크리티컬이라 가격 저항이 낮다. 규모가 커질수록 고온전지·방산(고마진) 비중이 늘어 <em>믹스가 마진을 밀어올리는</em> 선순환.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +0.9억 · 연기금 +10.1억 · 투신 +4.8억</strong>(합산 시총대비 +0.12%). 외인소진율 <strong>31.9%</strong>로 이 배치 최고 수준 — 글로벌 니치·미국 매출·방산 매력이 외인을 끌어들인다. 5배 급등 후 −54% 조정 구간에서 기관·외인이 퀄리티주를 담는 전형적 눌림 유입.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">방산·고온전지 성장 궤적 — 두 로켓</h2>
+  <div class="chart"><div class="ct">방산(앰플·열전지) & 고온전지 매출 (억원)</div><div class="cs">방산 16→476억(21→26E), 고온전지 75→716억(20→26E). 둘 다 지수적으로 커지며 믹스를 고부가로 이동.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="180" x2="1030" y2="180" stroke="#262a33"/><line x1="60" y1="110" x2="1030" y2="110" stroke="#262a33"/>
+      <!-- scale max 716 -> 200px k=0.279 -->
+      <!-- 방산 points: 21:16,22:103,23:134,24:359,25:360,26E:476  x from 120..930 step ~162 -->
+      <polyline points="120,245.5 282,221.3 444,212.6 606,150.1 768,149.6 930,117.2" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="120" cy="245.5" r="3.5" fill="#cba24a"/><circle cx="282" cy="221.3" r="3.5" fill="#cba24a"/><circle cx="444" cy="212.6" r="3.5" fill="#cba24a"/><circle cx="606" cy="150.1" r="3.5" fill="#cba24a"/><circle cx="768" cy="149.6" r="3.5" fill="#cba24a"/><circle cx="930" cy="117.2" r="4.5" fill="#cba24a"/>
+      <text x="930" y="108" text-anchor="middle" font-size="10.5" fill="#cba24a" font-weight="700">476E</text>
+      <text x="120" y="238" text-anchor="middle" font-size="9.5" fill="#828b98">16</text>
+      <!-- 고온전지: 20:75(x=120 shift?), use 24:329,25:500,26E:716 at x=606,768,930 ; earlier 20:75 x=120 -->
+      <polyline points="120,229.1 444,236 606,158.2 768,110.5 930,50" fill="none" stroke="#e78a5c" stroke-width="2.5"/>
+      <circle cx="120" cy="229.1" r="3.5" fill="#e78a5c"/><circle cx="606" cy="158.2" r="3.5" fill="#e78a5c"/><circle cx="768" cy="110.5" r="3.5" fill="#e78a5c"/><circle cx="930" cy="50" r="4.5" fill="#e78a5c"/>
+      <text x="930" y="42" text-anchor="middle" font-size="10.5" fill="#e78a5c" font-weight="700">716E</text>
+      <!-- x labels -->
+      <text x="120" y="270" text-anchor="middle" font-size="10" fill="#828b98">'20~21</text>
+      <text x="444" y="270" text-anchor="middle" font-size="10" fill="#828b98">'23</text>
+      <text x="606" y="270" text-anchor="middle" font-size="10" fill="#828b98">'24</text>
+      <text x="768" y="270" text-anchor="middle" font-size="10" fill="#828b98">'25</text>
+      <text x="930" y="270" text-anchor="middle" font-size="10" fill="#828b98">'26E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>고온전지(시추)</span><span><i style="background:#cba24a"></i>방산(앰플·열전지)</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 두 엔진 동시 점화</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="num">YoY</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">683억</td><td class="num up">+26.6%</td><td class="txt">전 부문 고른 성장</td></tr>
+      <tr><td class="txt">영업이익</td><td class="num">203억</td><td class="num up">+34.5%</td><td class="txt">OPM 29.7% — 레버리지</td></tr>
+      <tr><td class="txt">└ 고온전지</td><td class="num">172억</td><td class="num up">+95.5%</td><td class="txt">미국 시추 + Innova 합병효과</td></tr>
+      <tr><td class="txt">└ 앰플·열전지</td><td class="num">98억</td><td class="num up">+22.6%</td><td class="txt">방산 즉응 전원</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 높다, 그리고 지속 가능하다</h3>
+  <p>유통·건설·전선처럼 순익이 영업익보다 튀는 '노이즈'가 없다. 순익(569억, 25A)이 영업익(693억)보다 <strong>낮은 정상 구조</strong>(이자·세금 차감). 즉 <em>영업으로 번 이익이 곧 순익</em>인 깨끗한 손익 — 이 배치에서 성호전자(순익>>영업익 노이즈)와 정반대 극.</p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PER 밴드</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주봉 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">12,843원 → 64,100원(5월, 5배) → 29,250원(−54%). 상승은 실적+테마 동반, 조정은 급등 차익. 지금은 실적선으로 회귀.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale: price 12000..66000 -> y 250..40. k=(250-40)/(66000-12000)=0.003889 ; y=250-(p-12000)*0.003889 -->
+      <!-- gridlines at 20k,40k,60k -->
+      <line x1="55" y1="218.9" x2="1035" y2="218.9" stroke="#20242c"/><text x="48" y="222" text-anchor="end" font-size="9" fill="#5a6472">20k</text>
+      <line x1="55" y1="141.1" x2="1035" y2="141.1" stroke="#20242c"/><text x="48" y="144" text-anchor="end" font-size="9" fill="#5a6472">40k</text>
+      <line x1="55" y1="63.3" x2="1035" y2="63.3" stroke="#20242c"/><text x="48" y="66" text-anchor="end" font-size="9" fill="#5a6472">60k</text>
+      <!-- path: approx monthly closes 15443,13853,14887,13550,16528,17620,21050,19200,38500,54900,52000,40500,29000,29250 x 80..980 -->
+      <polyline points="80,236.6 150,242.8 220,238.8 290,244 360,232.4 430,228.1 500,214.7 570,221.9 640,147 710,83.3 780,94.6 850,139.4 920,184.1 980,183.2" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="500" cy="214.7" r="4" fill="#4bbf9a"/><text x="500" y="205" text-anchor="middle" font-size="9" fill="#4bbf9a">IM리포트</text>
+      <circle cx="710" cy="83.3" r="4" fill="#f0525f"/><text x="710" y="74" text-anchor="middle" font-size="9" fill="#f0525f">64,100 고점</text>
+      <circle cx="640" cy="147" r="4" fill="#cba24a"/><text x="640" y="138" text-anchor="middle" font-size="9" fill="#cba24a">1Q26 서프</text>
+      <circle cx="980" cy="183.2" r="4.5" fill="#e78a5c"/><text x="980" y="200" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">29,250</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="640" y="272" font-size="9.5" fill="#828b98">'26.05</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 절반은 실적</h2>
+  <p>단일 테마주(레인보우·성호전자)와 달리, 비츠로셀의 5배 상승은 <strong>실적(3년 연속 성장·1Q +34%)과 멀티플(트럼프 2.0 시추·방산 테마)이 반반</strong>이었다. −54% 조정은 멀티플 거품의 정상화이지 실적 훼손이 아니다. 현재 포워드 PER 17x는 성장률(+26%) 대비 <em>PEG&lt;0.7</em>로, 실적선으로 되돌아온 자리.</p>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">테마 랠리로 코스닥을 크게 아웃퍼폼했다가 되돌림. 절대 밸류는 매력 구간 진입.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="55" y1="120" x2="1035" y2="120" stroke="#20242c"/><text x="48" y="123" text-anchor="end" font-size="9" fill="#5a6472">200</text>
+      <line x1="55" y1="160" x2="1035" y2="160" stroke="#20242c"/><text x="48" y="163" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <!-- 비츠로셀 rebase: start 100(=21050 jan) peak ~305(64100) now ~139(29250). y=200-(v-0)*0.4 with v index; use 100->160,305->78,139->144.4 -->
+      <polyline points="80,160 300,150 500,95 640,78 800,120 980,144" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="138" font-size="9.5" fill="#e78a5c" font-weight="700">비츠로셀 +39%</text>
+      <!-- KOSDAQ flat ~ +8% -->
+      <polyline points="80,160 300,158 500,154 640,150 800,152 980,153.6" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="167" font-size="9.5" fill="#828b98">코스닥 ~+6%</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">글로벌 리튬일차전지 3파전 — 그리고 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 대시 = 비츠로셀</div><div class="cs">방산·특수 배터리 peer 대비 비츠로셀 17x는 성장률(+26%)·마진(30%) 감안 시 저평가 영역.</div>
+    <svg viewBox="0 0 1080 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="150" y1="230" x2="1030" y2="230" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, scale 1x=32px from x=150; max ~22 -->
+      <!-- 비츠로셀 17 -->
+      <rect x="150" y="30" width="544" height="26" fill="#cba24a"/><text x="704" y="48" font-size="12" fill="#cba24a" font-weight="700">비츠로셀 17x</text><text x="145" y="48" text-anchor="end" font-size="11" fill="#eaecef">비츠로셀</text>
+      <!-- Ultralife 15 -->
+      <rect x="150" y="70" width="480" height="26" fill="#5a6472"/><text x="640" y="88" font-size="11" fill="#bfc5ce">15x</text><text x="145" y="88" text-anchor="end" font-size="11" fill="#bfc5ce">Ultralife(US)</text>
+      <!-- EVE 19 -->
+      <rect x="150" y="110" width="608" height="26" fill="#5a6472"/><text x="768" y="128" font-size="11" fill="#bfc5ce">19x</text><text x="145" y="128" text-anchor="end" font-size="11" fill="#bfc5ce">EVE(China)</text>
+      <!-- LIG넥스원 18 -->
+      <rect x="150" y="150" width="576" height="26" fill="#5a6472"/><text x="736" y="168" font-size="11" fill="#bfc5ce">18x</text><text x="145" y="168" text-anchor="end" font-size="11" fill="#bfc5ce">LIG넥스원(방산)</text>
+      <!-- 한화에어로 20 -->
+      <rect x="150" y="190" width="640" height="26" fill="#5a6472"/><text x="800" y="208" font-size="11" fill="#bfc5ce">20x</text><text x="145" y="208" text-anchor="end" font-size="11" fill="#bfc5ce">한화에어로</text>
+    </svg>
+  </div>
+  <p style="font-size:11.5px;color:var(--muted)">Saft는 TotalEnergies 자회사로 비상장. peer PER은 시점·소스에 따라 편차 — 방향성 참고용.</p>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">Saft (프랑스·TotalEnergies)</h3><p style="margin:6px 0;font-size:12.5px">일차전지 글로벌 선두. 유틸리티·항공·통신·방산 광범위. 대기업 자본·레퍼런스. 위협도 <strong>높음</strong>(품질·규모).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">Ultralife (미국·ULBI)</h3><p style="margin:6px 0;font-size:12.5px">Li-MnO2·CFx·SOCl2. 군용·미션크리티컬. 미국 방산 접점 강함. 위협도 <strong>중~높음</strong>(미국 방산 경쟁).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">EVE Energy (중국)</h3><p style="margin:6px 0;font-size:12.5px">가격 경쟁력·물량. 스마트그리드·IoT에서 저가 공세. 위협도 <strong>중</strong>(고스펙은 아직 열위).</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 국내 방산주</h3><p style="margin:6px 0;font-size:12.5px">한화에어로·LIG넥스원은 완제품. 비츠로셀은 그 안의 '전원 부품'. 경쟁이 아니라 <strong>밸류체인 동반</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">시추·방산·스마트그리드 다축 성장 지속, 2027 순익 ~1,000억</td><td class="num">2,200 <span class="est bull">27E</span></td><td class="num">23x</td><td class="num up">50,000</td><td class="num">35%</td><td class="num up">+71%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E 컨센 달성(EPS 1,700)·마진 30% 유지</td><td class="num">1,700</td><td class="num">20x</td><td class="num">34,000</td><td class="num">40%</td><td class="num up">+16%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">미국 시추 둔화·유가 붕괴 + 급등 후 디레이팅</td><td class="num">1,400 <span class="est bear">E</span></td><td class="num">13x</td><td class="num down">18,000</td><td class="num">25%</td><td class="num down">−38%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">35,600</td><td class="num"></td><td class="num up">+22%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 29,250(흰선). 애널 평균 50,667(고 65,000·저 42,000). 자체 밴드 18,000~50,000. 하방 대비 상방이 넓다.</div>
+    <svg viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale: 10000..72000 -> x 120..1030. k=(1030-120)/(72000-10000)=0.01468 ; x=120+(v-10000)*0.01468 -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <!-- ticks -->
+      <text x="120" y="205" text-anchor="middle" font-size="9" fill="#5a6472">10k</text>
+      <text x="413" y="205" text-anchor="middle" font-size="9" fill="#5a6472">30k</text>
+      <text x="707" y="205" text-anchor="middle" font-size="9" fill="#5a6472">50k</text>
+      <text x="1000" y="205" text-anchor="middle" font-size="9" fill="#5a6472">70k</text>
+      <!-- 자체 밴드 18000..50000 -->
+      <rect x="237.4" y="40" width="469.8" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="237" y="34" font-size="10" fill="#e78a5c">Bear 18k</text>
+      <text x="707" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 50k</text>
+      <line x1="472.3" y1="36" x2="472.3" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="472" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 34k</text>
+      <!-- 애널 밸드 42000..65000, avg 50667 -->
+      <rect x="589.8" y="110" width="337.6" height="26" rx="4" fill="#4bbf9a" opacity="0.25"/>
+      <text x="590" y="104" font-size="10" fill="#4bbf9a">애널 저 42k</text>
+      <text x="927" y="104" text-anchor="end" font-size="10" fill="#4bbf9a">고 65k</text>
+      <line x1="716.2" y1="106" x2="716.2" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="716" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">평균 50.7k</text>
+      <!-- 현재가 29250 -->
+      <line x1="402.4" y1="20" x2="402.4" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="402" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 29,250</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">시추·방산·계량기 3축 동시 성장. CAGR +20%. <strong>강함</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 21→30%. 고부가 믹스. 추가 여지는 제한적(이미 높음).</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 17x. 방산 재평가·미국 매출 부각 시 20x+ 가능하나, 사이클 리스크가 상한.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): 차세대 2차전지 소재 상업화 / Innova 시너지 확대 / 방산 대형 신규 프로그램 → 각 EPS +5~15%.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>미국 시추 둔화</strong></td><td class="txt">유가 급락·리그카운트 감소 → 고온전지(최대 성장축) 둔화, 성장률·마진 하향. 주가 −25%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>급등 후 변동성</strong></td><td class="txt">5배 급등·−54% 조정 전례. 테마 냉각 시 추가 하락</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>방산 수주 변동</strong></td><td class="txt">방산 발주 지연 시 최고마진 부문 성장 둔화</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>고PBR (3.87x)</strong></td><td class="txt">고ROE 반영이나, 성장 둔화 시 밸류 압축</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>환율</strong></td><td class="txt">미국 매출 비중 큼. 원/달러 하락 시 채산성</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 25,000~28,000 눌림에서 분할(퀄리티 구조성장주). 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 고온전지·방산 신규 수주 or 2Q26 OPM 30% 확인 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> Badger 납품 순항·미국 시추 활발.</li>
+    <li><strong>축소:</strong> OPM 25% 하회 / 유가 급락+시추 급감 / 방산 수주 공백 2분기.</li>
+    <li><strong>차익:</strong> 50,000 접근 시 부분 차익(애널 평균권).</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">미국 리그 카운트·유가</td><td class="txt">고온전지 수요 선행</td><td class="txt">리그 급감 / 유가 &lt;$60</td></tr>
+      <tr><td class="txt">고온전지 분기매출·YoY</td><td class="txt">최대 성장축 실현</td><td class="txt">YoY +30% 하회</td></tr>
+      <tr><td class="txt">방산 수주·앰플/열전지 매출</td><td class="txt">최고마진 성장</td><td class="txt">2분기 연속 수주 공백</td></tr>
+      <tr><td class="txt">전사 OPM</td><td class="txt">믹스·마진 체력</td><td class="txt">30% → 25% 하회</td></tr>
+      <tr><td class="txt">외인 지분율</td><td class="txt">글로벌 수급</td><td class="txt">31.9%에서 큰 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 내내</td><td class="txt">고온전지(미국 시추) 매출 716억E 실현</td><td class="txt"><span class="tag b">핵심</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">방산 특수전지 신규 수주</td><td class="txt"><span class="tag b">긍정</span></td></tr>
+      <tr><td class="txt">2026~2028</td><td class="txt">Badger Meter 스마트미터 436억 납품</td><td class="txt"><span class="tag b">가시성</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(OPM 30% 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "30% 마진·저부채·글로벌 top-3의 리튬일차전지 회사가 시추·방산·계량기 세 엔진으로 연 +20% 성장하는데, 시장은 급등 되돌림 뒤 포워드 PER 17x(PEG&lt;0.7)에 방치했다. 그 값은 25,000~28,000에 사서 방산·시추 옵션을 기다린다."</strong><br>어떻게 맞나: 분할 매수 후 방산 비중 30% 도달·시추 유지 중 하나만 켜져도 애널 평균 50k. 어떻게 틀리나: 유가 붕괴로 시추가 꺼지고 OPM이 25% 아래로 내려가면 틀린다(축소). 한 단어: <em>"인증 해자"</em>. 남는 것: <strong>"테마가 아니라 숫자로 사는 30% 마진."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(분할)</span><span class="pill">Base 34,000</span><span class="pill">매집밴드 25,000~28,000</span><span class="pill">Bull 50,000 / Bear 18,000</span><span class="pill">EV +22%</span><span class="pill">thesis break: 시추 급감·OPM 25% 하회·방산 공백</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 10탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 29,250·시총 1.33조·PER 20.67x·2023~2026E 연간재무·DPS 260) · siseJson 일봉(2025-08~2026-07-22, 고점 64,100@5/11·저점 12,843) · 1Q26 매출 683억(+26.6%)·영업익 203억(+34.5%)·고온전지 172억(+95.5%)·앰플/열 98억(+22.6%) = 디지털투데이·IR · 세그먼트(스마트그리드56/오일가스20/방산20·10~20년 인증·Bobbin73.6%)·Innova 인수(2025.10)·방산 16→476E·고온 75→716E·Badger 436억(3년)·목표가 신한 70,000/애널 평균 50,667 = IM증권(1/12)·신한·리딩·알파스퀘어·KPMG · 지배구조(비츠로테크 34.22%·Fidelity 9.15%·Swedbank 8.41%) = 2025 3Q 사업보고서 · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·수주·리포트 다중소스 수렴.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>
