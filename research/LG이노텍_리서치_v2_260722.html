@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LG이노텍 011070 · 심층리서치 v2 · 2026-07-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<style>
+:root{
+  --bg:#0c0d11; --paper:#15171d; --card:#1a1d25; --card2:#22262f; --ink:#eaecef; --ink2:#bfc5ce; --muted:#828b98;
+  --line:#262a33; --line2:#353b47; --accent:#e78a5c; --accent2:#4bbf9a; --gold:#cba24a; --up:#f0525f; --down:#3c86f5; --chip:#232733; --shadow:rgba(0,0,0,0.4);
+  --pretendard:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo','Malgun Gothic',-apple-system,sans-serif;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--pretendard);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.mast{border-bottom:2px solid var(--accent);background:#101218;position:sticky;top:0;z-index:50}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px;flex-wrap:wrap}
+.mast-l{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+.tkr{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.5px;color:var(--accent)}
+.nm{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.nm small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--pretendard)}
+.mast-r{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mast-r .px{font-size:17px;font-weight:600;color:var(--ink)}
+.rating{background:var(--gold);color:#161616;padding:3px 10px;border-radius:3px;font-family:var(--pretendard);font-weight:700;font-size:12px}
+.tabs{position:sticky;top:53px;z-index:49;background:var(--bg);border-bottom:1px solid var(--line2)}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 22px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:none;background:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:10px 10px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;letter-spacing:.02em;transition:.12s}
+.tab:hover{color:var(--ink2)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab b{font-family:var(--mono);color:var(--line2);margin-right:4px;font-weight:500}
+.tab.on b{color:var(--accent)}
+.fxbar{background:#101218;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:10.5px;color:var(--ink2);padding:5px 0}
+.fxbar .wrap{display:flex;gap:18px;flex-wrap:wrap}
+.fxbar b{color:var(--accent2)}
+.panel{display:none;padding:30px 0 70px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:7px}
+h1.big{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.22;letter-spacing:-.02em;margin-bottom:14px}
+h2.sec{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+h2.sec:first-of-type{margin-top:0}
+h3{font-family:var(--pretendard);font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 9px}
+p{margin:11px 0;color:var(--ink2)}
+p.lead{font-size:15.5px;color:var(--ink);line-height:1.72}
+strong{color:var(--ink);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 60%,rgba(203,162,74,0.32) 60%);padding:0 1px;font-weight:600;color:#f0e2c4}
+.src{font-family:var(--mono);font-size:9.5px;color:var(--accent2);border:1px solid var(--line2);border-radius:3px;padding:0 4px;cursor:help;vertical-align:super;margin-left:2px;position:relative;background:var(--chip)}
+.src .tip{display:none;position:absolute;bottom:140%;left:50%;transform:translateX(-50%);width:300px;background:#000;color:#e7e2d5;font-family:var(--pretendard);font-size:11.5px;line-height:1.5;padding:9px 11px;border-radius:5px;z-index:80;box-shadow:0 6px 22px var(--shadow);letter-spacing:0;text-transform:none;font-weight:400;border:1px solid var(--line2)}
+.src:hover .tip{display:block}
+.est{font-family:var(--mono);font-size:9.5px;font-weight:600;color:#161616;background:var(--gold);border-radius:3px;padding:1px 5px;letter-spacing:.04em;vertical-align:middle;text-transform:uppercase}
+.est.bear{background:var(--down);color:#fff} .est.bull{background:var(--accent2);color:#0c0d11}
+.grid{display:grid;gap:14px;margin:16px 0}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:840px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:16px 17px}
+.card.acc{border-left:3px solid var(--accent)}
+.card.acc2{border-left:3px solid var(--accent2)}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:13px 15px}
+.kpi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .val{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.15;margin-top:3px}
+.kpi .sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.kpi .val .u{font-size:13px;color:var(--muted);font-weight:400;margin-left:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#1f232c;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);font-weight:600;border-bottom:1.5px solid var(--line2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1e222b}
+td.num,th.num{font-family:var(--mono)}
+td.txt{text-align:left}
+tr.hl td{background:rgba(203,162,74,0.09);font-weight:600}
+tr.tot td{border-top:1.5px solid var(--line2);font-weight:700;background:#1f232c}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--ink2);font-weight:600}
+.tag.b{background:rgba(75,191,154,0.16);color:var(--accent2)} .tag.s{background:rgba(240,82,95,0.16);color:var(--up)} .tag.n{background:rgba(203,162,74,0.16);color:var(--gold)}
+.note{background:#181b22;border:1px solid var(--line2);border-radius:7px;padding:14px 16px;margin:16px 0;font-size:13px}
+.note .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.note.in{background:rgba(75,191,154,0.07);border-color:rgba(75,191,154,0.32)}
+.note.in .h{color:var(--accent2)}
+.note.warn{background:rgba(224,122,92,0.08);border-color:rgba(224,122,92,0.34)}
+.note.warn .h{color:var(--accent)}
+.bq{border-left:3px solid var(--line2);padding:3px 0 3px 15px;color:var(--muted);font-family:var(--serif);font-style:italic;margin:14px 0;font-size:14px}
+ul.cl{list-style:none;margin:11px 0}
+ul.cl li{position:relative;padding-left:19px;margin:7px 0;color:var(--ink2)}
+ul.cl li::before{content:'';position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--accent);border-radius:50%}
+ul.cl.c2 li::before{background:var(--accent2)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:18px;margin:18px 0}
+.chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.chart .cs{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lgd{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px}
+.lgd span{display:flex;align-items:center;gap:5px}
+.lgd i{width:11px;height:3px;border-radius:2px;display:inline-block}
+.foot{border-top:1px solid var(--line2);margin-top:40px;padding:18px 0 60px;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:20px;padding:2px 10px;color:var(--ink2);margin:2px 3px 2px 0;background:var(--card)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:840px){.two{grid-template-columns:1fr}}
+.mvbar{height:7px;border-radius:4px;background:var(--card2);overflow:hidden;margin-top:5px}
+.mvbar>i{display:block;height:100%;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <div class="mast-l">
+    <span class="tkr">011070</span>
+    <span class="nm">LG이노텍 <small>LG Innotek · 카메라모듈·반도체기판 (KOSPI) · 심층리서치 v2</small></span>
+  </div>
+  <div class="mast-r">
+    <span class="px">₩647,000</span>
+    <span>시총 ₩15.3조 · 26E PER 17.6x</span>
+    <span class="rating">비중확대 관심 · 매집 560,000~610,000</span>
+  </div>
+</div></div>
+
+<div class="tabs"><div class="wrap" id="nav">
+  <button class="tab on" data-t="t1"><b>01</b>결론·판정</button>
+  <button class="tab" data-t="t2"><b>02</b>BM·돈버는법</button>
+  <button class="tab" data-t="t3"><b>03</b>제품·해자·지배구조</button>
+  <button class="tab" data-t="t4"><b>04</b>산업·수급 겐또</button>
+  <button class="tab" data-t="t5"><b>05</b>실적·분기해부</button>
+  <button class="tab" data-t="t6"><b>06</b>컨센×주가·PER밴드</button>
+  <button class="tab" data-t="t7"><b>07</b>경쟁·Peer</button>
+  <button class="tab" data-t="t8"><b>08</b>밸류·시나리오</button>
+  <button class="tab" data-t="t9"><b>09</b>리스크·매매플랜·KPI</button>
+</div></div>
+
+<div class="fxbar"><div class="wrap">
+  <span><b>FX</b> USD/KRW 1,383 (07-22)</span>
+  <span><b>현재가</b> ₩647,000 (+2.9%)</span>
+  <span><b>52주</b> 148,500 ~ 1,814,000</span>
+  <span><b>외인</b> 27.99%</span>
+  <span><b>OPM 26E</b> 4.8%</span>
+  <span><b>ROE 26E</b> 14.0%</span>
+</div></div>
+
+<div class="wrap">
+
+<!-- ================= TAB 1 ================= -->
+<section class="panel on" id="t1">
+  <div class="eyebrow">결론 · 판정</div>
+  <h1 class="big">애플의 눈을 만드는 세계 1위가 이제 AI의 판(基板)까지 깐다 — 10배 마니아 거품은 빠졌고, 남은 건 +78% 이익 회복과 유리기판 옵션이다.</h1>
+  <p class="lead">LG이노텍은 아이폰 <em>카메라모듈</em>을 만드는 세계 1위 광학부품사(광학솔루션 매출 83%)다. 여기에 AI 반도체를 받치는 <strong>FC-BGA·유리기판</strong>이라는 두 번째 엔진이 붙었다. 재무제표만 보면 저마진(OPM 3~5%) 애플 하청처럼 생겼지만, 스토리의 축은 <strong>2025년 저점(영업익 6,650억)에서 2026E 영업익 +78%(1.18조E)로 튀는 이익 회복</strong>과, 글로벌 FC-BGA 공급부족<span class="src">2028년까지 AI 기판 공급부족·완판 지속<span class="tip">알파경제/인베스팅 2026 · 기판 영업익 2026E 2,000억+로 전사 OP의 1/4</span></span> 속 <em>대면적 FC-BGA·유리기판 리레이팅</em>이다. 주가는 152,600원에서 1,530,000원까지 <strong>약 10배(AI 유리기판 마니아)</strong> 갔다가 647,000원으로 −58% 되돌린 자리 — 테마 거품은 빠지고 실적·밸류만 남았다.</p>
+
+  <div class="note in"><div class="h">한 줄 판정</div>
+  <strong>비중확대 관심(눌림 분할) · 매집밴드 560,000~610,000원 · Base 660,000 / Bull 880,000 / Bear 400,000 · 확률가중 EV ≈ 672,000원(+4%).</strong> 실적 회복(OP +78%)·아이폰18 카메라 ASP·AI 기판 옵션은 견고하나, 10배 마니아를 겪은 <em>고변동·애플 단일고객 종속</em> 종목이라 추격은 금물. 마니아 후 지지대(56~61만) 분할이 손익비를 연다. thesis break: 애플 판매·단가 부진 / 유리기판 상용화 지연 / 포워드 OPM 4% 하회.</div>
+
+  <h2 class="sec">컨센서스 손익 한 장 — 2025 저점을 찍고 2026E 이익이 한 단 올라선다</h2>
+  <p>단위 억원(EPS 원). 2023~2025 실측, 2026E 네이버 컨센(일부 증권 영업익 9,541억으로 보수적 → 컨센 1.18조를 Base로, 보수값을 하방으로 병기). 매출은 21~25조원대(애플 물량)로 크지만 <strong>이익은 카메라 저마진 탓에 얇다</strong> — 알파는 <em>ASP·믹스·기판</em>이 마진을 몇 %p 밀어올리느냐에 달렸다.</p>
+  <table>
+    <thead><tr><th class="txt">연도</th><th class="num">매출</th><th class="num">영업익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th><th class="num">PER*</th><th class="num">ROE</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2023A</td><td class="num">206,053</td><td class="num">8,308</td><td class="num">4.0%</td><td class="num">5,652</td><td class="num">23,881</td><td class="num">27x</td><td class="num">12.6%</td></tr>
+      <tr><td class="txt">2024A</td><td class="num">212,008</td><td class="num">7,060</td><td class="num">3.3%</td><td class="num">4,493</td><td class="num">18,983</td><td class="num">34x</td><td class="num">8.9%</td></tr>
+      <tr><td class="txt">2025A</td><td class="num">218,966</td><td class="num">6,650</td><td class="num">3.0%</td><td class="num">3,413</td><td class="num">14,419</td><td class="num">45x</td><td class="num">6.1%</td></tr>
+      <tr class="hl"><td class="txt">2026E</td><td class="num">245,639</td><td class="num">11,828</td><td class="num">4.8%</td><td class="num">8,683 <span class="est">E</span></td><td class="num">36,690</td><td class="num">17.6x</td><td class="num">14.0%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">*PER = 현재가 647,000 ÷ 해당연도 EPS. 트레일링 PER 31.6x(EPS 20,484)는 2025 저점 반영 → <strong>포워드 17.6x가 판단 축</strong>. 2026E 영업익 +78%·EPS 2.5배. 1Q26 매출 5.53조(광학 83.3%), 2Q26E 매출 5.01조·영업익 1,936억(컨센 1,625억 +19%, 대신).</p>
+
+  <div class="chart"><div class="ct">영업이익 회복 궤적 (막대, 억원) + OPM (라인, %)</div><div class="cs">3년 우하향(8,308→6,650)으로 저점을 찍고 2026E +78% V자 반등. 카메라 ASP 회복 + FC-BGA AI 이익이 동시 점화.</div>
+    <svg viewBox="0 0 1080 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="270" x2="1030" y2="270" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="200" x2="1030" y2="200" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="130" x2="1030" y2="130" stroke="#262a33" stroke-width="1"/>
+      <line x1="60" y1="70" x2="1030" y2="70" stroke="#262a33" stroke-width="1"/>
+      <!-- OP bars: max 11828 -> 200px, k=0.016910 ; baseline y=270 -->
+      <rect x="150" y="129.5" width="90" height="140.5" fill="#e78a5c" opacity="0.85"/>
+      <text x="195" y="120" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">8,308</text>
+      <text x="195" y="288" text-anchor="middle" font-size="11" fill="#828b98">2023</text>
+      <rect x="380" y="150.6" width="90" height="119.4" fill="#e78a5c" opacity="0.85"/>
+      <text x="425" y="141" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">7,060</text>
+      <text x="425" y="288" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <rect x="610" y="157.6" width="90" height="112.4" fill="#e78a5c" opacity="0.85"/>
+      <text x="655" y="148" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">6,650</text>
+      <text x="655" y="303" text-anchor="middle" font-size="10" fill="#f0525f" font-weight="700">◀ 저점</text>
+      <text x="655" y="288" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      <rect x="840" y="70" width="90" height="200" fill="#e78a5c" opacity="0.6" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="885" y="60" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">11,828</text>
+      <text x="885" y="288" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <!-- OPM line: 0%->y250, 6%->y60 ; y=250-opm*31.667 -->
+      <polyline points="195,123.3 425,145.5 655,155.0 885,98.0" fill="none" stroke="#cba24a" stroke-width="2.5"/>
+      <circle cx="195" cy="123.3" r="4" fill="#cba24a"/><circle cx="425" cy="145.5" r="4" fill="#cba24a"/><circle cx="655" cy="155.0" r="4" fill="#cba24a"/><circle cx="885" cy="98.0" r="4" fill="#cba24a"/>
+      <text x="195" y="115" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">4.0%</text>
+      <text x="655" y="172" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">3.0%</text>
+      <text x="885" y="90" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">4.8%</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>영업이익</span><span><i style="background:#cba24a"></i>영업이익률(우)</span><span style="color:var(--muted)">점선=컨센 추정</span></div>
+  </div>
+
+  <h2 class="sec">판정의 세 기둥</h2>
+  <div class="grid g3">
+    <div class="card acc"><h3 style="margin-top:0">① 실적 회복은 확실</h3><p style="margin:6px 0">2025 저점 → 2026E 영업익 <strong>+78%</strong>. 애플의 공격적 점유 확대로 광학 출하가 매 분기 컨센 상회, 2Q26E OP도 컨센 +19%. <strong>이익 레벨이 한 단 올라서는 회복 원년</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">② ASP·믹스 상승</h3><p style="margin:6px 0">아이폰18 프로 <strong>가변조리개 최초 채택</strong>으로 카메라모듈 ASP↑, LG이노텍 점유 ~50%. 패키지솔루션 가동률 100%·판가 상승. <strong>얇은 마진을 P가 보완</strong>.</p></div>
+    <div class="card acc"><h3 style="margin-top:0">③ 유리기판 옵션</h3><p style="margin:6px 0">대면적 FC-BGA·유리기판이 AI 리레이팅 재료. 기판 OP 2026E 2,000억+(전사 1/4). 다만 <strong>마니아는 이미 한 번 소화</strong> — 상용화 실체화가 재점화 트리거.</p></div>
+  </div>
+
+  <h2 class="sec">팔로우 총평 — 가격과 분리한 사업의 질</h2>
+  <div class="two">
+    <div>
+      <h3>BM 등급: B+ (가격과 분리)</h3>
+      <ul class="cl">
+        <li><strong>해자:</strong> 애플 카메라 락인·광학 기술·글로벌 1위. 진짜 해자(아래 3버킷 참조)이나 저마진.</li>
+        <li><strong>현금창출:</strong> 매출은 크나 OPM 3~5%로 얇다. 회복은 P(ASP)·믹스(기판) 레버리지에 의존.</li>
+        <li><strong>구조 종속:</strong> 매출 83%가 애플 광학 — 이게 A를 B+로 깎는 결정적 요인.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>투자포인트 성립 조건 / 즉시매도</h3>
+      <ul class="cl c2">
+        <li><strong>성립:</strong> 아이폰18 ASP 실현 + FC-BGA 가동률·판가 유지 + 유리기판 상용화 가시화.</li>
+        <li><strong>갈아타기:</strong> 순수 AI 기판 노출을 원하면 삼성전기, 애플 완제품 노출이면 애플 직접. LG이노텍은 '카메라 안정 + 기판 옵션' 복합.</li>
+        <li><strong>즉시매도:</strong> 애플 물량·단가 급락 / 유리기판 지연으로 기판 밸류 소멸 / 포워드 OPM 4% 하회.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">상대 판정 — 마니아를 걷어낸 자리</h2>
+  <p>LG이노텍은 10배 급등·−58% 크래시를 겪은 <strong>고변동 퀄리티 대형주</strong>다. 실적(2026E +78%)과 밸류(포워드 17.6x)가 함께 받쳐 손익비가 살아있지만, 순수 상방은 마니아 잔열 여부에 흔들린다. 흥미로운 긴장은 <em>7월 2Q26 프리뷰에서 증권가 목표가가 120~200만원까지 대폭 상향</em>(KB 200만·대신 130만·상상인 120만)됐다는 점 — 시장은 다시 강세로 돌아섰다. 그럼에도 본 리서치는 애플 종속·유리기판 미확정을 반영해 <strong>Base 660,000의 보수적 기준</strong>을 유지하되, 상방 시나리오에 그 낙관을 담는다. 상대 매력 = <em>"거품 빠진 세계 1위에 AI 기판이라는 두 번째 엔진이 옵션으로 붙은 자리."</em></p>
+</section>
+
+<!-- ================= TAB 2 ================= -->
+<section class="panel" id="t2">
+  <div class="eyebrow">비즈니스 모델 · 어디서 돈을 버나</div>
+  <h2 class="sec">한 문장 정의</h2>
+  <p class="lead">"아이폰의 눈(<strong>카메라모듈</strong>)을 만드는 세계 1위 광학부품사이자, AI 반도체를 받치는 <strong>기판(FC-BGA·유리기판)</strong>과 전장부품으로 성장축을 넓히는 LG그룹 핵심 부품사."</p>
+  <div class="note"><div class="h">매출 ≠ 이익 ≠ 성장 — 분리해서 볼 것</div>매출은 21~25조원대로 크지만 카메라 저마진 탓에 <strong>OPM은 3~5%</strong>. 성장·리레이팅은 매출 규모가 아니라 ① 카메라 <strong>ASP(가변조리개·폴디드줌)</strong>, ② <strong>FC-BGA/유리기판(AI)</strong>에서 나온다. 카메라는 애플 사이클에 종속되고, 기판은 AI 사이클의 새 성장축 — <em>밸류 프리미엄은 후자에 달렸다.</em></div>
+
+  <h2 class="sec">세그먼트 딥다이브 — 성장률·추정골격·특성</h2>
+  <table>
+    <thead><tr><th class="txt">세그먼트</th><th class="txt">무엇</th><th class="num">매출비중</th><th class="txt">추정 골격</th><th class="txt">특성</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>광학솔루션</strong></td><td class="txt">애플 아이폰 카메라모듈(세계 1위)</td><td class="num">~83%</td><td class="txt">아이폰 판매량 × 고사양 채용 × ASP</td><td class="txt">대형·저마진·애플 종속</td></tr>
+      <tr class="hl"><td class="txt"><strong>기판소재(패키지)</strong></td><td class="txt">FC-BGA·반도체기판·유리기판</td><td class="num">~11%</td><td class="txt">AI 반도체 수요 × 가동률 × 판가</td><td class="txt">고성장·리레이팅 재료</td></tr>
+      <tr><td class="txt"><strong>전장부품</strong></td><td class="txt">차량 카메라·통신·파워</td><td class="num">~6%</td><td class="txt">전장화·수주잔고 × 양산</td><td class="txt">구조 성장·수익성 개선</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:var(--muted)">1Q26 매출 5.53조 중 광학솔루션 83.3%.<span class="src">1Q26 IR · 네이버 API<span class="tip">비중은 분기별로 아이폰 시즌성에 따라 변동, 하반기(신제품)에 광학 비중 상승</span></span> 비중 추정은 근사치(est) — 분기 시즌성으로 편차.</p>
+
+  <div class="chart"><div class="ct">부문별 매출 스택 (억원) — 대형 광학 위에 기판·전장이 얹힌다</div><div class="cs">광학(안정·저마진)은 애플 물량으로 유지되고, 기판(고마진·AI)·전장이 조금씩 커지며 이익 믹스를 개선. 26E는 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale: max total 245639 -> 200px, k=0.000814 ; baseline y=250 ; stack 광학(하)/기판/전장(상) -->
+      <!-- 2024 total 212,008 -->
+      <g>
+        <rect x="200" y="106.7" width="150" height="143.3" fill="#5a6472"/>
+        <rect x="200" y="91.2" width="150" height="15.5" fill="#e78a5c" opacity="0.9"/>
+        <rect x="200" y="77.4" width="150" height="13.8" fill="#cba24a"/>
+        <text x="275" y="68" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">212,008</text>
+        <text x="275" y="272" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      </g>
+      <!-- 2025 total 218,966 -->
+      <g>
+        <rect x="465" y="102.1" width="150" height="147.9" fill="#5a6472"/>
+        <rect x="465" y="84.2" width="150" height="17.9" fill="#e78a5c" opacity="0.9"/>
+        <rect x="465" y="71.8" width="150" height="12.4" fill="#cba24a"/>
+        <text x="540" y="62" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">218,966</text>
+        <text x="540" y="272" text-anchor="middle" font-size="11" fill="#828b98">2025</text>
+      </g>
+      <!-- 2026E total 245,639 -->
+      <g>
+        <rect x="730" y="84.0" width="150" height="166.0" fill="#5a6472" opacity="0.75"/>
+        <rect x="730" y="62.0" width="150" height="22.0" fill="#e78a5c" opacity="0.65"/>
+        <rect x="730" y="50.0" width="150" height="12.0" fill="#cba24a" opacity="0.7"/>
+        <text x="805" y="41" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">245,639</text>
+        <text x="805" y="272" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      </g>
+    </svg>
+    <div class="lgd"><span><i style="background:#5a6472"></i>광학솔루션(카메라)</span><span><i style="background:#e78a5c"></i>기판소재(FC-BGA)</span><span><i style="background:#cba24a"></i>전장부품</span></div>
+  </div>
+
+  <h2 class="sec">이해관계자 4방향 — 생생함 체크</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">고객(애플)의 눈</h3><p style="margin:6px 0">"카메라 품질·수율·납기가 완벽해야 한다. 검증된 1위(LG이노텍)에 물량을 몰되, 단가는 최대한 후려친다." → 락인이자 단가 압박.</p></div>
+    <div class="card"><h3 style="margin-top:0">고객(AI 팹리스·서버)의 눈</h3><p style="margin:6px 0">"FC-BGA가 부족하다. 이비덴·신코가 우선이지만, 대면적·유리기판에서 새 공급원이 필요하다." → 기판 신규 진입 기회.</p></div>
+    <div class="card"><h3 style="margin-top:0">경쟁자(삼성전기·이비덴)의 눈</h3><p style="margin:6px 0">"카메라는 LG이노텍이 강하지만 기판은 우리 텃밭. 수율·유리기판 선점으로 막는다." → 기판 3파전.</p></div>
+    <div class="card"><h3 style="margin-top:0">경영진(문혁수)의 눈</h3><p style="margin:6px 0">"광학 효율화로 중국 추격 따돌리고, 반도체 기판을 새 성장축으로. 유리기판까지 선점." → 카메라 방어 + 기판 확장.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 3 ================= -->
+<section class="panel" id="t3">
+  <div class="eyebrow">제품 · 해자 · 지배구조</div>
+  <h2 class="sec">해자 진위판별 — 3버킷</h2>
+  <div class="grid g3">
+    <div class="card acc2"><div class="tag b">진짜 해자</div><h3 style="margin:8px 0 6px">애플 락인 + 카메라 기술</h3><p style="margin:0;font-size:12.5px">아이폰 카메라모듈 세계 1위(~50%). 수율·정밀조립·가변조리개 양산 능력은 단기 복제 불가. 애플 재인증 장벽. 현금화: 지금.</p></div>
+    <div class="card"><div class="tag n">Table-stakes</div><h3 style="margin:8px 0 6px">FC-BGA 기판</h3><p style="margin:0;font-size:12.5px">플립칩 기판은 이비덴·신코·삼성전기도 보유. 차별점은 대면적·가동률·판가. 공급부족이 진입을 밀어주나 수율이 관건. 현금화: 진행.</p></div>
+    <div class="card"><div class="tag s">미검증</div><h3 style="margin:8px 0 6px">유리기판</h3><p style="margin:0;font-size:12.5px">차세대 패키징 핵심 대안이나 상용화 시점·수율·수주 미확정. AI 리레이팅 재료지만 아직 옵션. 현금화: 미정.</p></div>
+  </div>
+
+  <h2 class="sec">지배구조 — LG그룹 우산 아래</h2>
+  <div class="chart"><div class="ct">지배구조 체인 (2026 기준)</div><div class="cs">구광모 회장 → ㈜LG → LG전자(40.79%) → LG이노텍. 국민연금 10.43%·외국인 27.99%. 그룹 캡티브(LG전자·화학) 안정 최대주주.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- chain boxes -->
+      <rect x="40" y="120" width="150" height="60" rx="6" fill="#22262f" stroke="#353b47"/>
+      <text x="115" y="146" text-anchor="middle" font-size="12.5" fill="#eaecef" font-weight="600">구광모 회장</text>
+      <text x="115" y="164" text-anchor="middle" font-size="10.5" fill="#828b98">㈜LG 16.27%(특관 42.5%)</text>
+
+      <rect x="255" y="120" width="150" height="60" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="330" y="146" text-anchor="middle" font-size="13" fill="#eaecef" font-weight="700">㈜LG (지주)</text>
+      <text x="330" y="164" text-anchor="middle" font-size="10.5" fill="#828b98">공정거래법상 지주회사</text>
+
+      <rect x="470" y="120" width="150" height="60" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="545" y="146" text-anchor="middle" font-size="13" fill="#eaecef" font-weight="700">LG전자</text>
+      <text x="545" y="164" text-anchor="middle" font-size="10.5" fill="#828b98">LG이노텍 40.79% 보유</text>
+
+      <rect x="685" y="110" width="180" height="80" rx="7" fill="#1a1d25" stroke="#e78a5c" stroke-width="2"/>
+      <text x="775" y="140" text-anchor="middle" font-size="15" fill="#eaecef" font-weight="700">LG이노텍 (011070)</text>
+      <text x="775" y="160" text-anchor="middle" font-size="10.5" fill="#828b98">카메라·기판 · 시총 15.3조</text>
+      <text x="775" y="176" text-anchor="middle" font-size="10.5" fill="#e78a5c">광학 83% + FC-BGA/유리기판</text>
+
+      <!-- minority holders -->
+      <rect x="470" y="225" width="150" height="46" rx="5" fill="#22262f" stroke="#353b47"/>
+      <text x="545" y="245" text-anchor="middle" font-size="11" fill="#eaecef">국민연금 10.43%</text>
+      <text x="545" y="261" text-anchor="middle" font-size="11" fill="#eaecef">외국인 27.99%</text>
+
+      <!-- Innotek subsidiaries -->
+      <rect x="930" y="120" width="130" height="60" rx="6" fill="#22262f" stroke="#4bbf9a"/>
+      <text x="995" y="145" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">사업부문</text>
+      <text x="995" y="163" text-anchor="middle" font-size="10" fill="#4bbf9a">광학·기판·전장</text>
+
+      <!-- arrows -->
+      <line x1="190" y1="150" x2="255" y2="150" stroke="#7a8290" stroke-width="1.8" marker-end="url(#ar)"/>
+      <line x1="405" y1="150" x2="470" y2="150" stroke="#4bbf9a" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="620" y1="150" x2="685" y2="150" stroke="#e78a5c" stroke-width="2.2" marker-end="url(#ar)"/>
+      <line x1="865" y1="150" x2="930" y2="150" stroke="#4bbf9a" stroke-width="1.8" marker-end="url(#ar)"/>
+      <line x1="545" y1="225" x2="640" y2="182" stroke="#5a6472" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="437" y="142" text-anchor="middle" font-size="9.5" fill="#4bbf9a">지배</text>
+      <text x="652" y="142" text-anchor="middle" font-size="9.5" fill="#e78a5c">40.79%</text>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#7a8290" stroke-width="1.2"/></marker></defs>
+    </svg>
+  </div>
+  <p>거버넌스 관전 포인트: <strong>LG전자(40.79%)가 안정 최대주주</strong>인 그룹 캡티브 구조라 경영권·자본배치는 안정적이다. 반대로 <em>LG전자·LG그룹 전략(전장·부품 재편)에 종속</em>되며, 상장 자회사 특유의 지주 디스카운트·계열 거래는 상시 점검 대상. 국민연금 10.43%·외국인 28%는 대형주 수급 기반.</p>
+</section>
+
+<!-- ================= TAB 4 ================= -->
+<section class="panel" id="t4">
+  <div class="eyebrow">산업 · 수급 겐또</div>
+  <h2 class="sec">수요 함수 — 무엇이 강제이고 무엇이 선택인가</h2>
+  <table>
+    <thead><tr><th class="txt">엔진</th><th class="txt">수요 성격</th><th class="txt">드라이버</th><th class="txt">방어력</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">광학(아이폰 카메라)</td><td class="txt">애플 사이클 수요</td><td class="txt">아이폰 판매량·고사양 채용(가변조리개)·ASP</td><td class="txt">중(안정하나 종속)</td></tr>
+      <tr><td class="txt">FC-BGA/유리기판</td><td class="txt"><strong>AI 구조 성장 수요</strong></td><td class="txt">AI 반도체 수요·글로벌 공급부족·대면적/유리기판</td><td class="txt">높음(구조·완판)</td></tr>
+      <tr><td class="txt">전장부품</td><td class="txt">전장화 구조 수요</td><td class="txt">차량 카메라·통신·수주잔고</td><td class="txt">높음(장기 수주)</td></tr>
+    </tbody>
+  </table>
+  <div class="note in"><div class="h">겐또의 핵심</div>수요 성격이 비대칭이다. <strong>광학은 안정적이나 저성장·애플 종속</strong>이라 하방을 받치고, <strong>FC-BGA/유리기판은 변동적이나 2028년까지 공급부족·완판</strong>이라 리레이팅 동력이다. 즉 <em>카메라가 바닥을 깔고, 기판이 상방을 얹는</em> 구조 — 다만 상방의 실체화(유리기판 상용화)가 아직 미확정이라는 게 비츠로셀형 '3엔진'과의 차이.</div>
+
+  <h2 class="sec">유닛 이코노믹스 — 얇은 마진, 두꺼운 물량</h2>
+  <div class="grid g3">
+    <div class="kpi"><div class="lab">OPM 26E</div><div class="val">4.8<span class="u">%</span></div><div class="sub">카메라 저마진 구조</div></div>
+    <div class="kpi"><div class="lab">기판 가동률</div><div class="val">~100<span class="u">%</span></div><div class="sub">AI 수요·판가 상승</div></div>
+    <div class="kpi"><div class="lab">애플 매출비중</div><div class="val">~80<span class="u">%대</span></div><div class="sub">단일 고객 종속</div></div>
+  </div>
+  <p>카메라모듈은 대형 고객(애플)의 단가 압박으로 <strong>박리다매</strong> — 규모는 크지만 마진이 얇다. 마진 개선은 P(ASP: 가변조리개·폴디드줌)와 믹스(고마진 기판 비중↑)에서 나온다. FC-BGA는 <em>가동률 100%·판가 상승</em>으로 전사 OP의 1/4까지 커지며 믹스를 밀어올린다. 즉 규모가 아니라 <strong>ASP·기판 믹스가 마진을 만드는</strong> 구조.</p>
+
+  <h2 class="sec">수급 좌표 — 오늘의 그림</h2>
+  <p>7/22 <strong>사모 +47.0억 · 연기금 +123.5억 · 투신 +35.7억</strong>(합산 시총대비 +0.13%) — 연기금 중심 대규모 유입. 외인소진율 <strong>27.99%</strong>로 이 배치 중 외인 비중 높은 대형주. 10배 마니아·−58% 조정 뒤 <em>기관이 퀄리티 대형주를 재편입</em>하는 그림 — 국민연금 10.43% 지분과 겹쳐 하방 수급이 두텁다.</p>
+</section>
+
+<!-- ================= TAB 5 ================= -->
+<section class="panel" id="t5">
+  <div class="eyebrow">실적 · 분기 해부</div>
+  <h2 class="sec">반도체 기판 이익 램프 — 두 번째 엔진의 점화</h2>
+  <div class="chart"><div class="ct">패키지솔루션(반도체 기판) 영업이익 (억원)</div><div class="cs">FC-BGA 양산(24년말)→AI 공급부족→가동률 100%. 기판 OP가 2026E 2,000억+로 전사 OP의 1/4. 유리기판이 다음 레그. 25E~27E 추정.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="250" x2="1030" y2="250" stroke="#353b47" stroke-width="1.5"/>
+      <line x1="60" y1="185" x2="1030" y2="185" stroke="#262a33"/><line x1="60" y1="120" x2="1030" y2="120" stroke="#262a33"/><line x1="60" y1="60" x2="1030" y2="60" stroke="#262a33"/>
+      <!-- bars: 24 ~400, 25E ~1,100, 26E ~2,050, 27E ~2,800 ; max 2800 -> 190px k=0.06786 ; baseline 250 -->
+      <rect x="150" y="222.9" width="120" height="27.1" fill="#5a6472"/>
+      <text x="210" y="214" text-anchor="middle" font-size="11.5" fill="#bfc5ce">~400</text>
+      <text x="210" y="270" text-anchor="middle" font-size="11" fill="#828b98">2024</text>
+      <rect x="380" y="175.4" width="120" height="74.6" fill="#e78a5c" opacity="0.8"/>
+      <text x="440" y="167" text-anchor="middle" font-size="11.5" fill="#eaecef" font-weight="600">~1,100</text>
+      <text x="440" y="270" text-anchor="middle" font-size="11" fill="#828b98">2025E</text>
+      <rect x="610" y="110.9" width="120" height="139.1" fill="#e78a5c" opacity="0.75" stroke="#e78a5c" stroke-dasharray="4 3"/>
+      <text x="670" y="102" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="700">~2,050</text>
+      <text x="670" y="88" text-anchor="middle" font-size="9.5" fill="#cba24a" font-weight="700">전사 OP의 1/4</text>
+      <text x="670" y="270" text-anchor="middle" font-size="11" fill="#828b98">2026E</text>
+      <rect x="840" y="60.0" width="120" height="190.0" fill="#cba24a" opacity="0.6" stroke="#cba24a" stroke-dasharray="4 3"/>
+      <text x="900" y="51" text-anchor="middle" font-size="12" fill="#eaecef" font-weight="600">~2,800</text>
+      <text x="900" y="270" text-anchor="middle" font-size="11" fill="#828b98">2027E</text>
+    </svg>
+    <div class="lgd"><span><i style="background:#e78a5c"></i>FC-BGA 이익</span><span><i style="background:#cba24a"></i>+유리기판 옵션</span><span style="color:var(--muted)">점선=추정(est)</span></div>
+  </div>
+
+  <h2 class="sec">1Q26 해부 — 광학이 끌고 기판이 민다</h2>
+  <table>
+    <thead><tr><th class="txt">항목</th><th class="num">1Q26</th><th class="txt">코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">매출</td><td class="num">5.53조</td><td class="txt">광학솔루션 83.3% — 애플 출하 호조</td></tr>
+      <tr><td class="txt">광학솔루션</td><td class="num">~4.6조</td><td class="txt">아이폰 점유 확대, 출하 컨센 상회</td></tr>
+      <tr><td class="txt">패키지(기판)</td><td class="num">성장</td><td class="txt">FC-BGA 가동률 100%·판가 상승</td></tr>
+      <tr class="hl"><td class="txt">2Q26E 매출</td><td class="num">5.01조</td><td class="txt">영업익 1,936억E(컨센 1,625억 +19%, 대신)</td></tr>
+    </tbody>
+  </table>
+  <h3>이익의 질 — 회복은 진짜, 다만 얇다</h3>
+  <p>2023~2025년 애플 사이클·단가 압박으로 이익이 우하향(EPS 23,881→14,419)했다가 2026E V자 반등한다. <strong>이익의 방향은 견고</strong>하나 절대 OPM이 4~5%로 얇아 <em>애플 물량·단가·환율에 이익이 크게 스윙</em>한다. 상반기 OP 4,889억·하반기 5,956억<span class="src">대신증권 2Q26 프리뷰(2026-07)<span class="tip">연간 ~1.08조 추정, 컨센 1.18조와 보수 9,541억 사이</span></span>으로 하반기(신제품 시즌)에 이익이 실린다 — 얇은 마진일수록 <strong>믹스(기판)·ASP(가변조리개)가 이익의 질을 가른다.</strong></p>
+</section>
+
+<!-- ================= TAB 6 ================= -->
+<section class="panel" id="t6">
+  <div class="eyebrow">컨센 × 주가 · PER 밴드</div>
+  <h2 class="sec">주봉 종가 × 이벤트 오버레이</h2>
+  <div class="chart"><div class="ct">주봉 종가 (2025.08 ~ 2026.07, 수정주가)</div><div class="cs">152,600원 → 1,530,000원(6/1, 약 10배) → 647,000원(−58%). 상승은 실적 회복 + AI 유리기판 마니아, 조정은 거품 정상화. 지금은 실적선 부근.</div>
+    <svg viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="255" x2="1035" y2="255" stroke="#353b47" stroke-width="1.5"/>
+      <!-- yscale: 100k..1,600k -> y 255..40 ; k=0.0001433 ; y=255-(p-100000)*k -->
+      <line x1="55" y1="240.7" x2="1035" y2="240.7" stroke="#20242c"/><text x="48" y="244" text-anchor="end" font-size="9" fill="#5a6472">20만</text>
+      <line x1="55" y1="197.7" x2="1035" y2="197.7" stroke="#20242c"/><text x="48" y="201" text-anchor="end" font-size="9" fill="#5a6472">50만</text>
+      <line x1="55" y1="126.0" x2="1035" y2="126.0" stroke="#20242c"/><text x="48" y="129" text-anchor="end" font-size="9" fill="#5a6472">100만</text>
+      <line x1="55" y1="54.4" x2="1035" y2="54.4" stroke="#20242c"/><text x="48" y="58" text-anchor="end" font-size="9" fill="#5a6472">150만</text>
+      <!-- path -->
+      <polyline points="80,247.5 155,245.0 230,240.7 305,234.9 380,226.3 455,214.9 530,194.8 605,169.0 680,133.2 755,90.2 830,50.1 905,128.8 980,176.6" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <!-- event markers -->
+      <circle cx="605" cy="169.0" r="4" fill="#4bbf9a"/><text x="605" y="160" text-anchor="middle" font-size="9" fill="#4bbf9a">기판 리레이팅</text>
+      <circle cx="830" cy="50.1" r="4.5" fill="#f0525f"/><text x="830" y="41" text-anchor="middle" font-size="9.5" fill="#f0525f" font-weight="700">1,530,000 고점</text>
+      <circle cx="905" cy="128.8" r="4" fill="#cba24a"/><text x="905" y="120" text-anchor="middle" font-size="9" fill="#cba24a">981,000</text>
+      <circle cx="980" cy="176.6" r="4.5" fill="#e78a5c"/><text x="980" y="194" text-anchor="middle" font-size="9.5" fill="#eaecef" font-weight="700">647,000</text>
+      <text x="80" y="272" font-size="9.5" fill="#828b98">'25.08</text><text x="830" y="272" font-size="9.5" fill="#828b98">'26.06</text><text x="960" y="272" font-size="9.5" fill="#828b98">'26.07</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">이익 vs 멀티플 분해 — 상승의 대부분은 마니아였다</h2>
+  <p>10배 급등은 실적(2026E 회복)도 있었지만 대부분 <strong>AI 유리기판·FC-BGA 리레이팅 마니아</strong>였고, −58% 조정은 그 거품의 정상화이지 실적 훼손이 아니다. 현재 포워드 PER 17.6x는 <em>카메라(저마진 애플 종속)만으론 다소 높고, FC-BGA/유리기판 성장 옵션을 일부 인정해야 정당화되는 값</em>. 유리기판 상용화가 실체화되면 추가 리레이팅, 지연되면 카메라 밸류(10~13배)로 회귀 압력.</p>
+
+  <h2 class="sec">컨센 감사 — 무엇이 이미 반영됐나</h2>
+  <table>
+    <thead><tr><th class="txt">드라이버</th><th class="txt">컨센 반영률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026 실적 회복(OP +78%)·아이폰 ASP</td><td class="txt"><span class="tag b">반영</span></td></tr>
+      <tr><td class="txt">FC-BGA AI 수요·공급부족·판가</td><td class="txt"><span class="tag n">부분 반영</span></td></tr>
+      <tr><td class="txt">유리기판 상용화</td><td class="txt"><span class="tag s">부분~미반영(마니아 후 재소화)</span></td></tr>
+      <tr><td class="txt">전장 성장·수익성 개선</td><td class="txt"><span class="tag n">부분 반영</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="chart"><div class="ct">2026 YTD 상대주가 (rebase=100, 1월 초 기준)</div><div class="cs">AI 기판 랠리로 코스피를 압도적 아웃퍼폼(+300%대)했다가 되돌림. 절대 밸류는 매력 구간 진입.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="200" x2="1035" y2="200" stroke="#353b47" stroke-width="1.5"/>
+      <!-- scale: 50..420 -> y 200..40 ; k=0.4324 ; y=200-(v-50)*k -->
+      <line x1="55" y1="178.4" x2="1035" y2="178.4" stroke="#20242c"/><text x="48" y="181" text-anchor="end" font-size="9" fill="#5a6472">100</text>
+      <line x1="55" y1="113.5" x2="1035" y2="113.5" stroke="#20242c"/><text x="48" y="116" text-anchor="end" font-size="9" fill="#5a6472">250</text>
+      <line x1="55" y1="48.6" x2="1035" y2="48.6" stroke="#20242c"/><text x="48" y="52" text-anchor="end" font-size="9" fill="#5a6472">400</text>
+      <!-- LG이노텍 -->
+      <polyline points="80,178.4 230,162.4 380,142.1 520,113.5 640,47.8 780,110.1 980,148.1" fill="none" stroke="#e78a5c" stroke-width="2.2"/>
+      <text x="980" y="142" font-size="9.5" fill="#e78a5c" font-weight="700">LG이노텍 +70%</text>
+      <!-- KOSPI flat ~+5% -->
+      <polyline points="80,178.4 300,178.0 640,176.5 980,176.2" fill="none" stroke="#5a6472" stroke-width="1.8" stroke-dasharray="5 3"/>
+      <text x="980" y="191" font-size="9.5" fill="#828b98">코스피 ~+5%</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= TAB 7 ================= -->
+<section class="panel" id="t7">
+  <div class="eyebrow">경쟁 · Peer</div>
+  <h2 class="sec">두 개의 전장 — 카메라(우세)와 기판(추격), 그리고 밸류 비교</h2>
+  <div class="chart"><div class="ct">2026E PER 비교 (배) — 골드 = LG이노텍</div><div class="cs">카메라 안정 + 기판 옵션의 복합 밸류. 이비덴(기판 1위 프리미엄) 아래, 삼성전기·대덕 위. 실적 회복(+78%) 감안 시 과도하지 않다.</div>
+    <svg viewBox="0 0 1080 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="245" x2="1030" y2="245" stroke="#353b47" stroke-width="1.5"/>
+      <!-- horizontal bars, scale 1x=28px from x=200; max ~26 -->
+      <!-- LG이노텍 17.6 -->
+      <rect x="200" y="30" width="492.8" height="26" fill="#cba24a"/><text x="702" y="48" font-size="12" fill="#cba24a" font-weight="700">LG이노텍 17.6x</text><text x="195" y="48" text-anchor="end" font-size="11" fill="#eaecef">LG이노텍</text>
+      <!-- 삼성전기 15 -->
+      <rect x="200" y="72" width="420" height="26" fill="#5a6472"/><text x="630" y="90" font-size="11" fill="#bfc5ce">15x</text><text x="195" y="90" text-anchor="end" font-size="11" fill="#bfc5ce">삼성전기</text>
+      <!-- 이비덴 25 -->
+      <rect x="200" y="114" width="700" height="26" fill="#5a6472"/><text x="910" y="132" font-size="11" fill="#bfc5ce">25x</text><text x="195" y="132" text-anchor="end" font-size="11" fill="#bfc5ce">이비덴(日)</text>
+      <!-- 유니마이크론 20 -->
+      <rect x="200" y="156" width="560" height="26" fill="#5a6472"/><text x="770" y="174" font-size="11" fill="#bfc5ce">20x</text><text x="195" y="174" text-anchor="end" font-size="11" fill="#bfc5ce">유니마이크론(臺)</text>
+      <!-- 대덕전자 12 -->
+      <rect x="200" y="198" width="336" height="26" fill="#5a6472"/><text x="546" y="216" font-size="11" fill="#bfc5ce">12x</text><text x="195" y="216" text-anchor="end" font-size="11" fill="#bfc5ce">대덕전자</text>
+    </svg>
+    <div style="font-size:11.5px;color:var(--muted)">peer PER은 시점·소스에 따라 편차 — 방향성 참고용. 이비덴은 수율 90%+로 기판 1위 프리미엄.</div>
+  </div>
+
+  <h2 class="sec">경쟁사 프로파일</h2>
+  <div class="grid g2">
+    <div class="card acc"><h3 style="margin-top:0">삼성전기 (국내·기판/MLCC)</h3><p style="margin:6px 0;font-size:12.5px">MLCC·카메라·FC-BGA. 삼성 파운드리 협업·베트남 증설로 물량 공세, 유리기판 고객 확보 경쟁. 위협도 <strong>높음</strong>(기판·유리기판 직접 경쟁).</p></div>
+    <div class="card acc"><h3 style="margin-top:0">이비덴·신코덴키 (일본·FC-BGA)</h3><p style="margin:6px 0;font-size:12.5px">FC-BGA 글로벌 1~2위. 수율 90%+·수십 년 레퍼런스. 엔비디아·인텔이 선호. 위협도 <strong>높음</strong>(기판 최고 강자).</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">대덕전자·코리아써키트 (국내)</h3><p style="margin:6px 0;font-size:12.5px">반도체기판(FC-BGA) 국내 경쟁. 규모·고사양은 열위이나 가격·물량. 위협도 <strong>중</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">와일드카드 — 애플 카메라 2nd</h3><p style="margin:6px 0;font-size:12.5px">Cowell·Sunny 등 애플 카메라 2·3벤더. 가변조리개 액추에이터는 Sunny/Luxshare. LG이노텍 점유(~50%)를 노리는 상시 압박.</p></div>
+  </div>
+</section>
+
+<!-- ================= TAB 8 ================= -->
+<section class="panel" id="t8">
+  <div class="eyebrow">밸류 · 시나리오</div>
+  <h2 class="sec">시나리오 BUILD — 가정에서 목표가까지</h2>
+  <table>
+    <thead><tr><th class="txt">시나리오</th><th class="txt">핵심 가정</th><th class="num">EPS</th><th class="num">PER</th><th class="num">목표가</th><th class="num">확률</th><th class="num">Δ</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><span class="tag b">Bull</span></td><td class="txt">아이폰18 ASP + FC-BGA/유리기판 AI 리레이팅 + 실적 서프라이즈, 2026 OP 1.2조+</td><td class="num">~40,000 <span class="est bull">E</span></td><td class="num">22x</td><td class="num up">880,000</td><td class="num">35%</td><td class="num up">+36%</td></tr>
+      <tr class="hl"><td class="txt"><span class="tag n">Base</span></td><td class="txt">2026E EPS 36,690 달성·PER 18x(보수적 증권 TP권)</td><td class="num">36,690</td><td class="num">18x</td><td class="num">660,000</td><td class="num">40%</td><td class="num up">+2%</td></tr>
+      <tr><td class="txt"><span class="tag s">Bear</span></td><td class="txt">애플 판매 부진 + 유리기판 지연 + 고변동 디레이팅</td><td class="num">28,000 <span class="est bear">E</span></td><td class="num">14x</td><td class="num down">400,000</td><td class="num">25%</td><td class="num down">−38%</td></tr>
+    </tbody>
+    <tfoot><tr class="tot"><td class="txt" colspan="4">확률가중 기대값 (EV)</td><td class="num">672,000</td><td class="num"></td><td class="num up">+4%</td></tr></tfoot>
+  </table>
+
+  <div class="chart"><div class="ct">Football Field — 목표가 밴드</div><div class="cs">현재가 647,000(흰선). 자체 밴드 400,000~880,000(Base 660k, 보수적). 7월 증권가 프리뷰 밴드는 68만~200만으로 대폭 상향 — 시장은 더 강세.</div>
+    <svg viewBox="0 0 1080 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- scale: 300k..2,100k -> x 120..1030 ; k=0.0005056 ; x=120+(v-300000)*k -->
+      <line x1="120" y1="185" x2="1030" y2="185" stroke="#353b47"/>
+      <text x="221" y="205" text-anchor="middle" font-size="9" fill="#5a6472">50만</text>
+      <text x="474" y="205" text-anchor="middle" font-size="9" fill="#5a6472">100만</text>
+      <text x="727" y="205" text-anchor="middle" font-size="9" fill="#5a6472">150만</text>
+      <text x="980" y="205" text-anchor="middle" font-size="9" fill="#5a6472">200만</text>
+      <!-- 자체 밴드 400k..880k -->
+      <rect x="170.6" y="40" width="242.6" height="26" rx="4" fill="#e78a5c" opacity="0.28"/>
+      <text x="171" y="34" font-size="10" fill="#e78a5c">Bear 40만</text>
+      <text x="413" y="34" text-anchor="end" font-size="10" fill="#e78a5c">Bull 88만</text>
+      <line x1="302" y1="36" x2="302" y2="70" stroke="#cba24a" stroke-width="2.5"/><text x="302" y="82" text-anchor="middle" font-size="10" fill="#cba24a" font-weight="700">Base 66만</text>
+      <!-- 애널 밴드 680k..2,000k, avg 117.6만 -->
+      <rect x="312.1" y="110" width="667.4" height="26" rx="4" fill="#4bbf9a" opacity="0.25"/>
+      <text x="313" y="104" font-size="10" fill="#4bbf9a">보수 68만(메리츠·키움)</text>
+      <text x="979" y="104" text-anchor="end" font-size="10" fill="#4bbf9a">KB 200만</text>
+      <line x1="562.9" y1="106" x2="562.9" y2="140" stroke="#4bbf9a" stroke-width="2.5"/><text x="562" y="152" text-anchor="middle" font-size="10" fill="#4bbf9a" font-weight="700">애널 평균 ~118만</text>
+      <!-- 현재가 647,000 -->
+      <line x1="295.4" y1="20" x2="295.4" y2="170" stroke="#eaecef" stroke-width="2" stroke-dasharray="4 3"/><text x="295" y="16" text-anchor="middle" font-size="10.5" fill="#eaecef" font-weight="700">현재 647,000</text>
+    </svg>
+  </div>
+  <div class="note warn"><div class="h">밸류 텐션 — 자체 Base vs 증권가 프리뷰</div>본 리서치 Base(660,000)는 애플 종속·유리기판 미확정을 반영한 <strong>보수적 기준</strong>이다. 반면 2026년 7월 2Q26 프리뷰에서 증권가는 목표가를 <em>대신 130만·상상인 120만·KB 200만</em>으로 대폭 상향했다. 시장은 카메라 회복 + 기판 램프를 훨씬 공격적으로 프라이싱 중 — <strong>상방 리스크가 크다는 신호</strong>다. 다만 그 낙관은 유리기판 상용화·아이폰18 ASP의 실현을 전제하므로, 본 리서치는 확인 전까지 Bull(880,000)에 담고 Base는 보수 유지.</div>
+
+  <h2 class="sec">멀티베거 3체크 + 옵션 기여</h2>
+  <div class="grid g3">
+    <div class="card acc2"><h3 style="margin-top:0">매출 확장 △</h3><p style="margin:6px 0;font-size:12.5px">애플 물량은 크나 저성장·종속. 진짜 확장은 기판·전장에서. <strong>믹스 의존</strong>.</p></div>
+    <div class="card acc2"><h3 style="margin-top:0">마진 확장 ✓</h3><p style="margin:6px 0;font-size:12.5px">OPM 3→5%대. ASP(가변조리개)+기판 믹스로 이익 레버리지. <strong>회복 원년</strong>.</p></div>
+    <div class="card"><h3 style="margin-top:0">멀티플 확장 △</h3><p style="margin:6px 0;font-size:12.5px">현 17.6x. 유리기판 상용화 시 20x+ 재리레이팅, 지연 시 카메라 밸류(10~13배)로 압축.</p></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">옵션 EPS 기여(미반영): 유리기판 상용화·대형 수주 / FC-BGA 캐파 증설 완판 / 휴머노이드 비전센싱 등 신규 응용 → 각 EPS +10~25%.</p>
+</section>
+
+<!-- ================= TAB 9 ================= -->
+<section class="panel" id="t9">
+  <div class="eyebrow">리스크 · 매매플랜 · KPI</div>
+  <h2 class="sec">리스크 매트릭스 — 영향 × 확률 × 메커니즘</h2>
+  <table>
+    <thead><tr><th class="txt">리스크</th><th class="txt">메커니즘 · 영향(정량)</th><th class="num">확률</th></tr></thead>
+    <tbody>
+      <tr><td class="txt"><strong>애플 단일고객 종속</strong></td><td class="txt">아이폰 물량·ASP 하회 or 단가 후려치기 → 광학 매출·이익 급감(매출 83%). 주가 −30%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>유리기판 상용화 지연</strong></td><td class="txt">AI 기판 리레이팅 근거 약화 → 카메라 밸류로 디레이팅 −30%</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>마니아 후 변동성</strong></td><td class="txt">10배 급등·−58% 조정 전례. 테마 재냉각 시 추가 하락</td><td class="num">중~높음</td></tr>
+      <tr><td class="txt"><strong>FC-BGA 경쟁·공급과잉</strong></td><td class="txt">이비덴·삼성전기 증설로 공급부족 완화 시 판가·마진 압박</td><td class="num">중</td></tr>
+      <tr><td class="txt"><strong>환율·부품 원가</strong></td><td class="txt">원/달러·부품가 변동으로 얇은 마진이 크게 스윙</td><td class="num">중</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">매매 플랜 — if-then</h2>
+  <ul class="cl">
+    <li><strong>진입:</strong> 560,000~610,000 눌림에서 분할(퀄리티 대형주). 10배 급등 추격 금지.</li>
+    <li><strong>추가:</strong> 유리기판 상용화·FC-BGA 대형 수주 or 아이폰18 ASP 확인 → 비중 확대.</li>
+    <li><strong>홀딩:</strong> 2Q·3Q 광학·패키지 성장 확인·기판 가동률 100% 유지.</li>
+    <li><strong>축소:</strong> 애플 판매 부진 / 유리기판 지연 / 포워드 OPM 4% 하회.</li>
+    <li><strong>차익:</strong> 880,000 접근 시 부분 차익(자체 Bull권). 증권가 프리뷰 밴드는 그 위.</li>
+  </ul>
+
+  <h2 class="sec">추적 KPI 대시보드 — 다음 분기를 무엇으로 추정하나</h2>
+  <table>
+    <thead><tr><th class="txt">KPI</th><th class="txt">선행 의미</th><th class="txt">경보선</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">아이폰 카메라 ASP·가변조리개 채택</td><td class="txt">광학 이익 P 선행</td><td class="txt">채택 축소 / ASP 상승폭 미미</td></tr>
+      <tr><td class="txt">FC-BGA 가동률·판가</td><td class="txt">기판 이익 램프</td><td class="txt">가동률 &lt;90% / 판가 하락</td></tr>
+      <tr><td class="txt">유리기판 상용화·수주</td><td class="txt">리레이팅 실체화</td><td class="txt">상용화 로드맵 지연</td></tr>
+      <tr><td class="txt">전사 OPM·분기 영업익</td><td class="txt">이익 회복 지속성</td><td class="txt">포워드 OPM 4% 하회</td></tr>
+      <tr><td class="txt">외인 지분율·연기금 수급</td><td class="txt">대형주 수급</td><td class="txt">27.99%에서 큰 이탈</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec">촉매 캘린더</h2>
+  <table>
+    <thead><tr><th class="txt">시점</th><th class="txt">이벤트</th><th class="txt">방향</th></tr></thead>
+    <tbody>
+      <tr><td class="txt">2026년 하반기</td><td class="txt">아이폰18 출시·가변조리개 채택(카메라 ASP)</td><td class="txt"><span class="tag b">핵심</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">대면적 FC-BGA·유리기판 상용화·수주</td><td class="txt"><span class="tag b">상방(리레이팅)</span></td></tr>
+      <tr><td class="txt">2026년 8월</td><td class="txt">2Q26 실적(광학·패키지 성장 확인)</td><td class="txt"><span class="tag n">중립~긍정</span></td></tr>
+      <tr><td class="txt">상시</td><td class="txt">애플 판매·AI 반도체 기판 수요 동향</td><td class="txt"><span class="tag n">양방향</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note in"><div class="h">내 베팅 한 문장</div><strong>베팅: "애플 카메라 세계 1위가 2025 저점을 찍고 2026E 영업익 +78%로 회복하는데, AI FC-BGA/유리기판이라는 두 번째 엔진이 옵션으로 붙었다. 시장은 10배 마니아를 걷어낸 뒤 포워드 PER 17.6x에 방치했다가 다시 강세로 돌아섰다. 그 값은 560,000~610,000에 사서 아이폰18 ASP·유리기판 상용화를 기다린다."</strong><br>어떻게 맞나: 분할 매수 후 아이폰18 ASP 실현 or 유리기판 상용화 하나만 켜져도 증권가 프리뷰 밴드(120~200만)로 리레이팅. 어떻게 틀리나: 애플 물량·단가가 꺾이고 유리기판이 지연되면 카메라 밸류(10~13배)로 디레이팅(축소). 한 단어: <em>"두 번째 엔진"</em>. 남는 것: <strong>"거품 빠진 세계 1위 + AI 기판 옵션."</strong></div>
+
+  <div class="foot">
+    <div style="margin-bottom:6px"><span class="pill">판정 비중확대 관심(눌림 분할)</span><span class="pill">Base 660,000</span><span class="pill">매집밴드 560,000~610,000</span><span class="pill">Bull 880,000 / Bear 400,000</span><span class="pill">EV +4%</span><span class="pill">thesis break: 애플 부진·유리기판 지연·OPM 4% 하회</span></div>
+    RESEARCH LAB · 심층 리서치 v2 · 기준일 2026-07-22 (v1 대비 뎁스 심화 — 9탭·차트·풀 프레임워크) · 작성 Claude (research-brain)<br>
+    방법론: 주가=이익×멀티플, 알파는 미래 이익을 컨센보다 먼저·다르게 아는 것. 추정(<span class="est">E</span>)/실측 구분, 화폐 원화 병기.<br>
+    데이터 계보: 네이버 모바일증권 API(integration·finance/annual, 2026-07-22 · 현재가 647,000·시총 15.3조·추정PER 17.6x·트레일링 31.6x·PBR 2.52x·2023~2026E 연간재무) · siseJson 일봉(2025-08~2026-07-22, 고점 1,530,000@6/1·저점 148,500) · 1Q26 매출 5.53조(광학 83.3%)·2Q26E 매출 5.01조·영업익 1,936억(컨센 +19%)·상반기 OP 4,889억/하반기 5,956억 = 대신·다올·상상인·KB 프리뷰(2026-06~07) · 아이폰18 가변조리개(구미 양산·점유 ~50%·액추에이터 Sunny/Luxshare)=전자신문·비즈니스포스트·키움 · FC-BGA 2028년까지 공급부족·완판·기판 OP 2026E 2,000억+(전사 1/4)·유리기판 개발=알파경제·ZDNet·비즈니스포스트 · 경쟁(이비덴 수율 90%+·삼성전기·유니마이크론·대덕전자)=이코노믹리뷰·더스탁 · 지배구조(구광모→㈜LG→LG전자 40.79%·국민연금 10.43%·외인 27.99%)=LG이노텍 IR·와이즈리포트 · 수급 = 사용자 제공(07-22). 삼각검증: 시세·재무·프리뷰·리포트 다중소스 수렴, 2026E 이익은 컨센(1.18조)/보수(9,541억) 이원 병기.<br>
+    본 자료는 개인 리서치용 정보 제공 목적이며, 투자 권유가 아닙니다.
+  </div>
+</section>
+
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+var panels=[].slice.call(document.querySelectorAll('.panel'));
+nav.addEventListener('click',function(e){
+  var b=e.target.closest('.tab'); if(!b)return;
+  var id=b.getAttribute('data-t');
+  tabs.forEach(function(t){t.classList.toggle('on',t===b)});
+  panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  var i=tabs.findIndex(function(t){return t.classList.contains('on')});
+  if(e.key==='ArrowLeft'&&i>0)tabs[i-1].click();
+  if(e.key==='ArrowRight'&&i<tabs.length-1)tabs[i+1].click();
+});
+</script>
+</body>
+</html>
