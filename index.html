@@ -392,6 +392,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="rs">RS 분석</button>
     <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
     <button class="navitem" data-tab="semirebal">반도체 ETF 리밸런싱 <small>9/10</small></button>
+    <button class="navitem" data-tab="semicand">반도체 편입 후보 <small>9/11</small></button>
     <button class="navitem" data-tab="align">정배열 트래커</button>
     <button class="navitem" data-tab="macd">MACD 트래커</button>
     <div class="navgroup">비교 · 밸류</div>
@@ -483,6 +484,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
           <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
           <button class="card" data-go="semirebal"><h3>반도체 ETF 리밸런싱 <span class="tag">KRX 반도체 9월 정기변경</span></h3><p>KODEX·TIGER 반도체 cap 20% 시나리오 — 35종목 유출입 금액 ÷ ADTV·종가 단일가 배수, 6월 삼성전기 교본</p></button>
+          <button class="card" data-go="semicand"><h3>반도체 편입 후보 <span class="tag">KRX 반도체 9월 정기변경</span></h3><p>현행 35종 밖 소부장·기판 25종을 GICS → 중대형 TMI 규모 → 거래대금 90% 관문으로 판정, 편입 시 예상 비중·매수액</p></button>
           <button class="card" data-go="align"><h3>정배열 트래커 <span class="tag">韓 종목 · 韓 ETF · 美 ETF</span></h3><p>완전(현재가&gt;4주&gt;13주&gt;26주&gt;52주)·이평 정배열 유지일 랭킹 — 수급150 종목 / 국내 ETF 46종 / 미국 ETF 96종 3판 통합</p></button>
           <button class="card" data-go="macd"><h3>MACD 트래커 <span class="tag">韓 종목 · 12·26·9</span></h3><p>수급150 종목 일봉 MACD 국면 4분면(강세·회복·조정·약세) — 골든/데드크로스 유지일, 0선 돌파, 히스토그램 바닥 반전 선행 시그널</p></button>
         </div>
@@ -669,6 +671,10 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-semirebal">
       <iframe data-src="semirebal.html" title="반도체 ETF 리밸런싱"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-semicand">
+      <iframe data-src="semicand.html" title="반도체 편입 후보"></iframe>
     </section>
 
     <section class="panel embed" id="tab-basket7">
@@ -2541,7 +2547,7 @@ const RR_TABS={
   weekly:{m:'x',note:'주간 일정은 텔레그램 취합+웹검증 수동 워크플로우 — Claude 세션에서 갱신'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
   supply:{m:'a',eta:'~7분'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
-  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'정기변경 시나리오는 PDF·분봉 수집 후 Claude 세션에서 갱신'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'},
+  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'정기변경 시나리오는 PDF·분봉 수집 후 Claude 세션에서 갱신'}, semicand:{m:'x',note:'편입 후보 판정은 KRX 공지·GICS 조사 후 Claude 세션에서 갱신'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
   export:{m:'a',eta:'~1분 (신규 월 데이터는 엑셀 수동 반입)'}, corpexport:{m:'a',eta:'~3분'},
