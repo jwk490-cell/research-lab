@@ -2293,6 +2293,7 @@ async function lockOpen(tab,pw){
     frame.style.display='block';gate.style.display='none';
     panel.dataset.unlocked='1';
     sessionStorage.setItem('rl-lock-pw',pw);
+    sessionStorage.setItem('rl-lock-ok','1');   // 보관 관리 게이트의 증거
   }catch(e){
     msg.style.color='#e5484d';
     msg.textContent=(e&&(e.name==='OperationError'))?'비밀번호가 올바르지 않습니다.':('오류: '+(e.message||e));
@@ -2317,10 +2318,11 @@ items.forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
 document.querySelectorAll('[data-go]').forEach(c=>c.addEventListener('click',()=>openTab(c.dataset.go)));
 if(location.hash)openTab(location.hash.slice(1));
 
-/* ── 탭 보관: 비밀번호(Locked와 동일, ~/.rrg_lock_pass) 검증 후 편집, 목록은 localStorage ── */
-const ARCH_SALT='rl-arch-v1',
-      ARCH_HASH='7df365301bd29faf8421ea70bee0df161f96eb56a25917921e77bae8fc92e8e5', // rrg_publish.py가 비번 변경 시 동기화
-      archNav=document.getElementById('nav'),
+/* ── 탭 보관: Locked 해제 세션에서만 편집, 목록은 localStorage ──
+   (예전에는 비밀번호 해시를 이 파일에 박아 검증했다. 저장소가 공개이므로
+    솔트 없는 해시는 오프라인 대입으로 복원돼 .enc까지 열리는 통로가 됐다.
+    이제 검증자는 배포물에 두지 않고, Locked 복호화 성공 자체를 증거로 쓴다.) */
+const archNav=document.getElementById('nav'),
       archHead=document.getElementById('archHead'),
       archList=document.getElementById('archList'),
       archManage=document.getElementById('archManage'),
@@ -2363,27 +2365,15 @@ archNav.addEventListener('click',e=>{                   // 편집 모드: 클릭
   archApply();
   if(archSet.size)archHead.classList.add('open');
 },true);
-async function archHash(pw){
-  const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ARCH_SALT+'|'+pw));
-  return Array.from(new Uint8Array(d)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-archManage.addEventListener('click',async()=>{
+archManage.addEventListener('click',()=>{
   if(archEdit){
     archEdit=false;document.body.classList.remove('archedit');
     archManage.textContent='⚙ 보관 관리';return;
   }
-  let ok=sessionStorage.getItem('rl-arch-ok')==='1';
-  if(!ok){
-    const saved=sessionStorage.getItem('rl-lock-pw');   // Locked 탭에서 이미 입력한 비번 재활용
-    if(saved&&(await archHash(saved))===ARCH_HASH)ok=true;
+  // 유일한 증거: 이번 세션에 Locked 탭 하나를 실제로 복호화했는가.
+  if(sessionStorage.getItem('rl-lock-ok')!=='1'){
+    alert('보관 관리는 Locked 탭을 먼저 연 세션에서만 쓸 수 있습니다.');return;
   }
-  if(!ok){
-    const pw=window.prompt('보관 관리 비밀번호');
-    if(pw==null||pw==='')return;
-    if((await archHash(pw))!==ARCH_HASH){alert('비밀번호가 올바르지 않습니다.');return;}
-    ok=true;
-  }
-  sessionStorage.setItem('rl-arch-ok','1');
   archEdit=true;document.body.classList.add('archedit');
   archManage.textContent='✓ 보관 관리 종료';
   archHead.classList.add('open');

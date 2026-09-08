@@ -5,9 +5,9 @@
 // /api/refresh/* — 수동 갱신 큐 (Basic Auth 대신 자체 키 인증 + CORS)
 //   버튼(index.html) → enqueue → 로컬 맥의 rl_refresh_poll.py(1분 cron)가
 //   poll/claim → 탭별 갱신 체인 실행 → report. 상태는 Durable Object에 저장.
-//   키 = 사이트 보관/Locked 비밀번호(~/.rrg_lock_pass)와 동일. 아래 해시는
-//   rrg_publish.py sync_arch_hash()가 비밀번호 변경 시 자동 동기화한다.
-const REFRESH_HASH = "5166654f954f54640c25fd1e36456e738c1b3d56d648b4dbe236c6626a458e9c";
+//   키는 Worker 시크릿 REFRESH_KEY에 보관한다(소스에 해시조차 넣지 않는다 —
+//   저장소가 공개이므로 솔트 없는 해시는 오프라인 대입으로 복원된다).
+//   Locked(.enc) 비밀번호와는 반드시 다른 값을 쓴다: 한쪽이 뚫려도 다른 쪽은 남는다.
 const ALLOWED_ORIGINS = ["https://jwk490-cell.github.io"];
 
 export default {
@@ -44,8 +44,6 @@ export default {
       headers: {
         "WWW-Authenticate": 'Basic realm="Research Lab", charset="UTF-8"',
         "Cache-Control": "no-store",
-        // Temporary diagnostic: shows whether env vars are configured (not their values).
-        "X-Auth-Config": `user=${user ? "set" : "missing"}; pass=${pass ? "set" : "missing"}`,
       },
     });
   },
@@ -57,8 +55,8 @@ async function handleRefresh(request, env, url) {
     return new Response(null, { status: 204, headers: corsHeaders(request) });
   }
   const key = request.headers.get("X-RL-Key") || "";
-  const h = await sha256hex("rl-refresh-v1|" + key);
-  if (!timingSafeEqual(h, REFRESH_HASH)) {
+  const want = env.REFRESH_KEY;
+  if (!want || !timingSafeEqual(key, want)) {
     return withCors(request, json({ error: "unauthorized" }, 401));
   }
   // POST /api/refresh → enqueue, 그 외 /api/refresh/<action>
@@ -163,11 +161,6 @@ function withCors(request, resp) {
   for (const [k, v] of Object.entries(corsHeaders(request))) r.headers.set(k, v);
   r.headers.set("Cache-Control", "no-store");
   return r;
-}
-
-async function sha256hex(s) {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
-  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 function timingSafeEqual(a, b) {
