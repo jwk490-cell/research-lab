@@ -4,3 +4,11 @@
 research/**/*.md
 research/**/*.json
 research/**/조사노트/
+
+# ── Cloudflare 배포 파일: 로컬 wrangler에서만 쓴다 ──
+# 저장소에 두면 인증 구조가 그대로 읽힌다(과거 REFRESH_HASH 유출 경로).
+# .assetsignore 가 서빙은 막아 왔지만, 커밋되어 있으면 GitHub에서 그냥 읽힌다.
+worker.js
+wrangler.jsonc
+publish.sh
+publish.ps1
