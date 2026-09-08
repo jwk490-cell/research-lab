@@ -1,0 +1,434 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="risks">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인제니아테라퓨틱스 파트 6 — 리스크 · 2026-09-08</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<div class="hubnav">인제니아테라퓨틱스 파트제 커버리지 · 현행 판정은 <a href="인제니아테라퓨틱스_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 risks(리스크포인트 — 영향 정량 × 확률 × 관측 신호)를 맡습니다. · 파트 0 / 1 / 2 / 3 / 4 / 5 / <b>6</b> / 7</div>
+<h1>인제니아테라퓨틱스 파트 6 — 리스크: 열두 개의 매트릭스와 접는 조건</h1>
+<div class="sub">파트제 커버리지 8편 중 파트 6 · 작성 2026-09-08 · 주가 16,140원(9-08 종가, -0.55%) · 시총 7,980억 · 기준 환율 $1 = ₩1,345.8(9-08) · 회계연도 12월(2026 = 제9기, USD 기능통화·K-IFRS) · 다음 실적 3Q26 분기보고서 2026-11-16<span class="est">E</span>(외국기업 45일) · 다음 갱신 트리거 2026-09-18 1개월 의무보유 해제 16,218,189 DR(32.8%) · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 투자설명서 2026-07-28 III 투자위험요소(risk_core·risk_full)·반기보고서 2026.06·대량보유상황보고서 08-25·키움 일봉·투자자별·네이버 환율·ClinicalTrials.gov·Merck 보도자료·이데일리·더벨·뉴스핌 · 확률은 전부 작성자 설정<span class="est">E</span>이며 분기마다 재설정합니다</div>
+
+<div class="judge"><b>이 파트의 답.</b> 인제니아의 리스크는 세 묶음입니다. 물량(9월 18일 16,218,189 DR, 원가 약 3,000원의 재무적투자자가 5.4배 위에서 팔 수 있는 자리), 의존(매출처 100%가 MSD이고 IGT-427 하나에 계약의 거의 전부가 걸린 구조, 자체 임상 IGT-303은 사람 데이터가 없는 상태), 그리고 그릇(미국 법인의 KDR이라는 형식이 주는 정보·지수·법적 거리)입니다. 열두 개 리스크의 확률<span class="est">E</span>과 걸린 금액을 곱해 줄 세우면 위 셋이 ① 1개월 해제 오버행 1,832억 · ③ 파트너 단일 의존(MSD) 1,535억 · ⑤ IGT-303 유효성 미확인 483억 순으로 나옵니다. 이 값들은 손실 추정이 아니라 "그 리스크가 흔드는 금액의 크기"이고, 하방의 자는 목표가가 아니라 실측입니다. 상장 16거래일 안에서 이미 하루 -21.6%(8/19)와 -10.6%(9/2)를 겪었고 장중 고점 21,100원 대비 -23.5%가 지금 자리이며, 공모가 12,000원(시총 5,933억)과 첫날 저가 9,900원(시총 4,895억)이 이 종목이 실제로 거래된 가장 낮은 두 자입니다. 판정을 접는 조건은 논쟁마다 표로 적었고, 논쟁 1(물량)과 논쟁 2(하반기 마일스톤)가 같은 분기에 접히면 판정을 보류합니다.</div>
+
+<p>이 파트는 커버리지 14층 가운데 risks 층을 맡습니다. 허브의 판정 가설은 이 종목을 "MSD 파이프라인 하나에 대한 원화 표시 로열티·마일스톤 증권 + 신장질환 옵션"으로 읽고 첫 채점을 9월 18일부터 4주의 수급과 11월 분기보고서의 매출 인식으로 잡았습니다. 리스크 파트가 하는 일은 그 판정이 틀렸을 때 무엇으로 먼저 알 수 있는가를 적는 것입니다. 파트 1(IGT-427과 MSD)·파트 2(자체 파이프라인)·파트 4(주가·IPO)·파트 5(비용·현금)가 각자의 층에서 다룬 숫자를 여기서는 "켜졌을 때 흔들리는 금액"과 "12개월 안에 켜질 확률<span class="est">E</span>"과 "어디를 보면 켜진 것을 아는가"의 세 열로 다시 세웁니다. 확률은 전부 우리가 정한 값이고 사후에 채점됩니다. 투자설명서 III 투자위험요소가 정본이며, 조항 번호를 붙여 인용합니다.</p>
+
+<h2>0. 용어집</h2>
+<div class="gloss">
+<b>의무보유(계속보유)</b><span>상장규정과 자발적 확약에 따라 상장 후 일정 기간 매도가 묶인 주식. 인제니아는 최대주주 36개월, 등기임원 30개월, 재무적투자자는 1·3·12개월로 나뉘고, 그 밖의 기존 주주도 규정상 1개월 대상입니다(신고서 III-3 기타위험 가). 기간이 끝나면 별도 공시 없이 팔 수 있습니다.</span>
+<b>공동목적보유확약</b><span>의결권을 대표이사(또는 지정인)에게 위임하고 처분 시 사전 협의하기로 한 계약. 신고서 기준 29,006,960 DR(58.61%), 8-25 대량보유보고서 기준 14인 37,975,106 DR(76.80%). 의무보유가 끝나면 처분은 가능하고, 계약이라 종료·약화될 수 있다고 신고서 스스로 적었습니다(회사위험 카).</span>
+<b>관리종목(기술성장기업 유예)</b><span>코스닥 상장규정 제53조의 매출액 요건은 상장 후 5개 사업연도(2031년부터 적용), 세전손실 요건은 3개 사업연도(2029년부터) 유예되지만 자본잠식·감사의견 요건은 유예가 없습니다(회사위험 나). 시총 요건은 2026-07-01 이후 200억, 2027년 300억으로 오릅니다.</span>
+<b>오버행</b><span>팔릴 수 있다고 시장이 아는 물량이 값을 누르는 현상. 크기(해제 DR 수)보다 원가 대비 배수와 하루 거래량 대비 일수가 실제 압력을 정합니다. 9월 18일 물량은 최근 13거래일 평균 거래량으로 2.1일, 9-08 거래량으로 10.6일치입니다.</span>
+<b>PoS / LOA</b><span>Probability of Success(단계 전환 확률)와 Likelihood of Approval(현 단계에서 최종 승인까지의 누적 확률). 자는 BIO·Informa·QLS 2011~2020: 안과 P1 LOA 11.9%·P3 LOA 46.7%, 전체 7.9%·52.4%, 비뇨기 P1 LOA 3.6%.</span>
+<b>KDR과 원천세</b><span>미국 원주를 한국예탁결제원이 예탁하고 발행한 증권예탁증권. 주주권은 예탁기관을 통해 간접 행사하며(기타위험 러), 배당·신주인수권 분배 시 발행회사가 관련 법규에 따라 원천징수하고 조세조약 세율은 소유자가 서류로 소명해야 적용됩니다(예탁계약 제26조). 배당 정책은 없고 손실 회사라 당장의 문제는 아니지만 구조는 알아 둘 것입니다.</span>
+<b>파트너 의존</b><span>2023·2024년 매출 전액과 1H26 매출 500만달러가 EyeBio/MSD 한 곳에서 나왔습니다(회사위험 바). 계약은 선급금·공동연구비를 제외하면 조건부 수익(contingent payment)이고, 반환·해지 조항은 비밀유지로 비공개입니다(사업위험 마·바).</span>
+<b>희석</b><span>미행사 스톡옵션 4,325,814 DR(공모 후 8.75%, 2021년 부여분 행사가 $0.17)과 향후 유상증자·CB가 기존 주주 몫을 줄이는 것. 옵션 중 최대주주분 1,645,798 DR은 3년, 등기임원분은 30개월, Berasi 부사장분 189,683 DR은 1년 의무보유입니다(기타위험 라).</span>
+</div>
+
+<h2>1. 리스크 매트릭스 — 확률 × 걸린 금액 × 관측 신호</h2>
+<p>매트릭스의 세로축을 손실 추정치가 아니라 "걸린 금액"으로 둔 이유가 있습니다. 이 회사는 컨센서스가 없고(커버리지 증권사 0), 주관사 추정이 유일한 공개 추정이며, 시총의 대부분이 2028년 이후의 조건부 현금흐름에 걸려 있습니다. 그런 종목에서 "발생 시 영업이익 -N억"을 적으면 숫자가 아니라 소설이 됩니다. 대신 각 리스크가 켜졌을 때 흔들리는 금액을 공시·계약·주가에서 그대로 가져와 적고, 12개월 안에 켜질 확률만 우리가 정합니다<span class="est">E</span>. 두 값의 곱은 우선순위를 정하는 자이지 기대손실이 아닙니다.</p>
+<figure class=""><figcaption>장표 1. 리스크 12종 — 12개월 확률(작성자 설정E) × 걸린 금액(억원, 로그축)</figcaption><svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="74.0" y1="22" x2="74.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="74.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">0%</text>
+<line x1="171.0" y1="22" x2="171.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="171.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">10%</text>
+<line x1="268.0" y1="22" x2="268.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="268.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">20%</text>
+<line x1="365.0" y1="22" x2="365.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="365.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">30%</text>
+<line x1="462.0" y1="22" x2="462.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="462.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">40%</text>
+<line x1="559.0" y1="22" x2="559.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="559.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">50%</text>
+<line x1="656.0" y1="22" x2="656.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="656.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">60%</text>
+<line x1="753.0" y1="22" x2="753.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="753.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">70%</text>
+<line x1="850.0" y1="22" x2="850.0" y2="350" stroke="#d8d4cc" stroke-width="0.7"/><text x="850.0" y="366" text-anchor="middle" font-size="10.5" fill="#8a857c">80%</text>
+<line x1="74" y1="350.0" x2="850" y2="350.0" stroke="#d8d4cc" stroke-width="0.7"/><text x="68" y="354.0" text-anchor="end" font-size="10.5" fill="#8a857c">10억</text>
+<line x1="74" y1="253.5" x2="850" y2="253.5" stroke="#d8d4cc" stroke-width="0.7"/><text x="68" y="257.5" text-anchor="end" font-size="10.5" fill="#8a857c">100억</text>
+<line x1="74" y1="157.1" x2="850" y2="157.1" stroke="#d8d4cc" stroke-width="0.7"/><text x="68" y="161.1" text-anchor="end" font-size="10.5" fill="#8a857c">1,000억</text>
+<line x1="74" y1="60.6" x2="850" y2="60.6" stroke="#d8d4cc" stroke-width="0.7"/><text x="68" y="64.6" text-anchor="end" font-size="10.5" fill="#8a857c">10,000억</text>
+<line x1="74" y1="70.0" x2="850" y2="70.0" stroke="#1f3a5f" stroke-width="0.9" stroke-dasharray="4 3"/><text x="850" y="65.0" text-anchor="end" font-size="10" fill="#1f3a5f">시총 7,980억(9-08)</text>
+<text x="850" y="386" text-anchor="end" font-size="10.5" fill="#8a857c">가로 = 12개월 안 켜질 확률(작성자 설정E) · 세로 = 켜졌을 때 흔들리는 금액(억원, 로그) · 원 크기 = 확률×금액</text>
+<circle cx="753.0" cy="116.7" r="14.7" fill="#a44a3f" opacity="0.7"/>
+<text x="743.0" y="106.7" text-anchor="end" font-size="10.5" fill="#a44a3f">① 1개월 해제 오버행 2,618억</text>
+<circle cx="656.0" cy="167.3" r="9.4" fill="#b07d2b" opacity="0.7"/>
+<text x="646.0" y="157.3" text-anchor="end" font-size="10.5" fill="#b07d2b">② 3·12개월 후속 해제 784억</text>
+<circle cx="219.5" cy="59.6" r="13.8" fill="#a44a3f" opacity="0.7"/>
+<text x="229.5" y="49.6" text-anchor="start" font-size="10.5" fill="#a44a3f">③ 파트너 단일 의존(MSD) 10,231억</text>
+<circle cx="171.0" cy="122.4" r="7.8" fill="#a44a3f" opacity="0.7"/>
+<text x="181.0" y="112.4" text-anchor="start" font-size="10.5" fill="#a44a3f">④ MK-8748 임상 3상 실패 2,288억</text>
+<circle cx="607.5" cy="162.5" r="9.5" fill="#b07d2b" opacity="0.7"/>
+<text x="597.5" y="144.3" text-anchor="end" font-size="10.5" fill="#b07d2b">⑤ IGT-303 유효성 미확인 879억</text>
+<circle cx="462.0" cy="199.3" r="7.0" fill="#b07d2b" opacity="0.7"/>
+<text x="472.0" y="189.3" text-anchor="start" font-size="10.5" fill="#b07d2b">⑥ 하반기 마일스톤 인식 지연 365억</text>
+<circle cx="413.5" cy="184.0" r="7.4" fill="#b07d2b" opacity="0.7"/>
+<text x="423.5" y="174.0" text-anchor="start" font-size="10.5" fill="#b07d2b">⑦ 현금 소진·희석 526억</text>
+<circle cx="122.5" cy="70.0" r="9.0" fill="#8a857c" opacity="0.7"/>
+<text x="132.5" y="36.6" text-anchor="start" font-size="10.5" fill="#8a857c">⑧ 외국기업 KDR·관리종목 요건 7,980억</text>
+<circle cx="219.5" cy="118.0" r="8.9" fill="#8a857c" opacity="0.7"/>
+<text x="229.5" y="99.4" text-anchor="start" font-size="10.5" fill="#8a857c">⑨ 경영권·공동목적보유 종료 2,541억</text>
+<circle cx="559.0" cy="278.5" r="5.3" fill="#2b7a78" opacity="0.7"/>
+<text x="549.0" y="268.5" text-anchor="end" font-size="10.5" fill="#2b7a78">⑩ 환율(원화 강세) 55억</text>
+<circle cx="365.0" cy="166.0" r="7.9" fill="#2b7a78" opacity="0.7"/>
+<text x="375.0" y="131.3" text-anchor="start" font-size="10.5" fill="#2b7a78">⑪ 경쟁(지속형·Tie2 후발) 807억</text>
+<circle cx="171.0" cy="281.7" r="4.6" fill="#8a857c" opacity="0.7"/>
+<text x="181.0" y="271.7" text-anchor="start" font-size="10.5" fill="#8a857c">⑫ 원천 라이선스·특허·인력 51억</text>
+</svg><div class="src">자료: 투자설명서 III 투자위험요소·대량보유상황보고서 08-25·키움·주관사 추정(IV 인수인의 의견)·BIO 2011-2020. 확률은 작성자 설정E. 빈티지 2026-09-08</div></figure>
+<p class="reading"><b>관찰.</b> 오른쪽 위(확률 높고 금액 큰 곳)에 ① 1개월 해제 오버행(2,618억, 70%<span class="est">E</span>)이 홀로 있고, 왼쪽 위에 ③ 파트너 의존(10,231억, 15%<span class="est">E</span>)과 ⑧ KDR·관리종목(시총 전체, 5%<span class="est">E</span>)이 있습니다. 가운데 띠에 ⑤ IGT-303(879억, 55%<span class="est">E</span>)·② 후속 해제·⑦ 현금·⑥ 마일스톤 지연이 몰려 있고, 왼쪽 아래에 ⑩ 환율·⑫ 원천 라이선스가 있습니다. <b>원인.</b> 확률과 금액을 곱해 줄 세우면 ① 1개월 해제 오버행 1,832억 · ③ 파트너 단일 의존(MSD) 1,535억 · ⑤ IGT-303 유효성 미확인 483억, 그다음이 ② 3·12개월 후속 해제 470억·⑧ 외국기업 KDR·관리종목 요건 399억입니다. 물량 리스크는 지금 당장의 것이고 의존·임상 리스크는 2027~2028년의 것이라 시간축이 다릅니다. <b>함의.</b> 그래서 9~10월의 채점은 ①·⑥ 둘로 좁혀지고, 11월 분기보고서 이후에는 ⑤·③으로 넘어갑니다. 매트릭스의 큰 원 셋이 서로 다른 분기에 결판나는 것이 이 종목 리스크의 구조입니다.</p>
+<table class=""><tr><th>번호·리스크</th><th>12개월 확률E</th><th>걸린 금액(억원)</th><th>정량 근거</th><th>관측 신호</th><th>논쟁</th></tr><tr><td>① 1개월 해제 오버행</td><td>70%</td><td>2,618</td><td>해제 16,218,189 DR × 9-08 종가 = 시가. FI 시리즈B 원가 약 3,000원의 5.4배</td><td>9-18~10-16 기관·기타법인 순매도, 5% 보고, 거래량</td><td>1</td></tr><tr><td>② 3·12개월 후속 해제</td><td>60%</td><td>784</td><td>11-18 1,655,630 + 2027-08-18 2,945,798 + 주선인 255,496 DR × 종가</td><td>11-18 전후 수급, 2027-02부터 주선인 월 5% 매각</td><td>1</td></tr><tr><td>③ 파트너 단일 의존(MSD)</td><td>15%</td><td>10,231</td><td>총 계약 약 1조 391억 - 수령 11.9백만달러. 매출처 100%(2023~1H26)</td><td>Merck 분기 파이프라인 표, 반환·해지 공시</td><td>3</td></tr><tr><td>④ MK-8748 임상 3상 실패</td><td>10%</td><td>2,288</td><td>주관사 2028~29E IGT-427 마일스톤 170백만달러. 안과 P3 LOA 46.7%</td><td>4건 NCT 상태 변경, 안전성 공시, 학회 데이터</td><td>3</td></tr><tr><td>⑤ IGT-303 유효성 미확인</td><td>55%</td><td>879</td><td>주관사 2027E 계약금 65.3백만달러. 사람 데이터 0, 비뇨기 P1 LOA 3.6%</td><td>NCT07231679 completion 변경, UACR 공개 시점</td><td>4</td></tr><tr><td>⑥ 하반기 마일스톤 인식 지연</td><td>40%</td><td>365</td><td>2026E 32.1백만달러 중 미인식 27.1백만달러</td><td>3Q26 분기보고서(11-16) 영업수익, MK-8748-005 개시</td><td>2</td></tr><tr><td>⑦ 현금 소진·희석</td><td>35%</td><td>526</td><td>2027E 영업비용 39.1백만달러 vs 현금 약 60백만달러. 옵션 8.75%</td><td>유상증자·CB 이사회 결의, 옵션 행사 신고</td><td>5</td></tr><tr><td>⑧ 외국기업 KDR·관리종목 요건</td><td>5%</td><td>7,980</td><td>거래정지·관리종목 시 시총 전체의 유동성이 걸림. 감사의견·자본잠식은 유예 없음</td><td>감사보고서 의견, 45일 분기보고 지연, 공시 정정</td><td>—</td></tr><tr><td>⑨ 경영권·공동목적보유 종료</td><td>15%</td><td>2,541</td><td>FI 3곳 15,744,436 DR(31.8%) × 종가. 최대주주 17.2%</td><td>5% 보고 '보유목적' 변경, 확약 해지 공시</td><td>—</td></tr><tr><td>⑩ 환율(원화 강세)</td><td>50%</td><td>55</td><td>USD 자산 약 60백만달러 × 100원 = 원화 값 변화. 6-30 1,548 대비 9-08 1,345.8</td><td>원/달러 1,300 하회 여부</td><td>5</td></tr><tr><td>⑪ 경쟁(지속형·Tie2 후발)</td><td>30%</td><td>807</td><td>승인 마일스톤 2029E 60백만달러가 상업성에 걸림. Memento $93M, 아일리아 HD, Axpaxli</td><td>Kodiak DAYBREAK(9월), Memento FIH 2027, 바비스모 4Q 매출</td><td>3</td></tr><tr><td>⑫ 원천 라이선스·특허·인력</td><td>10%</td><td>51</td><td>KAIST·IBS 라이선스 총 약 51억(계약금+마일스톤+로열티, 조건 비공개). 직원 21명·평균 근속 2.5년</td><td>특허 등록·소송 공시, 임원 퇴임 공시</td><td>—</td></tr></table>
+<p class="src">걸린 금액은 손실 추정이 아니라 그 리스크가 켜졌을 때 흔들리는 금액의 크기(공시·계약·주가 실측). 확률은 12개월 안에 관측 신호가 "확정"으로 켜질 확률(작성자 설정E). 논쟁 열은 허브 논쟁 번호.</p>
+
+<h3>① 1개월 해제 오버행 — 16,218,189 DR, 원가의 5.4배</h3>
+<p>9월 18일에 풀리는 16,218,189 DR(32.8%)은 인터베스트 4,734,862·아우름 1호 4,454,811·아우름 2호 1,659,747에 기관 확약 72,358과 그 밖의 기존 주주 5,296,411을 더한 값입니다(신고서 유통제한 표, 프리스탁뉴스 2026-08-08 인용). 해제 뒤 유통 물량은 28,871,128 DR(58.4%)로 상장 직후(25.6%)의 2.3배가 됩니다. 인터베스트가 2024년 6월 시리즈B에 참여한 단가는 주당 $2.1238, 약 3,000원이었고(더벨 2026-08-06), 공모가는 그 4배, 9-08 종가는 5.4배입니다. 아우름 1·2호는 프리A·시리즈A 투자자라 원가가 그보다 낮을 가능성이 크지만 단가는 미확인입니다.</p>
+<p>크기를 거래량으로 나누면 이렇습니다. 상장 첫 3일을 뺀 13거래일 평균 거래량은 7,669,956주이고, 최근 5일 평균은 4,205,086주, 9-08 하루는 1,528,595주였습니다. 해제 물량은 각각 2.1일·3.9일·10.6일치입니다. 첫 3일(5,420만·3,149만·1,892만 주)이 부풀린 평균으로 보면 "이틀이면 소화"이지만, 거래가 식은 지금 수준으로 보면 "열흘 넘게 눌리는 물량"입니다. 재무적투자자가 전량을 시장에서 팔지 않을 것이라는 반론은 타당하고, 공동목적보유확약이 주요 확약자(인터베스트·아우름 1·2호)의 처분에 대표이사 우선매수권과 사전 협의를 붙여 놓았지만, 그 확약은 "의무보유 기간 종료 이후 대상 주식의 처분이 가능하다"고 명시합니다(회사위험 카, 확약서 2항). 12개월 안에 이 리스크가 켜질 확률을 70%<span class="est">E</span>로 두는 것은 "팔린다"가 아니라 "팔릴 수 있다는 사실이 4주 동안 값을 누른다"에 대한 확률입니다. 채점은 논쟁 1의 KPI(4주 기관+기타법인 순매도 500억, 평균 거래량 300만 주, 공모가 유지)로 하고, 접는 조건은 종가가 공모가를 깨거나 FI 한 곳이 절반 이상 처분을 보고하는 것입니다.</p>
+<figure class=""><figcaption>장표 2. 의무보유 해제 캘린더 — 상장 직후 유통과 해제 시점별 DR(만 DR)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="181.5" x2="730" y2="181.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="185.5" text-anchor="end" font-size="11" fill="#8a857c">500</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="72.5" x2="730" y2="72.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="76.5" text-anchor="end" font-size="11" fill="#8a857c">1,500</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<text x="109.7" y="254" text-anchor="middle" font-size="10" fill="#8a857c">상장직후 유통</text>
+<text x="205.1" y="254" text-anchor="middle" font-size="10" fill="#8a857c">26-09-18(1개월)</text>
+<text x="300.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">26-11-18(3개월)</text>
+<text x="396.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">27-02-18~(주선인)</text>
+<text x="491.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">27-08-18(12개월)</text>
+<text x="586.9" y="254" text-anchor="middle" font-size="10" fill="#8a857c">29-02-18(30개월)</text>
+<text x="682.3" y="254" text-anchor="middle" font-size="10" fill="#8a857c">29-08-18(36개월)</text>
+<rect x="81.1" y="98.1" width="57.3" height="137.9" fill="#8a857c" opacity="0.9"/>
+<text x="109.7" y="94.1" text-anchor="middle" font-size="9.5" fill="#8a857c">1,265</text>
+<rect x="176.5" y="59.2" width="57.3" height="176.8" fill="#a44a3f" opacity="0.9"/>
+<text x="205.1" y="55.2" text-anchor="middle" font-size="9.5" fill="#8a857c">1,622</text>
+<rect x="271.9" y="218.0" width="57.3" height="18.0" fill="#a44a3f" opacity="0.9"/>
+<text x="300.6" y="214.0" text-anchor="middle" font-size="9.5" fill="#8a857c">166</text>
+<rect x="367.4" y="233.2" width="57.3" height="2.8" fill="#a44a3f" opacity="0.9"/>
+<text x="396.0" y="229.2" text-anchor="middle" font-size="9.5" fill="#8a857c">26</text>
+<rect x="462.8" y="203.9" width="57.3" height="32.1" fill="#a44a3f" opacity="0.9"/>
+<text x="491.4" y="199.9" text-anchor="middle" font-size="9.5" fill="#8a857c">295</text>
+<rect x="558.2" y="180.4" width="57.3" height="55.6" fill="#a44a3f" opacity="0.9"/>
+<text x="586.9" y="176.4" text-anchor="middle" font-size="9.5" fill="#8a857c">510</text>
+<rect x="653.7" y="143.3" width="57.3" height="92.7" fill="#a44a3f" opacity="0.9"/>
+<text x="682.3" y="139.3" text-anchor="middle" font-size="9.5" fill="#8a857c">850</text>
+<rect x="736" y="18" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">상장 직후 유통(만 DR)</text>
+<rect x="736" y="34" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">의무보유 해제(만 DR)</text>
+</svg><div class="src">자료: 투자설명서 III-3 기타위험 가·II 회사위험 카 의무보유 표, 증권발행실적보고서 08-04(기관 확약), 프리스탁뉴스 08-08. 주선인 255,496 DR은 2027-02-18부터 월 5%씩 매각 가능. 빈티지 2026-09-08</div></figure>
+<p class="reading"><b>관찰.</b> 상장 직후 유통 1,265만 DR 옆에 9월 18일 1,622만 DR이 가장 큰 막대로 서고, 11월 18일 166만, 2027년 8월 295만(+주선인 26만)이 뒤따릅니다. 2029년의 30·36개월 막대(510만·850만)는 등기임원·차훈·최대주주 몫입니다. <b>원인.</b> 재무적투자자 지분의 대부분(1개월 {fmt((cal['2026-09-18(1개월)']['내역_확정']['인터베스트']+cal['2026-09-18(1개월)']['내역_확정']['아우름1호']+cal['2026-09-18(1개월)']['내역_확정']['아우름2호'])/1e4)}만 DR)이 첫 해제일에 몰려 있고, 최대주주는 36개월 뒤에야 풀리는 구조라 물량 리스크가 앞에 쏠려 있습니다. <b>함의.</b> 9월 18일이 지나면 12개월 안의 다음 큰 해제는 11월 18일 {fmt(REL3/1e4)}만 DR(3.3%) 하나뿐입니다. 즉 물량 리스크는 4주 안에 대부분 결판이 나고, 그 뒤 2027년 8월까지는 옵션 행사와 유상증자가 아니면 새 물량이 없습니다.</p>
+
+<h3>② 3개월·12개월 후속 해제</h3>
+<p>11월 18일에는 3개월 의무보유 1,610,630 DR(인터베스트 195,640·아우름 1호 874,378·아우름 2호 540,612)과 기관 확약 45,000 DR이 풀립니다. 이 날짜는 3Q26 분기보고서 제출 기한(11월 16일<span class="est">E</span>) 이틀 뒤이고, 논쟁 2(하반기 마일스톤 인식)의 첫 채점 결과가 나온 직후라 물량과 실적이 같은 주에 겹칩니다. 2027년 8월 18일에는 12개월 물량 2,945,798 DR(인터베스트 901,921·아우름 2호 1,459,744·스톤브릿지 211,884·휴온스 182,927·티케이지브이 141,256·Berasi 48,066)이 풀리고, 주관사 삼성증권의 의무인수분 255,496 DR은 2027년 2월 18일부터 월 5%씩(12,775 DR) 매각할 수 있습니다(기타위험 다). 세 덩어리를 합쳐 시가로 784억이고, 확률 60%<span class="est">E</span>는 "이 중 어느 하나가 해당 주간의 수급을 눌러 5% 이상의 주간 하락을 만든다"는 뜻입니다.</p>
+
+<h3>③ 파트너 단일 의존 — MSD가 우선순위를 낮출 때</h3>
+<p>신고서 회사위험 바는 "2023년과 2024년 매출 USD 4,313,696과 USD 2,588,400은 모두 EyeBio/MSD에 대한 매출액"이라고 적고, 사업위험 마는 EyeBio/MSD 계약이 "일부 선급금 및 공동연구비를 제외한 상당 부분이 개발 단계 달성 및 상업화 성공을 전제로 한 조건부 수익(contingent payment) 구조"라고 밝힙니다. 사업위험 바는 한 걸음 더 나가 "계약 상대방의 사업전략 변경, 연구개발 우선순위 조정"을 개발 중단·계약 해지 사유로 열거하고, 파트너가 목표 기간 안에 개발에 실패하면 "계약금이나 마일스톤 일부 또는 전부를 반환해야 하는 의무가 있을 수 있"다고 씁니다. 반환·해지의 구체 조항은 비밀유지로 비공개이고, 이것이 이 리스크의 핵심 미결입니다.</p>
+<p>MSD 쪽 사정도 같이 봐야 합니다. MSD는 2024년 EyeBio를 선급 13억달러에 인수하면서 얻은 첫째 자산이 Restoret(MK-3000, Wnt 작용 삼중항체)이고, MK-8748은 그 인수에 딸려 온 둘째 자산입니다(research A·C, Merck 2024-05-29). 2026년 4월 MSD가 MK-8748의 피벗 2b/3상 개시를 직접 발표하고 1분기 IR에서 first-in-class 후보로 언급한 것은 의지의 증거이지만, DME 3상 4건에 3,984명을 넣는 비용을 MSD가 계속 대는지는 해마다 다시 정해집니다. 우선순위가 낮아지는 첫 신호는 보통 임상 등록 지연(MK-8748-005의 9월 30일 개시가 밀리는가)과 분기 파이프라인 표의 표기 변화이고, 마지막 신호가 반환·해지 공시입니다. 걸린 금액은 총 계약 약 1조 391억(2022-10-31 환율) 가운데 수령분 11.9백만달러를 뺀 명목 잔여이고, 12개월 안 확률 15%<span class="est">E</span>는 "표기 변화·지연 신호가 확정으로 켜질 확률"입니다.</p>
+
+<h3>④ MK-8748 임상 3상 실패</h3>
+<p>안과 3상의 승인 도달 확률은 BIO 2011~2020 기준 46.7%(3상 진입 후), 3상에서 신청까지의 전환율은 51.2%로 전체 평균 57.8%보다 낮습니다(research C 5-1). 즉 통계적 자로는 MK-8748이 2029년 허가에 이르지 못할 확률이 절반 남짓이고, 이것은 회사가 아니라 산업의 숫자입니다. 다만 12개월 안에 이 리스크가 "켜질" 확률은 10%<span class="est">E</span>로 낮게 둡니다. 4건(MALBEC·TORRONTES·004·005)의 1차 완료가 2028년 6월부터 11월 사이라 12개월 안에 나올 수 있는 것은 안전성 이슈나 디자인 변경뿐이기 때문입니다. 회사가 인용하는 RIOJA 1/2a 수치(BCVA +7.8자·CST -218μm·16~24주 간격)는 MSD가 공개하지 않은 교차비교 값이고, 비교군인 아플리버셉트 2mg은 아일리아 HD 8mg·바비스모보다 낮은 기준선이라는 점도 3상 성패의 해석에 붙여 둡니다. 걸린 금액은 주관사가 2028~2029년에 잡은 IGT-427 마일스톤 170백만달러(약 2,288억)이고, 로열티는 그 위에 얹힙니다.</p>
+
+<h3>⑤ IGT-303 — 사람 데이터 0의 옵션</h3>
+<p>IGT-303은 호주·뉴질랜드에서 1/2a(NCT07231679, 94명, SAD 6코호트 + MAD 3코호트)를 진행 중이고, 1차 완료 2026년 10월<span class="est">E</span>, 종료 2027년 1월<span class="est">E</span>, 핵심 데이터는 2027년 초로 회사가 안내합니다(파이낸셜뉴스 2026-09-06). 영장류 UACR -58%가 유일한 유효성 근거이며, 비뇨기 영역의 P1 LOA는 3.6%로 안과(11.9%)의 3분의 1도 되지 않습니다. 주관사 추정은 2027년에 IGT-303 계약금 65.3백만달러(약 879억)를 잡았고, 이것이 2027E 순이익 398억원의 몸통입니다. 12개월 안에 이 가정이 흔들릴 확률을 55%<span class="est">E</span>로 두는 이유는 두 가지입니다. 첫째, 1/2a의 1차 평가지표가 84일 안전성이라 UACR 같은 유효성 신호는 2차·탐색 지표이고 코호트 수가 작아 통계적 결론이 나오기 어렵습니다. 둘째, 전임상 Tie2 자산의 최근 딜(큐라클·맵틱스 MT-103, 선급 $8M)이 보여 주듯 사람 유효성 없이 받을 수 있는 선급금은 작고, 계약금 65.3백만달러급은 2a 유효성 데이터를 전제로 합니다. 접는 조건은 2a 데이터가 2027년 하반기 이후로 밀리거나 UACR 감소가 SGLT2 계열(30~35%) 이하로 나오는 것입니다.</p>
+
+<h3>⑥ 하반기 마일스톤 인식 지연</h3>
+<p>주관사 2026E 매출 32.1백만달러 가운데 상반기에 인식된 것은 5월의 500만달러(IGT-427)뿐이고 27.1백만달러가 하반기 몫입니다. 내역은 IGT-427 임상 2b/3 개시 마일스톤 잔여 600만달러와 IGT-302 공동연구비 300만·개발 마일스톤 1,810만달러입니다(IV 인수인의 의견, 파이프라인별 추정). IGT-427 쪽은 DME 3상 2건의 개시(004 8월 27일 개시, 005 9월 30일 예정)에 묶여 있어 시점이 보이지만, IGT-302 개발 마일스톤 1,810만달러는 어떤 단계 전환에 붙은 돈인지 공개 자료에 없습니다. 3Q26 분기보고서(11월 16일<span class="est">E</span>)에서 영업수익이 600만달러 이상이면 유지선, 0이면 경보, 0에 더해 005 개시가 3개월 이상 지연되고 2027년 2월 결산까지 IGT-302 수취 공시가 없으면 논쟁 2를 접습니다. 확률 40%<span class="est">E</span>는 인식 시점이 2026년을 넘길 확률입니다.</p>
+
+<h3>⑦ 현금 소진과 희석</h3>
+<p>6월 말 유동성 11.7백만달러(현금 4.9 + 당기손익공정가치 금융자산 3.9·2.5 + 기타)에 8월 4일 납입된 공모 순수입 583.4억(9-08 환율로 약 43.3백만달러)을 더하면 약 60백만달러<span class="est">E</span>, 원화로 약 741억<span class="est">E</span>입니다. 2026년 4~5월 월 영업비용은 189.6만달러였고, 주관사는 영업비용을 2026E 22.4백만·2027E 39.1백만·2028E 71.6백만달러로 잡았습니다. 하반기 마일스톤 27.1백만달러가 들어오면 2027년 말까지는 버티고, 들어오지 않으면 2027년 안에 조달이 필요합니다. 회사 스스로 "2~3년간 700~800억 유입 필요"라고 말했습니다(IB토마토 2026-08-26). 조달의 형태가 유상증자·CB면 희석이고, 이미 미행사 옵션 4,325,814 DR(8.75%)이 대기합니다. 신고서는 옵션 행사 신주가 "일시에 유통될 경우" 주가에 부정적이라고 적었습니다(기타위험 라). 12개월 안 조달 공시 확률 35%<span class="est">E</span>, 걸린 금액은 2027E 영업비용 526억입니다.</p>
+
+<h3>⑧ 외국기업 KDR 구조와 관리종목·상장폐지 요건</h3>
+<p>신고서는 외국기업만의 별도 관리종목 특칙을 두지 않고 코스닥 상장규정 제53조(관리종목)·제54조(형식적 상장폐지)·제56조를 그대로 인용합니다(회사위험 나, 기타위험 더). 인제니아에 적용되는 시점은 매출액 요건 2031년, 법인세비용차감전계속사업손실 요건 2029년이고, "형식적 상장폐지 요건 중 '자본전액잠식' 요건은 기술성장특례기업에 대해 별도의 유예기간을 적용하지 않"습니다. 감사의견 미달(제54조 1항 1호)도 유예가 없습니다. 시총 요건은 금융위원회 2025-01-21·2026-02-12 방안에 따라 2026년 7월 1일 이후 200억, 2027년 1월 1일 이후 300억으로 오르고, 매출액 요건(50억·75억·100억)은 시총 600억 미만 기업에 적용됩니다. 지금 시총 7,980억에서는 먼 이야기지만, 2029년부터 적용되는 세전손실 요건(3사업연도 중 2사업연도에 자기자본의 50% 초과 세전손실)은 2025년 세전손실 1,957만달러가 자기자본 1,423만달러를 이미 넘었던 회사에 실질적입니다. 공모로 자본이 늘어 당장은 여유가 있지만, 2027~2028년의 임상 비용이 자본을 다시 깎으면 2029년 판정에 걸릴 수 있습니다.</p>
+<p>외국기업이라는 형식이 주는 리스크는 관리종목보다 정보·지수·법의 거리에 있습니다. 분기보고서 기한이 45일이라 국내 기업보다 늦고, "본점소재지가 미국에 있으며 … 상대적으로 기업정보를 제공받는 것이 용이하지 않을 수 있"으며(기타위험 너·처), 회사를 상대로 한 소송은 "원칙적으로 설립근거지의 법률에 따라 설립근거지 법원의 관할"이고 한국에 회사 재산이 없으면 "소송의 실익이 없을 수 있"습니다(기타위험 아·저·처). KDR 보유자는 주주제안권·회계장부열람권·소제기권을 원주로 전환한 뒤에야 직접 행사할 수 있고(기타위험 러·자, 예탁계약 제35조), Regulation S에 따라 상장 후 1년간 미국 내 거주자(US persons)에 대한 매매가 제한됩니다(기타위험 커·터). KDR 구조 때문에 코스닥150 편입이 어렵다는 점(키움 IPO 리포트 2026-07-23)은 패시브 수급이 들어올 길이 좁다는 뜻이고, 이는 물량 리스크의 반대편(받아 줄 손)이 얇다는 뜻이기도 합니다. 배당이 생길 경우 발행회사가 관련 법규에 따라 원천징수하고 조세조약 세율은 소유자가 소명해야 적용되는데(예탁계약 제26조), 손실 회사라 지금은 이론상의 문제입니다. 12개월 안 확률 5%<span class="est">E</span>는 거래정지·관리종목 지정 사유가 실제 발생할 확률이고, 걸린 금액은 시총 전체입니다.</p>
+
+<h3>⑨ 경영권 — 17.2%의 최대주주와 31.8%의 재무적투자자</h3>
+<p>최대주주 한상열 대표의 지분은 신탁을 포함해 공모 후 17.2%이고, 인터베스트(12.16%)·아우름 1호(11.79%)·아우름 2호(7.89%) 세 재무적투자자를 합치면 31.8%로 최대주주의 1.9배입니다. 신고서는 "최대주주 단독으로 주주총회 특별결의 사항 등에 대해 안정적인 지배력을 확보하고 있다고 보기 어려운 측면이 있"다고 인정하고, 그래서 공동목적보유확약(의결권 위임 + 처분 사전 협의 + 주요 확약자 지분에 대한 대표이사 우선매수권)을 맺었다고 씁니다(회사위험 카). 확약 지분은 신고서 기준 58.61%, 8-25 대량보유보고서 기준 76.80%(14인, 주요계약 64.33%)입니다. 같은 절이 "공동목적보유확약은 계약상 권리·의무에 기초한 것으로서, 약정 기간 종료, 확약 당사자의 투자목적 변경, 지분 매각 또는 기타 사유로 공동목적보유관계가 종료되거나 약화될 가능성을 배제할 수 없"다고 덧붙입니다. 재무적투자자는 펀드 만기가 있고, 시리즈B 원가의 5.4배에서 엑시트 유인이 큽니다. 켜지는 신호는 5% 보고의 보유 목적 변경과 확약 해지 공시이며, 확률 15%<span class="est">E</span>, 걸린 금액은 FI 3곳 지분의 시가 2,541억입니다.</p>
+
+<h3>⑩ 환율 — USD 자산을 원화로 읽는 종목</h3>
+<p>회사의 기능통화는 달러라 환율은 회사 손익이 아니라 원화 투자자가 보는 값에 작용합니다. 신고서 기타위험 너는 "주주측면에서 원화 환산시 환율 변동에 따라 당사의 재무상태 및 경영성과 등의 변동가능성이 존재"한다고 적습니다. 원/달러는 2026년 6월 5일 1,559.5원에서 9월 8일 1,345.8원으로 -13.7% 내려왔고, 6월 30일 1,548원 대비로도 -13.1%입니다. 같은 5,500만달러<span class="est">E</span>가 6월 말 환율로는 853억, 지금은 741억입니다. 주관사의 순이익 추정(140억·398억·1,921억원)은 달러 매출을 원화로 바꾼 값이라 환율이 100원 내리면 같은 달러 매출의 원화 값이 7% 줄고, 그만큼 PER 산식의 분자가 줄어듭니다. 12개월 안에 1,300원 아래로 내려갈 확률을 50%<span class="est">E</span>로 두고, 걸린 금액은 100원당 55억<span class="est">E</span>입니다. 4절에 민감도 표를 둡니다.</p>
+
+<h3>⑪ 경쟁 — 지속형과 Tie2 후발</h3>
+<p>MK-8748이 2029~2030년에 시장에 나올 때의 경쟁 구도는 지금과 다릅니다. 바비스모(Ang2×VEGF)는 2025년 CHF 41억을 팔았고 최대 4년 치료 후 약 80%가 3~4개월 간격에 도달했으며(Roche 2025-09-05), 아일리아 HD 8mg은 2025년 미국 16억달러(+36%)로 오리지널을 대체 중입니다. Ocular의 Axpaxli는 2026년 2월 3상 SOL-1에서 우월성 1차 지표를 달성했고(36주 시력 유지 74.1%), Kodiak KSI-501의 DAYBREAK 톱라인이 2026년 9월에 나옵니다. 같은 기전의 후발로는 Memento Medicines MMT-205(큐라클·맵틱스 MT-103, Tie2 활성×VEGF×Ang2)가 2026년 6월 시리즈A 9,300만달러를 모아 2027년 사람 투여를 목표로 하고, AsclepiX AXT107(VEGFR2 억제+Tie2 활성 펩타이드 겔)이 1/2상 중입니다(research A 5). 과거 Tie2 경로의 Aerpio razuprotafib은 NPDR 2b상에서 실패했습니다. 경쟁이 켜졌다는 신호는 이들의 3상 성공과 간격 데이터이고, 걸린 것은 MK-8748의 상업성, 곧 승인 마일스톤과 로열티입니다. 12개월 안 확률 30%<span class="est">E</span>, 걸린 금액은 주관사 2029E 승인 마일스톤 60백만달러(약 807억)로 잡습니다.</p>
+
+<h3>⑫ 원천 라이선스·특허·핵심 인력</h3>
+<p>플랫폼의 뿌리는 KAIST·IBS의 Anti-ANG2/Anti-TIE2 항체(2019-09-09, 약 48억, 계약금+마일스톤)와 TIE2 agonistic 항체(2024-06-01, 약 3억, 계약금) 라이선스인 두 건이고, 종료일은 "로열티 기간만료일", 상세 조건은 비밀유지로 비공개입니다(II-6 주요계약). 핵심 특허인 항-ANG2 항체(출원 2019-02-18)의 권리자는 카이스트·기초과학연구원이고 회사는 전용실시권자입니다(회사위험 거). 이 구조에서 리스크는 셋입니다. 로열티율이 MSD로부터 받는 마일스톤·로열티에 얼마나 붙는지 모른다는 것, 2019년 출원 특허의 잔여 존속기간이 2030년 상용화 이후 길지 않다는 것, 그리고 원천 기관과의 계약 범위(적응증·개량 발명)가 후속 파이프라인까지 덮는지 확인할 수 없다는 것입니다. 신고서는 "영업에 중대한 영향을 미치는 소송 등의 분쟁 사항은 없"다고 적고(회사위험 하), 등록 14건·출원 79건·가출원 1건을 보유합니다. 인력은 직원 21명(연구개발 13명·사무관리 8명), 평균 근속 2.5년이고, 신약연구본부를 이끄는 Stephen Berasi 부사장의 의무보유는 12개월뿐입니다(기타위험 라). 확률 10%<span class="est">E</span>, 걸린 금액은 라이선스 계약 총액 51억으로 적었지만 실제 노출은 파이프라인 전체입니다.</p>
+
+<h2>2. 코스닥 바이오 IPO 2026의 전례 — 여덟 곳이 공모가 아래</h2>
+<p>2026년 코스닥에 상장한 제약·바이오·헬스케어 8곳은 7월 31일 종가 기준 전부 공모가를 밑돌았습니다. 카나프테라퓨틱스 -46.3%, 아이엠바이오로직스 -41.1%, 메쥬 -45.4%, 리센스메디컬 -18.5%, 인벤테라 -58.5%, 레몬헬스케어 -46.5%, 레메디 -60.0%, HL지노믹스 -56.4%입니다(이데일리 2026-08-05). 같은 기사는 청약 경쟁률 1,300~1,900대 1과 첫날 프리미엄에도 "기관 의무보유 해제 후 급락"이 반복된 패턴을 짚었습니다. 인제니아는 이 표에 없는 아홉 번째이고, 9-08 기준 +34.5%로 유일하게 공모가 위에 있습니다.</p>
+<figure class=""><figcaption>장표 3. 2026년 코스닥 바이오 IPO 8곳 공모가 대비 수익률(7-31 종가)과 인제니아(9-08 종가)</figcaption><svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="216.0" x2="860" y2="216.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.0" text-anchor="end" font-size="11" fill="#8a857c">-60.0%</text>
+<line x1="62" y1="176.4" x2="860" y2="176.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.4" text-anchor="end" font-size="11" fill="#8a857c">-40.0%</text>
+<line x1="62" y1="136.8" x2="860" y2="136.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="140.8" text-anchor="end" font-size="11" fill="#8a857c">-20.0%</text>
+<line x1="62" y1="97.2" x2="860" y2="97.2" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="101.2" text-anchor="end" font-size="11" fill="#8a857c">0.0%</text>
+<line x1="62" y1="57.6" x2="860" y2="57.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.6" text-anchor="end" font-size="11" fill="#8a857c">20.0%</text>
+<line x1="62" y1="18.0" x2="860" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">40.0%</text>
+<text x="106.3" y="234" text-anchor="middle" font-size="10" fill="#8a857c">카나프</text>
+<text x="195.0" y="234" text-anchor="middle" font-size="10" fill="#8a857c">아이엠바이오로직스</text>
+<text x="283.7" y="234" text-anchor="middle" font-size="10" fill="#8a857c">메쥬</text>
+<text x="372.3" y="234" text-anchor="middle" font-size="10" fill="#8a857c">리센스메디컬</text>
+<text x="461.0" y="234" text-anchor="middle" font-size="10" fill="#8a857c">인벤테라</text>
+<text x="549.7" y="234" text-anchor="middle" font-size="10" fill="#8a857c">레몬헬스케어</text>
+<text x="638.3" y="234" text-anchor="middle" font-size="10" fill="#8a857c">레메디</text>
+<text x="727.0" y="234" text-anchor="middle" font-size="10" fill="#8a857c">HL지노믹스</text>
+<text x="815.7" y="234" text-anchor="middle" font-size="10" fill="#8a857c">인제니아(9-08)</text>
+<rect x="75.3" y="97.2" width="61.1" height="91.7" fill="#a44a3f" opacity="0.9"/>
+<text x="106.3" y="199.9" text-anchor="middle" font-size="9.5" fill="#a44a3f">-46.3</text>
+<rect x="164.0" y="97.2" width="61.1" height="81.4" fill="#a44a3f" opacity="0.9"/>
+<text x="195.0" y="189.6" text-anchor="middle" font-size="9.5" fill="#a44a3f">-41.1</text>
+<rect x="252.6" y="97.2" width="61.1" height="89.9" fill="#a44a3f" opacity="0.9"/>
+<text x="283.7" y="198.1" text-anchor="middle" font-size="9.5" fill="#a44a3f">-45.4</text>
+<rect x="341.3" y="97.2" width="61.1" height="36.6" fill="#a44a3f" opacity="0.9"/>
+<text x="372.3" y="144.8" text-anchor="middle" font-size="9.5" fill="#a44a3f">-18.5</text>
+<rect x="430.0" y="97.2" width="61.1" height="115.8" fill="#a44a3f" opacity="0.9"/>
+<text x="461.0" y="224.0" text-anchor="middle" font-size="9.5" fill="#a44a3f">-58.5</text>
+<rect x="518.6" y="97.2" width="61.1" height="92.1" fill="#a44a3f" opacity="0.9"/>
+<text x="549.7" y="200.3" text-anchor="middle" font-size="9.5" fill="#a44a3f">-46.5</text>
+<rect x="607.3" y="97.2" width="61.1" height="118.8" fill="#a44a3f" opacity="0.9"/>
+<text x="638.3" y="227.0" text-anchor="middle" font-size="9.5" fill="#a44a3f">-60.0</text>
+<rect x="696.0" y="97.2" width="61.1" height="111.7" fill="#a44a3f" opacity="0.9"/>
+<text x="727.0" y="219.9" text-anchor="middle" font-size="9.5" fill="#a44a3f">-56.4</text>
+<rect x="784.6" y="28.9" width="61.1" height="68.3" fill="#a44a3f" opacity="0.9"/>
+<text x="815.7" y="24.9" text-anchor="middle" font-size="9.5" fill="#a44a3f">34.5</text>
+</svg><div class="src">자료: 이데일리 2026-08-05(8곳, 7-31 종가), 키움 ka10081(인제니아 9-08). 빈티지 2026-09-08</div></figure>
+<p class="reading"><b>관찰.</b> 8곳의 중앙값은 -46.4%이고 가장 덜 빠진 리센스메디컬도 -18.5%입니다. 인제니아 +34.5%는 표의 반대편에 홀로 서 있습니다. <b>원인.</b> 차이는 회사가 아니라 시기에서 나왔다고 봅니다. 8곳은 상반기 바이오 약세장(KRX 헬스케어 YTD -13.7%, 코스닥 제약 상위 50 시총 -17.65%)에 상장했고, 인제니아는 8월 1~10일 코스닥150 헬스케어가 +34.7% 오른 랠리(뉴스핌 2026-08-11) 한가운데인 8월 18일에 상장했습니다. 수요예측 50.4대 1과 일반청약 3.1대 1이라는 식은 공모가 상장 뒤 개인 순매수 +395억(16거래일 누계)으로 되감긴 것입니다. <b>함의.</b> 8곳이 겪은 '기관 의무보유 해제 후 급락'을 인제니아는 아직 겪지 않았습니다. 그 날짜가 9월 18일입니다. 여덟 전례의 평균 낙폭(-46%)을 그대로 대입하지는 않지만, 상장 시기의 순풍이 물량 앞에서도 이어질지는 검증되지 않았다는 것이 이 장표의 뜻입니다.</p>
+<p>인제니아만 다른 이유를 한 겹 더 벗기면 취약성이 보입니다. 첫째, 공모 구조가 8곳과 달랐습니다. 밴드 하단 확정에 기관 청약 미달 44,504 DR, 확약 3.2%로 기관이 거의 들어오지 않았고, 그래서 상장일 기관이 팔 물량 자체가 적었습니다(첫날 기관 -177억 뒤 16일 누계 -255억). 8곳의 급락이 "기관 확약 해제"에서 왔다면 인제니아의 물량은 "재무적투자자 1개월 해제"에서 오고, 그 크기(32.8%)는 기관 확약 물량과 비교가 되지 않습니다. 둘째, 상승의 주체가 개인이었습니다. 개인 +395억·기관 -255억·외국인 -80억이 16거래일의 합이고, 외국인 지분은 0.61%입니다. 개인이 사서 올린 값은 개인이 팔 때 같은 속도로 내려오고, 8월 19일 -21.6%가 그 속도의 실측입니다. 셋째, 8월 랠리의 근거였던 바이오 반등은 9월 들어 식고 있습니다. 코스닥은 8월 18일 834.2에서 9월 8일 811.9로 -2.7%, 플랫폼 피어 5종은 같은 기간 -7.0~-33.3%였습니다(rel_0818). 인제니아 +34.5%는 그 흐름을 거슬러 만들어진 값입니다.</p>
+
+<h2>3. 외국기업 KDR의 전례 — 다섯 종목의 지금</h2>
+<p>코스닥에 KDR 또는 외국 원주로 상장한 바이오·헬스케어 다섯 곳의 9-08 좌표는 이렇습니다. 코오롱티슈진(950160) 52주 고점 대비 -88.3%·시총 14,844억·YTD -78.1%, 프레스티지바이오파마(950210) -58.6%·3,816억, 네오이뮨텍(950220) -34.3%·833억, 소마젠(950200) -30.3%·629억, 엑세스바이오(950130) -53.4%·865억입니다. 다섯 곳 가운데 시총 1조원 위는 코오롱티슈진 하나이고, 나머지 넷은 600억~3,800억으로 인제니아 시총의 8~48%입니다. 8월 18일 이후로는 코오롱티슈진이 -36.7%, 프레스티지가 -2.3%였고 네오이뮨텍·소마젠·엑세스바이오는 올랐습니다.</p>
+<figure class=""><figcaption>장표 4. 52주 고점 대비 낙폭 — 외국기업 KDR 5종(남색)·코스닥 플랫폼 피어 5종(황토)·인제니아(적갈, 장중 고 21,100 기준)</figcaption><svg viewBox="0 0 880 308" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="150.0" y1="14" x2="150.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/><text x="150.0" y="292" text-anchor="middle" font-size="10" fill="#8a857c">-100%</text>
+<line x1="272.0" y1="14" x2="272.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/><text x="272.0" y="292" text-anchor="middle" font-size="10" fill="#8a857c">-80%</text>
+<line x1="394.0" y1="14" x2="394.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/><text x="394.0" y="292" text-anchor="middle" font-size="10" fill="#8a857c">-60%</text>
+<line x1="516.0" y1="14" x2="516.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/><text x="516.0" y="292" text-anchor="middle" font-size="10" fill="#8a857c">-40%</text>
+<line x1="638.0" y1="14" x2="638.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/><text x="638.0" y="292" text-anchor="middle" font-size="10" fill="#8a857c">-20%</text>
+<line x1="760.0" y1="14" x2="760.0" y2="278" stroke="#d8d4cc" stroke-width="1.1"/><text x="760.0" y="292" text-anchor="middle" font-size="10" fill="#8a857c">0%</text>
+<rect x="221.4" y="18" width="538.6" height="16" fill="#1f3a5f" opacity="0.85"/>
+<text x="144" y="30" text-anchor="end" font-size="11" fill="#3a3630">코오롱티슈진(950160)</text>
+<text x="215.4" y="30" text-anchor="end" font-size="10.5" fill="#1f3a5f">-88.3%</text>
+<rect x="402.5" y="42" width="357.5" height="16" fill="#1f3a5f" opacity="0.85"/>
+<text x="144" y="54" text-anchor="end" font-size="11" fill="#3a3630">프레스티지바이오파마(950210)</text>
+<text x="396.5" y="54" text-anchor="end" font-size="10.5" fill="#1f3a5f">-58.6%</text>
+<rect x="550.8" y="66" width="209.2" height="16" fill="#1f3a5f" opacity="0.85"/>
+<text x="144" y="78" text-anchor="end" font-size="11" fill="#3a3630">네오이뮨텍(950220)</text>
+<text x="544.8" y="78" text-anchor="end" font-size="10.5" fill="#1f3a5f">-34.3%</text>
+<rect x="575.2" y="90" width="184.8" height="16" fill="#1f3a5f" opacity="0.85"/>
+<text x="144" y="102" text-anchor="end" font-size="11" fill="#3a3630">소마젠(950200)</text>
+<text x="569.2" y="102" text-anchor="end" font-size="10.5" fill="#1f3a5f">-30.3%</text>
+<rect x="434.3" y="114" width="325.7" height="16" fill="#1f3a5f" opacity="0.85"/>
+<text x="144" y="126" text-anchor="end" font-size="11" fill="#3a3630">엑세스바이오(950130)</text>
+<text x="428.3" y="126" text-anchor="end" font-size="10.5" fill="#1f3a5f">-53.4%</text>
+<rect x="447.1" y="138" width="312.9" height="16" fill="#b07d2b" opacity="0.85"/>
+<text x="144" y="150" text-anchor="end" font-size="11" fill="#3a3630">알테오젠(196170)</text>
+<text x="441.1" y="150" text-anchor="end" font-size="10.5" fill="#b07d2b">-51.3%</text>
+<rect x="311.6" y="162" width="448.4" height="16" fill="#b07d2b" opacity="0.85"/>
+<text x="144" y="174" text-anchor="end" font-size="11" fill="#3a3630">에이비엘바이오(298380)</text>
+<text x="305.6" y="174" text-anchor="end" font-size="10.5" fill="#b07d2b">-73.5%</text>
+<rect x="392.2" y="186" width="367.8" height="16" fill="#b07d2b" opacity="0.85"/>
+<text x="144" y="198" text-anchor="end" font-size="11" fill="#3a3630">리가켐바이오(141080)</text>
+<text x="386.2" y="198" text-anchor="end" font-size="10.5" fill="#b07d2b">-60.3%</text>
+<rect x="370.8" y="210" width="389.2" height="16" fill="#b07d2b" opacity="0.85"/>
+<text x="144" y="222" text-anchor="end" font-size="11" fill="#3a3630">오름테라퓨틱(475830)</text>
+<text x="364.8" y="222" text-anchor="end" font-size="10.5" fill="#b07d2b">-63.8%</text>
+<rect x="289.7" y="234" width="470.3" height="16" fill="#b07d2b" opacity="0.85"/>
+<text x="144" y="246" text-anchor="end" font-size="11" fill="#3a3630">에이프릴바이오(397030)</text>
+<text x="283.7" y="246" text-anchor="end" font-size="10.5" fill="#b07d2b">-77.1%</text>
+<rect x="616.6" y="258" width="143.4" height="16" fill="#a44a3f" opacity="0.85"/>
+<text x="144" y="270" text-anchor="end" font-size="11" fill="#3a3630">인제니아 종가 vs 52주 고 21,100</text>
+<text x="610.6" y="270" text-anchor="end" font-size="10.5" fill="#a44a3f">-23.5%</text>
+</svg><div class="src">자료: 키움 ka10001(9-08 종가·52주 고저), packet.peers. 인제니아는 상장 16거래일이라 52주가 아니라 상장 후 고점. 빈티지 2026-09-08</div></figure>
+<p class="reading"><b>관찰.</b> KDR 5종의 낙폭은 -30%에서 -88%까지 퍼져 있고, 플랫폼 피어 5종은 -51%에서 -77%로 더 촘촘히 깊습니다. 인제니아의 -23.5%는 열 종목 중 가장 얕지만 16거래일짜리 자입니다. <b>원인.</b> 플랫폼 피어의 깊이는 2025년 하반기 기술수출 기대가 부풀렸던 값이 2026년 상반기에 되돌려진 결과이고(코스닥 제약 상위 50 시총 -17.65%, 12-30 이후 6-19), KDR 5종은 각자의 사건(임상·매출·거래정지 이력)이 겹친 결과입니다. 두 그룹 모두 인제니아가 속할 두 개의 준거집단이고, 어느 쪽도 지난 1년 고점의 절반 아래에 있습니다. <b>함의.</b> 인제니아가 '외국기업 디스카운트'를 아직 받지 않은 것은 상장 16일이라 그 이유가 값에 들어올 시간이 없었기 때문입니다. 이 종목에 KDR 할인이 붙는 시점은 첫 분기보고서(11월, 45일 기한)와 첫 5% 보고가 나오는 때이고, 그때 다섯 전례의 평균이 자로 소환될 것입니다.</p>
+<table class=""><tr><th>종목(코드)</th><th>종가</th><th>시총(억)</th><th>52주 고 대비</th><th>YTD</th><th>8-18 이후</th><th>PBR</th></tr><tr><td>코오롱티슈진(950160)</td><td>17,470</td><td>14,844</td><td>-88.3%</td><td>-78.1%</td><td>-36.7%</td><td>22.69</td></tr><tr><td>프레스티지바이오파마(950210)</td><td>6,350</td><td>3,816</td><td>-58.6%</td><td>-50.6%</td><td>-2.3%</td><td>0.93</td></tr><tr><td>네오이뮨텍(950220)</td><td>2,435</td><td>833</td><td>-34.3%</td><td>-40.7%</td><td>45.3%</td><td>1.35</td></tr><tr><td>소마젠(950200)</td><td>3,270</td><td>629</td><td>-30.3%</td><td>-15.7%</td><td>11.6%</td><td>2.3</td></tr><tr><td>엑세스바이오(950130)</td><td>2,460</td><td>865</td><td>-53.4%</td><td>-35.3%</td><td>7.9%</td><td>0.17</td></tr><tr><td>인제니아(950260)</td><td>16,140</td><td>7,980</td><td>-23.5%</td><td>-</td><td>-10.3%</td><td>-</td></tr></table>
+<p class="src">자료: packet.peers(키움 9-08). PBR은 키움 기준. 코오롱티슈진의 과거 장기 거래정지 이력은 공개된 사실로 알려져 있으나 이 킷의 웹 노트에는 기간·사유가 수집되지 않아 미확인으로 남깁니다. 다섯 곳의 관리종목·공시 사건은 같은 이유로 단정하지 않습니다.</p>
+<p>이 다섯 곳이 인제니아에 주는 교훈은 셋입니다. 첫째, 외국기업 KDR은 국내 피어보다 시총이 작게 머무는 경향이 있고(5종 중 4종이 4,000억 미만), 그 이유의 일부는 코스닥150 편입이 어려워 패시브 수급이 없고 정보가 늦게 오기 때문입니다. 인제니아 시총 7,980억은 이 그룹에서 두 번째로 큽니다. 둘째, 이 그룹의 낙폭은 사건 뒤에 회복이 느립니다. 코오롱티슈진의 YTD -78.1%와 3개월 -83.0%는 한 사건이 시총의 5분의 4를 지운 실측이고, 그 회사에도 미국 임상 3상 자산이 있었습니다. 셋째, PBR 0.17배(엑세스바이오)·0.93배(프레스티지)처럼 장부가 아래로 내려가는 종목이 이 그룹에 있습니다. 인제니아는 공모 뒤 자본이 약 53백만달러<span class="est">E</span>(6-30 자본 9.9백만 + 순수입, 약 716억<span class="est">E</span>)라 시총이 장부의 11배<span class="est">E</span>이고, 이 배수는 파이프라인 값이 사라지면 KDR 그룹의 값으로 수렴할 수 있습니다. 이것은 예측이 아니라 준거집단의 위치입니다.</p>
+
+<h2>4. 과거 낙폭의 자 — 상장 16거래일이 이미 보여 준 것</h2>
+<figure class=""><figcaption>장표 6. 상장 후 16거래일 종가·장중 고가와 세 개의 자(공모가 12,000·시초가 10,960·첫날 저가 9,900)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">7,500</text>
+<line x1="62" y1="216.3" x2="730" y2="216.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.3" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="176.7" x2="730" y2="176.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.7" text-anchor="end" font-size="11" fill="#8a857c">12,500</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">15,000</text>
+<line x1="62" y1="97.3" x2="730" y2="97.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.3" text-anchor="end" font-size="11" fill="#8a857c">17,500</text>
+<line x1="62" y1="57.7" x2="730" y2="57.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.7" text-anchor="end" font-size="11" fill="#8a857c">20,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">22,500</text>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/18</text>
+<text x="106.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/19</text>
+<text x="151.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/20</text>
+<text x="195.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/21</text>
+<text x="240.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/24</text>
+<text x="284.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/25</text>
+<text x="329.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/26</text>
+<text x="373.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/27</text>
+<text x="418.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/28</text>
+<text x="462.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08/31</text>
+<text x="507.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09/01</text>
+<text x="551.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09/02</text>
+<text x="596.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09/03</text>
+<text x="640.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09/04</text>
+<text x="685.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09/07</text>
+<text x="730.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09/08</text>
+<polyline points="62.0,89.6 106.5,151.3 151.1,84.2 195.6,124.8 240.1,134.6 284.7,112.2 329.2,99.9 373.7,99.7 418.3,89.4 462.8,95.1 507.3,68.9 551.9,101.3 596.4,124.0 640.9,127.8 685.5,117.5 730.0,118.9" fill="none" stroke="#1f3a5f" stroke-width="2.2"/>
+<circle cx="62.0" cy="89.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="106.5" cy="151.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="151.1" cy="84.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="195.6" cy="124.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="240.1" cy="134.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="284.7" cy="112.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="329.2" cy="99.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="373.7" cy="99.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="418.3" cy="89.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="462.8" cy="95.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="507.3" cy="68.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="551.9" cy="101.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="596.4" cy="124.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="640.9" cy="127.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="685.5" cy="117.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="118.9" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,89.6 106.5,48.1 151.1,84.2 195.6,58.5 240.1,102.1 284.7,105.3 329.2,43.4 373.7,83.2 418.3,75.3 462.8,72.1 507.3,67.3 551.9,40.2 596.4,90.7 640.9,116.5 685.5,104.0 730.0,104.5" fill="none" stroke="#d8d4cc" stroke-width="1"/>
+<polyline points="62.0,184.6 106.5,184.6 151.1,184.6 195.6,184.6 240.1,184.6 284.7,184.6 329.2,184.6 373.7,184.6 418.3,184.6 462.8,184.6 507.3,184.6 551.9,184.6 596.4,184.6 640.9,184.6 685.5,184.6 730.0,184.6" fill="none" stroke="#b07d2b" stroke-width="2" stroke-dasharray="5 3"/>
+<polyline points="62.0,201.1 106.5,201.1 151.1,201.1 195.6,201.1 240.1,201.1 284.7,201.1 329.2,201.1 373.7,201.1 418.3,201.1 462.8,201.1 507.3,201.1 551.9,201.1 596.4,201.1 640.9,201.1 685.5,201.1 730.0,201.1" fill="none" stroke="#8a857c" stroke-width="2" stroke-dasharray="3 3"/>
+<polyline points="62.0,217.9 106.5,217.9 151.1,217.9 195.6,217.9 240.1,217.9 284.7,217.9 329.2,217.9 373.7,217.9 418.3,217.9 462.8,217.9 507.3,217.9 551.9,217.9 596.4,217.9 640.9,217.9 685.5,217.9 730.0,217.9" fill="none" stroke="#a44a3f" stroke-width="2" stroke-dasharray="2 3"/>
+<text x="736" y="108.5" font-size="11" fill="#d8d4cc">장중 고가 17,050</text>
+<text x="736" y="123.5" font-size="11" fill="#1f3a5f">종가 16,140</text>
+<text x="736" y="188.6" font-size="11" fill="#b07d2b">공모가 12,000 12,000</text>
+<text x="736" y="205.1" font-size="11" fill="#8a857c">시초가 10,960 10,960</text>
+<text x="736" y="221.9" font-size="11" fill="#a44a3f">첫날 저가 9,900 9,900</text>
+<text x="106.5" y="167.3" text-anchor="middle" font-size="10.5" fill="#a44a3f">-21.6%</text>
+<text x="551.9" y="32.2" text-anchor="middle" font-size="10.5" fill="#8a857c">장중 21,100</text>
+<text x="507.3" y="56.9" text-anchor="middle" font-size="10.5" fill="#1f3a5f">종가 고 19,290</text>
+</svg><div class="src">자료: 키움 ka10081 일봉(2026-08-18~09-08). 빈티지 2026-09-08</div></figure>
+<p class="reading"><b>관찰.</b> 첫날 시초 10,960(-8.7%)에서 장중 9,900(-17.5%)까지 밀렸다가 17,990(+49.9%)으로 마감했고, 이튿날 -21.6%(14,100), 셋째 날 +30.0%(18,330), 넷째 날 -14.0%(15,770)를 오갔습니다. 9월 1일 종가 고점 19,290, 9월 2일 장중 21,100 뒤 -10.6%(17,250)로 마감했고, 9-08 종가 16,140은 장중 고점 대비 -23.5%, 종가 고점 대비 -16.3%입니다. <b>원인.</b> 일중 진폭이 큰 이유는 유통 물량이 25.6%뿐인 상태에서 개인 수급이 값을 만들었기 때문이고(첫날 개인 +277억·기관 -177억·외국인 -68억), 거래량이 첫날 5,420만 주에서 9-08 153만 주로 35분의 1이 되면서 같은 크기의 주문이 더 큰 값 변화를 만들고 있습니다. <b>함의.</b> 세 개의 자 가운데 공모가 12,000원은 논쟁 1의 접는 조건이고, 시초가 10,960원과 첫날 저가 9,900원은 '이 종목이 실제로 그 값에 거래된 적이 있다'는 실측입니다. 적정가가 아닙니다. 다만 하루 -21.6%가 16일 안에 실제로 있었으므로, 9월 18일 이후 4주 안에 종가가 공모가 근처까지 내려오는 경로는 상상이 아니라 재현입니다.</p>
+<p>낙폭의 자를 셋으로 정리합니다. 첫째 자는 인제니아 자신의 16거래일입니다. 하루 최대 -21.6%, 장중 고점 대비 -23.5%, 종가 고점 대비 -16.3%, 저점 종가 14,100(8/19)은 9-08 종가 대비 -12.6%입니다. 둘째 자는 코스닥 플랫폼 피어의 52주 고점 대비 -51~-77%로, 기술수출 기대가 값에 들어왔다가 빠질 때의 깊이입니다. 셋째 자는 외국기업 KDR 5종의 -30~-88%입니다. 세 자 가운데 어느 것도 "그렇게 된다"는 예측이 아니고, 이 종목이 속한 집단이 지난 1년 안에 실제로 그만큼 움직였다는 기록입니다. 공모가 시총 5,933억과 첫날 저가 시총 4,895억, 주관사 평가액 1조 895억은 이 자들 위에 찍힌 세 개의 눈금이며, 지금 시총 7,980억은 공모가 시총의 1.35배, 평가액의 73%에 있습니다.</p>
+
+<h2>5. 환율 민감도 — 같은 달러, 다른 원화</h2>
+<figure class=""><figcaption>장표 5. 원/달러 1,250~1,600원 구간에서의 원화 값 — 현금 약 5,500만달러E·2026E 마일스톤 3,210만달러·하반기 미인식 2,710만달러·2027E 영업비용 3,909만달러</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="208.4" x2="730" y2="208.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="212.4" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="160.8" x2="730" y2="160.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="164.8" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="113.2" x2="730" y2="113.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="117.2" text-anchor="end" font-size="11" fill="#8a857c">600</text>
+<line x1="62" y1="65.6" x2="730" y2="65.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="69.6" text-anchor="end" font-size="11" fill="#8a857c">800</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,250</text>
+<text x="157.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,300</text>
+<text x="252.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,345.8</text>
+<text x="348.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,400</text>
+<text x="443.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,450</text>
+<text x="539.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,500</text>
+<text x="634.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,548</text>
+<text x="730.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,600</text>
+<polyline points="62.0,92.1 157.4,85.5 252.9,79.5 348.3,72.4 443.7,65.9 539.1,59.3 634.6,53.0 730.0,46.2" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="92.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="157.4" cy="85.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="252.9" cy="79.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="348.3" cy="72.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="443.7" cy="65.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="539.1" cy="59.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="634.6" cy="53.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="46.2" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,139.7 157.4,135.1 252.9,130.8 348.3,125.8 443.7,121.1 539.1,116.5 634.6,112.0 730.0,107.2" fill="none" stroke="#8a857c" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="139.7" r="2.4" fill="#8a857c"/>
+<circle cx="157.4" cy="135.1" r="2.4" fill="#8a857c"/>
+<circle cx="252.9" cy="130.8" r="2.4" fill="#8a857c"/>
+<circle cx="348.3" cy="125.8" r="2.4" fill="#8a857c"/>
+<circle cx="443.7" cy="121.1" r="2.4" fill="#8a857c"/>
+<circle cx="539.1" cy="116.5" r="2.4" fill="#8a857c"/>
+<circle cx="634.6" cy="112.0" r="2.4" fill="#8a857c"/>
+<circle cx="730.0" cy="107.2" r="2.4" fill="#8a857c"/>
+<polyline points="62.0,160.5 157.4,156.7 252.9,153.2 348.3,149.0 443.7,145.2 539.1,141.4 634.6,137.7 730.0,133.8" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="62.0" cy="160.5" r="2.4" fill="#b07d2b"/>
+<circle cx="157.4" cy="156.7" r="2.4" fill="#b07d2b"/>
+<circle cx="252.9" cy="153.2" r="2.4" fill="#b07d2b"/>
+<circle cx="348.3" cy="149.0" r="2.4" fill="#b07d2b"/>
+<circle cx="443.7" cy="145.2" r="2.4" fill="#b07d2b"/>
+<circle cx="539.1" cy="141.4" r="2.4" fill="#b07d2b"/>
+<circle cx="634.6" cy="137.7" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="133.8" r="2.4" fill="#b07d2b"/>
+<polyline points="62.0,175.4 157.4,172.2 252.9,169.2 348.3,165.7 443.7,162.5 539.1,159.3 634.6,156.2 730.0,152.8" fill="none" stroke="#a44a3f" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="175.4" r="2.4" fill="#a44a3f"/>
+<circle cx="157.4" cy="172.2" r="2.4" fill="#a44a3f"/>
+<circle cx="252.9" cy="169.2" r="2.4" fill="#a44a3f"/>
+<circle cx="348.3" cy="165.7" r="2.4" fill="#a44a3f"/>
+<circle cx="443.7" cy="162.5" r="2.4" fill="#a44a3f"/>
+<circle cx="539.1" cy="159.3" r="2.4" fill="#a44a3f"/>
+<circle cx="634.6" cy="156.2" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="152.8" r="2.4" fill="#a44a3f"/>
+<text x="736" y="50.2" font-size="11" fill="#1f3a5f">현금 약 5,500만달러E 881억</text>
+<text x="736" y="111.2" font-size="11" fill="#8a857c">2027E 영업비용 3,909만달러 625억</text>
+<text x="736" y="137.8" font-size="11" fill="#b07d2b">2026E 마일스톤 3,210만달러 514억</text>
+<text x="736" y="156.8" font-size="11" fill="#a44a3f">하반기 미인식 2,710만달러 434억</text>
+<text x="252.9" y="63.5" text-anchor="middle" font-size="10.5" fill="#1f3a5f">9-08 1,345.8</text>
+<text x="634.6" y="37.0" text-anchor="middle" font-size="10.5" fill="#1f3a5f">6-30 1,548</text>
+</svg><div class="src">자료: 반기보고서 2026.06(유동성)·증권발행실적보고서 08-04(순수입 583.4억)·투자설명서 IV(주관사 추정)·네이버 환율. 현금은 작성자 합산E. 빈티지 2026-09-08</div></figure>
+<p class="reading"><b>관찰.</b> 현금 약 5,500만달러<span class="est">E</span>는 1,250원에서 689억, 1,600원에서 881억으로 193억이 오갑니다. 2026E 마일스톤 3,210만달러는 401억에서 514억, 하반기 미인식분 2,710만달러는 339억에서 434억입니다. 2027E 영업비용 3,909만달러의 원화 값도 같은 기울기로 움직여 원화로 본 손익의 부호는 환율과 무관합니다. <b>원인.</b> 회사의 수입과 지출이 모두 달러라 환율은 회사에 중립이고, 원화로 시총을 매기는 투자자에게만 작용합니다. 6월 5일 1,559.5원에서 9월 8일 1,345.8원으로 -13.7%가 왔고, 이 구간에서 달러 자산의 원화 값은 그만큼 줄었습니다. <b>함의.</b> 주관사 산식(원화 순이익 × PER)에서 환율 100원은 순이익의 약 7%이고, 그것은 PER 22.89배를 통해 평가액에 그대로 옮겨집니다. 원화 강세가 이어지면 같은 임상 진도에서도 원화 시총은 낮게 매겨지고, 반대로 1,500원대로 돌아가면 달러 자산의 원화 값이 11% 커집니다. 이 종목을 원화로 사는 것은 달러 자산을 사는 것이라는 사실을 표가 보여 줍니다.</p>
+<table class=""><tr><th>원/달러</th><th>1,250</th><th>1,300</th><th>1,345.8</th><th>1,400</th><th>1,450</th><th>1,500</th><th>1,548</th><th>1,600</th></tr><tr><td>현금 약 5,500만달러E 원화(억)</td><td>689</td><td>716</td><td>741</td><td>771</td><td>799</td><td>826</td><td>853</td><td>881</td></tr><tr><td>2026E 마일스톤 3,210만달러(억)</td><td>401</td><td>417</td><td>432</td><td>449</td><td>465</td><td>482</td><td>497</td><td>514</td></tr><tr><td>하반기 미인식 2,710만달러(억)</td><td>339</td><td>352</td><td>365</td><td>379</td><td>393</td><td>406</td><td>420</td><td>434</td></tr><tr><td>2027E 영업비용 3,909만달러(억)</td><td>489</td><td>508</td><td>526</td><td>547</td><td>567</td><td>586</td><td>605</td><td>625</td></tr><tr><td>현금 원화 값 변화(9-08 대비)</td><td>-7.1%</td><td>-3.4%</td><td>+0.0%</td><td>+4.0%</td><td>+7.7%</td><td>+11.5%</td><td>+15.0%</td><td>+18.9%</td></tr></table>
+<p class="src">현금 약 5,500만달러E = 6-30 유동성 1,174만달러 + 공모 순수입 583.4억(9-08 환율 환산). 2026E 마일스톤·2027E 영업비용은 주관사 중립 추정. 원화 값은 단순 곱이며 회사 재무제표의 환산 방식(연평균·기말 환율)과 다릅니다.</p>
+<p>환율은 다른 리스크와 상관이 있습니다. 원화 강세 국면은 대체로 외국인 자금이 한국 주식을 사는 국면이지만, 인제니아는 외국인 지분 0.61%·코스닥150 미편입이라 그 수급을 받지 못하면서 달러 자산의 원화 값만 깎입니다. 반대로 원화 약세 국면(2026년 상반기 1,500원대)은 코스닥 바이오 전체가 약했던 시기와 겹칩니다. 즉 환율은 이 종목에 "좋을 때 덜 좋고 나쁠 때 덜 나쁜" 완충으로 작용하며, 12개월 안 1,300원 하회 확률 50%<span class="est">E</span>에 걸린 금액 100원당 55억<span class="est">E</span>은 매트릭스 왼쪽 아래에 놓일 크기입니다. 다만 주관사 평가액과 2027E 순이익 398억원이 원화라는 점은 기억해 둡니다. 그 숫자들은 1,400원대 후반의 환율(1Q26 평균 1,465원)에서 만들어졌습니다.</p>
+
+<h2>6. 리스크의 상관 구조와 우선순위</h2>
+<p>열두 개는 세 원인으로 묶입니다. 첫째 원인 "물량과 수급"에서 ①·②·⑨가 나옵니다. 재무적투자자가 9월 18일에 팔면 공동목적보유확약의 실효성이 같이 시험되고, 그 매도가 5% 보고로 드러나면 경영권 리스크의 확률이 오릅니다. 셋은 같은 손에서 나옵니다. 둘째 원인 "MSD와 임상"에서 ③·④·⑥·⑪이 나옵니다. MSD가 MK-8748-005 개시를 늦추면 하반기 마일스톤이 늦어지고(⑥), 그 지연이 우선순위 하락의 신호로 읽히며(③), 경쟁 물질의 3상 성공(⑪)은 MSD의 계산을 바꿀 수 있습니다. 셋째 원인 "자체 역량과 현금"에서 ⑤·⑦·⑫가 나옵니다. IGT-303 데이터가 약하면 2027년 계약금이 사라지고(⑤), 그러면 2027년 조달이 필요해지며(⑦), 조달 조건은 원천 기술의 신뢰(⑫)에 달립니다. ⑧(KDR 구조)과 ⑩(환율)은 세 원인과 독립인 배경 변수이지만, ⑧은 물량 리스크의 받아 줄 손을 얇게 만들고 ⑩은 셋째 원인의 원화 값을 흔듭니다.</p>
+<p>우선순위는 확률이 아니라 "켜졌을 때 판정을 얼마나 바꾸는가"와 "언제 결판나는가"로 정합니다. 첫째는 ① 9월 18일 물량입니다. 4주 안에 결판나고, 접히면 허브의 첫 채점이 실패이며, 공모가라는 명확한 선이 있습니다. 둘째는 ⑥ 하반기 마일스톤입니다. 11월 16일 분기보고서에서 숫자로 확인되고, 실패하면 2026년 흑자 전환(주관사 순이익 140억원)이 사라져 밸류 산식의 첫 해가 비워집니다. 셋째는 ⑤ IGT-303입니다. 2026년 10월 1차 완료<span class="est">E</span>와 2027년 초 데이터가 시점이고, 실패하면 2027E 순이익 398억원의 몸통이 사라집니다. 넷째가 ③ MSD 우선순위, 다섯째가 ⑦ 현금·희석이며, 이 둘은 앞의 셋이 어떻게 되느냐에 따라 확률이 바뀌는 종속 변수입니다. 12개월 안에 경보 둘 이상이 동시에 켜질 확률은 독립 가정의 곱(70%×40% = 28%)보다 높은 40%<span class="est">E</span>로 봅니다. ①과 ⑥이 같은 원인은 아니지만 같은 두 달(9~11월) 안에 결판나기 때문입니다.</p>
+
+<h2>7. 접는 조건 통합표</h2>
+<table class=""><tr><th>논쟁</th><th>유지선(채점 KPI)</th><th>경보</th><th>접는 조건(반증)</th><th>관측 시점</th><th>관측처</th></tr><tr><td>1. 9-18 해제 물량 소화</td><td>9-18~10-16 4주 기관+기타법인 순매도 ≤ 500억 · 4주 평균 거래량 ≥ 300만 주 · 종가 ≥ 공모가 12,000</td><td>종가가 8/19 저점 종가 14,100 아래 · 5% 변동 보고 1건 · 거래량이 해제 전 수준(9-08 153만 주)으로 회귀</td><td>4주 안에 종가 < 12,000 또는 FI 한 곳이 보유분 절반 이상 처분 보고</td><td>2026-10-16</td><td>DART 5% 보고 · 키움 투자자별 순매수 · KRX 일별 거래량</td></tr><tr><td>2. 하반기 마일스톤 2,710만달러</td><td>3Q26 영업수익 ≥ 600만달러 · MK-8748-005 NCT 상태 Recruiting · 4Q 안 IGT-302 수취 공시</td><td>3Q 매출 0이지만 005 개시 확인 · 회사가 인식 시점을 4Q로 안내</td><td>3Q 매출 0 + 005 개시 3개월 이상 지연 + 2027-02 결산까지 IGT-302 수취 없음</td><td>2026-11-16 · 2027-02</td><td>분기보고서 · ClinicalTrials.gov NCT07705607 · DART 수시공시</td></tr><tr><td>3. MK-8748 차별성·MSD 의지</td><td>Merck 분기 파이프라인 표 Phase 3 유지 · 4건 모두 모집 중 · 학회(AAO 10월·EURETINA)에서 RIOJA 전체 데이터</td><td>005 개시 지연 · 3상 디자인 변경(비교군·간격 축소) · Restoret 우선 언급</td><td>MSD 파이프라인 표에서 제외 또는 중단 공시 · 3상이 비열등성 단일 적응증으로 축소 · 반환·해지 공시</td><td>분기마다(Merck 실적) · 2026-10 AAO</td><td>Merck 실적 자료 파이프라인 표 · ClinicalTrials.gov · 학회 초록</td></tr><tr><td>4. IGT-303 2027 기술이전</td><td>Part A(SAD) 완료 2026-10E · Part B 환자 코호트 진입 · 2027 상반기 UACR 첫 공개</td><td>primary completion이 2027로 이동 · 한국 2a 개시 지연</td><td>2a 데이터가 2027 하반기 이후로 · UACR 감소가 SGLT2 계열(30~35%) 이하 · 2027 말까지 파트너 논의 공시 없음</td><td>2026-10 · 2027 상반기 · 2027-11 ASN</td><td>ClinicalTrials.gov NCT07231679 · 회사 IR·공시 · ASN Kidney Week</td></tr><tr><td>5. 시총이 값 매기는 것</td><td>채점 없음(파트 7 조정판). 리스크 쪽 자: 공모가 시총 5,933억 · 첫날 저가 시총 4,895억 · 주관사 평가 1조 895억</td><td>논쟁 1·2 중 하나 경보</td><td>접는 조건 없음. 논쟁 1과 2가 같은 분기(4Q26)에 접히면 판정 보류</td><td>2026-11-16</td><td>허브 상수 블록</td></tr></table>
+<p class="src">유지선·경보·접는 조건은 허브 논쟁 지도의 채점 KPI·반증 조건과 같은 숫자를 씁니다. 관측처는 전부 공개 자료입니다. 논쟁 5는 채점하지 않고 파트 7의 조정판으로 답합니다.</p>
+<p>표를 읽는 법을 적어 둡니다. 유지선은 "판정이 맞아 가고 있다"의 최소 증거이고, 경보는 "조심하되 접지는 않는다", 접는 조건은 "이 논쟁은 틀렸다"입니다. 논쟁 1은 날짜가 가장 가까워(10월 16일) 첫 채점이 되고, 논쟁 2는 11월 16일, 논쟁 3은 분기마다, 논쟁 4는 2027년 상반기가 본 채점입니다. 세 논쟁이 접히는 순서에 따라 판정의 수정 폭이 다릅니다. 논쟁 1만 접히면 "값이 맞지 않았다"이지 "회사가 틀렸다"가 아니라서 판정의 문장은 유지하고 시총의 눈금만 다시 잡습니다. 논쟁 2가 접히면 2026년 흑자 전환이 사라지므로 밸류 파트의 첫 해를 비우고 런웨이를 다시 계산합니다. 논쟁 3이 접히면 판정 자체를 새로 씁니다. 이 종목을 "MSD 파이프라인 하나에 대한 증권"으로 읽은 전제가 무너지기 때문입니다. 논쟁 4가 접히면 "신장질환 옵션"을 판정문에서 지웁니다.</p>
+
+<h2>8. 좋은 소식에 숨은 리스크</h2>
+<p>리스크 파트는 상방이 왔을 때의 위험도 적어야 합니다. 첫째, 9월 18일 물량이 소화되고 주가가 오르면 재무적투자자의 매도 유인은 더 커집니다. 원가의 5.4배가 6~7배가 되는 것은 파는 쪽에는 더 좋은 값이고, 공동목적보유확약은 처분을 막지 않습니다. 물량 리스크는 값이 오를수록 확률이 오르는 드문 종류입니다. 둘째, 하반기 마일스톤 2,710만달러가 들어와 2026년이 흑자로 마감되면 시장은 2027년을 묻습니다. 2027E 매출 6,530만달러는 전부 IGT-303 계약금이고 IGT-427 마일스톤은 0입니다(주관사 중립). 즉 2026년의 성공은 2027년의 공백을 드러내고, 그 공백을 메울 사건은 사람 데이터가 아직 없는 자산에 달려 있습니다. 셋째, MSD 3상이 순항해 파이프라인 표에 계속 남으면 "MSD가 언젠가 인제니아를 산다"는 기대가 붙을 수 있는데, MSD는 이미 EyeBio 인수로 IGT-427의 전세계 권리를 갖고 있고 인제니아에 남은 것은 마일스톤·로열티 수령권입니다. 상방의 이름이 "인수"로 바뀌는 순간 그 기대는 근거 없는 것이 되므로, 우리는 그 서사를 판정에 넣지 않습니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 1(9-18 해제 물량 소화)에 리스크 쪽 답.</b> 물량은 16,218,189 DR(32.8%), 시가 2,618억, 재무적투자자 원가의 5.4배, 최근 13거래일 평균 거래량으로 2.1일·9-08 거래량으로 10.6일치입니다. 켜질 확률 70%<span class="est">E</span>. 채점 KPI는 허브와 같이 9-18~10-16 4주 기관+기타법인 순매도 500억 이하, 4주 평균 거래량 300만 주 이상, 종가 공모가 이상, 5% 보고 건수이고, 반증 조건은 4주 안 종가 12,000원 하회 또는 FI 한 곳의 절반 이상 처분 보고입니다. 리스크 쪽에서 더하는 경보는 두 가지입니다. 종가가 8월 19일 저점 종가 14,100원(9-08 대비 -12.6%) 아래로 가는 것과, 거래량이 해제 뒤에도 9-08 수준(153만 주)에 머무는 것입니다. 후자는 "팔 사람이 없다"가 아니라 "받을 사람이 없다"의 신호로 읽습니다. 2026년 코스닥 바이오 IPO 8곳의 -18.5~-60.0%와 외국기업 KDR 5종의 -30~-88%가 준거이고, 그 어느 것도 목표가가 아닙니다.</p>
+<p><b>논쟁 3(MK-8748 차별성·MSD 의지)에 리스크 쪽 답.</b> 의지의 반대 신호는 순서가 있습니다. 먼저 MK-8748-005(1,104명, 9월 30일 개시 예정)의 등록이 밀리는가, 다음으로 Merck 분기 실적 자료의 파이프라인 표에서 Phase 3 표기가 유지되는가, 그다음이 3상 디자인 변경(비교군을 아플리버셉트 2mg에서 바꾸거나 적응증을 하나로 줄이는 것)이고, 마지막이 반환·해지 공시입니다. 확률은 12개월 안 15%<span class="est">E</span>(우선순위 하락 신호 확정)와 10%<span class="est">E</span>(임상 실패 신호)로 두고, 걸린 금액은 명목 잔여 계약 약 1조 231억과 2028~2029E 마일스톤 1억 7,000만달러입니다. 차별성 쪽의 반증은 학회입니다. 2026년 10월 AAO나 EURETINA에서 RIOJA 전체 데이터가 나오지 않거나, 나왔는데 회사 인용치(+7.8자)와 다르면 "차별성" 서사의 근거가 회사 IR뿐이었다는 뜻이 됩니다. 경쟁(⑪)은 이 논쟁의 배경 변수이고, Kodiak DAYBREAK(9월)·Axpaxli NDA(4Q26)·Memento FIH(2027)가 시점입니다.</p>
+<p><b>논쟁 4(IGT-303 2027 기술이전)에 리스크 쪽 답.</b> 이 가정이 12개월 안에 흔들릴 확률을 55%<span class="est">E</span>로 둡니다. 근거는 1/2a의 1차 지표가 84일 안전성이라는 것, 코호트당 인원이 작아 UACR 변화가 통계적 결론에 이르기 어렵다는 것, 비뇨기 P1 LOA 3.6%라는 산업의 자, 그리고 전임상 Tie2 자산의 최근 선급금이 800만달러였다는 딜 시장의 자입니다. 유지선은 Part A 완료(2026년 10월<span class="est">E</span>)와 Part B 환자 코호트 진입, 2027년 상반기 UACR 첫 공개이고, 반증은 2a 데이터가 2027년 하반기 이후로 밀리거나 UACR 감소가 SGLT2 계열(30~35%) 이하이거나 2027년 말까지 파트너 논의 공시가 없는 것입니다. 관측처는 ClinicalTrials.gov NCT07231679의 completion 날짜 변경, 회사 공시·IR, 11월 ASN Kidney Week 초록입니다. 걸린 금액은 2027E 계약금 6,530만달러(약 879억)이고, 이것이 사라지면 ⑦ 현금·희석의 확률이 35%<span class="est">E</span>에서 크게 오릅니다.</p>
+<p><b>논쟁 2·5에 보태는 것.</b> 논쟁 2에는 확률 40%<span class="est">E</span>와 "3Q 매출 0이어도 005 개시가 확인되면 경보에 머문다"는 판단 기준을 보탭니다. 논쟁 5에는 채점 대신 세 눈금(공모가 시총 5,933억·첫날 저가 시총 4,895억·주관사 평가 1조 895억)과 두 준거집단(플랫폼 피어 -51~-77%, KDR 5종 -30~-88%)을 넘기고, 판정 보류 조건(논쟁 1과 2가 4Q26에 같이 접힘)을 답니다. 마지막으로 리스크의 반대편도 적습니다. 열두 개의 확률이 함께 내려가는 사건은 셋입니다. 9월 18일 이후 4주 동안 5% 보고 없이 거래량 300만 주 위에서 공모가가 지켜지는 것(①·②·⑨), 11월 분기보고서에 영업수익 600만달러 이상이 찍히는 것(⑥·⑦), 그리고 MK-8748-005가 예정대로 개시되어 4건 모두 모집 중 상태가 되는 것(③·④)입니다. 셋 중 둘이 11월 안에 오면 다음 갱신에서 ①·⑥의 확률을 내리고 ⑤·③으로 무게를 옮깁니다.</p>
+
+<h2>미결</h2>
+<p><b>A급(판정을 바꾸는 것, 공시·회사만 답할 수 있음).</b> EyeBio/MSD 계약의 반환·해지 조항과 마일스톤 단계별 금액(신고서 비밀유지) · IGT-302 개발 마일스톤 1,810만달러가 붙은 단계 전환의 정의 · 아우름 1·2호의 취득 단가(프리A·시리즈A) · 인터베스트·아우름 펀드의 만기와 청산 일정. <b>B급(다른 공개 자료로 좁힐 수 있음).</b> KAIST·IBS 라이선스의 로열티율·특허 존속기간·범위(DART 원문 II-6은 비공개, 특허 공보로 존속기간은 확인 가능) · 코오롱티슈진 등 KDR 5종의 거래정지·관리종목 사건 연표(KIND 공시 검색) · MSD의 MK-8748 2026년 개발비 배정(Merck 10-K R&D 주석) · 재무적투자자 3곳의 9-18 이후 실제 매도(5% 보고·임원 소유 보고, 10월 중 확인). <b>C급(참고).</b> KDR 배당 원천세의 적용 세율과 절차(배당 정책 없음) · 직원 21명 중 미국·한국·호주 배치 · 상장 후 첫 분기보고서의 공시 언어·형식 · Regulation S 1년 제한이 풀리는 2027-08-18 이후 미국 투자자 수급.</p>
+<div class="foot">데이터 계보: 투자설명서 2026-07-28 III 투자위험요소(사업위험 마·바·차, 회사위험 나·바·자·카·타·하·거·너, 기타위험 가·다·라·아·자·차·너·더·러·저·처·커·터)·예탁계약 제26조·제35조 · 반기보고서 2026.06 · 대량보유상황보고서 08-25 · 증권발행실적보고서 08-04 · 키움 일봉·투자자별(08-18~09-08) · 네이버 환율 · ClinicalTrials.gov(09-08 조회) · Merck 보도자료 2026-04-02 · 이데일리 08-05·08-18 · 더벨 08-06 · 뉴스핌 08-11 · 프리스탁뉴스 08-08 · IB토마토 08-26 · 파이낸셜뉴스 09-06 · BIO·Informa·QLS 2011-2020. 확률·걸린 금액의 조합은 전부 작성자 설정<span class="est">E</span>. 투자 권유가 아니며 목표주가·시나리오 주가·확률가중 가치를 싣지 않습니다.</div>
+
+</main></body></html>

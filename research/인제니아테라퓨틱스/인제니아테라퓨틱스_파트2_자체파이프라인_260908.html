@@ -1,0 +1,393 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="segdive,debate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인제니아테라퓨틱스 파트 2 — 자체 파이프라인 · 2026-09-08</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<div class="hubnav">인제니아테라퓨틱스 파트제 커버리지 · <a href="인제니아테라퓨틱스_허브.html">허브(판정·상수 블록·논쟁 지도)</a> · 파트 0 / 1 / <b>2</b> / 3 / 4 / 5 / 6 / 7 · 현행 판정은 허브가 듭니다. 이 파트는 커버리지 층 segdive(자체 파이프라인)와 debate(논쟁 4)를 맡습니다.</div>
+<h1>인제니아테라퓨틱스 파트 2 — 자체 파이프라인: IGT-303 신장, IGT-302 녹내장, 그리고 2027년 기술이전이라는 가정</h1>
+<div class="sub">파트제 커버리지 8편 중 파트 2 · 작성 2026-09-08 · 주가 16,140원(9-08 종가) · 시총 7,980억원 · 기준 환율 $1 = ₩1,345.8(9-08) · 회계연도 12월(2026 = 제9기, USD 기능통화·K-IFRS) · 다음 실적 3Q26 분기보고서 2026-11-16(E, 외국기업 45일) · 다음 갱신 트리거 IGT-303 1차 완료(2026-10E)·한국 2a 첫 환자·2027 초 데이터 공개 · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 투자설명서(7-28) II 사업의 내용·IV 인수인의 의견, 반기보고서 2026.06, ClinicalTrials.gov NCT07231679(5-18 갱신), JCI 2017·2025, Nature Communications 2021, BIO 2011-2020, Citeline 2024, 언론(파이낸셜뉴스 9-06·청년의사 7-14·코리아바이오메드 7-14·바이오스펙테이터 5-11·머니투데이 6-29)</div>
+
+<div class="judge"><b>이 파트의 답(논쟁 4).</b> 주관사가 공모가 산정에 넣은 "2027년 IGT-303 계약금 6,530만달러"는 세 가지가 동시에 맞아야 성립합니다. 첫째, 2027년 초에 나오는 1/2a 데이터가 사람에서 UACR 감소를 보여야 하고(등록정보상 1차 지표는 84일 안전성이며 유효성은 탐색 지표입니다), 둘째, 그 데이터로 시작하는 협상이 같은 해 안에 서명까지 가야 하며(회사는 2026년 4월부터 복수 빅파마와 논의를 시작했고 한 곳이 데이터 리뷰 중이라고 적었습니다), 셋째, 선급금이 피크판매액 43.5억달러의 1.5%라는 산식을 시장이 받아들여야 합니다. 우리는 셋 중 첫째를 반반, 둘째를 2027년 안에 35%<span class="est">E</span>, 셋째를 절반 크기(선급 3,500만달러<span class="est">E</span>, 범위 2,000~6,000만달러<span class="est">E</span>)로 읽습니다. 그 결과 2027년 IGT-303 매출의 기대값은 1,200만달러<span class="est">E</span> 안팎이고, 주관사 중립 6,530만달러의 19%<span class="est">E</span>입니다. 이 숫자는 주가로 환산하지 않습니다. 대신 2027년 상반기까지의 채점 KPI 셋(2a 첫 코호트 UACR 변화 공개 시점, 영장류 58%의 사람 재현 폭, 파트너 논의의 공시 격상)을 아래에 적습니다. 반증은 2a 데이터가 2027년 하반기 이후로 밀리거나, UACR 감소가 SGLT2 계열(30~35%) 아래로 나오는 것입니다.</div>
+
+<p>이 파트는 인제니아의 값 중 "MSD 손에 있지 않은 부분"을 맡습니다. 허브 판정은 이 종목을 "MSD 파이프라인 하나에 대한 원화 표시 로열티·마일스톤 증권 + 신장질환 옵션"으로 읽는데, 그 옵션의 실체가 IGT-303이고, 옵션 뒤에 IGT-302(녹내장)·IGT-532(고형암 삼중항체)·IGT-627(폐동맥고혈압)이 줄지어 있습니다. 파트 1이 IGT-427(MK-8748)과 MSD를 다루므로 여기서는 IGT-427을 비교 참조로만 씁니다. 이 파트가 답하는 논쟁은 4번, "IGT-303 2027년 기술이전 가정은 성립하는가"입니다. 주관사 평가액 1조 895억원의 산식에서 2027E 순이익 398억원과 2028E 순이익 1,921억원은 IGT-303 매출 6,530만달러와 1억 4,140만달러를 전제하므로, 이 논쟁은 논쟁 5(시총이 값 매기는 것)의 절반을 차지합니다.</p>
+
+<h2>용어집</h2>
+<div class="gloss">
+<b>UACR</b><span>소변 알부민·크레아티닌 비율(mg/g). 신장 사구체가 단백질을 얼마나 새게 하는지 재는 지표로, 30 이상이면 알부민뇨입니다. CKD 임상에서 30% 이상 감소하면 장기 신장 결과의 대리지표로 인정받는 흐름이 있으나, 허가 지표는 여전히 eGFR 기울기·신장 복합 사건입니다.</span>
+<b>eGFR</b><span>추정 사구체여과율(mL/min/1.73㎡). 60 미만이 3개월 이상 이어지면 CKD입니다. 2기 60~89, 3a기 45~59, 3b기 30~44입니다. IGT-303 임상은 2~3b기 환자를 받습니다.</span>
+<b>CKD / DKD</b><span>만성신장질환과 그 중 당뇨가 원인인 당뇨병성 신장질환입니다. 당뇨는 CKD의 가장 흔한 원인이며, 표준치료는 RAS 억제제·SGLT2 억제제·비스테로이드 MRA·GLP-1의 네 계열입니다.</span>
+<b>SAD / MAD</b><span>단회 상승 용량(Single Ascending Dose)과 반복 상승 용량(Multiple Ascending Dose). 1상의 표준 구조로, SAD는 주로 건강인에게 한 번, MAD는 환자에게 여러 번 투여하며 용량을 올립니다. 유효성은 MAD 코호트에서만 탐색적으로 볼 수 있습니다.</span>
+<b>슐렘관</b><span>눈 앞쪽에서 방수(안액)를 배출하는 고리 모양의 관. 혈관과 림프관의 성질을 함께 가지며, Angiopoietin·TIE2 신호가 끊기면 퇴화해 안압이 오릅니다(JCI 2017). IGT-302의 표적입니다.</span>
+<b>TIE body</b><span>회사가 부르는 TIE2 활성화 단일항체 계열의 이름입니다. Ang1/Ang2 리간드 농도와 무관하게 TIE2 수용체를 직접 묶어 활성화한다는 것이 회사 설명이며, 원천은 KAIST·IBS 고규영 연구진의 hTAAB(Nature Communications 2021)입니다.</span>
+<b>LOA / rNPV</b><span>LOA(Likelihood of Approval)는 현재 단계에서 최종 허가까지 갈 누적 확률이고, rNPV는 단계별 확률을 곱해 할인한 위험조정 현재가치입니다. 주관사는 rNPV 대신 "성공확률 보정 매출"을 PER에 넣는 방식을 썼습니다.</span>
+<b>IND</b><span>임상시험계획 승인 신청. 미국 FDA 용어이며, 호주는 CTN(신고제), 한국은 식약처 IND입니다. "IND ready"는 CMC·GLP 독성 자료가 갖춰져 신청만 남았다는 뜻입니다.</span>
+</div>
+
+<h2>1. 파이프라인 전체 지도 — 무엇이 "자체"인가</h2>
+<figure class=""><figcaption>장표 1. 다섯 프로그램의 단계와 손 — 색은 누가 개발비를 내고 결정을 내리는가</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<rect x="150.0" y="40" width="101.4" height="230" fill="#ffffff" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="200.7" y="28" text-anchor="middle" font-size="11" fill="#8a857c">물질 디자인</text>
+<rect x="251.4" y="40" width="101.4" height="230" fill="#f7f4ee" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="302.1" y="28" text-anchor="middle" font-size="11" fill="#8a857c">전임상 PoC</text>
+<rect x="352.9" y="40" width="101.4" height="230" fill="#ffffff" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="403.6" y="28" text-anchor="middle" font-size="11" fill="#8a857c">IND ready</text>
+<rect x="454.3" y="40" width="101.4" height="230" fill="#f7f4ee" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="505.0" y="28" text-anchor="middle" font-size="11" fill="#8a857c">임상 1/2a</text>
+<rect x="555.7" y="40" width="101.4" height="230" fill="#ffffff" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="606.4" y="28" text-anchor="middle" font-size="11" fill="#8a857c">임상 2b/3</text>
+<rect x="657.1" y="40" width="101.4" height="230" fill="#f7f4ee" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="707.9" y="28" text-anchor="middle" font-size="11" fill="#8a857c">임상 3</text>
+<rect x="758.6" y="40" width="101.4" height="230" fill="#ffffff" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="809.3" y="28" text-anchor="middle" font-size="11" fill="#8a857c">허가</text>
+<text x="142" y="67.0" text-anchor="end" font-size="12" font-weight="600" fill="#3a3630">IGT-427 (MK-8748)</text>
+<rect x="152" y="54.0" width="564.0" height="18" rx="3" fill="#1f3a5f" opacity="0.85"/>
+<text x="158" y="67.0" font-size="10.5" fill="#fff">MSD</text>
+<text x="710.0" y="67.0" text-anchor="end" font-size="10.5" fill="#fff">nAMD 2b/3 ×2 · DME 3상 ×2</text>
+<text x="142" y="113.0" text-anchor="end" font-size="12" font-weight="600" fill="#3a3630">IGT-302</text>
+<rect x="152" y="100.0" width="300.3" height="18" rx="3" fill="#2b7a78" opacity="0.85"/>
+<text x="158" y="113.0" font-size="10.5" fill="#fff">공동</text>
+<text x="460.3" y="113.0" font-size="10.5" fill="#8a857c">CMC·IND ready · MSD 스폰서 연구 (임상 주체 미정)</text>
+<text x="142" y="159.0" text-anchor="end" font-size="12" font-weight="600" fill="#3a3630">IGT-303</text>
+<rect x="152" y="146.0" width="401.7" height="18" rx="3" fill="#b07d2b" opacity="0.85"/>
+<text x="158" y="159.0" font-size="10.5" fill="#fff">자체</text>
+<text x="561.7" y="159.0" font-size="10.5" fill="#8a857c">1/2a 94명 진행 (호주·뉴질랜드, 한국 2a 승인)</text>
+<text x="142" y="205.0" text-anchor="end" font-size="12" font-weight="600" fill="#3a3630">IGT-532</text>
+<rect x="152" y="192.0" width="198.9" height="18" rx="3" fill="#b07d2b" opacity="0.85"/>
+<text x="158" y="205.0" font-size="10.5" fill="#fff">자체</text>
+<text x="358.9" y="205.0" font-size="10.5" fill="#8a857c">삼중항체 디자인 완료 · 마우스 대장암 PoC 1차</text>
+<text x="142" y="251.0" text-anchor="end" font-size="12" font-weight="600" fill="#3a3630">IGT-627</text>
+<rect x="152" y="238.0" width="127.9" height="18" rx="3" fill="#b07d2b" opacity="0.85"/>
+<text x="158" y="251.0" font-size="10.5" fill="#fff">자체</text>
+<text x="287.9" y="251.0" font-size="10.5" fill="#8a857c">TIE2×미공개 표적 · 후보 확정 진행</text>
+<rect x="150" y="281" width="10" height="10" fill="#1f3a5f"/><text x="164" y="290" font-size="10.5" fill="#8a857c">MSD 손(파트너 주도)</text>
+<rect x="380" y="281" width="10" height="10" fill="#2b7a78"/><text x="394" y="290" font-size="10.5" fill="#8a857c">공동(MSD 스폰서 연구·임상 주체 미정)</text>
+<rect x="610" y="281" width="10" height="10" fill="#b07d2b"/><text x="624" y="290" font-size="10.5" fill="#8a857c">자체(회사 자금·인력)</text>
+</svg><div class="src">자료: 투자설명서 II 사업의 내용·연구개발 현황(7-28), 반기보고서 2026.06, ClinicalTrials.gov(9-08 조회). 단계 막대 길이는 문서상 진척을 우리가 배치한 것이며 수치가 아닙니다.</div></figure>
+<p class="reading"><b>관찰.</b> 다섯 프로그램 중 임상에 들어간 것은 둘뿐이고, 그중 IGT-427은 MSD가 3,984명 규모 임상 4건을 자기 돈으로 돌리고 있습니다. 회사 자금과 인력이 직접 들어가는 임상은 IGT-303 하나(94명)입니다. IGT-302는 IND ready 상태에서 임상 주체가 정해지지 않았고, IGT-532·IGT-627은 동물 실험 단계입니다. <b>원인.</b> 2022년 10월 EyeBio 계약이 IGT-427과 IGT-302를 함께 넘겼기 때문에 안과 두 자산은 회사가 임상 결정을 단독으로 내릴 수 없는 구조가 됐고, 신장(IGT-303)만이 회사가 처음부터 끝까지 설계하는 첫 임상입니다. 21명 조직(파트 0)이 감당할 수 있는 임상은 한 번에 하나이며, 공모자금 사용 계획도 임상시험비 220억원을 IGT-303·IGT-532에 우선 배정했습니다. <b>함의.</b> 이 회사의 '자체 파이프라인'을 평가한다는 것은 사실상 IGT-303 하나의 데이터와 그 뒤의 협상을 평가하는 일입니다. 나머지 셋은 IGT-303이 사람에서 TIE2 활성화의 효능을 처음 보여줄 때 함께 값이 붙는 후순위 옵션이고, 그 전까지는 플랫폼 서사의 일부입니다.</p>
+<table class=""><tr><th>프로그램</th><th>표적·모달리티</th><th>적응증</th><th>단계(2026-09)</th><th>누가 쥐고 있나</th><th>주관사 매출 반영</th></tr><tr><td>IGT-427 (MK-8748)</td><td>TIE2 활성화 × VEGF 저해 이중항체(LCIDEC)</td><td>nAMD·DME·BRVO</td><td>2b/3 ×2 · 3상 ×2 (합 3,984명)</td><td>MSD(EyeBio 2022-10 계약)</td><td>2026E 11 · 2028E 110 · 2029E 60</td></tr><tr><td>IGT-302</td><td>TIE2 활성화 단일항체(TIE body)</td><td>녹내장(슐렘관)</td><td>영장류 안압 감소 · CMC·IND ready</td><td>EyeBio/MSD 스폰서 연구 · 임상 주체 미정</td><td>2026E 21.1(연구비 3.0 + 마일스톤 18.1) · 2028E 4</td></tr><tr><td>IGT-303</td><td>TIE2 활성화 항체(TIE body), 피하 4~8주</td><td>CKD·DKD (뇌질환 ARIA 탐색)</td><td>임상 1/2a 94명 진행</td><td>자체</td><td>2027E 65.3 · 2028E 141.4</td></tr><tr><td>IGT-532</td><td>VEGF 저해/PD-1 저해/TIE2 활성화 삼중항체</td><td>고형암</td><td>디자인 완료 · 마우스 대장암 PoC 1차</td><td>자체</td><td>2029E 86.9(낙관 173.8의 50%)</td></tr><tr><td>IGT-627</td><td>TIE2 × 미공개 표적 이중항체</td><td>폐동맥고혈압</td><td>디자인 완료 · 후보 확정 진행</td><td>자체(하버드 공동연구)</td><td>없음</td></tr></table>
+<p class="src">단위 백만달러. 주관사 매출 반영은 투자설명서 IV 인수인의 의견의 중립 시나리오 표입니다. IGT-427 열은 파트 1이 다룹니다.</p>
+<p>표에서 눈여겨볼 열은 "누가 쥐고 있나"입니다. 회사는 투자설명서에서 IGT-302를 두고 "EyeBio/MSD 계약에 의하여 파트너사 혹은 인제니아가 임상시험을 진행할 예정"이라고 적었습니다. 이 한 문장이 IGT-302의 위치를 정합니다. MSD가 임상을 맡으면 인제니아에 마일스톤이 들어오고, MSD가 손을 놓아 인제니아가 직접 하면 비용이 인제니아 것이 됩니다. 어느 쪽이 될지는 2026년 안에 나온다는 영장류 추가 데이터와 MSD의 판단에 달려 있고, 주관사는 전자를 가정해 2026E 마일스톤 1,810만달러를 넣었습니다. 이 가정은 파트 3이 맡는 논쟁 2(하반기 매출 2,710만달러)의 핵심 조각이므로 7절에서 따로 다룹니다.</p>
+<p>원천 기술의 계보도 짚어 둡니다. 회사가 쓰는 항체는 KAIST·IBS 고규영 연구진의 Anti-ANG2/Anti-TIE2 항체(2019-09-09 라이선스인, 약 48억원)와 TIE2 작용 항체(2024-06-01, 약 3억원)에서 나왔고, 전세계 독점권입니다. 학술적 뿌리는 세 편의 논문으로 정리됩니다. Ang2를 묶어 TIE2를 활성화하는 ABTAA가 종양 혈관 정상화(Cancer Cell 2016)와 패혈증 생존 개선(Science Translational Medicine 2016, 제1저자가 현 대표 한상열)을 보였고, 이후 Ang 결합 부위와 다른 막근접 도메인에 붙어 리간드 없이도 TIE2를 다각형으로 묶는 hTAAB가 구조까지 풀렸습니다(Nature Communications 2021, PDB 7E72). 회사 표현으로 "TIE body"는 이 hTAAB 계열의 인간화 항체입니다. 즉 IGT-303·IGT-302는 같은 항체 계열을 다른 장기의 미세혈관에 쓰는 것이고, 하나가 사람에서 작동하면 다른 하나의 사전확률이 오르는 구조입니다.</p>
+
+<h2>2. IGT-303 — 기전과 영장류 데이터</h2>
+<p>회사 설명을 그대로 옮기면, 신장은 정수기이고 그 핵심은 미세혈관 덩어리인 사구체입니다. 사구체 미세혈관이 손상되면 여과율(GFR)이 떨어지고 새어 나가지 말아야 할 단백질이 소변으로 나옵니다. 표준치료 네 계열(RAS 억제제·SGLT2 억제제·비스테로이드 MRA·GLP-1)은 회사 표현으로 "주로 세뇨관에 작용"하는데, IGT-303은 사구체 미세혈관 내피세포 표면의 TIE2를 활성화해 내피세포 생존을 늘리고 혈관층을 단단하게 하며 염증을 줄여 여과를 정상으로 되돌린다는 것이 기전 주장입니다. 이 구분은 과학적으로 일리가 있습니다. SGLT2 억제제가 사구체 내압을 낮추는 것은 세뇨관·사구체 되먹임을 통한 혈역학 효과이고, 피네레논은 염증·섬유화 경로를 막는 것이며, 어느 것도 사구체 내피 자체를 복구한다고 주장하지는 않습니다. 시장에 없는 자리를 겨냥한다는 점은 인정할 수 있습니다.</p>
+<p>영장류 데이터는 투자설명서 한 문단이 전부입니다. "자연적으로 만성신장질환 혹은 당뇨신장질환을 앓고 있는 원숭이들을 대상으로, IGT-303을 2주마다(0일, 15일, 30일) 10mg/kg 용량으로 주사한 결과, 대조군에 비해서 UACR이 CKD 및 DKD 원숭이 그룹 모두에서 약 58% 정도 통계적으로 유의하게 감소"했다는 것입니다. 표본 수, 관찰 기간, 기저 UACR, 대조군의 구성, 정맥·피하 어느 경로였는지는 공개되지 않았고 우리는 이를 미확인으로 둡니다. 자연발생 모델이라는 점은 유도 모델보다 사람에 가깝다는 장점이 있지만, 자연발생 CKD 원숭이는 구하기 어려워 표본이 작을 가능성이 크고, 표본이 작으면 58%라는 점추정의 신뢰구간이 넓습니다. 회사는 같은 절에서 이 수치가 표준치료의 3상 UACR 감소(25~40%)보다 "우월한 수치"라고 적었는데, 우리는 이 문장에 두 개의 꼬리표를 붙입니다. 하나는 영장류 대 사람의 교차비교라는 것이고, 다른 하나는 표준치료의 수치는 이미 RAS 억제제를 깔고 있는 환자에서 위약 대비 추가 감소분이라는 점입니다. IGT-303이 사람에서 같은 조건(SGLT2·RAS 억제제 위에 얹는 add-on)으로 재어질 때 58%가 남아 있을지는 아무도 모릅니다.</p>
+<p>독립 검증은 하나 있습니다. 2025년 9월 JCI에 실린 웁살라·카롤린스카·노스웨스턴 그룹의 논문이 ABTAA(고규영 연구실의 Ang2 결합·TIE2 활성화 항체)로 CKD 마우스에서 내피 기능장애, 세관주위 모세혈관 소실, 세뇨관 손상, 간질 섬유화가 억제됨을 보고했습니다. 회사와 무관한 그룹이 같은 계열 항체로 같은 방향의 결과를 냈다는 점에서 기전의 사전확률을 올려 주는 자료이며, 우리가 IGT-303을 "근거 없는 옵션"이 아니라 "값을 매길 근거가 아직 부족한 옵션"으로 부르는 이유입니다. 다만 그 논문의 항체는 ABTAA이지 IGT-303이 아니고, 마우스이지 사람이 아닙니다.</p>
+<p>TIE2 경로로 신장을 겨냥한 사람 임상의 전례도 하나 있습니다. Aerpio의 razuprotafib(AKB-9778)은 TIE2를 탈인산화하는 VE-PTP를 억제해 간접적으로 TIE2를 켜는 피하 저분자였는데, 당뇨망막병증 2b상(TIME-2b)에서 1차 지표(DRSS 2단계 개선 9.6% 대 위약 3.8%)에 실패한 뒤 2차 지표에서 UACR과 안압 감소 "신호"를 보고했습니다. 수치는 공개 자료에 없어 장표 3에서 0으로 그렸습니다. 이 사례가 말하는 것은 두 가지입니다. TIE2를 켜면 사람에서도 UACR이 움직일 수 있다는 방향 신호가 한 번은 있었다는 것, 그리고 그 신호의 크기가 회사를 살릴 만큼 크지 않아 Aerpio는 2021년 합병으로 사라졌다는 것입니다.</p>
+
+<h2>3. IGT-303 — 임상 1/2a 디자인과 일정</h2>
+<figure class=""><figcaption>장표 2. IGT-303 임상 1/2a(NCT07231679) 타임라인과 코호트 구조</figcaption><svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="40" y1="120" x2="840" y2="120" stroke="#8a857c" stroke-width="1.2"/>
+<line x1="185.5" y1="114" x2="185.5" y2="126" stroke="#8a857c"/>
+<text x="185.5" y="142" text-anchor="middle" font-size="11" fill="#8a857c">2026년</text>
+<line x1="621.8" y1="114" x2="621.8" y2="126" stroke="#8a857c"/>
+<text x="621.8" y="142" text-anchor="middle" font-size="11" fill="#8a857c">2027년</text>
+<rect x="112.7" y="106" width="400.0" height="9" fill="#b07d2b" opacity="0.8"/>
+<rect x="512.7" y="106" width="109.1" height="9" fill="#b07d2b" opacity="0.4"/>
+<text x="312.7" y="100" text-anchor="middle" font-size="10.5" fill="#b07d2b">1차 평가(84일 안전성) 수집 구간</text>
+<line x1="40.0" y1="120" x2="40.0" y2="152" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="40.0" cy="120" r="3.2" fill="#8a857c"/>
+<text x="40.0" y="164" text-anchor="middle" font-size="10.5" fill="#8a857c">호주 IRB 제출</text>
+<line x1="76.4" y1="120" x2="76.4" y2="90" stroke="#1f3a5f" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="76.4" cy="120" r="3.2" fill="#1f3a5f"/>
+<text x="76.4" y="86" text-anchor="middle" font-size="10.5" fill="#1f3a5f">10-30 등록(NCT07231679)</text>
+<line x1="112.7" y1="120" x2="112.7" y2="170" stroke="#1f3a5f" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="112.7" cy="120" r="3.2" fill="#1f3a5f"/>
+<text x="112.7" y="182" text-anchor="middle" font-size="10.5" fill="#1f3a5f">11-19 첫 투여(호주)</text>
+<line x1="330.9" y1="120" x2="330.9" y2="72" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="330.9" cy="120" r="3.2" fill="#8a857c"/>
+<text x="330.9" y="68" text-anchor="middle" font-size="10.5" fill="#8a857c">5-18 등록정보 갱신</text>
+<line x1="403.6" y1="120" x2="403.6" y2="188" stroke="#1f3a5f" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="403.6" cy="120" r="3.2" fill="#1f3a5f"/>
+<text x="403.6" y="200" text-anchor="middle" font-size="10.5" fill="#1f3a5f">한국 2a 식약처 승인</text>
+<line x1="476.4" y1="120" x2="476.4" y2="54" stroke="#a44a3f" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="476.4" cy="120" r="3.2" fill="#a44a3f"/>
+<text x="476.4" y="50" text-anchor="middle" font-size="10.5" fill="#a44a3f">오늘 9-08</text>
+<line x1="512.7" y1="120" x2="512.7" y2="152" stroke="#2b7a78" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="512.7" cy="120" r="3.2" fill="#2b7a78"/>
+<text x="512.7" y="164" text-anchor="middle" font-size="10.5" fill="#2b7a78">1차 완료(E)</text>
+<line x1="621.8" y1="120" x2="621.8" y2="90" stroke="#2b7a78" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="621.8" cy="120" r="3.2" fill="#2b7a78"/>
+<text x="621.8" y="86" text-anchor="middle" font-size="10.5" fill="#2b7a78">연구 종료(E)</text>
+<line x1="694.5" y1="120" x2="694.5" y2="170" stroke="#a44a3f" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="694.5" cy="120" r="3.2" fill="#a44a3f"/>
+<text x="694.5" y="182" text-anchor="middle" font-size="10.5" fill="#a44a3f">핵심 데이터(회사: 2027 초)</text>
+<line x1="803.6" y1="120" x2="803.6" y2="72" stroke="#a44a3f" stroke-width="0.8" stroke-dasharray="2 2"/>
+<circle cx="803.6" cy="120" r="3.2" fill="#a44a3f"/>
+<text x="803.6" y="68" text-anchor="middle" font-size="10.5" fill="#a44a3f">기술이전 가시화 목표(회사)</text>
+<text x="40" y="216" font-size="12" font-weight="600" fill="#3a3630">디자인 — 무작위·위약대조, IV 또는 SC, 총 94명(추정)</text>
+<rect x="40.0" y="230" width="81.6" height="34" rx="3" fill="#3a6ea5" opacity="0.75"/>
+<text x="80.8" y="251" text-anchor="middle" font-size="10.5" fill="#fff">SAD 1</text>
+<rect x="125.6" y="230" width="81.6" height="34" rx="3" fill="#3a6ea5" opacity="0.75"/>
+<text x="166.3" y="251" text-anchor="middle" font-size="10.5" fill="#fff">SAD 2</text>
+<rect x="211.1" y="230" width="81.6" height="34" rx="3" fill="#3a6ea5" opacity="0.75"/>
+<text x="251.9" y="251" text-anchor="middle" font-size="10.5" fill="#fff">SAD 3</text>
+<rect x="296.7" y="230" width="81.6" height="34" rx="3" fill="#3a6ea5" opacity="0.75"/>
+<text x="337.4" y="251" text-anchor="middle" font-size="10.5" fill="#fff">SAD 4</text>
+<rect x="382.2" y="230" width="81.6" height="34" rx="3" fill="#3a6ea5" opacity="0.75"/>
+<text x="423.0" y="251" text-anchor="middle" font-size="10.5" fill="#fff">SAD 5</text>
+<rect x="467.8" y="230" width="81.6" height="34" rx="3" fill="#3a6ea5" opacity="0.75"/>
+<text x="508.6" y="251" text-anchor="middle" font-size="10.5" fill="#fff">SAD 6</text>
+<rect x="583.3" y="230" width="81.6" height="34" rx="3" fill="#a44a3f" opacity="0.75"/>
+<text x="624.1" y="251" text-anchor="middle" font-size="10.5" fill="#fff">MAD 1</text>
+<rect x="668.9" y="230" width="81.6" height="34" rx="3" fill="#a44a3f" opacity="0.75"/>
+<text x="709.7" y="251" text-anchor="middle" font-size="10.5" fill="#fff">MAD 2</text>
+<rect x="754.4" y="230" width="81.6" height="34" rx="3" fill="#a44a3f" opacity="0.75"/>
+<text x="795.2" y="251" text-anchor="middle" font-size="10.5" fill="#fff">MAD 3</text>
+<text x="40" y="286" font-size="10.5" fill="#8a857c">Part A 단회 상승 용량 6코호트(건강인 중심) · 1차 지표 84일 이상반응 · 2차 PK</text>
+<text x="583.3" y="286" font-size="10.5" fill="#8a857c">Part B 반복 상승 용량 3코호트 · T2D CKD 2~3b기</text>
+<text x="40" y="306" font-size="10.5" fill="#a44a3f">UACR·eGFR·ANG2·ADA는 탐색 지표 — 등록정보상 1차·2차 지표에 유효성은 없습니다</text>
+</svg><div class="src">자료: ClinicalTrials.gov NCT07231679(최종 갱신 2026-05-18, 9-08 조회) · 투자설명서 II(호주 IRB 2025-09, 첫 투여 2025-11-19) · 청년의사 7-14(한국 2a 승인) · 파이낸셜뉴스 9-06(데이터 2027 초, 기술이전 2027 상반기 목표). (E)는 등록정보의 추정 일자입니다.</div></figure>
+<p class="reading"><b>관찰.</b> 등록정보상 디자인은 무작위·위약대조 1/2a, 추정 94명, Part A 단회 상승 용량 6코호트와 Part B 반복 상승 용량 3코호트, 정맥 또는 피하 투여입니다. 대상은 18~75세 건강인과 제2형 당뇨병성 신증 CKD 2~3b기(UACR 30~5,000mg/g) 환자이고, 1차 지표는 84일까지의 이상반응, 2차 지표는 약동학입니다. 등록 2025-10-30, 1차 완료 2026-10(E), 종료 2027-01(E)이며 사이트는 호주 브리즈번·모레이필드, 뉴질랜드 타카푸나·와이카나에 비치 네 곳입니다. <b>원인.</b> 이 임상은 안전성·용량 탐색 임상입니다. UACR·eGFR·ANG2·항약물항체는 회사가 향후 연구개발 계획 표에 '유의미한 주요 유효성 평가 지표 달성'이라고 적은 항목이지만, 등록정보의 1차·2차 지표에는 없습니다. 환자에서 UACR을 볼 수 있는 곳은 Part B 세 코호트뿐이고, 94명 중 건강인 SAD 여섯 코호트를 빼면 환자 수는 코호트당 8명 안팎{E}(위약 포함)으로 30명대{E}일 것으로 우리는 추정합니다(정확한 배분은 미공개). 84일 관찰로 UACR 변화를 보는 것은 가능하지만, 표본 30명대에서 30%대 감소를 통계적으로 가르기는 어렵습니다. <b>함의.</b> 그래서 '2027년 초 핵심 데이터'는 세 가지 중 하나로 나올 것입니다. 안전성만 확인되고 UACR은 방향성 수준(가장 흔한 결과), UACR이 코호트 평균으로 뚜렷이 줄어 파트너가 2b를 설계할 만한 신호(회사가 바라는 결과), 또는 안전성 이슈(항약물항체·혈관 부종 등)로 개발이 멈추는 결과입니다. 기술이전 협상은 두 번째에서만 2027년 안에 서명까지 갈 수 있으며, 첫 번째에서는 '한국 2a 결과를 보고 다시 이야기하자'가 됩니다. 이 구분이 논쟁 4의 채점 KPI 첫 줄입니다.</p>
+<p>일정을 회사의 말과 등록정보로 나눠 봅니다. 등록정보는 1차 완료 2026년 10월, 종료 2027년 1월입니다. 회사는 파이낸셜뉴스 인터뷰(9-06)에서 "핵심 데이터는 내년 초, 2027년 상반기 글로벌 기술이전 가시화가 목표"라고 했고, 키움 IPO 리포트(7-23)는 "연말에서 연초 2a 결과"로 적었으며, 투자설명서 IV에는 "환자에서의 효능이 확인되는 2027년 상반기 본격적으로 협상을 진행할 예정"이라고 적혀 있습니다. 세 문서가 가리키는 것은 같습니다. 데이터는 2027년 1분기, 협상은 2027년 상반기입니다. 그런데 주관사 매출 표는 2027년에 계약금 6,530만달러가 인식되는 것으로 두었고, 이는 협상 시작에서 서명·수령까지 6~9개월 안에 끝난다는 뜻입니다. 기술이전 협상이 데이터 공개 뒤 실사·텀시트·계약서까지 통상 반년에서 1년<span class="est">E</span>이 걸린다고 보면 불가능한 일정은 아니지만, 데이터가 "방향성 수준"이면 파트너는 한국 2a(식약처 승인, 시점 미공개)를 기다릴 것이고 그러면 2028년으로 넘어갑니다.</p>
+<p>한국 2a에 대해 알려진 것은 식약처 승인 사실(청년의사 7-14)과 협력기관이 서울대학교병원이라는 점(투자설명서 향후 연구개발 계획 표)뿐입니다. 환자 수, 용량, 기간, 첫 환자 시점은 미확인입니다. 이 임상이 2027년 안에 UACR 데이터를 낼 수 있는지가 논쟁 4의 두 번째 갈림길입니다. 호주 1/2a의 Part B 환자 30명대에 한국 2a 환자가 더해지면 파트너가 요구하는 "재현된 신호"에 가까워지기 때문입니다. 회사가 2026년 안에 첫 환자 투여를 공시하면 우리 2027년 체결 확률 35%<span class="est">E</span>를 45%<span class="est">E</span>로 올리고, 2027년 상반기까지 소식이 없으면 25%<span class="est">E</span>로 내립니다.</p>
+<p>비용도 적어 둡니다. 회사가 밝힌 연구개발 계획은 2026년 125억원, 2027년 214억원, 2028년 244억원이고(IB토마토 8-26), 공모자금 중 임상시험비 220억원이 IGT-303·IGT-532에 우선 배정됐습니다. 주관사의 경상연구개발비 추정은 2026E 1,717만달러, 2027E 3,379만달러, 2028E 3,924만달러로 회사 계획보다 크며, 그 차이는 주관사가 2028년 3상 진입 비용까지 넣었기 때문으로 읽습니다. 어느 쪽이든 IGT-303이 2027년 안에 파트너를 만나지 못하면 2b 이후 비용은 회사 것이고, 현금 약 741억원<span class="est">E</span>(6월 말 유동성 1,175만달러 + 공모 순수입 583.4억원)에서 2027년 연구개발 214억원과 영업비용을 빼면 2028년 안에 조달이 필요해집니다. 파트 5의 런웨이 조정판이 이 숫자를 잇습니다.</p>
+
+<h2>4. CKD 시장과 경쟁 — 사람 임상의 30%대와 영장류의 58%</h2>
+<table class=""><tr><th>계열</th><th>대표 약물(회사)</th><th>작용 부위</th><th>UACR 감소(위약 대비)</th><th>2025 매출</th><th>투여</th></tr><tr><td>SGLT2 억제제</td><td>다파글리플로진 Farxiga(아스트라제네카)</td><td>세뇨관</td><td>34.4%</td><td>$8.49B(전 적응증)</td><td>경구 1일 1회</td></tr><tr><td>SGLT2 억제제</td><td>엠파글리플로진 Jardiance(베링거·릴리)</td><td>세뇨관</td><td>32%</td><td>-</td><td>경구 1일 1회</td></tr><tr><td>비스테로이드 MRA</td><td>피네레논 Kerendia(바이엘)</td><td>세뇨관</td><td>31%</td><td>€829M(+79%)</td><td>경구 1일 1회</td></tr><tr><td>GLP-1</td><td>세마글루타이드 Ozempic(노보)</td><td>전신(체중·혈당)</td><td>미확인(FLOW 3상, n=3,533)</td><td>-</td><td>피하 주 1회</td></tr><tr><td>ARB / ACEI</td><td>로사르탄·리시노프릴(제네릭)</td><td>세뇨관·사구체</td><td>34% / 25~40%</td><td>제네릭</td><td>경구</td></tr><tr><td>TIE2 활성화 항체</td><td>IGT-303(인제니아)</td><td>사구체 미세혈관 내피</td><td>영장류 약 58%(사람 미확인)</td><td>-</td><td>피하 4~8주 1회(목표)</td></tr></table>
+<p class="src">UACR 감소폭은 투자설명서 II 표(회사가 각 3상 논문에서 인용)이며, DAPA-CKD·EMPA-KIDNEY·FIDELIO-DKD의 위약 대비 상대 감소입니다. 매출은 Bayer 연차보고서 2025·AstraZeneca FY2025 실적. Ozempic FLOW의 UACR 수치는 우리 자료에 없어 미확인입니다.</p>
+<figure class=""><figcaption>장표 3. UACR 감소폭 비교 — 사람 3상(위약 대비)과 IGT-303 영장류</figcaption><svg viewBox="0 0 880 256" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="250.0" y1="16" x2="250.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="250.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">0%</text>
+<line x1="384.3" y1="16" x2="384.3" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="384.3" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">20%</text>
+<line x1="518.6" y1="16" x2="518.6" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="518.6" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">40%</text>
+<line x1="652.9" y1="16" x2="652.9" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="652.9" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">60%</text>
+<text x="242" y="35" text-anchor="end" font-size="11.5" fill="#3a3630">IGT-303 (영장류, 10mg/kg 2주 간격 3회)</text>
+<rect x="250" y="21" width="389.4" height="20" fill="#b07d2b" opacity="0.85"/>
+<text x="645.4" y="35" font-size="11" fill="#b07d2b">58% · 원숭이 · 표본 수 미공개</text>
+<text x="242" y="65" text-anchor="end" font-size="11.5" fill="#3a3630">다파글리플로진 Farxiga (DAPA-CKD)</text>
+<rect x="250" y="51" width="231.0" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="487.0" y="65" font-size="11" fill="#1f3a5f">34.4% · 사람 3상 · 위약 대비</text>
+<text x="242" y="95" text-anchor="end" font-size="11.5" fill="#3a3630">로사르탄 등 ARB</text>
+<rect x="250" y="81" width="228.3" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="484.3" y="95" font-size="11" fill="#1f3a5f">34% · 사람 3상 · 위약 대비</text>
+<text x="242" y="125" text-anchor="end" font-size="11.5" fill="#3a3630">엠파글리플로진 Jardiance</text>
+<rect x="250" y="111" width="214.9" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="470.9" y="125" font-size="11" fill="#1f3a5f">32% · 사람 3상 · 위약 대비</text>
+<text x="242" y="155" text-anchor="end" font-size="11.5" fill="#3a3630">ACEI(리시노프릴 등)</text>
+<rect x="250" y="141" width="218.2" height="20" fill="#8a857c" opacity="0.85"/>
+<line x1="417.9" y1="151" x2="518.6" y2="151" stroke="#3a3630" stroke-width="1.2"/>
+<line x1="417.9" y1="146" x2="417.9" y2="156" stroke="#3a3630"/><line x1="518.6" y1="146" x2="518.6" y2="156" stroke="#3a3630"/>
+<text x="474.2" y="155" font-size="11" fill="#8a857c">32.5% · 사람 · 연구별 25~40%</text>
+<text x="242" y="185" text-anchor="end" font-size="11.5" fill="#3a3630">피네레논 Kerendia (FIDELIO)</text>
+<rect x="250" y="171" width="208.1" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="464.1" y="185" font-size="11" fill="#1f3a5f">31% · 사람 3상 · 위약 대비</text>
+<text x="242" y="215" text-anchor="end" font-size="11.5" fill="#3a3630">razuprotafib (Tie2 경로, TIME-2b 2차)</text>
+<rect x="250" y="201" width="0.0" height="20" fill="#d8d4cc" opacity="0.85"/>
+<text x="256.0" y="215" font-size="11" fill="#d8d4cc">수치 미공개 · 사람 2b · UACR 감소 '신호'만, 수치 미공개</text>
+</svg><div class="src">자료: 투자설명서 II 신장질환 표준 치료제 표 · 회사 영장류 데이터(표본 수 미공개) · Aerpio TIME-2b(BioSpace, 수치 미공개). 영장류와 사람 임상은 같은 자로 잴 수 없다는 꼬리표를 붙입니다.</div></figure>
+<p class="reading"><b>관찰.</b> 사람 3상에서 위약 대비 UACR 감소는 SGLT2 억제제 32~34%, 피네레논 31%, ARB 34%, ACEI 25~40%로 30%대에 몰려 있습니다. IGT-303의 영장류 58%는 그 위에 홀로 서 있고, 같은 TIE2 경로의 razuprotafib은 사람 2b에서 '신호'만 남기고 수치를 내지 못했습니다. <b>원인.</b> 표준치료의 30%대는 이미 RAS 억제제 위에 얹은 추가 효과이고, 환자 수천 명의 평균입니다. 영장류 58%는 소수 표본에서 대조군 대비 감소이며 기저 치료가 없습니다. 자가 다르므로 58이 34보다 크다는 비교는 성립하지 않고, 회사가 '우월'이라 적은 문장은 그 자에서만 참입니다. <b>함의.</b> 사람 2a에서 IGT-303이 add-on으로 UACR을 30% 이상 줄이면 파트너에게는 충분한 신호이고, 20%대면 '4~8주 피하 항체'라는 투여 부담을 정당화하기 어렵습니다. 논쟁 4의 반증 조건을 'SGLT2 계열(30~35%) 이하'로 둔 이유가 여기 있습니다. 58%의 절반만 사람에서 나와도 상업적 의미는 있다는 뜻이기도 합니다.</p>
+<p>시장의 크기는 기관마다 다르고 우리는 그 편차를 그대로 적습니다. 회사가 투자설명서에서 인용한 GlobalData 2024는 7대 시장 CKD 의약품(투석·이식 제외) 시장을 2024년 26억달러, 2033년 131억달러(연평균 19.6%)로 봅니다. 시장조사 기관들의 글로벌 CKD 치료제 시장 추정은 2025년 168억~309억달러로 정의에 따라 두 배 차이가 나고, DKD로 좁히면 2025년 32억~61억달러입니다. 개별 약물의 실측이 더 믿을 만한 자입니다. 다파글리플로진(Farxiga)은 2025년 84억 9,200만달러를 팔았는데 이는 당뇨·심부전·CKD를 합친 숫자이고, 피네레논(Kerendia)은 2025년 8억 2,900만유로(+79%)로 출시 4년 만에 열 배가 됐으며, 오젬픽은 2025년 1월 FLOW 결과로 제2형 당뇨 동반 CKD 적응증을 받았습니다. 주관사는 IGT-303 피크판매액을 2039년 43억 5,000만달러(시장 189억달러의 23%)로 놓았는데, 이는 피네레론의 2025년 매출의 다섯 배, 다파글리플로진 전 적응증 매출의 절반에 해당하는 숫자입니다. 6절에서 이 숫자가 선급금 6,530만달러의 출발점이라는 점을 봅니다.</p>
+<p>IGT-303이 들어갈 자리는 대체가 아니라 add-on입니다. 이미 RAS 억제제와 SGLT2 억제제가 1차 치료로 깔려 있고 피네레논과 GLP-1이 그 위에 얹히는 구조에서, 네 번째 또는 다섯 번째 약으로 4~8주마다 피하 주사하는 항체가 들어가려면 두 가지가 필요합니다. 하나는 남은 잔여 알부민뇨를 추가로 줄인다는 증거이고, 다른 하나는 항체 약가(경구 제네릭보다 훨씬 높은 수준<span class="est">E</span>)를 정당화할 만한 신장 사건 감소의 기대입니다. 회사는 순응도를 장점으로 들지만, 경구 1일 1회 약 세 개 위에 병원 방문 주사가 더해지는 구조에서 순응도 논리는 주 1회 자가주사인 GLP-1보다 약합니다. 반대로 항체의 장점은 표적 선택성과 긴 반감기이고, 사구체 내피라는 다른 표적을 건드린다는 점에서 기전 중복이 없습니다. 이 자리의 크기는 2a 데이터가 정하며, 그 전에 시장 점유율 23%를 논하는 것은 순서가 바뀐 것입니다.</p>
+<p>경쟁 파이프라인은 TIE2 경로에 한해서는 비어 있습니다. 조사 노트 기준으로 CKD·혈관누수 적응증의 타사 TIE2 임상 프로그램은 확인되지 않았고, razuprotafib은 사라졌으며, Vasomune의 합성 TIE2 작용제 AV-001은 급성호흡곤란증후군 2a에 있습니다. 즉 IGT-303은 신장에서 TIE2를 켜는 유일한 임상 단계 물질일 가능성이 높고, 이는 파트너 관점에서 '경쟁 입찰이 없다'는 뜻이기도 합니다. 선급금 협상에서 경쟁 입찰의 부재는 매도자에게 불리하게 작용합니다.</p>
+
+<h2>5. 성공확률의 자 — 어느 숫자를 곱할 것인가</h2>
+<figure class=""><figcaption>장표 4. 성공확률의 자 — BIO 2011-2020·Citeline 2024의 누적 허가 확률(LOA)과 주관사가 곱한 단계 전환율</figcaption><svg viewBox="0 0 880 256" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="250.0" y1="16" x2="250.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="250.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">0%</text>
+<line x1="344.0" y1="16" x2="344.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="344.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">20%</text>
+<line x1="438.0" y1="16" x2="438.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="438.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">40%</text>
+<line x1="532.0" y1="16" x2="532.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="532.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">60%</text>
+<line x1="626.0" y1="16" x2="626.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="626.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">80%</text>
+<line x1="720.0" y1="16" x2="720.0" y2="226" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="720.0" y="242" text-anchor="middle" font-size="10.5" fill="#8a857c">100%</text>
+<text x="242" y="35" text-anchor="end" font-size="11.5" fill="#3a3630">안과 P1 LOA</text>
+<rect x="250" y="21" width="55.9" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="311.9" y="35" font-size="11" fill="#1f3a5f">11.9% · 허가까지 누적 확률</text>
+<text x="242" y="65" text-anchor="end" font-size="11.5" fill="#3a3630">안과 P2 LOA</text>
+<rect x="250" y="51" width="78.0" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="334.0" y="65" font-size="11" fill="#1f3a5f">16.6% · 허가까지 누적 확률</text>
+<text x="242" y="95" text-anchor="end" font-size="11.5" fill="#3a3630">전체 P1 LOA</text>
+<rect x="250" y="81" width="37.1" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="293.1" y="95" font-size="11" fill="#1f3a5f">7.9% · 허가까지 누적 확률</text>
+<text x="242" y="125" text-anchor="end" font-size="11.5" fill="#3a3630">비뇨기 P1 LOA</text>
+<rect x="250" y="111" width="16.9" height="20" fill="#2b7a78" opacity="0.85"/>
+<text x="272.9" y="125" font-size="11" fill="#2b7a78">3.6% · 허가까지 누적 확률</text>
+<text x="242" y="155" text-anchor="end" font-size="11.5" fill="#3a3630">비뇨기 P2 LOA</text>
+<rect x="250" y="141" width="41.4" height="20" fill="#2b7a78" opacity="0.85"/>
+<text x="297.4" y="155" font-size="11" fill="#2b7a78">8.8% · 허가까지 누적 확률</text>
+<text x="242" y="185" text-anchor="end" font-size="11.5" fill="#3a3630">Citeline 2024 P1 LOA</text>
+<rect x="250" y="171" width="31.5" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="287.5" y="185" font-size="11" fill="#1f3a5f">6.7% · 허가까지 누적 확률</text>
+<text x="242" y="215" text-anchor="end" font-size="11.5" fill="#3a3630">주관사 적용 P1 성공(Nat.Biotech 2014)</text>
+<rect x="250" y="201" width="339.3" height="20" fill="#a44a3f" opacity="0.85"/>
+<text x="595.3" y="215" font-size="11" fill="#a44a3f">72.2% · 1상에서 2상 전환율(한 단계)</text>
+</svg><div class="src">자료: BIO·Informa·QLS 'Clinical Development Success Rates 2011-2020'(2021-02), Citeline 2024(Norstella), 투자설명서 IV(Nature Biotechnology 2014 인용 72.2%). LOA는 허가까지 누적, 전환율은 한 단계만입니다.</div></figure>
+<p class="reading"><b>관찰.</b> BIO 2011-2020에서 1상 물질이 허가까지 갈 누적 확률은 전체 7.9%, 안과 11.9%, 비뇨기(신장에 가장 가까운 분류) 3.6%입니다. 2상 기준으로도 비뇨기는 8.8%로 안과(16.6%)의 절반입니다. Citeline 2024는 1상 LOA를 6.7%까지 낮춰 잡았습니다. 주관사가 2028년 마일스톤에 곱한 72.2%는 이들과 다른 종류의 숫자로, 1상에서 2상으로 넘어가는 한 단계의 전환율입니다. <b>원인.</b> 비뇨기 분류의 1상 전환율은 40.9%로 전체 52.0%보다 낮고, 2상에서 3상으로 가는 전환율은 15.0%로 전체 28.9%의 절반입니다. 신장은 임상 기간이 길고(eGFR 기울기·사건 지표) 대리지표와 최종 지표의 괴리가 커서 2상 실패가 많은 영역입니다. 주관사가 인용한 2014년 논문의 72.2%는 2003~2011년 자료의 1상 전환율이며, 그 사이 산업 평균은 계속 낮아졌습니다. <b>함의.</b> IGT-303 매출 가정에 확률을 곱한다면 세 층이 필요합니다. 1/2a가 파트너를 부를 만한 데이터를 낼 확률, 그 데이터로 2027년 안에 서명할 확률, 서명 뒤 2028년 안에 3상 진입 마일스톤을 받을 확률입니다. 주관사는 첫째와 둘째를 100%로 두고 셋째에만 72.2%를 곱했습니다. 우리 조정판(장표 6)은 세 층을 따로 둡니다.</p>
+<p>확률을 고를 때 우리가 쓰는 원칙은 "가장 가까운 분류의 가장 최근 자"입니다. IGT-303은 비뇨기 분류(BIO는 신장을 비뇨기에 넣습니다)의 1상 항체이고, 항체(바이오로직스)는 전체 LOA 9.1%로 저분자보다 높습니다. 두 효과를 합치면 1상에서 허가까지 5~9%<span class="est">E</span>, 2a를 잘 마친 시점에서는 10~15%<span class="est">E</span>가 우리 자입니다. 다만 논쟁 4는 허가가 아니라 기술이전을 묻습니다. 기술이전은 허가보다 훨씬 이른 사건이고, 파트너는 2b 성공 확률이 아니라 "이 데이터로 2b를 걸어 볼 만한가"를 봅니다. 국내 1상 단계 기술이전은 2023년 이후 해마다 여러 건 나왔고(6절 표), 그 물질들이 모두 뚜렷한 유효성 데이터를 갖고 있었던 것은 아닙니다. 그래서 우리는 기술이전 성사 확률을 임상 성공확률보다 높게, 그러나 시점을 2027년 안으로 좁히면 35%<span class="est">E</span>로 둡니다. 2028년까지 넓히면 60%<span class="est">E</span>입니다.</p>
+
+<h2>6. 주관사 가정 해체 — 6,530만달러는 어디서 왔는가</h2>
+<p>주관사(삼성증권)의 IGT-303 매출 산식은 투자설명서 IV에 네 단으로 적혀 있고, 그대로 따라가면 이렇습니다. 첫째, GlobalData의 CKD 시장 26억달러(2024)를 연 19.6%로 2033년까지, 그 뒤 6.2%로 늘려 2039년 시장을 189억달러로 놓습니다. 둘째, IGT-303이 2034년 출시해 첫해 3%, 5년차 23%를 점유한다고 가정해 피크판매액 43억 5,000만달러(2039년)와 출시 후 10년 누적 317억 4,000만달러를 얻습니다. 셋째, 총 딜 규모 34억 9,000만달러를 선급금 = 피크판매액의 1.5%(6,530만달러), 개발 마일스톤 = 15%(6억 5,250만달러), 매출 마일스톤 = 누적판매액의 1.25%(3억 9,700만달러), 로열티 7.5%(23억 8,000만달러)로 쪼갭니다. 넷째, 개발 마일스톤을 3상 진입 30%(1억 9,580만달러), 3상 완료 35%, 허가 35%로 나누고, 3상 진입분에 1상 전환율 72.2%를 곱해 2028년 1억 4,140만달러를 중립 시나리오에 넣습니다. 선급금 6,530만달러에는 아무 확률도 곱하지 않았습니다.</p>
+<p>이 산식의 약한 고리는 순서대로 셋입니다. 첫째, 시장 점유율 23%는 피네레논이 출시 4년 만에 열 배가 된 궤적을 빌려 온 것인데, 피네레논은 2025년에도 8억 2,900만유로이고 IGT-303 피크 43억 5,000만달러는 그 다섯 배입니다. 경구약도 아닌 4~8주 피하 항체가 add-on 자리에서 시장의 4분의 1을 가져간다는 가정은 근거가 제시되지 않았습니다. 둘째, 선급금을 피크판매액의 1.5%로 놓은 벤치마크 여섯 건 중 IGT-303과 같은 1/2a 단계는 하나도 없습니다. 종근당의 CKD-510(1상 후, 저분자, 다적응증 옵션)이 가장 가깝고 나머지는 2상 후(FibroGen)·3상 전(Akebia)·3상 중(Calliditas)·3상 후(Travere)·플랫폼(Alnylam)입니다. 셋째, 2027년 체결 자체에 확률을 곱지 않은 것은 "회사 계획대로 진행된다는 전제"라고 주관사가 표 아래에 명시했지만, 그 전제가 공모가에 그대로 들어갔습니다.</p>
+<table class=""><tr><th>시나리오</th><th>2027E IGT-303</th><th>2028E IGT-303</th><th>가정</th><th>2027E 회사 전체 매출</th></tr><tr><td>낙관</td><td>65.3</td><td>195.8</td><td>2027 계약금 65.3(피크판매액 4,350의 1.5%) + 2028 3상 진입 마일스톤 195.8(개발 마일스톤 652.5의 30%)</td><td>65.3</td></tr><tr><td>중립(공모가 산정)</td><td>65.3</td><td>141.4</td><td>마일스톤에 1상 전환율 72.2%(Nature Biotechnology 2014) 적용, 계약금은 보정 없음</td><td>65.3</td></tr><tr><td>보수</td><td>32.7</td><td>70.7</td><td>계약 규모 50% 축소(본문은 마일스톤 2029 수령이라 적었으나 표는 2028에 계상)</td><td>32.6</td></tr><tr><td>우리 기대값<span class="est">E</span></td><td>12.2</td><td>8.0</td><td>선급 35(범위 20~60) × 2027 체결 확률 35% · 3상 진입 마일스톤 40 × 20%</td><td>12.2</td></tr></table>
+<p class="src">단위 백만달러. 주관사 표는 투자설명서 IV 시나리오별 추정 매출. 보수 시나리오의 본문(2029년 마일스톤 수령)과 표(2028년 70,683천달러 계상)가 어긋나며, 우리는 표를 정본으로 인용하고 어긋남을 적어 둡니다.</p>
+<figure class=""><figcaption>장표 5. 기술이전 선급금의 자 — 국내·해외 비교 딜과 주관사 가정, 우리 중심값(백만달러)</figcaption><svg viewBox="0 0 880 436" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="250.0" y1="16" x2="250.0" y2="406" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="250.0" y="422" text-anchor="middle" font-size="10.5" fill="#8a857c">0</text>
+<line x1="367.5" y1="16" x2="367.5" y2="406" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="367.5" y="422" text-anchor="middle" font-size="10.5" fill="#8a857c">100</text>
+<line x1="485.0" y1="16" x2="485.0" y2="406" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="485.0" y="422" text-anchor="middle" font-size="10.5" fill="#8a857c">200</text>
+<line x1="602.5" y1="16" x2="602.5" y2="406" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="602.5" y="422" text-anchor="middle" font-size="10.5" fill="#8a857c">300</text>
+<line x1="720.0" y1="16" x2="720.0" y2="406" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="720.0" y="422" text-anchor="middle" font-size="10.5" fill="#8a857c">400</text>
+<text x="242" y="35" text-anchor="end" font-size="11.5" fill="#3a3630">큐라클·맵틱스 → Memento (2026-05)</text>
+<rect x="250" y="21" width="9.4" height="20" fill="#2b7a78" opacity="0.85"/>
+<text x="265.4" y="35" font-size="11" fill="#2b7a78">8 · 전임상 · Tie2×VEGF 직접 비교</text>
+<text x="242" y="65" text-anchor="end" font-size="11.5" fill="#3a3630">오름 → Vertex (2024-07)</text>
+<rect x="250" y="51" width="17.6" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="273.6" y="65" font-size="11" fill="#1f3a5f">15 · 연구 단계 플랫폼</text>
+<text x="242" y="95" text-anchor="end" font-size="11.5" fill="#3a3630">에이프릴바이오 → Evommune (2024-06)</text>
+<rect x="250" y="81" width="17.6" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="273.6" y="95" font-size="11" fill="#1f3a5f">15 · 1상 완료</text>
+<text x="242" y="125" text-anchor="end" font-size="11.5" fill="#3a3630">오스코텍 → Agios (2026-06)</text>
+<rect x="250" y="111" width="29.4" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="285.4" y="125" font-size="11" fill="#1f3a5f">25 · 2상 경험 물질</text>
+<text x="242" y="155" text-anchor="end" font-size="11.5" fill="#3a3630">2026 상반기 국내 6건 평균</text>
+<rect x="250" y="141" width="45.4" height="20" fill="#8a857c" opacity="0.85"/>
+<text x="301.4" y="155" font-size="11" fill="#8a857c">38.6 · 519억원 ÷ 1,345.8원</text>
+<text x="242" y="185" text-anchor="end" font-size="11.5" fill="#3a3630">우리 자 IGT-303 중심값(E)</text>
+<rect x="250" y="171" width="41.1" height="20" fill="#b07d2b" opacity="0.85"/>
+<text x="297.1" y="185" font-size="11" fill="#b07d2b">35 · 1/2a 완료 · 범위 20~60</text>
+<text x="242" y="215" text-anchor="end" font-size="11.5" fill="#3a3630">주관사 IGT-303 가정 (2027)</text>
+<rect x="250" y="201" width="76.7" height="20" fill="#a44a3f" opacity="0.85"/>
+<text x="332.7" y="215" font-size="11" fill="#a44a3f">65.3 · 1/2a 완료 · 피크판매액 1.5%</text>
+<text x="242" y="245" text-anchor="end" font-size="11.5" fill="#3a3630">종근당 → 노바티스 (2023-11)</text>
+<rect x="250" y="231" width="94.0" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="350.0" y="245" font-size="11" fill="#1f3a5f">80 · 1상 후 · 주관사 벤치마크</text>
+<text x="242" y="275" text-anchor="end" font-size="11.5" fill="#3a3630">리가켐 → J&J (2023-12)</text>
+<rect x="250" y="261" width="117.5" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="373.5" y="275" font-size="11" fill="#1f3a5f">100 · 1상 ADC</text>
+<text x="242" y="305" text-anchor="end" font-size="11.5" fill="#3a3630">오름 → BMS (2023-11)</text>
+<rect x="250" y="291" width="117.5" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="373.5" y="305" font-size="11" fill="#1f3a5f">100 · 전임상 · 자산 매각 성격</text>
+<text x="242" y="335" text-anchor="end" font-size="11.5" fill="#3a3630">Akebia → Otsuka (2016)</text>
+<rect x="250" y="321" width="146.9" height="20" fill="#8a857c" opacity="0.85"/>
+<text x="402.9" y="335" font-size="11" fill="#8a857c">125 · 3상 진입 전 · 주관사 벤치마크</text>
+<text x="242" y="365" text-anchor="end" font-size="11.5" fill="#3a3630">한미 → 제넨텍 (2026-08)</text>
+<rect x="250" y="351" width="223.2" height="20" fill="#1f3a5f" opacity="0.85"/>
+<text x="479.2" y="365" font-size="11" fill="#1f3a5f">190 · 1상 비만</text>
+<text x="242" y="395" text-anchor="end" font-size="11.5" fill="#3a3630">FibroGen → AZ (2013)</text>
+<rect x="250" y="381" width="411.2" height="20" fill="#8a857c" opacity="0.85"/>
+<text x="667.2" y="395" font-size="11" fill="#8a857c">350 · 2상 후 · 주관사 벤치마크</text>
+</svg><div class="src">자료: 바이오스펙테이터 5-11(큐라클·맵틱스), 히트뉴스·한국경제·코메디닷컴(국내 딜), 더바이오 8-24(한미), 머니투데이 6-29(상반기 평균 519억원, 9-08 환율 1,345.8원으로 환산), 투자설명서 IV(종근당·Akebia·FibroGen 벤치마크). 지분 투자·연구비는 제외한 현금 선급금 기준이며 올릭스·리가켐(오노)·알테오젠은 비공개라 뺐습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 국내 1상 단계 항체·플랫폼의 선급금은 에이프릴바이오 1,500만달러에서 한미 1억 9,000만달러까지 열 배 넘게 퍼져 있고, 2026년 상반기 여섯 건 평균은 519억원(약 39백만달러)입니다. 같은 TIE2 활성화 기전의 전임상 자산(큐라클·맵틱스)은 800만달러였습니다. 주관사의 6,530만달러는 이 분포의 중앙값보다 위, 종근당(8,000만달러)보다 아래에 있습니다. <b>원인.</b> 선급금은 단계보다 '검증된 모달리티인가'와 '시장이 얼마나 큰가'에 더 민감합니다. 리가켐(ADC)·한미(비만)가 1억달러를 넘긴 것은 모달리티와 시장이 이미 검증됐기 때문이고, 에이프릴바이오·오름(Vertex)이 1,500만달러였던 것은 새로운 표적·플랫폼이었기 때문입니다. TIE2 활성화는 사람에서 상업적으로 검증된 적이 없는 기전이고, CKD add-on 항체 시장은 아직 존재하지 않습니다. <b>함의.</b> 우리 자는 선급 2,000만~6,000만달러<span class="est">E</span>, 중심 3,500만달러<span class="est">E</span>입니다. 아래는 큐라클·맵틱스 800만달러에 '1/2a 완료' 프리미엄 2~3배를 얹은 값이고, 위는 종근당 8,000만달러에서 저분자·다적응증·경구라는 차이를 뺀 값이며, 가운데는 2026년 상반기 국내 평균과 겹칩니다. 주관사 6,530만달러가 틀렸다고 말하는 것이 아니라, 그것이 분포의 위쪽 3분의 1이라는 것을 말합니다.</p>
+<table class=""><tr><th>거래</th><th>시점 단계</th><th>선급금</th><th>총액</th><th>IGT-303과의 거리</th></tr><tr><td>큐라클·맵틱스 → Memento (2026-05)</td><td>전임상</td><td>$8M(현금 6.5 + 지분 1.5)</td><td>최대 $1,077.75M</td><td>같은 Tie2 활성화 기전, 망막 적응증, 단계는 두 칸 아래</td></tr><tr><td>에이프릴바이오 → Evommune (2024-06)</td><td>1상 완료</td><td>$15M</td><td>$475M</td><td>같은 단계·항체, 자가면역</td></tr><tr><td>올릭스 → 릴리 (2025-02)</td><td>1상</td><td>비공개(계약금+연구비 200억 수령)</td><td>$630M</td><td>같은 단계, siRNA</td></tr><tr><td>리가켐 → J&J (2023-12)</td><td>1상</td><td>$100M</td><td>2.2조원</td><td>같은 단계, ADC(검증된 모달리티)</td></tr><tr><td>한미 → 제넨텍 (2026-08)</td><td>1상</td><td>$190M</td><td>$2,305M</td><td>같은 단계, 비만(시장 크기 다름)</td></tr><tr><td>종근당 → 노바티스 (2023-11)</td><td>1상 후</td><td>$80M</td><td>최대 $1.3B</td><td>주관사 벤치마크, 저분자 다적응증</td></tr><tr><td>FibroGen → AZ (2013)</td><td>2상 후</td><td>$350M</td><td>선급+개발 마일스톤 $465M+</td><td>주관사 마일스톤 구조 벤치마크, 단계는 한 칸 위</td></tr></table>
+<p>우리 자를 [가정·근거·식·교차검증] 네 단으로 적습니다. <b>가정.</b> 2027년 초 1/2a 데이터가 안전성과 함께 Part B에서 UACR 감소의 방향성 이상을 보여 주고, 회사가 2026년 4월부터 논의해 온 복수 빅파마 중 한 곳과 2027년 안에 글로벌 권리 계약을 맺는 경우의 선급금입니다. <b>근거.</b> 국내 1상 단계 딜 아홉 건의 현금 선급금 분포(800만~1억 9,000만달러), 2026년 상반기 여섯 건 평균 519억원, 같은 기전 전임상 딜 800만달러, 주관사 벤치마크 중 가장 가까운 종근당 8,000만달러. <b>식.</b> 하단 = 800만달러 × 2.5<span class="est">E</span> = 2,000만달러, 상단 = 8,000만달러 × 0.75<span class="est">E</span> = 6,000만달러, 중심 = 하단·상단·상반기 평균 3,860만달러의 산술평균에 가까운 3,500만달러<span class="est">E</span>. 여기에 2027년 체결 확률 35%<span class="est">E</span>를 곱하면 2027년 기대 매출 1,225만달러<span class="est">E</span>이고, 2028년 이연 체결 25%<span class="est">E</span>와 3상 진입 마일스톤 4,000만달러<span class="est">E</span> × 20%<span class="est">E</span>를 더하면 2028년 기대 매출 1,675만달러<span class="est">E</span>입니다. <b>교차검증.</b> 주관사 산식에서 피크판매액만 절반(21억 7,500만달러<span class="est">E</span>)으로 낮추면 같은 1.5%로 선급 3,260만달러가 나와 우리 중심값과 만나고, 큐라클·맵틱스 딜의 선급금 대 총액 비율 0.74%를 주관사 총 딜 34억 9,000만달러에 곱하면 2,580만달러로 우리 하단과 상단 사이에 들어옵니다.</p>
+<figure class=""><figcaption>장표 6. IGT-303 매출 — 주관사 세 시나리오와 우리 기대값(E), 2027E·2028E(백만달러)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="181.5" x2="730" y2="181.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="185.5" text-anchor="end" font-size="11" fill="#8a857c">50.0</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">100.0</text>
+<line x1="62" y1="72.5" x2="730" y2="72.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="76.5" text-anchor="end" font-size="11" fill="#8a857c">150.0</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">200.0</text>
+<text x="229.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2027E</text>
+<text x="563.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2028E</text>
+<rect x="112.1" y="164.8" width="57.4" height="71.2" fill="#d8d4cc" opacity="0.9"/>
+<text x="141.3" y="160.8" text-anchor="middle" font-size="9.5" fill="#d8d4cc">65.3</text>
+<rect x="170.6" y="164.8" width="57.4" height="71.2" fill="#a44a3f" opacity="0.9"/>
+<text x="199.8" y="160.8" text-anchor="middle" font-size="9.5" fill="#a44a3f">65.3</text>
+<rect x="229.0" y="200.4" width="57.4" height="35.6" fill="#8a857c" opacity="0.9"/>
+<text x="258.2" y="196.4" text-anchor="middle" font-size="9.5" fill="#8a857c">32.6</text>
+<rect x="287.4" y="222.7" width="57.4" height="13.3" fill="#b07d2b" opacity="0.9"/>
+<text x="316.7" y="218.7" text-anchor="middle" font-size="9.5" fill="#b07d2b">12.2</text>
+<rect x="446.1" y="22.6" width="57.4" height="213.4" fill="#d8d4cc" opacity="0.9"/>
+<text x="475.3" y="18.6" text-anchor="middle" font-size="9.5" fill="#d8d4cc">195.8</text>
+<rect x="504.6" y="81.9" width="57.4" height="154.1" fill="#a44a3f" opacity="0.9"/>
+<text x="533.8" y="77.9" text-anchor="middle" font-size="9.5" fill="#a44a3f">141.4</text>
+<rect x="563.0" y="159.0" width="57.4" height="77.0" fill="#8a857c" opacity="0.9"/>
+<text x="592.2" y="155.0" text-anchor="middle" font-size="9.5" fill="#8a857c">70.7</text>
+<rect x="621.5" y="227.3" width="57.4" height="8.7" fill="#b07d2b" opacity="0.9"/>
+<text x="650.7" y="223.3" text-anchor="middle" font-size="9.5" fill="#b07d2b">8.0</text>
+<rect x="736" y="18" width="10" height="10" fill="#d8d4cc"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">주관사 낙관</text>
+<rect x="736" y="34" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">주관사 중립(공모가 산정)</text>
+<rect x="736" y="50" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">주관사 보수</text>
+<rect x="736" y="66" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">우리 기대값(E)</text>
+</svg><div class="src">자료: 투자설명서 IV 시나리오별 추정 매출(낙관·중립·보수), 우리 기대값은 위 4단 식. 기대값은 확률가중 평균이므로 '체결되면 1,225만달러'가 아니라 '체결 시 3,500만달러 × 35%'라는 뜻입니다.</div></figure>
+<p class="reading"><b>관찰.</b> 주관사 중립은 2027년 65.3·2028년 141.4백만달러, 보수는 32.7·70.7백만달러이고, 우리 기대값은 12.2·8.0백만달러입니다. 보수 시나리오조차 2027년 체결을 100%로 두고 규모만 절반으로 줄였기 때문에 우리 값의 2.7배입니다. <b>원인.</b> 차이의 대부분은 규모가 아니라 확률에서 옵니다. 선급금을 주관사와 같은 6,530만달러로 두어도 2027년 체결 확률 35%를 곱하면 2,290만달러이고, 반대로 확률을 100%로 두고 규모만 우리 중심값으로 바꾸면 3,500만달러입니다. 주관사 표에 없는 변수는 '언제'이고, 그것이 가장 큰 변수입니다. <b>함의.</b> 2027E 주관사 영업비용 39.1백만달러 앞에서 이 차이는 손익의 부호를 바꿉니다. 주관사 중립으로는 2027년 영업이익 26.2백만달러(순이익 398억원의 바탕)이고, 우리 기대값으로는 영업손실 26.8백만달러<span class="est">E</span>입니다. 다만 기대값은 회계 손익이 아니므로, 실제 2027년은 '계약이 되어 흑자'이거나 '안 되어 적자'의 둘 중 하나입니다. 우리가 논쟁 4를 확률로 답하되 주가로 환산하지 않는 이유입니다.</p>
+<div class="panel"><b>조정판 — IGT-303 기술이전 매출의 기대값(E): 선급금·성사 확률·시점·마일스톤</b><br><br>
+선급금 규모(백만달러) <span id="a_v">35</span><br><input type="range" id="a" min="5" max="150" step="5" value="35"><br>
+2027년 안에 계약이 체결될 확률(%) <span id="b_v">35</span><br><input type="range" id="b" min="0" max="100" step="5" value="35"><br>
+체결이 2028년으로 밀릴 확률(%) — 위 확률과 합쳐 100%를 넘지 않게 <span id="c_v">25</span><br><input type="range" id="c" min="0" max="100" step="5" value="25"><br>
+임상 3상 진입 마일스톤(백만달러) <span id="d_v">40</span><br><input type="range" id="d" min="0" max="250" step="10" value="40"><br>
+2028년 안에 3상 진입 마일스톤을 받을 확률(%) <span id="e_v">20</span><br><input type="range" id="e" min="0" max="100" step="5" value="20"><br>
+<div class="out">2027E 기대 매출 <span id="o1">—</span>백만달러(주관사 중립 65.3 대비 <span id="o2">—</span>%) · 2028E 기대 매출 <span id="o3">—</span>백만달러(주관사 중립 141.4 대비 <span id="o4">—</span>%) · 2027E 영업손익(주관사 영업비용 39.1백만달러 그대로, IGT-303만 바꿀 때) <span id="o5">—</span>백만달러 · 원화 환산(9-08 환율) 2027E 기대 매출 <span id="o6">—</span>억원</div>
+<div class="note">식: 2027E = 선급금 × P(2027 체결). 2028E = 선급금 × P(2028 이연 체결) + 마일스톤 × P(2028 수령). 영업손익 = 기대 매출 − 주관사 2027E 영업비용(IGT-427·IGT-302 2027E 매출은 주관사 표에서 0). 확률은 BIO 2011-2020 비뇨기 1상 전환율 40.9%·전체 52.0%와 회사 일정(데이터 2027 초)을 자로 삼은 우리 설정이며, 주가로 환산하지 않습니다.</div>
+<script>
+(function(){var ids=["a","b","c","d","e"];function f(){var a=+document.getElementById("a").value,b=+document.getElementById("b").value,c=+document.getElementById("c").value,d=+document.getElementById("d").value,e=+document.getElementById("e").value;if(b+c>100){c=100-b;document.getElementById("c").value=c;}ids.forEach(function(i){document.getElementById(i+"_v").textContent=document.getElementById(i).value});var r27=a*b/100;var r28=a*c/100+d*e/100;document.getElementById("o1").textContent=r27.toFixed(1);document.getElementById("o2").textContent=(r27/65.3*100).toFixed(0);document.getElementById("o3").textContent=r28.toFixed(1);document.getElementById("o4").textContent=(r28/141.4*100).toFixed(0);document.getElementById("o5").textContent=(r27-39.1).toFixed(1);document.getElementById("o6").textContent=(r27*1e6*1345.8/1e8).toFixed(0);}ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+
+<h2>7. IGT-302 녹내장 — 기전은 가장 예쁘고, 손은 남의 것</h2>
+<p>과학만 놓고 보면 IGT-302가 가장 깨끗한 이야기입니다. 슐렘관은 방수를 배출하는 고리 모양의 관으로 혈관과 림프관의 성질을 함께 갖는데, 2017년 JCI 논문(고규영 연구진)은 Angiopoietin·TIE2 신호가 슐렘관의 형성과 유지에 필수이고 성체에서 이 신호를 끊으면 슐렘관이 퇴화해 안압이 오르며 망막신경절세포가 죽는 원발개방각녹내장 표현형이 나타남을 보였습니다. 같은 논문에서 TIE2 작용 항체가 이 표현형을 되돌리고 노화한 슐렘관을 재생시켰습니다. 사람 유전체 연구(Khawaja 2018 등)도 TIE2·ANGPT1 변이와 녹내장의 연관을 지지합니다. 회사는 원숭이 녹내장 모델에서 "상승된 안압을 아주 빠르게 낮추어 정상 수준으로 회복"시켰고, 기증 안구를 이용한 하버드 연구에서 안압 감소와 해부학적 신호를 확인했으며, CMC와 IND 준비를 마쳤다고 적었습니다. 수치는 공개되지 않았습니다.</p>
+<p>상업적 위치는 두 가지 조건에 달려 있습니다. 첫째, 기존 여섯 계열 점안제가 안압을 20~30% 낮추고 라타노프로스트가 2024년 시장의 38%를 차지하는 상황에서, 유리체내 또는 결막하 주사 항체가 들어갈 자리는 점안제로 조절되지 않는 환자 또는 순응도가 낮은 환자입니다. 둘째, 기전이 '배수로 복구'이므로 효과가 오래 가야 합니다. 한 번 주사로 몇 달 안압이 유지된다면 점안 순응도 문제를 우회하는 새 범주가 되고, 몇 주면 주사 부담이 이깁니다. 같은 경로의 전례인 Aerpio razuprotafib 점안제 2상은 라타노프로스트 위에 얹어 -0.92mmHg(p=0.013)로 1차 지표를 맞췄지만 효과 크기가 작아 상업적으로 의미가 없다고 판단되어 회사가 사라졌습니다. TIE2를 켜면 안압이 내려간다는 사람 데이터는 있고, 그 크기가 관건이라는 것을 이 전례가 말합니다. 녹내장 약물 시장은 2025년 기준 기관에 따라 67억~91억달러이며, Bayer가 2026년 5월 2상 단계의 녹내장·당뇨망막병증 임플란트 회사 Perfuse를 선급 3억달러에 인수한 것은 이 영역에 큰 손이 돈을 내고 있다는 최근 자료입니다.</p>
+<p>돈의 흐름은 이렇습니다. IGT-302는 2022년 10월 EyeBio 계약에 IGT-427과 함께 묶여 넘어갔고, 그 뒤 스폰서 연구 계약에 따라 EyeBio·MSD가 연구비를 대고 인제니아가 전임상을 수행해 왔습니다. 주관사는 2026E에 스폰서 연구비 300만달러와 개발 마일스톤 1,810만달러를 합쳐 2,110만달러, 2028E에 임상 1/2a 관련 400만달러를 넣었습니다. 여기서 두 가지를 짚습니다. 하나는 1,810만달러가 무엇에 대한 마일스톤인지(IND 제출인지, 임상 개시인지, MSD의 옵션 행사인지) 투자설명서가 밝히지 않았다는 점이고, 다른 하나는 이 금액이 2026년 하반기 매출 2,710만달러(논쟁 2)의 3분의 2라는 점입니다. IGT-427의 DME 3상 2건은 8월 27일과 9월 30일 개시로 등록돼 마일스톤 1,100만달러의 근거가 보이는 반면, IGT-302의 1,810만달러는 근거가 되는 사건이 아직 공개되지 않았습니다. 논쟁 2를 채점할 때 11월 분기보고서에서 IGT-302 관련 수취가 잡히는지가 IGT-427 마일스톤보다 더 중요한 확인 항목입니다.</p>
+<p>임상 주체가 정해지지 않았다는 점은 양날입니다. MSD가 IGT-302 임상을 맡으면 인제니아는 비용 없이 마일스톤과 로열티를 기다리는 자리가 되고, 이는 IGT-427과 같은 구조입니다. MSD가 맡지 않으면 인제니아가 직접 임상을 해야 하는데, 그 경우 IGT-303과 병행할 자금과 인력이 문제이며 대신 권리를 더 크게 가져올 여지가 생깁니다. 주관사 2028E 400만달러는 전자를 가정한 값입니다. 우리는 이 결정이 2026년 안에 나오는 영장류 추가 데이터와 MSD의 안과 포트폴리오 우선순위(Restoret·MK-8748 두 후기 자산)에 달려 있다고 보며, 미결 A급으로 남깁니다.</p>
+
+<h2>8. IGT-532·IGT-627 — 서사의 자산, 아직 숫자의 자산은 아닌 것</h2>
+<p>IGT-532는 투자설명서 원문 기준 "VEGF 저해/PD-1 저해/TIE2 활성화"의 삼중항체입니다. 보도에서는 이중항체(아시아경제 7-14)와 삼중항체(바이오스펙테이터 8-18)가 섞여 나오는데, 우리는 신고서 원문을 정본으로 삼아 삼중항체로 적습니다. 회사의 논리는 VEGF·PD-1 이중항체(Akeso 이보네시맙 계열)가 빅파마 기술이전의 큰 흐름이 됐으니 여기에 종양 혈관 정상화(TIE2)를 더하면 T세포 침투가 좋아져 더 나은 항암 효과가 난다는 것입니다. 데이터는 마우스 전용 이중항체(ITP-148)와 항PD-1 항체의 병용이 대장암 모델에서 단독보다 종양 성장을 더 억제했다는 개념검증 1차 결과이며, 삼중항체 자체의 동물 데이터와 오가노이드 비교는 예정 단계입니다. 주관사는 2026년 4분기 IND 가능 연구 개시, 2027년 임상 1/2a 진입, 2029년 기술이전을 가정하고, VEGF·PD-1 이중항체 딜 세 건(Summit·Merck·AbbVie) 평균 선급 5억 7,900만달러에 기술이전 성공확률 15%(낙관 30%)를 곱해 2029E 8,690만달러(낙관 1억 7,380만달러)를 넣었습니다. 이 숫자는 공모가 산정 기간(2026~2028)에 들어가지 않으므로 밸류에 직접 영향은 없지만, 회사가 "삼중항체가 이중항체보다 우월할 것으로 기대"한다는 문장은 아직 동물에서도 검증되지 않은 가설이라는 꼬리표를 붙여 둡니다. VEGF·PD-1 이중항체는 이미 3상 데이터가 있는 물질들과 경쟁하는 영역이므로, 2027년 임상 진입 시점의 경쟁 환경은 지금보다 훨씬 붐빌 것입니다.</p>
+<p>IGT-627은 TIE2와 미공개 표적을 함께 겨냥하는 이중항체로 폐동맥고혈압을 적응증으로 하며, 물질 디자인이 끝나고 후보 확정이 진행 중입니다. 매사추세츠 종합병원 연구진과 동물 모델 공동연구를 하고 있고, 주관사 매출 표에는 없습니다. 폐동맥고혈압은 회사 표현대로 혈관 리모델링을 되돌리는 질병 수정 약물이 아직 제한적인 영역이라 방향은 이해할 수 있지만, 후보 확정 전 단계라 값을 매길 대상이 아닙니다. IGT-303의 뇌질환 적응증(항아밀로이드 항체의 ARIA 부작용 완화)도 같은 층에 있습니다. 물질 디자인이 끝났고 개념검증 동물 실험이 예정돼 있으며, 회사 공동연구 기관은 KAIST입니다. 이 셋을 묶어 우리는 "플랫폼 서사의 자산"이라 부릅니다. IGT-303이 사람에서 UACR을 움직이면 이 셋의 사전확률이 함께 오르고, 그러지 못하면 함께 내려가는 구조이므로 따로 값을 매기지 않고 IGT-303의 결과에 연동된 후순위 옵션으로 둡니다.</p>
+<p>후속 파이프라인을 읽을 때 주의할 점 하나를 더 적습니다. 회사의 두 기반기술 이름(LCIDEC과 TIE body)은 각각 IGT-427·IGT-532·IGT-627과 IGT-302·IGT-303에 붙어 있습니다. LCIDEC은 병인 단백질(VEGF 등)을 붙잡아 TIE2를 통해 내피세포 안으로 끌어들여 분해한다는 이중기능 개념이고, 이 개념이 사람에서 검증되는 첫 자리가 MSD의 MK-8748 임상입니다. 즉 IGT-532·IGT-627의 플랫폼 검증은 파트 1의 논쟁 3(MK-8748의 차별성)과, IGT-302의 기전 검증은 이 파트의 IGT-303 결과와 각각 묶여 있습니다. 회사의 다섯 프로그램은 독립된 다섯 개의 복권이 아니라 두 개의 가설(LCIDEC과 TIE body)에 걸린 두 묶음입니다. 분산 효과는 그만큼 작습니다.</p>
+
+<h2>9. 논쟁에 주는 답</h2>
+<p><b>논쟁 4 — IGT-303 2027년 기술이전 가정은 성립하는가.</b> 우리 답은 "시점은 절반 이하, 규모는 절반"입니다. 2027년 안에 글로벌 권리 계약이 서명될 확률을 35%<span class="est">E</span>, 2028년으로 밀릴 확률을 25%<span class="est">E</span>, 그 뒤로도 없을 확률을 40%<span class="est">E</span>로 두고, 체결 시 현금 선급금을 2,000만~6,000만달러<span class="est">E</span>(중심 3,500만달러<span class="est">E</span>)로 봅니다. 그 결과 2027년 IGT-303 매출의 기대값은 1,225만달러<span class="est">E</span>로 주관사 중립 6,530만달러의 19%<span class="est">E</span>이고, 2028년 기대값은 1,675만달러<span class="est">E</span>로 주관사 중립 1억 4,140만달러의 12%<span class="est">E</span>입니다. 이 숫자는 주관사 산식의 어느 한 단이 틀렸다는 뜻이 아니라, 주관사가 100%로 둔 "2027년 체결"에 우리가 확률을 붙였고 피크판매액 43억 5,000만달러에서 출발한 선급금 규모를 국내 1상 딜 분포로 갈음했다는 뜻입니다.</p>
+<p><b>근거 세 줄.</b> 첫째, 임상 등록정보의 1차 지표는 84일 안전성이고 유효성은 탐색 지표이며 환자 코호트는 셋뿐이라, 2027년 초 데이터가 파트너를 서명까지 끌고 갈 크기의 UACR 신호를 낼 확률을 반반 이상으로 두기 어렵습니다. 둘째, 회사가 2026년 4월부터 논의를 시작했다고 밝힌 점과 통상의 협상 기간(반년에서 1년<span class="est">E</span>)을 합치면 2027년 안 서명이 불가능하지는 않으나, 데이터가 방향성 수준이면 파트너는 한국 2a를 기다릴 것입니다. 셋째, 같은 기전의 전임상 딜이 800만달러였고 2026년 상반기 국내 평균이 519억원인 분포에서 6,530만달러는 위쪽 3분의 1입니다.</p>
+<p><b>채점 KPI.</b> (1) 2a 첫 코호트 UACR 변화의 공개 시점: 2027년 1분기 안에 학회 또는 보도자료로 나오면 예정대로, 2분기까지 없으면 지연으로 채점합니다. (2) 영장류 58%의 사람 재현 폭: Part B 코호트 평균 UACR 감소가 기저 대비 30% 이상이면 파트너 협상이 열리는 신호, 20~30%면 조건부, 20% 미만이면 반증입니다. (3) 파트너 논의의 공시 격상: 회사가 투자설명서에 적은 "데이터 리뷰 중"이 2027년 상반기 안에 텀시트·독점 협상 단계로 격상되어 공시 또는 IR 자료에 나오는지입니다. 보조 지표로 한국 2a 첫 환자 투여 시점(2026년 안이면 2027년 체결 확률을 45%<span class="est">E</span>로 상향), 2026년 10월 1차 완료 일정의 준수 여부, 항약물항체 발생률 공개 여부를 봅니다.</p>
+<p><b>반증 조건.</b> 2a 데이터 공개가 2027년 하반기 이후로 밀리거나, UACR 감소가 SGLT2 계열(30~35%) 이하로 나오거나, 안전성 이슈로 코호트 진행이 멈추는 경우입니다. 이 셋 중 하나가 현실이 되면 2027년 IGT-303 매출은 0으로 놓고 이 파트를 v2로 갱신하며, 주관사 2027E 순이익 398억원의 바탕이 사라지므로 파트 7의 조정판도 함께 바뀝니다. 반대로 UACR 30% 이상의 신호가 2027년 1분기에 나오면 우리 2027년 체결 확률을 60%<span class="est">E</span>로, 선급금 중심을 5,000만달러<span class="est">E</span>로 올립니다. 그때는 주관사 가정이 성립하는 쪽에 가까워지지만, 여전히 100%는 아닙니다.</p>
+<p><b>다른 논쟁에 넘기는 것.</b> 논쟁 2(하반기 매출 2,710만달러)에는 IGT-302 마일스톤 1,810만달러의 근거 사건이 아직 공개되지 않았다는 사실을 넘깁니다. 논쟁 5(시총이 값 매기는 것)에는 IGT-303을 확률가중이 아니라 '2027년 상반기까지의 정보 옵션'으로 읽어야 한다는 점과, 우리 기대값이 주관사 중립의 19%<span class="est">E</span>·12%<span class="est">E</span>라는 두 숫자를 넘깁니다. 논쟁 3(MK-8748)에는 TIE body 계열의 사람 첫 데이터가 IGT-303이 아니라 MSD의 RIOJA 1/2a에서 먼저 나왔고, 그 결과가 회사 인용치(BCVA +7.8자)로만 존재한다는 점을 상기시킵니다. IGT-303이 사람에서 TIE2 활성화의 안전성을 처음으로 회사 이름으로 보여 주는 임상이라는 점에서, 그 데이터는 IGT-303 하나의 값이 아니라 회사 전체 플랫폼의 사전확률을 바꾸는 사건입니다.</p>
+
+<h2>10. 미결</h2>
+<p><b>A급(판정을 바꿀 수 있는 것).</b> 영장류 UACR 58%의 표본 수·기저값·관찰 기간·투여 경로(회사 비공개, 학회 발표 또는 파트너 실사 자료에서만 확인 가능). 1/2a Part B 환자 배분과 용량 범위, 한국 2a의 환자 수·기간·첫 환자 시점(식약처 임상시험 정보 공개 또는 회사 공시). IGT-302 개발 마일스톤 1,810만달러의 근거 사건과 임상 주체 결정(EyeBio 계약 조항, 비공개). "데이터 리뷰 중"인 빅파마의 실체와 논의 단계(회사 IR).</p>
+<p><b>B급(숫자를 바꾸는 것).</b> Ozempic FLOW의 UACR 감소 수치(논문 확인 필요, 이 파트에서는 미확인으로 둠). BIO 2011-2020 신장 세부 분류(비뇨기 분류의 신장 비중). Citeline 2024의 비뇨기·안과 세부 LOA. 국내 1상 딜 중 비공개 선급금(올릭스·리가켐 오노·알테오젠)과 2026년 하반기 신규 딜의 선급금 분포. 주관사 보수 시나리오의 본문(2029년 마일스톤)과 표(2028년 계상)의 어긋남에 대한 회사·주관사 설명.</p>
+<p><b>C급(맥락).</b> IGT-532 삼중항체 자체의 동물 데이터 공개 시점과 오가노이드 비교 결과. IGT-627의 미공개 표적. IGT-303 뇌질환 적응증의 개념검증 일정. GlobalData 2024 CKD 시장 정의(투석·이식 제외, 7대 시장)와 다른 기관 추정(168억~309억달러)의 정의 차이. 코스닥 기술특례 상장사가 상장 후 첫 기술이전까지 걸린 기간의 분포(파트 3·4의 산업 맥락).</p>
+<div class="foot">데이터 계보: 투자설명서(7-28) II 사업의 내용·연구개발 현황·IV 인수인의 의견 · 반기보고서 2026.06 · ClinicalTrials.gov NCT07231679(2026-05-18 갱신, 9-08 조회) · JCI 2017;127:3877 · JCI 2025(doi 10.1172/JCI190286) · Nature Communications 2021;12:6287 · BIO·Informa·QLS 2011-2020 · Citeline 2024 · Bayer 연차보고서 2025 · AstraZeneca FY2025 · 언론(파이낸셜뉴스 9-06, 청년의사 7-14, 코리아바이오메드 7-14, 바이오스펙테이터 5-11·8-18, 머니투데이 6-29, IB토마토 8-26) · 추정치는 <span class="est">E</span> 표기, 조정판 기본값은 작성자 설정. 투자 권유가 아니며 목표주가를 싣지 않습니다.</div>
+
+</main></body></html>
