@@ -1,6 +1,6 @@
 {
- "build_id": "7c262070b81b",
- "created_at": "2026-09-10T22:40:09+09:00",
+ "build_id": "12d6fef13f92",
+ "created_at": "2026-09-11T22:40:12+09:00",
  "ref_period": {
   "Q": "2Q26",
   "P": "1Q26",
@@ -8,17 +8,17 @@
  },
  "inputs": {
   "backlog_updated": "2026-09-01 02:05",
-  "utd_build": "0ea3148e6aa4",
-  "cap_as_of": "20260910"
+  "utd_build": "bd9aa40af280",
+  "cap_as_of": "20260911"
  },
  "counts": {
-  "obqoq": 198,
+  "obqoq": 200,
   "obyoy": 257,
-  "utqoq": 556,
-  "utyoy": 515,
+  "utqoq": 555,
+  "utyoy": 516,
   "obboth": 162,
   "utboth": 351,
   "inter": 67
  },
- "excluded_cap": 396
+ "excluded_cap": 395
 }
