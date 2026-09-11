@@ -1,0 +1,564 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="segdive,debate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HD건설기계 파트 2 — 엔진: 건설기계 사이클 밖에서 값을 받을 수 있는가 · 2026-09-11</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>HD건설기계 파트 2 — 엔진: 건설기계 사이클 밖에서 값을 받을 수 있는가</h1>
+<div class="sub">파트제 커버리지 9편(허브+파트 0~7) 중 파트 2 · 작성 2026-09-11 · 주가 142,500원(9-11 종가, +0.92%) · 시총 6조 8,289억 · 기준 환율 $1 = ₩1,344.9(9-11) · 회계연도 12월(2026 = 제10기, K-IFRS 연결) · 다음 실적 3Q26 잠정 2026-10월 말(E) · 다음 갱신 트리거: 10월 군산 엔진공장 준공·방산 양산, 3Q26 잠정의 엔진 매출·이익률, 인천 22L 가스엔진 증설 결정, 2027-01 37L 양산 · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 2026 반기보고서(주석 29 영업부문·II 사업의 내용)·1분기보고서, 인프라코어 2025 연결감사보고서(주석 32), 회사 IR(2Q26·1Q26 실적·스크립트·Q&A, 4Q25 실적·2026 계획, 신년 대표이사 간담회 01-14, 밸류업 04-27, HDI 분기 IR 2023~3Q25), 단일판매·공급계약 공시(01-28), 키움 ka10001, 조사노트 A·B·D(언론·증권사, 본문 병기)</div>
+<div class="hubnav">현행 판정은 <a href="HD건설기계_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 segdive(엔진 사업부)·debate(논쟁 2 본문)를 맡습니다. 건설기계 딥다이브와 논쟁 1은 파트 1, 산업·경쟁은 파트 3, 밸류에이션 조정판은 파트 7이 맡습니다.</div>
+
+<p class="judge"><b>이 파트의 답.</b> 엔진은 건설기계 사이클 밖에서 따로 값을 받을 자격의 절반만 증명했습니다. 절반은 이미 숫자로 있습니다. 2025년 사내 포함 총매출 1조 3,264억원에 영업이익률 14.3%(회사 IR 관리 기준)를 냈고, 배기규제와 캡티브 고객이 진입을 막는 구조입니다. 나머지 절반은 아직 약속입니다. 2026년 상반기 엔진 매출 7,222억원의 증가분 483억원은 산업용과 사내 매출, 곧 건설기계 사이클 안에서 나왔고, 사이클 밖의 몸통인 발전기용은 같은 기간 약 1,845억원에서 1,388억원<span class="est">E</span>으로 25%<span class="est">E</span> 줄었습니다. 회사가 올려 잡은 하반기 발전기 매출 약 2,585억원<span class="est">E</span>, 인천 22리터 가스엔진 증설 결정, 10월 군산 방산 양산과 2027년 1월 37리터 디젤 양산이 나머지 절반을 채우는 순서이고, 첫 채점은 10월 말 3Q26 잠정의 엔진 매출과 이익률입니다.</p>
+
+<p>이 파트는 커버리지에서 사업부 딥다이브(segdive) 가운데 엔진 몫과 논쟁 2의 본문을 맡습니다. 허브의 판정은 2026년 상반기 증익이 합병보다 사이클과 환율의 몫이 크다는 가설 위에 서 있고, 그 가설과 다른 방향으로 회사의 배수를 움직일 수 있는 구조 변수가 엔진입니다. 엔진이 데이터센터 비상전원·분산발전·전차 같은 다른 수요로 이익을 낸다면 회사 전체를 읽는 배수가 달라질 수 있기 때문입니다. 순서는 사업 정의, 매출 궤적과 두 기준의 마진, IR 막대 판독으로 추정한 용도별 금액, 발전기·방산·군산 일정, 2026년 엔진 영업이익 조정판입니다. 이 파트는 값을 매기지 않고, 피어 배수는 사실로만 적습니다.</p>
+
+<h2>0. 용어집 — 엔진 편에 들어가기 전 일곱 개</h2>
+<div class="gloss">
+<b>사내매출(자가화)</b><span>엔진 부문이 같은 회사의 건설기계 부문에 파는 탑재 엔진 매출입니다. 회사 IR은 엔진 매출을 이것을 포함한 총매출로 적고, 연결 재무제표에서는 지워집니다. 자가 엔진 탑재율은 2025년 HYUNDAI 브랜드 10~15%, DEVELON 70~75%입니다(신년 간담회 2026-01-14).</span>
+<b>부문 총매출·외부매출</b><span>반기보고서 영업부문 주석의 '수익'은 내부매출을 포함한 총매출이고, 여기서 내부매출을 뺀 값이 외부매출입니다. 2026년 상반기 엔진은 총매출 7,433.7억, 내부 1,513.4억, 외부 5,920.2억입니다.</span>
+<b>IR 관리 기준·공시 부문 기준</b><span>같은 엔진 사업의 이익을 회사 IR(내부 관리 기준, 외부감사 미실시)과 반기보고서 부문 주석이 다르게 적습니다. 2026년 상반기 영업이익은 IR 1,064억, 공시 840.6억으로 223억 차이가 납니다.</span>
+<b>배기규제(Stage V·Tier 4)</b><span>유럽·미국 등이 비도로 엔진에 거는 배출가스 기준입니다. 규제가 올라갈 때마다 개발비가 커져 후발 업체가 떨어져 나가고, 전환기에 장기 공급계약을 따낸 업체가 고객을 묶어 두는 구조가 생깁니다.</span>
+<b>N+1·2N</b><span>데이터센터 비상전원 설계 표준입니다. 필요한 전력 N에 예비 1대를 더하거나(N+1) 전체를 이중화(2N)하므로 비상발전 설비 용량이 주전력과 같거나 그보다 커집니다.</span>
+<b>리터급(22L·37L)</b><span>엔진 배기량입니다. 회사는 15~22리터를 대형, 37리터 이상을 초대형으로 부르며, 22리터 가스엔진은 인천에서, 37리터 디젤(DX37)은 군산에서 만듭니다. 현재 발전기용 라인업은 1MW급이고 초대형 개발이 끝나면 3MW급까지 넓어집니다.</span>
+<b>SOP·EPP</b><span>SOP(Start of Production)는 양산 개시 시점입니다. EPP(E-Power Pack)는 전동화 장비용 배터리팩으로, 군산공장에서 2026년 8월 가장 먼저 양산에 들어갔습니다.</span>
+</div>
+
+<h2>1. 엔진은 무엇을 누구에게 파는가 — 용도 여덟 칸, 고객 네 부류, 진입장벽 하나</h2>
+<p>반기보고서가 적는 엔진은 각종 차량, 산업장비, 선박의 핵심부품입니다. 2026년 상반기 연결 매출 4조 7,390억원 가운데 엔진 품목의 외부매출은 5,920억원으로 2026년 상반기 매출의 12.5%이고, 그중 수출이 4,527억원(76.5%), 국내가 1,394억원입니다. 회사 IR은 엔진 매출을 산업용·발전기용·방산용·차량용·선박용·기타·사내매출·부품의 여덟 칸으로 쪼개어 보여 주는데, 이 가운데 발전기용과 방산용이 건설기계와 다른 사이클을 타는 몫이고, 산업용과 사내매출은 굴착기·지게차·농기계 판매를 그대로 따라가는 몫입니다. 이 구분이 논쟁 2의 뼈대입니다.</p>
+<p>고객은 네 부류입니다. 첫째, 소형 엔진은 두산밥캣 장비 탑재로 시장에 들어간 뒤 국내외 지게차·농기계 업체로 넓혔습니다(반기보고서 판매전략). 둘째, 중대형 엔진은 완성차 업체에 최신 배기규제 대응 솔루션으로 공급됩니다. 셋째, 발전기 업체와 선박 업체입니다. 발전기용은 북미 주요 고객 외에 튀르키예·이집트 발전기 업체에 공급되고(더구루 7-08), 4월 포르투갈 그루펠 G2 엔진 264대 공급 소식에는 주가가 +6.85% 올랐습니다(아주경제 4-21). 넷째, 방산 체계업체입니다. 현대로템 K2 전차의 1,500마력 엔진을 단독 공급하고(아시아투데이 8-19), 튀르키예 BMC와는 차세대 전차 엔진 1,102억원 계약(2023-02~2028-02)이 진행 중입니다.</p>
+<table class=""><tr><th>용도</th><th>주요 고객·시장</th><th>라인업(배기량)</th><th>수요의 성격</th><th>근거</th></tr><tr><td>산업용</td><td>두산밥캣·지게차·농기계·건설장비 업체</td><td>SU/SP 1.0~2.4L, G2 1.8~3.4L, DL 5.9~7.6L</td><td>건설기계 사이클 안</td><td>반기보고서 판매전략·신년 간담회</td></tr><tr><td>사내매출</td><td>HYUNDAI·DEVELON 건설기계</td><td>DX 계열(DX12·DX22 자가화 개발)</td><td>건설기계 사이클 안</td><td>신년 간담회·밸류업 IR</td></tr><tr><td>발전기용</td><td>북미 Oil & Gas·데이터센터·마이크로그리드, 튀르키예·이집트·포르투갈 발전기 업체</td><td>디젤 G2·DL·DX, 가스 GV/GX/HX 11.1~21.9L, 초대형 DX37~DX77</td><td>전력(사이클 밖)</td><td>2Q26 IR·더구루 7-08·아주경제 4-21</td></tr><tr><td>방산용</td><td>현대로템 K2, 튀르키예 BMC</td><td>VX 27.0L</td><td>국방(사이클 밖)</td><td>반기보고서 수주·아시아투데이 8-19</td></tr><tr><td>차량용</td><td>상용차·버스 완성차</td><td>DL·DX</td><td>상용차 경기</td><td>반기보고서</td></tr><tr><td>선박용</td><td>선박 업체</td><td>DX·DV 14.6~21.9L</td><td>해운·조선</td><td>신년 간담회</td></tr><tr><td>부품</td><td>엔진 A/S</td><td>-</td><td>설치 대수</td><td>IR 용도 구분</td></tr></table>
+<p>진입장벽은 배기규제에서 나옵니다. 반기보고서는 배기규제 대응 기술과 캡티브 관계가 진입 가능한 시장을 제한하고, 규제가 강해질수록 후발 업체의 탈락이 빨라진다고 적습니다. 회사도 내연기관 엔진 시장을 2025년 440만대에서 2030년 470만대(연 1.3%)로 정체로 보면서 신규 진입은 사실상 어렵다고 적었습니다(신년 간담회). 매력은 시장 성장보다 좌석의 희소성에 있습니다. 가격은 산업용 600만원, 발전기용 2,400만원(2026년 상반기 국내 최종 소비자 가격 평균)으로 네 배 차이가 납니다. 상반기 국내 엔진 생산능력 73,966대 가운데 50,938대를 만들어 가동률은 68.9%, 중국 톈진은 4,060대 가운데 3,917대로 96.5%였습니다. 공시 부문 총매출을 두 공장 생산 54,855대로 나누면 대당 약 1,355만원<span class="est">E</span>(부품·A/S 포함)으로, 산업용 단가의 두 배를 넘는 믹스입니다.</p>
+<p>합병이 엔진에 준 변화는 회계의 칸입니다. 구 HD현대건설기계(HCE)의 HYUNDAI 브랜드 장비에 들어가던 인프라코어 엔진은 2025년까지 외부 매출이었고, 합병 뒤로는 부문 간 거래가 되어 연결에서 지워집니다. 부문 주석의 엔진 내부매출 비중은 HDI 단독(구 HD현대인프라코어) 2025년 14.8%(2,024억원)에서 합병 후 2026년 상반기 20.4%(1,513억원)로 올라왔습니다. 회사는 자가 엔진 탑재율을 HYUNDAI 브랜드 10~15%에서 2028년 약 55%, 2030년 이후 약 85%로, DEVELON은 70~75%에서 약 90%로 올리겠다고 했고(신년 간담회 01-14, 밸류업 04-27), 이를 위해 DX12(2026-10)와 DX22(2026-12)를 개발합니다. 신년 간담회 막대 판독으로 사내·그룹사 매출은 2025년 약 1,764억원에서 2030년 약 3,140억원<span class="est">E</span>으로 늘어나는데, 이 증가분은 연결 매출이 아니라 외부 엔진 업체에 가던 마진을 회사 안에 남기는 몫입니다. 논쟁 2의 관점에서 사내 매출은 건설기계 이익의 일부로 읽습니다.</p>
+
+<h2>2. 숫자의 궤적 — 2020년 손익분기에서 2030년 2.5조까지</h2>
+<p>엔진 매출은 2020년 8,818억원에서 출발합니다. 회사는 이 해를 손익분기(영업이익률 0.2%)로 표시합니다. 2025년 사내 포함 총매출은 1조 3,264억원(IR 관리 기준, 영업이익률 14.3%)이고, 2026년 계획은 1조 4,530억원(+9.5%, 영업이익 1,587억원·10.9%), 2030년 목표는 2.5조원(영업이익률 14% 이상)입니다. 2020~2025년 연평균 성장률은 8.5%, 목표가 요구하는 2025~2030년 연평균은 13.5%로, 앞으로 5년이 지난 5년보다 1.6배 빨라야 합니다. 같은 기간 HDI 단독 외부매출은 2023년 1조 1,616억, 2024년 1조 1,420억, 2025년 1조 1,634억원으로 3년간 제자리였다는 점도 함께 적어 둡니다. 총매출이 늘어난 몫의 상당 부분은 사내 공급이었습니다.</p>
+<figure class=""><figcaption>장표 1. 엔진 매출 궤적 2020~2030 — 용도별(억원, 2021~2024·2027은 막대 판독 E)</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="730" y2="276.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="280.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="224.4" x2="730" y2="224.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="228.4" text-anchor="end" font-size="11" fill="#8a857c">5,000</text>
+<line x1="62" y1="172.8" x2="730" y2="172.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="176.8" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="121.2" x2="730" y2="121.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="125.2" text-anchor="end" font-size="11" fill="#8a857c">15,000</text>
+<line x1="62" y1="69.6" x2="730" y2="69.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="73.6" text-anchor="end" font-size="11" fill="#8a857c">20,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">25,000</text>
+<text x="99.1" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2020</text>
+<text x="173.3" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2021</text>
+<text x="247.6" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2022</text>
+<text x="321.8" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2023</text>
+<text x="396.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<text x="470.2" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="544.4" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2026E</text>
+<text x="618.7" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2027E</text>
+<text x="692.9" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2030E</text>
+<rect x="76.8" y="185.0" width="44.5" height="91.0" fill="#b9b4aa" opacity="0.9"/>
+<text x="99.1" y="181.0" text-anchor="middle" font-size="9.5" fill="#8a857c">8,818</text>
+<rect x="151.1" y="165.4" width="44.5" height="110.6" fill="#b9b4aa" opacity="0.9"/>
+<text x="173.3" y="161.4" text-anchor="middle" font-size="9.5" fill="#8a857c">10,721</text>
+<rect x="225.3" y="143.5" width="44.5" height="132.5" fill="#b9b4aa" opacity="0.9"/>
+<text x="247.6" y="139.5" text-anchor="middle" font-size="9.5" fill="#8a857c">12,839</text>
+<rect x="299.5" y="135.6" width="44.5" height="140.4" fill="#b9b4aa" opacity="0.9"/>
+<text x="321.8" y="131.6" text-anchor="middle" font-size="9.5" fill="#8a857c">13,600</text>
+<rect x="373.7" y="141.0" width="44.5" height="135.0" fill="#b9b4aa" opacity="0.9"/>
+<text x="396.0" y="137.0" text-anchor="middle" font-size="9.5" fill="#8a857c">13,081</text>
+<rect x="448.0" y="237.5" width="44.5" height="38.5" fill="#1f3a5f" opacity="0.9"/>
+<rect x="448.0" y="194.6" width="44.5" height="42.9" fill="#2b7a78" opacity="0.9"/>
+<rect x="448.0" y="180.0" width="44.5" height="14.6" fill="#a44a3f" opacity="0.9"/>
+<rect x="448.0" y="179.8" width="44.5" height="0.2" fill="#7fa3c9" opacity="0.9"/>
+<rect x="448.0" y="157.3" width="44.5" height="22.5" fill="#8a857c" opacity="0.9"/>
+<rect x="448.0" y="139.1" width="44.5" height="18.2" fill="#b07d2b" opacity="0.9"/>
+<text x="470.2" y="135.1" text-anchor="middle" font-size="9.5" fill="#8a857c">13,264</text>
+<rect x="522.2" y="234.9" width="44.5" height="41.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="522.2" y="189.9" width="44.5" height="45.1" fill="#2b7a78" opacity="0.9"/>
+<rect x="522.2" y="176.0" width="44.5" height="13.9" fill="#a44a3f" opacity="0.9"/>
+<rect x="522.2" y="174.0" width="44.5" height="2.0" fill="#7fa3c9" opacity="0.9"/>
+<rect x="522.2" y="147.0" width="44.5" height="27.1" fill="#8a857c" opacity="0.9"/>
+<rect x="522.2" y="126.1" width="44.5" height="20.9" fill="#b07d2b" opacity="0.9"/>
+<text x="544.4" y="122.1" text-anchor="middle" font-size="9.5" fill="#8a857c">14,530</text>
+<rect x="596.4" y="226.2" width="44.5" height="49.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="596.4" y="177.3" width="44.5" height="48.8" fill="#2b7a78" opacity="0.9"/>
+<rect x="596.4" y="151.3" width="44.5" height="26.0" fill="#a44a3f" opacity="0.9"/>
+<rect x="596.4" y="145.4" width="44.5" height="5.9" fill="#7fa3c9" opacity="0.9"/>
+<rect x="596.4" y="116.3" width="44.5" height="29.1" fill="#8a857c" opacity="0.9"/>
+<rect x="596.4" y="91.4" width="44.5" height="24.8" fill="#b07d2b" opacity="0.9"/>
+<text x="618.7" y="87.4" text-anchor="middle" font-size="9.5" fill="#8a857c">17,885</text>
+<rect x="670.6" y="196.6" width="44.5" height="79.4" fill="#1f3a5f" opacity="0.9"/>
+<rect x="670.6" y="135.2" width="44.5" height="61.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="670.6" y="107.1" width="44.5" height="28.1" fill="#a44a3f" opacity="0.9"/>
+<rect x="670.6" y="85.1" width="44.5" height="22.0" fill="#7fa3c9" opacity="0.9"/>
+<rect x="670.6" y="50.4" width="44.5" height="34.7" fill="#8a857c" opacity="0.9"/>
+<rect x="670.6" y="18.0" width="44.5" height="32.4" fill="#b07d2b" opacity="0.9"/>
+<text x="692.9" y="14.0" text-anchor="middle" font-size="9.5" fill="#8a857c">25,000</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">발전기용</text>
+<rect x="736" y="34" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">산업용</text>
+<rect x="736" y="50" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">방산용</text>
+<rect x="736" y="66" width="10" height="10" fill="#7fa3c9"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">친환경(EPP·수소)</text>
+<rect x="736" y="82" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="91" font-size="11" fill="#8a857c">기타(차량·선박·부품)</text>
+<rect x="736" y="98" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="107" font-size="11" fill="#8a857c">사내·그룹사</text>
+<rect x="736" y="114" width="10" height="10" fill="#b9b4aa"/>
+<text x="750" y="123" font-size="11" fill="#8a857c">용도 미분해</text>
+</svg><div class="src">회사 신년 대표이사 간담회(2026-01-14) p12 막대의 도형 좌표 판독(E). 2020 8,818·2025 1조 3,264(IR)·2026 계획 1조 4,530·2030 2.5조는 회사 표기값, 용도 비중만 판독. 2025 용도 비중은 4Q25 IR 막대와 최대 0.7%p 차이. 사내 포함 총매출(연결조정 전) 기준.</div></figure>
+<p class="reading"><b>관찰.</b> 2021~2024년 막대(판독<span class="est">E</span>)는 1조 721억·1조 2,839억·1조 3,600억·1조 3,081억원으로 2023년 이후 정체였고, 2027년 막대는 약 1조 7,885억원<span class="est">E</span>으로 2026년 계획보다 23% 높고, 2030년 막대에서 발전기용은 약 7,698억원<span class="est">E</span>(30.8%)입니다. <b>원인.</b> 2027년의 계단은 군산공장이 만듭니다. 방산이 2026년 약 1,345억원<span class="est">E</span>에서 2027년 약 2,524억원<span class="est">E</span>으로 두 배 가까이 되고, 37리터 발전기 엔진과 EPP가 같은 해에 더해지기 때문입니다. <b>함의.</b> 회사 목표의 상당 부분이 2027년 한 해의 계단에 걸려 있습니다. 2026년 계획 달성은 논쟁 2의 입구일 뿐이고, 본 시험은 군산 가동 첫해의 방산·초대형 매출입니다.</p>
+<p>분기로 내려가면 계절성이 보입니다. 회사 IR(사내 포함 총매출)의 엔진 매출은 1Q25 3,049억, 2Q25 3,690억, 3Q25 3,178억, 4Q25 3,346억, 1Q26 3,361억, 2Q26 3,861억원이고, 영업이익률은 1Q25 14.4%, 2Q25 18.0%, 1Q26 14.1%, 2Q26 15.3%입니다. 3Q25·4Q25 영업이익은 따로 공개되지 않았지만 2025년 연간 14.3%에서 상반기 1,103억원을 빼면 하반기 약 794억원<span class="est">E</span>, 이익률 12.2%<span class="est">E</span>가 남습니다. HDI 단독 IR에서도 4분기 이익률은 6.5%(4Q23)·10.2%(4Q24)·11.4%<span class="est">E</span>(4Q25)로 해마다 가장 낮았습니다. 2026년 상반기 영업이익 1,064억원은 연간 계획 1,587억원의 67%라, 하반기 매출 7,308억원(계획 잔여)에 이익률 7.2%만 내도 계획을 맞춥니다.</p>
+<figure class=""><figcaption>장표 2. 엔진 분기 매출 — 네 가지 기준(억원, 1Q23~2Q26)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="208.4" x2="730" y2="208.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="212.4" text-anchor="end" font-size="11" fill="#8a857c">2,500</text>
+<line x1="62" y1="160.8" x2="730" y2="160.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="164.8" text-anchor="end" font-size="11" fill="#8a857c">3,000</text>
+<line x1="62" y1="113.2" x2="730" y2="113.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="117.2" text-anchor="end" font-size="11" fill="#8a857c">3,500</text>
+<line x1="62" y1="65.6" x2="730" y2="65.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="69.6" text-anchor="end" font-size="11" fill="#8a857c">4,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">4,500</text>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<text x="113.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q23</text>
+<text x="164.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<text x="216.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4Q23</text>
+<text x="267.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<text x="318.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q24</text>
+<text x="370.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<text x="421.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4Q24</text>
+<text x="473.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<text x="524.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<text x="575.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<text x="627.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4Q25</text>
+<text x="678.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="730.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<polyline points="62.0,154.0 113.4,160.2 164.8,174.7 216.2,190.8 267.5,151.9 318.9,140.0 370.3,203.6 421.7,202.9 473.1,193.7 524.5,134.4 575.8,183.7 627.2,166.1" fill="none" stroke="#8a857c" stroke-width="2"/>
+<circle cx="62.0" cy="154.0" r="2.4" fill="#8a857c"/>
+<circle cx="113.4" cy="160.2" r="2.4" fill="#8a857c"/>
+<circle cx="164.8" cy="174.7" r="2.4" fill="#8a857c"/>
+<circle cx="216.2" cy="190.8" r="2.4" fill="#8a857c"/>
+<circle cx="267.5" cy="151.9" r="2.4" fill="#8a857c"/>
+<circle cx="318.9" cy="140.0" r="2.4" fill="#8a857c"/>
+<circle cx="370.3" cy="203.6" r="2.4" fill="#8a857c"/>
+<circle cx="421.7" cy="202.9" r="2.4" fill="#8a857c"/>
+<circle cx="473.1" cy="193.7" r="2.4" fill="#8a857c"/>
+<circle cx="524.5" cy="134.4" r="2.4" fill="#8a857c"/>
+<circle cx="575.8" cy="183.7" r="2.4" fill="#8a857c"/>
+<circle cx="627.2" cy="166.1" r="2.4" fill="#8a857c"/>
+<polyline points="473.1,156.1 524.5,95.1 575.8,143.9 627.2,127.9 678.6,126.4 730.0,78.8" fill="none" stroke="#1f3a5f" stroke-width="2.4"/>
+<circle cx="473.1" cy="156.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="524.5" cy="95.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="575.8" cy="143.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="627.2" cy="127.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="678.6" cy="126.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="78.8" r="2.4" fill="#1f3a5f"/>
+<polyline points="678.6,115.0 730.0,70.1" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="678.6" cy="115.0" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="70.1" r="2.4" fill="#b07d2b"/>
+<polyline points="678.6,180.6 730.0,148.6" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<circle cx="678.6" cy="180.6" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="148.6" r="2.4" fill="#2b7a78"/>
+<text x="736" y="74.1" font-size="11" fill="#b07d2b">공시 부문 총매출 3,952</text>
+<text x="736" y="89.1" font-size="11" fill="#1f3a5f">IR 총매출(사내 포함) 3,861</text>
+<text x="736" y="152.6" font-size="11" fill="#2b7a78">공시 외부매출 3,128</text>
+<text x="736" y="170.1" font-size="11" fill="#8a857c">HDI 단독 외부매출 2,944</text>
+</svg><div class="src">HDI 단독 외부매출: 인프라코어 분기 IR(2023~3Q25)·4Q25 IR p8. IR 총매출: 2Q26 IR p14(사내 포함, 연결조정 전, 2025는 합병 가정 프로포마). 공시 부문: 2026 1분기·반기보고서 영업부문 주석(2Q26 = 1H26 − 1Q26).</div></figure>
+<p class="reading"><b>관찰.</b> HDI 단독 외부매출은 2023~2025년 분기 2,550억~3,277억원 사이를 오갔고, 합병 후 IR 총매출은 2Q26 3,861억원으로 여섯 분기 가운데 가장 높았습니다. 공시 부문 총매출은 IR 총매출보다 분기 91억~120억원 큽니다. <b>원인.</b> 선들의 차이는 무엇을 매출로 세느냐입니다. HDI 단독 외부매출에는 HYUNDAI 브랜드 공급분이 외부로 들어가 있고, 합병 후 IR 총매출에는 그것이 사내로 들어가 있으며, 공시 총매출에는 법인 간 거래까지 더 들어가 있습니다. <b>함의.</b> 엔진 성장률을 말할 때는 기준부터 맞춰야 합니다. 2Q26 +4.6%는 IR 총매출끼리의 비교이고, 공시 외부매출로 보면 1H26 5,920억원은 HDI 단독 1H25 외부매출 5,931억원과 거의 같습니다.</p>
+<figure class=""><figcaption>장표 3. 엔진 분기 영업이익률 — 세 기준과 계획선(%, 1Q23~2Q26)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0.0%</text>
+<line x1="62" y1="200.4" x2="730" y2="200.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="204.4" text-anchor="end" font-size="11" fill="#8a857c">5.0%</text>
+<line x1="62" y1="154.8" x2="730" y2="154.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="158.8" text-anchor="end" font-size="11" fill="#8a857c">10.0%</text>
+<line x1="62" y1="109.2" x2="730" y2="109.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="113.2" text-anchor="end" font-size="11" fill="#8a857c">15.0%</text>
+<line x1="62" y1="63.6" x2="730" y2="63.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="67.6" text-anchor="end" font-size="11" fill="#8a857c">20.0%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">25.0%</text>
+<line x1="62" y1="146.6" x2="730" y2="146.6" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<text x="113.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2Q23</text>
+<text x="164.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<text x="216.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">4Q23</text>
+<text x="267.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<text x="318.9" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2Q24</text>
+<text x="370.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<text x="421.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">4Q24</text>
+<text x="473.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<text x="524.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<text x="575.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<text x="627.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">4Q25</text>
+<text x="678.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="730.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<polyline points="62.0,99.2 113.4,105.6 164.8,120.1 216.2,186.7 267.5,107.4 318.9,101.9 370.3,129.3 421.7,153.0 473.1,93.7 524.5,59.0 575.8,91.9 627.2,142.0" fill="none" stroke="#8a857c" stroke-width="2"/>
+<circle cx="62.0" cy="99.2" r="2.4" fill="#8a857c"/>
+<circle cx="113.4" cy="105.6" r="2.4" fill="#8a857c"/>
+<circle cx="164.8" cy="120.1" r="2.4" fill="#8a857c"/>
+<circle cx="216.2" cy="186.7" r="2.4" fill="#8a857c"/>
+<circle cx="267.5" cy="107.4" r="2.4" fill="#8a857c"/>
+<circle cx="318.9" cy="101.9" r="2.4" fill="#8a857c"/>
+<circle cx="370.3" cy="129.3" r="2.4" fill="#8a857c"/>
+<circle cx="421.7" cy="153.0" r="2.4" fill="#8a857c"/>
+<circle cx="473.1" cy="93.7" r="2.4" fill="#8a857c"/>
+<circle cx="524.5" cy="59.0" r="2.4" fill="#8a857c"/>
+<circle cx="575.8" cy="91.9" r="2.4" fill="#8a857c"/>
+<circle cx="627.2" cy="142.0" r="2.4" fill="#8a857c"/>
+<polyline points="473.1,114.7 524.5,81.8 575.8,134.7 627.2,134.7 678.6,117.4 730.0,106.5" fill="none" stroke="#1f3a5f" stroke-width="2.4"/>
+<circle cx="473.1" cy="114.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="524.5" cy="81.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="575.8" cy="134.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="627.2" cy="134.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="678.6" cy="117.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="106.5" r="2.4" fill="#1f3a5f"/>
+<polyline points="678.6,151.2 730.0,135.6" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="678.6" cy="151.2" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="135.6" r="2.4" fill="#b07d2b"/>
+<text x="736" y="110.5" font-size="11" fill="#1f3a5f">IR(사내 포함 총매출) 15.3%</text>
+<text x="736" y="139.6" font-size="11" fill="#b07d2b">공시 부문(총매출) 12.1%</text>
+<text x="736" y="154.6" font-size="11" fill="#8a857c">HDI 단독(외부매출 기준) 11.4%</text>
+<text x="730.0" y="160.6" text-anchor="end" font-size="10.5" fill="#8a857c">계획 10.9%</text>
+</svg><div class="src">HDI 단독: 인프라코어 분기 IR(외부매출 기준 보고), 4Q25는 감사보고서 연간 1,914억 − 1~3Q 합으로 역산(E). IR: 1Q26·2Q26 IR, 3Q25·4Q25는 2025 연간 14.3%에서 상반기를 뺀 하반기 평균 12.2%(E). 공시 부문: 반기·1분기보고서. 점선 = 2026 계획 10.9%.</div></figure>
+<p class="reading"><b>관찰.</b> HDI 단독 외부매출 기준 이익률은 2Q25 20.5%가 고점이었고, 합병 후 IR 기준은 1Q26 14.1%·2Q26 15.3%, 공시 부문 총매출 기준은 10.4%·12.1%입니다. 세 선 모두 하반기, 특히 4분기에 낮아지는 모양을 보입니다. <b>원인.</b> 분모가 외부매출이면 사내 공급분이 빠져 이익률이 높게, 공시 총매출이면 매출은 크고 이익은 작게 잡혀 낮게 나옵니다. 4분기 약세의 원인은 회사가 설명하지 않았습니다. <b>함의.</b> 계획 10.9%(점선)는 세 기준 가운데 공시 총매출 기준 선에 가장 가깝습니다. 회사가 계획을 IR 기준으로 짰다는 점을 감안하면 상반기 14.7%는 계획을 3.8%p 웃돌고, 하반기 계절 약세를 넣어도 연간 12~13%대<span class="est">E</span>가 자연스러운 자리로 봅니다.</p>
+<p>엔진의 몫은 건설기계가 나쁠 때 커 보입니다. HDI 단독 엔진 영업이익은 2024년 1,566억원, 2025년 1,914억원(공시 부문 기준)으로, 같은 해 HCE와 HDI 영업이익 단순합산(2024년 3,746억, 2025년 4,573억원)의 41.8%와 41.8%, 곧 두 해 모두 약 5분의 2를 차지했습니다. 2026년 상반기에는 건설기계 이익이 늘면서 엔진 비중이 IR 기준 24.2%로 내려왔고, 엔진 이익 자체는 1H25 1,103억원(IR)에서 1,064억원으로 3.5% 줄었습니다. 회사 IR 브리지가 보여 주는 상반기 증익 2,086억원(1H25 조정 후 2,310억에서 4,396억)에 엔진이 보탠 몫은 -39억원이고, 이 사실이 논쟁 1(증익의 성격)과 논쟁 2를 잇는 고리입니다.</p>
+<p>상반기 이익에는 환율 꼬리표를 붙여야 합니다. 2026년 상반기 달러-원 평균은 1,485.8원으로 회사 계획 환율 1,350원보다 10.1% 높았고, 9-11 환율은 1,344.9원입니다. 2026년 상반기 엔진 외부매출의 76.5%(4,527억원)가 수출이라, 수출이 모두 외화로 결제되고 원가가 모두 원화라는 극단을 두면 상반기 엔진 영업이익 가운데 약 414억원<span class="est">E</span>이 계획 환율 대비 환율의 몫입니다. 다른 끝으로 회사 전체 IR 브리지의 환율 기여 893억원(1H25 대비)을 계획 대비 격차로 늘리고 엔진 수출 비중(11.2%)으로 나누면 약 245억원<span class="est">E</span>입니다. 두 끝을 걷어 계획 환율에서 다시 계산한 상반기 엔진 이익률은 9.6~12.0%<span class="est">E</span>이고, 회사 계획 10.9%는 이 범위 안에 있습니다. 유로로 사는 인젝터 같은 외화 부품이 있어 실제 값은 두 끝 사이로 봅니다.</p>
+
+<h2>3. 두 개의 마진 — 공시 부문 11.3%와 IR 관리 14.7%</h2>
+<p>엔진 마진은 세 개의 숫자로 존재합니다. 반기보고서 부문 주석은 2026년 상반기 엔진 총매출 7,433.7억원(내부 1,513.4억 포함)에 영업이익 840.6억원을 적어 총매출 기준 11.3%, 외부매출 5,920.2억 기준으로는 14.2%입니다. 회사 IR은 사내 포함 총매출 7,222억원에 영업이익 1,064억원, 14.7%를 적습니다. HDI 단독 2025년에는 공시 총매출 기준 14.0%(1조 3,659억·1,914억)와 IR 14.3%가 거의 같았는데, 합병 첫해 상반기에는 이익으로 223억원, 이익률로 3.4%p가 벌어졌습니다.</p>
+<figure class=""><figcaption>장표 4. 같은 엔진, 세 개의 이익률 — 공시 총매출·공시 외부매출·IR 관리 기준(%)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0.0%</text>
+<line x1="62" y1="181.5" x2="730" y2="181.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="185.5" text-anchor="end" font-size="11" fill="#8a857c">5.0%</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">10.0%</text>
+<line x1="62" y1="72.5" x2="730" y2="72.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="76.5" text-anchor="end" font-size="11" fill="#8a857c">15.0%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">20.0%</text>
+<text x="128.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">HDI 2024</text>
+<text x="262.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">HDI 2025</text>
+<text x="396.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="529.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<text x="663.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">1H26</text>
+<rect x="82.0" y="108.5" width="30.2" height="127.5" fill="#b07d2b" opacity="0.9"/>
+<text x="97.6" y="104.5" text-anchor="middle" font-size="9.5" fill="#b07d2b">11.7</text>
+<rect x="113.2" y="86.7" width="30.2" height="149.3" fill="#2b7a78" opacity="0.9"/>
+<text x="128.8" y="82.7" text-anchor="middle" font-size="9.5" fill="#2b7a78">13.7</text>
+<rect x="215.6" y="83.4" width="30.2" height="152.6" fill="#b07d2b" opacity="0.9"/>
+<text x="231.2" y="79.4" text-anchor="middle" font-size="9.5" fill="#b07d2b">14.0</text>
+<rect x="246.8" y="57.2" width="30.2" height="178.8" fill="#2b7a78" opacity="0.9"/>
+<text x="262.4" y="53.2" text-anchor="middle" font-size="9.5" fill="#2b7a78">16.4</text>
+<rect x="278.0" y="80.1" width="30.2" height="155.9" fill="#1f3a5f" opacity="0.9"/>
+<text x="293.6" y="76.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">14.3</text>
+<rect x="349.2" y="122.6" width="30.2" height="113.4" fill="#b07d2b" opacity="0.9"/>
+<text x="364.8" y="118.6" text-anchor="middle" font-size="9.5" fill="#b07d2b">10.4</text>
+<rect x="380.4" y="94.3" width="30.2" height="141.7" fill="#2b7a78" opacity="0.9"/>
+<text x="396.0" y="90.3" text-anchor="middle" font-size="9.5" fill="#2b7a78">13.0</text>
+<rect x="411.6" y="82.3" width="30.2" height="153.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="427.2" y="78.3" text-anchor="middle" font-size="9.5" fill="#1f3a5f">14.1</text>
+<rect x="482.8" y="104.1" width="30.2" height="131.9" fill="#b07d2b" opacity="0.9"/>
+<text x="498.4" y="100.1" text-anchor="middle" font-size="9.5" fill="#b07d2b">12.1</text>
+<rect x="514.0" y="69.2" width="30.2" height="166.8" fill="#2b7a78" opacity="0.9"/>
+<text x="529.6" y="65.2" text-anchor="middle" font-size="9.5" fill="#2b7a78">15.3</text>
+<rect x="545.2" y="69.2" width="30.2" height="166.8" fill="#1f3a5f" opacity="0.9"/>
+<text x="560.8" y="65.2" text-anchor="middle" font-size="9.5" fill="#1f3a5f">15.3</text>
+<rect x="616.4" y="112.8" width="30.2" height="123.2" fill="#b07d2b" opacity="0.9"/>
+<text x="632.0" y="108.8" text-anchor="middle" font-size="9.5" fill="#b07d2b">11.3</text>
+<rect x="647.6" y="81.2" width="30.2" height="154.8" fill="#2b7a78" opacity="0.9"/>
+<text x="663.2" y="77.2" text-anchor="middle" font-size="9.5" fill="#2b7a78">14.2</text>
+<rect x="678.8" y="75.8" width="30.2" height="160.2" fill="#1f3a5f" opacity="0.9"/>
+<text x="694.4" y="71.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">14.7</text>
+<rect x="736" y="18" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">공시 총매출 기준</text>
+<rect x="736" y="34" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">공시 외부매출 기준</text>
+<rect x="736" y="50" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">IR 관리 기준</text>
+</svg><div class="src">공시: 인프라코어 2025 연결감사보고서 주석 32(2024·2025), 2026 1분기·반기보고서 영업부문 주석. IR: 4Q25·1Q26·2Q26 IR(사내 포함 총매출). HDI 2024의 IR 보고치는 외부매출 기준이라 공시 외부 기준과 같아 생략.</div></figure>
+<p class="reading"><b>관찰.</b> HDI 단독 2024년 공시 총매출 기준 11.7%·외부 기준 13.7%, 2025년 14.0%·16.4%였고, 합병 후 1H26은 공시 총매출 11.3%, 외부 14.2%, IR 14.7%입니다.  <b>원인.</b> 공시와 IR의 차이는 합병 전에는 거의 없다가 합병 후에 생겼습니다. 같은 사업의 이익이 회사 안에서 어느 부문에 배정되느냐의 문제로 읽히며, 내부 공급 엔진에 붙은 미실현이익 제거나 본사 공통비 배분 방식이 후보입니다(회사 설명은 확인하지 못했습니다). <b>함의.</b> 엔진을 따로 값 매기려는 쪽은 IR 14.7%를, 보수적으로 보는 쪽은 공시 11.3%를 쓰게 되고, 같은 배수를 곱해도 결과가 약 21% 달라집니다. 이 파트는 채점에 IR 기준을 쓰되 공시 기준을 늘 병기합니다.</p>
+<table class=""><tr><th>기간·기준</th><th>공시 총매출</th><th>내부매출(비중)</th><th>공시 외부매출</th><th>공시 OP</th><th>OPM(총)</th><th>OPM(외부)</th><th>IR 총매출</th><th>IR OP</th><th>IR − 공시 OP</th></tr><tr><td>HDI 단독 2024</td><td>13,358.6</td><td>1,939.4 (14.5%)</td><td>11,419.2</td><td>1,566.4</td><td>11.7%</td><td>13.7%</td><td>-</td><td>-</td><td>-</td></tr><tr><td>HDI 단독 2025</td><td>13,658.7</td><td>2,024.4 (14.8%)</td><td>11,634.3</td><td>1,913.7</td><td>14.0%</td><td>16.4%</td><td>13,264</td><td>1,897</td><td>-16.7</td></tr><tr><td>합병 후 1Q26</td><td>3,481.4</td><td>688.9 (19.8%)</td><td>2,792.5</td><td>363.1</td><td>10.4%</td><td>13.0%</td><td>3,361</td><td>473</td><td>+109.9</td></tr><tr><td>합병 후 2Q26</td><td>3,952.3</td><td>824.5 (20.9%)</td><td>3,127.7</td><td>477.5</td><td>12.1%</td><td>15.3%</td><td>3,861</td><td>591</td><td>+113.5</td></tr><tr><td>합병 후 1H26</td><td>7,433.7</td><td>1,513.4 (20.4%)</td><td>5,920.2</td><td>840.6</td><td>11.3%</td><td>14.2%</td><td>7,222</td><td>1,064</td><td>+223.4</td></tr></table>
+<p>223억원이 어디로 갔는지는 산술로 좁혀집니다. 공시 부문은 건기와 엔진 두 개뿐이고 연결조정의 영업이익은 0이므로, 산업차량과 부문 간 조정은 건기 부문 안에 들어가 있습니다. IR의 건설기계 영업이익 1H26 3,492억원에 산업차량·연결조정 -159억원을 더하면 3,333억원인데, 공시 건기 영업이익은 3,555억원입니다. 차이 222억원이 엔진 격차 223억원과 반올림 차이 안에서 같습니다. 공시는 IR보다 엔진 이익 223억원을 건기 쪽으로 옮겨 적고 있다는 뜻입니다. 미실현이익 제거라면 건설기계 재고가 줄 때 격차가 좁혀지고, 공통비 배분이라면 구조적으로 남습니다. 분기별 격차가 1Q26 110억, 2Q26 114억원으로 거의 일정했다는 점은 뒤쪽 해석에 조금 더 가깝습니다.</p>
+<p>부문 주석은 이익률 말고도 엔진을 따로 볼 재료를 줍니다. 2026년 상반기 엔진 부문 감가상각비는 254.7억원이라 공시 기준 EBITDA는 1,095억원(총매출의 14.7%)이고, 부문 당기순이익은 735.9억원으로 2026년 상반기 회사 순이익 3,546억원의 20.8%입니다. 부문 자산은 1조 9,016억원으로 HDI 단독 2025년 말 1조 2,696억원보다 크게 늘었는데, 군산 건설중인자산과 합병 후 배분 변경이 섞여 있습니다. HDI 단독 2025년 EBITDA는 2,528억원이었습니다.</p>
+
+<h2>4. 용도별로 다시 읽은 상반기 — 성장은 사이클 안에서 나왔다</h2>
+<p>회사는 용도별 매출 금액을 공개하지 않고 IR 막대 그래프와 일부 비중 라벨만 보여 줍니다. 우리는 1Q26·2Q26·4Q25 IR PDF의 막대를 이루는 도형 좌표를 읽어 각 칸의 높이를 막대 전체 높이로 나누고, 그 비율을 막대 위에 적힌 매출에 곱했습니다. 칸 높이의 합은 막대 높이와 소수 둘째 자리까지 같고, 비중은 회사가 막대에 적은 라벨과 반올림 범위 안에서 맞습니다. 예컨대 2Q26은 산업용 36.6%(라벨 37%)·발전기용 21.1%(21%)·방산 10.0%(10%)·사내 14.9%(15%)입니다. 장표 5와 표 2의 금액은 모두 이 판독에서 나온 추정<span class="est">E</span>입니다.</p>
+<figure class=""><figcaption>장표 5. 엔진 용도별 분기 매출 — 1Q25·2Q25 대 1Q26·2Q26(억원, 판독 E)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="196.5" x2="730" y2="196.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="200.5" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="77.5" x2="730" y2="77.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="81.5" text-anchor="end" font-size="11" fill="#8a857c">3,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">4,000</text>
+<text x="145.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<text x="312.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<text x="479.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="646.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<rect x="95.4" y="191.2" width="100.2" height="64.8" fill="#2b7a78" opacity="0.9"/>
+<rect x="95.4" y="150.4" width="100.2" height="40.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="95.4" y="133.8" width="100.2" height="16.5" fill="#a44a3f" opacity="0.9"/>
+<rect x="95.4" y="96.4" width="100.2" height="37.4" fill="#8a857c" opacity="0.9"/>
+<rect x="95.4" y="74.6" width="100.2" height="21.8" fill="#b07d2b" opacity="0.9"/>
+<text x="145.5" y="70.6" text-anchor="middle" font-size="9.5" fill="#8a857c">3,049</text>
+<rect x="262.4" y="182.3" width="100.2" height="73.7" fill="#2b7a78" opacity="0.9"/>
+<rect x="262.4" y="113.4" width="100.2" height="68.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="262.4" y="97.2" width="100.2" height="16.2" fill="#a44a3f" opacity="0.9"/>
+<rect x="262.4" y="59.9" width="100.2" height="37.3" fill="#8a857c" opacity="0.9"/>
+<rect x="262.4" y="36.4" width="100.2" height="23.4" fill="#b07d2b" opacity="0.9"/>
+<text x="312.5" y="32.4" text-anchor="middle" font-size="9.5" fill="#8a857c">3,690</text>
+<rect x="429.4" y="177.2" width="100.2" height="78.8" fill="#2b7a78" opacity="0.9"/>
+<rect x="429.4" y="143.2" width="100.2" height="34.0" fill="#1f3a5f" opacity="0.9"/>
+<rect x="429.4" y="125.3" width="100.2" height="17.9" fill="#a44a3f" opacity="0.9"/>
+<rect x="429.4" y="85.5" width="100.2" height="39.8" fill="#8a857c" opacity="0.9"/>
+<rect x="429.4" y="56.0" width="100.2" height="29.5" fill="#b07d2b" opacity="0.9"/>
+<text x="479.5" y="52.0" text-anchor="middle" font-size="9.5" fill="#8a857c">3,361</text>
+<rect x="596.4" y="172.0" width="100.2" height="84.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="596.4" y="123.4" width="100.2" height="48.6" fill="#1f3a5f" opacity="0.9"/>
+<rect x="596.4" y="100.5" width="100.2" height="22.9" fill="#a44a3f" opacity="0.9"/>
+<rect x="596.4" y="60.5" width="100.2" height="40.0" fill="#8a857c" opacity="0.9"/>
+<rect x="596.4" y="26.3" width="100.2" height="34.2" fill="#b07d2b" opacity="0.9"/>
+<text x="646.5" y="22.3" text-anchor="middle" font-size="9.5" fill="#8a857c">3,861</text>
+<rect x="736" y="18" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">산업용</text>
+<rect x="736" y="34" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">발전기용</text>
+<rect x="736" y="50" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">방산용</text>
+<rect x="736" y="66" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">차량·선박·기타·부품</text>
+<rect x="736" y="82" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="91" font-size="11" fill="#8a857c">사내매출</text>
+</svg><div class="src">1Q26 IR p11·2Q26 IR p8 누적 막대의 도형 좌표 판독(E). 칸 높이 ÷ 막대 높이 × 막대 매출(IR 사내 포함 총매출). 차량·선박·기타·부품은 네 칸 합산.</div></figure>
+<p class="reading"><b>관찰.</b> 산업용은 1Q25 1,088억에서 1Q26 1,324억원<span class="est">E</span>, 2Q25 1,238억에서 2Q26 1,411억원<span class="est">E</span>으로, 사내 매출은 367억·394억에서 495억·575억원<span class="est">E</span>으로 늘었습니다. 발전기용은 687억·1,158억에서 571억·817억원<span class="est">E</span>으로 줄었습니다. <b>원인.</b> 산업용과 사내는 건설기계 판매 회복(2Q26 건설기계 제품 +23.8%, IR)과 자가 탑재 확대를 따라갔고, 발전기용은 북미 Oil & Gas 고객의 재고 소진과 저유가로 줄었습니다. <b>함의.</b> 상반기 엔진 성장의 원천은 건설기계 사이클 안쪽이었습니다. 사이클 밖에서 값을 받는다는 주장의 첫 증거는 하반기 발전기 회복이 되어야 합니다.</p>
+<table class=""><tr><th>용도(억원, 판독 E)</th><th>1Q25</th><th>2Q25</th><th>1Q26</th><th>2Q26</th><th>1H 증감(1H26−1H25)</th><th>2025(비중)</th><th>2026 계획(비중)</th></tr><tr><td>산업용</td><td>1,088</td><td>1,238</td><td>1,324</td><td>1,411</td><td>+409</td><td>4,195 (31.6%)</td><td>4,475 (30.8%)</td></tr><tr><td>발전기용</td><td>687</td><td>1,158</td><td>571</td><td>817</td><td>-457</td><td>3,659 (27.6%)</td><td>4,008 (27.6%)</td></tr><tr><td>방산용</td><td>278</td><td>273</td><td>301</td><td>385</td><td>+136</td><td>1,332 (10.0%)</td><td>1,343 (9.2%)</td></tr><tr><td>차량·선박·기타·부품</td><td>629</td><td>627</td><td>668</td><td>673</td><td>+86</td><td>2,526 (19.0%)</td><td>3,063 (21.1%)</td></tr><tr><td>사내매출</td><td>367</td><td>394</td><td>495</td><td>575</td><td>+310</td><td>1,551 (11.7%)</td><td>1,641 (11.3%)</td></tr><tr><td>합계(IR 총매출)</td><td>3,049</td><td>3,690</td><td>3,361</td><td>3,861</td><td>+483</td><td>13,264</td><td>14,530</td></tr><tr><td>사이클 밖(발전+방산) 비중</td><td>31.6%</td><td>38.8%</td><td>26.0%</td><td>31.1%</td><td>35.6% 에서 28.7%</td><td>37.6%</td><td>36.8%</td></tr></table>
+<p>1H25에서 1H26으로 늘어난 엔진 총매출 483억원(IR)을 용도로 나누면 산업용 +409억, 사내 +310억, 방산 +136억, 차량·선박·기타·부품 +86억, 발전기용 -457억원<span class="est">E</span>입니다. 사이클 밖(발전기+방산) 비중은 1H25 35.6%에서 1H26 28.7%<span class="est">E</span>로 낮아졌습니다. 같은 시기 글로벌 발전 엔진 업체들은 반대로 움직였습니다. 조사노트 B가 모은 실적에서 Caterpillar Power Generation은 2Q26 +29%, Cummins Power Systems는 +19%, Rolls-Royce Power Systems는 1H26 유기 매출 +28%였습니다(각사 발표, 7-30~8-04). 회사의 발전기 엔진만 줄어든 것은 고객군이 데이터센터가 아니라 유전 현장의 가스 발전기에 몰려 있었기 때문입니다.</p>
+
+<h2>5. 발전기 엔진 — 가스 22L, 디젤 37L, 그리고 비상전원의 산수</h2>
+<p>회사의 발전 사업은 두 갈래입니다. 비상용 중심의 디젤 엔진과 상용(상시) 발전 중심의 가스 엔진이며, 가스 엔진은 인천 대형(15~22리터) 라인에서 만듭니다. 2Q26 컨퍼런스콜에서 회사는 가스 엔진 수요가 기존 Oil & Gas 필드 외에 데이터센터와 분산 발전소에서 늘고 있어 22리터급을 중심으로 생산 확충을 검토하고 있으며, 규모는 현재 생산 중인 가스 엔진 물량을 다소 웃도는 수준까지 본다고 했습니다. 구체 물량은 고객과 협상 중이라 밝히지 않았습니다. 회사가 든 경쟁력은 빠른 납기와 15년 이상 검증된 이력입니다. 국내 엔진 공장 가동률이 68.9%인데도 증설을 말한다는 것은 병목이 공장 전체가 아니라 대형 가스엔진 라인에 있다는 뜻으로 읽습니다.</p>
+<figure class=""><figcaption>장표 6. 2026년 발전기용 엔진 분기 경로 — 1Q26 IR 추정 대 2Q26 IR 추정(억원, 판독 E)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="199.7" x2="730" y2="199.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="203.7" text-anchor="end" font-size="11" fill="#8a857c">250</text>
+<line x1="62" y1="163.3" x2="730" y2="163.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="167.3" text-anchor="end" font-size="11" fill="#8a857c">500</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">750</text>
+<line x1="62" y1="90.7" x2="730" y2="90.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="94.7" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="54.3" x2="730" y2="54.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="58.3" text-anchor="end" font-size="11" fill="#8a857c">1,250</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">1,500</text>
+<text x="145.5" y="254" text-anchor="middle" font-size="10" fill="#8a857c">1Q</text>
+<text x="312.5" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2Q</text>
+<text x="479.5" y="254" text-anchor="middle" font-size="10" fill="#8a857c">3Q</text>
+<text x="646.5" y="254" text-anchor="middle" font-size="10" fill="#8a857c">4Q</text>
+<rect x="87.1" y="136.2" width="38.0" height="99.8" fill="#b9b4aa" opacity="0.9"/>
+<text x="106.5" y="132.2" text-anchor="middle" font-size="9.5" fill="#b9b4aa">687</text>
+<rect x="126.0" y="153.0" width="38.0" height="83.0" fill="#8a857c" opacity="0.9"/>
+<text x="145.5" y="149.0" text-anchor="middle" font-size="9.5" fill="#8a857c">571</text>
+<rect x="165.0" y="153.0" width="38.0" height="83.0" fill="#1f3a5f" opacity="0.9"/>
+<text x="184.5" y="149.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">571</text>
+<rect x="254.1" y="67.7" width="38.0" height="168.3" fill="#b9b4aa" opacity="0.9"/>
+<text x="273.5" y="63.7" text-anchor="middle" font-size="9.5" fill="#b9b4aa">1,158</text>
+<rect x="293.0" y="117.0" width="38.0" height="119.0" fill="#8a857c" opacity="0.9"/>
+<text x="312.5" y="113.0" text-anchor="middle" font-size="9.5" fill="#8a857c">819</text>
+<rect x="332.0" y="117.3" width="38.0" height="118.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="351.5" y="113.3" text-anchor="middle" font-size="9.5" fill="#1f3a5f">817</text>
+<rect x="421.1" y="104.2" width="38.0" height="131.8" fill="#b9b4aa" opacity="0.9"/>
+<text x="440.5" y="100.2" text-anchor="middle" font-size="9.5" fill="#b9b4aa">907</text>
+<rect x="460.0" y="66.8" width="38.0" height="169.2" fill="#8a857c" opacity="0.9"/>
+<text x="479.5" y="62.8" text-anchor="middle" font-size="9.5" fill="#8a857c">1,165</text>
+<rect x="499.0" y="50.5" width="38.0" height="185.5" fill="#1f3a5f" opacity="0.9"/>
+<text x="518.5" y="46.5" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1,276</text>
+<rect x="588.0" y="104.2" width="38.0" height="131.8" fill="#b9b4aa" opacity="0.9"/>
+<text x="607.5" y="100.2" text-anchor="middle" font-size="9.5" fill="#b9b4aa">907</text>
+<rect x="627.0" y="55.4" width="38.0" height="180.6" fill="#8a857c" opacity="0.9"/>
+<text x="646.5" y="51.4" text-anchor="middle" font-size="9.5" fill="#8a857c">1,243</text>
+<rect x="666.0" y="45.8" width="38.0" height="190.2" fill="#1f3a5f" opacity="0.9"/>
+<text x="685.5" y="41.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1,309</text>
+<polyline points="145.5,90.4 312.5,90.4 479.5,90.4 646.5,90.4" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="145.5" cy="90.4" r="2.4" fill="#a44a3f"/>
+<circle cx="312.5" cy="90.4" r="2.4" fill="#a44a3f"/>
+<circle cx="479.5" cy="90.4" r="2.4" fill="#a44a3f"/>
+<circle cx="646.5" cy="90.4" r="2.4" fill="#a44a3f"/>
+<rect x="736" y="18" width="10" height="10" fill="#b9b4aa"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">2025 실적(판독)</text>
+<rect x="736" y="34" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">1Q26 IR 추정(판독)</text>
+<rect x="736" y="50" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">2Q26 IR 추정(판독)</text>
+<rect x="736" y="66" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">계획 분기 평균 1,002</text>
+</svg><div class="src">1Q26 IR p11·2Q26 IR p8 우측 막대 판독(E, 1Q26·2Q26 실적 막대를 좌측 누적 막대의 발전기 칸 금액에 맞춰 환산). 2025 3Q·4Q는 연간(4Q25 IR p19 판독)에서 상반기를 뺀 하반기 평균. 계획 분기 평균 = 2026 계획 발전기 비중 27.6% × 1조 4,530억 ÷ 4.</div></figure>
+<p class="reading"><b>관찰.</b> 1Q26 IR이 그린 2026년 발전기 경로는 1Q 571억, 2Q 819억, 3Q 1,165억, 4Q 1,243억원<span class="est">E</span>이었고, 2Q26 IR은 2Q 실적을 추정과 같은 817억원<span class="est">E</span>으로 확인한 뒤 3Q 1,276억, 4Q 1,309억원<span class="est">E</span>으로 올렸습니다. 두 IR의 1Q26 시점 추정치는 0.1% 안에서 일치합니다. <b>원인.</b> 하반기 상향은 북미 데이터센터·마이크로그리드 수요가 예상보다 좋다는 회사 설명과 맞고, 키움은 2Q26 북미향 가스엔진 수출이 전분기의 두 배를 넘었고 하반기 북미향 발전용 엔진 수출이 최소 1억 달러라고 전했습니다(뉴스퀘스트 7-09·7-30). <b>함의.</b> 상향 뒤 연간 발전기 매출은 약 3,973억원<span class="est">E</span>으로 계획 약 4,008억원<span class="est">E</span>의 99%입니다. 상향은 계획을 넘는 신호라기보다 1분기 부진을 메워 계획으로 돌아가는 경로입니다.</p>
+<p>하반기 발전기 매출 약 2,585억원<span class="est">E</span>은 1H26 1,388억원<span class="est">E</span>의 1.86배이고, 2H25 약 1,814억원<span class="est">E</span>보다 42% 많습니다. 1억 달러(9-11 환율로 약 1,345억원)면 하반기 추정치의 절반쯤이 북미에서 나와야 합니다. 여기에 37리터 디젤이 붙습니다. DX37은 2027년 1월 군산에서 본격 양산하고 올해는 파일럿 엔진으로 주요 고객의 공급 물량을 수주하는 단계입니다(2Q26 Q&A). 뒤이어 DX77(2028-02), DX51(2029-02), 가스 GX77 개발이 예정돼 있어 1MW급인 발전기 라인업이 3MW급까지 넓어집니다. 발전기 매출 가운데 초대형 비중은 2027년 5%에서 2030년 약 40%로 올라가는 계획입니다(1Q26 IR).</p>
+<p>비상전원의 산수는 수요의 크기를 정합니다. 데이터센터 같은 핵심 시설은 필요한 전력 N에 예비 1대를 더하는 N+1이나 전체를 둘로 만드는 2N으로 비상전원을 설계하므로, 회사는 비상발전 시장이 주전력과 같거나 그 이상 규모로 형성된다고 봅니다(2Q26 스크립트). 확인할 수 있는 수요 숫자는 아직 회사 밖의 것으로, Caterpillar는 가스 왕복동 엔진 리드타임이 2028년 말 이후로 밀렸다고 했고 Generac의 데이터센터 백로그는 약 16억 달러입니다(조사노트 B). 걸리는 점은 2030년 발전기 매출 목표가 자료마다 다르다는 것입니다. 2.5조원의 33%면 8,250억원, 신년 간담회 막대 판독으로는 약 7,698억원<span class="est">E</span>, 군산 초대형 2,375억원<span class="est">E</span>을 발전기의 40%로 놓으면 약 5,937억원<span class="est">E</span>이 됩니다.</p>
+
+<h2>6. 방산 엔진과 군산 — 10월 양산, 2027년의 계단</h2>
+<p>방산 엔진의 중심은 K2 전차입니다. 회사는 체계업체와의 추가 수출과 엔진 단독 수출을 모색하고 있다고 했습니다(2Q26 스크립트). 2026년 1월 28일 현대로템과 맺은 폴란드 K2 2-1차 엔진 공급계약은 계약기간이 2026-01-27~2027-12-31이고, 발주처 요청으로 계약금액 공개가 2027년 12월 31일까지 유보됐습니다. 거래소 의무공시 기준(대규모법인은 최근 매출액의 5%)에 따른 공시라면 금액은 1,719억원 이상이라는 추론이 가능하지만<span class="est">E</span>, 자율공시일 수 있어 확정하지 않습니다. 튀르키예 BMC 계약 1,102억원은 5년에 나누면 연 220억원<span class="est">E</span> 안팎입니다. IR 막대 판독으로 방산 매출은 1H25 551억원에서 1H26 687억원<span class="est">E</span>으로 25% 늘었고, 2025년 연간 약 1,332억원<span class="est">E</span>, 2026년 계획 약 1,343억원<span class="est">E</span>이라 계획상 하반기는 상반기보다 작습니다.</p>
+<p>군산공장이 방산과 초대형의 그릇입니다. 반기보고서의 엔진 공장증축(2023-01~2026-12) 총투자는 1,305.9억원으로 상반기 말까지 833.0억원이 집행됐습니다. 2027~2028년에도 1,361억원이 더 잡혀 있습니다. 양산은 EPP(2026-08), 방산(2026-10, 10월 준공식), 37리터 발전기(2027-01) 순이고, 회사는 군산 기반 매출을 2028년 3,301억원, 2030년 5,529억원으로 전망했습니다. 막대를 판독하면 2028년은 초대형 887억·방산 1,453억·EPP 961억원<span class="est">E</span>, 2030년은 초대형 2,375억·방산 1,708억·EPP 1,446억원<span class="est">E</span>입니다. </p>
+<figure class=""><figcaption>장표 7. 군산 SOP와 엔진 계약 타임라인 — 2023~2030</figcaption><svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="40" y1="205" x2="850" y2="205" stroke="#8a857c" stroke-width="1.4"/>
+<line x1="40.0" y1="201" x2="40.0" y2="209" stroke="#8a857c"/>
+<text x="43.0" y="221" font-size="10" fill="#8a857c">2023</text>
+<line x1="141.2" y1="201" x2="141.2" y2="209" stroke="#8a857c"/>
+<text x="144.2" y="221" font-size="10" fill="#8a857c">2024</text>
+<line x1="242.5" y1="201" x2="242.5" y2="209" stroke="#8a857c"/>
+<text x="245.5" y="221" font-size="10" fill="#8a857c">2025</text>
+<line x1="343.8" y1="201" x2="343.8" y2="209" stroke="#8a857c"/>
+<text x="346.8" y="221" font-size="10" fill="#8a857c">2026</text>
+<line x1="445.0" y1="201" x2="445.0" y2="209" stroke="#8a857c"/>
+<text x="448.0" y="221" font-size="10" fill="#8a857c">2027</text>
+<line x1="546.2" y1="201" x2="546.2" y2="209" stroke="#8a857c"/>
+<text x="549.2" y="221" font-size="10" fill="#8a857c">2028</text>
+<line x1="647.5" y1="201" x2="647.5" y2="209" stroke="#8a857c"/>
+<text x="650.5" y="221" font-size="10" fill="#8a857c">2029</text>
+<line x1="748.8" y1="201" x2="748.8" y2="209" stroke="#8a857c"/>
+<text x="751.8" y="221" font-size="10" fill="#8a857c">2030</text>
+<line x1="414.3" y1="55" x2="414.3" y2="355" stroke="#a44a3f" stroke-dasharray="3 3" stroke-width="0.9"/>
+<text x="418.3" y="377" font-size="10.5" fill="#a44a3f">작성 시점 2026-09-11</text>
+<line x1="40.0" y1="205" x2="40.0" y2="179.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="40.0" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="42.0" y="171.0" font-size="11" fill="#1f3a5f">엔진 공장증축 착수(총 1,306억)</text>
+<line x1="402.8" y1="205" x2="402.8" y2="179.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="402.8" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="402.8" y="171.0" font-size="11" fill="#1f3a5f">군산 EPP 양산</text>
+<line x1="419.7" y1="205" x2="419.7" y2="155.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="419.7" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="419.7" y="147.0" font-size="11" fill="#1f3a5f">군산 방산 양산·준공식</text>
+<line x1="423.1" y1="205" x2="423.1" y2="131.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="423.1" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="423.1" y="123.0" font-size="11" fill="#1f3a5f">DX12 자가화 개발</text>
+<line x1="436.6" y1="205" x2="436.6" y2="107.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="436.6" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="436.6" y="99.0" font-size="11" fill="#1f3a5f">DX22 개발·증축 완료</text>
+<line x1="445.0" y1="205" x2="445.0" y2="83.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="445.0" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="445.0" y="75.0" font-size="11" fill="#1f3a5f">DX37(37L) 양산</text>
+<line x1="554.7" y1="205" x2="554.7" y2="179.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="554.7" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="554.7" y="171.0" font-size="11" fill="#1f3a5f">DX77</text>
+<line x1="655.9" y1="205" x2="655.9" y2="179.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="655.9" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="655.9" y="171.0" font-size="11" fill="#1f3a5f">DX51</text>
+<line x1="790.9" y1="205" x2="790.9" y2="179.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="790.9" cy="205" r="3.2" fill="#1f3a5f"/>
+<text x="732.0" y="171.0" font-size="11" fill="#1f3a5f">GX77 개발 예정</text>
+<line x1="48.4" y1="205" x2="48.4" y2="227.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="48.4" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="48.4" y="239.0" font-size="11" fill="#b07d2b">튀르키예 BMC 1,102억 계약</text>
+<line x1="242.5" y1="205" x2="242.5" y2="251.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="242.5" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="242.5" y="263.0" font-size="11" fill="#b07d2b">군산 투자 보도(1,168억)</text>
+<line x1="343.8" y1="205" x2="343.8" y2="227.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="343.8" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="343.8" y="239.0" font-size="11" fill="#b07d2b">K2 폴란드 2-1차 계약(1-28)</text>
+<line x1="537.8" y1="205" x2="537.8" y2="251.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="537.8" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="537.8" y="263.0" font-size="11" fill="#b07d2b">K2 2-1차 계약 종료</text>
+<line x1="554.7" y1="205" x2="554.7" y2="275.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="554.7" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="554.7" y="287.0" font-size="11" fill="#b07d2b">튀르키예 계약 종료</text>
+<line x1="596.9" y1="205" x2="596.9" y2="227.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="596.9" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="596.9" y="239.0" font-size="11" fill="#b07d2b">군산 매출 3,301억</text>
+<line x1="799.4" y1="205" x2="799.4" y2="299.0" stroke="#b07d2b" stroke-width="0.8" opacity="0.7"/>
+<circle cx="799.4" cy="205" r="3.2" fill="#b07d2b"/>
+<text x="655.0" y="311.0" font-size="11" fill="#b07d2b">군산 5,529억·엔진 2.5조</text>
+<text x="40" y="16" font-size="11" fill="#1f3a5f">위: 설비·제품(양산·개발)</text>
+<text x="40" y="394" font-size="11" fill="#b07d2b">아래: 계약·매출 전망</text>
+</svg><div class="src">반기보고서(투자 진행·수주), 1Q26 IR p12·신년 간담회 p14(SOP·라인업·군산 매출 전망), 밸류업 IR 04-27(DX12·DX22), 단일판매·공급계약 공시 01-28, 영남일보 2025-01-22(투자 보도). 좌표는 날짜로 계산.</div></figure>
+<p class="reading"><b>관찰.</b> 2026년 8월부터 2027년 1월까지 여섯 달 사이에 EPP·방산·DX12·DX22·DX37 다섯 개의 시작점이 몰려 있고, 그 뒤로 DX77(2028-02)·DX51(2029-02)이 1년 간격으로 이어집니다.  <b>원인.</b> 군산의 첫 매출은 방산이 열고 초대형 발전기가 뒤따르며, 회사는 올해를 방산 생산 안정화와 37리터 양산 준비의 해로 두었습니다(1Q26 스크립트). <b>함의.</b> 2026년 엔진 실적은 군산의 비용을 먼저 받고 매출은 2027년부터 받습니다. 계획 이익률 10.9%가 2025년 14.3%보다 낮은 이유가 여기에 있고, 2027년 방산 매출이 두 배로 가는지가 논쟁 2의 두 번째 채점입니다.</p>
+<p>군산의 고정비가 얼마나 큰지 가늠해 봅니다. 계획 이익률과 2025년 이익률의 차이 3.4%p를 2026년 계획 매출 1조 4,530억원에 곱하면 약 494억원<span class="est">E</span>입니다. 반면 엔진 공장증축 총투자 1,306억원을 설비·건물 혼합 내용연수 15년<span class="est">E</span>으로 나누면 연 감가상각은 약 87억원<span class="est">E</span>이고, 2026년에는 방산 라인 가동이 10월부터라 그 일부만 들어옵니다. 개발비와 인력을 더해도 494억원 전체를 군산으로 설명하기는 어렵고, 회사도 2Q26 Q&A에서 고정비가 늘지만 이익 하락 요인은 크지 않다고 했습니다. 계획의 보수성 가운데 일부는 계획 환율 1,350원에서 나오며, 2절의 환율 계산이 그 크기를 245억~414억원<span class="est">E</span>으로 가둡니다.</p>
+
+<h2>7. 조정판 — 2H26 발전기·방산 성장률과 엔진 이익률로 다시 만든 2026 엔진 영업이익</h2>
+<p><b>가정.</b> 2026년 하반기 엔진 매출을 발전기용·방산용·나머지(산업·사내·차량·선박·부품) 세 덩어리로 나누고, 각 덩어리의 상반기 판독값(발전기 1,388억, 방산 687억, 나머지 5,147억원<span class="est">E</span>)에 하반기 성장률을 곱합니다. 하반기 영업이익은 매출 전체에 하나의 영업이익률(IR 관리 기준, 사내 포함 총매출)을 곱해 구합니다. 기본값은 발전기 +86%, 방산 +10%, 나머지 -10%, 이익률 12.2%입니다.</p>
+<p><b>근거.</b> 발전기 +86%는 2Q26 IR이 올려 잡은 하반기 경로(약 2,585억원<span class="est">E</span>)를 그대로 옮긴 값입니다. 방산 +10%는 2025년 하반기의 +42%<span class="est">E</span>와 계획이 암시하는 -4%<span class="est">E</span> 사이에서 군산 초기 안정화를 감안해 낮은 쪽을 골랐습니다. 나머지 -10%는 2025년 같은 묶음의 상·하반기 차이(-9.5%<span class="est">E</span>)를 따랐고, 이익률 12.2%는 2025년 하반기 IR 기준 이익률<span class="est">E</span>입니다.</p>
+<p><b>식.</b> 2H26 매출 = 1,388 × 1.86 + 687 × 1.10 + 5,147 × 0.90 = 7,970억원<span class="est">E</span>, 2026년 매출은 7,222 + 7,970 = 1조 5,192억원<span class="est">E</span>(계획 대비 +4.6%)입니다. 2H26 영업이익은 7,970 × 12.2% = 972억원<span class="est">E</span>, 2026년 영업이익은 1,064 + 972 = 2,036억원<span class="est">E</span>(계획 1,587억 대비 +28%), 연간 이익률은 13.4%<span class="est">E</span>입니다. 계획 1,587억원을 맞추는 하반기 이익률은 6.6%<span class="est">E</span>, 연간 12% 유지선을 맞추는 하반기 이익률은 9.5%<span class="est">E</span>입니다.</p>
+<p><b>교차검증.</b> 키움(7-30)은 3Q26F 엔진 매출 3,820억, 4Q26F 3,970억원으로 하반기 7,790억원을 적어 우리 기본값보다 180억원 낮습니다(조사노트 A). 이익 쪽은 HDI 단독 하반기 이익률(외부매출 기준 2023년 10.3%, 2024년 11.5%, 2025년 14.0%<span class="est">E</span>)에 비추면 우리의 12.2%는 2025년 하반기를 반복하는 값이라 세 해 가운데 높은 쪽입니다. 공시 부문 기준으로 옮기려면 상반기 격차 223억원이 하반기에도 이어진다고 보고 연간 약 447억원<span class="est">E</span>을 빼야 하며, 그러면 기본값 2,036억원은 공시 기준 약 1,589억원<span class="est">E</span>이 되어 회사 계획 1,587억원과 거의 같은 자리에 섭니다.</p>
+<div class="panel"><b>조정판 — 2H26 엔진 매출 세 덩어리와 이익률로 다시 만든 2026년 엔진 영업이익(IR 관리 기준)</b><br><br>2H26 발전기용 매출 성장률(1H26 대비) <span id="s_gen_v"></span>%<br><input type="range" id="s_gen" min="-20" max="200" step="1" value="86"><br>2H26 방산용 매출 성장률(1H26 대비) <span id="s_dfn_v"></span>%<br><input type="range" id="s_dfn" min="-40" max="100" step="1" value="10"><br>2H26 나머지(산업·사내·차량·선박·부품) 성장률(1H26 대비) <span id="s_oth_v"></span>%<br><input type="range" id="s_oth" min="-30" max="20" step="1" value="-10"><br>2H26 엔진 영업이익률(IR 관리 기준, 사내 포함 총매출) <span id="s_opm_v"></span>%<br><input type="range" id="s_opm" min="4" max="18" step="0.1" value="12.2"><br><div class="out">2H26 매출 = 발전기 <span id="o_g2">-</span> + 방산 <span id="o_d2">-</span> + 나머지 <span id="o_o2">-</span> = <span id="o_r2">-</span>억 · 2026년 매출 <span id="o_rev">-</span>(계획 1조 4,530억 대비 <span id="o_revp">-</span>%)</div><div class="out">2H26 영업이익 <span id="o_op2">-</span>억 · 2026년 엔진 영업이익 <span id="o_op">-</span>억(계획 1,587억 대비 <span id="o_opp">-</span>%) · 연간 이익률 <span id="o_opm">-</span>%</div><div class="out" style="font-weight:400">계획 1,587억을 맞추는 2H26 이익률 <span id="o_be">-</span>% · 연간 12% 유지선을 맞추는 2H26 이익률 <span id="o_keep">-</span>% · 2026년 사이클 밖(발전+방산) 매출 비중 <span id="o_out">-</span>%(2025년 37.6%<span class="est">E</span>) · 판정: <span id="o_ver">-</span></div><div class="note">식(본문 7절과 같음): 2H26 매출 = 1H26 발전기 1,388억<span class="est">E</span> × (1 + 발전기 성장률) + 1H26 방산 687억<span class="est">E</span> × (1 + 방산 성장률) + 1H26 나머지 5,147억<span class="est">E</span> × (1 + 나머지 성장률). 2H26 영업이익 = 2H26 매출 × 이익률. 2026년 = 1H26 실적(매출 7,222억·영업이익 1,064억, 회사 IR) + 2H26. 1H26 용도별 금액은 회사 IR 막대의 도형 좌표 판독<span class="est">E</span>. 기본값: 발전기 +86%(2Q26 IR 하반기 추정 판독), 방산 +10%, 나머지 -10%(2025년 상·하반기 차이), 이익률 12.2%(2025년 하반기 IR 기준 역산<span class="est">E</span>). 공시 부문 기준으로 옮기려면 상반기 격차 223억이 하반기에도 이어진다고 보고 연간 약 447억<span class="est">E</span>을 뺍니다. 2026년 상반기 달러-원 평균 1,485.8원, 9-11 1,344.9원, 계획 1,350원 — 이익률 슬라이더가 환율의 몫까지 함께 담습니다.</div>
+<script>
+(function(){
+var G1=1387.99,D1=686.72,O1=5147.29,R1=7222,OP1=1064,PO=1587,PR=14530,SH25=37.63;
+var ids=["s_gen","s_dfn","s_oth","s_opm"];
+function g(i){return +document.getElementById(i).value}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function jo(v){var n=v<0;v=Math.abs(v);var s=v>=10000?Math.floor(v/10000)+"조 "+fm(Math.round(v%10000),0)+"억":fm(Math.round(v),0)+"억";return (n?"-":"")+s}
+function f(){
+ ids.forEach(function(i){document.getElementById(i+"_v").textContent=fm(g(i),i==="s_opm"?1:0)});
+ var g2=G1*(1+g("s_gen")/100),d2=D1*(1+g("s_dfn")/100),o2=O1*(1+g("s_oth")/100);
+ var r2=g2+d2+o2,op2=r2*g("s_opm")/100,rev=R1+r2,op=OP1+op2,out=(G1+g2+D1+d2)/rev*100;
+ var S=function(i,t){document.getElementById(i).textContent=t};
+ S("o_g2",fm(g2,0));S("o_d2",fm(d2,0));S("o_o2",fm(o2,0));S("o_r2",fm(r2,0));S("o_rev",jo(rev));S("o_revp",(rev/PR*100-100>=0?"+":"")+fm(rev/PR*100-100,1));
+ S("o_op2",fm(op2,0));S("o_op",fm(op,0));S("o_opp",(op/PO*100-100>=0?"+":"")+fm(op/PO*100-100,1));S("o_opm",fm(op/rev*100,1));
+ S("o_be",fm((PO-OP1)/r2*100,1));S("o_keep",fm((0.12*rev-OP1)/r2*100,1));S("o_out",fm(out,1));
+ var ok=(rev>=PR&&op/rev>=0.12);S("o_ver",ok?"유지선 충족(매출 1조 4,530억 이상, 이익률 12% 이상)":"유지선 미달");}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+<p>조정판을 움직여 보면 결과를 좌우하는 것은 성장률이 아니라 이익률입니다. 하반기 이익률 1%p는 영업이익 약 80억원<span class="est">E</span>을 움직이지만, 발전기 성장률 10%p는 매출 139억원, 이익 17억원<span class="est">E</span>만 움직입니다. 발전기 성장률이 중요한 까닭은 이익이 아니라 다른 두 자리에 있습니다. 하나는 연간 매출 유지선 1조 4,530억원이고, 다른 하나는 사이클 밖 매출 비중입니다. 기본값에서 2026년 발전기·방산 비중은 약 35.6%<span class="est">E</span>로 2025년 37.6%<span class="est">E</span>에 못 미칩니다. 발전기 성장률을 +121%까지 올려야 2025년 비중을 되찾으므로, 엔진이 사이클 밖 사업이라는 서사가 2026년 숫자로 강해지기는 어렵고 2027년 군산 이후의 일로 봅니다.</p>
+
+<h2>8. 논쟁 2 본문 — 엔진은 따로 값을 받을 만한 사업인가</h2>
+<p><b>1) 질문.</b> 엔진 부문이 건설기계 사이클과 다른 수요로 이익을 내고, 그래서 회사 전체와 다른 배수를 받을 근거가 있는가입니다. 시총 6조 8,289억원이 컨센 2026E PER 11.2배, 곧 건설기계 회사의 배수 위에 서 있기 때문에 지금 중요합니다. 엔진이 따로 값을 받는다면 그 차이만큼이 시총 안에서 아직 매겨지지 않은 몫이고, 받지 못한다면 엔진은 건설기계 이익을 받치는 안정판으로 남습니다.</p>
+<p><b>2) 시장이 지금 가정하는 것.</b> 하우스들은 엔진을 주가 변수로 적어 왔습니다. 삼성(4-27)은 리포트 제목을 건설장비의 실적과 엔진의 밸류에이션으로 이뤄낸 주가로 달았고, 신한(7-10)은 엔진 사업을 업종 주가의 주요 변수로 봤으며, 키움(7-30)은 상반기는 건기, 하반기는 엔진이 이끈다며 SOTP에서 엔진에 PER 20배, 건설기계에 14배를 따로 적용했습니다. 주가도 2025-01-22 군산 투자 보도에 HCE +10.49%·HDI +9.04%(영남일보)로 반응했습니다. 반면 컨센 PER 11.2배는 회사 전체를 한 배수로 읽고 있어, 가격은 아직 엔진 프리미엄을 하우스들의 서술만큼 넣지 않았다고 봅니다.</p>
+<p><b>3) 우리 답.</b> 조건부로 아직은 절반입니다. 엔진은 안정판의 자격, 곧 2024~2025년 단순합산 이익의 42%를 내고 건설기계 바닥에서도 두 자릿수 이익률을 지킨 이력은 갖췄습니다. 그러나 따로 높은 배수를 받을 자격, 곧 건설기계와 다른 수요에서 성장이 나온다는 증거는 2026년 상반기 숫자에 없습니다. 상반기 성장은 산업용·사내에서 나왔고 발전기는 25%<span class="est">E</span> 줄었습니다. 우리는 2H26 발전기 회복, 22리터 증설 결정, 2027년 군산 방산·37리터 매출이 차례로 확인될 때 이 답을 온전한 쪽으로 옮깁니다.</p>
+<p><b>4) 근거.</b> 세 가지입니다. 첫째, 이익률의 지속성입니다. HDI 단독 외부매출 기준 연간 이익률은 2023년 13.1%, 2024년 13.7%, 2025년 16.4%였고, 12개 분기 가운데 최저도 6.5%(4Q23)였습니다. 둘째, 성장의 원천입니다. 1H26 증가분 483억원 가운데 산업용과 사내가 719억원<span class="est">E</span>이고 발전기는 -457억원<span class="est">E</span>이라, 올해 엔진 성장률은 건설기계 물량의 함수였습니다. 셋째, 발전 피어와의 괴리입니다. Caterpillar·Cummins·Rolls-Royce의 발전 부문이 +19~29% 자라는 동안 회사의 발전기 매출은 줄었고, 그 차이는 고객군(유전 가스 발전 대 데이터센터)에서 나왔습니다. </p>
+<p><b>5) 반대 논거.</b> 우리 답이 박하다는 반론도 셋 있습니다. 첫째, 회사가 이미 하반기 발전기 추정을 올렸고 북미 1억 달러 수출이 보도됐으므로 상반기 감소는 고객 재고라는 일시 요인일 수 있습니다. 둘째, 사내 매출 증가는 연결 매출에는 보이지 않아도 외부 엔진 업체에 가던 마진을 회사 안에 남기는 일이라 엔진의 가치를 키웁니다(HYUNDAI 탑재율 10~15%에서 85%로). 셋째, 방산은 계약 단위라 분기 흐름으로 판단하기 어렵고 K2 2-1차 금액이 유보돼 있어 실제 물량이 우리 판독보다 클 수 있습니다. 세 반론은 모두 시점의 문제라 채점 KPI를 하반기와 2027년에 둡니다.</p>
+<p><b>6) 배수의 자.</b> 엔진만 떼어 견줄 순수 피어의 배수는 조사노트에 없습니다. Cummins·Rolls-Royce Power Systems의 배수는 수집하지 못했고(미결), 확인된 것은 표 4의 전사 배수뿐입니다. 엔진 부문 1H26 공시 순이익 735.9억원을 연환산한 1,472억원<span class="est">E</span>에 회사 컨센 PER 11.2배를 곱하면 약 1조 6,500억원<span class="est">E</span>(시총의 24%), 키움이 쓴 20배를 곱하면 약 2조 9,400억원<span class="est">E</span>(43%)입니다. 이 차이 약 1조 2,900억원<span class="est">E</span>(시총의 19%)이 논쟁 2가 걸고 있는 폭입니다. 적정가치가 아니라 배수 가정 하나가 시총 안에서 차지하는 크기이며, 회사 전체의 값은 파트 7 조정판이 다룹니다.</p>
+<table class=""><tr><th>회사</th><th>성격</th><th>지표</th><th>값</th><th>출처·시점</th></tr><tr><td>Caterpillar</td><td>건설·광산·에너지&운송(발전 엔진 포함)</td><td>PER 2026F / EV/EBITDA 2026F</td><td>35.6배 / 24.6배</td><td>신한 피어표(Bloomberg) 7-30</td></tr><tr><td>Caterpillar</td><td>같음</td><td>PER TTM / 2026 예측</td><td>34.69배 / 29.61배</td><td>조사노트 D 스냅샷 9-10</td></tr><tr><td>Cummins·Rolls-Royce Power Systems</td><td>엔진·발전 전업</td><td>배수</td><td>미수집</td><td>조사노트 B는 성장·마진만 수록</td></tr><tr><td>HD현대마린엔진</td><td>선박 엔진(국내)</td><td>PER / PBR</td><td>10.79배 / 3.64배</td><td>키움 9-11</td></tr><tr><td>두산밥캣</td><td>소형 건설기계(엔진 고객)</td><td>PER 2026F</td><td>11.2배</td><td>신한 피어표 7-30</td></tr><tr><td>HD건설기계</td><td>회사 전체</td><td>컨센 PER 2026E / PBR</td><td>11.2배 / 1.38배</td><td>네이버 9-10·2Q26 BPS</td></tr><tr><td>키움 SOTP 가정</td><td>부문별 배수</td><td>엔진 / 건설기계 PER</td><td>20배 / 14배</td><td>키움 7-30(결과값은 옮기지 않음)</td></tr></table>
+<p><b>7) 채점과 반증.</b> 채점은 다음 절의 표 5가 맡습니다. 요약하면 첫 채점은 10월 말 3Q26 잠정의 엔진 매출·이익률과 IR 막대의 발전기 칸이고, 두 번째는 연내 22리터 증설 결정과 10월 군산 방산 양산, 세 번째는 2027년 1분기 37리터 양산과 방산 매출의 계단입니다. 셋이 확인되면 사이클 밖 매출 비중이 2025년 37.6%<span class="est">E</span>를 넘어서고, 그때 배수 논의가 숫자의 뒷받침을 받습니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 2. 엔진은 따로 값을 받을 만한 사업인가.</b> 이 파트의 답은 안정판으로는 이미 값을 받을 만하고, 성장 사업으로는 아직 증명 전이라는 것입니다. 2026년 엔진 영업이익은 조정판 기본값에서 약 2,036억원<span class="est">E</span>(IR 기준)으로 계획 1,587억원을 넘을 공산이 크지만, 공시 부문 기준으로는 약 1,589억원<span class="est">E</span>으로 계획과 비슷하고, 상반기 이익 가운데 245억~414억원<span class="est">E</span>은 계획 대비 환율의 몫입니다. 채점 KPI는 표 5와 같습니다. 유지선은 2026년 엔진 매출 1조 4,530억원 이상·영업이익률 12% 이상(IR 기준)이고, 여기에 3Q26 발전기 매출이 1Q26 IR 추정 수준(1,165억원<span class="est">E</span>) 이상이어야 한다는 조건을 더합니다. 반증은 하반기 엔진 이익률 10% 미만(IR 기준), 22리터 가스엔진 증설 보류, 3Q26 발전기 매출이 2Q26(817억원<span class="est">E</span>)보다 작아지는 경우입니다. </p>
+<table class=""><tr><th>채점 KPI</th><th>현재 값</th><th>유지선</th><th>반증</th><th>첫 채점</th></tr><tr><td>엔진 매출(IR 총매출)</td><td>1H26 7,222억(계획의 49.7%)</td><td>2026 ≥ 14,530억</td><td>2H26 ≤ 2H25(6,525억)</td><td>3Q26 잠정(10월 말)</td></tr><tr><td>엔진 OPM(IR 기준)</td><td>1H26 14.7%(공시 총매출 11.3%)</td><td>2026 ≥ 12%</td><td>2H26 10% 미만</td><td>3Q26 잠정</td></tr><tr><td>발전기 매출(IR 막대 판독)</td><td>2Q26 817억<span class="est">E</span></td><td>3Q26 ≥ 1,165억<span class="est">E</span></td><td>3Q26 817억<span class="est">E</span> 미만</td><td>3Q26 IR</td></tr><tr><td>22L 가스엔진 증설</td><td>검토·고객 협상 중</td><td>연내 증설 결정·고객 계약</td><td>보류 또는 철회</td><td>3Q26 컨콜</td></tr><tr><td>군산 방산 양산</td><td>10월 예정</td><td>10월 준공·양산</td><td>양산 지연</td><td>2026-10</td></tr><tr><td>37L DX37</td><td>파일럿 엔진 공급</td><td>2027-01 양산·수주 공개</td><td>양산 지연</td><td>2027 1분기</td></tr><tr><td>K2 추가 수출</td><td>폴란드 2-1차(금액 유보)</td><td>추가 국가 또는 후속 차수 공급</td><td>공급 차질</td><td>수시</td></tr><tr><td>공시·IR 이익 격차</td><td>1H26 223억</td><td>축소</td><td>확대</td><td>3Q26 분기보고서</td></tr></table>
+<p><b>허브 판정에 주는 한 줄.</b> 2026년의 엔진은 계획을 넘는 약 2,000억원<span class="est">E</span>(IR 기준)의 이익으로 회사 이익의 바닥을 받치되 상반기 증익의 원천은 아니었고, 사이클 밖 매출 비중은 오히려 낮아진 해입니다. 엔진 프리미엄의 채점은 2027년 군산 첫해로 넘어가며, 그 전까지 엔진은 논쟁 1의 답(증익은 사이클과 환율)을 바꾸지 않습니다.</p>
+
+<h2>미결</h2>
+<p><b>A급(판정에 직접 닿는 것).</b> ① 공시 부문과 IR의 엔진 이익 격차 223억원(2026년 상반기)의 원인이 내부거래 미실현이익 제거인지 공통비 배분인지 확인하지 못했습니다. 3Q26 분기보고서 부문 주석의 격차 추이와 IR 문의로 좁힐 수 있습니다. ② 용도별 매출 금액(발전기·방산·산업·사내)은 회사가 공개하지 않아 IR 막대 판독으로 대신했습니다. 사업보고서나 IR 문의로 실제 금액을 받으면 표 2와 조정판 기본값을 바꿉니다. ③ 발전기 고객명과 22리터 가스엔진 증설 규모·투자비, 데이터센터 향 물량 비중은 고객 협상 중이라는 이유로 비공개입니다. ④ K2 폴란드 2-1차 계약금액은 2027-12-31까지 공개가 유보돼 있습니다.</p>
+<p><b>B급(구조를 더 정확히 하는 것).</b> ① 2030년 발전기 매출 목표의 세 숫자(8,250억·7,698억<span class="est">E</span>·5,937억<span class="est">E</span>)가 서로 맞지 않습니다. ② 3Q25·4Q25 엔진 영업이익의 IR 기준 분기값이 없어 하반기 이익률을 연간에서 역산했습니다. ③ 엔진 부문 자산이 2025년 말 1조 2,696억원(HDI 단독)에서 2026년 상반기 말 1조 9,016억원으로 늘어난 내역(군산 건설중인자산·배분 변경)을 분리하지 못했습니다. ④ 1-14 간담회 자료의 엔진 계획 1조 2,644억원과 2-06 IR의 1조 4,530억원의 기준 차이는 조사노트 A에서도 미확인입니다. ⑤ 계획 이익률 10.9% 안의 환율·군산 고정비·개발비 분해는 회사가 밝히지 않았습니다.</p>
+<p><b>C급(있으면 좋은 것).</b> ① Cummins·Rolls-Royce Power Systems 등 엔진·발전 전업 피어의 배수(조사노트는 성장률과 마진만 수록). ② 톈진 법인의 성격과 생산능력 기준 차이(반기보고서 반기 4,060대, 2026-04 IR 중국 연 5만대). ③ 수소엔진·EPP 매출의 인식 시점과 규모. ④ 키움 리뷰의 2Q26 엔진 성장률 +18.0% 표기와 회사 +4.6%의 차이. ⑤ K2 엔진 생산능력 인천 120대·군산 120대 보도의 회사 확인.</p>
+<div class="foot">데이터 계보: packet.json(web.engine·ir_op·ir_quarterly·plan_2026, segments, ops, peers, stamp) · docs/half2026.txt(주석 29 영업부문·II 사업의 내용·투자·수주)·hdi_audit2025.txt(주석 32)·ir_2Q26_script_qa·ir_1Q26_script_qa·ir_4Q25·ir_ceo_newyear_260114·ir_valueup_260427·ir_3Q25_HDI·contract_0128 · 회사 IR PDF 막대의 도형 좌표 판독(용도별·발전기 경로·신년 간담회 궤적·군산 매출, 모두 E) · research/A_실적_컨센.md(키움·신한 등 하우스 요지)·B_산업_시황.md(피어 발전 부문 실적)·D_주가_이벤트_피어.md(주가 반응·피어 배수) · 언론·증권사 인용은 본문에 매체·날짜 표기. 엔진 마진은 기준(IR 관리 기준 사내 포함 총매출 / 공시 부문 총매출 / 공시 외부매출)을 매번 밝혔습니다. 2026년 상반기 이익에는 환율 꼬리표(달러-원 평균 약 1,486원, 계획 1,350원, 9-11 1,344.9원)가 붙습니다. 이 문서는 투자 권유가 아니며 목표주가·매매 계획을 싣지 않습니다.</div>
+
+</main></body></html>
