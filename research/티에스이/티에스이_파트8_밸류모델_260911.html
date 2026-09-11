@@ -1,0 +1,547 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="valuation,model,debate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>티에스이 파트 8 — 밸류에이션·조정 모델 총괄판 · 2026-09-11</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>티에스이 파트 8 — 시총 2조 8,815억은 무엇을 값 매기고 있나</h1>
+<div class="sub">파트제 커버리지 9편(파트 0~8) 중 파트 8 · 밸류에이션·조정 모델 총괄판 · 작성 2026-09-11 · 주가 260,500원(9-11 종가, -15.01%) · 시총 2조 8,815억(보통주 11,061,429주, 자사주 0) · 기준 환율 $1 = ₩1,344.6(9-11) · 회계연도 12월(2026 = 제32기, K-IFRS 연결) · 다음 실적 3Q26 분기보고서 2026-11-16(E) · 다음 갱신 트리거 9-22 엘디티 임시주총, 11-16 3Q26 분기보고서(프로브카드 매출·별도 OPM·연결−별도 OP 차), 2027-07-22 CB 전환청구 개시 · 숫자 정본: 허브 상수 블록 · 소스: DART 분기·반기보고서(연결·별도)·주요사항보고서(CB)·자기주식처분결정, 키움(9-11 종가·피어), 네이버 컨센(9-10), 증권사 리포트(신한·DS·LS), 해외 기업 공시(FormFactor·Technoprobe·MJC)</div>
+<div class="hubnav">현행 판정은 <a href="티에스이_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 valuation(밸류에이션)·model(조정 모델)·debate(논쟁 5)를 맡습니다. 관련: <a href="티에스이_파트1_프로브카드_260911.html">파트 1 프로브카드</a> · <a href="티에스이_파트3_자회사_260911.html">파트 3 자회사</a> · <a href="티에스이_파트5_주가수급_260911.html">파트 5 주가·수급</a> · <a href="티에스이_파트6_비용재무_260911.html">파트 6 비용·재무</a></div>
+
+<p class="judge"><b>이 파트의 답(논쟁 5).</b> 시총 2조 8,815억은 2026E 컨센 EPS 12,955원이 뜻하는 지배순이익 1,433억의 20.1배, 2Q26 지배순이익 연환산 1,474억의 19.5배입니다. 같은 시총에서 상장 자회사 지분 시가 2,972억, 비상장·투자주식 장부 398억, 별도 순현금 405억을 걷어내면 모회사 사업가치 2조 5,041억이 남고, 이것은 2Q26 연환산 모회사 세후 영업이익의 22.4배입니다. 우리 PER 밴드(2020~2025, 월말 종가 ÷ 당해 연도 EPS)의 중심은 13.6배, 연중 고점 평균은 21.3배입니다. 조정판 기본값(CB 전환 반영, 모든 층 2Q26 연환산)에서 함의 PER은 20.7배이고, 배수를 밴드 중심으로 되돌리면 시총은 프로브카드 연매출 6,113억<span class="est">E</span>(한계 OPM 30% 가정)을 요구합니다. 회사가 밝힌 2027년 캐파 4,000억 이상을 넘는 크기입니다. 시총이 사는 것은 "2Q26 이익이 유지되고 배수가 역사 상단에 머문다"와 "배수는 평범해지되 프로브카드가 캐파 끝까지 자란다" 사이의 어느 조합이며, 둘 다 아닌 조합에서는 설명되지 않는다고 봅니다.</p>
+
+<p>이 파트는 커버리지의 마지막 층입니다. <a href="티에스이_허브.html">허브</a>가 판정을 들고, 파트 1이 프로브카드 703억의 성격을, 파트 2가 보드·소켓·OLED를, 파트 3이 자회사 층과 비지배를, 파트 6이 비용·재무를 다뤘다면, 여기서는 그 조각을 한 자 위에 올려 "시총 2조 8,815억은 무엇을 값 매기고 있나"라는 논쟁 5에 답합니다. 방법은 셋입니다. 첫째, 같은 시총에 붙는 배수를 분모별로 늘어놓아 어떤 이익을 기준으로 보느냐에 따라 20배와 28배가 동시에 성립한다는 사실을 확인합니다. 둘째, 연결 이익을 모회사 프로브카드·모회사 비프로브·자회사 층의 세 층으로 나누고 층마다 주주에게 오는 몫을 계산합니다. 셋째, 시총을 거꾸로 풀어 "이 배수라면 프로브카드가 얼마를 벌어야 하는가"를 조정판으로 읽습니다. 주당 가치는 내지 않으며, 증권사가 쓴 배수는 하우스 가정의 변화라는 데이터로만 다룹니다.</p>
+
+<div class="gloss">
+<b>PER</b><span>시총 ÷ 지배주주 순이익. 분모를 무엇으로 두느냐(2026E 컨센·2Q26 연환산·TTM)에 따라 같은 시총에 19.5배에서 27.5배까지 붙습니다. 이 파트의 EPS는 신한 High PER과 같은 산식(지배순이익 ÷ 현재 발행주식 11,061,429주)으로 통일합니다.</span>
+<b>PBR</b><span>주가 ÷ 주당 지배지분 장부가. 2Q26 BPS 42,844원 기준 6.08배이고, 연환산 ROE 32.8%가 지속된다는 가정이 붙어야 성립하는 자리입니다.</span>
+<b>EV/EBIT</b><span>(시총 + 비지배 − 순현금) ÷ 영업이익. 비지배를 장부 1,070억으로 더하느냐, 상장 자회사 시가 기준 3,997억으로 더하느냐가 이 회사의 첫 함정입니다.</span>
+<b>함의 배수</b><span>시총을 우리가 고른 이익으로 나눈 값. 적정 배수가 아니라 "시장이 이 이익을 몇 배로 사고 있는가"의 기술입니다.</span>
+<b>내재기대 역산</b><span>배수를 하나 고정하고 시총이 성립하려면 필요한 이익·매출·이익률을 거꾸로 푸는 일. 조정판의 '요구 조건' 출력이 이것입니다.</span>
+<b>희석 주식수</b><span>발행주식 11,061,429주 + CB 전환주식 418,999주 = 11,480,428주. CB 1,000억(표면 0%, 전환가 238,664원, 리픽싱 없음)은 9-11 종가보다 전환가가 낮아 내가격입니다.</span>
+<b>비지배 차감</b><span>연결 순이익 중 자회사 외부주주 몫. 2026년 상반기 86.0억으로 연결 순이익 823.8억의 10.4%이고, 2Q26만 보면 13.0%입니다.</span>
+<b>컨센 반영률</b><span>시총 ÷ 기준 배수로 구한 '요구 이익'이 컨센 이익의 몇 %인가. 100%를 넘으면 시총이 컨센보다 먼 미래의 이익을 이미 사고 있다는 뜻입니다.</span>
+</div>
+
+<h2>1. 현재 배수 좌표 — 같은 시총에 붙는 열한 개의 자</h2>
+<p>시총 2조 8,815억은 보통주 11,061,429주에 9-11 종가 260,500원을 곱한 값입니다. 자사주는 2025-10-16 275,909주를 주당 50,540원에 전량 처분한 뒤 0주라 분자에서 뺄 것이 없습니다. 반면 분모는 고르는 대로 달라집니다. 네이버 컨센 2026E EPS 12,955원은 발행주식수를 곱하면 지배순이익 1,433억을 뜻하고, 시총을 이것으로 나누면 20.1배입니다. 2Q26 지배순이익 368.6억을 네 번 곱한 1,474억으로 나누면 19.5배, 2026년 상반기 737.8억을 두 번 곱해도 19.5배로 거의 같습니다. 최근 4개 분기 합(3Q25~2Q26) 1,047억을 쓰면 27.5배로 뛰는데, 이것은 대손상각 96억이 잡힌 2025년 하반기가 분모에 남아 있기 때문입니다. 키움 화면의 PER 75.37배·PBR 7.36배는 2025년 결산 EPS·BPS 기준이라 지금 좌표로는 쓰지 않습니다.</p>
+<p>표 1은 이 자들을 한곳에 모은 것입니다. 눈여겨볼 점은 세 가지입니다. 첫째, 컨센 PER과 2Q26 연환산 PER이 거의 같다는 것은 컨센이 2Q26의 이익 속도를 한 해 전체로 늘려 잡지 않았다는 뜻입니다. 컨센 연간 지배순이익 1,433억에서 상반기 실적 737.8억을 빼면 하반기는 695억, 분기 348억으로 2Q26 368.6억보다 낮습니다. 둘째, CB 1,000억을 전량 주식으로 보면 분자가 2조 9,907억으로 늘어 컨센 PER은 20.9배가 됩니다. 반대로 자본에 1,000억이 들어와 희석 PBR은 5.21배로 내려갑니다. 셋째, EV로 넘어가면 비지배를 어떻게 더하느냐가 결과를 흔듭니다. 비지배 장부 1,070억을 더하면 EV/EBIT(2Q26 연환산)은 13.8배, 상장 자회사 외부주주 몫을 시가 3,997억으로 더하면 15.2배입니다. 타이거일렉과 메가터치가 모회사보다 높은 배수로 거래되고 있어서, 비지배를 시가로 세우면 연결 EV가 커지는 구조입니다.</p>
+<table class=""><tr><th>배수</th><th>분자</th><th>분모</th><th>값</th><th>무엇을 가정하는 자인가</th></tr><tr><td>2026E 컨센 PER</td><td>시총 2조 8,815억</td><td>컨센 EPS 12,955원 × 11,061,429주 = 1,433억</td><td>20.1배</td><td>하반기 지배순이익 695억(분기 348억)으로 2Q26보다 낮은 궤적</td></tr><tr><td>2Q26 연환산 PER</td><td>시총 2조 8,815억</td><td>2Q26 지배순이익 368.6억 × 4 = 1,474억</td><td>19.5배</td><td>최근 분기가 1년 내내 반복</td></tr><tr><td>2026년 상반기 연환산 PER</td><td>시총 2조 8,815억</td><td>상반기 지배순이익 737.8억 × 2 = 1,476억</td><td>19.5배</td><td>1Q26(OLED 181억 포함)과 2Q26의 평균이 반복</td></tr><tr><td>TTM PER</td><td>시총 2조 8,815억</td><td>3Q25~2Q26 지배순이익 1,047억(EPS 9,462원)</td><td>27.5배</td><td>대손 96억이 섞인 2025년 하반기를 포함</td></tr><tr><td>희석 2026E PER</td><td>시총(CB 전환 반영) 2조 9,907억</td><td>1,433억(전환 주식 418,999주 포함 11,480,428주)</td><td>20.9배</td><td>CB 1,000억 전액 주식 전환, 이자 0%라 분자만 증가</td></tr><tr><td>희석 2Q26 연환산 PER</td><td>2조 9,907억</td><td>1,474억</td><td>20.3배</td><td>위 두 가정의 결합</td></tr><tr><td>PBR(2Q26 BPS)</td><td>주가 260,500원</td><td>BPS 42,844원</td><td>6.08배</td><td>2Q26 연환산 ROE 32.8% 지속</td></tr><tr><td>희석 PBR</td><td>주가 260,500원</td><td>(지배지분 4,739억 + CB 1,000억) ÷ 11,480,428주 = 49,991원</td><td>5.21배</td><td>전환 시 자본 1,000억 유입</td></tr><tr><td>2026E 컨센 PBR</td><td>주가 260,500원</td><td>컨센 BPS 47,767원</td><td>5.45배</td><td>연말 자본 증가 반영</td></tr><tr><td>EV/EBIT(관행 A)</td><td>시총 + 비지배 장부 1,070억 − 연결 순현금 801억 = 2조 9,084억</td><td>2Q26 연환산 연결 OP 2,100억</td><td>13.8배</td><td>비지배를 장부로 더함</td></tr><tr><td>EV/EBIT(관행 B)</td><td>시총 + 상장 자회사 비지배 시가 3,997억 − 연결 순현금 = 3조 2,011억</td><td>2,100억 · 2026E 컨센 1,876억</td><td>15.2배 · 17.1배</td><td>비지배를 시가로 더함</td></tr></table>
+<figure class=""><figcaption>장표 1. 분기 지배순이익 연환산과 분기말 시총이 함의하는 PER(1Q22~2Q26, 9-11)</figcaption><svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="818" y2="276.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="280.0" text-anchor="end" font-size="10.5" fill="#8a857c">-400억</text>
+<line x1="62" y1="226.0" x2="818" y2="226.0" stroke="#d8d4cc" stroke-width="1.2"/>
+<text x="56" y="230.0" text-anchor="end" font-size="10.5" fill="#8a857c">0억</text>
+<text x="824" y="230.0" font-size="10.5" fill="#a44a3f">0배</text>
+<line x1="62" y1="176.0" x2="818" y2="176.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="180.0" text-anchor="end" font-size="10.5" fill="#8a857c">400억</text>
+<text x="824" y="180.0" font-size="10.5" fill="#a44a3f">15배</text>
+<line x1="62" y1="126.0" x2="818" y2="126.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="130.0" text-anchor="end" font-size="10.5" fill="#8a857c">800억</text>
+<text x="824" y="130.0" font-size="10.5" fill="#a44a3f">30배</text>
+<line x1="62" y1="76.0" x2="818" y2="76.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="80.0" text-anchor="end" font-size="10.5" fill="#8a857c">1,200억</text>
+<text x="824" y="80.0" font-size="10.5" fill="#a44a3f">45배</text>
+<line x1="62" y1="26.0" x2="818" y2="26.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="30.0" text-anchor="end" font-size="10.5" fill="#8a857c">1,600억</text>
+<text x="824" y="30.0" font-size="10.5" fill="#a44a3f">60배</text>
+<rect x="71.0" y="136.2" width="21.9" height="89.8" fill="#1f3a5f" opacity="0.8"/>
+<text x="81.9" y="132.2" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">718</text>
+<rect x="110.7" y="122.7" width="21.9" height="103.3" fill="#1f3a5f" opacity="0.8"/>
+<text x="121.7" y="118.7" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">826</text>
+<rect x="150.5" y="160.2" width="21.9" height="65.8" fill="#1f3a5f" opacity="0.8"/>
+<text x="161.5" y="156.2" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">526</text>
+<rect x="190.3" y="226.0" width="21.9" height="9.9" fill="#8a857c" opacity="0.8"/>
+<text x="201.3" y="246.9" text-anchor="middle" font-size="9" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">-79</text>
+<rect x="230.1" y="226.0" width="21.9" height="17.7" fill="#8a857c" opacity="0.8"/>
+<text x="241.1" y="254.7" text-anchor="middle" font-size="9" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">-141</text>
+<rect x="269.9" y="226.0" width="21.9" height="16.5" fill="#8a857c" opacity="0.8"/>
+<text x="280.8" y="253.5" text-anchor="middle" font-size="9" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">-132</text>
+<rect x="309.7" y="195.0" width="21.9" height="31.0" fill="#1f3a5f" opacity="0.8"/>
+<text x="320.6" y="191.0" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">248</text>
+<rect x="349.5" y="222.2" width="21.9" height="3.8" fill="#1f3a5f" opacity="0.8"/>
+<text x="360.4" y="218.2" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">30</text>
+<rect x="389.3" y="226.0" width="21.9" height="2.5" fill="#8a857c" opacity="0.8"/>
+<text x="400.2" y="239.5" text-anchor="middle" font-size="9" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">-20</text>
+<rect x="429.1" y="186.1" width="21.9" height="39.9" fill="#1f3a5f" opacity="0.8"/>
+<text x="440.0" y="182.1" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">319</text>
+<rect x="468.8" y="161.7" width="21.9" height="64.3" fill="#1f3a5f" opacity="0.8"/>
+<text x="479.8" y="157.7" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">514</text>
+<rect x="508.6" y="115.4" width="21.9" height="110.6" fill="#1f3a5f" opacity="0.8"/>
+<text x="519.6" y="111.4" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">885</text>
+<rect x="548.4" y="210.5" width="21.9" height="15.5" fill="#1f3a5f" opacity="0.8"/>
+<text x="559.4" y="206.5" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">124</text>
+<rect x="588.2" y="204.8" width="21.9" height="21.2" fill="#1f3a5f" opacity="0.8"/>
+<text x="599.2" y="200.8" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">170</text>
+<rect x="628.0" y="169.0" width="21.9" height="57.0" fill="#1f3a5f" opacity="0.8"/>
+<text x="638.9" y="165.0" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">456</text>
+<rect x="667.8" y="128.7" width="21.9" height="97.3" fill="#1f3a5f" opacity="0.8"/>
+<text x="678.7" y="124.7" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">779</text>
+<rect x="707.6" y="41.4" width="21.9" height="184.6" fill="#1f3a5f" opacity="0.8"/>
+<text x="718.5" y="37.4" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">1,477</text>
+<rect x="747.4" y="41.7" width="21.9" height="184.3" fill="#1f3a5f" opacity="0.8"/>
+<text x="758.3" y="37.7" text-anchor="middle" font-size="9" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">1,474</text>
+<polyline points="81.9,192.3 121.7,198.8 161.5,197.7" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<polyline points="320.6,162.5 360.4,26.0" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<polyline points="440.0,156.6 479.8,190.5 519.6,208.8 559.4,83.6 599.2,140.3 638.9,182.9 678.7,198.7 718.5,199.6 758.3,164.9 798.1,160.9" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="81.9" cy="192.3" r="3" fill="#a44a3f"/>
+<text x="81.9" y="185.3" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">10.1</text>
+<circle cx="121.7" cy="198.8" r="3" fill="#a44a3f"/>
+<text x="121.7" y="191.8" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">8.2</text>
+<circle cx="161.5" cy="197.7" r="3" fill="#a44a3f"/>
+<text x="161.5" y="190.7" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">8.5</text>
+<circle cx="320.6" cy="162.5" r="3" fill="#a44a3f"/>
+<text x="320.6" y="155.5" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">19.0</text>
+<circle cx="360.4" cy="26.0" r="3" fill="#a44a3f"/>
+<text x="370.4" y="19.0" text-anchor="start" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">182(범위 밖)</text>
+<circle cx="440.0" cy="156.6" r="3" fill="#a44a3f"/>
+<text x="440.0" y="149.6" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">20.8</text>
+<circle cx="479.8" cy="190.5" r="3" fill="#a44a3f"/>
+<text x="479.8" y="183.5" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">10.6</text>
+<circle cx="519.6" cy="208.8" r="3" fill="#a44a3f"/>
+<text x="519.6" y="201.8" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">5.2</text>
+<circle cx="559.4" cy="83.6" r="3" fill="#a44a3f"/>
+<text x="559.4" y="76.6" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">42.7</text>
+<circle cx="599.2" cy="140.3" r="3" fill="#a44a3f"/>
+<text x="599.2" y="133.3" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">25.7</text>
+<circle cx="638.9" cy="182.9" r="3" fill="#a44a3f"/>
+<text x="638.9" y="175.9" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">12.9</text>
+<circle cx="678.7" cy="198.7" r="3" fill="#a44a3f"/>
+<text x="678.7" y="191.7" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">8.2</text>
+<circle cx="718.5" cy="199.6" r="3" fill="#a44a3f"/>
+<text x="718.5" y="192.6" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">7.9</text>
+<circle cx="758.3" cy="164.9" r="3" fill="#a44a3f"/>
+<text x="758.3" y="157.9" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">18.3</text>
+<circle cx="798.1" cy="160.9" r="3" fill="#a44a3f"/>
+<text x="798.1" y="153.9" text-anchor="middle" font-size="9.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">19.5</text>
+<text x="81.9" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">1Q22</text>
+<text x="121.7" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">2Q22</text>
+<text x="161.5" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">3Q22</text>
+<text x="201.3" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">4Q22</text>
+<text x="241.1" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">1Q23</text>
+<text x="280.8" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">2Q23</text>
+<text x="320.6" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">3Q23</text>
+<text x="360.4" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">4Q23</text>
+<text x="400.2" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">1Q24</text>
+<text x="440.0" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">2Q24</text>
+<text x="479.8" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">3Q24</text>
+<text x="519.6" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">4Q24</text>
+<text x="559.4" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">1Q25</text>
+<text x="599.2" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">2Q25</text>
+<text x="638.9" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">3Q25</text>
+<text x="678.7" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">4Q25</text>
+<text x="718.5" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">1Q26</text>
+<text x="758.3" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">2Q26</text>
+<text x="798.1" y="292" text-anchor="middle" font-size="9.5" fill="#8a857c">9-11</text>
+<rect x="62" y="315" width="10" height="10" fill="#1f3a5f"/><text x="76" y="324" font-size="10.5" fill="#8a857c">분기 지배순이익 × 4(왼쪽, 억원)</text>
+<circle cx="298" cy="320" r="4" fill="#a44a3f"/><text x="306" y="324" font-size="10.5" fill="#8a857c">분기말 시총 ÷ 연환산 지배순이익(오른쪽, 배) · 적자 분기는 공란</text>
+</svg><div class="src">DART 분기 연결 지배순이익(fnlttSinglAcntAll), 분기말 월봉 종가 × 현재 발행주식 11,061,429주. 9-11은 시총 2조 8,815억 ÷ 2Q26 연환산. 적자·음수 분기는 PER 공란, 60배 초과는 범위 밖 표기.</div></figure>
+<p class="reading"><b>관찰.</b> 분기 지배순이익 연환산은 2025년 분기 124~779억에서 1Q26 1,477억, 2Q26 1,474억으로 계단을 올랐습니다. 시총 함의 PER은 분모가 작던 1Q25 42.7배에서 1Q26 말 7.9배까지 내려갔다가, 2Q26 말 18.3배, 9-11 19.5배로 되돌아왔습니다. <b>원인.</b> 주가가 2025-09-03 저점 36,150원에서 7.2배가 되는 동안 분모는 1Q25 연환산 124억에서 2Q26 1,474억으로 12배 늘었습니다. 1Q26에는 이익이 주가보다 먼저 뛰어 배수가 한 자릿수로 눌렸고, 1Q26과 2Q26의 지배순이익이 거의 같았으므로 2Q26 동안 주가가 105,700원에서 244,500원으로 오른 부분은 배수 확장이었습니다. <b>함의.</b> 그래서 이 시총을 '배수가 비싸다'고만 읽는 것은 반쪽입니다. 20배 안팎은 2Q26 속도가 유지된다는 전제에서의 배수이고, 전제가 흔들리면 분모가 먼저 움직입니다. 11-16 분기보고서의 3Q26 지배순이익이 분기 350억 안팎을 지키느냐가 이 장표의 다음 점을 정합니다.</p>
+<p>PBR 6.08배는 다른 방향에서 같은 이야기를 합니다. 2Q26 연환산 ROE 32.8%에 PER 19.5배를 곱하면 PBR은 6.4배 근처가 나와야 하고, 실제 6.08배와 맞습니다. 즉 PBR이 역사상 최고라는 사실은 장부가 대비 고평가라기보다 ROE가 역사상 최고라는 사실의 다른 표현입니다. 연간 ROE(평균 지배지분 기준)와 그해 월말 PBR 평균을 짝지으면 2021년 20.6%·3.23배, 2022년 18.8%·2.43배, 2024년 13.4%·1.92배, 2025년 10.4%·1.45배였고, 이익이 사라진 2023년에도 PBR은 1.76배였습니다. 따라서 PBR 밴드를 하방의 자로 쓸 때는 "ROE가 과거 수준으로 돌아가면"이라는 조건이 같이 붙어야 합니다.</p>
+
+<h2>2. 컨센 경로와 반영률 — 하반기 931억이 가정하는 것</h2>
+<p>네이버 컨센(9-10)은 2026E 매출 6,942억·영업이익 1,876억·순이익 1,610억입니다. 상반기 확정 영업이익 944.9억을 빼면 하반기는 931억이고, 3Q26E 506억을 다시 빼면 4Q26E에 남는 몫은 425억<span class="est">E</span>입니다. 2Q26 영업이익 525억을 기준으로 보면 컨센은 3Q 96%, 4Q 81%의 궤적을 그리고, 하반기 합은 2Q26을 두 번 반복한 1,050억의 89%입니다. 이 차이는 보수라기보다 구성의 차이로 읽힙니다. 신한(8-18)도 3Q26F 613억에서 4Q26F 474억(OPM 22.8%)으로 4분기를 낮게 잡았고, DS(7-02)도 3Q 460억·4Q 430억이었습니다. 하우스 리포트가 4분기 이익률을 낮춘 이유를 따로 적지는 않았지만, 신한 표에서 4Q26F OLED 매출이 131억으로 오히려 늘어나는 가운데 OPM이 내려간다는 점을 보면 인력 충원(프로브카드 인력 2026년 상반기 550명)과 캐파 투자 비용이 매출보다 먼저 들어온다는 가정으로 읽힙니다.</p>
+<p>이 컨센은 1년 사이 3.5배가 됐습니다. 2025-09 하나증권 탐방노트에 기재된 당시 2026E 영업이익 컨센은 530억이었고, 지금은 1,876억입니다. 같은 기간 하우스가 적용한 배수도 올라갔습니다. 표 3은 하우스가 쓴 배수와 그 근거만 적은 것이고, 가격은 옮기지 않았습니다. 신한의 적용 배수는 2025-11의 13.9배에서 2026-01 14.9배, 03 20.2배, 05 24.2배, 08 28.4배로 두 배가 됐고, 같은 기간 신한의 2026E EPS 가정은 5,459원에서 14,070원으로 2.58배가 됐습니다. 배수 근거도 '2021~2024 평균 + 5%'에서 '2020년 연중 고점 PER + 10%'로 바뀌었습니다. 이익 상향과 배수 확장이 같은 방향으로 겹쳤다는 점, 그리고 배수의 기준점이 평균에서 고점으로 이동했다는 점이 이 표에서 읽을 사실입니다.</p>
+<table class=""><tr><th>구분</th><th>매출(억)</th><th>영업이익(억)</th><th>순이익(억)</th><th>비고</th></tr><tr><td>1Q26 실적</td><td>1,507</td><td>420</td><td>400</td><td>OLED 181억·대손 환입 포함</td></tr><tr><td>2Q26 실적</td><td>1,888</td><td>525</td><td>424</td><td>연결−별도 OP 차 158억</td></tr><tr><td>3Q26E 컨센</td><td>1,783</td><td>506</td><td>384</td><td>네이버 9-10</td></tr><tr><td>4Q26E 잔여(컨센 연간 − 1H − 3Q)</td><td>1,764<span class="est">E</span></td><td>425<span class="est">E</span></td><td>402<span class="est">E</span></td><td>2026E 컨센에서 역산</td></tr><tr><td>2026E 컨센</td><td>6,942</td><td>1,876</td><td>1,610</td><td>EPS 12,955원 · 지배 1,433억 함의</td></tr><tr><td>2026F 신한(8-18)</td><td>7,473</td><td>2,035</td><td>지배 1,556</td><td>3Q 613 · 4Q 474</td></tr><tr><td>2026F DS(7-02)</td><td>6,470</td><td>1,753</td><td>지배 1,420</td><td>3Q 460 · 4Q 430(2Q 발표 전)</td></tr><tr><td>2027F 신한(8-18)</td><td>9,693</td><td>2,806</td><td>지배 2,256</td><td>EPS 20,399원 · 9-11 종가 기준 12.8배</td></tr><tr><td>2027F DS(7-02)</td><td>8,940</td><td>2,457</td><td>지배 1,950</td><td>EPS 17,637원 · 9-11 종가 기준 14.8배</td></tr></table>
+<table class=""><tr><th>일자</th><th>하우스</th><th>적용 이익 기준</th><th>적용 배수</th><th>배수 근거(리포트 기재)</th></tr><tr><td>2025-11-17</td><td>신한</td><td>미기재(A 노트: 13.9배)</td><td>13.9배</td><td>—</td></tr><tr><td>2026-01-19</td><td>신한</td><td>2026E EPS 5,459원</td><td>14.9배</td><td>2021~2024 평균 + 5%</td></tr><tr><td>2026-01-21</td><td>LS</td><td>RIM</td><td>내재 21.0배</td><td>EPS CAGR 28.1%</td></tr><tr><td>2026-03-06</td><td>신한</td><td>2026E EPS 7,090원</td><td>20.2배</td><td>2021~2025 연중 고점 PER 평균</td></tr><tr><td>2026-04-20</td><td>LS</td><td>RIM(COE 6.3%, g 3.9%)</td><td>—</td><td>글로벌 Big4 2026 P/E 63.5배·EPS 성장 62.1% 인용</td></tr><tr><td>2026-05-18</td><td>신한</td><td>2026E EPS 12,466원</td><td>24.2배</td><td>연중 고점 PER 평균 + 20%</td></tr><tr><td>2026-07-02</td><td>DS</td><td>2027E EPS 17,637원</td><td>20.4배</td><td>2020~2025 평균 PER(2023 제외)</td></tr><tr><td>2026-07-02</td><td>LS</td><td>12개월 선행 EPS</td><td>28.3배</td><td>EPS CAGR 2025~2028 67.7%(웹 요약, 원문 미열람)</td></tr><tr><td>2026-08-18</td><td>신한</td><td>2026E EPS 14,070원</td><td>28.4배</td><td>2020년 연중 고점 PER 25.8배 + 10%</td></tr></table>
+<p>컨센 반영률은 이 파트가 쓰는 자입니다. 시총을 기준 배수로 나누면 시총이 성립하는 데 필요한 지배순이익이 나오고, 이것을 컨센과 비교합니다. 기준 배수를 우리 PER 밴드 중심 13.6배로 두면 요구 이익은 2,118억으로 2026E 컨센 지배순이익 1,433억의 148%입니다. 신한 2027F 지배순이익 2,256억의 94%, DS 2027F 1,950억의 109%에 해당합니다. 즉 과거 평균 배수로 보면 시총은 2026년이 아니라 하우스가 그린 2027년 이익을 이미 거의 다 사고 있습니다. 기준 배수를 연중 고점 평균 21.3배로 올리면 요구 이익은 1,353억으로 2026E 컨센의 94%라, 이 경우 시총은 올해 이익을 고점 배수로 사는 셈입니다. 어느 쪽이든 시총은 2026년 숫자만으로는 설명되지 않고, 2027년 성장의 상당 부분이나 역사 상단의 배수 중 하나를 선반영하고 있습니다.</p>
+<p>2027E에 대해서는 컨센이 네이버에 없습니다. 확인되는 것은 신한(8-18) 매출 9,693억·영업이익 2,806억·EPS 20,399원과 DS(7-02) 매출 8,940억·영업이익 2,457억·EPS 17,637원 두 개뿐이고, 9-11 종가를 이 EPS로 나누면 각각 12.8배·14.8배입니다. 두 하우스의 2027F 프로브카드 매출 가정은 신한 3,789억·DS 2,820억으로 차이가 969억이며, 신한 쪽은 회사가 밝힌 2027년 캐파 4,000억 이상에 근접하고 DS 쪽은 2Q26 연환산 2,812억과 거의 같습니다. 2027년 배수 좌표가 12~15배로 낮아 보이는 것은 이 두 추정 가운데 어느 쪽이 맞느냐에 전부 걸려 있고, 그 답은 논쟁 1의 3Q26 프로브카드 매출에서 처음 나옵니다.</p>
+
+<h2>3. 이익 3층 분해 — 프로브카드·비프로브·자회사 층</h2>
+<p>연결 영업이익 525억(2Q26)은 세 층으로 나뉩니다. 모회사 별도 영업이익 367억과 자회사 층(연결 − 별도) 158억은 공시에서 바로 나오지만, 모회사 안의 프로브카드와 비프로브(인터페이스보드·테스트소켓·OLED) 이익은 회사가 나눠 공개하지 않습니다. 반기보고서의 부문 정보도 모회사 사업을 '반도체 등 검사장비' 한 부문으로 묶습니다. 그래서 여기서는 자체 추정을 쓰고, 4단으로 적습니다. 이 파트의 프로브카드 매출은 모두 모회사 별도 제품매출(사업보고서·분기보고서 '매출실적' 누적값의 분기 차분) 기준입니다. 먼저 공시에서 바로 읽히는 사실 하나를 적어 둡니다. 1Q26에서 2Q26으로 연결 영업이익은 105억 늘었지만 별도 영업이익은 -3억으로 제자리였고, 증가분은 전부 자회사 층(연결 − 별도 차 50억에서 158억)이 만들었습니다.</p>
+<p><b>가정.</b> 1Q26과 2Q26 사이에 프로브카드와 비프로브 각각의 영업이익률이 변하지 않았다고 둡니다. <b>근거.</b> 두 분기는 매출 구성이 크게 달랐습니다. 프로브카드는 478.7억에서 703.0억으로 늘었고 비프로브는 OLED가 181억에서 21억으로 빠지며 699.8억에서 584.4억으로 줄었는데, 별도 영업이익은 369.9억과 367.0억으로 거의 같았습니다. 구성이 크게 달라진 두 분기에 이익이 같았다는 사실이 두 사업의 이익률 차이를 드러내는 자연 실험이 됩니다. <b>식.</b> 369.9 = 478.7 × a + 699.8 × b, 367.0 = 703.0 × a + 584.4 × b를 풀면 프로브카드 OPM a = 19.2%<span class="est">E</span>, 비프로브 OPM b = 39.8%<span class="est">E</span>입니다. 2Q26 프로브카드 영업이익은 134.7억<span class="est">E</span>, 비프로브는 232.3억<span class="est">E</span>입니다. <b>교차검증.</b> 세 갈래로 확인합니다. 첫째, DS(7-02)는 보드 마진을 35% 이상으로 봤고 LS(4-20)는 인터페이스보드를 고마진 제품으로 적었습니다. 회사도 9-10 IR에서 후발 진입을 위해 단가를 낮춰서라도 공급망에 들어가며 이익률이 다소 낮을 수 있다고 말했습니다(시사저널e 9-10). 둘째, 반기보고서 직원 현황에서 프로브카드(SP) 인력은 588명으로 보드·소켓을 합한 인력의 62%인데, 프로브카드 매출 비중은 2Q26 모회사 매출의 55%, 2026년 상반기 48%입니다. 원재료 매입 대비 매출은 2026년 상반기 프로브카드 47%·보드 45%·소켓 48%로 비슷해, 이익률 차이는 재료가 아니라 인력과 설비에서 나온다고 읽힙니다. 셋째, 1Q23~2Q26 14개 분기의 별도 영업이익을 프로브카드 매출과 비프로브 매출로 회귀하면 한계기여는 프로브카드 18%·비프로브 60%(분기 고정비 157억), 1Q25 이후 6개 분기만 쓰면 31%·68%입니다. 표본이 짧고 두 매출이 함께 움직여 계수의 신뢰는 낮지만, 방향은 연립의 해와 같습니다.</p>
+<p>이 추정이 맞다면 두 가지가 따라옵니다. 하나는 프로브카드가 늘어도 모회사 이익률이 올라가지 않는 구조입니다. 1Q26에서 2Q26으로 프로브카드가 224억 늘었는데 별도 OPM은 31.4%에서 28.5%로 내려왔고, 그 원인은 이익률이 높은 비프로브(특히 OLED)가 빠진 믹스였습니다. 다른 하나는 프로브카드의 이익 기여가 매출 비중보다 작다는 것입니다. 2Q26 모회사 매출의 55%를 차지한 프로브카드가 모회사 영업이익에서는 37%<span class="est">E</span>만 차지합니다. 시장이 프로브카드의 HBM 4사 진입을 값 매기고 있다면, 그 값은 지금 이익이 아니라 한계 이익률이 올라가는 미래를 전제로 합니다. 조정판에서 기준 OPM과 한계 OPM을 따로 둔 이유가 이것입니다.</p>
+<figure class=""><figcaption>장표 2. 2Q26 이익 3층 워터폴 — 프로브카드·비프로브·자회사 층에서 지배순이익까지(억원)</figcaption><svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="56" y1="274.0" x2="860" y2="274.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="50" y="278.0" text-anchor="end" font-size="10.5" fill="#8a857c">0억</text>
+<line x1="56" y1="232.0" x2="860" y2="232.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="50" y="236.0" text-anchor="end" font-size="10.5" fill="#8a857c">100억</text>
+<line x1="56" y1="190.0" x2="860" y2="190.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="50" y="194.0" text-anchor="end" font-size="10.5" fill="#8a857c">200억</text>
+<line x1="56" y1="148.0" x2="860" y2="148.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="50" y="152.0" text-anchor="end" font-size="10.5" fill="#8a857c">300억</text>
+<line x1="56" y1="106.0" x2="860" y2="106.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="50" y="110.0" text-anchor="end" font-size="10.5" fill="#8a857c">400억</text>
+<line x1="56" y1="64.0" x2="860" y2="64.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="50" y="68.0" text-anchor="end" font-size="10.5" fill="#8a857c">500억</text>
+<line x1="56" y1="22.0" x2="860" y2="22.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="50" y="26.0" text-anchor="end" font-size="10.5" fill="#8a857c">600억</text>
+<rect x="71.3" y="217.4" width="49.8" height="56.6" fill="#1f3a5f" opacity="0.8"/>
+<line x1="121.1" y1="217.4" x2="151.7" y2="217.4" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="96.2" y="212.4" text-anchor="middle" font-size="10.5" fill="#1f3a5f">+135</text>
+<text x="96.2" y="290" text-anchor="middle" font-size="10" fill="#8a857c">프로브카드</text>
+<text x="96.2" y="303" text-anchor="middle" font-size="10" fill="#8a857c">OP(E)</text>
+<rect x="151.7" y="119.9" width="49.8" height="97.6" fill="#3a6ea5" opacity="0.8"/>
+<line x1="201.5" y1="119.9" x2="232.1" y2="119.9" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="176.6" y="114.9" text-anchor="middle" font-size="10.5" fill="#3a6ea5">+232</text>
+<text x="176.6" y="290" text-anchor="middle" font-size="10" fill="#8a857c">비프로브</text>
+<text x="176.6" y="303" text-anchor="middle" font-size="10" fill="#8a857c">OP(E)</text>
+<rect x="232.1" y="119.9" width="49.8" height="154.1" fill="#1f3a5f" opacity="0.95"/>
+<line x1="281.9" y1="119.9" x2="312.5" y2="119.9" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="257.0" y="114.9" text-anchor="middle" font-size="10.5" fill="#1f3a5f">367</text>
+<text x="257.0" y="290" text-anchor="middle" font-size="10" fill="#8a857c">=</text>
+<text x="257.0" y="303" text-anchor="middle" font-size="10" fill="#8a857c">별도 OP</text>
+<rect x="312.5" y="53.5" width="49.8" height="66.4" fill="#2b7a78" opacity="0.8"/>
+<line x1="362.3" y1="53.5" x2="392.9" y2="53.5" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="337.4" y="48.5" text-anchor="middle" font-size="10.5" fill="#2b7a78">+158</text>
+<text x="337.4" y="290" text-anchor="middle" font-size="10" fill="#8a857c">자회사 층</text>
+<rect x="392.9" y="53.5" width="49.8" height="220.5" fill="#1f3a5f" opacity="0.95"/>
+<line x1="442.7" y1="53.5" x2="473.3" y2="53.5" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="417.8" y="48.5" text-anchor="middle" font-size="10.5" fill="#1f3a5f">525</text>
+<text x="417.8" y="290" text-anchor="middle" font-size="10" fill="#8a857c">=</text>
+<text x="417.8" y="303" text-anchor="middle" font-size="10" fill="#8a857c">연결 OP</text>
+<rect x="473.3" y="38.6" width="49.8" height="14.9" fill="#b07d2b" opacity="0.8"/>
+<line x1="523.1" y1="38.6" x2="553.7" y2="38.6" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="498.2" y="33.6" text-anchor="middle" font-size="10.5" fill="#b07d2b">+36</text>
+<text x="498.2" y="290" text-anchor="middle" font-size="10" fill="#8a857c">영업외</text>
+<rect x="553.7" y="38.6" width="49.8" height="57.5" fill="#a44a3f" opacity="0.8"/>
+<line x1="603.5" y1="96.0" x2="634.1" y2="96.0" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="578.6" y="33.6" text-anchor="middle" font-size="10.5" fill="#a44a3f">−137</text>
+<text x="578.6" y="290" text-anchor="middle" font-size="10" fill="#8a857c">법인세</text>
+<rect x="634.1" y="96.0" width="49.8" height="178.0" fill="#1f3a5f" opacity="0.95"/>
+<line x1="683.9" y1="96.0" x2="714.5" y2="96.0" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="659.0" y="91.0" text-anchor="middle" font-size="10.5" fill="#1f3a5f">424</text>
+<text x="659.0" y="290" text-anchor="middle" font-size="10" fill="#8a857c">= 순이익</text>
+<rect x="714.5" y="96.0" width="49.8" height="23.1" fill="#a44a3f" opacity="0.8"/>
+<line x1="764.3" y1="119.2" x2="794.9" y2="119.2" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="739.4" y="91.0" text-anchor="middle" font-size="10.5" fill="#a44a3f">−55</text>
+<text x="739.4" y="290" text-anchor="middle" font-size="10" fill="#8a857c">비지배 유출</text>
+<rect x="794.9" y="119.2" width="49.8" height="154.8" fill="#a44a3f" opacity="0.95"/>
+<text x="819.8" y="114.2" text-anchor="middle" font-size="10.5" fill="#a44a3f">369</text>
+<text x="819.8" y="290" text-anchor="middle" font-size="10" fill="#8a857c">=</text>
+<text x="819.8" y="303" text-anchor="middle" font-size="10" fill="#8a857c">지배순이익</text>
+</svg><div class="src">DART 2026 반기보고서 연결·별도 손익, 분기 제품매출(사업의 내용 매출실적 누적 차분). 프로브카드·비프로브 OP는 1Q26·2Q26 연립 해(자체 추정 E). 자회사 층 = 연결 OP − 별도 OP.</div></figure>
+<p class="reading"><b>관찰.</b> 2Q26 연결 영업이익 525억은 프로브카드 135억<span class="est">E</span>·비프로브 232억<span class="est">E</span>·자회사 층 158억으로 나뉘고, 법인세 136.8억과 비지배 55.1억을 지나 지배순이익 368.6억이 남습니다. <b>원인.</b> 자회사 층은 2Q26 연결 영업이익의 30%를 만들었지만, 타이거일렉 지분 43.71%·메가터치 40.68%·엘디티 43.78%라 이익의 절반 이상이 비지배로 샙니다. 상장 3사의 2Q26 순이익에 외부 지분율을 곱하면 55.3억으로 공시 비지배 55.1억과 거의 같습니다. <b>함의.</b> 주주에게 오는 이익으로 다시 세면 자회사 층의 무게는 줄어듭니다. 2026년 상반기 자회사 층 세후 159억<span class="est">E</span> 가운데 지배 몫은 73억<span class="est">E</span>로 지배순이익 738억의 10%<span class="est">E</span>이고, 나머지는 모회사 두 층이 만듭니다.</p>
+<table class=""><tr><th>층(억원)</th><th>1Q26</th><th>2Q26</th><th>2026년 상반기</th></tr><tr><td>① 모회사 프로브카드 OP(OPM 19.2%<span class="est">E</span>)</td><td>91.7<span class="est">E</span></td><td>134.7<span class="est">E</span></td><td>226.4<span class="est">E</span></td></tr><tr><td>② 모회사 비프로브 OP(OPM 39.8%<span class="est">E</span>)</td><td>278.2<span class="est">E</span></td><td>232.3<span class="est">E</span></td><td>510.5<span class="est">E</span></td></tr><tr><td>= 별도 OP(공시)</td><td>369.9</td><td>367.0</td><td>736.9</td></tr><tr><td>③ 자회사 층 OP(연결 − 별도)</td><td>50.0</td><td>158.0</td><td>208.0</td></tr><tr><td>= 연결 OP(공시)</td><td>419.9</td><td>525.0</td><td>944.9</td></tr><tr><td>①+② 세후(분기 유효세율)</td><td>287.8<span class="est">E</span></td><td>277.4<span class="est">E</span></td><td>565.2<span class="est">E</span></td></tr><tr><td>③ 세후</td><td>38.9<span class="est">E</span></td><td>119.4<span class="est">E</span></td><td>158.3<span class="est">E</span></td></tr><tr><td>− 비지배 유출(공시)</td><td>30.9</td><td>55.1</td><td>86.0</td></tr><tr><td>③ 중 지배 몫(세후 − 비지배)</td><td>8.0<span class="est">E</span></td><td>64.3<span class="est">E</span></td><td>73.4<span class="est">E</span></td></tr><tr><td>지배순이익(공시)</td><td>369.2</td><td>368.6</td><td>737.8</td></tr></table>
+<p>자회사 층의 지배 몫은 계산 방식에 따라 흔들립니다. 2Q26만 보면 자회사 층 세후 이익 119.4억<span class="est">E</span>에서 비지배 55.1억을 뺀 지배 몫 비율이 54%<span class="est">E</span>이고, 2026년 상반기 합으로는 46%<span class="est">E</span>, 상장 3사 영업이익을 지분율로 가중하면 43%입니다. 1Q26만 따로 보면 비율이 크게 낮아지는데, 연결 − 별도 차이에는 자회사 이익뿐 아니라 모회사가 타이거일렉에서 사 온 PCB의 미실현이익 제거 같은 연결 조정이 섞여 있기 때문입니다. 2Q26 연결 − 별도 차 158억 가운데 상장 3사 영업이익 합은 126억이고, 나머지 32억이 지엠테스트·메가센·해외 100% 법인과 연결 조정의 합입니다. 조정판 기본값은 반기 합 기준 46%<span class="est">E</span>로 둡니다.</p>
+
+<h2>4. 피어 배수와 성장률 대비 위치</h2>
+<p>피어는 세 무리로 나눠 봅니다. 한국 테스트 소모품(리노공업·ISC·티에프이·오킨스전자)과 테스터(와이씨·디아이·네오셈), 글로벌 프로브카드(FormFactor·Technoprobe·MJC), 그리고 고객인 메모리 2사입니다. 한국 종목의 배수는 9-11 종가를 네이버 2026E EPS로 나눠 같은 기준으로 맞췄고, 글로벌 3사는 B 노트에 기록한 9-10~11 시세 기준 forward PER입니다. 리노공업 26.1배(EPS 성장 +28%), ISC 45.0배(+59%), 티에프이 20.7배(+72%)에 비해 티에스이는 20.1배에 성장률 +275%로, 한국 소모품 피어 가운데 이익 성장 대비 배수가 낮은 쪽에 있습니다. 글로벌에서는 HBM 비중이 가장 높은 MJC가 forward 21.4배로 가장 낮고, 비메모리·AI 로직 중심 Technoprobe가 44.7배로 가장 높습니다.</p>
+<figure class=""><figcaption>장표 3. 피어 PER과 2026E 이익 성장률 — 티에스이는 어디에 놓이나(9-11)</figcaption><svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="328.0" x2="850" y2="328.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="332.0" text-anchor="end" font-size="10.5" fill="#8a857c">0배</text>
+<line x1="62" y1="284.0" x2="850" y2="284.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="288.0" text-anchor="end" font-size="10.5" fill="#8a857c">10배</text>
+<line x1="62" y1="240.0" x2="850" y2="240.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="244.0" text-anchor="end" font-size="10.5" fill="#8a857c">20배</text>
+<line x1="62" y1="196.0" x2="850" y2="196.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="200.0" text-anchor="end" font-size="10.5" fill="#8a857c">30배</text>
+<line x1="62" y1="152.0" x2="850" y2="152.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="156.0" text-anchor="end" font-size="10.5" fill="#8a857c">40배</text>
+<line x1="62" y1="108.0" x2="850" y2="108.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="112.0" text-anchor="end" font-size="10.5" fill="#8a857c">50배</text>
+<line x1="62" y1="64.0" x2="850" y2="64.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="68.0" text-anchor="end" font-size="10.5" fill="#8a857c">60배</text>
+<line x1="62" y1="20.0" x2="850" y2="20.0" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="56" y="24.0" text-anchor="end" font-size="10.5" fill="#8a857c">70배</text>
+<line x1="113.7" y1="20" x2="113.7" y2="328" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="113.7" y="344" text-anchor="middle" font-size="10.5" fill="#8a857c">+20%</text>
+<line x1="278.5" y1="20" x2="278.5" y2="328" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="278.5" y="344" text-anchor="middle" font-size="10.5" fill="#8a857c">+50%</text>
+<line x1="403.2" y1="20" x2="403.2" y2="328" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="403.2" y="344" text-anchor="middle" font-size="10.5" fill="#8a857c">+100%</text>
+<line x1="527.8" y1="20" x2="527.8" y2="328" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="527.8" y="344" text-anchor="middle" font-size="10.5" fill="#8a857c">+200%</text>
+<line x1="692.6" y1="20" x2="692.6" y2="328" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="692.6" y="344" text-anchor="middle" font-size="10.5" fill="#8a857c">+500%</text>
+<line x1="817.2" y1="20" x2="817.2" y2="328" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="817.2" y="344" text-anchor="middle" font-size="10.5" fill="#8a857c">+1000%</text>
+<text x="471" y="370" text-anchor="middle" font-size="10.5" fill="#8a857c">2026E EPS 성장률(2025 실적 대비, 로그 축) · 세로 = 9-11 종가 ÷ 2026E EPS</text>
+<line x1="62" y1="185.0" x2="850" y2="185.0" stroke="#b07d2b" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="846" y="181.0" text-anchor="end" font-size="10" fill="#b07d2b">FormFactor fwd 32.5배(성장률 미확보)</text>
+<line x1="62" y1="131.3" x2="850" y2="131.3" stroke="#b07d2b" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="846" y="127.3" text-anchor="end" font-size="10" fill="#b07d2b">Technoprobe fwd 44.7배(성장률 미확보)</text>
+<circle cx="585.0" cy="239.5" r="5" fill="#a44a3f"/>
+<text x="585.0" y="227.5" text-anchor="middle" font-size="10" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">티에스이 20.1배·+275%</text>
+<circle cx="171.9" cy="213.2" r="4" fill="#1f3a5f"/>
+<text x="179.9" y="217.2" text-anchor="start" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">리노공업 26.1배·+28%</text>
+<circle cx="309.6" cy="129.8" r="4" fill="#1f3a5f"/>
+<text x="317.6" y="133.8" text-anchor="start" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">ISC 45.0배·+59%</text>
+<circle cx="343.2" cy="237.1" r="4" fill="#1f3a5f"/>
+<text x="335.2" y="249.1" text-anchor="end" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">티에프이 20.7배·+72%</text>
+<circle cx="592.7" cy="234.9" r="4" fill="#2b7a78"/>
+<text x="600.7" y="251.9" text-anchor="start" font-size="10" fill="#2b7a78" stroke="#fff" stroke-width="3" paint-order="stroke">타이거일렉 21.2배·+287%</text>
+<circle cx="452.3" cy="211.7" r="4" fill="#1f3a5f"/>
+<text x="460.3" y="207.7" text-anchor="start" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">샘씨엔에스 26.4배·+131%</text>
+<circle cx="515.4" cy="249.6" r="4" fill="#1f3a5f"/>
+<text x="507.4" y="253.6" text-anchor="end" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">오킨스전자 17.8배·+187%</text>
+<circle cx="327.2" cy="197.4" r="4" fill="#1f3a5f"/>
+<text x="319.2" y="189.4" text-anchor="end" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">와이씨 29.7배·+66%</text>
+<circle cx="812.0" cy="259.7" r="4" fill="#1f3a5f"/>
+<text x="804.0" y="251.7" text-anchor="end" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">디아이 15.5배·+972%</text>
+<circle cx="643.8" cy="241.5" r="4" fill="#1f3a5f"/>
+<text x="651.8" y="233.5" text-anchor="start" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">네오셈 19.7배·+381%</text>
+<circle cx="690.0" cy="305.2" r="4" fill="#8a857c"/>
+<text x="698.0" y="317.2" text-anchor="start" font-size="10" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">SK하이닉스 5.2배·+493%</text>
+<circle cx="735.5" cy="304.3" r="4" fill="#8a857c"/>
+<text x="743.5" y="298.3" text-anchor="start" font-size="10" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">삼성전자 5.4배·+635%</text>
+<circle cx="318.4" cy="47.8" r="4" fill="#1f3a5f"/>
+<text x="326.4" y="51.8" text-anchor="start" font-size="10" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">한미반도체 63.7배·+62%</text>
+<circle cx="383.8" cy="233.8" r="4.5" fill="none" stroke="#b07d2b" stroke-width="1.6"/>
+<text x="391.8" y="224.8" text-anchor="start" font-size="10" fill="#b07d2b" stroke="#fff" stroke-width="3" paint-order="stroke">MJC fwd 21.4배·OP +90%</text>
+<circle cx="317.5" cy="48.6" r="4.5" fill="none" stroke="#b07d2b" stroke-width="1.6"/>
+<text x="309.5" y="40.6" text-anchor="end" font-size="10" fill="#b07d2b" stroke="#fff" stroke-width="3" paint-order="stroke">글로벌 Big4 평균(LS 4-20) 63.5배·+62.1%</text>
+<line x1="220.1" y1="263.0" x2="303.5" y2="271.8" stroke="#a44a3f" stroke-width="2.2"/>
+<circle cx="220.1" cy="263.0" r="3.5" fill="#fff" stroke="#a44a3f" stroke-width="1.6"/>
+<circle cx="303.5" cy="271.8" r="3.5" fill="#fff" stroke="#a44a3f" stroke-width="1.6"/>
+<text x="311.5" y="285.8" font-size="10" fill="#a44a3f">티에스이 2027E(DS·신한 EPS, 2026E 컨센 대비) 14.8~12.8배</text>
+</svg><div class="src">한국: 키움 9-11 종가 ÷ 네이버 2026E EPS(컨센), 성장률 = 2026E EPS ÷ 2025 EPS − 1. 글로벌: B 노트(9-10~11 시세 기준 forward PER, MJC 2026 영업이익 가이던스 8-12 공시, LS 4-20 Big4 집계). 티에스이 2027E 선분은 DS·신한 2027F EPS 기준.</div></figure>
+<p class="reading"><b>관찰.</b> 티에스이(20.1배·+275%)는 이익 성장률이 비슷한 타이거일렉(21.2배·+287%)과 같은 높이에 있고, 성장률이 훨씬 낮은 리노공업·ISC보다 배수가 낮습니다. 메모리 2사는 성장률 +493%·+635%에서 5.2배·5.4배입니다. <b>원인.</b> 2026E 성장률은 2025년 기저가 얼마나 낮았느냐를 반영합니다. 티에스이의 2025년 EPS 3,456원에는 대손 96억이 섞여 있어, 올해 성장률이 커 보이는 만큼 내년 성장률의 자가 되지 못합니다. 메모리 2사의 낮은 배수는 시장이 사이클 정점 이익에 붙이는 할인이고, MJC가 Technoprobe의 절반 배수인 것도 메모리 노출에 대한 같은 할인으로 읽힙니다. <b>함의.</b> 그래서 성장률 대비 싸다는 읽기는 2027년 성장에 기대야 합니다. DS·신한 2027F EPS로 보면 성장률은 +36~57%, 배수는 14.8~12.8배이고, 이것은 리노공업(+28%)·ISC(+59%)의 2026E 성장률과 비슷한 구간에서 그들 배수의 절반 이하입니다. 이 할인이 메모리 사이클 할인인지, 고객 지도(중국 노출)의 할인인지가 논쟁 4와 이어집니다.</p>
+<table class=""><tr><th>종목</th><th>구분</th><th>시총(억)</th><th>9-11 종가 ÷ 2026E EPS</th><th>TTM PER(네이버)</th><th>PBR(네이버)</th><th>2026E EPS 성장</th><th>YTD</th></tr><tr><td>티에스이</td><td>self</td><td>28,815</td><td>20.1</td><td>27.53</td><td>6.08</td><td>+275%</td><td>+352.3%</td></tr><tr><td>리노공업</td><td>소켓·핀</td><td>50,605</td><td>26.1</td><td>26.94</td><td>6.49</td><td>+28%</td><td>+10.1%</td></tr><tr><td>ISC</td><td>소켓</td><td>40,317</td><td>45.0</td><td>51.98</td><td>6.91</td><td>+59%</td><td>+71.2%</td></tr><tr><td>티에프이</td><td>소켓·보드</td><td>6,890</td><td>20.7</td><td>31.12</td><td>4.54</td><td>+72%</td><td>+53.3%</td></tr><tr><td>타이거일렉</td><td>자회사(PCB)</td><td>4,319</td><td>21.2</td><td>40.40</td><td>6.55</td><td>+287%</td><td>+208.1%</td></tr><tr><td>메가터치</td><td>자회사(핀)</td><td>2,451</td><td>—</td><td>26.51</td><td>2.84</td><td>—</td><td>+138.8%</td></tr><tr><td>샘씨엔에스</td><td>프로브카드 STF</td><td>9,502</td><td>26.4</td><td>31.37</td><td>4.86</td><td>+131%</td><td>+134.5%</td></tr><tr><td>오킨스전자</td><td>소켓</td><td>4,450</td><td>17.8</td><td>25.73</td><td>6.19</td><td>+187%</td><td>+104.9%</td></tr><tr><td>와이씨</td><td>테스터</td><td>9,476</td><td>29.7</td><td>30.39</td><td>2.46</td><td>+66%</td><td>-20.2%</td></tr><tr><td>디아이</td><td>테스터</td><td>8,476</td><td>15.5</td><td>29.05</td><td>3.87</td><td>+972%</td><td>+40.3%</td></tr><tr><td>네오셈</td><td>테스터</td><td>5,063</td><td>19.7</td><td>31.11</td><td>3.72</td><td>+381%</td><td>+5.3%</td></tr><tr><td>한미반도체</td><td>HBM 장비</td><td>220,171</td><td>63.7</td><td>99.14</td><td>29.34</td><td>+62%</td><td>+81.3%</td></tr><tr><td>SK하이닉스</td><td>고객(메모리)</td><td>13,236,522</td><td>5.2</td><td>8.08</td><td>4.89</td><td>+493%</td><td>+178.3%</td></tr><tr><td>삼성전자</td><td>고객(메모리)</td><td>15,171,093</td><td>5.4</td><td>11.64</td><td>3.02</td><td>+635%</td><td>+116.4%</td></tr><tr><td>FormFactor</td><td>글로벌 프로브카드 1위</td><td>$8.76B</td><td>fwd 32.5</td><td>77.3</td><td>7.9</td><td>미확보</td><td>—</td></tr><tr><td>Technoprobe</td><td>글로벌 2위(비메모리)</td><td>€19.13B</td><td>fwd 44.7</td><td>93.0</td><td>13.7</td><td>미확보(2026 매출 가이던스 €1,050~1,100M)</td><td>—</td></tr><tr><td>MJC</td><td>글로벌 3위(HBM)</td><td>¥528.1B</td><td>fwd 21.4</td><td>28.2</td><td>5.8</td><td>영업이익 가이던스 +89.8%</td><td>—</td></tr></table>
+<p>피어 비교에서 우리가 조심하는 지점은 둘입니다. 하나는 사업 구성입니다. 리노공업은 영업이익률 51.3%(2Q26)의 소켓·핀 회사이고 ISC는 AI 매출 비중 81%(2Q26)의 소켓 회사라, 프로브카드 비중이 절반이 안 되고 영업이익률 28%대인 티에스이와는 이익의 질이 다릅니다. 다른 하나는 이익의 위치입니다. 티에스이는 2026년에 이익이 네 배가 되는 해이고, 비교 대상 대부분은 20~70% 성장하는 해입니다. 같은 20배라도 전자는 이익이 막 올라선 자리의 배수이고 후자는 올라선 이익이 이어지는 자리의 배수입니다. 이 차이 때문에 피어 배수를 그대로 곱하는 방식은 쓰지 않고, 피어는 조정판의 적용 배수 슬라이더를 어디까지 움직여 볼지 정하는 범위로만 씁니다. 한국 소모품 피어의 2026E 배수는 17.8~45.0배, 글로벌 프로브카드는 21.4~44.7배입니다.</p>
+
+<h2>5. 역사적 배수 밴드 — PER과 PBR의 자</h2>
+<p>신한은 리포트에 연도별 High PER을 2018 16.1·2019 10.0·2020 25.8·2021 19.9·2022 19.8·2024 22.9·2025 18.2배로 기재했습니다. 우리는 이것을 월봉과 연간 지배순이익으로 다시 계산했습니다. EPS를 '연간 지배순이익 ÷ 현재 발행주식수'로 통일하면 2020~2025년 연중 고점 PER이 신한 기재값과 소수 첫째 자리까지 같게 나오고, 같은 산식으로 연평균·연중 저점 PER도 구할 수 있습니다(표 6). 2023년은 지배순이익이 1.2억이라 배수가 의미를 잃어 뺍니다. 월말 종가 ÷ 당해 연도 EPS의 2020~2025년 평균이 13.6배, 연중 고점 PER 5개 연도 평균이 21.3배입니다. 2026년은 연간 EPS가 아직 없어 2026E 컨센 12,955원을 쓰는데, 이 기준으로 9-11 PER 20.1배는 과거 밴드 중심의 1.5배이고 연중 고점 평균보다 약간 낮습니다.</p>
+<figure class=""><figcaption>장표 4. PER 밴드 2020-01~2026-09 — 월말 종가 ÷ 당해 연도 EPS(배)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="860" y2="256.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="216.3" x2="860" y2="216.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.3" text-anchor="end" font-size="11" fill="#8a857c">5</text>
+<line x1="62" y1="176.7" x2="860" y2="176.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.7" text-anchor="end" font-size="11" fill="#8a857c">10</text>
+<line x1="62" y1="137.0" x2="860" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">15</text>
+<line x1="62" y1="97.3" x2="860" y2="97.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.3" text-anchor="end" font-size="11" fill="#8a857c">20</text>
+<line x1="62" y1="57.7" x2="860" y2="57.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.7" text-anchor="end" font-size="11" fill="#8a857c">25</text>
+<line x1="62" y1="18.0" x2="860" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">30</text>
+<line x1="62" y1="148.1" x2="860" y2="148.1" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">20.01</text>
+<text x="141.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">20.09</text>
+<text x="221.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">21.05</text>
+<text x="301.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">22.01</text>
+<text x="381.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">22.09</text>
+<text x="461.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">23.05</text>
+<text x="540.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">24.01</text>
+<text x="620.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">24.09</text>
+<text x="700.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">25.05</text>
+<text x="780.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">26.01</text>
+<text x="860.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">26.09</text>
+<polyline points="62.0,208.2 72.0,215.2 82.0,223.6 91.9,215.8 101.9,197.0 111.9,170.3 121.8,124.1 131.8,139.1 141.8,145.7 151.8,140.1 161.8,76.5 171.7,53.3 181.7,129.6 191.7,154.8 201.6,149.1 211.6,133.0 221.6,130.8 231.6,141.0 241.6,104.3 251.5,123.5 261.5,123.5 271.5,138.0 281.5,150.6 291.4,111.4 301.4,135.3 311.4,144.7 321.4,140.4 331.3,115.3 341.3,103.3 351.3,148.7 361.2,139.8 371.2,153.8 381.2,184.8 391.2,188.2 401.1,182.5 411.1,190.9" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<polyline points="540.8,169.1 550.8,139.5 560.8,128.7 570.7,84.2 580.7,137.4 590.7,131.8 600.7,151.0 610.6,155.4 620.6,153.7 630.6,151.0 640.5,179.4 650.5,170.8 660.5,156.8 670.5,153.2 680.5,146.0 690.4,161.9 700.4,164.6 710.4,165.3 720.3,166.5 730.3,169.8 740.3,133.7 750.3,136.8 760.2,127.5 770.2,123.8 780.2,208.1 790.2,202.7 800.2,191.3 810.1,152.6 820.1,133.6 830.1,106.3 840.0,141.8 850.0,110.9 860.0,96.5" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<text x="171.7" y="41.3" text-anchor="middle" font-size="10.5" fill="#a44a3f">20.12 25.6</text>
+<text x="241.6" y="92.3" text-anchor="middle" font-size="10.5" fill="#a44a3f">21.07 19.1</text>
+<text x="341.3" y="91.3" text-anchor="middle" font-size="10.5" fill="#a44a3f">22.05 19.2</text>
+<text x="570.7" y="72.1" text-anchor="middle" font-size="10.5" fill="#a44a3f">24.04 21.7</text>
+<text x="770.2" y="111.8" text-anchor="end" font-size="10.5" fill="#a44a3f">25.12 16.7</text>
+<text x="860.0" y="84.5" text-anchor="end" font-size="10.5" fill="#a44a3f">26.09 20.1(2026E 컨센 EPS)</text>
+<text x="481.0" y="142.1" text-anchor="middle" font-size="10.5" fill="#8a857c">밴드 중심 13.6배(2023 공란)</text>
+</svg><div class="src">월봉 종가(키움), 연간 지배순이익(DART) ÷ 발행주식 11,061,429주. 2023년은 지배순이익 1.2억이라 공란, 2026년은 2026E 컨센 EPS 12,955원. 점선은 2020~2025(2023 제외) 평균 13.6배.</div></figure>
+<p class="reading"><b>관찰.</b> 2020~2025년 월말 PER은 10분위 8.5배에서 90분위 18.2배 사이에 대부분 머물렀고(중앙값 13.9배, 월말 기준 최고는 2020년 25.6배·2024년 21.7배), 2026년은 1월 6.0배에서 9월 20.1배까지 올라왔습니다. <b>원인.</b> 이 밴드는 사후 PER입니다. 그해 실제로 벌 이익을 미리 알았다면 붙였을 배수라, 이익이 급증한 해(2020·2026)의 초반에는 배수가 낮게 찍힙니다. 2026년 1~5월의 한 자릿수 배수는 주가가 싸서가 아니라 이익 상향이 주가보다 앞서 있었다는 표시입니다. <b>함의.</b> 9월에 밴드 중심의 1.5배까지 온 것은 처음으로 주가가 이익 상향을 따라잡았다는 뜻입니다. 이제부터 배수가 더 오르려면 2027년 이익이 2026년보다 크다는 증거가 필요하고, 반대로 밴드 중심으로 돌아가는 데에는 이익이 꺾일 필요도 없이 주가가 이익 상향을 멈추기만 하면 됩니다.</p>
+<table class=""><tr><th>연도</th><th>통일 EPS(원)</th><th>연중 고점 PER(자체)</th><th>신한 기재 High PER</th><th>연평균 PER(월말 종가)</th><th>연중 저점 PER</th></tr><tr><td>2020</td><td>2,454</td><td>25.8</td><td>25.8</td><td>12.2</td><td>2.6</td></tr><tr><td>2021</td><td>4,043</td><td>19.9</td><td>19.9</td><td>15.6</td><td>11.1</td></tr><tr><td>2022</td><td>4,504</td><td>19.8</td><td>19.8</td><td>13.1</td><td>7.9</td></tr><tr><td>2024</td><td>3,840</td><td>22.9</td><td>22.9</td><td>13.9</td><td>9.1</td></tr><tr><td>2025</td><td>3,456</td><td>18.2</td><td>18.2</td><td>13.3</td><td>10.5</td></tr><tr><td>2018 · 2019</td><td>—</td><td>—</td><td>16.1 · 10.0</td><td>—</td><td>—</td></tr><tr><td>2023</td><td>11</td><td>의미 없음(지배순이익 1.2억)</td><td>—</td><td>—</td><td>—</td></tr><tr><td>2026(9-11)</td><td>12,955(2026E 컨센)</td><td>24.6(9-10 장중)</td><td>—</td><td>13.5</td><td>4.4</td></tr></table>
+<figure class=""><figcaption>장표 5. PBR 밴드 2020-03~2026-09 — 월말 종가 ÷ 직전 분기말 BPS(배)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="860" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="189.0" x2="860" y2="189.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="193.0" text-anchor="end" font-size="11" fill="#8a857c">2</text>
+<line x1="62" y1="132.0" x2="860" y2="132.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="136.0" text-anchor="end" font-size="11" fill="#8a857c">4</text>
+<line x1="62" y1="75.0" x2="860" y2="75.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="79.0" text-anchor="end" font-size="11" fill="#8a857c">6</text>
+<line x1="62" y1="18.0" x2="860" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">8</text>
+<line x1="62" y1="185.5" x2="860" y2="185.5" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">20.03</text>
+<text x="123.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">20.09</text>
+<text x="184.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">21.03</text>
+<text x="246.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">21.09</text>
+<text x="307.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">22.03</text>
+<text x="368.9" y="264" text-anchor="middle" font-size="10" fill="#8a857c">22.09</text>
+<text x="430.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">23.03</text>
+<text x="491.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">23.09</text>
+<text x="553.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">24.03</text>
+<text x="614.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">24.09</text>
+<text x="675.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">25.03</text>
+<text x="737.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">25.09</text>
+<text x="798.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">26.03</text>
+<text x="860.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">26.09</text>
+<polyline points="62.0,227.5 72.2,223.2 82.5,212.4 92.7,202.1 102.9,178.5 113.2,186.2 123.4,191.8 133.6,189.0 143.8,157.9 154.1,144.8 164.3,142.0 174.5,162.5 184.8,161.6 195.0,149.1 205.2,147.4 215.5,161.6 225.7,134.8 235.9,148.8 246.2,153.7 256.4,163.9 266.6,172.8 276.8,149.1 287.1,155.9 297.3,163.1 307.5,163.3 317.8,145.4 328.0,136.8 338.2,179.3 348.5,173.9 358.7,182.4 368.9,204.7 379.2,206.7 389.4,203.2 399.6,205.8 409.8,201.8 420.1,204.1 430.3,195.8 440.5,202.4 450.8,196.4 461.0,181.9 471.2,184.7 481.5,197.0 491.7,197.8 501.9,206.1 512.2,189.0 522.4,193.0 532.6,200.7 542.8,185.3 553.1,180.2 563.3,157.1 573.5,184.7 583.8,184.4 594.0,194.1 604.2,196.1 614.5,197.5 624.7,196.4 634.9,209.8 645.2,208.1 655.4,206.4 665.6,204.7 675.8,201.5 686.1,208.1 696.3,209.0 706.5,209.8 716.8,210.1 727.0,211.5 737.2,198.7 747.5,199.8 757.7,196.4 767.9,199.5 778.2,183.0 788.4,175.9 798.6,167.6 808.8,121.2 819.1,98.1 829.3,83.3 839.5,121.7 849.8,88.4 860.0,72.7" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<text x="62.0" y="241.5" text-anchor="middle" font-size="10.5" fill="#a44a3f">20.03 0.65</text>
+<text x="225.7" y="122.8" text-anchor="middle" font-size="10.5" fill="#a44a3f">21.07 3.90</text>
+<text x="522.4" y="181.0" text-anchor="middle" font-size="10.5" fill="#a44a3f">23.12 1.86</text>
+<text x="767.9" y="215.5" text-anchor="middle" font-size="10.5" fill="#a44a3f">25.12 1.63</text>
+<text x="860.0" y="62.7" text-anchor="end" font-size="10.5" fill="#a44a3f">26.09 6.08</text>
+<text x="379.2" y="179.5" text-anchor="start" font-size="10.5" fill="#8a857c">2020-03~2025-12 평균 2.12배</text>
+</svg><div class="src">월봉 종가(키움), 분기말 지배지분(DART 연결) ÷ 발행주식 11,061,429주(자사주 보유기의 차이는 근사). 점선은 2020-03~2025-12 평균 2.12배.</div></figure>
+<p class="reading"><b>관찰.</b> PBR은 2020-03 0.65배(구간 최저)에서 2021-07 3.90배를 거쳐 2023-12 1.86배, 2025-12 1.63배였고, 2026-09 6.08배로 2025년 이전 최고의 1.6배 자리에 있습니다. <b>원인.</b> 2020-03~2025-12의 PBR은 연간 ROE 10~21%대인 회사에 걸맞게 0.65~3.90배 범위에 있었습니다. 2026년 상반기 ROE가 연환산 33%대로 뛰면서 같은 PER에서도 PBR이 두세 배로 늘어났습니다. <b>함의.</b> PBR 밴드 하단은 하방의 자로 쓰기에 멀리 있습니다. 2025년 이전 평균 2.12배는 현재 PBR보다 -65% 아래이고, 이 거리를 좁히는 경로는 주가 하락과 장부가 증가(이익 누적·CB 전환) 둘입니다. 연말 컨센 BPS 47,767원만 반영해도 PBR은 5.45배가 됩니다.</p>
+
+<h2>6. 시총이 요구하는 조합 — 내재기대 역산</h2>
+<p>시총을 거꾸로 풀기 전에 시총에서 모회사 사업이 아닌 것을 먼저 걷어냅니다. 티에스이는 상장 자회사 셋을 들고 있고, 이 지분은 매일 시장에서 값이 매겨집니다. 9-11 종가 기준 타이거일렉 2,760,000주(43.71%) 1,887.8억, 메가터치 11,828,700주(40.68%) 997.2억, 엘디티 3,645,540주(43.78%) 87.1억으로 합 2,972.1억입니다. 비상장 지엠테스트(82.02%)·메가센(52.37%)의 장부 157.9억과 대만 ZENVOCE 지분 239.6억(공정가치 금융자산)을 더하고, 모회사 별도 순현금 404.8억을 빼면 남는 모회사 사업가치는 2조 5,041억입니다. 연결 순현금 801억이 아니라 별도 순현금을 쓰는 이유는, 자회사 현금은 이미 자회사 시가 안에 들어 있어 두 번 빼면 이중계산이 되기 때문입니다.</p>
+<figure class=""><figcaption>장표 6. 시총 분해 — 모회사 사업가치·자회사 지분가치·순현금(억원, 9-11)</figcaption><svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="150.0" y1="20" x2="150.0" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="150.0" y="204" text-anchor="middle" font-size="10" fill="#8a857c">0억</text>
+<line x1="259.4" y1="20" x2="259.4" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="259.4" y="204" text-anchor="middle" font-size="10" fill="#8a857c">5,000억</text>
+<line x1="368.8" y1="20" x2="368.8" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="368.8" y="204" text-anchor="middle" font-size="10" fill="#8a857c">1조</text>
+<line x1="478.1" y1="20" x2="478.1" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="478.1" y="204" text-anchor="middle" font-size="10" fill="#8a857c">1조 5,000억</text>
+<line x1="587.5" y1="20" x2="587.5" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="587.5" y="204" text-anchor="middle" font-size="10" fill="#8a857c">2조</text>
+<line x1="696.9" y1="20" x2="696.9" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="696.9" y="204" text-anchor="middle" font-size="10" fill="#8a857c">2조 5,000억</text>
+<line x1="806.2" y1="20" x2="806.2" y2="190" stroke="#d8d4cc" stroke-width="0.6"/>
+<text x="806.2" y="204" text-anchor="middle" font-size="10" fill="#8a857c">3조</text>
+<text x="142" y="45" text-anchor="end" font-size="11" fill="#1f3a5f">시총(발행주식)</text>
+<text x="142" y="59" text-anchor="end" font-size="10.5" fill="#8a857c">2조 8,815억</text>
+<rect x="150.0" y="30" width="547.8" height="34" fill="#1f3a5f" opacity="0.9"/>
+<text x="423.9" y="51" text-anchor="middle" font-size="10" fill="#fff">2조 5,041억</text>
+<rect x="697.8" y="30" width="65.0" height="34" fill="#2b7a78" opacity="0.9"/>
+<text x="730.3" y="51" text-anchor="middle" font-size="10" fill="#fff">2,972억</text>
+<rect x="762.8" y="30" width="8.7" height="34" fill="#e9e2d2" opacity="0.9"/>
+<rect x="771.5" y="30" width="8.9" height="34" fill="#b07d2b" opacity="0.9"/>
+<text x="142" y="115" text-anchor="end" font-size="11" fill="#1f3a5f">시총(CB 전환 반영)</text>
+<text x="142" y="129" text-anchor="end" font-size="10.5" fill="#8a857c">2조 9,907억</text>
+<rect x="150.0" y="100" width="549.8" height="34" fill="#1f3a5f" opacity="0.9"/>
+<text x="424.9" y="121" text-anchor="middle" font-size="10" fill="#fff">2조 5,132억</text>
+<rect x="699.8" y="100" width="65.0" height="34" fill="#2b7a78" opacity="0.9"/>
+<text x="732.3" y="121" text-anchor="middle" font-size="10" fill="#fff">2,972억</text>
+<rect x="764.8" y="100" width="8.7" height="34" fill="#e9e2d2" opacity="0.9"/>
+<rect x="773.5" y="100" width="8.9" height="34" fill="#b07d2b" opacity="0.9"/>
+<rect x="782.3" y="100" width="21.9" height="34" fill="#a44a3f" opacity="0.9"/>
+<rect x="150" y="219" width="10" height="10" fill="#1f3a5f"/><text x="164" y="228" font-size="10" fill="#8a857c">모회사 사업가치(잔여)</text>
+<rect x="296.0" y="219" width="10" height="10" fill="#2b7a78"/><text x="310.0" y="228" font-size="10" fill="#8a857c">상장 자회사 지분 시가</text>
+<rect x="442.0" y="219" width="10" height="10" fill="#e9e2d2"/><text x="456.0" y="228" font-size="10" fill="#8a857c">비상장·투자주식 장부</text>
+<rect x="578.5" y="219" width="10" height="10" fill="#b07d2b"/><text x="592.5" y="228" font-size="10" fill="#8a857c">별도 순현금</text>
+<rect x="667.5" y="219" width="10" height="10" fill="#a44a3f"/><text x="681.5" y="228" font-size="10" fill="#8a857c">CB 현금</text>
+</svg><div class="src">시총 키움 9-11, 상장 자회사 지분 시가 = 9-11 종가 × 보유 주식(반기보고서 타법인출자 현황), 비상장·ZENVOCE는 2Q26 장부, 별도 순현금 = 2Q26 별도 현금 + 단기·장기금융 − 차입(0). CB 전환 반영 막대는 전환주식 418,999주와 납입 현금 1,000억을 함께 반영.</div></figure>
+<p class="reading"><b>관찰.</b> 시총 2조 8,815억 가운데 모회사 사업가치가 2조 5,041억(87%)이고, 상장 자회사 지분 시가는 10.3%, 순현금은 1.4%입니다. CB 전환을 반영하면 시총과 현금이 함께 늘어 사업가치는 2조 5,132억으로 거의 같습니다. <b>원인.</b> 전환가 238,664원이 9-11 종가와 가까워 전환으로 늘어나는 시총(1,092억)과 들어오는 현금(1,000억)이 거의 상쇄되기 때문입니다. 자회사 지분가치는 시총의 10분의 1이지만, 타이거일렉은 2026E EPS 기준 21.2배에 거래되고 있어 그 자체로 프리미엄을 품고 있습니다. <b>함의.</b> 결국 시총의 약 87%가 모회사 프로브카드·보드·소켓·OLED에 걸려 있습니다. 2Q26 연환산 모회사 세후 영업이익 1,116억<span class="est">E</span>으로 나누면 22.4배이고, 이 배수가 모회사 사업에 매겨진 실제 가격입니다. 연결 PER 19.5배보다 높은 것은 자회사 층이 지분가치로 따로 빠지면서 분모에서 자회사 이익도 함께 빠졌기 때문입니다.</p>
+<p>이제 역산입니다. 조정판의 식으로 적용 PER과 프로브카드 한계 OPM을 격자로 바꿔 가며 "시총이 성립하려면 프로브카드 연매출이 얼마여야 하는가"를 풀면 표 7이 나옵니다. 다른 입력은 모두 기본값(2Q26 연환산, CB 전환 반영)으로 고정했습니다. 밴드 중심 13.6배·한계 OPM 30%에서 요구 매출은 6,113억<span class="est">E</span>으로 2Q26 연환산 2,812억의 2.2배이고, 회사가 밝힌 2027년 캐파 4,000억 이상을 넘습니다. 한계 OPM을 50%로 올려도 4,793억<span class="est">E</span>이 필요합니다. 반대로 연중 고점 평균 21.3배에서는 요구 매출이 2,626억<span class="est">E</span>으로 2Q26 연환산보다 낮아, 지금 속도만 유지돼도 시총이 설명됩니다. 17배 근처가 두 세계의 경계이고, 그 자리에서 요구 매출은 4,184억<span class="est">E</span>으로 캐파 4,000억 부근입니다.</p>
+<table class=""><tr><th>한계 OPM \ 적용 PER</th><th>13.6배(밴드 중심)</th><th>17.0배</th><th>21.3배(연중 고점 평균)</th><th>25.0배</th></tr><tr><td>20%</td><td>7,763<span class="est">E</span> (캐파 4,000 초과)</td><td>4,870<span class="est">E</span> (캐파 4,000 초과)</td><td>2,534<span class="est">E</span> (2Q26 연환산으로 충족)</td><td>1,166<span class="est">E</span> (2Q26 연환산으로 충족)</td></tr><tr><td>30%</td><td>6,113<span class="est">E</span> (캐파 4,000 초과)</td><td>4,184<span class="est">E</span> (캐파 4,000 초과)</td><td>2,626<span class="est">E</span> (2Q26 연환산으로 충족)</td><td>1,715<span class="est">E</span> (2Q26 연환산으로 충족)</td></tr><tr><td>40%</td><td>5,288<span class="est">E</span> (캐파 4,000 초과)</td><td>3,841<span class="est">E</span></td><td>2,673<span class="est">E</span> (2Q26 연환산으로 충족)</td><td>1,989<span class="est">E</span> (2Q26 연환산으로 충족)</td></tr><tr><td>50%</td><td>4,793<span class="est">E</span> (캐파 4,000 초과)</td><td>3,635<span class="est">E</span></td><td>2,701<span class="est">E</span> (2Q26 연환산으로 충족)</td><td>2,154<span class="est">E</span> (2Q26 연환산으로 충족)</td></tr></table>
+<p>표 7을 읽는 방법은 하나입니다. 시총은 배수와 프로브카드 매출의 곱을 사고 있고, 곱은 정해져 있으니 한쪽을 낮추면 다른 쪽이 올라가야 합니다. 배수를 과거 평균으로 돌리는 순간 프로브카드는 캐파를 넘어야 하고, 프로브카드가 캐파에서 멈춘다면 배수는 17배 위에 머물러야 합니다. 이 교환 관계가 논쟁 1(703억은 기준선인가 천장인가)과 논쟁 5를 잇는 선입니다. 캐파가 곧 천장이라는 읽기가 맞다면 배수가 버텨야 하고, 캐파가 계속 늘어난다는 읽기(회사 IR: 2026년 투자 약 500억, CB 시설자금 500억)가 맞다면 배수에 여유가 생깁니다.</p>
+
+<h2>7. 조정판 — 열두 개의 슬라이더</h2>
+<p>조정판은 열두 개 슬라이더로 지배순이익을 만들고, 그것을 시총과 모회사 사업가치로 나눈 함의 배수, 그리고 적용 배수에서의 요구 조건만 출력합니다. 입력은 세 묶음입니다. (가) 모회사는 프로브카드 연매출·기준 OPM·한계 OPM과 비프로브 연매출·OPM 다섯 개이고, 기본값은 2Q26 연환산과 두 분기 연립의 해입니다. 프로브카드 이익은 '2Q26 연환산분에는 기준 OPM, 그것을 넘거나 모자라는 부분에는 한계 OPM'으로 계산해, 인력·설비가 먼저 들어간 사업의 영업 레버리지를 따로 조정할 수 있게 했습니다. (나) 자회사 층은 연결 − 별도 영업이익과 그중 지배 몫, 영업외 순수익, 세율입니다. (다) 자본구조는 별도 순현금, CB 전환 반영률, 요구 조건을 계산할 적용 PER입니다. 기본값은 표 8에 근거와 함께 적었습니다.</p>
+<table class=""><tr><th>슬라이더</th><th>기본값</th><th>근거(창)</th></tr><tr><td>프로브카드 연매출</td><td>2,812억</td><td>2Q26 모회사 별도 제품매출 703.0억 × 4. DS 2027F 2,820억과 거의 같고 신한 2027F 3,789억보다 낮음</td></tr><tr><td>프로브카드 기준 OPM</td><td>19.2%<span class="est">E</span></td><td>1Q26·2Q26 두 분기 연립(부문 OPM 불변 가정)의 해</td></tr><tr><td>프로브카드 한계 OPM</td><td>30%<span class="est">E</span></td><td>1Q25~2Q26 6분기 회귀 한계기여 31%, 1Q24~ 10분기 21%</td></tr><tr><td>비프로브 연매출</td><td>2,338억</td><td>2Q26 별도 매출 − 프로브카드 = 584.4억 × 4(보드 427·소켓 135·OLED 21)</td></tr><tr><td>비프로브 OPM</td><td>39.8%<span class="est">E</span></td><td>두 분기 연립의 해. DS 7-02 보드 마진 35% 이상과 합치</td></tr><tr><td>자회사 층 OP</td><td>632억</td><td>2Q26 연결−별도 OP 차 158.0억 × 4(2026년 상반기 연환산은 416억)</td></tr><tr><td>자회사 층 지배 몫</td><td>46%<span class="est">E</span></td><td>2026년 상반기 비지배 86.0억 ÷ 자회사 층 세후 159.4억으로 역산. 지분율 가중 43%</td></tr><tr><td>영업외 순수익</td><td>142억</td><td>2Q26 세전 − 영업이익 35.5억 × 4(2026년 상반기 연환산 260억, 1Q 환차익 포함)</td></tr><tr><td>세율</td><td>24%</td><td>2Q26 연결 유효세율 24.4%, 2026년 상반기 23.3%</td></tr><tr><td>별도 순현금(CB 제외)</td><td>405억</td><td>2Q26 별도 현금 325.3 + 단기금융 39.3 + 장기금융 40.2, 차입 0</td></tr><tr><td>CB 전환 반영</td><td>100%</td><td>전환가 238,664원이 9-11 종가보다 8.4% 아래(내가격). 반영 시 주식 +418,999주·현금 +1,000억</td></tr><tr><td>적용 배수</td><td>13.6배</td><td>2020~2025(2023 제외) 월말 종가 ÷ 당해 연도 EPS 평균 — 자체 PER 밴드 중심</td></tr></table>
+<div class="panel"><b>조정판 — 시총이 요구하는 가정 조합을 읽는 자입니다. 주당 가치를 내지 않으며, 출력은 함의 배수와 요구 조건뿐입니다.</b><br><br><b>(가) 모회사 — 연간 기준(2027E 자리에 놓고 읽는 값)</b><br>프로브카드 연매출(억원, 모회사 별도 제품매출) <span id="s_P_v"></span><br><input type="range" id="s_P" min="1500" max="6500" step="1" value="2812"><br>프로브카드 기준 OPM(2Q26 연환산분, %) <span id="s_m0_v"></span><br><input type="range" id="s_m0" min="5" max="40" step="0.1" value="19.2"><br>프로브카드 한계 OPM(기준선 초과·미달분, %) <span id="s_mm_v"></span><br><input type="range" id="s_mm" min="5" max="60" step="1" value="30"><br>비프로브 연매출(보드·소켓·OLED, 억원) <span id="s_N_v"></span><br><input type="range" id="s_N" min="1200" max="4500" step="1" value="2338"><br>비프로브 OPM(%) <span id="s_mn_v"></span><br><input type="range" id="s_mn" min="15" max="55" step="0.1" value="39.8"><br><b>(나) 자회사 층·세금</b><br>자회사 층 OP(연결 − 별도, 억원/년) <span id="s_S_v"></span><br><input type="range" id="s_S" min="-200" max="1200" step="1" value="632"><br>자회사 층 이익 중 지배 몫(%) <span id="s_w_v"></span><br><input type="range" id="s_w" min="30" max="100" step="1" value="46"><br>영업외 순수익(억원/년) <span id="s_no_v"></span><br><input type="range" id="s_no" min="-200" max="500" step="1" value="142"><br>세율(%) <span id="s_t_v"></span><br><input type="range" id="s_t" min="15" max="30" step="0.5" value="24.0"><br><b>(다) 자본구조·배수</b><br>별도 순현금(CB 제외, 억원) <span id="s_nc_v"></span><br><input type="range" id="s_nc" min="0" max="2000" step="1" value="405"><br>CB 1,000억 전환 반영(%) <span id="s_d_v"></span><br><input type="range" id="s_d" min="0" max="100" step="25" value="100"><br>적용 PER(요구 조건 계산용, 배) <span id="s_X_v"></span><br><input type="range" id="s_X" min="8" max="40" step="0.1" value="13.6"><br><div class="out">모회사 OP <span id="o_opp">—</span>억(프로브카드 <span id="o_probe">—</span>억 · 프로브카드 평균 OPM <span id="o_popm">—</span>% · 비프로브 <span id="o_non">—</span>억 · 별도 OPM <span id="o_popp">—</span>%) · 연결 OP <span id="o_opc">—</span>억</div><div class="out">지배순이익 <span id="o_ni">—</span>억 · EPS <span id="o_eps">—</span>원(<span id="o_sh">—</span>주) · 시총 <span id="o_mc">—</span> ÷ 지배순이익 = 함의 PER <span id="o_pe">—</span>배</div><div class="out">모회사 사업가치(시총 − 순현금 − 상장 자회사 지분 시가 − 비상장·투자주식) <span id="o_biz">—</span> ÷ 모회사 세후 OP = 함의 배수 <span id="o_pebiz">—</span>배</div><div class="out" style="font-weight:400">적용 PER <span id="o_x">—</span>배에서 시총이 요구하는 조건(다른 입력 고정): 프로브카드 연매출 <span id="o_preq">—</span>억(2027 캐파 4,000억의 <span id="o_capa">—</span>%) · 사업가치 기준으로는 <span id="o_preq2">—</span>억 · 또는 비프로브 OPM <span id="o_mnreq">—</span>% · 참고: 프로브카드가 캐파 4,000억을 채울 때의 함의 PER <span id="o_pecapa">—</span>배</div><div class="note">식(파이썬 표·장표와 동일): 프로브카드 OP = 기준선 2,812억 × 기준 OPM + (연매출 − 기준선) × 한계 OPM. 모회사 OP = 프로브카드 OP + 비프로브 매출 × 비프로브 OPM. 지배순이익 = (모회사 OP + 영업외) × (1 − 세율) + 자회사 층 OP × (1 − 세율) × 지배 몫. 시총 = 9-11 종가 × (발행주식 11,061,429주 + 전환주식 418,999주 × 반영률). 모회사 사업가치 = 시총 − (별도 순현금 + CB 현금 × 반영률) − 상장 자회사 지분 시가 2,972.1억(9-11 종가) − 비상장 자회사 장부 157.9억 − ZENVOCE 239.6억. 요구 프로브카드 매출 = 현재 입력 + (시총 ÷ 적용 PER − 지배순이익) ÷ (한계 OPM × (1 − 세율)). 기준 OPM·한계 OPM·지배 몫은 자체 추정<span class="est">E</span>입니다.</div>
+<script>
+(function(){
+var PRICE=260500,SH=11061429,CONV=418999,CB=1000,PB=2812.0,LIST=2972.1,UNL=157.9,ZEN=239.6,CAPA=4000;
+var ids=["s_P","s_m0","s_mm","s_N","s_mn","s_S","s_w","s_no","s_t","s_nc","s_d","s_X"];
+function g(i){return +document.getElementById(i).value}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function jo(v){var n=v < 0;v=Math.abs(v);var s=v >= 10000?Math.floor(v/10000)+"조 "+fm(Math.round(v%10000),0)+"억":fm(Math.round(v),0)+"억";return (n?"-":"")+s}
+function model(v){
+ var probe=PB*v.m0/100+(v.P-PB)*v.mm/100, non=v.N*v.mn/100, opp=probe+non, opc=opp+v.S, t=v.t/100;
+ var ni=(opp+v.no)*(1-t)+v.S*(1-t)*v.w/100;
+ var sh=SH+CONV*v.d/100, mc=PRICE*sh/1e8, pe=mc/ni, eps=ni*1e8/sh;
+ var biz=mc-(v.nc+CB*v.d/100)-LIST-UNL-ZEN, pebiz=biz/(opp*(1-t));
+ var nireq=mc/v.X, preq=v.P+(nireq-ni)/(v.mm/100*(1-t)), mnreq=v.mn+(nireq-ni)/((1-t)*v.N)*100;
+ var oppreq=biz/(v.X*(1-t)), preq2=v.P+(oppreq-opp)/(v.mm/100);
+ var nicapa=ni+(CAPA-v.P)*v.mm/100*(1-t);
+ return {probe:probe,non:non,opp:opp,opc:opc,ni:ni,sh:sh,mc:mc,pe:pe,eps:eps,biz:biz,pebiz:pebiz,preq:preq,mnreq:mnreq,preq2:preq2,pecapa:mc/nicapa,popm:probe/v.P*100,popp:opp/(v.P+v.N)*100};}
+function f(){
+ ids.forEach(function(i){var d=(i==="s_m0"||i==="s_mn"||i==="s_X"||i==="s_t")?1:0;document.getElementById(i+"_v").textContent=fm(g(i),d)});
+ var v={P:g("s_P"),m0:g("s_m0"),mm:g("s_mm"),N:g("s_N"),mn:g("s_mn"),S:g("s_S"),w:g("s_w"),no:g("s_no"),t:g("s_t"),nc:g("s_nc"),d:g("s_d"),X:g("s_X")};
+ var m=model(v); var S=function(i,t){document.getElementById(i).textContent=t};
+ S("o_probe",fm(m.probe,0));S("o_popm",fm(m.popm,1));S("o_non",fm(m.non,0));S("o_opp",fm(m.opp,0));S("o_popp",fm(m.popp,1));S("o_opc",fm(m.opc,0));
+ S("o_ni",fm(m.ni,0));S("o_eps",fm(m.eps,0));S("o_sh",fm(m.sh,0));S("o_mc",jo(m.mc));S("o_pe",fm(m.pe,1));
+ S("o_biz",jo(m.biz));S("o_pebiz",fm(m.pebiz,1));S("o_x",fm(v.X,1));
+ S("o_preq",m.preq <= v.P?fm(m.preq,0)+"(현재 입력으로 충족)":fm(m.preq,0));S("o_preq2",fm(m.preq2,0));S("o_mnreq",m.mnreq > 100?"100 초과(불가)":fm(m.mnreq,1));
+ S("o_capa",fm(m.preq/CAPA*100,0));S("o_pecapa",fm(m.pecapa,1));}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+<p>기본값의 해석은 이렇습니다. 모회사 영업이익은 1,470억<span class="est">E</span>(별도 OPM 28.6%), 자회사 층을 더한 연결 영업이익은 2,102억으로 2Q26 연환산과 같고, 지배순이익은 1,446억<span class="est">E</span>으로 2Q26 연환산 실적 1,474억보다 2% 낮게 나옵니다. 차이는 세율(기본값 24%)과 자회사 층 지배 몫(반기 합 기준 46%)을 2Q26 한 분기보다 보수적으로 잡은 데서 옵니다. CB 전환을 반영한 시총 2조 9,907억을 이 이익으로 나누면 함의 PER 20.7배, EPS는 12,599원<span class="est">E</span>(11,480,428주)입니다. CB를 부채로 두면(반영률 0%) 함의 PER은 19.9배입니다. 모회사 사업가치 2조 5,132억 ÷ 모회사 세후 영업이익은 22.5배입니다.</p>
+<p>요구 조건 출력은 기본 적용 배수 13.6배(밴드 중심)에서 프로브카드 연매출 6,113억<span class="est">E</span>, 캐파 4,000억의 153%입니다. 사업가치 기준으로 풀면 6,016억<span class="est">E</span>으로 더 커지는데, 이 방식은 자회사 이익을 분모에서 빼는 대신 자회사 지분 시가를 분자에서 빼기 때문입니다. 비프로브 OPM 하나로 같은 요구를 채우려면 82.2%<span class="est">E</span>가 필요해, 비프로브 쪽으로는 현실적으로 채울 수 없는 크기라는 것도 함께 보입니다. 참고 출력인 '프로브카드가 캐파 4,000억을 채울 때의 함의 PER'은 17.4배<span class="est">E</span>입니다. 2026년 말 캐파 3,000억 기준이면 20.1배<span class="est">E</span>, 신한 2027F 프로브카드 3,789억이면 17.9배<span class="est">E</span>입니다. 프로브카드가 캐파를 가득 채워도 함의 PER은 밴드 중심 13.6배보다 높고 연중 고점 평균 21.3배보다는 낮은 자리에 옵니다.</p>
+<p>이 자가 후한 쪽과 박한 쪽을 같이 적습니다. 후한 쪽은 한계 OPM 30%입니다. 회귀의 긴 표본(14분기)에서는 18%, 10분기에서는 21%로 더 낮고, 회사가 단가 인하 진입을 공언한 이상 HBM·해외 신규 고객이 늘수록 한계 이익률이 낮아질 수도 있습니다. 박한 쪽은 세 가지입니다. 첫째, 비프로브 매출을 2Q26 연환산에 묶었는데 인터페이스보드는 1Q26 400억·2Q26 427억으로 늘고 있고 신한은 2027F 보드 매출을 2,352억으로 봅니다. 둘째, 프로브카드 인력 충원과 설비 투자가 이미 비용에 들어와 있다면 한계 OPM은 기준 OPM보다 높아야 합니다. 셋째, 자회사 층은 타이거일렉 가동률 85%(2026년 상반기)의 현재 속도를 유지한다고만 두었고, 타이거일렉 2026E 영업이익 컨센 252억은 2026년 상반기 104억의 두 배를 넘습니다. 어느 쪽 오류가 더 큰지는 3Q26 분기보고서의 별도 OPM과 연결 − 별도 차가 알려 줍니다.</p>
+
+<h2>8. 실측 하방 자 — 전환가·처분가·낙폭·밴드</h2>
+<p>하방의 자는 실측 가격과 과거 낙폭만 씁니다. 가장 가까운 자는 CB 전환가 238,664원으로 9-11 종가보다 -8.4% 아래입니다. 이 가격은 한국투자 계열(900억)과 브레이브뉴-베스티안(100억)이 7-10 결정 당시 기준주가 100%로 받은 가격이고, 리픽싱 조항이 없어 주가가 내려와도 전환가는 그대로입니다. 주가가 이 아래로 가면 CB는 외가격이 되어 2029-01-22부터의 풋(원금 100%) 쪽으로 성격이 바뀌고, 위에 머물면 2027-07-22부터 418,999주(3.65%)가 실제 주식으로 나올 수 있습니다. 두 번째 자는 2025-10-16 자사주 275,909주를 시간외대량매매로 처분한 가격 50,540원으로 -80.6% 아래입니다. 회사가 '운영 및 시설 자금 조달' 목적으로 자기 주식을 판 가격이라는 점에서 기록할 가치가 있지만, 1년 사이 이익 수준이 네 배가 되어 가격 자로서의 의미는 크게 줄었습니다.</p>
+<figure class=""><figcaption>장표 7. 실측 가격 자 — 전환가·처분가·저점·고점의 자리(원, 9-11 종가 대비)</figcaption><svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="40.0" y1="295" x2="40.0" y2="305" stroke="#8a857c"/>
+<text x="40.0" y="320" text-anchor="middle" font-size="10" fill="#8a857c">0</text>
+<line x1="157.6" y1="295" x2="157.6" y2="305" stroke="#8a857c"/>
+<text x="157.6" y="320" text-anchor="middle" font-size="10" fill="#8a857c">50,000</text>
+<line x1="275.3" y1="295" x2="275.3" y2="305" stroke="#8a857c"/>
+<text x="275.3" y="320" text-anchor="middle" font-size="10" fill="#8a857c">100,000</text>
+<line x1="392.9" y1="295" x2="392.9" y2="305" stroke="#8a857c"/>
+<text x="392.9" y="320" text-anchor="middle" font-size="10" fill="#8a857c">150,000</text>
+<line x1="510.6" y1="295" x2="510.6" y2="305" stroke="#8a857c"/>
+<text x="510.6" y="320" text-anchor="middle" font-size="10" fill="#8a857c">200,000</text>
+<line x1="628.2" y1="295" x2="628.2" y2="305" stroke="#8a857c"/>
+<text x="628.2" y="320" text-anchor="middle" font-size="10" fill="#8a857c">250,000</text>
+<line x1="745.9" y1="295" x2="745.9" y2="305" stroke="#8a857c"/>
+<text x="745.9" y="320" text-anchor="middle" font-size="10" fill="#8a857c">300,000</text>
+<line x1="40" y1="300" x2="840" y2="300" stroke="#8a857c" stroke-width="1.2"/>
+<line x1="125.1" y1="26" x2="125.1" y2="300" stroke="#8a857c" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="125.1" cy="300" r="4" fill="#8a857c"/>
+<text x="131.1" y="22" text-anchor="start" font-size="10.5" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">52주 저가(2025-09-03 장중) 36,150원 (-86.1%)</text>
+<line x1="140.8" y1="55" x2="140.8" y2="300" stroke="#2b7a78" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="140.8" cy="300" r="4" fill="#2b7a78"/>
+<text x="146.8" y="51" text-anchor="start" font-size="10.5" fill="#2b7a78" stroke="#fff" stroke-width="3" paint-order="stroke">2Q26 BPS(PBR 1배 자리) 42,844원 (-83.6%)</text>
+<line x1="158.9" y1="84" x2="158.9" y2="300" stroke="#b07d2b" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="158.9" cy="300" r="4" fill="#b07d2b"/>
+<text x="164.9" y="80" text-anchor="start" font-size="10.5" fill="#b07d2b" stroke="#fff" stroke-width="3" paint-order="stroke">자사주 처분가(2025-10-16) 50,540원 (-80.6%)</text>
+<line x1="377.9" y1="113" x2="377.9" y2="300" stroke="#a44a3f" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="377.9" cy="300" r="4" fill="#a44a3f"/>
+<text x="383.9" y="109" text-anchor="start" font-size="10.5" fill="#a44a3f" stroke="#fff" stroke-width="3" paint-order="stroke">7-30 저점(7월 -49.5%) 143,600원 (-44.9%)</text>
+<line x1="601.6" y1="142" x2="601.6" y2="300" stroke="#b07d2b" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="601.6" cy="300" r="4" fill="#b07d2b"/>
+<text x="595.6" y="138" text-anchor="end" font-size="10.5" fill="#b07d2b" stroke="#fff" stroke-width="3" paint-order="stroke">CB 전환가(2027-07-22~) 238,664원 (-8.4%)</text>
+<line x1="652.9" y1="171" x2="652.9" y2="300" stroke="#1f3a5f" stroke-width="1.3" stroke-dasharray=""/>
+<circle cx="652.9" cy="300" r="4" fill="#1f3a5f"/>
+<text x="646.9" y="167" text-anchor="end" font-size="10.5" fill="#1f3a5f" stroke="#fff" stroke-width="3" paint-order="stroke">9-11 종가 260,500원</text>
+<line x1="709.4" y1="200" x2="709.4" y2="300" stroke="#8a857c" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="709.4" cy="300" r="4" fill="#8a857c"/>
+<text x="703.4" y="196" text-anchor="end" font-size="10.5" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">7-15 고점 284,500원 (+9.2%)</text>
+<line x1="761.2" y1="229" x2="761.2" y2="300" stroke="#8a857c" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="761.2" cy="300" r="4" fill="#8a857c"/>
+<text x="755.2" y="225" text-anchor="end" font-size="10.5" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">9-10 종가(편입 집행) 306,500원 (+17.7%)</text>
+<line x1="789.4" y1="258" x2="789.4" y2="300" stroke="#8a857c" stroke-width="1.3" stroke-dasharray="3 3"/>
+<circle cx="789.4" cy="300" r="4" fill="#8a857c"/>
+<text x="783.4" y="254" text-anchor="end" font-size="10.5" fill="#8a857c" stroke="#fff" stroke-width="3" paint-order="stroke">9-10 장중 고점 318,500원 (+22.3%)</text>
+<text x="40" y="348" font-size="10.5" fill="#8a857c">괄호는 9-11 종가 260,500원 대비 거리. 전부 실측 가격·장부값이며 값 매김이 아닙니다.</text>
+</svg><div class="src">주요사항보고서(CB 2026-07-10), 자기주식처분결정(2025-10-15), 키움 일봉(52주·7월 급락), 2026 반기보고서 BPS. 전부 실측값이며 값 매김이 아닙니다.</div></figure>
+<p class="reading"><b>관찰.</b> 9-11 종가 아래로 CB 전환가(-8.4%), 7-30 저점 143,600원(-44.9%), 자사주 처분가(-80.6%), 2Q26 BPS(-83.6%), 52주 저가(-86.1%)가 층층이 있고, 위로는 7-15 고점·9-10 종가·9-10 장중 고점이 +22.3% 안에 몰려 있습니다. <b>원인.</b> 2026년 한 해 동안 가격이 급하게 올라와 실측 자 사이의 간격이 넓습니다. 특히 7월에는 유가·중국 CXMT 충격·AI 지출 의심이 겹친 시장 급락 속에 보름 만에 -49.5%가 났다가 다음 날 상한가로 되돌았고, 9-10~11에는 KRX 반도체 지수 편입 집행과 IR이 겹친 날 +14.2%와 -15.0%가 이어졌습니다. <b>함의.</b> 이 자들은 값이 아니라 공급과 변동성의 자입니다. 전환가 근처는 CB 투자자의 손익 분기, 7-30 저점은 올해 실제로 확인된 투매의 바닥이고, 둘 사이의 거리(40%)가 이 주식이 한 달 안에 실제로 움직여 본 폭입니다.</p>
+<p>낙폭의 자는 네 번의 실측입니다. 2017-11~2018-10 메모리 다운사이클 -68.8%, 2022-06~2023-03 -61.5%, 2024-04~2024-12 HBM 선별 장세 -57.9%, 그리고 2026-07-15~07-30 -49.5%입니다. 표 9의 2026-09-10~11 -15.0%는 아직 진행 중인 되돌림이라 참고로만 둡니다. 표 9는 이 낙폭을 가격이 아니라 오늘의 배수로 번역했습니다. 같은 낙폭이 지금 일어나면 2026E 컨센 PER은 6.3배, 7.7배, 8.5배, 10.2배가 되고, 2Q26 PBR은 1.90배, 2.34배, 2.56배, 3.07배가 됩니다. 과거 세 번의 큰 낙폭은 모두 이익이 함께 꺾인 다운사이클이었고, 그때 PER이 한 자릿수로 내려간 것은 주가와 이익이 같이 떨어진 결과였습니다. 이익이 유지되는 가운데 배수만 과거 밴드 중심 13.6배로 돌아가는 경우의 거리는 -32%로, 7월 급락보다 작고 과거 다운사이클 낙폭보다도 작습니다.</p>
+<table class=""><tr><th>구간</th><th>고점(일)</th><th>저점(일)</th><th>낙폭</th><th>같은 낙폭을 오늘 배수로 번역(2026E PER · 2Q26 PBR)</th></tr><tr><td>2017-2019 메모리 다운사이클</td><td>18,950(2017-11-17)</td><td>5,910(2018-10-29)</td><td>-68.8%</td><td>6.3배 · 1.90배</td></tr><tr><td>2021-2023 메모리 다운사이클</td><td>87,500(2022-06-02)</td><td>33,700(2023-03-14)</td><td>-61.5%</td><td>7.7배 · 2.34배</td></tr><tr><td>2024-2025 HBM 선별 장세</td><td>83,200(2024-04-30)</td><td>35,050(2024-12-09)</td><td>-57.9%</td><td>8.5배 · 2.56배</td></tr><tr><td>2026 급등 구간 조정</td><td>306,500(2026-09-10)</td><td>260,500(2026-09-11)</td><td>-15.0%</td><td>17.1배 · 5.17배</td></tr><tr><td>2026-07 급락(되돌림)</td><td>284,500(2026-07-15)</td><td>143,600(2026-07-30)</td><td>-49.5%</td><td>10.2배 · 3.07배</td></tr></table>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 5. 시총 2조 8,815억은 무엇을 값 매기고 있나 — 채점 없음.</b> 이 논쟁은 분기 KPI로 채점하지 않습니다. 대신 논쟁 1~4의 채점 결과가 조정판의 어느 슬라이더를 얼마나 움직이는지로 답을 갱신합니다. 일곱 가지로 나눠 적습니다.</p>
+<p><b>① 질문.</b> 9-11 종가 기준 시총 2조 8,815억(CB 전환 반영 2조 9,907억)이 성립하려면 프로브카드 매출·모회사 이익률·자회사 층·배수 가운데 무엇이 어느 수준이어야 하는가입니다. <b>② 시장이 가격으로 낸 답.</b> 2026E 컨센 PER 20.1배는 우리 밴드 중심 13.6배의 1.5배이고 연중 고점 평균 21.3배보다 약간 낮습니다. 하우스 적용 배수는 1년 사이 13.9배에서 28.4배로 올라갔습니다. 시장은 올해 이익을 역사 상단 근처 배수로 사고 있습니다. <b>③ 우리 읽기(조정판 기본값).</b> 모든 층을 2Q26 연환산에 두면 함의 PER은 20.7배이고, 밴드 중심 배수에서 시총이 요구하는 프로브카드 연매출은 6,113억<span class="est">E</span>으로 2027년 캐파 4,000억의 153%입니다. 프로브카드가 캐파를 가득 채울 때의 함의 PER은 17.4배<span class="est">E</span>입니다. 시총은 "캐파 끝까지의 성장"과 "밴드 상단 배수의 유지" 중 적어도 하나를, 대개는 둘의 일부씩을 사고 있다고 읽습니다.</p>
+<p><b>④ 근거 숫자.</b> 2Q26 지배순이익 연환산 1,474억, 1Q26·2Q26 연립으로 추정한 프로브카드 OPM 19.2%<span class="est">E</span>·비프로브 39.8%<span class="est">E</span>, 자회사 층 2026년 상반기 208억 중 지배 몫 46%<span class="est">E</span>, 상장 자회사 지분 시가 2,972억, 별도 순현금 405억, CB 전환주식 418,999주, 2020~2025 PER 밴드 중심 13.6배·고점 평균 21.3배입니다. <b>⑤ 반대 논거.</b> 이 자가 박하다는 쪽의 논거는 세 가지입니다. 사후 PER 밴드는 이익이 급증하는 해에 낮게 찍혀 중심값이 과소평가될 수 있고, 글로벌 프로브카드 피어의 forward PER은 21.4~44.7배로 우리 밴드 위에 있으며, 비프로브(특히 인터페이스보드)의 성장을 기본값에 넣지 않았습니다. 후하다는 쪽의 논거는 한계 OPM 30%가 긴 표본 회귀보다 높고, 자회사 층 632억이 한 분기의 연환산이며, 메모리 사이클 정점의 이익에 붙는 할인(메모리 2사 5배대)을 반영하지 않았다는 점입니다.</p>
+<p><b>⑥ 채점 대신 관측할 것.</b> 11-16 3Q26 분기보고서의 네 숫자, 곧 모회사 프로브카드 매출(논쟁 1), 별도 OPM(논쟁 2), 연결 − 별도 영업이익 차와 비지배 순이익(논쟁 3), 국내 프로브카드와 대손(논쟁 4)입니다. 그 사이에는 SK하이닉스 HBM4E 퀄 결과, 미국의 중국 메모리 규제, 9-22 엘디티 임시주총, 3Q26 이후 컨센과 2027E 컨센의 첫 공개를 봅니다. <b>⑦ 읽기가 바뀌는 조건.</b> 3Q26 프로브카드가 650억 이상이고 9-30 잔고가 800억 이상이면 기준선이 올라가 요구 매출과 현재의 거리가 줄어듭니다. 반대로 프로브카드 550억 미만(연 2,200억)과 별도 OPM 22% 미만이 겹치면 조정판의 지배순이익은 1,052억<span class="est">E</span>, 함의 PER은 28.4배로 밴드 고점 평균 21.3배 위로 올라가, 시총을 설명할 조합이 '배수 확장' 하나만 남습니다. 표 10은 논쟁 1~4의 유지선·반증선을 조정판에 넣었을 때의 결과입니다.</p>
+<table class=""><tr><th>경로</th><th>움직인 슬라이더</th><th>지배순이익(억)</th><th>함의 PER(희석)</th><th>모회사 사업가치 배수</th><th>밴드 중심 배수에서 요구 프로브카드 매출</th></tr><tr><td>기본값(2Q26 연환산)</td><td>—</td><td>1,446<span class="est">E</span></td><td>20.7배</td><td>22.5배</td><td>6,113억<span class="est">E</span></td></tr><tr><td>논쟁 1 유지선 — 3Q26 프로브카드 650억</td><td>프로브카드 연 2,600억</td><td>1,398<span class="est">E</span></td><td>21.4배</td><td>23.5배</td><td>6,113억<span class="est">E</span></td></tr><tr><td>논쟁 1 반증선 — 3Q26 프로브카드 550억 미만</td><td>프로브카드 연 2,200억</td><td>1,307<span class="est">E</span></td><td>22.9배</td><td>25.7배</td><td>6,113억<span class="est">E</span></td></tr><tr><td>논쟁 1 상단 — 2027 캐파 4,000억(회사 IR)</td><td>프로브카드 연 4,000억</td><td>1,717<span class="est">E</span></td><td>17.4배</td><td>18.1배</td><td>6,113억<span class="est">E</span></td></tr><tr><td>논쟁 2 유지선 — 별도 OPM 26%</td><td>기준 OPM 17.5% · 비프로브 36.3%<span class="est">E</span></td><td>1,348<span class="est">E</span></td><td>22.2배</td><td>24.7배</td><td>6,544억<span class="est">E</span></td></tr><tr><td>논쟁 2 반증선 — 별도 OPM 22% 미만</td><td>기준 OPM 14.8% · 비프로브 30.7%<span class="est">E</span></td><td>1,191<span class="est">E</span></td><td>25.1배</td><td>29.1배</td><td>7,232억<span class="est">E</span></td></tr><tr><td>논쟁 3 유지선 — 연결−별도 OP 차 분기 100억</td><td>자회사 층 연 400억</td><td>1,365<span class="est">E</span></td><td>21.9배</td><td>22.5배</td><td>6,469억<span class="est">E</span></td></tr><tr><td>논쟁 3 반증선 — 분기 50억 미만 + 지분 희석</td><td>자회사 층 연 200억 · 지배 몫 41%</td><td>1,288<span class="est">E</span></td><td>23.2배</td><td>22.5배</td><td>6,809억<span class="est">E</span></td></tr><tr><td>논쟁 4 반증 — 2025년 대손 96억 재발</td><td>모회사 OP −96억</td><td>1,373<span class="est">E</span></td><td>21.8배</td><td>24.1배</td><td>6,433억<span class="est">E</span></td></tr><tr><td>논쟁 4 반증 — 수출 프로브카드 4분의 1 소실</td><td>프로브카드 −400억<span class="est">E</span></td><td>1,355<span class="est">E</span></td><td>22.1배</td><td>24.5배</td><td>6,113억<span class="est">E</span></td></tr></table>
+<p>표 10에서 배수를 가장 크게 움직이는 것은 논쟁 2입니다. 별도 OPM이 28.5%에서 22%로 내려오면 기본값의 지배순이익이 18% 줄고 함의 PER은 25.1배가 됩니다. 논쟁 1의 반증(프로브카드 연 2,200억)은 한계 OPM 30%를 거쳐 들어오기 때문에 지배순이익을 10%만 줄이는데, 이것은 역으로 프로브카드가 늘 때도 이익이 매출만큼 늘지 않는다는 뜻입니다. 논쟁 3은 자회사 층을 연 200억으로 줄이고 지배 몫을 5%p 낮춰도 지배순이익이 11% 줄어드는 데 그칩니다. 비지배로 새는 몫이 커서 자회사 층의 변화가 주주 이익으로 전해지는 비율이 절반 아래이기 때문입니다. 논쟁 4의 대손 96억 재발은 5%, 수출 프로브카드 4분의 1 소실은 6%의 이익 감소입니다. 중국 고객 비중을 회사가 공개하지 않아 4분의 1은 자체 가정<span class="est">E</span>이고, 고객별 금액을 추정하지는 않았습니다. 요약하면 이 시총의 민감도는 프로브카드 물량보다 모회사 이익률에 더 크게 걸려 있고, 이것이 우리가 11-16 분기보고서에서 별도 OPM을 가장 먼저 보는 이유입니다.</p>
+
+<h2>미결</h2>
+<p><b>A급(값의 크기를 바꾸는 것).</b> ① 프로브카드 부문 이익률 — 회사가 공개하지 않아 두 분기 연립과 회귀로 추정했습니다. 3Q26 분기보고서로 세 번째 분기가 생기면 연립을 세 분기 최소제곱으로 바꿔 다시 풉니다. IR에서 제품별 이익률 범위를 확인할 여지도 있습니다. ② 2027E 컨센 — 네이버 공개 페이지에 없고 신한·DS 두 하우스의 추정만 확인했습니다. 3Q26 이후 컨센 갱신과 LS 8월 이후 리포트 원문으로 보완합니다. ③ CB 1,000억 납입 이후의 현금 사용 — 7~9월 CAPEX와 운영자금 집행이 재무제표에 아직 없어 별도 순현금 405억과 CB 현금 1,000억을 그대로 더했습니다. 3Q26 분기보고서에서 확인합니다.</p>
+<p><b>B급(구성을 바꾸는 것).</b> ① 해외 100% 법인(우한·허페이·웨이하이·미국 TSE WORKS)의 장부가와 이익 — 자회사 층 안에 섞여 있고 사업가치 계산에서는 모회사에 포함됩니다. 반기보고서 타법인출자 현황 전문과 연결 주석으로 분리할 수 있습니다. ② 연결 조정(타이거일렉 PCB 미실현이익 제거)의 크기 — 1Q26 자회사 층 지배 몫이 크게 낮게 나오는 원인으로 봅니다. 연결 주석의 내부거래 표로 확인합니다. ③ FormFactor·Technoprobe의 이익 성장률 컨센 — 산점에 점으로 찍지 못하고 기준선으로만 그렸습니다. 해외 컨센 자료로 보완합니다.</p>
+<p><b>C급(자의 정밀도).</b> ① 2018~2019년 자체 PER — 연간 지배순이익이 패킷에 2020년부터만 있어 신한 기재값(16.1·10.0배)을 인용했습니다. 2018·2019 사업보고서로 채울 수 있습니다. ② DS의 2020~2025 평균 PER 20.4배와 우리 밴드 중심 13.6배의 산식 차이 — DS는 연말 또는 선행 기준으로 보이며, 원문 부록으로 확인합니다. ③ PBR 밴드의 자사주 보유기 주식수 — 현재 발행주식으로 통일해 2025년 이전 BPS가 1~3% 낮게 잡혔을 수 있습니다.</p>
+<div class="foot">데이터 계보: 주가·시총·피어 키움 REST(9-11 종가), 연결·별도 분기 손익·재무 OpenDART fnlttSinglAcntAll(2020~2Q26), 제품별 매출·수주·인력·자회사 지분 2026 반기보고서, CB 주요사항보고서(2026-07-10)·자기주식처분결정(2025-10-15), 컨센 네이버(9-10·9-11 조회), 하우스 배수 신한(2025-11-17·2026-01-19·03-06·05-18·08-18)·DS(07-02)·LS(01-21·04-20) 리포트, 글로벌 피어 FormFactor(7-29)·Technoprobe(8-05)·MJC(8-12) 공시와 B 노트 시세 기록, 회사 IR 발언 시사저널e(9-10). 자체 추정(E): 프로브카드·비프로브 OPM, 한계 OPM, 자회사 층 지배 몫, 조정판 출력 전부.</div>
+
+</main></body></html>

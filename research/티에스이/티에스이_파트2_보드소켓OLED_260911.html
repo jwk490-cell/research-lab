@@ -1,0 +1,634 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="segdive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>티에스이 파트 2 — 인터페이스보드·테스트소켓·OLED · 2026-09-11</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>티에스이 파트 2 — 프로브카드 밖의 모회사: 인터페이스보드·소켓·OLED</h1>
+<div class="sub">파트제 커버리지 10편(허브+파트 0~8) 중 파트 2 · 작성 2026-09-11 · 주가 260,500원(9-11 종가, -15.01%) · 시총 2조 8,815억 · 기준 환율 $1 = ₩1,344.6(9-11) · 회계연도 12월(2026 = 제32기) · 다음 실적 3Q26 분기보고서 2026-11-16(E) · 다음 갱신 트리거 11-16 3Q26 분기보고서(매출실적·수주상황)·OLED 수주잔고 184억 인도 시점 · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: DART 2026 반기보고서(8-14, II. 사업의 내용·직원 현황·특수관계자 거래)·2022~2025 사업보고서·2026 1분기보고서·OpenDART 별도 손익·네이버 분기 실적(9-11)·신한 8-18·DS 7-02·LS 1-21/4-20 리포트·조사노트 A~D(9-11)·언론 인용은 본문에 매체·날짜 표기</div>
+<div class="hubnav">티에스이 파트제 커버리지 · 현행 판정은 <a href="티에스이_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 segdive(사업부 딥다이브) 가운데 모회사의 비프로브 3사업을 맡습니다. · 파트 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8</div>
+
+<p>허브는 2026년 상반기 이익을 세 층으로 나눕니다. 첫째는 프로브카드 물량, 둘째는 모회사의 믹스와 단가, 셋째는 자회사 층입니다. 이 파트는 둘째 층의 절반을 맡습니다. 모회사 티에스이는 프로브카드 말고도 인터페이스보드·테스트소켓·OLED 검사장비를 만들고, 이 세 사업은 2026년 상반기 모회사 별도 제품매출 2,466억 가운데 1,283억, 비중으로 52.0%를 채웠습니다. 여기서 쓰는 제품매출은 모두 사업·반기보고서 II. 사업의 내용 '매출실적'의 모회사 별도 기준이고, 분기 값은 누적값을 차분한 것입니다. 프로브카드 자체는 파트 1이, 자회사 층은 파트 3이, 성격별 비용과 A/S는 파트 6이 다룹니다.</p>
+<p>결론을 먼저 적습니다. 첫째, 인터페이스보드는 2Q26 427억으로 모회사의 둘째 사업이고, 성장분은 거의 전부 수출(2Q26 수출 비중 85.0%)에서 나왔습니다. 둘째, 테스트소켓은 2021~2025년 연평균 2.4%<span class="est">E</span> 성장에 머문 정체 사업이었는데 2026년 상반기에 253억(전년 같은 기간 대비 43%<span class="est">E</span>)으로 반등했고, 대신 HBM 다이캐리어 소켓·로더라는 선택지는 접혔습니다. 셋째, OLED 검사장비는 수주가 매출을 만드는 장비 사업이라 1Q26 181억에서 2Q26 21억으로 흔들렸고, 보드·소켓 이익률 가정을 고정할 때 이 흔들림이 별도 OPM 31.4%에서 28.5%로의 하락을 설명하려면 OLED 영업이익률이 46% 이상<span class="est">E</span>이어야 합니다. 우리는 그 조건이 성립하기 어렵다고 보고, 2분기 이익률 하락의 대부분은 믹스가 아니라 제품 안(프로브카드 단가·A/S·증설 비용)에서 나왔다고 읽습니다.</p>
+<div class="gloss">
+<b>인터페이스보드(하이픽스·로드보드)</b><span>패키지 테스트 단계에서 테스터(ATE)와 핸들러·소켓 사이를 잇는 기판입니다. 칩 하나하나에 신호와 전원을 나눠 주는 배선판이라 테스터 모델·핸들러 모델·패키지 사양이 바뀔 때마다 새로 설계합니다. 메모리 테스터용은 하이픽스(HiFix)로 불리고(조사노트 B), 비메모리 테스터용은 회사가 로드보드(Load Board)로 따로 부릅니다(2025 사업보고서 개요).</span>
+<b>번인보드</b><span>칩을 고온·고전압 상태에 오래 두어 초기 불량을 걸러 내는 번인 공정에 쓰는 기판입니다. DS투자증권(2026-07-02)은 인터페이스보드와 번인보드를 묶어 "고객 투자 사이클과 동행하고 약 5년 주기로 교체 수요가 생긴다"고 적었습니다. 자회사 타이거일렉도 번인보드용 PCB를 만듭니다.</span>
+<b>테스터(ATE) — Advantest·Teradyne</b><span>칩에 전기 신호를 넣고 응답을 판정하는 자동 검사 장비입니다. 메모리 테스터는 일본 Advantest, 비메모리·HBM 테스터는 미국 Teradyne(Magnum 7H 등, 조사노트 B)이 대표적입니다. 보드는 테스터 모델별로 설계되므로 테스터의 증설·세대 교체가 보드 수요를 부르고, Advantest는 반기보고서 보드 경쟁사 표의 모든 고객군에 이름이 올라 있을 만큼 스스로 보드도 공급합니다.</span>
+<b>SMT(표면실장)</b><span>PCB 위에 부품을 자동으로 올려 붙이는 공정입니다. 회사는 반기보고서에서 SMT 라인을 갖춰 "보드용 PCB가 들어오는 즉시 SMT 공정을 진행한다"고 적었는데, 이것이 초단납기 대응의 물리적 근거입니다.</span>
+<b>SI/PI 시뮬레이션</b><span>신호 무결성(Signal Integrity)과 전력 무결성(Power Integrity)을 설계 단계에서 미리 계산해 보는 해석입니다. 112G·224G PAM4 같은 초고속 신호에서는 임피던스가 조금만 어긋나도 신호가 찌그러지므로, 보드·소켓 모두 이 해석 역량이 수율과 납기를 정합니다.</span>
+<b>엘라스토머 소켓 대 스프링핀 소켓</b><span>엘라스토머(러버) 소켓은 실리콘 고무에 도전성 입자를 수직으로 채워 전기를 통하게 한 소켓이고, 스프링핀(포고) 소켓은 스프링이 든 핀을 하우징에 꽂은 소켓입니다. 회사는 국내 메모리(소품종 대량)는 엘라스토머 비중이 높고 해외 비메모리(다품종 소량)는 스프링핀 수요가 높으며, 고속 테스트에서 엘라스토머 적용이 늘고 있다고 적었습니다(2026 반기보고서).</span>
+<b>OLED 어레이 검사</b><span>OLED 패널의 TFT(박막트랜지스터)를 형성한 단계에서 수백만 개 픽셀의 단선·합선·누설 전류·구동 특성을 전기적으로 재는 검사입니다. 회사 장비는 μA~nA 수준의 미세 신호를 읽고 G6~G8.6 기판을 다룬다고 적혀 있습니다(2026 반기보고서).</span>
+<b>수주 표(수주상황)</b><span>반기·사업보고서 II-4의 표로, 해당 기간에 새로 받은 수주와 그중 납품한 금액, 남은 잔고를 적습니다. 기초 잔고를 담지 않는 '기간 내 신규 수주' 기준이라, 연초에 가까운 1분기 잔고는 작게 보이고 연말 잔고가 이듬해 매출의 선행 지표 역할을 합니다.</span>
+</div>
+
+<h2>1. 모회사 안의 네 사업 — 비프로브 3사업의 무게</h2>
+<p>14분기를 나란히 놓으면 모회사의 얼굴이 바뀌어 온 과정이 보입니다. 1Q23에는 모회사 제품매출 241억 가운데 비프로브 3사업이 81.3%였고, 프로브카드는 45억에 불과했습니다. 2Q26에는 제품매출 1,287억 가운데 비프로브 3사업이 45.3%로 내려와 처음으로 절반 아래가 됐습니다. 비중이 줄었다고 사업이 작아진 것은 아닙니다. 비프로브 3사업의 분기 합계는 1Q23 196억에서 1Q26 699억·2Q26 584억으로 세 배 이상 커졌고, 프로브카드가 그보다 더 빨리 컸을 뿐입니다.</p>
+<p>연간으로 보면 비프로브 3사업의 역할이 더 분명합니다. 메모리 불황이던 2023년에 프로브카드 매출은 383억으로 2022년 879억의 절반 아래로 꺼졌지만, 비프로브 3사업은 979억으로 2022년 1,362억보다 28%<span class="est">E</span> 줄어드는 데 그쳤습니다. 2023년 모회사 별도 영업이익은 101억으로 흑자를 지켰고, 그해 제품매출 가운데 72%를 비프로브 3사업이 채웠습니다. 반대로 2025년처럼 프로브카드가 1,434억으로 뛰는 해에는 비프로브 비중이 53.8%로 내려옵니다. 비프로브 3사업은 경기에 덜 흔들리는 바닥이고, 프로브카드는 위로 열린 변수라는 역할 분담으로 읽습니다.</p>
+<p>조직도 이 구조를 따릅니다. 2026년 6월 30일 모회사 직원 1,127명 가운데 프로브카드(SP)가 588명, 보드(AT 보드)가 209명, 소켓(AT 소켓)이 158명, PTR Center가 86명입니다(반기보고서 직원 현황). PTR Center는 2025 사업보고서에서 'AQ사업부 총괄'로 적힌 부사장이 2026 반기보고서에서 'PTR Center 본부장'으로 적혀 있어, OLED 장비 조직이 이름을 바꾼 것으로 읽습니다. 2025년 1월 디일렉 인터뷰에서 회사는 "프로브카드·보드·소켓 매출 비중이 비슷하다"고 했는데, 1년 반 만에 프로브카드가 2Q26 모회사 제품매출의 절반을 넘는 회사가 됐습니다.</p>
+<figure class=""><figcaption>장표 1. 모회사 별도 제품매출 믹스(억원, 1Q23~2Q26)와 비프로브 3사업 비중 — 1Q23 81%에서 2Q26 45%로</figcaption><svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="264.0" x2="722" y2="264.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="268.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="223.7" x2="722" y2="223.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="227.7" text-anchor="end" font-size="11" fill="#8a857c">250</text>
+<line x1="62" y1="183.3" x2="722" y2="183.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="187.3" text-anchor="end" font-size="11" fill="#8a857c">500</text>
+<line x1="62" y1="143.0" x2="722" y2="143.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="147.0" text-anchor="end" font-size="11" fill="#8a857c">750</text>
+<line x1="62" y1="102.7" x2="722" y2="102.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="106.7" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="62.3" x2="722" y2="62.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="66.3" text-anchor="end" font-size="11" fill="#8a857c">1,250</text>
+<line x1="62" y1="22.0" x2="722" y2="22.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="26.0" text-anchor="end" font-size="11" fill="#8a857c">1,500</text>
+<text x="56" y="14" text-anchor="end" font-size="10" fill="#8a857c">억원</text>
+<text x="726" y="268.0" font-size="10" fill="#8a857c">0%</text>
+<text x="726" y="207.5" font-size="10" fill="#8a857c">25%</text>
+<text x="726" y="147.0" font-size="10" fill="#8a857c">50%</text>
+<text x="726" y="86.5" font-size="10" fill="#8a857c">75%</text>
+<text x="726" y="26.0" font-size="10" fill="#8a857c">100%</text>
+<rect x="71.0" y="256.8" width="29.2" height="7.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="71.0" y="236.6" width="29.2" height="20.2" fill="#b07d2b" opacity="0.9"/>
+<rect x="71.0" y="226.9" width="29.2" height="9.8" fill="#2b7a78" opacity="0.9"/>
+<rect x="71.0" y="225.2" width="29.2" height="1.7" fill="#a44a3f" opacity="0.9"/>
+<text x="85.6" y="221.2" text-anchor="middle" font-size="9.5" fill="#8a857c">241</text>
+<text x="85.6" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<rect x="118.1" y="247.5" width="29.2" height="16.5" fill="#1f3a5f" opacity="0.9"/>
+<rect x="118.1" y="227.6" width="29.2" height="19.8" fill="#b07d2b" opacity="0.9"/>
+<rect x="118.1" y="217.7" width="29.2" height="9.9" fill="#2b7a78" opacity="0.9"/>
+<rect x="118.1" y="212.1" width="29.2" height="5.6" fill="#a44a3f" opacity="0.9"/>
+<text x="132.7" y="208.1" text-anchor="middle" font-size="9.5" fill="#8a857c">322</text>
+<text x="132.7" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q23</text>
+<rect x="165.2" y="244.5" width="29.2" height="19.5" fill="#1f3a5f" opacity="0.9"/>
+<rect x="165.2" y="218.0" width="29.2" height="26.5" fill="#b07d2b" opacity="0.9"/>
+<rect x="165.2" y="202.6" width="29.2" height="15.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="165.2" y="201.3" width="29.2" height="1.4" fill="#a44a3f" opacity="0.9"/>
+<text x="179.9" y="197.3" text-anchor="middle" font-size="9.5" fill="#8a857c">389</text>
+<text x="179.9" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<rect x="212.4" y="245.4" width="29.2" height="18.6" fill="#1f3a5f" opacity="0.9"/>
+<rect x="212.4" y="217.1" width="29.2" height="28.3" fill="#b07d2b" opacity="0.9"/>
+<rect x="212.4" y="200.9" width="29.2" height="16.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="212.4" y="197.7" width="29.2" height="3.2" fill="#a44a3f" opacity="0.9"/>
+<text x="227.0" y="193.7" text-anchor="middle" font-size="9.5" fill="#8a857c">411</text>
+<text x="227.0" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q23</text>
+<rect x="259.5" y="252.2" width="29.2" height="11.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="259.5" y="226.8" width="29.2" height="25.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="259.5" y="211.9" width="29.2" height="14.9" fill="#2b7a78" opacity="0.9"/>
+<rect x="259.5" y="207.8" width="29.2" height="4.1" fill="#a44a3f" opacity="0.9"/>
+<text x="274.1" y="203.8" text-anchor="middle" font-size="9.5" fill="#8a857c">348</text>
+<text x="274.1" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<rect x="306.7" y="245.4" width="29.2" height="18.6" fill="#1f3a5f" opacity="0.9"/>
+<rect x="306.7" y="219.4" width="29.2" height="25.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="306.7" y="205.0" width="29.2" height="14.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="306.7" y="192.6" width="29.2" height="12.5" fill="#a44a3f" opacity="0.9"/>
+<text x="321.3" y="188.6" text-anchor="middle" font-size="9.5" fill="#8a857c">443</text>
+<text x="321.3" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q24</text>
+<rect x="353.8" y="218.2" width="29.2" height="45.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="353.8" y="187.8" width="29.2" height="30.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="353.8" y="172.7" width="29.2" height="15.1" fill="#2b7a78" opacity="0.9"/>
+<rect x="353.8" y="147.8" width="29.2" height="25.0" fill="#a44a3f" opacity="0.9"/>
+<text x="368.4" y="143.8" text-anchor="middle" font-size="9.5" fill="#8a857c">720</text>
+<text x="368.4" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<rect x="401.0" y="210.7" width="29.2" height="53.3" fill="#1f3a5f" opacity="0.9"/>
+<rect x="401.0" y="183.4" width="29.2" height="27.3" fill="#b07d2b" opacity="0.9"/>
+<rect x="401.0" y="163.9" width="29.2" height="19.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="401.0" y="151.7" width="29.2" height="12.2" fill="#a44a3f" opacity="0.9"/>
+<text x="415.6" y="147.7" text-anchor="middle" font-size="9.5" fill="#8a857c">696</text>
+<text x="415.6" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q24</text>
+<rect x="448.1" y="223.8" width="29.2" height="40.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="448.1" y="190.7" width="29.2" height="33.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="448.1" y="174.4" width="29.2" height="16.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="448.1" y="170.1" width="29.2" height="4.3" fill="#a44a3f" opacity="0.9"/>
+<text x="462.7" y="166.1" text-anchor="middle" font-size="9.5" fill="#8a857c">582</text>
+<text x="462.7" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<rect x="495.2" y="199.8" width="29.2" height="64.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="495.2" y="167.8" width="29.2" height="32.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="495.2" y="155.6" width="29.2" height="12.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="495.2" y="127.6" width="29.2" height="28.0" fill="#a44a3f" opacity="0.9"/>
+<text x="509.9" y="123.6" text-anchor="middle" font-size="9.5" fill="#8a857c">845</text>
+<text x="509.9" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<rect x="542.4" y="203.2" width="29.2" height="60.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="542.4" y="164.7" width="29.2" height="38.6" fill="#b07d2b" opacity="0.9"/>
+<rect x="542.4" y="145.8" width="29.2" height="18.9" fill="#2b7a78" opacity="0.9"/>
+<rect x="542.4" y="135.4" width="29.2" height="10.5" fill="#a44a3f" opacity="0.9"/>
+<text x="557.0" y="131.4" text-anchor="middle" font-size="9.5" fill="#8a857c">797</text>
+<text x="557.0" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<rect x="589.5" y="197.8" width="29.2" height="66.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="589.5" y="148.8" width="29.2" height="49.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="589.5" y="127.8" width="29.2" height="21.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="589.5" y="121.5" width="29.2" height="6.3" fill="#a44a3f" opacity="0.9"/>
+<text x="604.1" y="117.5" text-anchor="middle" font-size="9.5" fill="#8a857c">883</text>
+<text x="604.1" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q25</text>
+<rect x="636.7" y="186.8" width="29.2" height="77.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="636.7" y="122.2" width="29.2" height="64.5" fill="#b07d2b" opacity="0.9"/>
+<rect x="636.7" y="103.2" width="29.2" height="19.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="636.7" y="74.0" width="29.2" height="29.2" fill="#a44a3f" opacity="0.9"/>
+<text x="651.3" y="70.0" text-anchor="middle" font-size="9.5" fill="#8a857c">1,178</text>
+<text x="651.3" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<rect x="683.8" y="150.6" width="29.2" height="113.4" fill="#1f3a5f" opacity="0.9"/>
+<rect x="683.8" y="81.7" width="29.2" height="68.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="683.8" y="59.9" width="29.2" height="21.8" fill="#2b7a78" opacity="0.9"/>
+<rect x="683.8" y="56.4" width="29.2" height="3.4" fill="#a44a3f" opacity="0.9"/>
+<text x="698.4" y="52.4" text-anchor="middle" font-size="9.5" fill="#8a857c">1,287</text>
+<text x="698.4" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<polyline points="85.6,67.3 132.7,99.4 179.9,97.3 227.0,90.1 274.1,73.0 321.3,85.3 368.4,117.5 415.6,137.0 462.7,125.9 509.9,136.1 557.0,136.4 604.1,134.5 651.3,120.5 698.4,154.3" fill="none" stroke="#8a857c" stroke-width="1.8" stroke-dasharray="4 3"/>
+<circle cx="85.6" cy="67.3" r="2.6" fill="#8a857c"/>
+<text x="85.6" y="60.3" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">81%</text>
+<circle cx="132.7" cy="99.4" r="2.6" fill="#8a857c"/>
+<text x="132.7" y="92.4" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">68%</text>
+<circle cx="179.9" cy="97.3" r="2.6" fill="#8a857c"/>
+<text x="179.9" y="90.3" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">69%</text>
+<circle cx="227.0" cy="90.1" r="2.6" fill="#8a857c"/>
+<text x="227.0" y="83.1" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">72%</text>
+<circle cx="274.1" cy="73.0" r="2.6" fill="#8a857c"/>
+<text x="274.1" y="66.0" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">79%</text>
+<circle cx="321.3" cy="85.3" r="2.6" fill="#8a857c"/>
+<text x="321.3" y="78.3" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">74%</text>
+<circle cx="368.4" cy="117.5" r="2.6" fill="#8a857c"/>
+<text x="368.4" y="110.5" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">61%</text>
+<circle cx="415.6" cy="137.0" r="2.6" fill="#8a857c"/>
+<text x="415.6" y="130.0" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">52%</text>
+<circle cx="462.7" cy="125.9" r="2.6" fill="#8a857c"/>
+<text x="462.7" y="118.9" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">57%</text>
+<circle cx="509.9" cy="136.1" r="2.6" fill="#8a857c"/>
+<text x="509.9" y="151.1" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">53%</text>
+<circle cx="557.0" cy="136.4" r="2.6" fill="#8a857c"/>
+<text x="557.0" y="151.4" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">53%</text>
+<circle cx="604.1" cy="134.5" r="2.6" fill="#8a857c"/>
+<text x="604.1" y="149.5" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">54%</text>
+<circle cx="651.3" cy="120.5" r="2.6" fill="#8a857c"/>
+<text x="651.3" y="113.5" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">59%</text>
+<circle cx="698.4" cy="154.3" r="2.6" fill="#8a857c"/>
+<text x="698.4" y="147.3" text-anchor="middle" font-size="9" font-weight="700" fill="#8a857c" stroke="#fff" stroke-width="2.8" paint-order="stroke">45%</text>
+<rect x="756" y="22" width="10" height="10" fill="#1f3a5f"/>
+<text x="770" y="31" font-size="10.5" fill="#8a857c">프로브카드</text>
+<rect x="756" y="38" width="10" height="10" fill="#b07d2b"/>
+<text x="770" y="47" font-size="10.5" fill="#8a857c">인터페이스보드</text>
+<rect x="756" y="54" width="10" height="10" fill="#2b7a78"/>
+<text x="770" y="63" font-size="10.5" fill="#8a857c">테스트소켓</text>
+<rect x="756" y="70" width="10" height="10" fill="#a44a3f"/>
+<text x="770" y="79" font-size="10.5" fill="#8a857c">OLED 검사장비</text>
+<rect x="756" y="86" width="10" height="10" fill="#8a857c"/>
+<text x="770" y="95" font-size="10.5" fill="#8a857c">비프로브 3사업 비중(우축)</text>
+</svg><div class="src">자료: DART 분기·반기·사업보고서 II. 사업의 내용 매출실적(모회사 별도, 누적값 차분), packet products.quarter. 막대 위 숫자는 네 제품 합계(임대료 제외). 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 네 제품 합계는 1Q23 241억에서 2Q26 1,287억으로 5.3배가 됐고, 비프로브 3사업 비중은 81%에서 45%로 내려왔습니다. 비중 곡선은 1Q24(79%)·1Q25(57%)·1Q26(59%)에 한 번씩 올라섰습니다. <b>원인.</b> 프로브카드가 NAND에서 DRAM·HBM으로 고객을 넓히며 2024년 하반기 이후 계단식으로 뛰었고, 비프로브 3사업은 보드 수출로 꾸준히 올랐지만 속도가 느렸습니다. 1Q24·1Q25의 반등은 프로브카드가 직전 분기보다 줄어서, 1Q26의 반등은 보드(96.2억)와 OLED(141.9억)가 함께 뛰어서 생겼습니다. <b>함의.</b> 모회사 이익률을 읽을 때 '프로브카드 비중이 올라가면 이익률이 오른다'는 공식은 그대로 쓸 수 없습니다. 비프로브 쪽에 보드처럼 이익률이 높다고 알려진 사업과 OLED처럼 흔들리는 사업이 섞여 있어, 비중 변화의 부호보다 어느 제품이 빠지고 들어왔는지를 먼저 봐야 합니다.</p>
+
+<h2>2. 인터페이스보드 — 테스터와 칩 사이의 기판</h2>
+<h3>무엇이고 누가 쓰나</h3>
+<p>인터페이스보드는 패키지 테스트 단계에서 테스터와 핸들러·소켓을 잇는 기판입니다. LS증권(2026-01-21)은 소켓을 계란, 보드를 계란판에 빗대 테스터·보드·핸들러의 연결 구조를 설명했습니다. 보드 한 장은 특정 테스터 모델과 특정 핸들러, 특정 패키지에 맞춰 설계되므로 고객이 칩 세대를 바꾸거나 테스터를 늘릴 때마다 새로 주문이 나옵니다. 회사는 반기보고서에서 경쟁력의 원천으로 '축적된 설계 데이터베이스'를 들었습니다. 설계가 쌓여 있지 않으면 매번 처음부터 그려야 해 납기를 맞출 수 없다는 설명입니다.</p>
+<p>보드의 기술 축은 둘입니다. 하나는 112Gbps 이상 초고속 신호에서 신호·전력 무결성을 함께 지키는 고속 I/O 설계와 고다층 PCB 기술이고, 다른 하나는 저기능 테스터로도 고기능 디바이스를 검사하도록 모자란 기능을 보드 위에 얹는 '테스터 온 보드'입니다. 후자는 고객의 장비 투자 부담을 덜어 주는 대신 보드 한 장의 부가가치를 올립니다. 2017년 11월에는 인터페이스보드가 세계일류상품으로 선정됐습니다(반기보고서 연혁).</p>
+<p>반기보고서의 고객·경쟁사 표를 보면 보드 시장은 삼성전자 메모리, SK하이닉스 메모리, 해외 메모리, 비메모리의 네 칸으로 나뉩니다(아래 표). 네 칸 모두에 Advantest가 있다는 점이 이 시장의 성격을 말해 줍니다. 테스터 제조사가 자기 장비용 보드도 팔기 때문에, 티에스이 같은 독립 보드 회사는 설계 속도와 가격으로 테스터 회사의 순정품 옆 자리를 파고드는 구조입니다. 비메모리 칸의 경쟁 상대는 미국 보드 전문 업체들과 Sanmina 같은 대형 제조사이고, 해외 메모리 칸에서는 국내 티에프이와 대만·중국 업체가 겨룹니다. 프라임경제(2026-08-06)는 한 증권사 커버리지 개시 자료를 인용해 회사의 보드 글로벌 점유율을 3~4위권으로 전했지만, 원자료의 시장 정의는 확인하지 못했습니다.</p>
+<table class=""><tr><th>제품 · 고객군(2026 반기보고서)</th><th>국내 경쟁사</th><th>해외 경쟁사</th></tr><tr><td>인터페이스보드 · 삼성전자(메모리)</td><td>Advantest KOREA, 루켄테크놀로지스</td><td>Advantest(일)</td></tr><tr><td>인터페이스보드 · SK하이닉스(메모리)</td><td>Advantest KOREA, 엔에스티, BE Link</td><td>Advantest(일)</td></tr><tr><td>인터페이스보드 · 메모리(Infineon·Sandisk·YMTC·CXMT·Micron·Nanya·Kioxia)</td><td>TFE</td><td>Advantest(일), SL Link(대), ZVC(대), Twinsolution(중), Zen focus(중)</td></tr><tr><td>인터페이스보드 · 비메모리(Intel·AMD·Qualcomm·Broadcom·TI·Nvidia)</td><td>-</td><td>Advantest, DIS, Harbor Elec, Gorilla Circuits, Synergie CAD, ITC, Sanmina(미), Zero One(중), CHPT·Keystone(대), DTS(싱)</td></tr><tr><td>테스트소켓 · 삼성전자(메모리·비메모리)</td><td>ISC, TFE, MCS, LEENO</td><td>-</td></tr><tr><td>테스트소켓 · SK하이닉스(메모리)</td><td>ISC, TFE</td><td>-</td></tr><tr><td>테스트소켓 · 메모리(Infineon·Sandisk·YMTC·CXMT·Micron)</td><td>ISC, LEENO, TFE, SRC, MCS, Qualmax</td><td>Enplas(일), Twinsolution·Zen focus(중)</td></tr><tr><td>테스트소켓 · 비메모리(Intel·AMD·Qualcomm·Broadcom·Nvidia)</td><td>ISC, LEENO, TFE</td><td>WINWAY(대), Smithconnector·Cohu(미), Enplas·Yamaichi·Yokowo(일), TTS(싱)</td></tr></table>
+<p>주요 거래처 표는 5년 치를 이어 붙이면 흐름이 드러납니다. 국내 1·2순위는 해마다 삼성전자와 SK하이닉스이고 셋째 자리는 메리테크·하나마이크론·윈팩·코아텍처럼 후공정 외주 업체가 번갈아 채웁니다. 수출 1순위는 2022년 YMTC였다가 2023년부터 2026년 반기까지 네 번 연속 AMD이고, 2024년에는 Intel이, 2025년에는 CXMT와 SanDisk가, 2026년 반기에는 SanDisk와 Intel이 뒤를 잇습니다. 순위가 금액을 뜻하지는 않지만 비메모리 미국 고객이 수출의 맨 앞에 선다는 사실은 반복해서 확인됩니다. 연결 지역 매출에서 북미가 2026년 상반기 370억으로 전년 같은 기간 146억의 2.5배<span class="est">E</span>가 된 것도 같은 방향의 신호로 읽습니다(연결·고객 소재지 기준이라 보드만 떼어 낼 수는 없습니다).</p>
+<div style="overflow-x:auto"><table class=""><tr><th>품목 · 구분</th><th>2022 사업보고서</th><th>2023</th><th>2024</th><th>2025</th><th>2026 반기</th></tr><tr><td>인터페이스보드 국내</td><td>삼성전자, SK하이닉스, 메리테크</td><td>삼성전자, SK하이닉스, 하나마이크론</td><td>삼성전자, SK하이닉스, 윈팩</td><td>삼성전자, SK하이닉스, 윈팩</td><td>삼성전자, SK하이닉스, (주)코아텍</td></tr><tr><td>인터페이스보드 수출</td><td>YMTC, AMD, Micron</td><td>AMD, Micron, YMTC</td><td>AMD, Micron, Intel</td><td>AMD, CXMT, SanDisk</td><td>AMD, SanDisk, Intel</td></tr><tr><td>테스트소켓 국내</td><td>삼성전자, SK하이닉스, 하나마이크론</td><td>삼성전자, 하나마이크론, SK하이닉스</td><td>삼성전자, 하나마이크론, Amkor</td><td>삼성전자, 하나마이크론, Amkor</td><td>삼성전자, 에스알씨, 하나마이크론</td></tr><tr><td>테스트소켓 수출</td><td>Qualcomm, YMTC, Sandisk</td><td>Qualcomm, Sandisk, YMTC</td><td>Qualcomm, Sandisk, Micron</td><td>Sandisk, AMD, Qualcomm</td><td>YMTC, AMD, SanDisk</td></tr><tr><td>OLED 검사장비 국내</td><td>삼성디스플레이, 삼성전자, RN2테크놀로지</td><td>삼성디스플레이, 삼성전자, 메가터치</td><td>삼성디스플레이, 삼성전자, 오킨스전자</td><td>삼성디스플레이, 타이거일렉, 삼성전자</td><td>삼성디스플레이, 서브원, 삼성전자</td></tr><tr><td>OLED 검사장비 수출</td><td>BOE, Tianma(Wuhan), CSOT</td><td>BOE, Tianma, CSOT</td><td>Xinghengli, Tianma, Visionox</td><td>BOE, Visionox, Xinghengli</td><td>BOE, Jiangsu zhixinda, SUXIN</td></tr></table></div>
+
+<h3>분기 매출과 수출 비중</h3>
+<p>보드 매출은 1Q23 125억에서 2Q26 427억으로 올라왔습니다. 2026년 상반기 827억은 2025년 연간 946억의 87%<span class="est">E</span>이고, 전년 같은 기간 403억의 2.05배<span class="est">E</span>입니다. 성장의 출처는 한쪽으로 쏠려 있습니다. 2Q26 수출은 363억으로 2Q25 123억의 2.9배<span class="est">E</span>가 됐지만, 국내는 64억으로 2Q25 75억보다 오히려 적습니다. 연간 수출 비중은 2023년 57.2%, 2024년 67.6%, 2025년 70.7%였고 2026년 상반기에는 85.4%입니다. 신한투자증권이 2026-03-06 리포트에서 보드 비중을 국내 33%·해외 67%로 추정했던 것과 비교해도 해외 쏠림이 한 단계 더 진행됐습니다.</p>
+<figure class=""><figcaption>장표 2. 인터페이스보드 분기 매출(억원, 국내·수출)과 수출 비중 — 2Q26 427억, 수출 85%</figcaption><svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="264.0" x2="722" y2="264.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="268.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="215.6" x2="722" y2="215.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="219.6" text-anchor="end" font-size="11" fill="#8a857c">100</text>
+<line x1="62" y1="167.2" x2="722" y2="167.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="171.2" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="118.8" x2="722" y2="118.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="122.8" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<line x1="62" y1="70.4" x2="722" y2="70.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="74.4" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="22.0" x2="722" y2="22.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="26.0" text-anchor="end" font-size="11" fill="#8a857c">500</text>
+<text x="56" y="14" text-anchor="end" font-size="10" fill="#8a857c">억원</text>
+<text x="726" y="268.0" font-size="10" fill="#1f3a5f">0%</text>
+<text x="726" y="207.5" font-size="10" fill="#1f3a5f">25%</text>
+<text x="726" y="147.0" font-size="10" fill="#1f3a5f">50%</text>
+<text x="726" y="86.5" font-size="10" fill="#1f3a5f">75%</text>
+<text x="726" y="26.0" font-size="10" fill="#1f3a5f">100%</text>
+<rect x="71.0" y="241.7" width="29.2" height="22.3" fill="#d9c08f" opacity="0.9"/>
+<rect x="71.0" y="203.5" width="29.2" height="38.2" fill="#b07d2b" opacity="0.9"/>
+<text x="85.6" y="199.5" text-anchor="middle" font-size="9.5" fill="#8a857c">125</text>
+<text x="85.6" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<rect x="118.1" y="246.6" width="29.2" height="17.4" fill="#d9c08f" opacity="0.9"/>
+<rect x="118.1" y="204.5" width="29.2" height="42.1" fill="#b07d2b" opacity="0.9"/>
+<text x="132.7" y="200.5" text-anchor="middle" font-size="9.5" fill="#8a857c">123</text>
+<text x="132.7" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q23</text>
+<rect x="165.2" y="222.6" width="29.2" height="41.4" fill="#d9c08f" opacity="0.9"/>
+<rect x="165.2" y="184.3" width="29.2" height="38.3" fill="#b07d2b" opacity="0.9"/>
+<text x="179.9" y="180.3" text-anchor="middle" font-size="9.5" fill="#8a857c">165</text>
+<text x="179.9" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<rect x="212.4" y="223.4" width="29.2" height="40.6" fill="#d9c08f" opacity="0.9"/>
+<rect x="212.4" y="179.2" width="29.2" height="44.2" fill="#b07d2b" opacity="0.9"/>
+<text x="227.0" y="175.2" text-anchor="middle" font-size="9.5" fill="#8a857c">175</text>
+<text x="227.0" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q23</text>
+<rect x="259.5" y="242.7" width="29.2" height="21.3" fill="#d9c08f" opacity="0.9"/>
+<rect x="259.5" y="187.9" width="29.2" height="54.7" fill="#b07d2b" opacity="0.9"/>
+<text x="274.1" y="183.9" text-anchor="middle" font-size="9.5" fill="#8a857c">157</text>
+<text x="274.1" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<rect x="306.7" y="242.2" width="29.2" height="21.8" fill="#d9c08f" opacity="0.9"/>
+<rect x="306.7" y="186.2" width="29.2" height="56.0" fill="#b07d2b" opacity="0.9"/>
+<text x="321.3" y="182.2" text-anchor="middle" font-size="9.5" fill="#8a857c">161</text>
+<text x="321.3" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q24</text>
+<rect x="353.8" y="228.5" width="29.2" height="35.5" fill="#d9c08f" opacity="0.9"/>
+<rect x="353.8" y="172.8" width="29.2" height="55.7" fill="#b07d2b" opacity="0.9"/>
+<text x="368.4" y="168.8" text-anchor="middle" font-size="9.5" fill="#8a857c">188</text>
+<text x="368.4" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<rect x="401.0" y="236.5" width="29.2" height="27.5" fill="#d9c08f" opacity="0.9"/>
+<rect x="401.0" y="182.0" width="29.2" height="54.5" fill="#b07d2b" opacity="0.9"/>
+<text x="415.6" y="178.0" text-anchor="middle" font-size="9.5" fill="#8a857c">170</text>
+<text x="415.6" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q24</text>
+<rect x="448.1" y="232.8" width="29.2" height="31.2" fill="#d9c08f" opacity="0.9"/>
+<rect x="448.1" y="164.8" width="29.2" height="68.0" fill="#b07d2b" opacity="0.9"/>
+<text x="462.7" y="160.8" text-anchor="middle" font-size="9.5" fill="#8a857c">205</text>
+<text x="462.7" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<rect x="495.2" y="227.8" width="29.2" height="36.2" fill="#d9c08f" opacity="0.9"/>
+<rect x="495.2" y="168.1" width="29.2" height="59.7" fill="#b07d2b" opacity="0.9"/>
+<text x="509.9" y="164.1" text-anchor="middle" font-size="9.5" fill="#8a857c">198</text>
+<text x="509.9" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<rect x="542.4" y="238.6" width="29.2" height="25.4" fill="#d9c08f" opacity="0.9"/>
+<rect x="542.4" y="148.3" width="29.2" height="90.4" fill="#b07d2b" opacity="0.9"/>
+<text x="557.0" y="144.3" text-anchor="middle" font-size="9.5" fill="#8a857c">239</text>
+<text x="557.0" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<rect x="589.5" y="222.6" width="29.2" height="41.4" fill="#d9c08f" opacity="0.9"/>
+<rect x="589.5" y="117.0" width="29.2" height="105.7" fill="#b07d2b" opacity="0.9"/>
+<text x="604.1" y="113.0" text-anchor="middle" font-size="9.5" fill="#8a857c">304</text>
+<text x="604.1" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q25</text>
+<rect x="636.7" y="236.7" width="29.2" height="27.3" fill="#d9c08f" opacity="0.9"/>
+<rect x="636.7" y="70.4" width="29.2" height="166.3" fill="#b07d2b" opacity="0.9"/>
+<text x="651.3" y="66.4" text-anchor="middle" font-size="9.5" fill="#8a857c">400</text>
+<text x="651.3" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<rect x="683.8" y="233.0" width="29.2" height="31.0" fill="#d9c08f" opacity="0.9"/>
+<rect x="683.8" y="57.3" width="29.2" height="175.6" fill="#b07d2b" opacity="0.9"/>
+<text x="698.4" y="53.3" text-anchor="middle" font-size="9.5" fill="#8a857c">427</text>
+<text x="698.4" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<polyline points="85.6,111.1 132.7,92.8 179.9,147.6 227.0,137.8 274.1,89.9 321.3,89.7 368.4,116.2 415.6,103.1 462.7,98.0 509.9,113.4 557.0,75.0 604.1,90.1 651.3,56.2 698.4,58.3" fill="none" stroke="#1f3a5f" stroke-width="1.8" stroke-dasharray=""/>
+<circle cx="85.6" cy="111.1" r="2.6" fill="#1f3a5f"/>
+<text x="85.6" y="104.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">63%</text>
+<circle cx="132.7" cy="92.8" r="2.6" fill="#1f3a5f"/>
+<text x="132.7" y="85.8" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">71%</text>
+<circle cx="179.9" cy="147.6" r="2.6" fill="#1f3a5f"/>
+<text x="179.9" y="140.6" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">48%</text>
+<circle cx="227.0" cy="137.8" r="2.6" fill="#1f3a5f"/>
+<text x="227.0" y="130.8" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">52%</text>
+<circle cx="274.1" cy="89.9" r="2.6" fill="#1f3a5f"/>
+<text x="274.1" y="82.9" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">72%</text>
+<circle cx="321.3" cy="89.7" r="2.6" fill="#1f3a5f"/>
+<text x="321.3" y="82.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">72%</text>
+<circle cx="368.4" cy="116.2" r="2.6" fill="#1f3a5f"/>
+<text x="368.4" y="109.2" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">61%</text>
+<circle cx="415.6" cy="103.1" r="2.6" fill="#1f3a5f"/>
+<text x="415.6" y="96.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">66%</text>
+<circle cx="462.7" cy="98.0" r="2.6" fill="#1f3a5f"/>
+<text x="462.7" y="91.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">69%</text>
+<circle cx="509.9" cy="113.4" r="2.6" fill="#1f3a5f"/>
+<text x="509.9" y="106.4" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">62%</text>
+<circle cx="557.0" cy="75.0" r="2.6" fill="#1f3a5f"/>
+<text x="557.0" y="68.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">78%</text>
+<circle cx="604.1" cy="90.1" r="2.6" fill="#1f3a5f"/>
+<text x="604.1" y="83.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">72%</text>
+<circle cx="651.3" cy="56.2" r="2.6" fill="#1f3a5f"/>
+<text x="651.3" y="49.2" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">86%</text>
+<circle cx="698.4" cy="58.3" r="2.6" fill="#1f3a5f"/>
+<text x="698.4" y="73.3" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">85%</text>
+<rect x="756" y="22" width="10" height="10" fill="#d9c08f"/>
+<text x="770" y="31" font-size="10.5" fill="#8a857c">보드 국내</text>
+<rect x="756" y="38" width="10" height="10" fill="#b07d2b"/>
+<text x="770" y="47" font-size="10.5" fill="#8a857c">보드 수출</text>
+<rect x="756" y="54" width="10" height="10" fill="#1f3a5f"/>
+<text x="770" y="63" font-size="10.5" fill="#8a857c">수출 비중(우축)</text>
+</svg><div class="src">자료: DART 분기·반기·사업보고서 매출실적(모회사 별도, 품목별 국내·수출 누적값 차분), packet products.ib_export_q·ib_domestic_q. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 보드 분기 매출은 2023~2024년 123~188억 박스에 있다가 3Q25 239억, 4Q25 304억, 1Q26 400억으로 세 분기 연속 계단을 올랐습니다. 국내 매출은 14분기 내내 36~86억 사이에서 제자리였고, 수출이 1Q25 140억에서 2Q26 363억으로 늘며 수출 비중이 69%에서 85%로 올랐습니다. <b>원인.</b> 수출 1순위 AMD와 LS증권(4-20)의 'AI 칩 양산 확대에 따른 보드 공급 확대'가 같은 방향을 가리키고, DS(7-02)는 1Q26 비메모리 비중이 일시적으로 높았다고 적었습니다. <b>함의.</b> 보드의 성장은 국내 메모리 투자보다 해외 비메모리·해외 메모리 고객의 신제품 테스트 수요에 기대고 있습니다. 국내 메모리 고객의 테스터 증설이 붙지 않으면 AI 칩 신제품 주기에 따라 분기 매출이 흔들릴 수 있습니다.</p>
+
+<h3>하우스 노트 — 마진 35%, 5년 교체주기, 비메모리의 일시 상승</h3>
+<p>보드 이익률은 회사가 공개하지 않습니다. 셀사이드에서 가장 구체적인 숫자는 DS투자증권(2026-07-02)의 '2026년 보드 매출 1,590억(전년 대비 68% 증가)과 35% 이상의 높은 마진율' 기대입니다. 같은 노트는 인터페이스·번인보드 수요가 고객 투자 사이클과 함께 움직이고, 신규·전환 투자뿐 아니라 약 5년의 교체 주기에 따라 반복 수요가 생긴다고 적었습니다. LS증권(1-21·4-20)도 보드를 '고마진' 사업으로 분류했습니다. 다만 하반기 그림은 하우스마다 다릅니다. DS의 연간 1,590억은 하반기 763억<span class="est">E</span>으로 상반기보다 낮은 궤적이고, 신한(8-18)의 연간 1,727억은 하반기 900억<span class="est">E</span>, 3Q26 445억으로 상반기보다 높은 궤적입니다. DS 노트는 2Q26 실적 발표 전에 쓰였습니다.</p>
+<p>5년 교체주기라는 설명은 산수로 한 번 대 볼 수 있습니다. 보드 연간 매출은 2021년 682억, 2022년 769억으로 한 번 높아졌다가 2023년 588억으로 꺼졌고, 2024년 676억을 거쳐 2025년 946억으로 올라섰습니다. 2021~2022년에 깔린 보드가 5년 주기로 바뀐다면 교체 시점이 2026~2027년에 겹친다는 계산<span class="est">E</span>이 나옵니다. 회사가 설치 기반을 밝히지 않아 이 계산은 방향 이상을 말하지 못하므로 미결로 남깁니다.</p>
+
+<h3>수주 표가 설명하지 못하는 매출</h3>
+<p>보드는 수주 표로 다음 분기를 읽기 어려운 사업입니다. 2026 반기보고서의 보드 수주는 기간 내 신규 434.6억, 그중 기납품 264.9억, 잔고 169.7억입니다. 그런데 같은 기간 보드 매출은 827.1억이어서, 기납품액에 2025년 말 잔고 63.1억을 더해도 매출의 40%<span class="est">E</span>만 설명됩니다. 2023~2025년에도 설명률은 59%·53%·65%<span class="est">E</span>에 머물렀습니다. 소켓은 같은 계산이 2025년 99%·2026년 상반기 97%<span class="est">E</span>로 매출과 거의 맞는 것과 대조적입니다.</p>
+<p>이유는 공시에 없습니다. 짧은 납기로 받자마자 출하되는 주문이나 수리·부품 매출이 표에서 빠졌을 가능성을 떠올릴 수 있지만 확인되지 않습니다. 실무적 결론은 하나입니다. 보드 잔고 169.7억을 3Q26 보드 매출의 하한으로 쓰면 과소 추정이 되고, 보드의 선행 지표는 수주 표보다 고객의 테스터 투자와 수출 거래처 흐름에서 찾아야 합니다.</p>
+<div style="overflow-x:auto"><table class=""><tr><th>품목 · 기간(억원)</th><th>기간 내 신규 수주</th><th>그중 기납품</th><th>기말 잔고(납기 표기)</th><th>같은 기간 매출</th><th>수주 표 설명률<span class="est">E</span></th></tr><tr><td>인터페이스보드 2022</td><td>399.5</td><td>355.4</td><td>44.0 (2023.03.31)</td><td>769.4</td><td>-</td></tr><tr><td>인터페이스보드 2023</td><td>323.7</td><td>300.5</td><td>23.2 (2024.03.31)</td><td>587.6</td><td>59%</td></tr><tr><td>인터페이스보드 2024</td><td>371.4</td><td>335.5</td><td>35.8 (2025.03.31)</td><td>676.0</td><td>53%</td></tr><tr><td>인터페이스보드 2025</td><td>644.4</td><td>581.3</td><td>63.1 (2025.12.31)</td><td>945.8</td><td>65%</td></tr><tr><td>인터페이스보드 1H26</td><td>434.6</td><td>264.9</td><td>169.7 (2026-06-30)</td><td>827.1</td><td>40%</td></tr><tr><td>테스트소켓 2022</td><td>435.7</td><td>380.2</td><td>55.5 (2023.03.05)</td><td>433.4</td><td>-</td></tr><tr><td>테스트소켓 2023</td><td>314.0</td><td>280.2</td><td>33.8 (2024.02.21)</td><td>317.4</td><td>106%</td></tr><tr><td>테스트소켓 2024</td><td>392.7</td><td>360.4</td><td>32.3 (2025.02.14)</td><td>395.6</td><td>100%</td></tr><tr><td>테스트소켓 2025</td><td>436.9</td><td>387.0</td><td>49.9 (2026.02.14)</td><td>423.9</td><td>99%</td></tr><tr><td>테스트소켓 1H26</td><td>317.2</td><td>196.5</td><td>120.7 (2026-08-26)</td><td>253.2</td><td>97%</td></tr><tr><td>OLED 검사장비 2022</td><td>160.6</td><td>152.9</td><td>7.6 (2023.02.28)</td><td>159.7</td><td>-</td></tr><tr><td>OLED 검사장비 2023</td><td>274.0</td><td>66.3</td><td>207.6 (2024.09.18)</td><td>73.6</td><td>100%</td></tr><tr><td>OLED 검사장비 2024</td><td>389.9</td><td>125.7</td><td>264.3 (2025.12.31)</td><td>333.2</td><td>100%</td></tr><tr><td>OLED 검사장비 2025</td><td>301.3</td><td>119.2</td><td>182.2 (2026.07.15)</td><td>304.0</td><td>126%</td></tr><tr><td>OLED 검사장비 1H26</td><td>184.0</td><td>0.0</td><td>184.0 (2027-01-05)</td><td>202.3</td><td>90%</td></tr></table></div><div class="src">자료: DART 2022~2025 사업보고서·2026 반기보고서 II-4 수주상황(기간 내 신규 수주 기준), 매출실적(모회사 별도). 설명률 = (기간 내 수주의 기납품액 + 전기말 잔고) ÷ 같은 기간 매출(자체 계산, E). 100%를 넘으면 전기 잔고의 인도가 다음 해로 밀렸거나 기간 밖 수주가 섞였다는 뜻이고, 크게 모자라면 표에 잡히지 않는 매출이 있다는 뜻입니다.</div>
+
+<h3>원재료와 타이거일렉 로드보드 PCB</h3>
+<p>보드 원가의 중심은 PCB입니다. 반기보고서 원재료 매입 현황에서 보드용 원재료(기구물·PCB·전자부품) 매입은 2026년 상반기 374.4억으로, 같은 기간 보드 매출 대비 45.3%<span class="est">E</span>입니다(2024년 42.6%, 2025년 47.8%). 가장 많이 쓰는 자재 기준으로 적힌 보드용 PCB 단가는 2024년 172천원, 2025년 292천원, 2026년 상반기 317천원입니다. 2024년에서 2025년 사이 70%<span class="est">E</span> 올랐는데, 같은 보고서의 연평균 환율 표기(타이거일렉 원재료 표 1,396원·1,422원·1,502원)로는 2025년 상승분 가운데 2%<span class="est">E</span> 남짓만 설명됩니다. 회사가 원인으로 '품질 고급화와 환율'을 든 만큼, 우리는 이를 고속·고다층 PCB로 사양이 옮겨 간 결과로 읽습니다.</p>
+<p>그 PCB의 상당 부분은 그룹 안에서 나옵니다. 자회사 타이거일렉의 주요 거래처 표에서 로드보드용·소켓보드용·일반 보드용 PCB의 첫 고객은 모두 티에스이이고, 타이거일렉의 로드보드용 PCB 매출은 2024년 157.9억, 2025년 213.8억, 2026년 상반기 196.3억입니다. 모회사가 타이거일렉에서 산 재화는 2025년 상반기 68.3억에서 2026년 상반기 163.2억으로 2.4배<span class="est">E</span>가 됐습니다(반기보고서 별도 재무제표 주석 특수관계자 거래). 연결로 보면 보드 한 장이 늘 때 모회사의 보드 이익과 타이거일렉의 PCB 이익이 함께 늘지만, 뒤의 것은 지분 43.71%만 지배주주 몫입니다. 이 연결 고리가 2Q26 연결-별도 영업이익 차 158억의 일부를 이루는 경로이고, 그 분해는 파트 3이 맡습니다.</p>
+
+<h2>3. 테스트소켓 — 엘라스토머 소켓의 5년 정체와 2026년</h2>
+<p>테스트소켓은 패키지 테스트의 소모품입니다. 칩이 테스터에 닿는 마지막 접점이라 수만 번 누르면 닳고, 패키지가 바뀌면 새로 만듭니다. 회사는 엘라스토머(러버) 소켓과 스프링핀 소켓을 모두 만들고, 핀과 러버 패드를 직접 개발·설계·평가하는 전 공정을 갖췄다고 적었습니다. 반기보고서의 설명대로라면 국내 메모리 고객은 소품종 대량 생산이라 엘라스토머 비중이 높고, 해외 비메모리 고객은 다품종 소량이라 스프링핀 수요가 높습니다. 최근에는 고속 테스트에 유리한 엘라스토머 소켓이 모바일·AI·자율주행용 비메모리로 번지는 흐름이라고 회사는 봅니다. 등록특허 목록에도 러버 소켓 계열 특허가 다수 올라 있습니다(조사노트 C).</p>
+<p>고객과 경쟁 지도는 보드보다 국내 경쟁이 촘촘합니다. 삼성전자 한 곳에서만 ISC·티에프이·MCS·리노공업 네 곳과 겨루고, 해외 메모리·비메모리 칸에는 여기에 SRC·Qualmax와 대만 WINWAY, 미국 Cohu, 일본 Enplas·Yamaichi·Yokowo가 더해집니다(앞 표). 주요 거래처 표에서는 국내 1순위가 5년 내내 삼성전자이고, 수출 1순위는 2022~2024년 Qualcomm에서 2025년 SanDisk, 2026년 반기 YMTC로 바뀌었습니다. Qualcomm이 2026년 반기 명단에서 빠지고 중국 낸드 업체가 맨 앞에 선 변화는 파트 4의 중국 노출 논의에 보태야 할 사실입니다.</p>
+<p>정체의 궤적은 숫자로 분명합니다. 소켓 매출은 2021년 385억, 2022년 433억, 2023년 317억, 2024년 396억, 2025년 424억으로 5년 동안 제자리였고, 같은 기간 수출 비중도 59~69% 사이에서 움직였습니다. 우리는 이유를 네 갈래로 봅니다. 첫째, 국내 메모리용 엘라스토머 소켓은 경쟁사가 넷 이상인 소품종 대량 시장이고 고객의 단가 인하 요구가 상시로 있습니다(반기보고서). 둘째, 소켓 조직은 158명으로 작고 평균 근속이 3년 7개월·3년 9개월(남·여)로 보드 조직(남 8년 1개월)보다 짧아, 프로브카드로 인력과 설비가 몰리는 동안 확장보다 유지에 가까웠다고 읽습니다. 셋째, 같은 기간 소켓 시장의 성장은 AI 비메모리 쪽에서 났는데(ISC는 2Q26 매출 가운데 AI 비중 81%, 한국경제 7-27), 티에스이 소켓의 수출 명단에서 비메모리 고객은 AMD·Qualcomm 정도였습니다. 넷째, 2021년 2월 첫 양산 공급을 알렸던 HBM 테스트용 다이캐리어 소켓(디일렉 2021-02-24)이 별도의 사업 줄기로 자라지 못했습니다.</p>
+<figure class=""><figcaption>장표 3. 테스트소켓 연간 매출(억원, 국내·수출)과 수출 비중 — 2021 385억에서 2025 424억, 1H26 253억(반기)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="244.0" x2="722" y2="244.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="248.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="199.6" x2="722" y2="199.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="203.6" text-anchor="end" font-size="11" fill="#8a857c">100</text>
+<line x1="62" y1="155.2" x2="722" y2="155.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="159.2" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="110.8" x2="722" y2="110.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="114.8" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<line x1="62" y1="66.4" x2="722" y2="66.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="70.4" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="22.0" x2="722" y2="22.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="26.0" text-anchor="end" font-size="11" fill="#8a857c">500</text>
+<text x="56" y="14" text-anchor="end" font-size="10" fill="#8a857c">억원</text>
+<text x="726" y="248.0" font-size="10" fill="#1f3a5f">0%</text>
+<text x="726" y="192.5" font-size="10" fill="#1f3a5f">25%</text>
+<text x="726" y="137.0" font-size="10" fill="#1f3a5f">50%</text>
+<text x="726" y="81.5" font-size="10" fill="#1f3a5f">75%</text>
+<text x="726" y="26.0" font-size="10" fill="#1f3a5f">100%</text>
+<rect x="82.9" y="174.5" width="68.2" height="69.5" fill="#8fc3c1" opacity="0.9"/>
+<rect x="82.9" y="72.9" width="68.2" height="101.6" fill="#2b7a78" opacity="0.9"/>
+<text x="117.0" y="68.9" text-anchor="middle" font-size="9.5" fill="#8a857c">385</text>
+<text x="117.0" y="260" text-anchor="middle" font-size="10" fill="#8a857c">2021</text>
+<rect x="192.9" y="184.5" width="68.2" height="59.5" fill="#8fc3c1" opacity="0.9"/>
+<rect x="192.9" y="51.6" width="68.2" height="132.9" fill="#2b7a78" opacity="0.9"/>
+<text x="227.0" y="47.6" text-anchor="middle" font-size="9.5" fill="#8a857c">433</text>
+<text x="227.0" y="260" text-anchor="middle" font-size="10" fill="#8a857c">2022</text>
+<rect x="302.9" y="187.5" width="68.2" height="56.5" fill="#8fc3c1" opacity="0.9"/>
+<rect x="302.9" y="103.1" width="68.2" height="84.4" fill="#2b7a78" opacity="0.9"/>
+<text x="337.0" y="99.1" text-anchor="middle" font-size="9.5" fill="#8a857c">317</text>
+<text x="337.0" y="260" text-anchor="middle" font-size="10" fill="#8a857c">2023</text>
+<rect x="412.9" y="179.3" width="68.2" height="64.7" fill="#8fc3c1" opacity="0.9"/>
+<rect x="412.9" y="68.4" width="68.2" height="111.0" fill="#2b7a78" opacity="0.9"/>
+<text x="447.0" y="64.4" text-anchor="middle" font-size="9.5" fill="#8a857c">396</text>
+<text x="447.0" y="260" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<rect x="522.9" y="172.4" width="68.2" height="71.6" fill="#8fc3c1" opacity="0.9"/>
+<rect x="522.9" y="55.8" width="68.2" height="116.6" fill="#2b7a78" opacity="0.9"/>
+<text x="557.0" y="51.8" text-anchor="middle" font-size="9.5" fill="#8a857c">424</text>
+<text x="557.0" y="260" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<rect x="632.9" y="205.9" width="68.2" height="38.1" fill="#8fc3c1" opacity="0.45"/>
+<rect x="632.9" y="131.6" width="68.2" height="74.4" fill="#2b7a78" opacity="0.45"/>
+<text x="667.0" y="127.6" text-anchor="middle" font-size="9.5" fill="#8a857c">253</text>
+<text x="667.0" y="260" text-anchor="middle" font-size="10" fill="#8a857c">1H26</text>
+<polyline points="117.0,112.1 227.0,90.7 337.0,111.0 447.0,103.8 557.0,106.4 667.0,97.1" fill="none" stroke="#1f3a5f" stroke-width="1.8" stroke-dasharray=""/>
+<circle cx="117.0" cy="112.1" r="2.6" fill="#1f3a5f"/>
+<text x="117.0" y="105.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">59%</text>
+<circle cx="227.0" cy="90.7" r="2.6" fill="#1f3a5f"/>
+<text x="227.0" y="83.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">69%</text>
+<circle cx="337.0" cy="111.0" r="2.6" fill="#1f3a5f"/>
+<text x="337.0" y="126.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">60%</text>
+<circle cx="447.0" cy="103.8" r="2.6" fill="#1f3a5f"/>
+<text x="447.0" y="96.8" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">63%</text>
+<circle cx="557.0" cy="106.4" r="2.6" fill="#1f3a5f"/>
+<text x="557.0" y="99.4" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">62%</text>
+<circle cx="667.0" cy="97.1" r="2.6" fill="#1f3a5f"/>
+<text x="667.0" y="90.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.8" paint-order="stroke">66%</text>
+<rect x="756" y="22" width="10" height="10" fill="#8fc3c1"/>
+<text x="770" y="31" font-size="10.5" fill="#8a857c">소켓 국내</text>
+<rect x="756" y="38" width="10" height="10" fill="#2b7a78"/>
+<text x="770" y="47" font-size="10.5" fill="#8a857c">소켓 수출</text>
+<rect x="756" y="54" width="10" height="10" fill="#1f3a5f"/>
+<text x="770" y="63" font-size="10.5" fill="#8a857c">수출 비중(우축)</text>
+</svg><div class="src">자료: DART 사업·반기보고서 매출실적(모회사 별도), packet products.annual·annual_export·annual_domestic·annual_2021_2022_export. 1H26 막대는 6개월치(흐린 색). 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 5년 동안 소켓 매출은 317~433억 사이를 오갔고 연평균 성장률은 2.4%<span class="est">E</span>입니다. 수출 비중은 59%에서 69% 사이였으며, 2026년 상반기는 6개월 만에 253억·수출 66%입니다. <b>원인.</b> 메모리 경기에 연동된 국내 엘라스토머 소켓이 가격 경쟁 속에 제자리를 지키는 동안, 소켓 시장의 성장분인 AI 비메모리 소켓은 피어 쪽으로 갔습니다. 2023년의 저점은 메모리 감산기와 겹칩니다. <b>함의.</b> 소켓은 모회사 이익의 크기를 바꾸는 사업이 아니라 바닥을 받치는 사업으로 봐 왔습니다. 2026년 상반기의 반등이 연간 500억대로 이어진다면 이 판단을 고칠 근거가 생기고, 그 확인은 3Q26 분기보고서의 소켓 3분기 누적 매출이 상반기 253억에 6-30 잔고 121억을 더한 약 374억<span class="est">E</span>을 넘는지로 합니다.</p>
+<p>2026년에는 반등 신호가 겹칩니다. 2026년 상반기 소켓 매출 253억은 전년 같은 기간 177억보다 43%<span class="est">E</span> 많고, 2Q26 135.3억은 14분기 가운데 가장 큰 분기입니다. 수주 표에서도 2026년 상반기 신규 수주 317.2억이 들어와 120.7억이 잔고로 남았고(납기 표기 8-26), 소켓은 수주 표와 매출이 잘 맞는 사업이라 이 잔고는 3Q26 소켓 매출의 하한으로 쓸 만합니다. 수주금액을 수량으로 나눈 평균 수주가는 2025년 48,797원에서 2026년 상반기 58,342원<span class="est">E</span>으로 올랐는데, 소켓 본체와 부품이 섞인 수량이라 방향만 참고합니다.</p>
+<p>기술 쪽 준비도 적혀 있습니다. 소켓 연구조직은 설계·Validation·Simulation·제조기술 네 팀이고, Simulation팀이 임피던스 정합 기반의 224Gbps 이상 고속 테스트에 대응하는 설계 역량을 확보했다고 반기보고서는 적었습니다. 반복 접촉 때 주석이 옮겨 붙는 현상을 줄이는 실리콘·도전성 파우더 소재 기술과 제조 자동화도 함께 들었습니다. 다만 모회사 전체의 경상연구개발비는 2026년 상반기 11.7억으로 같은 기간 별도 매출 대비 0.5%에 불과해, 기술 설명이 비용으로 얼마나 뒷받침되는지는 따로 확인해야 합니다(인건비로 잡힌 개발 인력은 이 숫자에 없을 수 있습니다).</p>
+<p>HBM 쪽 선택지는 접혔습니다. 2026-09-10 여의도 기업설명회를 보도한 시사저널e에 따르면 회사는 삼성전자와 공동 개발한 HBM용 다이캐리어 소켓·로더 사업을 고객의 장비 투자 부담으로 잠정 중단 또는 상용화 연기했다고 밝혔습니다. 이 사업이 열렸다면 소켓이 HBM 테스트 수요에 직접 붙는 경로가 됐을 것입니다. 지금으로서는 회사의 HBM 노출이 프로브카드 한 줄로 모였고, 소켓의 성장 경로는 비메모리 고속 소켓과 해외 메모리 고객 확대입니다.</p>
+<table class=""><tr><th>회사(2Q26, 3개월)</th><th>매출(억원)</th><th>영업이익(억원)</th><th>OPM</th><th>3Q26E OPM(컨센)</th><th>사업의 결</th></tr><tr><td>ISC</td><td>729</td><td>213</td><td>29.2%</td><td>33.4%</td><td>실리콘 러버 소켓, AI 매출 81%(한국경제 7-27)</td></tr><tr><td>리노공업</td><td>1,432</td><td>735</td><td>51.3%</td><td>49.0%</td><td>포고핀·IC 소켓, IC 소켓 1,024억(뉴스핌 8-18)</td></tr><tr><td>티에프이</td><td>336</td><td>61</td><td>18.1%</td><td>24.0%</td><td>소켓·보드, 티에스이 반기보고서의 소켓·보드 경쟁사</td></tr><tr><td>티에스이 테스트소켓</td><td>135.3</td><td>미공개</td><td>미공개</td><td>-</td><td>모회사 별도 제품매출, 제품별 이익 비공개</td></tr></table>
+<p>피어의 이익률은 소켓 이익률을 가정할 때 쓸 수 있는 범위를 줍니다. 2Q26 3개월 기준 영업이익률은 리노공업 51.3%, ISC 29.2%, 티에프이 18.1%로 넓게 퍼져 있습니다. 리노공업은 포고핀을 직접 만드는 비메모리 개발용 소켓이라 결이 다르고, ISC는 AI 비메모리 비중이 높은 러버 소켓 회사입니다. 티에스이 소켓은 국내 메모리 비중이 높고 5년 동안 매출이 늘지 않은 사업이라, 우리는 그 이익률이 티에프이와 ISC 사이의 아래쪽, 20% 안팎<span class="est">E</span>에 있다고 가정합니다. 이 가정은 5절의 믹스 분해에서 민감도로 흔들어 봅니다.</p>
+
+<h2>4. OLED 검사장비 — 수주가 매출을 만드는 장비</h2>
+<p>OLED 검사장비는 모회사의 네 사업 가운데 유일하게 소모품이 아닌 장비입니다. 회사의 OLED Array Tester는 TFT를 형성한 단계에서 픽셀마다 단선·합선·누설 전류·구동 특성을 재고, 2016년 OLED 어레이 전기검사 장비를 시작으로 Micro OLED·Micro LED·Mini LED 기판으로 넓혀 왔습니다. 거래처는 국내 삼성디스플레이·서브원·삼성전자, 수출 BOE·Jiangsu zhixinda·SUXIN(2026년 반기)입니다. 반기보고서는 이 시장을 특정 기업의 독점이 아닌 기술 격차 중심의 경쟁으로 설명하면서, 국내 업체는 고객 공정 이해도로, 중국 업체는 정부 지원을 업은 가격과 빠른 국산화로 겨룬다고 적었습니다. 경쟁사 이름은 공시되지 않았습니다.</p>
+<p>이 사업의 분기 매출은 장비 인도 시점을 그대로 따라갑니다. 연간으로는 2024년 333억, 2025년 304억으로 비슷하지만, 분기로는 3Q24 155억·2Q25 174억·1Q26 181억의 봉우리 사이에 8~77억의 골짜기가 끼어 있습니다. 수주 표를 이으면 봉우리의 출처가 보입니다. 2023년 말 잔고 207.6억(납기 2024.09.18)이 2024년 매출 333억으로, 2024년 말 잔고 264.3억(납기 2025.12.31)이 2025년 매출 304억으로, 2025년 말 잔고 182.2억(납기 2026.07.15)이 1Q26 매출 181억으로 넘어갔습니다. 1Q26의 181억은 새로 생긴 수요가 아니라 2025년에 받은 주문의 인도였다는 뜻입니다.</p>
+<figure class=""><figcaption>장표 4. OLED 검사장비 분기 매출(억원)과 기말 수주잔고(◆) — 2025년 말 잔고 182억이 1Q26 181억으로, 6-30 잔고 184억(납기 2027-01-05)</figcaption><svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="264.0" x2="722" y2="264.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="268.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="223.7" x2="722" y2="223.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="227.7" text-anchor="end" font-size="11" fill="#8a857c">50</text>
+<line x1="62" y1="183.3" x2="722" y2="183.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="187.3" text-anchor="end" font-size="11" fill="#8a857c">100</text>
+<line x1="62" y1="143.0" x2="722" y2="143.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="147.0" text-anchor="end" font-size="11" fill="#8a857c">150</text>
+<line x1="62" y1="102.7" x2="722" y2="102.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="106.7" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="62.3" x2="722" y2="62.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="66.3" text-anchor="end" font-size="11" fill="#8a857c">250</text>
+<line x1="62" y1="22.0" x2="722" y2="22.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="26.0" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<text x="56" y="14" text-anchor="end" font-size="10" fill="#8a857c">억원</text>
+<rect x="71.0" y="255.4" width="29.2" height="8.6" fill="#a44a3f" opacity="0.9"/>
+<text x="85.6" y="251.4" text-anchor="middle" font-size="9.5" fill="#8a857c">11</text>
+<text x="85.6" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<rect x="118.1" y="236.0" width="29.2" height="28.0" fill="#a44a3f" opacity="0.9"/>
+<text x="132.7" y="232.0" text-anchor="middle" font-size="9.5" fill="#8a857c">35</text>
+<text x="132.7" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q23</text>
+<rect x="165.2" y="257.2" width="29.2" height="6.8" fill="#a44a3f" opacity="0.9"/>
+<text x="179.9" y="253.2" text-anchor="middle" font-size="9.5" fill="#8a857c">8</text>
+<text x="179.9" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<rect x="212.4" y="247.9" width="29.2" height="16.1" fill="#a44a3f" opacity="0.9"/>
+<text x="227.0" y="243.9" text-anchor="middle" font-size="9.5" fill="#8a857c">20</text>
+<text x="227.0" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q23</text>
+<rect x="259.5" y="243.5" width="29.2" height="20.5" fill="#a44a3f" opacity="0.9"/>
+<text x="274.1" y="239.5" text-anchor="middle" font-size="9.5" fill="#8a857c">25</text>
+<text x="274.1" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<rect x="306.7" y="201.7" width="29.2" height="62.3" fill="#a44a3f" opacity="0.9"/>
+<text x="321.3" y="197.7" text-anchor="middle" font-size="9.5" fill="#8a857c">77</text>
+<text x="321.3" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q24</text>
+<rect x="353.8" y="139.2" width="29.2" height="124.8" fill="#a44a3f" opacity="0.9"/>
+<text x="368.4" y="135.2" text-anchor="middle" font-size="9.5" fill="#8a857c">155</text>
+<text x="368.4" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<rect x="401.0" y="202.8" width="29.2" height="61.2" fill="#a44a3f" opacity="0.9"/>
+<text x="415.6" y="198.8" text-anchor="middle" font-size="9.5" fill="#8a857c">76</text>
+<text x="415.6" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q24</text>
+<rect x="448.1" y="242.5" width="29.2" height="21.5" fill="#a44a3f" opacity="0.9"/>
+<text x="462.7" y="238.5" text-anchor="middle" font-size="9.5" fill="#8a857c">27</text>
+<text x="462.7" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<rect x="495.2" y="124.0" width="29.2" height="140.0" fill="#a44a3f" opacity="0.9"/>
+<text x="509.9" y="120.0" text-anchor="middle" font-size="9.5" fill="#8a857c">174</text>
+<text x="509.9" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<rect x="542.4" y="211.7" width="29.2" height="52.3" fill="#a44a3f" opacity="0.9"/>
+<text x="557.0" y="207.7" text-anchor="middle" font-size="9.5" fill="#8a857c">65</text>
+<text x="557.0" y="280" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<rect x="589.5" y="232.5" width="29.2" height="31.5" fill="#a44a3f" opacity="0.9"/>
+<text x="604.1" y="228.5" text-anchor="middle" font-size="9.5" fill="#8a857c">39</text>
+<text x="604.1" y="280" text-anchor="middle" font-size="10" fill="#8a857c">4Q25</text>
+<rect x="636.7" y="118.0" width="29.2" height="146.0" fill="#a44a3f" opacity="0.9"/>
+<text x="651.3" y="114.0" text-anchor="middle" font-size="9.5" fill="#8a857c">181</text>
+<text x="651.3" y="280" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<rect x="683.8" y="246.8" width="29.2" height="17.2" fill="#a44a3f" opacity="0.9"/>
+<text x="698.4" y="242.8" text-anchor="middle" font-size="9.5" fill="#8a857c">21</text>
+<text x="698.4" y="280" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<path d="M227.0,90.5 L233.0,96.5 L227.0,102.5 L221.0,96.5 Z" fill="#1f3a5f"/>
+<text x="235.0" y="90.5" font-size="9.5" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.5" paint-order="stroke">208</text>
+<path d="M415.6,44.8 L421.6,50.8 L415.6,56.8 L409.6,50.8 Z" fill="#1f3a5f"/>
+<text x="423.6" y="44.8" font-size="9.5" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.5" paint-order="stroke">264</text>
+<path d="M604.1,111.0 L610.1,117.0 L604.1,123.0 L598.1,117.0 Z" fill="#1f3a5f"/>
+<text x="612.1" y="111.0" font-size="9.5" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.5" paint-order="stroke">182</text>
+<path d="M698.4,109.6 L704.4,115.6 L698.4,121.6 L692.4,115.6 Z" fill="#1f3a5f"/>
+<text x="706.4" y="109.6" font-size="9.5" font-weight="700" fill="#1f3a5f" stroke="#fff" stroke-width="2.5" paint-order="stroke">184</text>
+<rect x="756" y="22" width="10" height="10" fill="#a44a3f"/>
+<text x="770" y="31" font-size="10.5" fill="#8a857c">OLED 장비 매출</text>
+<rect x="756" y="38" width="10" height="10" fill="#1f3a5f"/>
+<text x="770" y="47" font-size="10.5" fill="#8a857c">기말 수주잔고</text>
+</svg><div class="src">자료: DART 분기·반기·사업보고서 매출실적(모회사 별도)·II-4 수주상황(기간 내 신규 수주 기준 잔고, 연말·2Q26만 표시). 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> OLED 매출은 14분기 동안 8억에서 181억 사이를 오갔고, 연말 잔고가 큰 해의 이듬해에 봉우리가 한 번씩 섭니다. 2026년 6월 말에는 신규 수주 184.0억(수량 280)이 기납품 없이 전부 잔고로 남아 있습니다. <b>원인.</b> 장비는 인도·설치가 끝나야 매출로 잡히고 고객의 라인 투자 일정에 따라 인도 시점이 분기 단위로 움직입니다. 2026년 상반기 신규 수주 가운데 1Q26에 받은 것은 23.2억뿐이라, 184억의 대부분은 2Q26에 새로 들어온 주문입니다. <b>함의.</b> 6-30 잔고 184억은 3Q26부터 2027년 1월 초 사이에 매출로 넘어올 물량입니다. 한 분기에 몰리면 그 분기 모회사 매출이 커지고, 흩어지면 분기마다 수십억씩 보탭니다. 어느 쪽이든 OLED는 2026년 하반기 모회사 매출의 변동 요인으로 남습니다.</p>
+<p>이익 쪽 흔적은 뜻밖에 약합니다. OLED가 크게 들어온 세 분기의 별도 OPM은 3Q24 22.9%(직전 분기 16.0%), 2Q25 14.1%(직전 13.9%), 1Q26 31.4%(직전 18.0%)입니다. OLED용 원재료 매입은 2025년 OLED 매출 대비 57.0%<span class="est">E</span>로 네 제품 가운데 가장 높았고, 2026년 상반기에도 48.5%<span class="est">E</span>였습니다. 우리는 OLED의 이익률이 모회사 평균보다 낮은 쪽<span class="est">E</span>에 있다고 보고, 이 사업이 모회사 이익에 주는 영향은 이익률보다 매출 규모, 즉 고정비를 흡수하는 효과에 가깝다고 읽습니다. 신한(2025-09-24)이 전년 대비 비교를 'OLED 매출을 제외하면'으로 풀어 쓴 것도 셀사이드가 이 사업을 잡음으로 다룬다는 방증입니다.</p>
+<p>하우스들의 하반기 OLED 가정은 잔고와 대체로 맞습니다. 신한(8-18)은 3Q26 39억·4Q26 131억(연간 372억), DS(7-02)는 3Q·4Q 각 70억(연간 370억)을 넣어, 두 하우스 모두 2026년 하반기 OLED를 약 170억<span class="est">E</span>으로 봤습니다. 남은 질문은 시점이고, 그것이 논쟁 2의 3Q26 채점에 닿는 방식은 6절에서 계산합니다.</p>
+
+<h2>5. 비프로브 3사업이 별도 OPM에 주는 몫 — 믹스 분해</h2>
+<p>사실부터 정리합니다. 모회사 별도 매출은 1Q26 1,178.5억에서 2Q26 1,287.4억으로 108.9억 늘었는데 매출총이익은 15.7억만 늘었고 판관비가 18.6억 늘어 영업이익은 369.9억에서 367.0억으로 제자리였습니다. 별도 OPM은 31.4%에서 28.5%로 2.9%p 내려왔습니다. 제품별로는 프로브카드 224.3억·보드 27.0억·소켓 17.4억이 늘고 OLED가 159.7억 줄었습니다. 연결 성격별 비용의 A/S비는 1Q26 22.4억에서 2Q26 58.5억으로 늘었고(연결 기준이라 모회사 몫은 따로 공개되지 않습니다), DS 노트는 1Q26 연결 영업이익에 대손충당금 환입 13.5억이 들어 있었다고 적었습니다. 그리고 2Q26 연결 영업이익 증가분 105억은 모회사가 아니라 자회사 층(연결-별도 영업이익 차 1Q 50억, 2Q 158억)이 만들었습니다.</p>
+<p>1Q26 자체도 짚어 둘 분기입니다. 4Q25에서 1Q26으로 모회사 매출이 294.5억 늘 때 영업이익은 210.4억 늘어, 늘어난 매출의 71%<span class="est">E</span>가 이익으로 떨어졌습니다. 그 분기의 매출 증가는 보드 96.2억, OLED 141.9억, 프로브카드 68.5억으로 비프로브 쪽이 더 컸습니다. 별도 재고도 2025년 말 546.8억에서 1Q26 말 691.4억, 2Q26 말 843.0억으로 늘어, 생산이 판매보다 앞서며 고정비를 재고에 실어 두는 효과도 겹쳤다고 봅니다. 즉 1Q26의 31.4%는 보드 계단·OLED 인도·재고 확대에 대손 환입(모회사 귀속 여부 미확인)까지 겹친 높은 기준점이고, 2Q26의 28.5%를 그 기준점과만 비교하면 하락을 과장하게 됩니다.</p>
+<figure class=""><figcaption>장표 5. 프로브카드 대 비프로브 3사업 합계(억원, 분기) — 2Q26 프로브카드 703억, 비프로브 584억</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="189.0" x2="730" y2="189.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="193.0" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="132.0" x2="730" y2="132.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="136.0" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="75.0" x2="730" y2="75.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="79.0" text-anchor="end" font-size="11" fill="#8a857c">600</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">800</text>
+<text x="85.9" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<text x="181.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<text x="276.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<text x="372.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<text x="467.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<text x="563.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<text x="658.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="706.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<rect x="69.2" y="233.3" width="15.7" height="12.7" fill="#1f3a5f" opacity="0.9"/>
+<rect x="85.9" y="190.1" width="15.7" height="55.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="116.9" y="216.8" width="15.7" height="29.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="133.6" y="183.6" width="15.7" height="62.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="164.6" y="211.6" width="15.7" height="34.4" fill="#1f3a5f" opacity="0.9"/>
+<rect x="181.3" y="169.6" width="15.7" height="76.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="212.3" y="213.1" width="15.7" height="32.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="229.0" y="161.8" width="15.7" height="84.2" fill="#b07d2b" opacity="0.9"/>
+<rect x="260.0" y="225.1" width="15.7" height="20.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="276.7" y="167.6" width="15.7" height="78.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="307.7" y="213.1" width="15.7" height="32.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="324.4" y="152.7" width="15.7" height="93.3" fill="#b07d2b" opacity="0.9"/>
+<rect x="355.4" y="165.2" width="15.7" height="80.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="372.1" y="121.5" width="15.7" height="124.5" fill="#b07d2b" opacity="0.9"/>
+<rect x="403.2" y="151.9" width="15.7" height="94.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="419.9" y="141.7" width="15.7" height="104.3" fill="#b07d2b" opacity="0.9"/>
+<rect x="450.9" y="174.9" width="15.7" height="71.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="467.6" y="151.2" width="15.7" height="94.8" fill="#b07d2b" opacity="0.9"/>
+<rect x="498.6" y="132.5" width="15.7" height="113.5" fill="#1f3a5f" opacity="0.9"/>
+<rect x="515.3" y="118.5" width="15.7" height="127.5" fill="#b07d2b" opacity="0.9"/>
+<rect x="546.3" y="138.7" width="15.7" height="107.3" fill="#1f3a5f" opacity="0.9"/>
+<rect x="563.0" y="126.1" width="15.7" height="119.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="594.0" y="129.1" width="15.7" height="116.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="610.7" y="111.2" width="15.7" height="134.8" fill="#b07d2b" opacity="0.9"/>
+<rect x="641.7" y="109.6" width="15.7" height="136.4" fill="#1f3a5f" opacity="0.9"/>
+<rect x="658.4" y="46.8" width="15.7" height="199.2" fill="#b07d2b" opacity="0.9"/>
+<rect x="689.4" y="45.6" width="15.7" height="200.4" fill="#1f3a5f" opacity="0.9"/>
+<rect x="706.1" y="79.7" width="15.7" height="166.3" fill="#b07d2b" opacity="0.9"/>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">프로브카드</text>
+<rect x="736" y="34" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">비프로브 3사업 합계</text>
+</svg><div class="src">자료: DART 매출실적(모회사 별도), packet products.quarter. 비프로브 3사업 = 인터페이스보드+테스트소켓+OLED 검사장비. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 비프로브 3사업 합계는 1Q23부터 1Q26까지 13개 분기 동안 프로브카드보다 컸지만, 2Q26에 처음으로 프로브카드(703억)가 비프로브 합계(584억)를 크게 앞질렀습니다. <b>원인.</b> 프로브카드는 DRAM·HBM 고객 확대와 1H26 수주 1,878억(잔고 845억)이 받치는 성장이고, 비프로브의 감소는 OLED 인도 공백 하나로 거의 설명됩니다(보드+소켓은 1Q26 518억에서 2Q26 562억으로 증가). <b>함의.</b> 모회사 이익률 논쟁은 이제 '프로브카드의 이익률이 얼마인가'의 문제로 좁혀집니다. 비프로브 3사업이 매출의 절반 아래로 내려온 만큼, 3Q26 별도 OPM은 보드가 받치는 바닥 위에서 프로브카드 한계이익률이 얼마로 찍히느냐에 달려 있습니다.</p>
+
+<h3>자체 추정 4단 — 제품별 영업이익률을 가정해 프로브카드를 잔여로 읽기</h3>
+<p><b>가정.</b> 회사가 제품별 이익을 공개하지 않으므로, 2Q26 3개월의 제품별 영업이익률을 보드 35%<span class="est">E</span>, 소켓 20%<span class="est">E</span>, OLED 15%<span class="est">E</span>로 두고 프로브카드를 잔여로 계산합니다. 1Q26에도 같은 이익률을 적용합니다. <b>근거.</b> 보드 35%는 DS(7-02)가 제시한 '35% 이상'의 하한입니다. 아래 원가 골격 표에서 2026년 상반기 보드의 원재료 매입과 부문 급여를 더한 직접비는 보드 매출 대비 53.2%<span class="est">E</span>로 네 제품 가운데 가장 낮아, 35%의 영업이익률이 가능한 원가 구조입니다. 소켓 20%는 앞 절 피어 범위(티에프이 18.1%·ISC 29.2%)의 아래쪽이고, 소켓의 직접비 비율 64.6%<span class="est">E</span>와도 어긋나지 않습니다. OLED 15%는 원재료 매입 비율이 가장 높고(2025년 57.0%) 봉우리 분기에 OPM이 오르지 않았다는 관찰에서 나왔습니다.</p>
+<table class=""><tr><th>모회사 제품(2026년 상반기)</th><th>제품매출(억원)</th><th>원재료 매입(억원)</th><th>매입/매출 2024 · 2025 · 2026 상반기</th><th>부문 인원(6-30)</th><th>부문 급여총액(억원)</th><th>급여/매출<span class="est">E</span></th><th>직접비 합(매입+급여)<span class="est">E</span></th></tr><tr><td>프로브카드</td><td>1,181.7</td><td>549.9</td><td>32.0% · 40.6% · 46.5%</td><td>588명(SP)</td><td>161.4</td><td>13.7%</td><td>60.2%</td></tr><tr><td>인터페이스보드</td><td>827.1</td><td>374.4</td><td>42.6% · 47.8% · 45.3%</td><td>209명(AT 보드)</td><td>65.9</td><td>8.0%</td><td>53.2%</td></tr><tr><td>테스트소켓</td><td>253.2</td><td>122.7</td><td>32.2% · 38.8% · 48.4%</td><td>158명(AT 소켓)</td><td>40.9</td><td>16.2%</td><td>64.6%</td></tr><tr><td>OLED 검사장비</td><td>202.3</td><td>98.1</td><td>48.6% · 57.0% · 48.5%</td><td>86명(PTR Center)</td><td>27.8</td><td>13.7%</td><td>62.3%</td></tr></table>
+<p><b>식.</b> 프로브카드 영업이익 = 별도 영업이익 - (보드 매출×35% + 소켓 매출×20% + OLED 매출×15%). 1Q26에는 비프로브 3사업 영업이익이 190.7억<span class="est">E</span>, 프로브카드 잔여가 179.2억<span class="est">E</span>으로 프로브카드 영업이익률 37.4%<span class="est">E</span>가 나오고, 2Q26에는 비프로브 179.7억<span class="est">E</span>, 프로브카드 187.3억<span class="est">E</span>으로 26.6%<span class="est">E</span>가 나옵니다. 모회사 별도 영업이익 가운데 비프로브 3사업의 몫은 1Q26 52%<span class="est">E</span>, 2Q26 49%<span class="est">E</span>이고, 그중 보드 한 사업이 2Q26에 149.4억<span class="est">E</span>, 별도 영업이익의 41%<span class="est">E</span>를 차지합니다. 2Q26 모회사 제품매출 비중 33%인 보드가 영업이익의 40% 안팎을 낸다는 그림입니다. 가정을 흔들면 2Q26 프로브카드 영업이익률은 21.7~31.6%<span class="est">E</span> 범위에 있습니다(아래 민감도 표, 칸 안은 1Q26 · 2Q26).</p>
+<table class=""><tr><th>칸 = 프로브카드 잔여 OPM 1Q26 · 2Q26<span class="est">E</span> (OLED OPM 15% 고정)</th><th>소켓 OPM 10%</th><th>소켓 OPM 20%</th><th>소켓 OPM 30%</th></tr><tr><td>보드 OPM 30%</td><td>44.1% · 31.6%</td><td>41.6% · 29.7%</td><td>39.1% · 27.8%</td></tr><tr><td>보드 OPM 35%</td><td>39.9% · 28.6%</td><td>37.4% · 26.6%</td><td>35.0% · 24.7%</td></tr><tr><td>보드 OPM 40%</td><td>35.7% · 25.5%</td><td>33.3% · 23.6%</td><td>30.8% · 21.7%</td></tr></table>
+<p><b>교차검증.</b> 같은 가정으로 1Q26에서 2Q26으로의 OPM 변화 -2.9%p를 두 조각으로 나눕니다. 1Q26의 제품별 이익률을 그대로 두고 2Q26의 매출 구성만 바꿔 넣으면 2Q26 OPM은 34.4%<span class="est">E</span>가 되어야 합니다. 이것과 1Q26 OPM의 차이 +3.0%p<span class="est">E</span>가 믹스 효과이고, 실제 2Q26 OPM과의 차이 -5.9%p<span class="est">E</span>가 제품 안의 이익률 변화입니다. 기본 가정에서는 믹스가 오히려 OPM을 올리는 방향이었는데, 1Q26의 잔여 프로브카드 이익률이 평균보다 높게 나오기 때문입니다. OLED 이익률을 35%로 높여 잡아도 믹스 효과는 -0.8%p<span class="est">E</span>, 제품 안 효과는 -2.1%p<span class="est">E</span>입니다. 믹스만으로 하락 전부를 설명하려면 OLED 영업이익률이 약 46%<span class="est">E</span>여야 하는데, 원재료 매입만으로 OLED 매출의 절반 가까이를 쓰는 장비 사업에서 그 이익률은 성립하기 어렵습니다. 또 매출총이익 기준으로도 2Q26에 늘어난 매출 108.9억 가운데 14%<span class="est">E</span>만 총이익으로 떨어졌다는 점이 같은 결론을 가리킵니다.</p>
+<figure class=""><figcaption>장표 6. OLED 영업이익률 가정별 1Q26 대비 2Q26 별도 OPM 변화(-2.9%p)의 분해 — 믹스 효과 대 제품 안 효과(%p, E)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">-10.0</text>
+<line x1="62" y1="204.9" x2="730" y2="204.9" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="208.9" text-anchor="end" font-size="11" fill="#8a857c">-7.5</text>
+<line x1="62" y1="173.7" x2="730" y2="173.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="177.7" text-anchor="end" font-size="11" fill="#8a857c">-5.0</text>
+<line x1="62" y1="142.6" x2="730" y2="142.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="146.6" text-anchor="end" font-size="11" fill="#8a857c">-2.5</text>
+<line x1="62" y1="111.4" x2="730" y2="111.4" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="115.4" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="80.3" x2="730" y2="80.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="84.3" text-anchor="end" font-size="11" fill="#8a857c">2.5</text>
+<line x1="62" y1="49.1" x2="730" y2="49.1" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="53.1" text-anchor="end" font-size="11" fill="#8a857c">5.0</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">7.5</text>
+<line x1="62" y1="147.3" x2="730" y2="147.3" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">0%</text>
+<text x="128.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">5%</text>
+<text x="195.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">10%</text>
+<text x="262.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">15%</text>
+<text x="329.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">20%</text>
+<text x="396.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">25%</text>
+<text x="462.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">30%</text>
+<text x="529.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">35%</text>
+<text x="596.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">40%</text>
+<text x="663.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">45%</text>
+<text x="730.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">50%</text>
+<polyline points="62.0,38.4 128.8,50.3 195.6,62.1 262.4,73.9 329.2,85.8 396.0,97.6 462.8,109.4 529.6,121.3 596.4,133.1 663.2,144.9 730.0,156.8" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="62.0" cy="38.4" r="2.4" fill="#b07d2b"/>
+<circle cx="128.8" cy="50.3" r="2.4" fill="#b07d2b"/>
+<circle cx="195.6" cy="62.1" r="2.4" fill="#b07d2b"/>
+<circle cx="262.4" cy="73.9" r="2.4" fill="#b07d2b"/>
+<circle cx="329.2" cy="85.8" r="2.4" fill="#b07d2b"/>
+<circle cx="396.0" cy="97.6" r="2.4" fill="#b07d2b"/>
+<circle cx="462.8" cy="109.4" r="2.4" fill="#b07d2b"/>
+<circle cx="529.6" cy="121.3" r="2.4" fill="#b07d2b"/>
+<circle cx="596.4" cy="133.1" r="2.4" fill="#b07d2b"/>
+<circle cx="663.2" cy="144.9" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="156.8" r="2.4" fill="#b07d2b"/>
+<polyline points="62.0,220.3 128.8,208.5 195.6,196.6 262.4,184.8 329.2,173.0 396.0,161.1 462.8,149.3 529.6,137.5 596.4,125.6 663.2,113.8 730.0,102.0" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="220.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="128.8" cy="208.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="195.6" cy="196.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="262.4" cy="184.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="329.2" cy="173.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="396.0" cy="161.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="462.8" cy="149.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="529.6" cy="137.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="596.4" cy="125.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="663.2" cy="113.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="102.0" r="2.4" fill="#1f3a5f"/>
+<text x="736" y="106.0" font-size="11" fill="#1f3a5f">제품 안 효과(%p) 0.8</text>
+<text x="736" y="160.8" font-size="11" fill="#b07d2b">믹스 효과(%p) -3.6</text>
+<text x="663.2" y="101.4" text-anchor="end" font-size="10.5" fill="#a44a3f">제품 안 효과 0 = 손익분기 약 46%</text>
+</svg><div class="src">자료: 자체 추정(E). 보드 OPM 35%·소켓 20% 고정, 프로브카드는 잔여. 믹스 효과 = 1Q26 제품별 이익률로 2Q26 구성을 재계산한 OPM - 1Q26 OPM, 제품 안 효과 = 실제 2Q26 OPM - 재계산 OPM. 점선 = 실제 변화. 자료: OpenDART 별도 손익(1Q26·2Q26), DART 매출실적. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> OLED 이익률 가정을 0%에서 50%까지 올려도 제품 안 효과가 0 아래에 머무는 구간이 대부분이고, 제품 안 효과가 0이 되어 믹스 효과가 실제 변화(점선)와 만나는 손익분기는 약 46%<span class="est">E</span>입니다. 기본 가정(15%)에서는 믹스 +3.0%p, 제품 안 -5.9%p<span class="est">E</span>입니다. <b>원인.</b> OLED가 빠진 자리를 프로브카드가 채웠는데, 프로브카드의 잔여 이익률이 1Q26 37%<span class="est">E</span>에서 2Q26 27%<span class="est">E</span>로 내려앉았습니다. 회사가 9-10 IR에서 밝힌 '후발주자로서 단가를 인하해서라도 공급망에 진입한다'는 전략, 연결 A/S비 22.4억에서 58.5억으로의 증가, 캐파 증설에 앞선 인력·설비 비용이 같은 방향을 가리킵니다. <b>함의.</b> 2Q26 별도 OPM 하락은 비프로브 사업의 믹스 문제가 아니라 프로브카드 이익률의 문제로 읽는 것이 가정 변화에 가장 덜 흔들리는 해석입니다. 따라서 3Q26 채점에서 비프로브 3사업은 바닥을 알려 주는 변수이고, 프로브카드의 한계이익률이 결과를 가르는 변수입니다.</p>
+
+<h2>6. 3Q26 분기보고서에서 비프로브 3사업을 읽는 법</h2>
+<p>11월 16일(예정) 3Q26 분기보고서에서 이 파트가 볼 숫자는 셋입니다. 보드는 3분기 누적 매출에서 상반기 827억을 뺀 3Q 값과 누적 수출 비중이고, 신한 3Q26F 445억과 DS 390억 사이 어디에 서는지가 첫 신호입니다. 소켓은 6-30 잔고 120.7억(납기 표기 8-26)이 3분기 매출의 하한 역할을 하므로 120억 아래로 내려오면 이상 신호로 봅니다. OLED는 잔고 184.0억 가운데 얼마가 3분기에 인도됐는지, 그리고 3Q 신규 수주가 새로 붙었는지입니다. </p>
+<p>문턱을 계산해 두면 채점이 쉬워집니다. 신한 3Q26F 비프로브 값(보드 445·소켓 141·OLED 39억, 조사노트 A)을 기본 이익률 가정에 넣으면 비프로브 3사업 영업이익은 약 189.8억<span class="est">E</span>입니다. 프로브카드가 2Q26 수준인 703억을 유지할 때 모회사 매출은 약 1,328억<span class="est">E</span>이고, 논쟁 2의 유지선인 별도 OPM 26%를 넘으려면 프로브카드 영업이익률이 22.1%<span class="est">E</span> 이상이면 됩니다. 반증선인 22%로 떨어지려면 프로브카드 영업이익률이 14.6%<span class="est">E</span> 아래로 내려가야 합니다. 2Q26 잔여 추정치 26.6%<span class="est">E</span>와 견주면 유지선까지 약 4.5%p<span class="est">E</span>의 여유가 있습니다. 반대로 OLED 잔고 184억이 3분기에 한꺼번에 들어오면 비프로브 영업이익은 211.6억<span class="est">E</span>으로 늘지만, 낮은 이익률의 매출이 분모를 키워 프로브카드에 요구되는 영업이익률이 24.4%<span class="est">E</span>로 오히려 올라갑니다. OLED가 많이 들어온 분기일수록 OPM 채점이 불리해진다는 점을 미리 적어 둡니다.</p>
+<p>네이버 기준 3Q26E 연결 매출 1,783억·영업이익 506억(OPM 28.39%)은 2Q26 연결 실적(1,888억·525억)보다 낮습니다. 비프로브 3사업이 2Q26 수준을 지킨다면 그 낮아지는 경로는 프로브카드 이익률 하락이나 자회사 층의 되돌림 쪽에 있다고 봅니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 2(이익률 27.8%는 어디서 오는가)에 주는 이 파트의 답.</b> 2Q26 별도 OPM이 31.4%에서 28.5%로 내려온 것을 OLED가 빠진 믹스로 설명하려면 OLED 영업이익률이 46%<span class="est">E</span> 이상이어야 하고, 원가 골격과 과거 봉우리 분기의 OPM은 그 반대를 가리킵니다. 우리의 기본 가정에서 비프로브 3사업은 2Q26 별도 영업이익의 49%<span class="est">E</span>를 냈고 그중 보드가 149.4억<span class="est">E</span>으로 가장 큰 기둥입니다. 따라서 이익률의 원천은 '보드가 받치는 바닥'과 '프로브카드의 한계이익률' 두 가지로 정리됩니다. 채점 KPI는 허브와 같습니다. 유지선은 3Q26 별도 OPM 26% 이상과 연결 OPM 25% 이상, 반증은 별도 OPM 22% 미만입니다. 이 파트가 보태는 보조 계기판은 3Q26 보드 매출 400억 이상과 누적 수출 비중 80% 이상(보드가 바닥을 지키는지), OLED 인도 규모(분모 희석 요인), 그리고 프로브카드 잔여 이익률 22%<span class="est">E</span> 이상(유지선의 실질 조건)입니다. 보드가 2분기 연속 400억 아래면 바닥이 흔들린다는 뜻으로 읽습니다.</p>
+<p><b>논쟁 1(프로브카드 703억은 기준선인가 천장인가)에 보태는 답.</b> 비프로브 3사업은 프로브카드와 별도 조직(AT 보드·AT 소켓·PTR Center)이지만 두 가지 점에서 논쟁 1과 닿습니다. 첫째, 프로브카드가 캐파 천장에 닿는다면 모회사 매출 성장의 나머지는 보드와 소켓이 채워야 하고, 2026년 상반기 보드 2.1배<span class="est">E</span>·소켓 1.4배<span class="est">E</span> 성장은 그 여지를 보여 줍니다. 둘째, 보드 수요는 고객의 테스터 증설과 함께 움직이므로, 국내 메모리 보드(2Q26 64억)가 늘기 시작하면 메모리 고객의 테스트 설비 확장이 시작됐다는 선행 신호로 쓸 수 있습니다. 지금은 이 신호가 켜지지 않았습니다.</p>
+<p><b>논쟁 4(고객 지도는 다변화인가 중국 노출인가)에 보태는 답.</b> 비프로브 3사업의 고객 지도는 프로브카드보다 미국 비메모리 쪽으로 넓습니다. 보드 수출 1순위는 네 해 연속 AMD이고 Intel·SanDisk가 뒤따르며, 연결 북미 매출은 2026년 상반기 370억으로 늘었습니다. 동시에 중국 노출도 프로브카드에만 있지 않습니다. 소켓 수출 1순위가 2026년 반기에 YMTC로 올라섰고, 2025년 보드 수출 명단에는 CXMT가 있었으며, OLED 수출은 BOE와 중국 패널 업체들입니다. 미국의 중국 메모리 규제 영향은 프로브카드에 더해 소켓·보드 일부와 OLED 수출까지 넓혀 잡아야 합니다(금액 분해는 비공개).</p>
+
+<h2>미결</h2>
+<p><b>A급(판정에 직접 닿는 것).</b> 제품별 영업이익률 — 회사는 보드·소켓·OLED·프로브카드의 이익을 따로 공개하지 않고, 이 파트의 분해는 보드 35%(DS 7-02) 외에는 자체 가정입니다. 3Q26 분기보고서도 제품별 이익은 적지 않으므로, 회사 IR Q&A나 하우스 탐방 노트에서 보드 이익률의 범위를 확인해야 합니다. 보드 매출과 수주 표의 괴리 — 2026년 상반기 보드 매출 가운데 수주 표로 설명되는 몫이 40%<span class="est">E</span>에 그치는 이유(단납기 주문·수리·부품 매출의 표 제외 여부)는 회사 IR에 물어야 풀립니다. 보드의 메모리·비메모리 비중 — DS가 '1분기 비메모리 비중 일시 상승'이라고만 적었고 수치는 없습니다.</p>
+<p><b>B급(구조를 더 정확히 하는 것).</b> OLED 잔고 184억의 인도 시점(3Q26·4Q26·2027-01 가운데 어디인지, 3Q26 분기보고서 매출실적과 수주상황 표로 확인). 1Q26 대손충당금 환입 13.5억(DS 노트)이 모회사 판관비에 들어 있는지 여부(별도 재무제표 주석 대손충당금 변동표로 확인). PTR Center가 OLED(구 AQ) 조직의 새 이름인지(임원 표기 대조만 됨). 대구 동대구벤처밸리 회로설계센터(2025-11-12 협약, 오늘경제 2025-11-14)와 반도체 검사 디자인센터 약 300억 투자협약(매일신문 2026-09-03)이 보드·소켓 설계 인력 확충인지.</p>
+<p><b>C급(있으면 좋은 것).</b> 보드 글로벌 점유율 3~4위권 보도(프라임경제 2026-08-06)의 원자료. 테스터 설치 기반과 교체주기 5년의 실측(Advantest·Teradyne 테스터 출하로 간접 추정 가능). 소켓의 엘라스토머 대 스프링핀 비중과 OLED 장비 경쟁사 이름(모두 공시 없음).</p>
+<div class="foot">데이터 계보: DART 2026 반기보고서(8-14; II. 사업의 내용 매출실적·수주상황·주요 거래처·원재료 매입·원재료 가격변동·연구개발·시장여건 및 경쟁상황, VIII 직원 현황·임원 현황, 별도 재무제표 주석 특수관계자 거래)·2022~2025 사업보고서(주요 거래처·수주상황·임원 현황)·2026 1분기보고서(수주상황) · OpenDART fnlttSinglAcntAll 별도 손익(1Q23~2Q26) · 연결 성격별 비용(packet cost_nature) · 네이버 분기 실적·컨센서스(9-11 조회; ISC·리노공업·티에프이 포함) · 신한투자증권 2026-03-06·05-18·08-18, DS투자증권 2026-07-02, LS증권 2026-01-21·04-20, 신한 2025-09-24(조사노트 A·pdf 원문) · 시사저널e 2026-09-10(IR 보도) · 디일렉 2021-02-24·2025-01-23 · 한국경제 2026-07-27 · 뉴스핌 2026-08-18 · 프라임경제 2026-08-06 · 조사노트 A~D 2026-09-11. 추정치는 <span class="est">E</span> 표기이며 가정·근거·식·교차검증은 본문 5절에 있습니다. 이 문서는 투자 권유가 아니며 매매 판단을 제시하지 않습니다.</div>
+
+</main></body></html>
