@@ -377,9 +377,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="raoni">실시간 한국주식 <small>5초</small></button>
     <button class="navitem" data-tab="term">전닉 터미널</button>
     <button class="navitem" data-tab="quote">종목 분석</button>
-    <button class="navitem" data-tab="changes">변화 모니터 <small>NEW</small></button>
     <button class="navitem" data-tab="oprevision">OP 리비전 <small>NEW</small></button>
-    <button class="navitem" data-tab="invest">투자 카드 · 변화 <small>NEW</small></button>
     <div class="navgroup">시황</div>
     <button class="navitem" data-tab="weekly">주간 일정 <small>매주</small></button>
     <button class="navitem" data-tab="krwrap">韓 시황</button>
@@ -462,8 +460,6 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div class="grid">
           <button class="card" data-go="raoni"><h3>실시간 한국주식 <span class="tag">5초</span></h3><p>삼성전자·SK하이닉스 시장가·김프·펀딩비 + 코스피·코스피200 선물 실시간</p></button>
           <button class="card" data-go="term"><h3>전닉 터미널 <span class="tag">통합 데스크</span></h3><p>시세·PER·목표주가·뉴스·공시·수급을 한 화면에</p></button>
-          <button class="card" data-go="invest"><h3>투자 카드 · 변화 <span class="tag">내 데스크</span></h3><p>종목별 수급·OP 추정·수주·가동률·리서치 연결 + 마지막 확인 이후 변화 비교</p></button>
-          <button class="card" data-go="changes"><h3>변화 모니터 <span class="tag">관심종목</span></h3><p>마지막 확인 이후 가격·OP 컨센·수급·수주·가동률·리포트 변화</p></button>
           <button class="card" data-go="oprevision"><h3>OP 리비전 <span class="tag">추정 이력</span></h3><p>종목·증권사·추정연도별 OP 변경 · 컨센대비와 구분</p></button>
           <button class="card" data-go="quote"><h3>종목 분석 <span class="tag">전 종목</span></h3><p>코스피·코스닥 전 종목 검색 — TradingView 차트 + 네이버 기본정보</p></button>
         </div>
@@ -587,9 +583,6 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <div id="ramBody"></div>
     </section>
 
-    <section class="panel embed" id="tab-invest"><iframe data-src="invest.html" title="투자 카드 · 변화 모니터"></iframe></section>
-
-    <section class="panel embed" id="tab-changes"><iframe data-src="changes.html" title="지난번 이후 달라진 것"></iframe></section>
     <section class="panel embed" id="tab-oprevision"><iframe data-src="op-revisions.html" title="OP 리비전 추적"></iframe></section>
     <section class="panel" id="tab-quote">
       <div class="ptitle">종목 분석</div>
@@ -2250,7 +2243,7 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
-  const FRESH={changes:1,oprevision:1,invest:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1};
+  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?'?v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
@@ -2542,9 +2535,7 @@ homeStart();
 /* 갱신 요청은 매번 비밀번호 입력 — 서버(worker.js)가 해시 검증, 저장하지 않는다 */
 const RL_API=location.hostname==='research-lab.jwk490.workers.dev'?'':'https://research-lab.jwk490.workers.dev';
 const RR_TABS={
-  changes:{m:'x',note:'변화 모니터 안에서 데이터를 새로 읽습니다'},
   oprevision:{m:'x',note:'OP 리비전 안에서 데이터를 새로 읽습니다'},
-  invest:{m:'x',note:'통합 카드 안에서 기존 발행 데이터를 새로 읽습니다'},
   home:{m:'x'},
   raoni:{m:'a',eta:'~1분'}, term:{m:'a',eta:'~1분'}, quote:{m:'a',eta:'~5분'},
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
