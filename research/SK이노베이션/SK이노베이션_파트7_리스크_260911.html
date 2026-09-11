@@ -1,0 +1,520 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="risks">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SK이노베이션 파트 7 — 리스크 매트릭스·정책·접는 조건 통합표 · 2026-09-11</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+<h1>SK이노베이션 파트 7 — 리스크 매트릭스·정책·접는 조건 통합표</h1>
+<div class="sub">파트제 커버리지 9편(파트 0~8) 중 파트 7 · 작성 2026-09-11 · 주가 146,000원(9-11 10시 장중, 전일 종가 153,100원 대비 -4.6%) · 시총 24조 6,817억 · 기준 환율 $1 = ₩1,346.6(9-11) · 회계연도 12월(2026 = 제20기, K-IFRS 연결) · 다음 실적 3Q26 잠정실적 2026-10-30E(3Q25는 10-31 공시) · 다음 갱신 트리거 9-23 합병 반대의사 통지 마감·10-30 3Q26 잠정·11-30 RCPS 상환기간 개시 · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 2026 반기보고서(8-14)·주요사항보고서(합병 8-25·26)·파생상품거래손실 공시(7-30)·2Q26 IR(7-30)·한신평 평정(6-12)·키움 일봉·네이버 컨센(9-11)·웹 조사 노트 A~D(9-11), 언론 인용은 본문에 매체·날짜 표기</div>
+<div class="hubnav">SK이노베이션 파트제 커버리지 · 현행 판정은 <a href="SK이노베이션_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 risks를 맡습니다. · 파트 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8</div>
+
+<p>이 파트는 커버리지 층 risks를 맡습니다. 허브의 판정 가설은 2026년 상반기 영업이익 5조 6,495억에서 재고 관련 이익 2조 2,198억과 SK온의 고객 보상금(외부 추정 약 1조, 회사 미공개)을 걷어내면 전쟁이 만든 이익과 회사가 만든 이익이 갈린다는 데서 출발합니다. 리스크 파트는 그 가설이 틀리는 경로를 열두 갈래로 나눠, 각각 얼마가 걸려 있고 얼마나 일어날 법하며 어디서 먼저 보이는지를 적습니다. 확률은 전부 우리가 설정한 값이고 <span class="est">E</span>로 표기하며, 12개월 창을 기준으로 둡니다. 주가는 값 매기지 않습니다. 하방의 자는 과거 실측 낙폭, 유상증자 발행가 두 개(2023년 139,600원·2025년 111,000원), 전환사채 전환가 123,642원, 합병가액 125,862원, 52주 저점 87,700원만 씁니다. 9-11 10시 장중 146,000원에서 이 자들은 각각 -4.4%·-24.0%·-15.3%·-13.8%·-39.9% 아래에 있습니다. 마지막 두 절에서 허브 논쟁 1~5의 유지선과 반증을 한 표로 모으고, 판정을 보류해야 하는 조건을 적습니다.</p>
+<p>리스크의 순서는 발생 확률이 아니라 허브 판정에 닿는 거리로 정했습니다. 앞의 셋(정제마진·역래깅·SK온)은 이익의 성격에 닿고, 다음 넷(RCPS·부채성 자본·합병·오버행)은 그 이익이 주주에게 오는가에 닿으며, 나머지 다섯(정책·등급·배당·화학·금리환율)은 둘 다를 조금씩 깎습니다. 열두 개를 한 표와 한 장표에 넣어 어느 것이 확률과 영향 모두에서 앞자리에 있는지 먼저 보이게 했습니다.</p>
+
+<h2>0. 용어집</h2>
+<div class="gloss">
+<b>리스크포인트</b><span>영향(억원 또는 %)과 발생 확률(작성자 설정 <span class="est">E</span>)과 관측 신호(어느 공시·지표에서 먼저 보이는가)를 한 줄에 적은 항목입니다. 이 파트는 열두 개를 둡니다.</span>
+<b>접는 조건</b><span>허브 논쟁의 판정을 철회하는 반증입니다. 논쟁마다 유지선과 반증이 있고, 셋 중 둘이 어긋나면 판정을 보류합니다.</span>
+<b>역래깅·재고평가손실</b><span>원유를 산 시점과 제품을 판 시점의 시차 때문에 유가가 내리면 비싸게 산 원유로 싸진 제품을 파는 손실이 납니다. 2Q25 석유부문 영업이익 -4,663억이 실측 사례입니다.</span>
+<b>PRS 정산</b><span>주가수익스왑입니다. SK온·SKIET 유상증자에 들어온 투자자가 주식을 팔 때 매각금액과 정산금액의 차액을 회사와 주고받습니다. 2Q26 말 파생부채 1조 7,485억으로 잡혀 있습니다.</span>
+<b>소규모합병 반대 20%</b><span>합병신주가 발행주식의 10% 이하이면 주주총회 없이 이사회로 갈음하는데, 발행주식 20% 이상이 반대를 통지하면 정식합병으로 바뀌고 SK이노베이션 주주에게도 매수청구권이 생깁니다.</span>
+<b>매수청구</b><span>합병에 반대한 주주가 회사에 주식을 사 달라고 요구하는 권리입니다. SKIET 주주에게 14,620원으로 부여되며, 3,500억을 넘으면 회사가 계약을 해제할 수 있습니다.</span>
+<b>RCPS 현물상환</b><span>상환전환우선주를 현금 대신 자산으로 갚는 방식입니다. 이엔에스시티가스 RCPS 2.4조는 회사 선택으로 현금 또는 그 밖의 자산(도시가스 지분)으로 상환할 수 있습니다.</span>
+<b>횡재세</b><span>2026-03-11 발의된 법인세법 개정안입니다. 상장 석유정제업자의 사업연도 소득이 직전 3개년 평균에 5억을 더한 값을 넘으면 초과분에 법인세 20%를 더 물립니다.</span>
+<b>오버행</b><span>시장에 나올 수 있는 잠재 매물입니다. 유상증자 SPC 물량, 전환사채 전환분, 합병신주가 여기 해당합니다.</span>
+</div>
+
+<h2>1. 리스크 매트릭스 12종 — 영향 × 확률 × 관측 신호</h2>
+<p>표의 영향은 항목마다 정의가 다릅니다. ①②③⑪은 연간 영업이익 감소분이고, ④⑤⑨⑫는 순차입·이자·평가손실이며, ⑥⑦⑩은 주식 수나 배당 총액을 9-11 10시 장중로 환산한 금액입니다. 같은 억원이라도 손익 항목과 대차대조표 항목은 무게가 다르므로, 장표 1의 세로축은 크기의 자리를 보여 줄 뿐 항목끼리 더할 수 없습니다. 확률은 우리가 12개월 창으로 설정한 값이며 근거는 각 항목 문단에 적습니다.</p>
+<table class=""><tr><th>리스크</th><th>영향(정량)</th><th>확률(12개월)</th><th>관측 신호</th><th>논쟁</th></tr><tr><td>① 휴전·복구로 정제마진 급락</td><td>석유 분기 OP 7,770억(2Q26 재고 제외<span class="est">E</span>)이 4,749억(4Q25, 마진 약 10달러) 수준으로, 연 약 1.2조<span class="est">E</span> 감소</td><td>40%<span class="est">E</span></td><td>싱가포르 복합 정제마진 주간치·두바이·휴전 발표</td><td>1</td></tr><tr><td>② 유가 하락기 역래깅·재고평가손실</td><td>1H26 재고 효과 2조 2,198억의 부호 반전. 2Q25 석유 OP -4,663억이 실측 자</td><td>45%<span class="est">E</span></td><td>두바이 월평균 대 1H26 원유매입가 91.79달러·분기 재고 효과 공개치</td><td>1</td></tr><tr><td>③ SK온 3Q 재적자(보상금 일회성)</td><td>보상금 약 1조 제외 시 2Q26 약 -1,782억<span class="est">E</span>. 분기 -3,000억 재확대 시 연 -1.2조</td><td>60%<span class="est">E</span></td><td>3Q26 배터리 OP 부호·AMPC·보상금 분리 공개</td><td>2</td></tr><tr><td>④ RCPS 3.135조 처리</td><td>현금: 순차입 +3.1~3.8조·이자 연 +1,520억<span class="est">E</span>(4%<span class="est">E</span>). 현물: 도시가스 6사 순이익 3,423억/년 이탈</td><td>55%<span class="est">E</span></td><td>11-30 이후 상환 방식 공시·E&S 도시가스 연결 제외 여부</td><td>3</td></tr><tr><td>⑤ 부채성 자본 12조·PRS 정산</td><td>1H26 평가손실 1조 2,169억, 2Q26 파생부채 1조 7,485억. SKIET PRS 정산 2,000~3,000억(하나 8-27)</td><td>35%<span class="est">E</span></td><td>파생상품거래손실 공시·SK온 PRS 만기 2027-10~2028-08</td><td>3·4</td></tr><tr><td>⑥ SKIET 합병 반대·매수청구</td><td>희석 2.65%·4,481,300주(6,543억, 9-11). 반대 20% = 33,810,558주, SKIET 매수청구 3,500억 해제선</td><td>15%<span class="est">E</span></td><td>9-23 반대 통지 집계·11-24~12-14 SKIET 매수청구 규모</td><td>4</td></tr><tr><td>⑦ 오버행(유증 SPC·CB·합병신주)</td><td>SPC 14,414,409주+CB 4,852,796주+합병신주 4,481,300주 = 23,748,505주(14.0%<span class="est">E</span>), 3조 4,673억(9-11)</td><td>25%<span class="est">E</span></td><td>5% 변동 보고·전환청구 공시·SPC PRS 청산 보도</td><td>4·5</td></tr><tr><td>⑧ 정책(손실보전 미확정·횡재세·담합)</td><td>손실보전 업계 4~5조 대 정부 3~4조 미만, 지급 미공개. 횡재세 2026 적용 시 약 8,553억<span class="est">E</span>(석유부문 기준)</td><td>60%<span class="est">E</span></td><td>정산위 지급 공고·법안 상임위 상정·10-06 국감</td><td>1</td></tr><tr><td>⑨ 신용등급 하향</td><td>회사채 잔액 12조 8,970억, 조달금리 100bp = 1,290억<span class="est">E</span>/년. 한신평 하향 트리거 순차입/EBITDA 7배</td><td>15%<span class="est">E</span></td><td>순차입/EBITDA 7배 근접·한신평 수시평가·Moody's 조치</td><td>3</td></tr><tr><td>⑩ 무배당 재발</td><td>컨센 DPS 2,600원 = 총 4,395억<span class="est">E</span>. 2025 무배당으로 최소 DPS 2,000원 약속 1회 철회</td><td>20%<span class="est">E</span></td><td>2027-01 결산 이사회·주주환원 정책 재수립 공시</td><td>4</td></tr><tr><td>⑪ 화학 NCC 구조조정 비용·손상</td><td>울산 NCC 장부가 약 1조(대한유화·S-Oil 타진). 2025 화학 OP -2,365억, 2Q26 재고 제외 -485억<span class="est">E</span></td><td>40%<span class="est">E</span></td><td>울산 3사 사업재편계획서 제출·지오센트릭 손상 공시</td><td>-</td></tr><tr><td>⑫ 이자율·환율</td><td>변동금리 3조 2,918억 100bp = +260억. USD 10% 변동 시 세전 ±2,921억(반기보고서)</td><td>30%<span class="est">E</span></td><td>변동금리 차입 잔액·USD 순포지션 민감도(반기보고서)</td><td>-</td></tr></table>
+<figure class=""><figcaption>장표 1. 리스크 12종의 자리 — 가로 발생 확률(작성자 설정 E), 세로 영향 금액(억원, 로그). 붉은 영역은 확률 40% 이상이면서 영향 3,000억 이상</figcaption><svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="312.7" x2="850" y2="312.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="316.7" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<line x1="62" y1="249.3" x2="850" y2="249.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="253.3" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="191.6" x2="850" y2="191.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="195.6" text-anchor="end" font-size="11" fill="#8a857c">3,000</text>
+<line x1="62" y1="128.2" x2="850" y2="128.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="132.2" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="70.5" x2="850" y2="70.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="74.5" text-anchor="end" font-size="11" fill="#8a857c">30,000</text>
+<line x1="62" y1="34.0" x2="850" y2="34.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="38.0" text-anchor="end" font-size="11" fill="#8a857c">60,000</text>
+<line x1="62.0" y1="34" x2="62.0" y2="334" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="62.0" y="350" text-anchor="middle" font-size="11" fill="#8a857c">0%</text>
+<line x1="259.0" y1="34" x2="259.0" y2="334" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="259.0" y="350" text-anchor="middle" font-size="11" fill="#8a857c">20%</text>
+<line x1="456.0" y1="34" x2="456.0" y2="334" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="456.0" y="350" text-anchor="middle" font-size="11" fill="#8a857c">40%</text>
+<line x1="653.0" y1="34" x2="653.0" y2="334" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="653.0" y="350" text-anchor="middle" font-size="11" fill="#8a857c">60%</text>
+<line x1="850.0" y1="34" x2="850.0" y2="334" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="850.0" y="350" text-anchor="middle" font-size="11" fill="#8a857c">80%</text>
+<text x="456" y="372" text-anchor="middle" font-size="11" fill="#8a857c">발생 확률(작성자 설정 E, 12개월)</text>
+<text x="62" y="14" font-size="11" fill="#8a857c">영향(억원, 로그) — 항목별 정의는 표 1</text>
+<rect x="456.0" y="34" width="394.0" height="157.6" fill="#a44a3f" opacity="0.06"/>
+<text x="830.3" y="48" text-anchor="end" font-size="10.5" fill="#a44a3f">확률 40% 이상 · 영향 3,000억 이상</text>
+<circle cx="456.0" cy="118.7" r="7" fill="#a44a3f" opacity="0.85"/>
+<text x="456.0" y="122.7" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">①</text>
+<text x="447.0" y="110.7" text-anchor="end" font-size="10.5" fill="#a44a3f">① 휴전·복구로 정제마진 급락</text>
+<circle cx="505.2" cy="123.2" r="7" fill="#a44a3f" opacity="0.85"/>
+<text x="505.2" y="127.2" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">②</text>
+<text x="496.2" y="97.7" text-anchor="end" font-size="10.5" fill="#a44a3f">② 유가 하락기 역래깅·재고평</text>
+<circle cx="653.0" cy="118.7" r="7" fill="#a44a3f" opacity="0.85"/>
+<text x="653.0" y="122.7" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">③</text>
+<text x="662.0" y="110.7" font-size="10.5" fill="#a44a3f">③ SK온 3Q 재적자</text>
+<circle cx="603.8" cy="179.1" r="7" fill="#a44a3f" opacity="0.85"/>
+<text x="603.8" y="183.1" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">④</text>
+<text x="612.8" y="171.1" font-size="10.5" fill="#a44a3f">④ RCPS 3.135조 처리</text>
+<circle cx="406.8" cy="201.2" r="7" fill="#1f3a5f" opacity="0.85"/>
+<text x="406.8" y="205.2" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑤</text>
+<text x="415.8" y="193.2" font-size="10.5" fill="#1f3a5f">⑤ 부채성 자본 12조·PRS</text>
+<circle cx="209.8" cy="183.5" r="7" fill="#b07d2b" opacity="0.85"/>
+<text x="209.8" y="187.5" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑥</text>
+<text x="200.8" y="175.5" text-anchor="end" font-size="10.5" fill="#b07d2b">⑥ SKIET 합병 반대·매수</text>
+<circle cx="308.2" cy="62.8" r="7" fill="#b07d2b" opacity="0.85"/>
+<text x="308.2" y="66.8" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑦</text>
+<text x="317.2" y="54.8" font-size="10.5" fill="#b07d2b">⑦ 오버행</text>
+<circle cx="653.0" cy="136.5" r="7" fill="#a44a3f" opacity="0.85"/>
+<text x="653.0" y="140.5" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑧</text>
+<text x="662.0" y="128.5" font-size="10.5" fill="#a44a3f">⑧ 정책</text>
+<circle cx="209.8" cy="236.0" r="7" fill="#1f3a5f" opacity="0.85"/>
+<text x="209.8" y="240.0" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑨</text>
+<text x="218.8" y="228.0" font-size="10.5" fill="#1f3a5f">⑨ 신용등급 하향</text>
+<circle cx="259.0" cy="171.5" r="7" fill="#b07d2b" opacity="0.85"/>
+<text x="259.0" y="175.5" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑩</text>
+<text x="250.0" y="162.5" text-anchor="end" font-size="10.5" fill="#b07d2b">⑩ 무배당 재발</text>
+<circle cx="456.0" cy="128.2" r="7" fill="#a44a3f" opacity="0.85"/>
+<text x="456.0" y="132.2" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑪</text>
+<text x="447.0" y="84.7" text-anchor="end" font-size="10.5" fill="#a44a3f">⑪ 화학 NCC 구조조정 비용</text>
+<circle cx="357.5" cy="188.5" r="7" fill="#b07d2b" opacity="0.85"/>
+<text x="357.5" y="192.5" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑫</text>
+<text x="348.5" y="149.5" text-anchor="end" font-size="10.5" fill="#b07d2b">⑫ 이자율·환율</text>
+</svg><div class="src">자료: 표 1의 영향·확률. 영향의 정의는 항목별로 다르며(연간 OP 감소·순차입 증가·매물 금액·배당 총액), 항목 간 합산은 뜻이 없습니다. 확률은 2026-09-11 기준 작성자 설정. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 붉은 영역에 ①휴전·복구, ②역래깅, ③SK온 재적자, ④RCPS 처리, ⑧정책, ⑪NCC 여섯 개가 들어갑니다. 확률이 가장 높은 것은 ③(60%<span class="est">E</span>)과 ⑧(60%<span class="est">E</span>)이고, 영향이 가장 큰 것은 ⑦오버행(3조 4,673억, 매물 금액)과 ①·③(연 1.2조)입니다. <b>원인.</b> ①②③은 같은 뿌리에서 나옵니다. 2026년 이익의 절반 가까이가 재고 효과와 일회성이었고(1H26 재고 효과 2조 2,198억, SK온 보상금 약 1조), 그 두 층은 전쟁과 포드 합작 종결이라는 외생 사건이 만든 것이라 되풀이될 근거가 없습니다. ④⑤⑨는 부채성 자본 12조가 만드는 하나의 묶음입니다. <b>함의.</b> 채점 순서가 곧 관측 순서입니다. 9-23 반대 통지(⑥), 10-30 3Q26 잠정(①②③), 11-30 RCPS(④), 2027-01 결산 배당(⑩)이 차례로 옵니다. 이 파트는 각 시점에 무엇을 보면 판정을 접어야 하는지를 7절에 표로 둡니다.</p>
+
+<h3>①② 시황 — 휴전·복구와 유가 하락기의 역래깅</h3>
+<p>첫째 리스크는 정제마진이 전쟁 전 수준으로 돌아가는 것입니다. 싱가포르 복합 정제마진은 2025년 월평균 1.8~6.7달러(유안타·Datastream, 연평균 4.42달러)에서 2Q26 평균 24.7달러(한국경제 8-10), 8월 하순 39~40달러(검색 요약, 원문 미대조)까지 올랐습니다. 2Q26 석유 사별 합산 영업이익 1조 7,862억에서 SK에너지·인천의 재고 효과 10,092억을 빼면 7,770억<span class="est">E</span>이고, 정제마진이 약 10달러였던 4Q25의 석유부문 영업이익은 4,749억이었습니다. 두 값의 차이 약 3,021억<span class="est">E</span>이 분기당 걸린 금액이며 연으로는 약 1.2조<span class="est">E</span>입니다. 실측 반응은 4-08 2주 휴전입니다. D 노트의 기사는 정유주 10%대 급락으로 적었지만 키움 일봉으로는 4-08 종가 120,400원(-1.15%)에 장중 저가 115,500원(전일 종가 대비 -5.2%)이었고, 6-17 이슬라마바드 각서 뒤 6-26 52주 저점 87,700원까지 내려간 것이 휴전 국면의 실측 낙폭입니다(4-29 종가 149,800원 대비 -41.5%). 확률 40%<span class="est">E</span>로 둔 이유는 9-01 교전 재개와 호르무즈 통항 일 7척(전쟁 전 100척, 글로벌이코노믹 9-03)이 공급 차질을 길게 보게 하지만, 11-03 미국 중간선거와 8-25 기뢰 제거 확인처럼 협상으로 기우는 신호도 함께 있기 때문입니다. 관측 신호는 정제마진 주간치와 휴전 발표 그 자체이며, 2Q26 IR의 3Q 전망 문구(OPEC+ 증산·역내 가동률 상승으로 강세 완화)를 회사 스스로의 경고로 읽습니다.</p>
+<p>둘째 리스크는 첫째와 짝을 이룹니다. 유가가 오를 때 붙은 재고 관련 이익은 유가가 내릴 때 같은 회계로 손실이 됩니다. 1H26 전사 재고 효과 2조 2,198억(1Q 10,249억·2Q 11,949억, 컨콜 Q&A)은 두바이유가 2월 말 70달러대에서 3-19 166달러까지 오르는 사이 생긴 것입니다. 실측 자는 2Q25입니다. 두바이유가 내려가던 그 분기 석유부문 영업이익은 -4,663억이었고, 회사는 유가·환율 하락에 따른 시차손실 및 재고평가손실이라고 적었습니다. 지금의 노출은 더 큽니다. SK에너지의 1H26 원유매입가는 배럴당 91.79달러(반기보고서)인데 두바이 8월 월평균은 88.8달러(산업통상부)였고, 9-10 121.49달러로 다시 올랐습니다. 매입가보다 시세가 낮은 달이 이미 한 번 있었다는 뜻이며, 9월 유가가 유지되면 3Q에 다시 재고 이익이 붙고, 휴전이 오면 4Q에 반대 부호가 옵니다. 확률 45%<span class="est">E</span>는 앞 항목과 독립이 아니라 조건부입니다. 휴전이 오면 거의 확실히 따라오고, 오지 않으면 유가 100달러대에서의 월별 등락만 남습니다. 관측 신호는 두바이 월평균과 컨콜의 재고 효과 공개치이며, 파트 1의 정제마진·재고 효과 조정판이 이 숫자를 받습니다.</p>
+
+<h3>③ SK온 — 보상금 없이 3분기를 넘기는가</h3>
+<p>2Q26 배터리 영업이익 8,218억에는 포드 합작 종결에 따른 고객 보상금 약 1조(BNK 7-31·허핑턴포스트코리아 추정, 회사는 분리 미공개)가 들어 있고, 이를 빼면 약 -1,782억<span class="est">E</span>입니다. AMPC도 2Q26부터 매출에 포함 표시로 바뀌어 분기 금액이 공개되지 않으므로(SK온 기타원천수익 2Q26 1조 3,323억에 포함), 보상금과 세액공제를 걷어낸 본업의 부호를 외부에서 확인할 길이 3Q26 잠정 발표까지는 없습니다. 하방의 크기는 2025년이 자입니다. 분기 적자는 1Q25 -2,993억, 4Q25 -4,414억, 1Q26 -3,492억이었고, 여기서 BOSK 종결의 연 이자 2,700억·감가 3,300억 절감(컨콜)을 빼면 분기 -1,500억<span class="est">E</span> 안팎이 새 바닥이라고 봅니다. 그래서 허브의 유지선이 -1,500억이고, 반증이 -3,000억입니다. 확률 60%<span class="est">E</span>로 가장 높게 둔 이유는 가동률이 1H26 36.4%(2025 48.7%)로 더 내려갔고, 미국 전기차 판매가 2026년 상반기 462,892대(-23.8%, Cox)로 줄었으며, 조지아 2공장의 ESS 양산이 10월이라 3Q 안에 매출로 잡히기 어렵기 때문입니다. 관측 신호는 10-30 배터리 부문 영업이익의 부호와, 회사가 보상금·AMPC를 분리해 공개하는지 여부 그 자체입니다. 분리 공개가 없으면 우리는 흑자를 흑자로 세지 않습니다.</p>
+
+<h3>④⑤ 자본구조 — RCPS 3.135조와 부채성 자본 12조</h3>
+<p>KKR이 인수한 이엔에스시티가스 RCPS 2.4조의 상환기간이 11-30에 열리고 2027-02-01에 닫힙니다(2026-06-30 변경합의, 반기보고서 주석). 부산 7,350억은 현물이면 11-30부터, 현금이면 2028-01-01부터입니다. 회사 선택으로 현금 또는 그 밖의 자산으로 갚을 수 있고, SK이노베이션이 3.135조의 상환의무 이행을 보증합니다. 딜사이트(6-08)는 IRR 9.9%를 얹은 합산 상환액을 약 3.8조로 보도했습니다. 현금으로 갚으면 순차입이 3.1~3.8조 늘고 이자가 연 약 1,520억<span class="est">E</span>(조달금리 4%<span class="est">E</span> 가정) 붙습니다. 현물로 갚으면 도시가스 6사(강원·영남·코원·전북·전남·충청)의 2025년 합산 순이익 3,423억(딜사이트 6-02)이 연결에서 빠지고, E&S 2025년 영업이익 6,811억의 절반 안팎<span class="est">E</span>이 사라집니다. 어느 쪽도 공짜가 아니며, 우리는 현물 55%<span class="est">E</span>·현금 45%<span class="est">E</span>로 둡니다. 현물 쪽을 조금 높게 보는 근거는 셋입니다. 2026-06-30 변경합의로 누적 미지급 배당 수취권을 투자자가 포기한 점(현물 이전을 전제한 정리로 읽힙니다), 나신평이 8-06 코원·충청·부산도시가스에 AA- 등급을 새로 부여한 점(개별 회사채 발행 준비로 읽힙니다), 회사가 5-28·6-02 결정된 바 없다고만 답한 점입니다. 상환 4개월 전 통지 의무(7-01까지)의 결과는 공시·보도 모두 미확인이며, 이것이 이 파트의 A급 미결입니다.</p>
+<p>부채성 자본 12조(한신평 2026-03, PRS 3.8조·RCPS 3.1조·CPS 3.0조·신종 1.8조)는 회계상 자본이지만 경제 실질은 갚아야 할 돈입니다. 그중 PRS는 이미 손익에 나타났습니다. 1H26 파생평가손실 1조 2,169억(7-30 공시, 자기자본 대비 3.34%)은 SK온 주식 PRS 3.5조와 SKIET PRS 3,000억의 기초자산 가치가 내려간 만큼 회사가 투자자에게 물어 줄 차액을 미리 잡은 것이고, 2Q26 말 파생부채는 SK온 건 1조 6,153억·SKIET 건 1,332억입니다(반기보고서 약정사항). 정산은 매수자가 기초자산을 팔 때 매각금액과 정산금액의 차액을 주고받는 구조이며, 만기는 SK온 1차 2027-10-15·2차 2027-11-25·3차 2028-08-18, SKIET 2028-08-07입니다. 현금이 나가는 시점은 만기가 아니라 투자자의 매각 시점이고, SKIET 합병으로 SKIET PRS 투자자(10,489,508주)는 2027-01-01 SK이노베이션 주식을 받게 되므로 그 건의 정산이 먼저 옵니다. 하나증권(8-27)은 차액정산 2,000~3,000억을 적었습니다. 확률 35%<span class="est">E</span>는 12개월 안에 현금 정산이 실제로 일어날 가능성이고, 평가손실 자체는 이미 일어난 일입니다. 정산금액의 산정식(보장 수익률·프리미엄)은 공시에 없어 미결로 둡니다.</p>
+
+<h3>⑥⑦ 합병과 오버행 — 반대 20%, 매수청구 3,500억, 매물 23,748,505주</h3>
+<p>SKIET 흡수합병은 소규모합병이라 SK이노베이션 주주총회가 없고 매수청구권도 없습니다. 대신 9-09~23에 발행주식 20% 이상이 반대를 통지하면 정식합병으로 바뀝니다. 20%는 33,810,558주이고, SK㈜ 52.09%(88,052,777주)가 반대할 리 없으므로 나머지 주주 81,000,011주의 41.7%<span class="est">E</span>가 반대해야 닿는 문턱입니다. 외국인 15.81%와 기관 전부가 움직여도 빠듯한 수치라 확률 10%<span class="est">E</span> 이하로 봅니다. 그보다 현실적인 문턱은 SKIET 쪽입니다. 매수청구가 14,620원으로 3,500억을 넘으면 계약 해제가 가능한데, 3,500억은 23,939,808주<span class="est">E</span>, 합병신주 4,481,300주를 합병비율로 되돌린 외부 주주 지분 약 38,153,660주<span class="est">E</span>의 63%<span class="est">E</span>에 해당합니다. 합병가액 14,783원 대 매수청구가 14,620원이라 시세가 매수청구가 아래로 내려가야 청구가 몰리고, 그 경우에도 외부 주주 절반 이상이 청구해야 하므로 15%<span class="est">E</span>로 둡니다. 더 앞에 놓인 변수는 9-04 금감원의 증권신고서 정정요구입니다. 3개월 안(12-04) 재제출이 요구되며 정정 내용이 합병 조건을 건드리면 11-24 이사회 일정이 밀립니다. 희석은 2.65%로 크지 않지만 LS증권이 8-27 목표주가를 내리며 적자 배터리 비중 증가를 이유로 든 것처럼, 시장이 본 것은 희석보다 자회사 지원의 반복이었습니다. 8-26 -11.04%가 그 값입니다.</p>
+<p>오버행은 세 층입니다. 첫째, 2025-09-05 상장한 3자배정 신주 18,018,012주(발행가 111,000원)의 의무보유가 2026-09-05 해제됐습니다. 이 가운데 SPC 7곳의 14,414,409주(8.5%)는 SK㈜가 3년 만기 PRS로 인수한 것이라 경제적 주인은 SK㈜이고, SK㈜ 직접 인수분 3,603,603주와 함께 당장 매물이 되지는 않습니다. 다만 PRS 만기(2028년) 전에 SK㈜가 청산을 택하면 SPC가 시장에 팔고 차액을 정산하는 구조라, 실물 매도 확률을 25%<span class="est">E</span>로 둡니다. 둘째, 사모 전환사채 6,000억(전환가 123,642원)은 10-31부터 4,852,796주(2.79%)로 전환 청구가 가능하며 9-11 10시 장중는 전환가보다 18.1% 위에 있어 전환 확률 70%<span class="est">E</span>로 봅니다. 셋째, 합병신주 4,481,300주(2.65%)는 2027-01-18 상장되며 SKIET 외부 주주에게 갑니다. 셋을 더하면 23,748,505주, 발행주식의 14.0%<span class="est">E</span>, 9-11 10시 장중로 3조 4,673억입니다. 20일 평균 거래대금 1,634억으로 나누면 약 21일<span class="est">E</span>치 거래대금이며, 기간이 2026년 10월부터 2028년까지 흩어져 있다는 점이 완충입니다. 관측 신호는 5% 변동 보고와 전환청구 공시, SK㈜의 PRS 관련 공시입니다.</p>
+
+<h3>⑧⑨⑩ 정책·등급·배당</h3>
+<p>정책 리스크는 6절에서 따로 다루고 여기서는 크기만 적습니다. 최고가격제(3-13 시행) 손실보전은 업계 추정 4~5조(에너지경제 8-24), 정부 입장은 MOPS 기준 3~4조보다 적을 것(헤럴드경제 6-19)이며, 9-07 기준 신청액·지급액이 미공개입니다. 횡재세는 3-11 발의 뒤 심사 상태 미확인이고, 2026년 석유부문 이익에 산식을 적용하면 약 8,553억<span class="est">E</span>이 나옵니다(6절 표). 담합은 7-08 HD현대오일뱅크만 기소되고 SK에너지는 불기소였지만 경쟁제한 효과 26조라는 검찰 추산이 국감(10-06~)에서 다시 나올 수 있습니다. 셋을 합쳐 확률 60%<span class="est">E</span>로 두는데, 이는 손실보전이 업계 추정에 못 미치거나 늦어질 확률이며, 횡재세 입법 자체는 15%<span class="est">E</span>로 낮게 봅니다.</p>
+<p>신용등급은 국내 AA(안정적)·CP A1이 2026-06 정기평정에서 유지됐고, S&P는 BBB-(2026-08-04 전망 Negative에서 Stable로 상향, 공개 제목 기준), Moody's는 Ba1(Negative, 2025-03-14)입니다. 한신평의 하향 트리거는 순차입/EBITDA 7배 초과 지속이고 실측치는 2024 6.9배·2025 6.5배·1Q26 연환산 2.3배입니다. 5절의 악화 시나리오에서 이 배수는 5.6배<span class="est">E</span>(리스 포함 6.2배<span class="est">E</span>)까지 올라가 트리거에 다가섭니다. 하향의 값은 조달금리입니다. 회사채 잔액 12조 8,970억에 100bp면 연 1,290억<span class="est">E</span>이고, 2026년 상반기 이자비용은 7,564억이었습니다. 확률 15%<span class="est">E</span>는 국내 등급 기준이며, Moody's의 추가 조치는 20%<span class="est">E</span>로 조금 높게 봅니다.</p>
+<p>배당은 신뢰의 문제입니다. 2024-10-30 밸류업 공시는 2024~2025년 최소 DPS 2,000원을 약속했고, 2024년은 지켰지만(총 2,976억) 2025년은 2026-01-27 무배당으로 철회했습니다. 우선주 1,248,426주는 배당 미실시 시 의결권이 부활하고, 신종자본증권 7,000억은 이자 연기 시 보통주 배당 금지 조항을 답니다. 2026E 컨센 DPS 2,600원은 총 4,395억<span class="est">E</span>이며, 회사는 2Q26 컨콜에서 새 주주환원 정책의 시점을 말하지 않았습니다. 2026년 순이익 컨센 3조 1,785억이 유지된다면 무배당의 명분은 약하지만, RCPS를 현금으로 갚는 해에 배당을 늘리기는 어렵다는 점에서 20%<span class="est">E</span>로 둡니다. 관측 신호는 2027-01 결산 이사회와 그 전에 나올 주주환원 정책 재수립 공시입니다.</p>
+
+<h3>⑪⑫ 화학 구조조정과 금리·환율</h3>
+<p>화학은 2025년 영업이익 -2,365억이었고 2Q26 지오센트릭 437억도 재고 효과 922억을 빼면 -485억<span class="est">E</span>입니다. 정부 주도 NCC 감축은 대산 110만톤(9-01 합병)·여수1호 139만톤(7-20 승인)으로 249만톤이 실행됐지만 울산은 SK지오센트릭 66만톤·대한유화 90만톤·S-Oil 18만톤의 174만톤이 미합의이고 9-11 현재 사업재편계획서가 제출되지 않았습니다. 2025-10 대한유화·S-Oil 컨소시엄이 장부가 약 1조를 타진했다는 보도가 있으므로, 매각이든 JV든 결과가 장부가를 밑돌면 손상이 납니다. 확률 40%<span class="est">E</span>는 12개월 안에 1,000억 이상의 손상 또는 구조조정 비용이 인식될 가능성이며, 에틸렌 스프레드가 7-31 톤당 78달러(손익분기 250~300)로 내려앉은 것이 배경입니다. 관측 신호는 울산 3사의 계획서 제출과 지오센트릭의 손상 공시입니다.</p>
+<p>금리와 환율은 크기가 작지만 방향이 확실합니다. 변동금리 차입 3조 2,918억에 100bp 상승은 연 +260억(반기보고서, C 노트 인용)이고, 9-11 미 10년물이 4.85%를 넘은 날 주가가 -4.64%였습니다. 환율은 반기보고서 민감도 표가 답을 줍니다. USD 환율 10% 상승 시 세전이익 -2,921억(파생 효과 포함)이므로, 역산하면 USD 순부채 포지션이 약 2조 9,207억<span class="est">E</span>, 9-11 환율로 약 21.7억달러<span class="est">E</span>입니다. EUR은 반대 방향(+305억), CNY는 -186억입니다. 원화가 약해지면 정제마진의 원화 환산은 커지지만 외화부채 평가손이 세전에서 그만큼을 깎는 구조입니다. 헤지 비율은 공시에 없어 미결로 둡니다. 확률 30%<span class="est">E</span>는 12개월 안에 국내 조달금리 100bp 상승 또는 환율 10% 변동이 일어날 가능성입니다.</p>
+
+<h2>2. 실측 낙폭의 자 — 2018년 이후 네 번, 그리고 2026년</h2>
+<p>주가를 값 매기지 않는 대신 과거에 실제로 얼마나 내렸는지를 적습니다. 키움 수정주가 기준 2018년 이후 고점에서 저점까지의 낙폭은 네 번 모두 40%를 넘었고, 가장 깊은 코로나 국면은 -74.6%였습니다. 기사에 남은 당시 가격(수정 전)과 밸류에이션 자를 오른쪽 열에 함께 적어, 어느 국면에서 어떤 값이 바닥이었는지 대조할 수 있게 했습니다. 2026년 안에서도 4-29 고점에서 6-26 저점까지 -41.5%가 있었습니다.</p>
+<table class=""><tr><th>구간</th><th>고점일</th><th>고점(수정)</th><th>저점일</th><th>저점(수정)</th><th>낙폭</th><th>기사 기준 가격·밸류 자(D 노트)</th></tr><tr><td>2018-2020 코로나</td><td>2018-10-02</td><td>221,892</td><td>2020-03-19</td><td>56,383</td><td>-74.6%</td><td>2020-03 저점 54,200원(더벨 2024-05-09, 당시 가격) · 코로나 저점 12M Fwd PBR 0.41(삼성증권 2024-06)</td></tr><tr><td>2021 배터리 고점 이후</td><td>2021-02-02</td><td>312,420</td><td>2022-09-30</td><td>141,204</td><td>-54.8%</td><td>2021년 초 32만원대 고점(머니투데이 2026-09-01, 당시 가격)</td></tr><tr><td>2023 유증·배터리 감액</td><td>2023-07-31</td><td>212,544</td><td>2023-11-01</td><td>120,400</td><td>-43.4%</td><td>2023-06-22 182,800 → 5거래일 저점 158,000(-13.6%, 유증 공시 직후) · 유증가 139,600</td></tr><tr><td>2024-2025 적자 국면</td><td>2024-01-02</td><td>140,200</td><td>2025-05-23</td><td>81,100</td><td>-42.2%</td><td>2024-04-16 102,600 · 2024-06 12M Fwd PBR 0.43(삼성증권) · 2025 유증가 111,000</td></tr><tr><td>2026 상반기</td><td>2026-04-29</td><td>149,800</td><td>2026-06-26</td><td>87,700</td><td>-41.5%</td><td>4-08 휴전, 6-17 각서, 6-26 52주 저점(장중)</td></tr><tr><td>2026 9월</td><td>2026-09-10(장중)</td><td>164,700</td><td>2026-09-11</td><td>146,000</td><td>-11.4%</td><td>코스피 급락·미 금리 급등(9-11)</td></tr></table>
+<figure class=""><figcaption>장표 2. 월봉 종가 2014-06~2026-09(키움 수정주가) — 네 번의 실측 낙폭과 2026년</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="730" y2="276.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="280.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="233.0" x2="730" y2="233.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="237.0" text-anchor="end" font-size="11" fill="#8a857c">50,000</text>
+<line x1="62" y1="190.0" x2="730" y2="190.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="194.0" text-anchor="end" font-size="11" fill="#8a857c">100,000</text>
+<line x1="62" y1="147.0" x2="730" y2="147.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="151.0" text-anchor="end" font-size="11" fill="#8a857c">150,000</text>
+<line x1="62" y1="104.0" x2="730" y2="104.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="108.0" text-anchor="end" font-size="11" fill="#8a857c">200,000</text>
+<line x1="62" y1="61.0" x2="730" y2="61.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="65.0" text-anchor="end" font-size="11" fill="#8a857c">250,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">300,000</text>
+<text x="62.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="66.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="71.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="75.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="80.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="84.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="89.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="93.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2015</text>
+<text x="98.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="102.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="107.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="112.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="116.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="121.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="125.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="130.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="134.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="139.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="143.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="148.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2016</text>
+<text x="152.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="157.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="162.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="166.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="171.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="175.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="180.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="184.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="189.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="193.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="198.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="202.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2017</text>
+<text x="207.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="212.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="216.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="221.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="225.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="230.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="234.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="239.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="243.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="248.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="252.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="257.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2018</text>
+<text x="261.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="266.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="271.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="275.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="280.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="284.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="289.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="293.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="298.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="302.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="307.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="311.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2019</text>
+<text x="316.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="321.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="325.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="330.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="334.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="339.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="343.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="348.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="352.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="357.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="361.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="366.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2020</text>
+<text x="371.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="375.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="380.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="384.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="389.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="393.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="398.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="402.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="407.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="411.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="416.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="421.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2021</text>
+<text x="425.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="430.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="434.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="439.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="443.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="448.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="452.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="457.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="461.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="466.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="471.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="475.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2022</text>
+<text x="480.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="484.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="489.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="493.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="498.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="502.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="507.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="511.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="516.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="521.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="525.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="530.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2023</text>
+<text x="534.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="539.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="543.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="548.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="552.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="557.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="561.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="566.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="571.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="575.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="580.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="584.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2024</text>
+<text x="589.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="593.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="598.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="602.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="607.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="611.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="616.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="620.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="625.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="630.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="634.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="639.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2025</text>
+<text x="643.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="648.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="652.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="657.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="661.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="666.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="670.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="675.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="680.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="684.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="689.1" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="693.6" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c">2026</text>
+<text x="698.2" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="702.7" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="707.3" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="711.8" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="716.4" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="720.9" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="725.5" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<text x="730.0" y="294" text-anchor="middle" font-size="10.5" fill="#8a857c"></text>
+<polyline points="62.0,180.4 66.5,188.4 71.1,196.4 75.6,207.4 80.2,202.0 84.7,203.5 89.3,204.0 93.8,196.7 98.4,188.4 102.9,195.3 107.4,176.1 112.0,180.8 116.5,172.8 121.1,191.8 125.6,191.5 130.2,193.1 134.7,175.7 139.3,168.1 143.8,166.0 148.3,165.1 152.9,153.3 157.4,130.4 162.0,144.8 166.5,137.6 171.1,157.1 175.6,152.4 180.1,152.9 184.7,139.3 189.2,147.8 193.8,146.9 198.3,152.0 202.9,143.1 207.4,145.3 212.0,135.1 216.5,131.3 221.0,133.0 225.6,141.9 230.1,126.6 234.7,116.5 239.2,107.6 243.8,102.5 248.3,101.3 252.9,102.9 257.4,102.9 261.9,102.1 266.5,97.4 271.0,109.7 275.6,101.7 280.1,105.1 284.7,108.0 289.2,112.7 293.8,94.1 298.3,95.3 302.8,109.7 307.4,124.1 311.9,116.5 316.5,116.9 321.0,124.1 325.6,121.6 330.1,136.4 334.7,141.4 339.2,131.3 343.7,136.4 348.3,135.5 352.8,140.6 357.4,152.0 361.9,149.1 366.5,166.0 371.0,180.4 375.6,202.4 380.1,192.8 384.6,175.7 389.2,165.1 393.7,168.5 398.3,153.3 402.8,158.4 407.4,169.8 411.9,129.6 416.4,115.2 421.0,39.1 425.5,55.6 430.1,90.7 434.6,47.1 439.2,51.7 443.7,25.9 448.3,61.9 452.8,64.9 457.3,51.7 461.9,70.8 466.4,111.4 471.0,74.2 475.5,93.2 480.1,106.3 484.6,94.1 489.2,102.5 493.7,93.6 498.2,113.5 502.8,117.3 507.3,115.2 511.9,154.6 516.4,129.6 521.0,124.5 525.5,145.7 530.1,138.8 534.6,149.0 539.1,124.3 543.7,129.5 548.2,116.0 552.8,141.9 557.3,93.2 561.9,123.3 566.4,148.0 571.0,170.9 575.5,152.9 580.0,155.3 584.6,175.3 589.1,175.3 593.7,176.2 598.2,180.5 602.8,190.0 607.3,176.2 611.9,186.4 616.4,181.4 620.9,175.3 625.5,175.0 630.0,177.4 634.6,179.7 639.1,166.3 643.7,167.9 648.2,179.3 652.7,194.8 657.3,199.0 661.8,170.7 666.4,183.2 670.9,189.2 675.5,189.6 680.0,165.1 684.6,177.1 689.1,189.0 693.6,179.7 698.2,166.2 702.7,182.5 707.3,150.3 711.8,173.5 716.4,194.4 720.9,181.0 725.5,168.1 730.0,150.4" fill="none" stroke="#1f3a5f" stroke-width="1.8"/>
+<text x="736" y="154.4" font-size="11" fill="#1f3a5f">월봉 종가 146,000원</text>
+<text x="298.3" y="71.9" text-anchor="middle" font-size="10.5" fill="#1f3a5f">2018-10 고점</text>
+<text x="375.6" y="245.4" text-anchor="middle" font-size="10.5" fill="#a44a3f">-74.6%</text>
+<text x="425.5" y="-13.1" text-anchor="middle" font-size="10.5" fill="#1f3a5f">2021-02 고점</text>
+<text x="511.9" y="171.4" text-anchor="middle" font-size="10.5" fill="#a44a3f">-54.8%</text>
+<text x="557.3" y="69.8" text-anchor="middle" font-size="10.5" fill="#1f3a5f">2023-07 고점</text>
+<text x="575.5" y="188.7" text-anchor="middle" font-size="10.5" fill="#a44a3f">-43.4%</text>
+<text x="584.6" y="143.3" text-anchor="middle" font-size="10.5" fill="#1f3a5f">2024-01 고점</text>
+<text x="657.3" y="222.5" text-anchor="middle" font-size="10.5" fill="#a44a3f">-42.2%</text>
+</svg><div class="src">자료: packet.monthly(키움 ka10083 월봉, 수정주가, 148개월). 고점·저점 표기는 packet.drawdowns(일봉 기준 고점·저점일). 2026-09는 9-11까지. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 2018-10 고점 221,892원에서 2020-03 56,383원까지 -74.6%, 2021-02 312,420원에서 2022-09 141,204원까지 -54.8%, 2023-07 212,544원에서 2023-11 120,400원까지 -43.4%, 2024-01 140,200원에서 2025-05 81,100원까지 -42.2%입니다. 2026-09 월봉 고가 164,700원은 2023-07 고점 아래이고 2021-02 고점의 53%입니다. <b>원인.</b> 네 국면의 원인이 다 다릅니다. 코로나는 수요, 2021~22는 배터리 기대의 소멸과 금리, 2023은 유상증자와 배터리 감액, 2024~25는 적자 누적과 재무 부담이었습니다. 그런데 뒤의 셋은 모두 SK온이 한가운데에 있었고, 2026년의 상승은 정유가 만든 것입니다. <b>함의.</b> 리스크 파트가 이 장표에서 읽는 것은 하나입니다. 이 주식은 이익이 나빠질 때 40% 넘게 내리는 전례가 네 번 있고, 그 사이 유상증자를 두 번(2023년 139,600원·2025년 111,000원) 했습니다. 하방의 자로 발행가를 쓰는 이유가 여기 있습니다.</p>
+<p><b>2018-10에서 2020-03(-74.6%).</b> 2018년 정제마진 둔화와 2019년 IMO 2020 기대의 소진 위에 2020년 코로나 수요 붕괴와 유가 급락이 겹쳤습니다. 2020-03 저점은 당시 가격으로 54,200원이었고, 더벨(2024-05-09)은 이를 2011년 중간지주사 출범 이후 최저로 적었습니다. 삼성증권(2024-06)은 이 저점의 12개월 선행 PBR을 0.41배로 인용했습니다. 이 국면의 특징은 재고평가손실이 이익을 통째로 지운 것이며, 지금 우리가 ②로 두는 리스크의 원형입니다.</p>
+<p><b>2021-02에서 2022-09(-54.8%).</b> 2021년 초 32만원대(당시 가격, 머니투데이 2026-09-01)는 SK온 분사 전 배터리 기대가 만든 고점이었습니다. 이후 SK온의 분사(2021-10), 프리IPO, 전기차 수요 둔화, 2022년 금리 상승이 차례로 기대를 걷어냈습니다. 2022년은 정유 이익이 좋았던 해(연결 영업이익 3조 9,173억)였는데도 주가는 내렸다는 점이 중요합니다. 정유 호황이 배터리 적자와 재무 부담을 가리지 못했다는 것이고, 2026년에도 같은 질문이 남아 있습니다.</p>
+<p><b>2023-07에서 2023-11(-43.4%).</b> 2023-06-23 장후 주주배정 유상증자 1조 1,433억(8,190,000주, 139,600원) 공시로 다음 주 5거래일 동안 182,800원에서 158,000원(-13.6%)까지 내렸고(머니투데이 2023-06-26), 7월 반등 뒤 배터리 감액과 수요 둔화로 11-01 저점을 찍었습니다. 유상증자 발행가 139,600원은 그 뒤 두 해 동안 한 번도 회복되지 않았고 9-11 10시 장중도 -4.4% 아래입니다. 2024-02-20 자사주 4,919,974주 소각이 배당을 대신했습니다.</p>
+<p><b>2024-01에서 2025-05(-42.2%).</b> 2024년 배터리 적자 1조 1,270억, 2024-04-16 102,600원(연초 대비 -22%, 더벨), 2024-06 12개월 선행 PBR 0.43배로 코로나 저점에 다가섰습니다. 2024-11 E&S 합병, 2025-03 Moody's Ba1 강등, 2025-05-23 저점 뒤 7-30 SK온·엔무브 합병과 8조 자본확충 패키지(3자배정 2조는 111,000원)가 나왔습니다. 발행가 111,000원은 9-11 10시 장중보다 -24.0% 아래이고, 이 국면의 저점 81,100원(수정)은 2026-06-26 저점 87,700원과 6,600원 차이입니다.</p>
+<p><b>2026년.</b> 4-29 149,800원(52주 신고가, 외국인 14일 연속 순매수)에서 6-26 87,700원까지 -41.5%는 휴전과 각서가 만든 낙폭이고, 9-10 장중 164,700원에서 9-11 146,000원까지 -11.4%는 금리와 코스피가 만든 낙폭입니다. 2026년의 상승분은 거의 전부 전쟁 국면(3월 이후)에 생겼으므로, 휴전이 확정되면 4~6월과 같은 되돌림이 다시 올 수 있다는 것이 실측이 주는 답입니다.</p>
+
+<h2>3. 2026년 사건별 반응 — 이 주가는 무엇에 얼마나 움직였나</h2>
+<p>키움 일봉으로 2026년의 큰 등락일을 뽑고 D 노트의 기사·공시 요인을 붙였습니다. 요인이 확인되지 않는 날은 미확인으로 남겼습니다. 2026년 일간 등락의 상위는 3-04 -16.73%(호르무즈 봉쇄 선언), 3-05 +16.06%, 4-29 +12.63%, 7-23 +11.66%, 9-09 +11.23%, 8-26 -11.04%(SKIET 합병) 순입니다. 유가와 교전은 양쪽으로 다 움직였고, 합병과 정책과 금리는 한쪽으로만 움직였습니다.</p>
+<table class=""><tr><th>일자</th><th>성격</th><th>등락</th><th>종가</th><th>기사·공시 요인(D 노트·packet)</th></tr><tr><td>2026-03-04</td><td>유가·조달</td><td>-16.73%</td><td>109,000</td><td>호르무즈 봉쇄 선언(3-04), 코스피 급락</td></tr><tr><td>2026-03-05</td><td>유가·조달</td><td>+16.06%</td><td>126,500</td><td>봉쇄 충격 반등</td></tr><tr><td>2026-03-13</td><td>정책</td><td>-7.48%</td><td>112,600</td><td>석유 최고가격제 시행(3-13)</td></tr><tr><td>2026-04-08</td><td>휴전</td><td>-1.15%</td><td>120,400</td><td>2주 휴전(4-08), 장중 저가 115,500</td></tr><tr><td>2026-04-29</td><td>수급·유가</td><td>+12.63%</td><td>149,800</td><td>52주 신고가·외국인 14일 연속 순매수</td></tr><tr><td>2026-05-13</td><td>실적</td><td>+0.93%</td><td>129,700</td><td>1Q26 OP 2조 1,622억</td></tr><tr><td>2026-06-23</td><td>휴전·시장</td><td>-6.49%</td><td>93,700</td><td>6-17 각서 후 유가 하락·코스피 급락</td></tr><tr><td>2026-06-26</td><td>휴전·시장</td><td>-5.19%</td><td>89,500</td><td>52주 저점 87,700(장중)</td></tr><tr><td>2026-06-29</td><td>유가</td><td>+9.94%</td><td>98,400</td><td>라스타누라 선적 재개 보도 뒤 반등</td></tr><tr><td>2026-07-13</td><td>교전</td><td>+7.09%</td><td>110,200</td><td>7-08 휴전 붕괴·미군 공습</td></tr><tr><td>2026-07-23</td><td>유가</td><td>+11.66%</td><td>132,200</td><td>브렌트 100.69달러(7-23)</td></tr><tr><td>2026-07-27</td><td>미확인</td><td>-10.30%</td><td>116,700</td><td>요인 미확인(브렌트 96.78, 7-24)</td></tr><tr><td>2026-07-30</td><td>실적</td><td>+6.48%</td><td>116,600</td><td>2Q26 OP 3조 4,873억</td></tr><tr><td>2026-08-07</td><td>수급</td><td>+10.77%</td><td>120,300</td><td>외국인 36.7만주 순매수</td></tr><tr><td>2026-08-14</td><td>SMR</td><td>+5.75%</td><td>128,700</td><td>테라파워 합의서</td></tr><tr><td>2026-08-25</td><td>합병</td><td>-3.92%</td><td>125,000</td><td>SKIET 흡수합병 결정 공시</td></tr><tr><td>2026-08-26</td><td>합병·유가</td><td>-11.04%</td><td>111,200</td><td>합병 다음날 장중 -15%, 이란·오만 회담 유가 급락</td></tr><tr><td>2026-08-31</td><td>수주·교전</td><td>+7.36%</td><td>125,500</td><td>NeoVolta ESS 9GWh 1.5조·라라크섬 공습</td></tr><tr><td>2026-09-01</td><td>교전</td><td>+7.81%</td><td>135,300</td><td>미·이란 충돌 재개</td></tr><tr><td>2026-09-04</td><td>정유주·정책</td><td>+5.73%</td><td>138,300</td><td>S-Oil +9.9%·금감원 정정요구</td></tr><tr><td>2026-09-09</td><td>유가</td><td>+11.23%</td><td>153,500</td><td>브렌트 100달러 돌파·유조선 5척 파괴</td></tr><tr><td>2026-09-11</td><td>금리·시장</td><td>-4.64%</td><td>146,000</td><td>코스피 7,000 붕괴·미 10년물 4.85%</td></tr></table>
+<figure class=""><figcaption>장표 3. 2026년 사건일의 일간 등락률(%) — 황토색 유가·휴전·교전, 붉은색 합병·정책·금리, 남색 실적·수급·수주</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="860" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">-20.0%</text>
+<line x1="62" y1="196.5" x2="860" y2="196.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="200.5" text-anchor="end" font-size="11" fill="#8a857c">-10.0%</text>
+<line x1="62" y1="137.0" x2="860" y2="137.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">0.0%</text>
+<line x1="62" y1="77.5" x2="860" y2="77.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="81.5" text-anchor="end" font-size="11" fill="#8a857c">10.0%</text>
+<line x1="62" y1="18.0" x2="860" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">20.0%</text>
+<text x="80.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">03-04</text>
+<text x="116.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">03-05</text>
+<text x="152.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">03-13</text>
+<text x="189.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">04-08</text>
+<text x="225.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">04-29</text>
+<text x="261.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">05-13</text>
+<text x="297.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">06-23</text>
+<text x="334.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">06-26</text>
+<text x="370.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">06-29</text>
+<text x="406.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">07-13</text>
+<text x="442.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">07-23</text>
+<text x="479.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">07-27</text>
+<text x="515.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">07-30</text>
+<text x="551.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08-07</text>
+<text x="588.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08-14</text>
+<text x="624.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08-25</text>
+<text x="660.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08-26</text>
+<text x="696.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">08-31</text>
+<text x="733.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09-01</text>
+<text x="769.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09-04</text>
+<text x="805.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09-09</text>
+<text x="841.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">09-11</text>
+<rect x="67.4" y="137.0" width="24.4" height="99.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="103.7" y="41.2" width="24.4" height="95.8" fill="#b07d2b" opacity="0.9"/>
+<rect x="140.0" y="137.0" width="24.4" height="44.6" fill="#a44a3f" opacity="0.9"/>
+<rect x="176.3" y="137.0" width="24.4" height="6.5" fill="#b07d2b" opacity="0.9"/>
+<rect x="212.5" y="62.0" width="24.4" height="75.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="248.8" y="131.6" width="24.4" height="5.4" fill="#1f3a5f" opacity="0.9"/>
+<rect x="285.1" y="137.0" width="24.4" height="38.7" fill="#b07d2b" opacity="0.9"/>
+<rect x="321.4" y="137.0" width="24.4" height="30.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="357.6" y="78.1" width="24.4" height="58.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="393.9" y="94.8" width="24.4" height="42.2" fill="#b07d2b" opacity="0.9"/>
+<rect x="430.2" y="67.4" width="24.4" height="69.6" fill="#b07d2b" opacity="0.9"/>
+<rect x="466.4" y="137.0" width="24.4" height="61.3" fill="#1f3a5f" opacity="0.9"/>
+<rect x="502.7" y="98.3" width="24.4" height="38.7" fill="#1f3a5f" opacity="0.9"/>
+<rect x="539.0" y="72.7" width="24.4" height="64.3" fill="#1f3a5f" opacity="0.9"/>
+<rect x="575.3" y="102.5" width="24.4" height="34.5" fill="#1f3a5f" opacity="0.9"/>
+<rect x="611.5" y="137.0" width="24.4" height="23.2" fill="#a44a3f" opacity="0.9"/>
+<rect x="647.8" y="137.0" width="24.4" height="65.5" fill="#a44a3f" opacity="0.9"/>
+<rect x="684.1" y="93.0" width="24.4" height="44.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="720.3" y="90.6" width="24.4" height="46.4" fill="#b07d2b" opacity="0.9"/>
+<rect x="756.6" y="103.1" width="24.4" height="33.9" fill="#a44a3f" opacity="0.9"/>
+<rect x="792.9" y="70.4" width="24.4" height="66.6" fill="#b07d2b" opacity="0.9"/>
+<rect x="829.2" y="137.0" width="24.4" height="27.4" fill="#a44a3f" opacity="0.9"/>
+<text x="80.1" y="247.5" text-anchor="middle" font-size="9" fill="#b07d2b">-16.7</text><text x="116.4" y="37.5" text-anchor="middle" font-size="9" fill="#b07d2b">+16.1</text><text x="152.7" y="192.5" text-anchor="middle" font-size="9" fill="#a44a3f">-7.5</text><text x="189.0" y="154.8" text-anchor="middle" font-size="9" fill="#b07d2b">-1.1</text><text x="225.2" y="57.8" text-anchor="middle" font-size="9" fill="#b07d2b">+12.6</text><text x="261.5" y="127.4" text-anchor="middle" font-size="9" fill="#1f3a5f">+0.9</text><text x="297.8" y="186.6" text-anchor="middle" font-size="9" fill="#b07d2b">-6.5</text><text x="334.0" y="178.9" text-anchor="middle" font-size="9" fill="#b07d2b">-5.2</text><text x="370.3" y="73.8" text-anchor="middle" font-size="9" fill="#b07d2b">+9.9</text><text x="406.6" y="90.8" text-anchor="middle" font-size="9" fill="#b07d2b">+7.1</text><text x="442.9" y="63.7" text-anchor="middle" font-size="9" fill="#b07d2b">+11.7</text><text x="479.1" y="209.3" text-anchor="middle" font-size="9" fill="#1f3a5f">-10.3</text><text x="515.4" y="94.4" text-anchor="middle" font-size="9" fill="#1f3a5f">+6.5</text><text x="551.7" y="68.9" text-anchor="middle" font-size="9" fill="#1f3a5f">+10.8</text><text x="588.0" y="98.8" text-anchor="middle" font-size="9" fill="#1f3a5f">+5.8</text><text x="624.2" y="171.3" text-anchor="middle" font-size="9" fill="#a44a3f">-3.9</text><text x="660.5" y="213.7" text-anchor="middle" font-size="9" fill="#a44a3f">-11.0</text><text x="696.8" y="89.2" text-anchor="middle" font-size="9" fill="#b07d2b">+7.4</text><text x="733.0" y="86.5" text-anchor="middle" font-size="9" fill="#b07d2b">+7.8</text><text x="769.3" y="98.9" text-anchor="middle" font-size="9" fill="#a44a3f">+5.7</text><text x="805.6" y="66.2" text-anchor="middle" font-size="9" fill="#b07d2b">+11.2</text><text x="841.9" y="175.6" text-anchor="middle" font-size="9" fill="#a44a3f">-4.6</text></svg><div class="src">자료: packet.daily(키움 ka10081 일봉, 9-11 10시 장중)에서 전일 종가 대비 등락률 계산. 요인은 D 노트(기사·공시, 매체·날짜는 표)와 B 노트 전쟁 타임라인. 4-08은 종가 기준이며 장중 저가 115,500원. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 유가·교전 사건일의 등락은 3-04 -16.7%에서 3-05 +16.1%, 9-09 +11.2%까지 폭이 가장 크고, 합병은 이틀 합쳐 -15.0%<span class="est">E</span>, 정책(최고가격제 시행일)은 -7.5%, 금리·시장은 -4.6%입니다. 실적 발표일은 1Q +0.9%·2Q +6.5%로 사건일보다 작습니다. <b>원인.</b> 이 주가는 이익 자체보다 이익을 만드는 변수(유가·정제마진)와 그 변수를 흔드는 사건(봉쇄·휴전·교전)에 먼저 움직입니다. 3-04 하락은 유가 상승이 아니라 원유 조달 차질(중동 원유 비중 전쟁 전 70% 이상)을 값 매긴 것이고, 3-05 반등은 정제마진을 값 매긴 것입니다. 같은 전쟁이 조달 리스크와 마진 기회로 번갈아 읽힙니다. <b>함의.</b> 리스크 관점의 함의는 둘입니다. 첫째, 휴전은 하루 -5%가 아니라 4~6월처럼 두 달에 걸친 되돌림으로 왔습니다. 둘째, 합병처럼 회사가 스스로 낸 사건은 유가 사건과 크기가 같았습니다(8-26 -11.0% 대 9-09 +11.2%). 자회사 지원 결정이 한 번 더 나오면 시장은 같은 크기로 답할 것입니다.</p>
+<p>합병 발표의 반응을 조금 더 뜯어 봅니다. 8-25 공시일 -3.92%, 8-26 -11.04%(장중 저가 103,700원, 전일 대비 -17.0%)로 이틀에 걸쳐 -14.5%가 빠졌습니다. 같은 날 이란·오만 회담 소식으로 브렌트가 86.38달러(-2.5%)로 내린 것이 섞여 있어 합병만의 값을 정확히 가를 수는 없지만, S-Oil이 그날 어떻게 움직였는지는 D 노트에 없어 미확인입니다. 8-27 하나증권의 기존 주주 보호정책 필요, 신영의 주가 하락 과도, 8-28 정유주 동반 강세(S-Oil +9.1%)로 회복이 시작됐고 8-31 NeoVolta 9GWh 수주와 9-01 교전 재개로 발표 전 수준(8-24 130,100원)을 9-01에 넘어섰습니다. 회복에 4거래일이 걸렸다는 것은 시장이 합병을 구조 변화가 아니라 일회성 지원으로 소화했다는 뜻이며, 정정요구(9-04)에도 그날 +5.73% 올랐습니다.</p>
+<p>수주와 실적의 반응은 작습니다. 5-13 1Q26 잠정(영업이익 2조 1,622억, 재고 효과 1조 249억)에 +0.93%, 7-30 2Q26 잠정(3조 4,873억, 컨센의 2.2배)에 +6.48%였고 다음 날 -5.23%로 되돌렸습니다. 8-31 ESS 9GWh 1.5조 수주는 +7.36%였지만 같은 날 라라크섬 공습이 겹쳤습니다. 실적 서프라이즈가 컸는데도 반응이 작았던 것은 재고 효과와 보상금이라는 꼬리표가 붙어 있었기 때문이며, 3Q26 잠정(10-30)도 같은 꼬리표가 붙어 나옵니다. 정제마진이 유지되는 한 3Q 실적은 큰 값이 나오겠지만, 우리는 그날의 등락보다 재고 효과 제외 숫자와 배터리 부호를 봅니다.</p>
+
+<h2>4. 세 변수 동시 악화 — 2027E 이익·재무 경로(주가 아님)</h2>
+<p>정제마진이 10달러로 돌아가고, SK온이 분기 -3,000억으로 되돌아가고, RCPS를 현금으로 갚는 세 가지가 함께 오면 2027년 연결 영업이익과 순차입/EBITDA가 어디에 놓이는지를 [가정, 근거, 식, 교차검증] 순서로 계산합니다. 비교 대상은 세 변수가 유지되는 경우이고, 둘 다 우리의 설정치라 전부 <span class="est">E</span>입니다. 주가·목표주가·배수는 내지 않습니다.</p>
+<p><b>가정.</b> 악화 경우는 석유부문 분기 영업이익을 4Q25의 4,749억(정제마진 약 10달러, 아시아투데이 6-04)으로 놓고 4를 곱합니다. 배터리는 분기 -3,000억으로 2025년 평균(연 -9,319억)과 1Q26(-3,492억) 사이에 둡니다. RCPS는 딜사이트(6-08)의 합산 약 3.8조를 현금으로 갚아 순차입에 더하고, E&S 이익은 도시가스가 남으므로 2025년 수준 6,800억을 둡니다. 유지 경우는 석유를 2Q26 재고 제외 7,770억<span class="est">E</span>의 4배, 배터리를 보상금 없는 손익분기, RCPS를 현물로 놓아 E&S에서 도시가스 6사 순이익 3,423억이 빠진 3,400억<span class="est">E</span>을 둡니다. 화학·윤활·소재·기타는 두 경우 같게 두어 세 변수의 효과만 남깁니다. 감가상각은 2Q26 IR EBITDA에서 역산한 분기 7,656억의 4배에서 BOSK 종결의 감가 절감을 반영해 2.9조<span class="est">E</span>로 둡니다. CAPEX 3.5조(2026 가이던스 유지), 이자 1.5조(2025 한신평 지표 역산 1조 5,254억), 법인세는 이익에 비례해 3,000~5,000억으로 둡니다.</p>
+<p><b>근거.</b> 4Q25는 전쟁 전 마지막 분기이자 정제마진 약 10달러의 실측이며, 그때 석유부문이 4,749억을 냈습니다. 최고가격제도 손실보전도 없던 분기라 정책 효과가 섞이지 않았습니다. 배터리 -3,000억은 허브 논쟁 2의 반증선이며 2025년 네 분기 중 두 분기가 그 아래였습니다. RCPS 현금 상환은 논쟁 3의 두 갈래 중 순차입에 닿는 쪽입니다. 2026년 말 순차입은 2Q26 23조 6,598억에서 출발해 2H26 컨센 영업이익 30,830억<span class="est">E</span>(2026E 87,325억에서 1H 실적을 뺀 값)과 감가상각을 더한 EBITDA에서 이자·CAPEX 잔여·세금을 빼 22조 1,456억<span class="est">E</span>로 둡니다.</p>
+<table class=""><tr><th>항목(억원)</th><th>FY25 실적</th><th>2027E 유지</th><th>2027E 악화</th><th>가정·근거</th></tr><tr><td>석유</td><td>3,491</td><td>31,080</td><td>18,996</td><td>유지: 2Q26 재고 제외 7,770억×4 / 악화: 4Q25 4,749억(마진 약 10달러)×4</td></tr><tr><td>화학</td><td>-2,365</td><td>-1,200</td><td>-1,200</td><td>두 경우 동일. 2025 -2,365억의 절반(NCC 감축 효과 일부)</td></tr><tr><td>윤활</td><td>6,076</td><td>6,000</td><td>6,000</td><td>두 경우 동일. Group III 스프레드 정상화로 2025 수준</td></tr><tr><td>E&P</td><td>3,997</td><td>3,500</td><td>3,000</td><td>유가 100달러대 유지 대 70달러대(KDI 2027 전제 78)</td></tr><tr><td>배터리</td><td>-9,319</td><td>0</td><td>-12,000</td><td>유지: 보상금 없이 손익분기 / 악화: 분기 -3,000억</td></tr><tr><td>소재</td><td>-2,338</td><td>-2,000</td><td>-2,000</td><td>SKIET 합병 후 연결 유지(2025 -2,338억보다 소폭 개선)</td></tr><tr><td>E&S</td><td>6,811</td><td>3,400</td><td>6,800</td><td>유지: 현물 상환으로 도시가스 이익 이탈(6,811-3,400) / 악화: 현금 상환으로 이익은 유지</td></tr><tr><td>기타</td><td>-1,872</td><td>-1,500</td><td>-1,500</td><td>AMPC 조정·본사 비용(2025 -1,872억)</td></tr><tr><td><b>연결 OP(부문 합)</b></td><td><b>4,481</b>(연결 4,487)</td><td><b>39,280</b></td><td><b>18,096</b></td><td>컨센 2026E 87,325억, KB 2027E 3.8조(5-13)</td></tr><tr><td>감가상각(D&A)</td><td>32,454</td><td>29,000</td><td>29,000</td><td>2Q26 7,656억×4에서 BOSK 감가 절감 반영<span class="est">E</span></td></tr><tr><td>EBITDA</td><td>36,941</td><td>68,280</td><td>47,096</td><td>IR 기준(FY25 3조 6,941억)</td></tr><tr><td>RCPS 현금 유출</td><td>-</td><td>0(현물)</td><td>38,000</td><td>딜사이트 6-08 합산 약 3.8조(IRR 9.9% 포함)</td></tr><tr><td>2027E 말 순차입</td><td>225,110</td><td>208,176</td><td>265,360</td><td>2026말 221,456억<span class="est">E</span>(2H26 컨센 반영) + CAPEX 3.5조 + 이자 1.5조 - EBITDA</td></tr><tr><td>순차입/EBITDA(배)</td><td>6.5(한신평)</td><td>3.0</td><td>5.6</td><td>리스 2조 4,590억 포함 시 3.4 / 6.2</td></tr></table>
+<figure class=""><figcaption>장표 4. 2027E 연결 영업이익의 부문 적층(억원) — FY25 실적, 세 변수 유지, 세 변수 악화</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="730" y2="276.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="280.0" text-anchor="end" font-size="11" fill="#8a857c">-20,000</text>
+<line x1="62" y1="211.5" x2="730" y2="211.5" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="215.5" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="147.0" x2="730" y2="147.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="151.0" text-anchor="end" font-size="11" fill="#8a857c">20,000</text>
+<line x1="62" y1="82.5" x2="730" y2="82.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="86.5" text-anchor="end" font-size="11" fill="#8a857c">40,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">60,000</text>
+<text x="173.3" y="294" text-anchor="middle" font-size="10" fill="#8a857c">FY25 실적</text>
+<text x="396.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2027E 세 변수 유지</text>
+<text x="618.7" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2027E 세 변수 악화</text>
+<rect x="106.5" y="200.2" width="133.6" height="11.3" fill="#1f3a5f" opacity="0.9"/>
+<rect x="106.5" y="211.5" width="133.6" height="7.6" fill="#8a857c" opacity="0.9"/>
+<rect x="106.5" y="180.6" width="133.6" height="19.6" fill="#2b7a78" opacity="0.9"/>
+<rect x="106.5" y="167.8" width="133.6" height="12.9" fill="#3a6ea5" opacity="0.9"/>
+<rect x="106.5" y="219.1" width="133.6" height="30.1" fill="#a44a3f" opacity="0.9"/>
+<rect x="106.5" y="249.2" width="133.6" height="7.5" fill="#c9a27a" opacity="0.9"/>
+<rect x="106.5" y="145.8" width="133.6" height="22.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="106.5" y="256.7" width="133.6" height="6.0" fill="#d8d4cc" opacity="0.9"/>
+<text x="173.3" y="141.8" text-anchor="middle" font-size="9.5" fill="#8a857c">4,481</text>
+<rect x="329.2" y="111.3" width="133.6" height="100.2" fill="#1f3a5f" opacity="0.9"/>
+<rect x="329.2" y="211.5" width="133.6" height="3.9" fill="#8a857c" opacity="0.9"/>
+<rect x="329.2" y="91.9" width="133.6" height="19.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="329.2" y="80.6" width="133.6" height="11.3" fill="#3a6ea5" opacity="0.9"/>
+<rect x="329.2" y="80.6" width="133.6" height="0.0" fill="#a44a3f" opacity="0.9"/>
+<rect x="329.2" y="215.4" width="133.6" height="6.5" fill="#c9a27a" opacity="0.9"/>
+<rect x="329.2" y="69.7" width="133.6" height="11.0" fill="#b07d2b" opacity="0.9"/>
+<rect x="329.2" y="221.8" width="133.6" height="4.8" fill="#d8d4cc" opacity="0.9"/>
+<text x="396.0" y="65.7" text-anchor="middle" font-size="9.5" fill="#8a857c">39,280</text>
+<rect x="551.9" y="150.2" width="133.6" height="61.3" fill="#1f3a5f" opacity="0.9"/>
+<rect x="551.9" y="211.5" width="133.6" height="3.9" fill="#8a857c" opacity="0.9"/>
+<rect x="551.9" y="130.9" width="133.6" height="19.4" fill="#2b7a78" opacity="0.9"/>
+<rect x="551.9" y="121.2" width="133.6" height="9.7" fill="#3a6ea5" opacity="0.9"/>
+<rect x="551.9" y="215.4" width="133.6" height="38.7" fill="#a44a3f" opacity="0.9"/>
+<rect x="551.9" y="254.1" width="133.6" height="6.4" fill="#c9a27a" opacity="0.9"/>
+<rect x="551.9" y="99.3" width="133.6" height="21.9" fill="#b07d2b" opacity="0.9"/>
+<rect x="551.9" y="260.5" width="133.6" height="4.8" fill="#d8d4cc" opacity="0.9"/>
+<text x="618.7" y="95.3" text-anchor="middle" font-size="9.5" fill="#8a857c">18,096</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">석유</text>
+<rect x="736" y="34" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">화학</text>
+<rect x="736" y="50" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">윤활</text>
+<rect x="736" y="66" width="10" height="10" fill="#3a6ea5"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">E&P</text>
+<rect x="736" y="82" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="91" font-size="11" fill="#8a857c">배터리</text>
+<rect x="736" y="98" width="10" height="10" fill="#c9a27a"/>
+<text x="750" y="107" font-size="11" fill="#8a857c">소재</text>
+<rect x="736" y="114" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="123" font-size="11" fill="#8a857c">E&S</text>
+<rect x="736" y="130" width="10" height="10" fill="#d8d4cc"/>
+<text x="750" y="139" font-size="11" fill="#8a857c">기타</text>
+</svg><div class="src">자료: FY25 부문 영업이익은 4Q25 IR(소급 재작성). 2027E 두 경우는 본문 가정(E). 석유 유지 = 2Q26 사별 합산 17,862억에서 SK에너지·인천 재고 효과 10,092억을 뺀 값의 4배, 악화 = 4Q25 4,749억의 4배. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 연결 영업이익은 FY25 4,481억, 유지 39,280억<span class="est">E</span>, 악화 18,096억<span class="est">E</span>입니다. 악화 경우도 FY25보다 큰데, 석유가 4Q25 수준으로만 돌아가도 2025년 연간(3,491억)의 5배이고 배터리 적자가 2025년과 같은 크기이기 때문입니다. <b>원인.</b> 세 변수의 몫을 따로 보면 석유 12,084억<span class="est">E</span>, 배터리 12,000억<span class="est">E</span>, E&S는 오히려 현금 상환 쪽이 3,400억<span class="est">E</span> 큽니다. RCPS의 값은 손익이 아니라 순차입에서 나타납니다. <b>함의.</b> 2026E 컨센 87,325억과 견주면 유지 경우가 그 45%<span class="est">E</span>, 악화 경우가 21%<span class="est">E</span>입니다. KB(5-13)의 2027E 3.8조는 유지 경우와 가깝고, 신한(8-31)의 2027년 정제마진 19달러 전제는 두 경우의 중간쯤에 놓입니다.</p>
+<p><b>식.</b> 2027E 말 순차입 = 2026E 말 순차입 + RCPS 현금 상환 + CAPEX 3.5조 + 이자 1.5조 + 법인세 - EBITDA. 악화: 221,456 + 38,000 + 35,000 + 15,000 + 3,000 - 47,096 = 265,360억<span class="est">E</span>. 유지: 221,456 + 0 + 35,000 + 15,000 + 5,000 - 68,280 = 208,176억<span class="est">E</span>. 순차입/EBITDA는 악화 5.6배<span class="est">E</span>, 유지 3.0배<span class="est">E</span>이고, 한신평처럼 리스부채 2조 4,590억을 더하면 6.2배<span class="est">E</span>와 3.4배<span class="est">E</span>입니다. 운전자본 변동과 자산 매각(2025 하반기 약 2조)은 넣지 않았습니다.</p>
+<figure class=""><figcaption>장표 5. 순차입/EBITDA 경로(배) — 한신평 실측 2024·2025·1Q26 연환산과 2027E 두 경우, 하향 트리거 7배</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="181.5" x2="730" y2="181.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="185.5" text-anchor="end" font-size="11" fill="#8a857c">2.0</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">4.0</text>
+<line x1="62" y1="72.5" x2="730" y2="72.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="76.5" text-anchor="end" font-size="11" fill="#8a857c">6.0</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">8.0</text>
+<line x1="62" y1="45.2" x2="730" y2="45.2" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<text x="195.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="329.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">1Q26 연환산</text>
+<text x="462.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2027E 유지</text>
+<text x="596.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2027E 악화</text>
+<text x="730.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">2027E 악화(리스 포함)</text>
+<polyline points="62.0,48.0 195.6,58.9 329.2,173.3 462.8,154.2 596.4,83.4 730.0,67.0" fill="none" stroke="#1f3a5f" stroke-width="2.2"/>
+<circle cx="62.0" cy="48.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="195.6" cy="58.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="329.2" cy="173.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="462.8" cy="154.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="596.4" cy="83.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="67.0" r="2.4" fill="#1f3a5f"/>
+<text x="736" y="71.0" font-size="11" fill="#1f3a5f">순차입/EBITDA 6.2배</text>
+<text x="70" y="30" font-size="11" fill="#8a857c">점선 = 한신평 하향 트리거 7배(상향 트리거 3배 미만)</text></svg><div class="src">자료: 한신평 Credit Opinion 2026-06-12(2024 6.9·2025 6.5·1Q26 연환산 2.3, 리스 포함 기준)·2027E는 본문 식(E, 리스 제외와 포함). 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 악화 경우 5.6배<span class="est">E</span>(리스 포함 6.2배<span class="est">E</span>)는 2024년 실측 6.9배와 같은 자리이고 하향 트리거 7배에 1배 안쪽입니다. 유지 경우 3.0배<span class="est">E</span>는 상향 트리거 3배에 닿습니다. <b>원인.</b> 차이를 만드는 것은 EBITDA 21,184억<span class="est">E</span>과 RCPS 3.8조 두 가지이며, 후자가 절반 이상입니다. 논쟁 3이 논쟁 1·2와 무게가 같은 이유입니다. <b>함의.</b> 관측 신호는 한신평의 수시평가와 3Q26 잠정의 EBITDA입니다. 악화 경로에서도 7배를 넘지 않는 것은 2025년 하반기 자본확충 8조와 BOSK 종결의 차입 경감 5.4조 덕분이므로, 그 두 효과가 되돌려지는 사건(추가 유상증자·자회사 차입 보증)이 나오면 이 계산을 다시 해야 합니다.</p>
+<p><b>교차검증.</b> 세 가지로 맞춰 봅니다. 첫째, 2025년 실측은 EBITDA 3조 8,134억(한신평)에 순차입 24.7조(리스 포함)로 6.5배였는데 그해 석유는 3,491억·배터리는 -9,319억이었습니다. 악화 경우의 EBITDA 47,096억<span class="est">E</span>이 2025년보다 큰 것은 석유가 4.42달러가 아니라 10달러이기 때문이고, 순차입이 큰 것은 RCPS 때문이라 방향이 맞습니다. 둘째, S&P는 2026-03에 조정 부채/EBITDA 2026년 5.4배를 전망했는데 우리의 2026E 말 순차입 22조 1,456억<span class="est">E</span>을 2026E EBITDA(컨센 영업이익 87,325억 + 감가 3.06조<span class="est">E</span>)로 나누면 1.9배<span class="est">E</span>로 S&P보다 낮은데, S&P 조정 부채에는 부채성 자본 일부와 리스가 들어가므로 차이는 정의에서 옵니다. 셋째, 회사의 2030 목표(EBITDA 20조·순차입 20조 미만)에 대면 악화 경우는 EBITDA에서 4분의 1, 순차입에서 6.5조 초과입니다. 이 시나리오의 약점은 정제마진 10달러가 2027년 내내 지속된다는 가정이며, 신한(8-31)의 2027년 19달러가 맞으면 석유 이익은 두 경우의 중간입니다. 파트 8의 조정판이 이 슬라이더를 받습니다.</p>
+
+<h2>5. 정책 리스크 심화 — 최고가격제·손실보전·횡재세·담합·국감</h2>
+<p>최고가격제는 2026-03-13 시행된 정유사 공급가 상한입니다(1997년 유가자유화 뒤 처음). 4주마다 조정하며 7차(6-27)에서 리터당 150원 내린 휘발유 1,784원·경유 1,773원·등유 1,380원이 8차·9차(8-24 동결)까지 이어졌고 9-30까지 연장됐습니다. 상한이 있는 동안 국제 제품가가 오르면 정유사가 그 차이를 떠안습니다. 업계 추정 손실은 시점에 따라 4조(5월), 최대 5조(6월), 7.1조(뉴스웨이 자체 추산 7-09)이고, 정부는 3~4조 추정은 MOPS 기준이며 그보다 적을 것이라고 답했습니다(헤럴드경제 6-19). SK에너지 몫은 공개되지 않았고, 4사 중 정제능력이 가장 큰 84만 배럴/일이라는 사실만 적습니다. 1Q26·2Q26 석유부문 이익이 상한 아래에서 나온 값이라는 점에서 손실보전은 이미 난 손실의 사후 보전이며, 받으면 영업외 또는 기타영업수익으로 들어오고 못 받으면 그대로 손실로 남습니다.</p>
+<p>손실보전 규정(7-01 고시)은 원가 기준입니다. 원유 구입가·운송비·보험료·감가상각비·인건비·국내 유통비에 장관이 정하는 적정 마진을 더하되, 국제제품가(MOPS)와 수출 기회손실은 뺍니다. 절차는 분기 원가 산정, 회계법인 검증, 신청, 정산위원회(20인 이내) 심의, 장관 결정이고, 지급 시기는 정부가 특정하기 어렵다고 답했습니다. 9-07 기준 정유사별 신청액·심사액·조정액·보전액이 전부 미공개입니다. 예산은 목적예비비 4조 2,000억(6개월 전제)인데 제도가 6개월을 넘어 연장됐으므로 예산이 손실을 다 덮지 못할 수 있습니다. 이 항목의 확률 60%<span class="est">E</span>는 보전액이 업계 추정 하단 4조에 못 미치거나 2026년 안에 지급되지 않을 가능성이며, 관측 신호는 정산위 지급 공고와 3Q26 잠정의 영업외 항목입니다. 우리는 손실보전을 이익 층에 넣지 않고 받으면 더하는 방식으로 다룹니다.</p>
+<p>횡재세는 2026-03-11 장철민 의원 대표발의 법인세법 개정안입니다. 상장 석유정제업자·LPG 집단공급사업자의 사업연도 소득이 직전 3개년 평균에 5억을 더한 값을 넘으면 초과분에 법인세 20%를 추가합니다. 산업통상부 장관은 3-09 국회에서 논의에 적극 참여하겠다고 답했고, 상임위 심사 상태는 미확인입니다. 2026년 이익에 산식을 적용해 봅니다. 과세 소득은 별도 법인 기준이고 SK에너지는 비상장이라 상장 석유정제업자라는 요건이 누구에게 걸리는지부터 미확인이므로, 석유부문 영업이익을 대용으로 씁니다.</p>
+<table class=""><tr><th>횡재세 산식 적용(억원)</th><th>값</th><th>가정</th></tr><tr><td>2026E 석유부문 OP(과세 소득 대용)</td><td>46,819</td><td>1Q26 19,459+2Q26 17,862(사별 합산)+2H 4Q25 4,749억×2<span class="est">E</span></td></tr><tr><td>직전 3개년 평균(대용)</td><td>4,051</td><td>FY24 4,611·FY25 3,491의 평균. FY23 부문 OP 미확인</td></tr><tr><td>초과분(-5억)</td><td>42,763</td><td>법안 산식: 직전 3개년 평균 + 5억 초과분</td></tr><tr><td>추가 법인세 20%</td><td><b>8,553</b><span class="est">E</span></td><td>2026E 컨센 연간 순이익 3조 1,785억의 27%<span class="est">E</span></td></tr></table>
+<p>약 8,553억<span class="est">E</span>은 2026E 컨센 연간 순이익의 27%<span class="est">E</span>이며, 직전 3개년 평균이 낮을수록(2025년 석유 3,491억) 초과분이 커지는 구조라 2026년처럼 전년이 나빴던 해에 가장 무겁게 걸립니다. 두 가지 미결이 계산을 바꿉니다. 첫째, 법인세는 부문 영업이익이 아니라 별도 과세소득에 붙고, SK에너지·인천석유화학·SKTI가 각각 법인이므로 어디까지가 정제업자인지에 따라 절반이 될 수도 있습니다. 둘째, 2023년 부문 영업이익이 노트에 없어 3개년 평균을 2개년으로 대신했습니다. 입법 확률 자체는 15%<span class="est">E</span>로 낮게 보지만, 10-06 시작하는 국정감사에서 최고가격제·손실보전·횡재세·담합이 한 자리에 오르면 손실보전 지급이 정치적으로 늦어질 수 있다는 점이 더 현실적인 경로입니다.</p>
+<p>담합은 서울중앙지검이 7-06~08 정유 4사를 수사해 HD현대오일뱅크를 기소하고 SK에너지·GS칼텍스·S-Oil은 불기소했습니다. 검찰은 직접 담합 14조 2,000억·경쟁제한 효과 약 26조를 적었고, 정부는 정산은 원칙대로 한다고 답했습니다(EBN 7-08). SK에너지가 피고가 아니므로 직접 비용은 없지만, 손실보전 정산위원회가 담합 논란 속에서 적정 마진을 어떻게 정하는지가 간접 경로입니다. 유류세 인하(휘발유 15%·경유 25%)도 9-30 만료 뒤 일정이 미확인이며, 인하 종료는 소비자가를 올려 최고가격제 연장 압력을 키웁니다. 비축의무 40일에서 20일로의 완화(5-29)는 정유사의 운전자본을 줄여 준 쪽이고, 되돌려지면 재고가 다시 늘어 ②의 노출을 키웁니다.</p>
+
+<h2>6. 접는 조건 통합표 — 논쟁 1~5의 유지선과 반증</h2>
+<p>허브 골격 4절의 채점·유지선·반증을 한 표로 옮기고 이 파트의 리스크 번호를 붙였습니다. 판정 보류 조건은 허브 규칙대로 셋 중 둘이 어긋나는 것입니다. 논쟁 1·2·3이 이익의 성격과 재무를 이루는 세 기둥이므로, 그중 둘이 반증에 걸리면 논쟁 4·5의 결과와 무관하게 판정을 보류합니다. 논쟁 4는 단독으로 판정을 바꾸지 않지만 무배당이 재발하면 주주 몫이라는 몸통의 전제를 흔들므로 별도 갱신 트리거로 둡니다.</p>
+<table class=""><tr><th>논쟁</th><th>유지선</th><th>반증(접는 조건)</th><th>채점 시점·창</th><th>관련 리스크</th></tr><tr><td>1 정유 이익의 성격</td><td>3Q26 석유 합산 OP 1조 이상 · 재고 효과 제외 6,000억 이상</td><td>재고 효과 제외 석유 OP 3,000억 미만, 또는 휴전·복구로 정제마진 10달러대 복귀</td><td>10-30 3Q26 잠정·컨콜 Q&A 재고 효과</td><td>①②⑧</td></tr><tr><td>2 SK온 흑자의 질</td><td>3Q26 배터리 OP -1,500억 이상(일회성 제외) · 연내 ESS 15GWh 이상</td><td>3Q 배터리 적자 3,000억 초과 재확대, 또는 ESS 수주 12GWh 미만</td><td>10-30 3Q26·ESS 수주 공시(8-31 누적 약 10GWh)</td><td>③</td></tr><tr><td>3 RCPS 처리</td><td>연내 방식 확정 + 현금 상환 시 순차입/EBITDA 5배 미만</td><td>2027-02-01까지 결정 지연, 또는 현물 상환으로 E&S 연간 OP 2,000억 이상 감소</td><td>11-30~2027-02-01 공시·IR</td><td>④⑤⑨</td></tr><tr><td>4 합병·배당과 주주 몫</td><td>반대 20% 미만 · SKIET 매수청구 3,500억 미만 · 2026 DPS 2,000원 이상</td><td>정식합병 전환으로 매수청구 6,000억 초과, 또는 2026년도 무배당</td><td>9-23 집계·12-14 매수청구 마감·2027-01 결산 이사회</td><td>⑥⑦⑩</td></tr><tr><td>5 시총이 값 매기는 것</td><td>채점 없음(파트 8 조정판)</td><td>반증 없음. 실측 자: PBR 0.95, 유증가 111,000·139,600, CB 123,642, 합병가액 125,862, 52주 저점 87,700</td><td>-</td><td>⑦⑫</td></tr></table>
+<p>시점별로 읽으면 이렇습니다. 9-23 반대 통지 집계는 논쟁 4의 첫 채점이며 20%를 넘길 확률이 낮아 통과가 기본값입니다. 10-30 3Q26 잠정은 논쟁 1·2를 한 번에 채점합니다. 석유 합산 1조 이상·재고 효과 제외 6,000억 이상이면서 배터리가 -1,500억보다 좋으면 둘 다 유지이고, 재고 효과 제외 3,000억 아래로 내려가거나 배터리가 -3,000억 아래로 가면 하나가 접힙니다. 11-30 이후 RCPS 방식 공시가 논쟁 3의 채점이며, 현물이면 E&S 이익 2,000억 이상 감소 여부를, 현금이면 순차입/EBITDA 5배 미만 유지를 봅니다. 2027-01 결산 배당이 논쟁 4의 두 번째 채점입니다. 논쟁 5는 채점하지 않고 파트 8의 조정판이 그때그때 시총이 요구하는 조합을 다시 읽습니다.</p>
+<p>표에 없는 접는 조건을 하나 더 둡니다. 회사가 자회사 지원 성격의 자본 거래(추가 유상증자·PRS·보증 확대)를 12개월 안에 한 번 더 결정하면, 논쟁의 채점과 무관하게 이 파트의 리스크 ⑤⑦⑩의 확률을 올리고 판정을 다시 씁니다. 8-26의 -11.04%가 그 사건에 시장이 매긴 값이고, 2023년과 2025년 유상증자가 그 전례입니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 1(정유 이익은 전쟁이 만든 것인가)에 주는 리스크 관점.</b> 리스크 ①②⑧이 이 논쟁의 하방입니다. 2Q26 석유 사별 합산 1조 7,862억에서 재고 효과를 뺀 7,770억<span class="est">E</span>은 4Q25의 4,749억보다 3,021억 크고, 그 차이가 정제마진 14.7달러(24.7-10)의 값입니다. 정제마진 1달러가 분기 약 206억<span class="est">E</span>으로 환산되는 셈인데, SK에너지 처리량(1H26 113,137천 배럴)에 환율을 곱한 이론값 분기 약 762억<span class="est">E</span>의 4분의 1이 채 안 됩니다. 최고가격제와 시차가 그 차이를 먹고 있다는 뜻이고, 손실보전이 오면 일부가 돌아옵니다. 채점 KPI는 허브대로 3Q26 석유 합산 1조·재고 효과 제외 6,000억이며, 반증은 3,000억 미만 또는 정제마진 10달러대 복귀입니다. 우리가 보태는 관측 신호는 원유매입가 대 두바이 월평균의 부호(1H26 91.79달러 대 8월 88.8달러)입니다.</p>
+<p><b>논쟁 2(SK온은 보상금 없이도 흑자인가)에 주는 리스크 관점.</b> 리스크 ③이 곧 이 논쟁이고 우리는 확률을 60%<span class="est">E</span>로 가장 높게 둡니다. 2Q26 8,218억에서 보상금 약 1조를 빼면 -1,782억<span class="est">E</span>이고, 회사는 보상금과 AMPC를 분리 공개하지 않았습니다. 채점 KPI는 3Q26 배터리 영업이익 부호(일회성 제외)·ESS 누적 수주(8-31 약 10GWh, 목표 20GWh)·조지아 2공장 ESS 양산(10월)이며 유지선 -1,500억·15GWh, 반증 -3,000억 초과 또는 12GWh 미만입니다. 리스크 관점에서 덧붙이는 것은 분리 공개가 없는 흑자는 채점에서 흑자로 세지 않는다는 규칙과, 미국 전기차 판매 -23.8%(2026년 상반기)와 중국산 ESS 실효관세 58.4%가 같은 해에 온 것이므로 ESS 전환의 속도가 EV 감소의 속도를 따라잡는지가 12개월의 질문이라는 점입니다.</p>
+<p><b>논쟁 3(RCPS를 현금으로 갚는가, 도시가스로 갚는가)에 주는 리스크 관점.</b> 리스크 ④⑤⑨가 한 묶음입니다. 현물이면 E&S 이익 절반<span class="est">E</span>이 이탈하고, 현금이면 순차입이 3.1~3.8조 늘어 5절의 악화 경로에서 순차입/EBITDA가 5.6배<span class="est">E</span>(리스 포함 6.2배<span class="est">E</span>)로 한신평 하향 트리거 7배에 다가섭니다. 채점 KPI는 11-30 이후 상환 방식 공시와 연내 확정 여부, 현금 상환 시 순차입/EBITDA 5배 미만이며, 반증은 2027-02-01까지 결정 지연 또는 현물 상환으로 E&S 연간 영업이익 2,000억 이상 감소입니다. 우리가 보태는 신호는 나신평의 도시가스 3사 AA- 신규 부여(8-06)와 7-01 통지 결과의 공시 여부이며, 후자가 A급 미결입니다. 현물 55%<span class="est">E</span>·현금 45%<span class="est">E</span>로 두되 어느 쪽이든 판정이 접히는 것은 방식이 아니라 지연입니다.</p>
+<p><b>논쟁 4(합병과 배당은 주주에게 무엇을 남기는가)에 주는 리스크 관점.</b> 리스크 ⑥⑦⑩입니다. 반대 20%는 SK㈜ 제외 주주의 41.7%<span class="est">E</span>가 움직여야 하고 SKIET 매수청구 3,500억은 외부 주주 63%<span class="est">E</span>가 청구해야 닿으므로 합병 자체가 무산될 확률은 낮습니다. 남는 것은 오버행 23,748,505주(14.0%<span class="est">E</span>)의 시간표와 2026년 배당입니다. 채점 KPI는 9-23 통지 결과·매수청구 규모·11-24 이사회·2026 DPS(컨센 2,600원)와 주주환원 정책 재수립 시점이며 유지선 반대 20% 미만·매수청구 3,500억 미만·DPS 2,000원 이상, 반증 정식합병 전환으로 매수청구 6,000억 초과 또는 무배당입니다. 리스크 관점의 덧붙임은 SKIET PRS 투자자가 합병신주를 받은 뒤 파는 시점이 첫 현금 정산(하나 2,000~3,000억)이 되므로 2027-01-18 상장 뒤 4주가 두 번째 관측 창이라는 것입니다.</p>
+<p><b>논쟁 5(시총 24조 6,817억은 무엇을 값 매기고 있나)에 주는 리스크 관점.</b> 채점 없음이 허브 규칙이므로 자만 놓습니다. 9-11 10시 장중 146,000원 아래에 합병가액 125,862원(-13.8%), 전환가 123,642원(-15.3%), 2025 유증가 111,000원(-24.0%), 52주 저점 87,700원(-39.9%)이 있고, 위에 2023 유증가 139,600원은 이미 4.4% 아래로 내려왔습니다. 실측 낙폭 네 번의 중앙값은 -48.5%<span class="est">E</span>이며, 그것을 9-10 장중 고점 164,700원에 적용하면 2025년 유증가 근처가 됩니다. 이것은 예측이 아니라 자입니다. 시총이 요구하는 정제마진·SK온·배수의 조합은 파트 8이 풀고, 이 파트는 그 조합이 어긋나는 열두 경로와 각각의 첫 관측 시점을 넘깁니다.</p>
+
+<h2>미결</h2>
+<p><b>A급(판정에 직접 닿는 것).</b> RCPS 상환 통지(7-01 기한)의 결과와 회사가 택한 방식(공시·보도 모두 미확인, 11-30 이후 공시 또는 IR 질의로만 확인 가능). SK온 2Q26 보상금·AMPC의 분리 금액(회사 미공개, 3Q26 컨콜 Q&A가 유일한 창). 최고가격제 손실보전의 SK에너지 신청액·정산위 조정액(산업통상부·정산위 공고 대기). PRS 정산금액의 산정식(보장 수익률·프리미엄, 반기보고서 약정사항에 구조만 기재). 횡재세 법안의 과세 단위(상장 정제업자 요건이 지주인 SK이노베이션에 걸리는지 비상장 SK에너지에 걸리는지)와 상임위 심사 일정.</p>
+<p><b>B급(구조를 더 정확히 하는 것).</b> 순외화부채와 환헤지 비율(반기보고서 민감도에서 USD 순포지션 약 2조 9,207억<span class="est">E</span>으로 역산했을 뿐 통화선도·스왑 잔액과의 대응은 미확인). SK온 외부 지분(FI CPS 3조 5,880억 매입 뒤 잔여 외부 주주 구성과 PRS 투자자 지분율). SKIET PRS 투자자의 합병신주 수령 뒤 처분 제한 유무. SPC 7곳 PRS의 청산 조건(SK㈜ 공시 범위). 4-08 휴전일의 정유주 10%대 급락(D 노트 기사)과 키움 일봉 종가 -1.15%의 차이(장중 저가 기준인지 다른 날인지). 8-26 S-Oil·GS의 등락(합병 효과와 유가 효과의 분리용). 2023년 석유부문 영업이익(횡재세 3개년 평균 계산용).</p>
+<p><b>C급(있으면 좋은 것).</b> 2Q25·3Q25·4Q25 재고 효과 금액(회사 정성 언급만). 2026년 1Q·3Q 정제마진 분기 평균(공식치 미확인). 1~5차·7차 최고가격제 상한 수치. 유류세 인하의 10월 이후 일정. 정유 4사 최고가격제 손실의 회사별 배분(점유율 대용치 미확인). 신종자본증권 7,000억의 스텝업 시점.</p>
+<div class="foot">데이터 계보: 2026 반기보고서(8-14, 약정사항·시장위험 민감도·PRS 주석) · 주요사항보고서 회사합병결정(8-25·26)·증권신고서(합병) 08-26(9-04 정정요구) · 파생상품거래손실발생 공시(7-30) · 2Q26·1Q26·4Q25 IR 및 컨콜 Q&A(재고 효과) · 한신평 Credit Opinion(6-12) · 키움 ka10081 일봉·ka10083 월봉(수정주가, 9-11 10시 장중) · 네이버 컨센(9-11) · 웹 조사 노트 A~D(9-11), 언론 인용은 본문에 매체·날짜 표기. 확률은 전부 작성자 설정이며 <span class="est">E</span> 표기, 가정·근거·식은 본문에 있습니다. 이 문서는 투자 권유가 아니며 목표주가·시나리오 주가·매매 계획을 싣지 않습니다.</div>
+
+</main></body></html>
