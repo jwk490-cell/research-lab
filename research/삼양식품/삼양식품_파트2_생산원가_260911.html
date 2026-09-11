@@ -1,0 +1,634 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="segdive,debate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>삼양식품 파트 2 — 생산·원가 딥다이브 · 2026-09-11</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>삼양식품 파트 2 — 생산·원가 딥다이브: 28억식을 96.5% 돌린 공장, 자싱이 여는 다음 계단, 원가 쪽 마진의 내구성</h1>
+<div class="sub">파트제 커버리지 9편(파트 0~8) 중 파트 2 · 작성 2026-09-11 · 주가 1,278,000원(9-11 종가, +1.11%) · 시총 9조 6,272억 · 기준 환율 $1 = ₩1,344.4(9-11) · 회계연도 12월(2026 = 제66기, K-IFRS 연결) · 다음 실적 3Q26 분기보고서 2026-11-14(E) · 다음 갱신 트리거: 매월 관세청 라면 수출 물량, 11-14E 3Q26 분기보고서(9개월 누적 생산실적·가동률·원재료 단가), 2027-1Q 자싱 시험가동, 2026 사업보고서(2027-03) · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 2026 반기보고서(2026-08-14) II-3 원재료 및 생산설비·연결주석 16·21·22·23, 2025·2024·2023 사업보고서, 신규시설투자·타법인주식 취득·채무보증결정 공시(정정 포함), 회사 IR 2Q24~2Q26, 기업가치제고계획 이행현황(2026-03-26), 관세청 수출입무역통계(HS 1902.30.1010), 언론(블로터·데일리인베스트·시장경제·뉴시스), 증권사(KB·한화·하나·LS) — 인용은 본문에 매체·날짜 표기</div>
+<div class="hubnav">현행 판정은 <a href="삼양식품_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 segdive(생산·원가)와 debate(논쟁 1의 공급 쪽, 논쟁 2의 원가 쪽)를 맡습니다. · 파트 0 / 1 / <b>2</b> / 3 / 4 / 5 / 6 / 7 / 8</div>
+
+<p class="judge"><b>이 파트의 답.</b> 2024~2025년 삼양식품의 성장을 막은 것은 수요보다 생산능력이었다고 우리는 봅니다. 면류 생산실적은 2024년 18.1억식에서 2025년 22.9억식으로 26.4% 늘었고, 2026년 상반기에는 표준 생산능력의 96.5%를 돌렸으며 익산은 118.7%, 원주는 101.1%로 표준을 넘겼습니다. 2025년 6월 준공한 밀양2공장이 2026년 7월 풀가동에 닿으면서(블로터 7-24) 지금의 28억식은 사실상 다 쓰였고, 2026년 생산은 기본 27.8억식<span class="est">E</span>(2025년 대비 +22%<span class="est">E</span>)가 현실적인 상한입니다. 컨센 2026E 매출 3조 1,414억(+33.6%)에서 물량이 설명하는 몫은 약 68%<span class="est">E</span>이고 나머지 +9.7%<span class="est">E</span>는 가격·믹스·환율이 채워야 하는데, 원화가 2Q26 평균보다 10.5% 강한 지금 그 부담은 하반기에 몰립니다. 2027년의 계단은 중국 자싱 공장 11.3억식이며, 3월 가동·8개월 램프업·목표 90%를 넣은 우리 기본 경로는 2027년 생산 34.4억식<span class="est">E</span>, 1H26 실측 식당 매출로 매출 3조 7,664억<span class="est">E</span>을 내 컨센 2027E 3조 7,510억과 +0.4%<span class="est">E</span> 차이입니다. 즉 컨센은 자싱이 제때 돌고 채워진다는 가정을 거의 그대로 담고 있고, 가동이 석 달 늦으면 -7.0%<span class="est">E</span>가 됩니다. 원가 쪽에서는 맥분 매입단가(2026년 상반기 680원/kg, 2023년 대비 -23%)가 마진을 받쳐 왔지만 CBOT 밀이 8월 평균 676¢(전년 대비 +33%)로 올랐고 미주 서안 운임은 3.7배가 되어, 2027년 원가율은 원화 강세의 도움을 받고도 올라갈 쪽으로 기울어 있습니다.</p>
+
+<p>이 파트는 커버리지의 사업부 층 가운데 생산과 원가를 맡습니다. 허브의 판정 가설은 "성장의 병목은 생산능력이었고 다음 계단은 자싱"이라는 문장과 "영업이익률 22~24%는 원화·판관비·관세를 견디는가"라는 문장 위에 서 있는데, 이 파트는 앞 문장의 증거와 계산, 뒤 문장의 원가 쪽 절반을 책임집니다. 해외 법인별 수요와 가격은 파트 1, 산업 통계와 원재료 시장 전체는 파트 4, 판관비·환율 민감도·재무는 파트 6, 2027 물량을 시총과 잇는 총괄 조정판은 파트 8이 맡습니다. 생산 수치는 모두 삼양식품 별도 기준(국내 3개 공장)이고 손익은 연결 기준이라, 두 숫자를 곱하거나 나눌 때는 그 차이를 본문에 적어 둡니다. 공시가 2026년 반기보고서부터 생산능력 산정 방식을 바꿨기 때문에, 이 파트의 절반은 사실 그 기준 변경을 푸는 일입니다.</p>
+
+<h2>0. 용어집 — 본문에 들어가기 전 여덟 개</h2>
+<div class="gloss">
+<b>식·억식</b><span>라면 한 개(봉지 또는 용기 하나)를 세는 단위입니다. 회사가 말하는 CAPA 28억식은 연간 28억 개를 만들 수 있다는 뜻이고, 반기보고서는 천식 단위로 공장별 능력과 실적을 적습니다.</span>
+<b>표준 생산능력</b><span>반기보고서 산정식 "라인 × 열수 × 분당 컷 수 × 표준가동시간 × 표준가동일수 × 표준가동률"로 계산한 값입니다. 2026년 상반기 면류 표준가동시간은 반기 2,520시간(연 5,040시간)이고, 이 표준을 넘겨 돌리면 가동률이 100%를 넘습니다.</span>
+<b>가동률 두 기준</b><span>① 생산실적 ÷ 생산능력(수량 기준, 2026 반기보고서의 새 양식) ② 실제가동시간 ÷ 가동가능시간(2025 사업보고서까지의 옛 양식, 금액 기준 능력과 짝). 같은 2025년 면류가 ①로는 93.6%, ②로는 합계 60.5%입니다.</span>
+<b>가동가능시간</b><span>옛 양식이 쓰던 분모로, 2025년 원주 면 5,796시간·익산 6,348시간·밀양 면 6,072시간이었습니다(2024년은 모두 5,040시간). 2교대 하루 22시간 기준이라 표준가동시간보다 15~26% 깁니다.</span>
+<b>밀양1·밀양2</b><span>경남 밀양나노융합국가산업단지의 수출 전용 공장입니다. 밀양1은 2022-05 준공(4라인, 투자 2,074억), 밀양2는 2025-06 준공(6라인, 투자 1,838억, 할랄·일반 라인 겸용)입니다. 공시는 둘을 '밀양공장'으로 합산합니다.</span>
+<b>자싱 공장</b><span>중국 저장성 자싱시에 짓는 첫 해외 공장으로, 법인명은 삼양식품(절강) 유한공사입니다. 8라인·연 11.3억식, 투자 약 2,072억, 2027년 1분기 시험가동 예정입니다.</span>
+<b>삼양제분</b><span>삼양식품이 지분 100%를 가진 종속회사로, 원맥을 들여와 맥분(밀가루)을 만들고 2025년부터 팜유 정제공장을 돌립니다. 제분 연 78,000톤(소맥 기준), 정제 연 39,600톤이 가공능력입니다.</span>
+<b>식당 매출(원/식)</b><span>이 파트가 쓰는 거친 지표로, 연결 매출을 별도 면류 생산량으로 나눈 값입니다. 2025년 1,028원, 2026년 상반기 1,096원<span class="est">E</span>입니다. 가격 인상·판매 법인 비중(현지 유통 마진)·환율·비면류 매출이 모두 섞여 있어 방향을 읽는 용도로만 씁니다.</span>
+</div>
+
+<h2>1. 생산능력 지도 — 28억식은 어디에 있고 얼마나 찼나</h2>
+<p>삼양식품의 국내 생산은 세 곳, 네 개 공장입니다. 원주공장은 용기·봉지 면과 스낵(짱구·사또밥), 소스·간장을 함께 만드는 가장 오래된 복합 공장이고, 익산공장은 용기면을 뺀 일부 면류만, 밀양공장은 해외 수출 제품 중심의 면과 소스를 만듭니다(반기보고서 II-3). 기업가치제고계획 이행현황(2026-03-26)은 면류 CAPA를 원주 15라인 11.2억식, 익산 6라인 3.5억식, 밀양1 4라인 6.1억식, 밀양2 6라인 7.2억식, 합계 28.0억식으로 적었습니다. 반기보고서의 2026년 상반기 면류 생산능력 1,403,529천식을 연환산하면 28.07억식으로 회사 표기와 맞고, 공장별로도 원주 11.25·익산 3.54·밀양 13.28억식으로 대응합니다. 그러니 28억식은 마케팅 숫자가 아니라 공시 산정식 위의 숫자이고, 이 파트의 모든 물량 계산은 이 표준 능력을 기준으로 삼습니다.</p>
+<table class=""><tr><th>공장(라인)</th><th>회사 표기 CAPA(억식)</th><th>능력 2024(천식)</th><th>실적 2024</th><th>능력 2025</th><th>실적 2025</th><th>능력 1H26</th><th>실적 1H26</th><th>실적/능력 1H26</th><th>가동시간 기준 1H26</th></tr><tr><td>원주(15라인)</td><td>11.2</td><td>1,124,565</td><td>891,353</td><td>1,124,565</td><td>1,052,236</td><td>562,283</td><td>568,515</td><td>101.1%</td><td>101.1%(2,548h/2,520h)</td></tr><tr><td>익산(6라인)</td><td>3.5</td><td>354,352</td><td>368,133</td><td>354,352</td><td>424,626</td><td>177,176</td><td>210,359</td><td>118.7%</td><td>118.7%(2,992h/2,520h)</td></tr><tr><td>밀양1(4라인)+밀양2(6라인)</td><td>6.1+7.2</td><td>609,638</td><td>549,846</td><td>965,261</td><td>810,544</td><td>664,070</td><td>575,697</td><td>86.7%</td><td>86.7%(2,185h/2,520h)</td></tr><tr><td><b>면류 합계</b></td><td><b>28.0</b></td><td>2,088,555</td><td>1,809,332</td><td>2,444,178</td><td>2,287,406</td><td>1,403,529</td><td>1,354,571</td><td><b>96.5%</b></td><td>-</td></tr><tr><td>자싱(8라인, 2027-1Q 시험가동)</td><td>11.3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>스낵 원주(참고)</td><td>-</td><td>46,812</td><td>29,131</td><td>46,812</td><td>28,461</td><td>23,406</td><td>12,277</td><td>52.5%</td><td>52.5%</td></tr></table>
+<p>표의 궤적을 보면 능력과 실적이 함께 뛰었습니다. 면류 능력은 2024년 20.9억식, 2025년 24.4억식(밀양2 반년분), 2026년 연환산 28.1억식으로 2년 동안 34% 커졌고, 같은 기간 실적은 18.1억식에서 22.9억식, 2026년 상반기 연환산 27.1억식으로 50%<span class="est">E</span> 늘었습니다. 늘어난 능력의 거의 전부가 밀양에서 나왔고(밀양 능력 2024년 6.1억식에서 2026년 연환산 13.3억식), 원주와 익산은 능력이 그대로인데 실적만 올라 표준을 넘겼습니다. 원주의 실적은 2024년 8.91억식에서 2026년 연환산 11.37억식으로, 익산은 3.68억식에서 4.21억식으로 늘었습니다. 새 라인 없이 기존 공장에서 짜낸 물량이 2년간 3.0억식<span class="est">E</span>이라는 뜻입니다.</p>
+<figure class=""><figcaption>장표 1. 공장별 면류 생산능력·생산실적(억식) — 2024, 2025, 2026년 상반기(×2 연환산)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="208.0" x2="730" y2="208.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="212.0" text-anchor="end" font-size="11" fill="#8a857c">2.5</text>
+<line x1="62" y1="170.0" x2="730" y2="170.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="174.0" text-anchor="end" font-size="11" fill="#8a857c">5.0</text>
+<line x1="62" y1="132.0" x2="730" y2="132.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="136.0" text-anchor="end" font-size="11" fill="#8a857c">7.5</text>
+<line x1="62" y1="94.0" x2="730" y2="94.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="98.0" text-anchor="end" font-size="11" fill="#8a857c">10.0</text>
+<line x1="62" y1="56.0" x2="730" y2="56.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="60.0" text-anchor="end" font-size="11" fill="#8a857c">12.5</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">15.0</text>
+<text x="99.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">원주 2024</text>
+<text x="173.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">원주 2025</text>
+<text x="247.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">원주 1H26×2</text>
+<text x="321.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">익산 2024</text>
+<text x="396.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">익산 2025</text>
+<text x="470.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">익산 1H26×2</text>
+<text x="544.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">밀양 2024</text>
+<text x="618.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">밀양 2025</text>
+<text x="692.9" y="264" text-anchor="middle" font-size="10" fill="#8a857c">밀양 1H26×2</text>
+<rect x="73.1" y="75.1" width="25.0" height="170.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="86.1" y="71.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">11.2</text>
+<rect x="99.1" y="110.5" width="25.0" height="135.5" fill="#1f3a5f" opacity="0.9"/>
+<text x="112.1" y="106.5" text-anchor="middle" font-size="9.5" fill="#1f3a5f">8.9</text>
+<rect x="147.4" y="75.1" width="25.0" height="170.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="160.3" y="71.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">11.2</text>
+<rect x="173.3" y="86.1" width="25.0" height="159.9" fill="#1f3a5f" opacity="0.9"/>
+<text x="186.3" y="82.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">10.5</text>
+<rect x="221.6" y="75.1" width="25.0" height="170.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="234.6" y="71.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">11.2</text>
+<rect x="247.6" y="73.2" width="25.0" height="172.8" fill="#1f3a5f" opacity="0.9"/>
+<text x="260.5" y="69.2" text-anchor="middle" font-size="9.5" fill="#1f3a5f">11.4</text>
+<rect x="295.8" y="192.1" width="25.0" height="53.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="308.8" y="188.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">3.5</text>
+<rect x="321.8" y="190.0" width="25.0" height="56.0" fill="#1f3a5f" opacity="0.9"/>
+<text x="334.8" y="186.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">3.7</text>
+<rect x="370.0" y="192.1" width="25.0" height="53.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="383.0" y="188.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">3.5</text>
+<rect x="396.0" y="181.5" width="25.0" height="64.5" fill="#1f3a5f" opacity="0.9"/>
+<text x="409.0" y="177.5" text-anchor="middle" font-size="9.5" fill="#1f3a5f">4.2</text>
+<rect x="444.2" y="192.1" width="25.0" height="53.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="457.2" y="188.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">3.5</text>
+<rect x="470.2" y="182.1" width="25.0" height="63.9" fill="#1f3a5f" opacity="0.9"/>
+<text x="483.2" y="178.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">4.2</text>
+<rect x="518.5" y="153.3" width="25.0" height="92.7" fill="#e9e2d2" opacity="0.9"/>
+<text x="531.5" y="149.3" text-anchor="middle" font-size="9.5" fill="#e9e2d2">6.1</text>
+<rect x="544.4" y="162.4" width="25.0" height="83.6" fill="#1f3a5f" opacity="0.9"/>
+<text x="557.4" y="158.4" text-anchor="middle" font-size="9.5" fill="#1f3a5f">5.5</text>
+<rect x="592.7" y="99.3" width="25.0" height="146.7" fill="#e9e2d2" opacity="0.9"/>
+<text x="605.7" y="95.3" text-anchor="middle" font-size="9.5" fill="#e9e2d2">9.7</text>
+<rect x="618.7" y="122.8" width="25.0" height="123.2" fill="#1f3a5f" opacity="0.9"/>
+<text x="631.7" y="118.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">8.1</text>
+<rect x="666.9" y="44.1" width="25.0" height="201.9" fill="#e9e2d2" opacity="0.9"/>
+<text x="679.9" y="40.1" text-anchor="middle" font-size="9.5" fill="#e9e2d2">13.3</text>
+<rect x="692.9" y="71.0" width="25.0" height="175.0" fill="#1f3a5f" opacity="0.9"/>
+<text x="705.9" y="67.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">11.5</text>
+<rect x="736" y="18" width="10" height="10" fill="#e9e2d2"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">생산능력(억식)</text>
+<rect x="736" y="34" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">생산실적(억식)</text>
+</svg><div class="src">자료: 2026 반기보고서 II-3 나.(2) 생산능력·생산실적(수량 기준, 천식 → 억식 환산). 2024·2025는 반기보고서가 새 양식으로 재작성한 값. 밀양은 1·2공장 합산. 1H26은 반기 값에 2를 곱한 연환산(E)</div></figure>
+<p class="reading"><b>관찰.</b> 2026년 상반기 연환산 기준으로 원주는 능력 11.25억식에 실적 11.37억식, 익산은 3.54억식에 4.21억식으로 실적 막대가 능력 막대보다 높고, 밀양만 13.28억식에 11.51억식으로 여유가 남아 있습니다. <b>원인.</b> 원주·익산은 교대와 가동일을 늘려 표준 시간을 넘겨 돌리고 있고, 밀양은 2공장이 하반기부터 능력에 잡히면서 분모가 먼저 커진 뒤 실적이 따라오는 중이기 때문입니다. <b>함의.</b> 2026년 하반기에 남은 여유는 사실상 밀양의 13%p뿐이며, 이것이 2026년 물량의 상한을 정합니다. 원주·익산을 더 짜내는 길은 가동가능시간(아래 2절)까지 남아 있지만 이미 표준의 101~119%라 한계가 가깝습니다.</p>
+<p>회사 표기 CAPA가 시간이 지나며 조금씩 커진 점도 기록해 둡니다. 2024년 2분기 IR의 밀양2공장 요약표는 밀양1을 4라인 5.6억식, 밀양2를 6라인 6.9억식으로 적었고 기준을 "260일·2교대"로 밝혔는데, 2026년 3월의 이행현황은 같은 라인 수로 밀양1 6.1억식, 밀양2 7.2억식을 적었습니다. 라인을 더하지 않고 능력이 각각 9%, 4%<span class="est">E</span> 늘어난 것은 분당 컷 수 같은 설비 속도 개선이나 표준가동률 가정 변경이 반영된 결과로 읽습니다(회사 설명 없음). 회사가 2Q26 IR에서 원가 개선 요인으로 "설비 효율 향상 및 가동시간 확대로 생산량 증가"를 든 것과 같은 방향입니다. 즉 CAPA는 고정된 벽이 아니라 설비 개선으로 매년 몇 퍼센트씩 밀리는 경계이고, 그 밀림은 대체로 새 공장보다 작지만 비용도 거의 들지 않습니다.</p>
+
+<h2>2. 가동률 두 기준 — 60.5%와 93.6%는 같은 해의 같은 공장입니다</h2>
+<p>삼양식품 생산 공시를 읽을 때 가장 먼저 걸리는 함정은 산정 기준의 변경입니다. 2025 사업보고서까지는 생산능력과 실적을 금액(백만원, "각 기간 기준가격 적용")으로 적고, 가동률은 실제가동시간을 가동가능시간으로 나눈 값을 적었습니다. 이 옛 기준으로 2025년 공장별 가동률은 원주 면 75.9%, 익산 87.3%, 밀양 면 54.6%, 전체 합계 60.5%였습니다. 2026 반기보고서는 능력과 실적을 수량(천식)으로 바꾸고 2025·2024년 값도 새로 적었는데, 새 기준의 2025년 면류 실적/능력은 93.6%, 밀양은 84.0%입니다. 같은 해 같은 공장이 옛 기준으로는 40% 가까이 비어 있는 것처럼, 새 기준으로는 거의 꽉 찬 것처럼 보이는 셈이고, 옛 숫자만 보면 2025년 하반기의 공급 부족 설명이 모순처럼 보이는 것도 이 차이 때문입니다. 한 가지 더, 2025 사업보고서는 밀양 면 생산능력의 2024·2023년 값을 2024 사업보고서의 616,677·588,490백만원에서 291,675·311,157백만원으로 다시 적어, 금액 기준 안에서도 연도 간 비교가 흔들립니다.</p>
+<figure class=""><figcaption>장표 2. 면류 가동률 궤적(%) — 새 기준(실적/표준능력, 실선)과 옛 기준(실제/가동가능시간, 점선)</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="730" y2="276.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="280.0" text-anchor="end" font-size="11" fill="#8a857c">40%</text>
+<line x1="62" y1="224.4" x2="730" y2="224.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="228.4" text-anchor="end" font-size="11" fill="#8a857c">60%</text>
+<line x1="62" y1="172.8" x2="730" y2="172.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="176.8" text-anchor="end" font-size="11" fill="#8a857c">80%</text>
+<line x1="62" y1="121.2" x2="730" y2="121.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="125.2" text-anchor="end" font-size="11" fill="#8a857c">100%</text>
+<line x1="62" y1="69.6" x2="730" y2="69.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="73.6" text-anchor="end" font-size="11" fill="#8a857c">120%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">140%</text>
+<line x1="62" y1="121.2" x2="730" y2="121.2" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2023</text>
+<text x="229.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<text x="396.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">1H25</text>
+<text x="563.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="730.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">1H26</text>
+<polyline points="229.0,174.7 563.0,137.8 730.0,118.3" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="229.0" cy="174.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="563.0" cy="137.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="118.3" r="2.4" fill="#1f3a5f"/>
+<polyline points="229.0,111.2 563.0,70.0 730.0,72.9" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<circle cx="229.0" cy="111.2" r="2.4" fill="#2b7a78"/>
+<circle cx="563.0" cy="70.0" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="72.9" r="2.4" fill="#2b7a78"/>
+<polyline points="229.0,146.5 563.0,162.6 730.0,155.5" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="229.0" cy="146.5" r="2.4" fill="#b07d2b"/>
+<circle cx="563.0" cy="162.6" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="155.5" r="2.4" fill="#b07d2b"/>
+<polyline points="229.0,155.8 563.0,137.7 730.0,130.2" fill="none" stroke="#a44a3f" stroke-width="2.6"/>
+<circle cx="229.0" cy="155.8" r="2.4" fill="#a44a3f"/>
+<circle cx="563.0" cy="137.7" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="130.2" r="2.4" fill="#a44a3f"/>
+<polyline points="62.0,221.9 229.0,165.5 396.0,185.7 563.0,238.3" fill="none" stroke="#b07d2b" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="221.9" r="2.4" fill="#b07d2b"/>
+<circle cx="229.0" cy="165.5" r="2.4" fill="#b07d2b"/>
+<circle cx="396.0" cy="185.7" r="2.4" fill="#b07d2b"/>
+<circle cx="563.0" cy="238.3" r="2.4" fill="#b07d2b"/>
+<polyline points="62.0,209.9 229.0,195.5 396.0,205.0 563.0,223.1" fill="none" stroke="#8a857c" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="209.9" r="2.4" fill="#8a857c"/>
+<circle cx="229.0" cy="195.5" r="2.4" fill="#8a857c"/>
+<circle cx="396.0" cy="205.0" r="2.4" fill="#8a857c"/>
+<circle cx="563.0" cy="223.1" r="2.4" fill="#8a857c"/>
+<text x="736" y="76.9" font-size="11" fill="#2b7a78">새 기준 익산 119%</text>
+<text x="736" y="122.3" font-size="11" fill="#1f3a5f">새 기준 원주 101%</text>
+<text x="736" y="137.3" font-size="11" fill="#a44a3f">새 기준 면류 합계 96%</text>
+<text x="736" y="159.5" font-size="11" fill="#b07d2b">새 기준 밀양 87%</text>
+<text x="736" y="227.1" font-size="11" fill="#8a857c">옛 기준 합계 60%</text>
+<text x="736" y="242.3" font-size="11" fill="#b07d2b">옛 기준 밀양 55%</text>
+</svg><div class="src">자료: 새 기준은 2026 반기보고서 수량 표에서 공장별 실적÷능력으로 계산(2024·2025는 재작성 값, 2023·1H25는 새 기준 값 없음). 옛 기준은 2023·2024·2025 사업보고서와 2025 반기보고서의 '당기 공장별 가동률'. 점선 100% = 표준 생산능력</div></figure>
+<p class="reading"><b>관찰.</b> 새 기준 선은 모두 위쪽에서 오르고(면류 합계 86.6%, 93.6%, 96.5%), 옛 기준 합계는 71.22%에서 60.5%로 오히려 내려갔습니다. 새 기준 익산은 2024년부터 이미 100%를 넘었습니다(103.9%). <b>원인.</b> 옛 기준의 분모인 가동가능시간이 2025년에 원주 5,796·익산 6,348·밀양 6,072시간으로 늘었고(2024년 모두 5,040시간), 밀양2가 분모에 먼저 들어가 합계를 끌어내렸기 때문입니다. 새 기준은 표준가동시간(연 5,040시간)을 분모로 고정해 설비를 표준보다 오래 돌린 만큼 100%를 넘깁니다. <b>함의.</b> 공급 여력을 묻는 질문에는 새 기준이 맞는 자입니다. 옛 기준의 60%대 숫자로 '공장이 비어 있다'고 읽으면 2025년 하반기의 공급 부족과 2026년 물량 상한을 모두 잘못 봅니다. 다만 새 기준의 100%는 물리적 한계가 아니라 표준이며, 물리적 여유는 가동가능시간까지 따로 계산해야 합니다.</p>
+<p>새 기준에서 100%를 넘는다는 것의 뜻은 반기보고서 가동률 표가 직접 보여 줍니다. 2026년 상반기 면류의 표준가동시간은 세 공장 모두 2,520시간인데 실제가동시간은 원주 2,548시간, 익산 2,992시간, 밀양 2,185시간이었고, 가동률은 그 비율인 101.1%·118.7%·86.7%입니다. 표준 2,520시간은 하루 20시간씩 반기 126일 정도에 해당하므로, 익산의 2,992시간은 하루 22시간 2교대에 주말·휴일 가동을 더해야 나오는 시간입니다. 반기보고서는 "실제가동시간은 가동가능시간 × 평균가동률로 산출"한다고 주석을 달았고, 실제로 공장별 실적/능력 비율(101.1%·118.7%·86.7%)과 시간 기준 가동률이 소수 첫째 자리까지 같습니다. 2026년 새 양식에서는 두 기준이 사실상 하나로 합쳐졌다는 뜻이고, 그래서 2025년 이전 옛 수치와의 비교만 조심하면 됩니다.</p>
+<p>그렇다면 물리적 상한은 어디일까요. [가정] 옛 양식의 가동가능시간(2025년 원주 5,796·익산 6,348·밀양 6,072시간)을 설비가 실제로 돌 수 있는 최대 시간으로 봅니다. [근거] 2025 사업보고서가 공장별로 이 시간을 적었고, 교대 기준(면류 2교대 하루 22시간)이 함께 공시됐습니다. [식] 공장별 표준 능력 × (가동가능시간 ÷ 5,040시간)을 더하면 33.4억식<span class="est">E</span>으로, 표준 28억식의 119%<span class="est">E</span>입니다. 2026년 상반기 실제가동시간을 연환산하면 원주 5,096·익산 5,984·밀양 4,370시간이라, 가동가능시간까지 남은 여유는 원주 14%·익산 6%·밀양 39%<span class="est">E</span>입니다. [교차검증] 다른 길로, 2025년 금액 기준 능력 합계 1,452,637백만원을 같은 해 금액 실적 대비 수량 실적 비율로 환산하면 옛 기준의 능력은 33.3억식<span class="est">E</span>으로, 시간으로 계산한 33.4억식<span class="est">E</span>과 거의 같습니다. 두 길이 모두 "표준 28억식의 약 1.2배, 33억식 안팎"을 가리키므로, 기존 3개 공장이 교대와 가동일을 끝까지 늘렸을 때의 천장은 33억식<span class="est">E</span> 근처로 봅니다. 다만 원주·익산은 이미 그 천장의 88~94%<span class="est">E</span>에 있어, 남은 여유의 대부분은 밀양에 있습니다.</p>
+
+<h2>3. 밀양2 램프업 — 준공에서 풀가동까지 13개월</h2>
+<p>밀양2공장은 2023년 8월 11일 이사회에서 투자액 1,590억원으로 처음 결의됐고, 2023년 9월 정정에서 1,643억원(자기자본 대비 36.13%), 2024년 6월 정정에서 1,838억원(40.42%, 생산 6개 라인)으로 두 번 늘었습니다(신규시설투자 공시 정정). 5라인 계획이 6라인으로 바뀌면서 불닭볶음면 초과 수요에 대응하는 봉지면 라인 1개가 추가됐다고 2024년 3분기 IR이 밝혔고, 설비 자동화·낱개 포장·할랄 전용 라인을 갖춘 수출 기지로 설계됐습니다. 공사는 2025년 5월 말 끝나 6월 준공했고, 반기보고서 생산능력표는 "제65기 하반기부터 가동"으로 적었습니다. 이 과정에서 눈여겨볼 것은 투자액의 증가율(최초 대비 +16%)보다 결의에서 준공까지 걸린 22개월이라는 시간이며, 자싱은 2024년 12월 결의에서 2027년 1월 준공 목표까지 약 25개월로 비슷한 속도를 잡고 있습니다.</p>
+<figure class=""><figcaption>장표 3. 램프업 곡선 비교 — 밀양2 실측 경로와 밀양1·밀양2·자싱의 풀가동 소요 기간(가동 개시 = 0개월)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="690" y2="256.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">0%</text>
+<line x1="62" y1="216.7" x2="690" y2="216.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.7" text-anchor="end" font-size="11" fill="#8a857c">20%</text>
+<line x1="62" y1="177.3" x2="690" y2="177.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="181.3" text-anchor="end" font-size="11" fill="#8a857c">40%</text>
+<line x1="62" y1="138.0" x2="690" y2="138.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="142.0" text-anchor="end" font-size="11" fill="#8a857c">60%</text>
+<line x1="62" y1="98.7" x2="690" y2="98.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="102.7" text-anchor="end" font-size="11" fill="#8a857c">80%</text>
+<line x1="62" y1="59.3" x2="690" y2="59.3" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="63.3" text-anchor="end" font-size="11" fill="#8a857c">100%</text>
+<line x1="62" y1="20.0" x2="690" y2="20.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="24.0" text-anchor="end" font-size="11" fill="#8a857c">120%</text>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">0개월</text>
+<text x="124.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2개월</text>
+<text x="187.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4개월</text>
+<text x="250.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">6개월</text>
+<text x="313.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">8개월</text>
+<text x="376.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">10개월</text>
+<text x="438.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">12개월</text>
+<text x="501.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">14개월</text>
+<text x="564.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">16개월</text>
+<text x="627.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">18개월</text>
+<text x="690.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">20개월</text>
+<polyline points="62.0,256.0 627.2,59.3 690.0,59.3" fill="none" stroke="#8a857c" stroke-width="1.6" stroke-dasharray="5 3"/>
+<polyline points="62.0,256.0 344.6,59.3 690.0,59.3" fill="none" stroke="#b07d2b" stroke-width="1.6" stroke-dasharray="5 3"/>
+<polyline points="62.0,256.0 313.2,59.3 690.0,59.3" fill="none" stroke="#a44a3f" stroke-width="1.6" stroke-dasharray="5 3"/>
+<polyline points="62.0,256.0 219.0,213.6 313.2,94.1 470.2,59.3" fill="none" stroke="#1f3a5f" stroke-width="2.4"/>
+<circle cx="219.0" cy="213.6" r="3.6" fill="#1f3a5f"/>
+<text x="227.0" y="227.6" font-size="10.5" fill="#1f3a5f">4Q25 밀양2 단독 약 22%(옛 기준 역산 E)</text>
+<circle cx="313.2" cy="94.1" r="3.6" fill="#1f3a5f"/>
+<text x="321.2" y="110.1" font-size="10.5" fill="#1f3a5f">1Q26 밀양2 82.3%(보도)</text>
+<circle cx="470.2" cy="59.3" r="3.6" fill="#1f3a5f"/>
+<text x="478.2" y="51.3" font-size="10.5" fill="#1f3a5f">2026-07 풀가동(블로터 7-24)</text>
+<line x1="698" y1="26" x2="714" y2="26" stroke="#1f3a5f" stroke-width="2" />
+<text x="718" y="30" font-size="10.5" fill="#1f3a5f">밀양2 실측(준공=0)</text>
+<line x1="698" y1="44" x2="714" y2="44" stroke="#8a857c" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="718" y="48" font-size="10.5" fill="#8a857c">밀양1 18개월(한화)</text>
+<line x1="698" y1="62" x2="714" y2="62" stroke="#b07d2b" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="718" y="66" font-size="10.5" fill="#b07d2b">밀양2 예상 9개월(한화)</text>
+<line x1="698" y1="80" x2="714" y2="80" stroke="#a44a3f" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="718" y="84" font-size="10.5" fill="#a44a3f">자싱 예상 8개월(KB)</text>
+<text x="66.0" y="53.3" font-size="10" fill="#8a857c">100% = 표준 생산능력</text>
+</svg><div class="src">자료: 4Q25 밀양2 단독은 2025 사업보고서와 분기보고서의 밀양 면 금액 기준 분기 능력·실적에서 4분기를 역산하고 밀양1이 3분기 실적(67,426백만원)을 유지했다는 가정으로 뺀 값(E, 옛 기준이라 과소 가능). 1Q26 82.3%는 데일리인베스트(2026-05~06, 일자 미확인), 풀가동은 블로터 2026-07-24. 참고선은 한화 2026-01-30(밀양1 18개월·밀양2 9개월 예상)·KB 2026-09-02(자싱 7~8개월)</div></figure>
+<p class="reading"><b>관찰.</b> 밀양2의 실측 점은 4Q25 약 22%<span class="est">E</span>, 1Q26 82.3%, 준공 13개월째인 2026년 7월 풀가동으로 이어져, 한화가 예상한 9개월보다 느리고 밀양1의 18개월보다는 빨랐습니다. 밀양 합산의 옛 기준 분기 비율은 2025년 1~4분기 77%·73%·66%·37%<span class="est">E</span>로 4분기에 크게 꺾였습니다. <b>원인.</b> 4분기에 밀양2의 능력(금액 기준 약 194,984백만원<span class="est">E</span>)이 한꺼번에 분모로 들어왔고 실적은 인력 채용과 라인 안정화 속도만큼만 따라왔기 때문입니다. 회사도 3Q25 IR에서 '신공장 가동에 따른 채용 인력 증가 및 관련 경비 지출 증가로 원가 부담 상승'을 적었습니다. <b>함의.</b> 램프업의 앞 3~4개월은 분모만 늘고 이익은 오히려 깎이는 구간이며, 밀양2에서는 그것이 2025년 4분기였습니다. 자싱도 가동 첫 분기에는 감가와 인건비가 먼저 들어오고 물량은 늦게 오므로, 2027년 1~2분기 중국 쪽 원가율이 일시적으로 나빠질 수 있습니다.</p>
+<p>이 램프업 경로가 "병목은 capa였다"는 판정의 가장 직접적인 증거입니다. 2025년 하반기에 삼양식품은 수요가 있는데도 팔 물건이 모자랐다는 흔적을 여러 곳에 남겼습니다. 한화(2026-01-30)는 2025년 하반기 실적 모멘텀 약화를 "수요보다는 공급의 문제"로 진단했고, 미국법인 재고가 2025년 3분기 -15%, 4분기 -10%(전 분기 대비) 줄었다고 적었습니다. 데일리인베스트는 1Q26 미국 가격 인상에도 재고가 타이트했다고 보도했습니다. 우리 추정으로도 2025년 하반기 면류 생산은 11.64억식<span class="est">E</span>으로 상반기 11.24억식<span class="est">E</span>보다 3.6%<span class="est">E</span> 느는 데 그쳤는데, 같은 기간 연결 매출은 1조 821억에서 1조 2,697억으로 17.3% 늘었습니다. 물량이 거의 늘지 않은 반기에 식당 매출이 963원에서 1,091원<span class="est">E</span>으로 뛴 것은 2025년 10월 미국 공급가 약 9% 인상과 판매 법인의 재고 소진이 매출을 채웠다는 뜻이며, 공급이 풀리자마자 2026년 상반기 생산이 전년 동기 대비 +20.6%<span class="est">E</span> 늘고 해외 매출이 따라 뛴 것도 같은 그림입니다. 1H25 수량은 공시가 없어 금액 기준 반기 비중(49.1%)으로 2025년 수량 실적을 나눈 추정치입니다.</p>
+
+<h2>4. 2026년 물량 상한 — 컨센 +34%를 물량과 가격으로 가르기</h2>
+<p>[가정] 2026년 하반기 가동률을 세 경우로 둡니다. 하단은 상반기 공장별 가동률(원주 101.1%·익산 118.7%·밀양 86.7%)을 그대로 유지하는 경우, 기본은 원주·익산을 유지하고 밀양만 풀가동 보도를 반영해 98%<span class="est">E</span>로 올리는 경우, 상단은 원주 105%·익산 120%·밀양 105%<span class="est">E</span>로 모든 공장이 표준을 넘기는 경우입니다. [근거] 밀양2 풀가동 보도(블로터 7-24)가 밀양 상향의 근거이고, KB(9-02)가 7월 휴가 시즌 때문에 3분기 생산량이 전 분기 대비 낮은 한 자릿수 증가에 그친다고 본 점, 한화(8-18)가 조업일수 감소로 3분기 생산·수출 성장이 다소 제한된다고 본 점이 기본을 상단보다 하단 쪽에 두게 합니다. [식] 하반기 생산 = 공장별 반기 능력 × 가정 가동률, 2026년 생산 = 상반기 실적 13.55억식 + 하반기 생산입니다. 결과는 하단 27.09억식, 기본 27.84억식, 상단 28.55억식<span class="est">E</span>으로, 2025년 실적 22.87억식 대비 +18%·+22%·+25%<span class="est">E</span>입니다. 표준 28억식을 기준으로 한 2026년 연간 가동률은 기본 99%<span class="est">E</span>이고, 2절의 물리적 천장 33억식<span class="est">E</span>까지는 여유가 있지만 그 여유를 하반기 안에 끌어낼 인력과 가동일이 확보됐다는 증거는 없습니다.</p>
+<table class=""><tr><th>단계·항목</th><th>하단</th><th>기본</th><th>상단</th></tr><tr><td>2H26 가동률 가정(원주/익산/밀양)</td><td>101/119/87%</td><td>101/119/98%</td><td>105/120/105%</td></tr><tr><td>2H26 생산(억식, E)</td><td>13.55</td><td>14.30</td><td>15.00</td></tr><tr><td>2026 생산(억식, E)</td><td>27.09</td><td>27.84</td><td>28.55</td></tr><tr><td>2025 실적 22.87억식 대비</td><td>+18.4%</td><td>+21.7%</td><td>+24.8%</td></tr><tr><td>2H25 추정 11.64억식 대비 2H26</td><td>+16.4%</td><td>+22.8%</td><td>+28.9%</td></tr><tr><td>컨센 매출 +33.6% 중 물량 몫(로그 기여)</td><td>58%</td><td>68%</td><td>77%</td></tr><tr><td>가격·믹스·환율로 남는 몫</td><td>+12.8%</td><td>+9.7%</td><td>+7.0%</td></tr><tr><td>컨센이 요구하는 2026 식당 매출(원/식)</td><td>1,160</td><td>1,128</td><td>1,100</td></tr><tr><td>컨센이 요구하는 2H26 식당 매출(1H26 실측 1,096)</td><td>1,223(+11.6%)</td><td>1,159(+5.7%)</td><td>1,104(+0.7%)</td></tr><tr><td>1H26 실측 단가로 환산한 2026 매출(억원)</td><td>2조 9,694억(-5.5% vs 컨센)</td><td>3조 517억(-2.9% vs 컨센)</td><td>3조 1,292억(-0.4% vs 컨센)</td></tr></table>
+<p>[교차검증] 관세청 수출입무역통계의 라면(HS 1902.30.1010) 수출 물량은 2026년 1~7월 260천톤으로 전년 동기 211천톤 대비 +23.1%, 금액은 1,086백만달러로 +25.9%였고, 톤당 단가는 4.09달러/kg에서 4.18달러/kg으로 +2.3%에 그쳤습니다. 삼양식품 공장이 있는 원주·익산·밀양 3개 시군의 HS 1902.30 수출액(삼양 대용치, 타사 포함 가능)은 같은 기간 +24.3%입니다. 연간으로도 한국 라면 수출 물량은 2024년 +27.2%, 2025년 +20.5%로 삼양식품 생산 증가율(2025년 +26.4%)과 같은 20%대에 있습니다. 즉 수출 통계에서 보이는 성장은 거의 전부가 물량이고 달러 단가는 제자리이며, 이 물량 증가율은 공장이 뽑아낼 수 있는 속도와 같은 크기입니다. 기본 경로의 2026년 물량 +22%<span class="est">E</span>는 이 통계와 모순되지 않습니다.</p>
+<figure class=""><figcaption>장표 4. 관세청 라면 수출 물량·단가 전년 대비 증감률(%, 3개월 합 기준) — 2024-03~2026-07</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">-10%</text>
+<line x1="62" y1="200.4" x2="730" y2="200.4" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="204.4" text-anchor="end" font-size="11" fill="#8a857c">0%</text>
+<line x1="62" y1="154.8" x2="730" y2="154.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="158.8" text-anchor="end" font-size="11" fill="#8a857c">10%</text>
+<line x1="62" y1="109.2" x2="730" y2="109.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="113.2" text-anchor="end" font-size="11" fill="#8a857c">20%</text>
+<line x1="62" y1="63.6" x2="730" y2="63.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="67.6" text-anchor="end" font-size="11" fill="#8a857c">30%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">40%</text>
+<text x="62.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">24.03</text>
+<text x="157.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">24.07</text>
+<text x="252.9" y="264" text-anchor="middle" font-size="10" fill="#8a857c">24.11</text>
+<text x="348.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">25.03</text>
+<text x="443.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">25.07</text>
+<text x="539.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">25.11</text>
+<text x="634.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">26.03</text>
+<text x="730.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">26.07</text>
+<polyline points="62.0,101.4 85.9,72.6 109.7,39.1 133.6,54.7 157.4,63.2 181.3,98.3 205.1,98.7 229.0,112.8 252.9,96.5 276.7,52.8 300.6,52.9 324.4,44.8 348.3,77.8 372.1,88.1 396.0,116.0 419.9,121.6 443.7,119.7 467.6,120.6 491.4,81.2 515.3,96.5 539.1,111.5 563.0,138.3 586.9,133.1 610.7,124.7 634.6,96.3 658.4,70.8 682.3,62.5 706.1,74.4 730.0,110.3" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="101.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="85.9" cy="72.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="109.7" cy="39.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="133.6" cy="54.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="157.4" cy="63.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="181.3" cy="98.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="205.1" cy="98.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="229.0" cy="112.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="252.9" cy="96.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="276.7" cy="52.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="300.6" cy="52.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="324.4" cy="44.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="348.3" cy="77.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="372.1" cy="88.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="396.0" cy="116.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="419.9" cy="121.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="443.7" cy="119.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="467.6" cy="120.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="491.4" cy="81.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="515.3" cy="96.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="539.1" cy="111.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="563.0" cy="138.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="586.9" cy="133.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="610.7" cy="124.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="634.6" cy="96.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="658.4" cy="70.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="682.3" cy="62.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="706.1" cy="74.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="110.3" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,169.0 85.9,182.7 109.7,195.6 133.6,192.5 157.4,188.7 181.3,190.2 205.1,191.3 229.0,189.7 252.9,188.3 276.7,190.9 300.6,199.8 324.4,204.9 348.3,199.3 372.1,193.1 396.0,184.8 419.9,185.0 443.7,191.8 467.6,195.8 491.4,202.6 515.3,202.9 539.1,201.4 563.0,195.5 586.9,187.8 610.7,183.7 634.6,187.2 658.4,190.4 682.3,191.4 706.1,195.0 730.0,190.9" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="62.0" cy="169.0" r="2.4" fill="#b07d2b"/>
+<circle cx="85.9" cy="182.7" r="2.4" fill="#b07d2b"/>
+<circle cx="109.7" cy="195.6" r="2.4" fill="#b07d2b"/>
+<circle cx="133.6" cy="192.5" r="2.4" fill="#b07d2b"/>
+<circle cx="157.4" cy="188.7" r="2.4" fill="#b07d2b"/>
+<circle cx="181.3" cy="190.2" r="2.4" fill="#b07d2b"/>
+<circle cx="205.1" cy="191.3" r="2.4" fill="#b07d2b"/>
+<circle cx="229.0" cy="189.7" r="2.4" fill="#b07d2b"/>
+<circle cx="252.9" cy="188.3" r="2.4" fill="#b07d2b"/>
+<circle cx="276.7" cy="190.9" r="2.4" fill="#b07d2b"/>
+<circle cx="300.6" cy="199.8" r="2.4" fill="#b07d2b"/>
+<circle cx="324.4" cy="204.9" r="2.4" fill="#b07d2b"/>
+<circle cx="348.3" cy="199.3" r="2.4" fill="#b07d2b"/>
+<circle cx="372.1" cy="193.1" r="2.4" fill="#b07d2b"/>
+<circle cx="396.0" cy="184.8" r="2.4" fill="#b07d2b"/>
+<circle cx="419.9" cy="185.0" r="2.4" fill="#b07d2b"/>
+<circle cx="443.7" cy="191.8" r="2.4" fill="#b07d2b"/>
+<circle cx="467.6" cy="195.8" r="2.4" fill="#b07d2b"/>
+<circle cx="491.4" cy="202.6" r="2.4" fill="#b07d2b"/>
+<circle cx="515.3" cy="202.9" r="2.4" fill="#b07d2b"/>
+<circle cx="539.1" cy="201.4" r="2.4" fill="#b07d2b"/>
+<circle cx="563.0" cy="195.5" r="2.4" fill="#b07d2b"/>
+<circle cx="586.9" cy="187.8" r="2.4" fill="#b07d2b"/>
+<circle cx="610.7" cy="183.7" r="2.4" fill="#b07d2b"/>
+<circle cx="634.6" cy="187.2" r="2.4" fill="#b07d2b"/>
+<circle cx="658.4" cy="190.4" r="2.4" fill="#b07d2b"/>
+<circle cx="682.3" cy="191.4" r="2.4" fill="#b07d2b"/>
+<circle cx="706.1" cy="195.0" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="190.9" r="2.4" fill="#b07d2b"/>
+<text x="736" y="114.3" font-size="11" fill="#1f3a5f">물량(톤) YoY 20%</text>
+<text x="736" y="194.9" font-size="11" fill="#b07d2b">단가($/kg) YoY 2%</text>
+<text x="419.9" y="105.6" text-anchor="middle" font-size="10.5" fill="#a44a3f">밀양2 준공</text>
+</svg><div class="src">자료: 관세청 수출입무역통계 HS 10단위 1902301010(라면) 월별 확정치(research/B_산업_수출.md, 2026-09-11 조회). 물량 = 금액 ÷ 단가 역산. 3개월 합끼리 비교해 월별 선적 요철을 줄임. 2026-08은 잠정이라 제외</div></figure>
+<p class="reading"><b>관찰.</b> 물량 증감률은 2024년 3월 이후 +14~+35% 사이에 있고 2026년 7월(3개월 합)도 +20%입니다. 달러 단가 증감률은 -1~+7% 사이에서 0 근처를 오갑니다. <b>원인.</b> 한국 라면 수출의 약 3분의 2(회사 IR 기준 2Q26 65.7%)가 삼양식품이고, 삼양은 2025년 10월 미국 공급가 인상 외에는 수출 단가를 크게 바꾸지 않은 채 공장이 만든 만큼 실어 냈기 때문입니다. 밀양2가 능력에만 잡히고 실적이 따라오지 못한 2025년 하반기에 물량 증가율이 +{min(vol_y[lab4.index('25.07'):lab4.index('25.12')+1]):.0f}%까지 내려앉았다가, 램프업이 진행된 2026년 봄에 +{max(vol_y[lab4.index('26.03'):lab4.index('26.06')+1]):.0f}%로 다시 뛴 것도 공급 쪽 천장과 맞습니다. <b>함의.</b> 월간 수출 물량 증가율이 곧 삼양의 공급 속도계입니다. 자싱 가동 전인 2026년 하반기에 이 값이 +20% 안팎을 유지하면 공급 제약 판정이 유지되고, 공장이 풀가동인데 이 값이 한 자릿수로 떨어지면 수요 쪽 신호로 읽어야 합니다(논쟁 1 반증).</p>
+<p>이제 컨센 2026E 매출 3조 1,414억(2025년 대비 +33.6%)을 가릅니다. 기본 경로의 물량 +21.7%<span class="est">E</span>를 빼면 가격·믹스·환율이 +9.7%<span class="est">E</span>를 채워야 하고, 로그 기준으로 물량이 성장의 약 68%<span class="est">E</span>, 나머지가 약 32%<span class="est">E</span>입니다. 나머지의 재료는 세 가지입니다. 첫째, 2025년 10월 미국 공급가 약 9% 인상은 2025년 매출에 한 분기만 들어갔으므로, 미국법인 비중(2025년 연간 미국법인 매출 5,952억, 2025년 연결 매출 대비 25.3%)과 남은 세 분기를 곱하면 2026년 연결 매출에 약 +1.7%<span class="est">E</span>를 더합니다. 둘째, 원/달러 연평균은 2025년 1,424원에서 2026년 1,437원<span class="est">E</span>(1~3분기 평균과 4분기 9-11 현물 가정)으로 +0.9%<span class="est">E</span>에 그쳐 연간으로는 거의 중립입니다. 셋째, 나머지 약 +7%<span class="est">E</span>는 판매 법인을 거치는 매출 비중 상승, 고단가 유럽·영국 확대, 비면류 매출 같은 믹스가 채워야 합니다.</p>
+<p>문제는 이 부담이 하반기에 몰린다는 점입니다. 2026년 상반기 실측 식당 매출은 1,096원<span class="est">E</span>이고, 이 단가를 기본 물량에 곱하면 2026년 매출은 3조 517억<span class="est">E</span>로 컨센보다 -2.9%<span class="est">E</span> 낮습니다. 컨센을 맞추려면 하반기 식당 매출이 1,159원<span class="est">E</span>으로 상반기보다 +5.7%<span class="est">E</span> 올라야 하는데, 원/달러는 1H26 평균 1,486원에서 9-11 현물 1,344원으로 -9.5% 내려와 있습니다. 상반기에는 원/달러가 전년 대비 +4.1%, 원/위안이 2Q 기준 +16.4%로 매출을 밀어 줬지만 하반기에는 반대로 작용합니다. 회사가 해외법인 환산에 연누적 환율을 쓴다는 KB(9-02)의 설명대로 환산 효과는 완만하게 오겠지만, 본사의 달러 수출 매출은 거래 시점 환율로 잡힙니다. 컨센 2026E는 우리 물량 상단 경로(하반기 식당 매출 요구치 1,104원<span class="est">E</span>, 상반기 대비 +0.7%<span class="est">E</span>)와 가장 잘 맞고, 기본 경로로는 가격·믹스에서 추가로 몇 퍼센트를 더 끌어와야 한다고 봅니다. 이 판단의 채점은 3Q26 분기보고서의 9개월 누적 생산실적과 매출을 함께 놓고 식당 매출을 다시 계산하는 것입니다.</p>
+
+<h2>5. 자싱 공장 — 11.3억식의 사실관계와 2027년 물량 경로</h2>
+<p>자싱 공장은 2024년 12월 16일 결정·18일 공정공시로 처음 나왔을 때 6개 라인 약 2,014억원, 연 8.2억식 규모였고, 2025년 11월 19일 정정으로 8개 라인 약 2,072억원, 연 11.3억식이 됐습니다. 라인은 33% 늘었는데 투자액은 3%만 늘어, 건물과 부지 같은 공통 투자는 처음부터 8라인을 전제로 잡았던 것으로 보입니다(회사 설명 없음). 사업 주체는 싱가포르 법인(연결 지분 90%) 아래의 삼양식품(절강) 유한공사이고, 싱가포르가 절강에 731.5억(73,145백만원)을 출자해 2025년 9월 26일 납입을 마쳤습니다. 공사비의 나머지는 DBS Bank(China)의 CNY 7.1억 한도 시설자금으로 조달하며, 삼양식품이 이 한도 전액을 2025년 9월 10일부터 2028년 9월 10일까지 지급보증했습니다. 공시 환산액은 1,411.3억(1CNY=198.78원, 자기자본 대비 24.5%)이고 9-11 환율로는 1,423억<span class="est">E</span>입니다. 출자와 보증 한도를 더하면 2,143억<span class="est">E</span>로 투자액 2,072억원을 거의 정확히 덮는 구조이며, 1H26 말 실제 인출은 CNY 1억 716만(243억, 금리 2.79%)에 그쳐 공사비 지출의 본격 구간은 2026년 하반기에서 2027년 초로 봅니다.</p>
+<table class=""><tr><th>항목</th><th>내용</th><th>출처</th></tr><tr><td>법인</td><td>삼양식품(절강) 유한공사 — 싱가포르 법인(연결 90%) 산하, 연결 지분 90%(나머지 10%는 재무적투자자, 이름 미확인)</td><td>타법인주식 취득결정(2024-12-16·12-30), 반기보고서</td></tr><tr><td>규모</td><td>8라인·연 11.3억식(최초 6라인·8.2억식) — 기존 28.0억식 대비 +40%, 합계 39.3억식</td><td>기업가치제고계획 이행현황(2026-03-26)</td></tr><tr><td>투자액</td><td>약 2,014억(2024-12-16, 6라인) → 약 2,072억(2025-11-19 정정, 8라인)</td><td>신규시설투자 공시·반기보고서 II-3 라</td></tr><tr><td>자본 투입</td><td>싱가포르 → 절강 출자 731.5억(73,145백만원) 2025-09-26 납입 완료</td><td>타법인주식 취득 정정(2025-09-25·26)</td></tr><tr><td>차입·보증</td><td>DBS Bank(China) CNY 7.1억 한도, 삼양식품 100% 지급보증 1,411.3억(1CNY=198.78원, 자기자본 대비 24.5%), 2025-09-10~2028-09-10. 실행 2025말 CNY 425만 → 1H26말 CNY 1억 716만(243억, 금리 2.79%)</td><td>채무보증결정(2025-02-11, 정정 08-26·09-10), 반기보고서 주석16·21</td></tr><tr><td>건설 약정</td><td>공장건설 약정금액 207,200백만원(1H26말)</td><td>반기보고서 주석21</td></tr><tr><td>일정</td><td>2025-07 착공 · 준공 목표 2027-01-31 · 2027-1Q 시험가동 · 풀가동까지 7~8개월(KB 9-02) · 분기 감가 약 30억(KB 9-02)</td><td>공시·하나 8-26·KB 9-02</td></tr><tr><td>역할</td><td>중국 내수 공급(현 중국법인 매출은 전량 한국 생산 수출분) — 가동 뒤 밀양 여유 CAPA를 미국·유럽으로 전환(하나 NDR 후기 8-26). 추가 생산기지는 '검토하지 않음'(2026-07 보도)</td><td>하나·블로터·뉴스퀘스트</td></tr></table>
+<p>자싱의 물량 경로는 가동 개시 월과 램프업 기간 두 변수로 거의 정해집니다. [가정] 기본은 2027년 1분기 시험가동을 3월 상업 가동 개시로 읽고, 가동률이 0에서 목표 90%<span class="est">E</span>까지 8개월에 걸쳐 선형으로 오른다고 둡니다. [근거] 준공 목표 2027-01-31(정정 공시), 하나 NDR 후기(8-26)의 "2027년 초 시험가동", KB(9-02)의 "풀가동까지 밀양2와 유사한 7~8개월", 그리고 3절에서 확인한 밀양2의 실측 13개월입니다. [식] 2027년 자싱 생산 = 11.3억식 ÷ 12 × 3~12월 월별 가동률 합이고, 결과는 5.51억식<span class="est">E</span>(연간 능력의 49%<span class="est">E</span>)입니다. 기존 공장이 공장별 1H26 가동률을 유지하고 밀양이 100%에 닿는 28.86억식<span class="est">E</span>(가중 가동률 102.8%<span class="est">E</span>)을 더하면 2027년 생산 가능량은 34.37억식<span class="est">E</span>으로 2026년 기본 대비 +23.4%<span class="est">E</span>입니다. [교차검증] KB(9-02)는 자싱 가동으로 캐파가 43% 늘고 2027년 매출이 17.7% 는다고 봤고, 컨센 2027E도 2026E 대비 +19.4%입니다. 둘 다 우리 물량 증가율 +23.4%<span class="est">E</span>보다 낮은데, 이는 컨센 2027E 매출을 우리 2027 물량으로 나눈 식당 매출(1,092원<span class="est">E</span>)이 컨센 2026E가 요구하는 1,128원<span class="est">E</span>보다 3.3%<span class="est">E</span> 낮다는 뜻입니다. 시장은 2027년에 원화 강세나 중국 현지 판매 단가 때문에 식당 매출이 조금 내려간다고 보거나, 램프업을 우리보다 느리게 보는 셈입니다. 밀양2의 실측처럼 램프업이 12개월이면 자싱 생산은 3.88억식<span class="est">E</span>으로 줄고, 가동이 6월로 밀리면 2.97억식<span class="est">E</span>이 됩니다.</p>
+<figure class=""><figcaption>장표 5. 생산 가능량 경로(억식) — 2024·2025 실적과 2026~2028 기본 경로(E)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="189.0" x2="730" y2="189.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="193.0" text-anchor="end" font-size="11" fill="#8a857c">10.0</text>
+<line x1="62" y1="132.0" x2="730" y2="132.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="136.0" text-anchor="end" font-size="11" fill="#8a857c">20.0</text>
+<line x1="62" y1="75.0" x2="730" y2="75.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="79.0" text-anchor="end" font-size="11" fill="#8a857c">30.0</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">40.0</text>
+<text x="128.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2024 실적</text>
+<text x="262.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2025 실적</text>
+<text x="396.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2026E 기본</text>
+<text x="529.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2027E 기본</text>
+<text x="663.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2028E 자싱 온기</text>
+<rect x="88.7" y="195.2" width="80.2" height="50.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="88.7" y="174.2" width="80.2" height="21.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="88.7" y="142.9" width="80.2" height="31.3" fill="#b07d2b" opacity="0.9"/>
+<text x="128.8" y="138.9" text-anchor="middle" font-size="9.5" fill="#8a857c">18.1</text>
+<rect x="222.3" y="186.0" width="80.2" height="60.0" fill="#1f3a5f" opacity="0.9"/>
+<rect x="222.3" y="161.8" width="80.2" height="24.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="222.3" y="115.6" width="80.2" height="46.2" fill="#b07d2b" opacity="0.9"/>
+<text x="262.4" y="111.6" text-anchor="middle" font-size="9.5" fill="#8a857c">22.9</text>
+<rect x="355.9" y="181.2" width="80.2" height="64.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="355.9" y="157.2" width="80.2" height="24.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="355.9" y="87.3" width="80.2" height="69.9" fill="#b07d2b" opacity="0.9"/>
+<text x="396.0" y="83.3" text-anchor="middle" font-size="9.5" fill="#8a857c">27.8</text>
+<rect x="489.5" y="181.2" width="80.2" height="64.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="489.5" y="157.2" width="80.2" height="24.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="489.5" y="81.5" width="80.2" height="75.7" fill="#b07d2b" opacity="0.9"/>
+<rect x="489.5" y="50.1" width="80.2" height="31.4" fill="#a44a3f" opacity="0.9"/>
+<text x="529.6" y="46.1" text-anchor="middle" font-size="9.5" fill="#8a857c">34.4</text>
+<rect x="623.1" y="181.2" width="80.2" height="64.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="623.1" y="157.2" width="80.2" height="24.0" fill="#2b7a78" opacity="0.9"/>
+<rect x="623.1" y="81.5" width="80.2" height="75.7" fill="#b07d2b" opacity="0.9"/>
+<rect x="623.1" y="23.5" width="80.2" height="58.0" fill="#a44a3f" opacity="0.9"/>
+<text x="663.2" y="19.5" text-anchor="middle" font-size="9.5" fill="#8a857c">39.0</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">원주</text>
+<rect x="736" y="34" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">익산</text>
+<rect x="736" y="50" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">밀양(1·2)</text>
+<rect x="736" y="66" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">자싱(E)</text>
+</svg><div class="src">자료: 2024·2025는 반기보고서 수량 실적. 2026E는 상반기 실적 + 하반기 기본 가정(원주 101.1%·익산 118.7%·밀양 98%). 2027E는 원주·익산 1H26 가동률 유지, 밀양 100%, 자싱 3월 개시·8개월 램프업·목표 90%. 2028E는 자싱 연간 90%. 생산 '가능량'이며 판매량이 아님(E)</div></figure>
+<p class="reading"><b>관찰.</b> 기본 경로의 생산은 2024년 18.1억식, 2025년 22.9억식, 2026년 27.8억식<span class="est">E</span>, 2027년 34.4억식<span class="est">E</span>으로 2027년까지 매년 20%대로 오르고 2028년 39.0억식<span class="est">E</span>(+14%<span class="est">E</span>)으로 이어지지만, 2026년에서 2027년 사이 증가분의 거의 전부가 자싱에서 나옵니다. <b>원인.</b> 국내 3개 공장은 2026년 하반기에 표준 능력을 사실상 다 쓰므로, 2027년 국내 증가분은 밀양이 100%에 닿는 몫과 설비 효율 개선 몇 퍼센트뿐이기 때문입니다. 회사는 2026년 7월 보도에서 추가 생산기지 건립은 검토하지 않는다고 밝혔습니다. <b>함의.</b> 2027~2028년 성장률은 자싱의 가동 시점과 채우는 속도에 정비례합니다. 2028년에 자싱을 연 90% 돌리려면 중국 쪽 수요가 약 10.2억식<span class="est">E</span> 있어야 하는데, 2025년 중국법인 매출 비중(24.7%)을 2026년 기본 물량에 곱한 현재 중국 물량은 약 6.9억식<span class="est">E</span>이라 두 해 동안 22%<span class="est">E</span>씩 커지거나 자싱이 제3국 수출을 맡아야 합니다.</p>
+<p>자싱이 채워지는 방식에 대한 회사와 증권가의 설명은 "중국 물량을 자싱으로, 비는 밀양을 미국·유럽으로"입니다(하나 NDR 후기 8-26). 지금 중국법인이 파는 불닭은 모두 한국에서 만들어 수출한 것이므로, 자싱이 돌면 그만큼 밀양의 능력이 풀려 미국·유럽 수출에 쓰입니다. 우리 계산으로 현재 중국 물량은 약 6.9억식<span class="est">E</span>이고 중국법인 매출은 2026년 상반기 3,474억으로 전년 동기 대비 +40.3% 늘었으니, 이 속도가 이어지면 2027년 중국 물량은 약 9.6억식<span class="est">E</span>, 2028년에는 약 13.5억식<span class="est">E</span>으로 자싱 11.3억식에 가까워집니다. 다만 중국법인의 식당 매출이 연결 평균보다 낮다면(유통 구조상 가능성이 큽니다) 중국 물량은 우리 추정보다 크고 자싱은 더 빨리 찹니다. 반대로 중국법인은 2026년 상반기 매출 +40%에도 부문 영업이익이 8.6억원으로 사실상 손익분기에 있어, 현지 생산으로 운임·관세·유통 마진을 얼마나 되찾는지가 자싱의 두 번째 채점 항목이 됩니다(파트 1). 자싱은 지분 90% 연결이라 이익의 10%는 재무적투자자 몫으로 빠진다는 점도 기억해 둡니다.</p>
+
+<h2>6. 원가율 궤적 — 수치를 읽기 전에 계정 분류부터</h2>
+<figure class=""><figcaption>장표 6. 분기 매출원가율·판관비율·영업이익률(%) — 1Q23~2Q26, 연결</figcaption><svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="266.0" x2="730" y2="266.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="270.0" text-anchor="end" font-size="11" fill="#8a857c">0%</text>
+<line x1="62" y1="204.0" x2="730" y2="204.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="208.0" text-anchor="end" font-size="11" fill="#8a857c">20%</text>
+<line x1="62" y1="142.0" x2="730" y2="142.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="146.0" text-anchor="end" font-size="11" fill="#8a857c">40%</text>
+<line x1="62" y1="80.0" x2="730" y2="80.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="84.0" text-anchor="end" font-size="11" fill="#8a857c">60%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">80%</text>
+<text x="62.0" y="284" text-anchor="middle" font-size="10" fill="#8a857c">1Q23</text>
+<text x="164.8" y="284" text-anchor="middle" font-size="10" fill="#8a857c">3Q23</text>
+<text x="267.5" y="284" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<text x="370.3" y="284" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<text x="473.1" y="284" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<text x="575.8" y="284" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<text x="678.6" y="284" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="730.0" y="284" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<polyline points="62.0,45.0 113.4,65.4 164.8,64.2 216.2,77.8 267.5,87.4 318.9,96.4 370.3,90.8 421.7,70.1 473.1,99.5 524.5,99.2 575.8,84.0 627.2,97.7 678.6,87.4 730.0,105.1" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="62.0" cy="45.0" r="2.4" fill="#a44a3f"/>
+<circle cx="113.4" cy="65.4" r="2.4" fill="#a44a3f"/>
+<circle cx="164.8" cy="64.2" r="2.4" fill="#a44a3f"/>
+<circle cx="216.2" cy="77.8" r="2.4" fill="#a44a3f"/>
+<circle cx="267.5" cy="87.4" r="2.4" fill="#a44a3f"/>
+<circle cx="318.9" cy="96.4" r="2.4" fill="#a44a3f"/>
+<circle cx="370.3" cy="90.8" r="2.4" fill="#a44a3f"/>
+<circle cx="421.7" cy="70.1" r="2.4" fill="#a44a3f"/>
+<circle cx="473.1" cy="99.5" r="2.4" fill="#a44a3f"/>
+<circle cx="524.5" cy="99.2" r="2.4" fill="#a44a3f"/>
+<circle cx="575.8" cy="84.0" r="2.4" fill="#a44a3f"/>
+<circle cx="627.2" cy="97.7" r="2.4" fill="#a44a3f"/>
+<circle cx="678.6" cy="87.4" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="105.1" r="2.4" fill="#a44a3f"/>
+<polyline points="62.0,207.4 113.4,204.3 164.8,197.8 216.2,178.6 267.5,199.0 318.9,190.7 370.3,192.5 421.7,208.7 473.1,200.9 524.5,190.0 575.8,202.1 627.2,191.9 678.6,211.4 730.0,187.9" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="207.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="113.4" cy="204.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="164.8" cy="197.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="216.2" cy="178.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="267.5" cy="199.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="318.9" cy="190.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="370.3" cy="192.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="421.7" cy="208.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="473.1" cy="200.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="524.5" cy="190.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="575.8" cy="202.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="627.2" cy="191.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="678.6" cy="211.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="187.9" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,235.9 113.4,218.3 164.8,225.7 216.2,231.6 267.5,201.5 318.9,200.6 370.3,204.3 421.7,209.3 473.1,187.6 524.5,198.7 575.8,201.8 627.2,198.4 678.6,189.1 730.0,195.0" fill="none" stroke="#2b7a78" stroke-width="2.6"/>
+<circle cx="62.0" cy="235.9" r="2.4" fill="#2b7a78"/>
+<circle cx="113.4" cy="218.3" r="2.4" fill="#2b7a78"/>
+<circle cx="164.8" cy="225.7" r="2.4" fill="#2b7a78"/>
+<circle cx="216.2" cy="231.6" r="2.4" fill="#2b7a78"/>
+<circle cx="267.5" cy="201.5" r="2.4" fill="#2b7a78"/>
+<circle cx="318.9" cy="200.6" r="2.4" fill="#2b7a78"/>
+<circle cx="370.3" cy="204.3" r="2.4" fill="#2b7a78"/>
+<circle cx="421.7" cy="209.3" r="2.4" fill="#2b7a78"/>
+<circle cx="473.1" cy="187.6" r="2.4" fill="#2b7a78"/>
+<circle cx="524.5" cy="198.7" r="2.4" fill="#2b7a78"/>
+<circle cx="575.8" cy="201.8" r="2.4" fill="#2b7a78"/>
+<circle cx="627.2" cy="198.4" r="2.4" fill="#2b7a78"/>
+<circle cx="678.6" cy="189.1" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="195.0" r="2.4" fill="#2b7a78"/>
+<text x="736" y="109.1" font-size="11" fill="#a44a3f">매출원가율 52%</text>
+<text x="736" y="191.9" font-size="11" fill="#1f3a5f">판관비율 25%</text>
+<text x="736" y="206.9" font-size="11" fill="#2b7a78">영업이익률 23%</text>
+<text x="421.7" y="60.1" text-anchor="middle" font-size="10.5" fill="#a44a3f">4Q24 분류 변경</text>
+<text x="678.6" y="77.4" text-anchor="middle" font-size="10.5" fill="#a44a3f">1Q26 재분류</text>
+</svg><div class="src">자료: packet fin_q(DART 분기·반기·사업보고서 연결 손익, 억원) — 매출원가율 = 100 − GPM. 2Q24 이후 값은 회사 IR 분기표와 일치(2Q26 51.9%·25.2%·22.9%). 4Q24·1Q26의 원가율 급등과 판관비율 급락은 운반비 계정 분류 변경 구간</div></figure>
+<p class="reading"><b>관찰.</b> 매출원가율은 1Q23 71.3%에서 2Q26 51.9%로 약 19%p 내려왔지만, 그 사이 4Q24 63.2%, 3Q25 58.7%, 1Q26 57.6%로 튀었고, 4Q24·1Q26에는 같은 분기 판관비율이 18.5%·17.6%로 급락했습니다. 영업이익률은 2024년 이후 18~25% 사이에서 원가율보다 훨씬 덜 움직였습니다. <b>원인.</b> 해외 판매 법인 비중 확대와 수출 단가 상승이 원가율을 구조적으로 낮췄고, 4Q24와 1Q26에는 원가율 급등과 판관비율 급락이 같은 분기에 겹쳐 판관비에 있던 운반비 일부가 원가로 옮겨 간 분류 효과로 읽힙니다. 3Q25의 상승은 회사 IR 설명대로 미국 관세 15% 반영과 밀양2 인력 채용 비용이 겹친 결과입니다. <b>함의.</b> 분기 GPM만으로 원가 개선을 읽으면 틀립니다. 분류 변경이 없는 구간끼리, 또는 원가율과 판관비율을 합친 영업이익률로 봐야 하며, 논쟁 2의 채점도 영업이익률과 원가율을 함께 걸어 둡니다.</p>
+<p>분류 변경의 크기는 두 곳에서 잴 수 있습니다. 첫째, 2024년 연간의 성격별 비용이 2024 사업보고서 원표와 2025 사업보고서 비교표에서 크게 다릅니다. 원재료 및 상품의 사용은 5,990억에서 7,412억으로 1,422억 늘었고, 수출제비 및 운반비는 3,049억에서 1,610억으로 1,440억 줄었습니다. 두 값이 거의 같으므로, 해외 판매 법인으로 옮기는 운송비(재고를 현지 창고까지 가져오는 비용) 약 1,400억원을 재고 원가로 다시 분류한 것으로 읽습니다. 미국 수입 통관 관세보증용 보증신용장(USD 2,000만, 반기보고서 주석21)이 있다는 점으로 볼 때 미국 관세 역시 수입자인 미국법인의 재고 원가를 거쳐 연결 매출원가에 들어간다고 봅니다(우리 해석, 회사 설명 없음). 둘째, 1Q26 수출제비용은 208억원으로 1Q25 370억원보다도 적었다가 2Q26에 445억원으로 돌아왔고, LS증권(5-14)은 1Q26에 운반비가 회계정책 변경으로 매출원가에 인식됐다고 설명했습니다.</p>
+<p>그렇다면 1Q26에서 2Q26으로의 원가율 개선 5.7%p 가운데 분류 몫은 얼마일까요. [가정] 1Q26에도 수출제비용이 2Q26과 같은 매출 대비 비율(5.8%)이었다면 판관비에 남았어야 할 금액과 실제 208억원의 차이를 원가로 옮겨 간 분류 몫으로 봅니다. [근거] LS의 설명과 두 분기 수출제비용의 불연속입니다. [식] 413억 − 208억 = 205억원<span class="est">E</span>을 1Q26 매출원가에서 빼면 조정 원가율은 54.7%<span class="est">E</span>입니다. [교차검증] 이렇게 보면 1Q26에서 2Q26으로의 실질 개선은 2.8%p<span class="est">E</span>이고, 나머지 2.9%p<span class="est">E</span>는 분류가 만든 착시입니다. 실질 개선 2.8%p<span class="est">E</span>는 회사가 든 세 요인(고단가 권역 매출 증가, 원/달러 2Q 평균 1,503원의 달러 강세, 가동시간 확대에 따른 생산 효율)과 맥분 매입단가 하락으로 설명되는 크기입니다. 반기보고서에는 회계정책 변경 주석이 없어(조사 범위 내), 분류 금액은 회사 확인 전까지 추정으로 남습니다.</p>
+<table class=""><tr><th>성격별 비용(괄호: 같은 기간 매출 대비)</th><th>2025년 연간</th><th>2025년 상반기</th><th>2026년 상반기</th></tr><tr><td>원재료 및 상품의 사용</td><td>9,854억(41.9%)</td><td>4,532억(41.9%)</td><td>6,375억(42.9%)</td></tr><tr><td>재고자산의 변동</td><td>-402억(-1.7%)</td><td>-458억(-4.2%)</td><td>-513억(-3.5%)</td></tr><tr><td>종업원급여</td><td>2,610억(11.1%)</td><td>1,284억(11.9%)</td><td>1,812억(12.2%)</td></tr><tr><td>감가상각·무형상각</td><td>637억(2.7%)</td><td>276억(2.6%)</td><td>408억(2.7%)</td></tr><tr><td>수출제비 및 운반비</td><td>2,087억(8.9%)</td><td>1,091억(10.1%)</td><td>1,060억(7.1%)</td></tr><tr><td>광고선전비</td><td>808억(3.4%)</td><td>347억(3.2%)</td><td>605억(4.1%)</td></tr><tr><td>지급수수료</td><td>462억(2.0%)</td><td>163억(1.5%)</td><td>285억(1.9%)</td></tr><tr><td>연료비</td><td>240억(1.0%)</td><td>123억(1.1%)</td><td>140억(0.9%)</td></tr><tr><td>전력비</td><td>127억(0.5%)</td><td>57억(0.5%)</td><td>67억(0.5%)</td></tr><tr><td><b>합계(매출원가+판관비)</b></td><td><b>18,276억(77.7%)</b></td><td><b>8,280억(76.5%)</b></td><td><b>11,314억(76.2%)</b></td></tr><tr><td>매출(연결)</td><td>2조 3,518억</td><td>1조 821억</td><td>1조 4,847억</td></tr></table>
+<p>성격별 비용으로 보면 원가 구조가 한눈에 들어옵니다. 2026년 상반기 비용 합계는 매출의 76.2%이고, 그 가운데 원재료 및 상품의 사용(재고 변동 차감)이 매출의 39.5%로 가장 크며, 종업원급여 12.2%, 수출제비 및 운반비 7.1%, 감가·무형상각 2.7%, 연료비와 전력비 합계 1.4% 순입니다. 2025년 상반기와 비교하면 원재료 비중은 37.6%에서 39.5%로 올랐고 운반비 비중은 10.1%에서 7.1%로 내려, 두 줄 사이에서 분류가 오갔다는 흔적이 여기에도 남습니다. 두 줄을 합치면 47.7%에서 46.6%로 1.1%p 낮아졌는데, 이것이 분류와 무관한 원재료·물류 합산 비중의 실제 개선입니다. 감가상각 비중이 3%에도 못 미친다는 점은 라면 제조가 설비 규모에 비해 감가 부담이 가벼운 사업이라는 뜻이고, 8절의 CAPEX 논의에서 다시 씁니다. 종업원급여 비중은 11.9%에서 12.2%로 올랐는데, 생산직 인원이 2024년 말 1,467명에서 2026년 6월 말 2,088명으로 늘었고 생산직 1인당 연 생산량은 2024년 1,303천식, 2025년 1,341천식, 2026년 상반기 연환산 1,344천식<span class="est">E</span>으로 거의 제자리이기 때문입니다. 밀양2의 자동화 설비가 인당 생산성을 눈에 띄게 올리지는 못했다는 뜻입니다.</p>
+
+<h2>7. 원재료 — 맥분의 하락, 팜유의 상승, 그리고 다시 오르는 밀</h2>
+<figure class=""><figcaption>장표 7. 주요 원재료 매입단가(원/kg) — 삼양식품 맥분·감자전분·팜유, 삼양제분 원맥 3종</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="730" y2="276.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="280.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="224.4" x2="730" y2="224.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="228.4" text-anchor="end" font-size="11" fill="#8a857c">500</text>
+<line x1="62" y1="172.8" x2="730" y2="172.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="176.8" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="121.2" x2="730" y2="121.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="125.2" text-anchor="end" font-size="11" fill="#8a857c">1,500</text>
+<line x1="62" y1="69.6" x2="730" y2="69.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="73.6" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">2,500</text>
+<text x="62.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2021</text>
+<text x="195.6" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2022</text>
+<text x="329.2" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2023</text>
+<text x="462.8" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<text x="596.4" y="294" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="730.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">1H26</text>
+<polyline points="62.0,156.5 195.6,153.2 329.2,92.8 462.8,94.1 596.4,83.3 730.0,97.5" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="62.0" cy="156.5" r="2.4" fill="#b07d2b"/>
+<circle cx="195.6" cy="153.2" r="2.4" fill="#b07d2b"/>
+<circle cx="329.2" cy="92.8" r="2.4" fill="#b07d2b"/>
+<circle cx="462.8" cy="94.1" r="2.4" fill="#b07d2b"/>
+<circle cx="596.4" cy="83.3" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="97.5" r="2.4" fill="#b07d2b"/>
+<polyline points="62.0,136.5 195.6,56.9 329.2,122.1 462.8,116.8 596.4,92.7 730.0,85.6" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="62.0" cy="136.5" r="2.4" fill="#a44a3f"/>
+<circle cx="195.6" cy="56.9" r="2.4" fill="#a44a3f"/>
+<circle cx="329.2" cy="122.1" r="2.4" fill="#a44a3f"/>
+<circle cx="462.8" cy="116.8" r="2.4" fill="#a44a3f"/>
+<circle cx="596.4" cy="92.7" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="85.6" r="2.4" fill="#a44a3f"/>
+<polyline points="62.0,206.3 195.6,190.1 329.2,184.5 462.8,195.3 596.4,199.4 730.0,205.8" fill="none" stroke="#1f3a5f" stroke-width="2.6"/>
+<circle cx="62.0" cy="206.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="195.6" cy="190.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="329.2" cy="184.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="462.8" cy="195.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="596.4" cy="199.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="205.8" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,217.2 195.6,205.7 462.8,226.6 596.4,224.0 730.0,223.1" fill="none" stroke="#2b7a78" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="217.2" r="2.4" fill="#2b7a78"/>
+<circle cx="195.6" cy="205.7" r="2.4" fill="#2b7a78"/>
+<circle cx="462.8" cy="226.6" r="2.4" fill="#2b7a78"/>
+<circle cx="596.4" cy="224.0" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="223.1" r="2.4" fill="#2b7a78"/>
+<polyline points="62.0,226.2 195.6,205.7 462.8,232.7 596.4,230.2 730.0,227.4" fill="none" stroke="#3a6ea5" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="226.2" r="2.4" fill="#3a6ea5"/>
+<circle cx="195.6" cy="205.7" r="2.4" fill="#3a6ea5"/>
+<circle cx="462.8" cy="232.7" r="2.4" fill="#3a6ea5"/>
+<circle cx="596.4" cy="230.2" r="2.4" fill="#3a6ea5"/>
+<circle cx="730.0" cy="227.4" r="2.4" fill="#3a6ea5"/>
+<polyline points="62.0,225.6 195.6,209.4 462.8,234.2 596.4,231.5 730.0,229.0" fill="none" stroke="#8a857c" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="62.0" cy="225.6" r="2.4" fill="#8a857c"/>
+<circle cx="195.6" cy="209.4" r="2.4" fill="#8a857c"/>
+<circle cx="462.8" cy="234.2" r="2.4" fill="#8a857c"/>
+<circle cx="596.4" cy="231.5" r="2.4" fill="#8a857c"/>
+<circle cx="730.0" cy="229.0" r="2.4" fill="#8a857c"/>
+<text x="736" y="89.6" font-size="11" fill="#a44a3f">팜유(정제유) 1,845</text>
+<text x="736" y="104.6" font-size="11" fill="#b07d2b">감자전분 1,730</text>
+<text x="736" y="209.8" font-size="11" fill="#1f3a5f">맥분 680</text>
+<text x="736" y="227.1" font-size="11" fill="#2b7a78">원맥 NS(삼양제분) 513</text>
+<text x="736" y="242.1" font-size="11" fill="#3a6ea5">원맥 HRW(삼양제분) 471</text>
+<text x="736" y="257.1" font-size="11" fill="#8a857c">원맥 SW(삼양제분) 455</text>
+</svg><div class="src">자료: 각 연도 사업보고서·2026 반기보고서 II-3 가. 주요 원재료에 관한 사항(연평균 매입단가). 2023 원맥 단가는 2023 사업보고서(404/460/500)와 2024·2025 사업보고서 재기재(513/599/606)가 달라 비움. 2022·2021은 유지(팜유 포함) 표기</div></figure>
+<p class="reading"><b>관찰.</b> 맥분은 2023년 887원에서 2026년 상반기 680원으로 -23% 내려 2021년 수준(675원)에 가까워졌고, 팜유는 같은 기간 1,491원에서 1,845원으로 +24%, 감자전분은 1,775원에서 1,730원으로 -3%입니다. 삼양제분의 원맥은 2024년 저점(SW 405원) 이후 오히려 오르고 있습니다(1H26 SW 455·HRW 471·NS 513원). <b>원인.</b> 2022년 곡물 가격 급등이 2023년까지 맥분에 남았다가 풀렸고, 2026년 2월에는 정부 압박 속에 제분업계가 밀가루 가격을 약 6% 내렸습니다(시장경제 2-25). 팜유는 2024년 말 국제 가격 급등이 시차를 두고 반영됐습니다. <b>함의.</b> 맥분 매입단가를 원맥 3종 평균으로 나눈 배율이 2024년 1.80배, 2025년 1.61배, 2026년 상반기 1.42배<span class="est">E</span>로 줄었습니다. 맥분 값이 원맥 값보다 빨리 떨어졌다는 뜻이고, 원맥이 오르는 국면에서는 이 배율이 되돌아가며 맥분 매입단가가 원맥보다 더 크게 오를 수 있습니다.</p>
+<p>삼양식품의 원재료 공급망은 맥분·팜유를 종속회사 삼양제분에서, 감자전분을 덴마크 KMC·독일 Emsland에서, 원맥은 삼양제분이 CJ제일제당을 통해 들여오는 구조입니다(반기보고서 매입처). 삼양제분의 제분공장은 하루 소맥 260톤 × 25일 × 12개월 = 연 78,000톤이 가공능력인데, 2026년 상반기 39,009톤을 가공해 가동률 100.0%로 이미 꽉 찼습니다(2025년 73,931톤, 2024년 58,481톤). 2025년에 가동을 시작한 정제공장은 팜유 원유를 하루 150톤 × 22일 × 12개월 = 연 39,600톤까지 정제할 수 있고, 2026년 상반기 14,547톤으로 가동률 73.5%입니다(2025년 표기 능력은 24,000톤으로 산식과 달라 확인이 필요합니다). 제분이 100%라는 것은 면류 생산이 더 늘면 늘어난 맥분을 대선제분·삼양사 같은 외부에서 사 와야 한다는 뜻이고, 수직계열이 막아 주는 원가 폭은 앞으로 줄어듭니다. 별도 기준 삼양제분 매입액은 2026년 상반기 210억원, 2025년 연간 400억원(별도주석 특수관계자)으로, 연결 원재료 사용액에 비하면 작은 몫입니다.</p>
+<p>원/달러와 원재료 원가의 연결은 생각보다 곧지 않습니다. 원맥과 팜유는 달러, 감자전분은 유로로 값이 매겨지므로 원화 강세는 수입 원가를 낮춥니다. 그러나 2026년 상반기의 맥분 하락은 환율 덕이 아니었습니다. 같은 기간 원/달러 평균은 1,486원으로 전년 동기보다 +4.1% 올랐는데도 맥분이 -6.7%(1H25 729원 대비) 내렸고, 이는 2025년 하반기의 낮은 밀값(CBOT 3Q25 평균 521¢)과 국내 밀가루 가격 인하가 시차를 두고 들어온 결과입니다. 앞으로는 방향이 바뀝니다. CBOT 밀 근월물은 2026년 8월 평균 676.26¢로 전년 동월 508.83¢보다 33% 올랐고 9월 1~10일 평균은 733.64¢입니다(B 노트, 연속 근월물 월평균). 이를 원화로 바꾸면 9-11 현물 1,344원을 적용해도 전년 대비 +29%<span class="est">E</span>, 3Q26 누적 평균 환율이면 +37%<span class="est">E</span>로, 원화 강세가 밀값 상승의 일부만 지웁니다. 팜유는 세계은행 기준 8월 1,117달러/톤(+8.9%)이고 한국 수입단가 5~7월은 +13.5%, 원화 환산 +5%<span class="est">E</span>입니다. 감자전분만 한국 수입단가 5~7월이 -22.7%로 내려 반대편에 섭니다. 한국 밀 수입단가는 7월 281달러/톤으로 아직 전년과 같아, 선물 급등이 실제 매입가에 들어오는 시점은 4Q26~1H27로 봅니다.</p>
+<p>민감도를 4단으로 적어 둡니다. [가정] 맥분과 팜유가 각각 매출원가의 20%입니다. [근거] 농심·삼양이 2026년 2월 가격 인하 요구에 "원가 비중 밀가루 20%·팜유 20%"를 들어 어렵다고 답한 보도(시장경제 2-25)이고, 회사별 비중은 공시되지 않았습니다. [식] 2026년 상반기 매출원가 8,112억의 연환산 1조 6,225억에 20%와 10%를 곱하면 맥분 매입단가 10% 상승은 연 324억원<span class="est">E</span>, 컨센 2026E 매출 대비 원가율 +1.0%p<span class="est">E</span>입니다. 맥분 값이 원맥의 원화 상승분(+29%<span class="est">E</span>)을 절반만 반영해 15% 오르면 연 487억원<span class="est">E</span>, 원가율 +1.5%p<span class="est">E</span>입니다. [교차검증] 2026년 상반기 원재료 사용(재고 변동 차감)이 매출의 39.5%이고 매출원가가 매출의 54.6%이므로, 맥분·팜유 합계 40%는 원재료 사용액의 약 55%<span class="est">E</span>에 해당해 무리 없는 크기입니다. 여기에 미주 서안 컨테이너 운임이 8월 평균 6,726달러/FEU로 전년 1,834달러의 3.7배라는 점을 더해야 합니다. 2026년 상반기 수출제비·운반비는 매출의 7.1%이고 재고 원가로 들어간 운송비는 원재료 줄에 섞여 있어 정확한 노출은 알 수 없지만, KB(9-02)도 3분기 원가 부담 요인으로 미국·유럽 내륙 운임과 팜유를 꼽았습니다.</p>
+
+<h2>8. CAPEX와 감가상각 — 7,426억은 무엇을 사고 무엇을 남기나</h2>
+<p>회사가 2Q26 IR에 적은 2023~2027년 주요 CAPEX는 7,426억이고, 구성은 밀양2공장('23~25) 1,837억, 중국 자싱공장('25~27) 2,072억, 2025년 추가 CAPEX('25~26, 이사회·경영위원회 의결분) 3,517억입니다. IR 차트의 기간 라벨과 금액을 맞춰 보면 밀양2와 자싱 금액은 각각의 공시 투자액(1,838억·2,072억)과 일치하고, 경상적 투자는 제외됐습니다. 추가 CAPEX의 세부는 공개되지 않았는데, 충무로 신사옥 2,270억원(2025-05 양수 결정)과 2026년 4월 회사채 증권신고서가 시설자금 용도로 적은 원주 스프·액상스프·장유 설비 1,088억원을 더하면 3,358억원으로 비슷해 두 항목이 대부분일 가능성이 있습니다(미확인). 연도별 투자금액(기업가치제고계획)은 2022년 930억, 2023년 494억, 2024년 2,334억, 2025년 4,614억원이고, 연결 현금흐름표의 유형자산 취득은 2025년 4,490억, 2026년 상반기 1,033억입니다.</p>
+<table class=""><tr><th>구분</th><th>기간</th><th>금액</th><th>공시 대응·비고</th></tr><tr><td>밀양2공장</td><td>'23~25</td><td>1,837억</td><td>신규시설투자 1,590억(2023-08) → 1,643억(2023-09) → 1,838억(2024-06, 6라인)</td></tr><tr><td>중국 자싱공장</td><td>'25~27</td><td>2,072억</td><td>약 2,014억(2024-12) → 약 2,072억(2025-11, 8라인)</td></tr><tr><td>'25년 추가 CAPEX(이사회·경영위 의결, 경상 투자 제외)</td><td>'25~26</td><td>3,517억</td><td>세부 구성 미공개 — 사옥 2,270억·원주 스프·액상스프·장유 설비 1,088억 등이 후보(미확인)</td></tr><tr><td><b>합계</b></td><td>'23~27</td><td><b>7,426억</b></td><td>IR 2Q26 p9</td></tr><tr><td>설비보완 투자계획(별도, 1H26말)</td><td>2025.04~2027.01</td><td>1,554억(지출 577억)</td><td>잔여 977억 — 반기보고서 II-3 라</td></tr><tr><td>제3-2회 사채 시설자금</td><td>2026-04~</td><td>1,000억</td><td>1H26말 67억 사용, 미사용 자금은 사채 전체 933억</td></tr></table>
+<figure class=""><figcaption>장표 8. 연도별 유형자산 취득·투자금액(억원)과 감가·무형상각</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="200.4" x2="730" y2="200.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="204.4" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="154.8" x2="730" y2="154.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="158.8" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="109.2" x2="730" y2="109.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="113.2" text-anchor="end" font-size="11" fill="#8a857c">3,000</text>
+<line x1="62" y1="63.6" x2="730" y2="63.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="67.6" text-anchor="end" font-size="11" fill="#8a857c">4,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">5,000</text>
+<text x="109.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2020</text>
+<text x="205.1" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2021</text>
+<text x="300.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2022</text>
+<text x="396.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2023</text>
+<text x="491.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<text x="586.9" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="682.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1H26</text>
+<rect x="76.3" y="216.0" width="32.4" height="30.0" fill="#1f3a5f" opacity="0.9"/>
+<text x="93.0" y="212.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">658</text>
+<rect x="171.7" y="182.3" width="32.4" height="63.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="188.4" y="178.3" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1,397</text>
+<rect x="267.2" y="206.4" width="32.4" height="39.6" fill="#1f3a5f" opacity="0.9"/>
+<text x="283.9" y="202.4" text-anchor="middle" font-size="9.5" fill="#1f3a5f">869</text>
+<rect x="300.6" y="203.6" width="32.4" height="42.4" fill="#b07d2b" opacity="0.9"/>
+<text x="317.3" y="199.6" text-anchor="middle" font-size="9.5" fill="#b07d2b">930</text>
+<rect x="362.6" y="225.5" width="32.4" height="20.5" fill="#1f3a5f" opacity="0.9"/>
+<text x="379.3" y="221.5" text-anchor="middle" font-size="9.5" fill="#1f3a5f">450</text>
+<rect x="396.0" y="223.5" width="32.4" height="22.5" fill="#b07d2b" opacity="0.9"/>
+<text x="412.7" y="219.5" text-anchor="middle" font-size="9.5" fill="#b07d2b">494</text>
+<rect x="458.0" y="141.8" width="32.4" height="104.2" fill="#1f3a5f" opacity="0.9"/>
+<text x="474.7" y="137.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">2,284</text>
+<rect x="491.4" y="139.6" width="32.4" height="106.4" fill="#b07d2b" opacity="0.9"/>
+<text x="508.1" y="135.6" text-anchor="middle" font-size="9.5" fill="#b07d2b">2,334</text>
+<rect x="553.5" y="41.3" width="32.4" height="204.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="570.2" y="37.3" text-anchor="middle" font-size="9.5" fill="#1f3a5f">4,490</text>
+<rect x="586.9" y="35.6" width="32.4" height="210.4" fill="#b07d2b" opacity="0.9"/>
+<text x="603.6" y="31.6" text-anchor="middle" font-size="9.5" fill="#b07d2b">4,614</text>
+<rect x="648.9" y="198.9" width="32.4" height="47.1" fill="#1f3a5f" opacity="0.9"/>
+<text x="665.6" y="194.9" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1,033</text>
+<polyline points="396.0,231.3 491.4,225.0 586.9,216.9 682.3,227.4" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="396.0" cy="231.3" r="2.4" fill="#a44a3f"/>
+<circle cx="491.4" cy="225.0" r="2.4" fill="#a44a3f"/>
+<circle cx="586.9" cy="216.9" r="2.4" fill="#a44a3f"/>
+<circle cx="682.3" cy="227.4" r="2.4" fill="#a44a3f"/>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">유형자산 취득(현금흐름)</text>
+<rect x="736" y="34" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">투자금액(밸류업)</text>
+<rect x="736" y="50" width="10" height="10" fill="#a44a3f"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">감가·상각(성격별)</text>
+</svg><div class="src">자료: 유형자산 취득은 연결 현금흐름표(packet annual·fin_q), 투자금액은 기업가치제고계획 이행현황(2022~2025), 감가·무형상각은 연결 성격별 비용 주석(2023 = 2024 사업보고서, 2024 = 2025 사업보고서 재작성, 1H26 = 반기). 2025년에는 신사옥 2,270억 포함</div></figure>
+<p class="reading"><b>관찰.</b> 투자는 2021년 1,397억(밀양1), 2024~2025년 2,284억·4,490억(밀양2·사옥·자싱 착수)의 두 봉우리를 그렸고, 감가·무형상각은 2023년 322억에서 2025년 637억, 2026년 상반기 408억(연환산 816억<span class="est">E</span>)으로 투자보다 훨씬 완만하게 올랐습니다. <b>원인.</b> 라면 공장 투자의 상당 부분이 토지·건물(장기 상각)이고, 2025년 투자에는 상각 대상이 아닌 토지와 비생산 자산(사옥)이 크게 섞였기 때문입니다. 1H26에 건설중인자산 3,061억이 1,414억으로 줄고 토지·건물 본계정이 늘어난 것도 사옥 대체로 보입니다. <b>함의.</b> CAPEX가 커 보여도 손익계산서의 부담은 작습니다. 감가·무형상각은 2025년 매출의 2.7%이고, 자싱이 더해도 이 비중은 3% 안쪽에 머뭅니다.</p>
+<p>분기로 보면 감가상각 궤적은 더 선명합니다. 회사 IR의 EBITDA에서 영업이익을 뺀 분기 감가·상각(사용권자산 포함)은 2Q24 107억, 2Q25 139억, 3Q25 172억(밀양2 상각 개시), 4Q25 189억, 1Q26 202억, 2Q26 206억으로 2년 만에 두 배가 됐습니다. [가정] 2027년에는 2Q26 수준에 자싱 분기 30억원(KB 9-02)이 더해진다고 봅니다. [근거] 자싱 투자 2,072억원을 평균 15~20년에 나눠 상각하면 분기 26~35억원<span class="est">E</span>이 나와 KB 추정과 같은 크기이고, 원주 스프 설비와 설비보완 투자 잔여 977억은 대부분 교체 성격이라 순증은 작습니다. [식] 206억 + 30억 = 분기 236억, 연 944억원<span class="est">E</span>입니다. [교차검증] 이는 컨센 2027E 매출 3조 7,510억의 2.5%<span class="est">E</span>, 영업이익 8,920억의 10.6%<span class="est">E</span>로, 자싱 감가가 2027년 영업이익률을 깎는 폭은 0.3%p<span class="est">E</span> 안팎입니다. 오히려 부담은 램프업 초기의 고정비 흡수 부족(3절에서 본 밀양2의 4Q25)과 중국 현지 인건비에서 오며, 이는 자싱 가동률이 50%를 넘는 2027년 3분기 전후까지 이어질 것으로 봅니다. 현금 쪽은 2026년 상반기 영업현금흐름 2,683억이 유형자산 취득 1,033억의 2.6배라 남은 자싱 공사비와 설비 투자를 자체 현금으로 감당하는 데 무리가 없습니다(재무 전체는 파트 6).</p>
+
+<h2>9. 조정판 — 2027년 물량과 매출 가능치</h2>
+<p>아래 조정판은 2027년 물량을 다섯 개 손잡이로 다시 만듭니다. 기본값을 그대로 두면 기존 공장 28.86억식<span class="est">E</span>과 자싱 5.51억식<span class="est">E</span>을 더한 34.37억식<span class="est">E</span>이 나오고, 1H26 실측 식당 매출 1,096원을 곱한 매출 가능치 3조 7,664억<span class="est">E</span>은 컨센 2027E 3조 7,510억(FnGuide 8-28경 표, KB 9-02 인용)과 +0.4%<span class="est">E</span> 차이입니다. 컨센을 정확히 맞추는 식당 매출은 1,092원<span class="est">E</span>으로 1H26 실측과 거의 같습니다. 즉 시장의 2027년 매출 기대는 "자싱이 3월에 돌고, 8개월 만에 90%에 가고, 단가는 지금 수준"이라는 우리 기본 경로와 사실상 같은 조합을 담고 있습니다.</p>
+<div class="panel"><b>조정판 — 2027년 생산 가능량과 매출 가능치(E). 기존 공장 가동률·자싱 가동 개시 월·램프업 기간·자싱 목표 가동률·식당 매출을 움직여 봅니다. 주가로 연결하지 않습니다.</b><br><br>
+(a) 기존 28억식(원주·익산·밀양1·2) 연평균 가동률(%, 수량 기준) <span id="c_u_v"></span><br><input type="range" id="c_u" min="85" max="119" step="0.1" value="102.8"><br>
+(b) 자싱 가동 개시 월(2027년, 1=1월) <span id="c_m0_v"></span><br><input type="range" id="c_m0" min="1" max="12" step="1" value="3"><br>
+(c) 자싱 램프업 기간(개월, 0에서 목표 가동률까지 선형) <span id="c_R_v"></span><br><input type="range" id="c_R" min="1" max="18" step="1" value="8"><br>
+(d) 자싱 목표 가동률(%) <span id="c_U_v"></span><br><input type="range" id="c_U" min="40" max="110" step="5" value="90"><br>
+(e) 식당 매출(원/식, 연결 매출 ÷ 면류 생산량) <span id="c_asp_v"></span><br><input type="range" id="c_asp" min="900" max="1300" step="1" value="1096"><br>
+<div class="out">2027 생산 가능량 <span id="c_o_tot">—</span>억식 · 매출 가능치 <span id="c_o_rev">—</span>억원 · 컨센 2027E 3조 7,510억 대비 <span id="c_o_gap">—</span>%</div>
+<div class="out" style="font-weight:400">기존 공장 <span id="c_o_ex">—</span>억식 · 자싱 <span id="c_o_j">—</span>억식(연간 능력 대비 <span id="c_o_ju">—</span>%) · 2026E 기본 27.84억식 대비 <span id="c_o_yoy">—</span>% · 컨센을 맞추는 식당 매출 <span id="c_o_need">—</span>원/식</div>
+<div class="note">식: 기존 = 28.07억식(1H26 능력 연환산) × (a). 자싱 = 11.3억식 ÷ 12 × Σ(개시 월부터 12월까지 월별 가동률), 월별 가동률 = (d) × min(경과 개월 ÷ (c), 1). 매출 가능치 = (기존 + 자싱) × (e). 기본값은 기존 공장이 1H26 공장별 가동률(원주 101.1%·익산 118.7%)을 유지하고 밀양이 100%에 닿는 경우의 가중 102.8%<span class="est">E</span>, 자싱은 1분기 시험가동을 3월 상업 가동으로 읽고 KB가 제시한 풀가동 7~8개월 가운데 8개월, 목표 90%<span class="est">E</span>, 식당 매출은 2026년 상반기 실측 1,096원입니다. 생산량은 판매량이 아니며(재고 증감), 식당 매출에는 스낵·소스·내수 기타 매출이 섞여 있어 거친 지표입니다.</div><script>
+(function(){
+var ids=["c_u","c_m0","c_R","c_U","c_asp"];
+function g(i){return +document.getElementById(i).value}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function f(){ids.forEach(function(i){document.getElementById(i+"_v").textContent=document.getElementById(i).value});
+ var u=g("c_u"),m0=g("c_m0"),R=g("c_R"),U=g("c_U"),asp=g("c_asp");
+ var ex=28.0706*u/100, jt=0;
+ for(var m=m0;m<=12;m++){var k=m-m0+1; jt+=U/100*Math.min(k/R,1);}
+ var j=11.3/12*jt, tot=ex+j, rev=tot*asp;
+ var S=function(i,t){document.getElementById(i).textContent=t};
+ S("c_o_tot",fm(tot,2));S("c_o_rev",fm(rev,0));S("c_o_gap",(rev/37510*100-100>=0?"+":"")+fm(rev/37510*100-100,1));
+ S("c_o_ex",fm(ex,2));S("c_o_j",fm(j,2));S("c_o_ju",fm(j/11.3*100,0));S("c_o_yoy",(tot/27.8423*100-100>=0?"+":"")+fm(tot/27.8423*100-100,1));S("c_o_need",fm(37510/tot,0));}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+<p>조정판이 보여 주는 것은 어느 손잡이가 컨센을 가장 크게 흔드는가입니다. 자싱 가동 개시가 3월에서 6월로 석 달 밀리면 2027년 생산은 31.82억식<span class="est">E</span>, 매출 가능치는 컨센 대비 -7.0%<span class="est">E</span>가 됩니다. 램프업이 밀양2 실측처럼 12개월 걸리면 -4.3%<span class="est">E</span>이고, 원화 강세가 식당 매출을 5% 깎으면(2027년 원/달러 평균이 1H26 평균보다 약 6% 낮은 1,400원 안팎이고 해외 매출 비중 83.8%에 그대로 반영되는 경우의 크기) -4.6%<span class="est">E</span>입니다. 가동 지연과 원화 강세가 겹치면 -11.7%<span class="est">E</span>로 컨센과 거리가 벌어집니다. 반대로 기존 공장 가동률은 1%p당 약 308억원<span class="est">E</span>을 움직여, 원주·익산을 더 짜내는 것만으로 자싱 지연을 메우기는 어렵습니다. 이 모형의 약점은 생산을 판매로 보고 식당 매출에 비면류와 재고 변동을 섞는다는 점이며, 자싱 제품이 중국 내에서 팔릴 때의 단가와 원가가 한국산과 다를 수 있다는 점도 반영하지 않았습니다. 영업이익으로 잇는 조정판은 파트 6(환율·원가·광고)과 파트 8(물량 × 단가 × 환율 × OPM)이 맡습니다.</p>
+
+<h2>10. 논쟁에 주는 답</h2>
+<p><b>논쟁 1(2027년 자싱 11.3억식을 채울 수요가 있는가 — 성장의 병목은 capa였나)에 주는 답.</b> 병목이 capa였다는 쪽의 증거는 네 가지입니다. 첫째, 새 기준 면류 가동률이 2024년 86.6%, 2025년 93.6%, 2026년 상반기 96.5%로 올랐고 원주·익산은 표준을 넘겨 돌고 있습니다. 둘째, 2025년 하반기 생산이 상반기보다 3.6%<span class="est">E</span>만 늘었을 때 미국법인 재고가 두 분기 연속 줄었고 증권가가 공급 부족을 진단했습니다. 셋째, 밀양2가 풀가동에 닿자 2026년 상반기 생산이 전년 동기 대비 +21%<span class="est">E</span> 늘고 관세청 라면 수출 물량도 1~7월 +23%로 같은 속도를 냈습니다. 넷째, 수출 단가는 제자리인데 물량이 공장 속도만큼 늘었습니다. 2027년 공급 경로는 기존 공장 약 28.9억식<span class="est">E</span>에 자싱 5.5억식<span class="est">E</span>을 더한 34.4억식<span class="est">E</span>이고, 2028년 자싱 온기면 약 39.0억식<span class="est">E</span>입니다. 다만 공급이 병목이었다는 사실이 2027~2028년에 그만큼의 수요가 있다는 증명은 아닙니다. 자싱을 연 90%로 채우려면 중국 물량이 지금의 약 6.9억식<span class="est">E</span>에서 두 해 동안 연 22%<span class="est">E</span>씩 커져야 하고, 풀린 밀양 능력은 미국·유럽이 받아야 합니다. 우리는 판정을 "2026년까지는 공급이 묶었고, 2027년부터는 수요가 다시 시험대에 선다"로 적습니다. 채점과 반증은 아래 표와 같고, 가장 빠른 신호는 매월 관세청 물량과 11-14E 3Q26 분기보고서의 9개월 누적 생산실적입니다. 밀양이 풀가동인데 누적 가동률이 85% 아래로 내려오거나 생산이 늘지 않으면서 재고가 쌓이면, 병목은 이미 수요 쪽으로 옮겨 간 것입니다.</p>
+<table class=""><tr><th>논쟁</th><th>채점 KPI</th><th>관측 시점</th><th>유지선(우리 판정 유지)</th><th>반증</th></tr><tr><td>1</td><td>면류 생산실적 누적(수량)</td><td>3Q26 분기보고서(11-14E)</td><td>9개월 누적 20.3억식 이상(연 27억식 경로)</td><td>밀양 풀가동 뒤에도 9개월 누적 19.5억식 미만 + 재고자산 증가</td></tr><tr><td>1</td><td>면류 실적/능력(수량 기준)</td><td>3Q26·2026 사업보고서</td><td>90% 이상</td><td>85% 미만 — capa가 아니라 수요가 묶고 있다는 신호</td></tr><tr><td>1</td><td>관세청 라면 수출 물량(월간 YoY, 3개월 합)</td><td>매월 1일·15일</td><td>+15% 이상</td><td>한 자릿수 4개월 연속</td></tr><tr><td>1</td><td>자싱 시험가동·DBS 차입 실행액</td><td>2027-1Q · 반기·분기 주석</td><td>2027-03 이전 시험가동, 실행액 증가</td><td>시험가동 2027-2Q 이후로 이연 공시·보도</td></tr><tr><td>2</td><td>매출원가율(IR 분기)</td><td>3Q26·4Q26</td><td>54% 이하(분류 기준 동일 시)</td><td>56% 초과 2분기 연속</td></tr><tr><td>2</td><td>맥분·팜유 매입단가(반기·사업보고서)</td><td>2026 사업보고서(2027-03)</td><td>맥분 750원 이하·팜유 1,950원 이하</td><td>맥분 800원 이상 복귀</td></tr><tr><td>2</td><td>수출제비·운반비 / 매출</td><td>3Q26 누적</td><td>8% 이하</td><td>9% 초과(운임 급등 전가 실패)</td></tr></table>
+<p><b>논쟁 2(영업이익률 22~24%는 원화 강세·판관비·관세를 견디는가)에 주는 원가 쪽 답.</b> 원가 쪽은 2027년을 향해 불리하게 기울어 있다고 봅니다. 2026년 상반기 원가율 개선을 받친 맥분(680원, 2023년 대비 -23%)은 CBOT 밀 +33%와 맥분·원맥 배율의 축소(1.42배<span class="est">E</span>)를 감안하면 바닥에 가깝고, 팜유는 이미 오르는 중이며, 미주 서안 운임은 3.7배입니다. 원화 강세는 수입 원재료 값을 낮춰 이 압력의 일부를 상쇄하지만, 원화로 환산한 밀값이 9-11 환율로도 +29%<span class="est">E</span>라 상쇄는 부분적입니다. 맥분이 15% 오르면 원가율 +1.5%p<span class="est">E</span>이고 여기에 운임과 팜유를 더하면 1~2%p<span class="est">E</span>의 원가 역풍이 4Q26~2027년에 들어올 수 있습니다. 반대편에는 판매 법인 비중 확대와 고단가 권역 믹스, 밀양 풀가동에 따른 고정비 흡수, 가벼운 감가(매출의 3% 미만)가 있어, 원가 쪽만으로 영업이익률이 20% 아래로 떨어질 가능성은 낮다고 봅니다. 채점 KPI는 3Q26·4Q26 매출원가율(유지선 54% 이하, 반증 56% 초과 2분기 연속), 2026 사업보고서의 맥분·팜유 매입단가(맥분 800원 복귀가 반증), 수출제비·운반비 매출 대비(9% 초과가 반증)이며, 원가율은 운반비 분류가 같은 조건에서만 비교합니다. 판관비·환율 쪽 절반은 파트 6이 채점합니다.</p>
+<p><b>허브 판정에 주는 한 줄.</b> 28억식은 2026년 하반기에 다 차고, 2026년 물량 상한은 약 27.8억식<span class="est">E</span>(+22%<span class="est">E</span>)이라 컨센 2026E의 나머지 10%<span class="est">E</span>는 가격·믹스가 원화 강세를 이기며 채워야 합니다. 2027년 컨센은 자싱이 3월에 돌고 8개월에 차는 경로와 같으므로, 자싱 일정의 한 분기 지연은 곧 컨센 매출 약 7%<span class="est">E</span>의 문제입니다.</p>
+
+<h2>11. 미결</h2>
+<p><b>A급(판정에 직접 닿는 것).</b> 분기별·공장별 생산량과 밀양1·2의 분리 가동률(회사는 반기·연간 합산만 공시하며, 3Q26 분기보고서의 9개월 누적과 IR 담당 확인으로 좁힐 수 있음). 자싱의 실제 시험가동 시점·초기 가동 라인 수·상업 생산 개시 월(회사 IR·현지 보도, 2027-1Q). 1Q26과 2Q26 사이 운반비 계정 분류 변경의 정확한 금액과 2024년 재분류의 내용(회사 IR 담당, 2026 사업보고서 회계정책 주석). 2026년 하반기 가격 인상 여부와 판매 법인 채널 믹스(파트 1과 공동).</p>
+<p><b>B급(구조를 더 정확히 하는 것).</b> 1H25의 수량 기준 생산실적(공시 없음, 우리는 금액 비중으로 추정). 옛 양식 가동가능시간의 정확한 정의와 2026년 이후 표준가동시간 기준의 유지 여부. 매출원가 중 맥분·팜유의 회사 고유 비중(업계 발언 20%만 확보)과 맥분 가운데 삼양제분 조달 비중. 미국 관세의 계상 위치(미국법인 재고 원가인지 판관비인지). 7,426억 가운데 '25년 추가 CAPEX 3,517억의 구성과 자싱 2,072억의 1H26 말까지 집행액(건설중인자산 부문별 내역 미공시). 자싱 재무적투자자 10%의 주체와 지분 정리 조건.</p>
+<p><b>C급(있으면 좋은 것).</b> 삼양제분 정제공장의 2025년 표기 능력 24,000톤과 산식 39,600톤의 차이. 2023년 삼양제분 원맥 단가의 보고서 간 불일치(404/460/500 대 513/599/606). 밀양 CAPA가 2024년 IR 5.6·6.9억식에서 2026년 6.1·7.2억식으로 늘어난 산정 근거. 식당 매출 지표에 섞인 스낵·소스·내수 매출의 비중별 보정. 1Q26 밀양2 가동률 82.3% 보도의 산정 기준(시간 기준인지 수량 기준인지).</p>
+<div class="foot">데이터 계보: packet.json(filings 4_생산능력_가동률·5_원재료·7_종업원·8_비용성격별·9_차입금·14_유형자산_CAPEX, web.capa·capex_plan·export_monthly·ir_q·sga_q, fin_q, annual, fx_q, consensus) · research/A_실적_컨센.md·B_산업_수출.md·C_지배구조_자본.md·E_공시원문.md(2026-09-11) · 2026 반기보고서(8-14)·2025·2024·2023 사업보고서·신규시설투자 정정·타법인주식 취득 정정·채무보증결정 · 회사 IR 2Q24~2Q26·기업가치제고계획 이행현황(2026-03-26) · 관세청 수출입무역통계 · 언론·증권사 인용은 본문에 매체·날짜 표기. IR 2Q26 p9 CAPEX 차트는 PDF 라벨 좌표로 기간·금액 대응을 확인했습니다. 추정치는 <span class="est">E</span> 표기이며 가정·근거·식·교차검증은 본문에 있습니다. 1Q26·2Q26 이익률은 원/달러 분기 평균 1,468·1,503원 기준이고 9-11 현물은 1,344원입니다. 이 문서는 투자 권유가 아니며 목표주가·매매 계획을 싣지 않습니다.</div>
+
+</main></body></html>

@@ -1,0 +1,581 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="risks">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>삼양식품 파트 7 — 리스크 매트릭스·실측 낙폭·접는 조건 통합표 · 2026-09-11</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+.mx td,.tx td{text-align:left!important} .tx td{font-size:12.5px;line-height:1.5} .mx td{font-size:12px;line-height:1.45} .mx td:nth-child(3),.mx td:nth-child(4),.mx td:nth-child(5),.mx td:nth-child(6){text-align:left} table td:last-child{text-align:left} main{max-width:980px}</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+<h1>삼양식품 파트 7 — 리스크 매트릭스·실측 낙폭·접는 조건 통합표</h1>
+<div class="sub">파트제 커버리지 10편(허브·파트 0~8) 중 파트 7 · 작성 2026-09-11 · 주가 1,278,000원(9-11 종가, +1.11%) · 시총 9조 6,272억 · 기준 환율 $1 = ₩1,344.4(9-11) · 회계연도 12월(2026 = 제66기, K-IFRS 연결) · 다음 실적 3Q26 분기보고서 2026-11-14(E) · 다음 갱신 트리거 10-06 IBK 담보 300억 만기·10-31 증여세 신고기한·매월 1일 관세청 라면 수출·11-14 3Q26 분기보고서 · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 2026 반기보고서(8-14)·2026-04 회사채 증권신고서(투자위험요소)·최대주주등소유주식변동신고서(7-09)·자기주식처분결정(2025-11-19)·회사 IR(2Q24~2Q26)·키움 일봉·투자자별 수급·네이버 환율·관세청 수출입무역통계·조사노트 A~E</div>
+<div class="hubnav">삼양식품 파트제 커버리지 · 현행 판정은 <a href="삼양식품_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 risks를 맡습니다. · <a href="삼양식품_파트0_회사진입_260911.html">파트 0</a> / <a href="삼양식품_파트1_해외사업_260911.html">1</a> / <a href="삼양식품_파트2_생산원가_260911.html">2</a> / <a href="삼양식품_파트3_국내지배구조_260911.html">3</a> / <a href="삼양식품_파트4_산업경쟁_260911.html">4</a> / <a href="삼양식품_파트5_주가수급_260911.html">5</a> / <a href="삼양식품_파트6_비용재무_260911.html">6</a> / 7 / <a href="삼양식품_파트8_밸류모델_260911.html">8</a></div>
+
+<p>이 파트는 커버리지 층 risks를 맡습니다. 허브의 판정 가설은 삼양식품의 성장이 2024년 이후 수요가 아니라 생산능력에 막혀 왔고, 다음 계단이 2027년 1분기 시험가동 예정인 중국 자싱 공장 11.3억식이라는 것입니다. 리스크 파트는 그 가설이 틀리는 경로, 그리고 가설이 맞더라도 이익이 소액주주에게 닿지 않는 경로를 열두 갈래로 나눕니다. 갈래마다 얼마가 걸려 있는지(영향), 얼마나 일어날 법한지(확률), 어디서 먼저 보이는지(관측 신호)를 적었습니다. 영향은 되도록 연간 영업이익 억원으로 환산했고, 영업이익으로 바꿀 수 없는 지배구조·수급·멀티플 항목은 매물 금액이나 시총 단위로 따로 표시했습니다. 확률은 전부 12개월 창에서 우리가 설정한 값이라 <span class="est">E</span>를 붙였습니다.</p>
+<p>리스크의 순서는 허브 논쟁에 닿는 자리로 정했습니다. ①원화·②광고·⑥운임과 원맥은 영업이익률 22~24%의 내구성(논쟁 2)을, ③자싱·④중국 재고·⑤미국 관세는 자싱을 채울 수요(논쟁 1)를, ⑦브랜드 피로·⑧식품 안전은 불닭이 카테고리인지(논쟁 3)를, ⑨오너·⑩특수관계 거래는 이익이 주주에게 오는지(논쟁 4)를, ⑪수급·⑫멀티플은 시총이 무엇을 값 매기는지(논쟁 5)를 흔듭니다. 주가를 값 매기지 않는다는 원칙에 따라 하방의 자는 과거 실측 낙폭(2절), 자사주 처분가, 증여 평가 기준가, PER 밴드로만 둡니다.</p>
+
+<h2>0. 용어집</h2>
+<div class="gloss">
+<b>리스크포인트</b><span>영향(연간 영업이익 억원, 또는 매물·시총 금액)과 12개월 발생 확률(작성자 설정 <span class="est">E</span>)과 관측 신호(어느 공시·통계에서 먼저 보이는가)를 한 줄에 적은 항목입니다. 이 파트는 열두 개를 둡니다.</span>
+<b>접는 조건</b><span>허브 논쟁의 판정을 철회하게 만드는 반증입니다. 논쟁마다 채점 KPI·유지선·반증이 있고, 6절 통합표에 시점과 관측처를 함께 적었습니다.</span>
+<b>순노출(환율)</b><span>외화로 들어오는 매출에서 외화에 연동된 비용(수입 원재료·해상운임·해외 광고·해외법인 자체 비용)을 뺀 몫입니다. 원화가 강해질 때 영업이익이 줄어드는 크기는 매출 전체가 아니라 이 순노출이 정합니다.</span>
+<b>연누적 평균환율 환산</b><span>해외법인 손익을 연초부터의 누적 평균환율로 원화 환산하는 방식입니다(KB 9-02 언급). 분기 중 급변한 현물 환율이 그 분기에 한꺼번에 들어가지 않고, 새해 1월에 기준점이 다시 잡힙니다.</span>
+<b>수출제비용</b><span>수출에 드는 운임·통관·보관 비용 계정입니다. 2026 반기보고서부터 운반비와 합쳐 표기되고, 1Q26에는 일부가 매출원가로 옮겨져 분기 GPM 비교가 흔들립니다.</span>
+<b>부담부증여</b><span>주식과 함께 그 주식에 걸린 채무를 넘기는 증여입니다. 2026-07-06 김정수 회장이 20만주를 담보대출 약 800억과 함께 전병우·전하영에게 넘겼습니다. 인수 채무만큼 증여세 과세가액이 줄어듭니다.</span>
+<b>3-MCPD</b><span>식품 가공 중 생길 수 있는 오염물질입니다. 2026-04 프랑스·벨기에 당국이 까르보 불닭 일부 로트를 이 물질로 회수했고, 회사는 자체 검사가 기준 이내라고 밝혔습니다.</span>
+<b>지배구조변경 제한</b><span>2026-04 회사채 사채관리계약 제2-5조의2입니다. 삼양식품의 최대주주가 바뀌면 사채권자집회 결의로 기한의 이익 상실을 선언할 수 있습니다.</span>
+</div>
+
+<h2>1. 리스크 매트릭스 12종 — 무엇이 · 얼마나 · 어디서</h2>
+<p>표 1의 영향은 항목마다 정의가 다릅니다. ①~⑧은 12개월 동안의 연결 영업이익 감소분이고, ⑨⑩⑪은 시장에 나올 수 있는 매물이나 현금 유출을 9-11 종가로 환산한 금액이며, ⑫는 2026년 컨센 순이익 기준 PER 1배에 해당하는 시총입니다. 같은 억원이라도 손익과 매물은 무게가 다르므로 장표 1의 세로축은 자리를 보여 줄 뿐 항목끼리 더할 수 없습니다. 영향 수치 가운데 공시나 통계에서 바로 나온 것은 그대로 적었고, 가정이 들어간 것은 <span class="est">E</span>를 붙이고 가정을 표 안에 적었습니다.</p>
+<table class="mx"><tr><th>#</th><th>리스크</th><th>무엇이 일어나는가</th><th>영향 정량(억원·%)</th><th>확률(12개월)·근거</th><th>관측 신호(어디서·언제)</th></tr><tr><td>①</td><td>원화 강세 지속</td><td>원/달러 9-11 1,344.4원은 2Q26 평균 1,502.8원보다 10.5% 강하고(원/위안 -9.3%·원/유로 -10.6%), 현지 가격 불변이면 해외 매출 원화 환산이 같은 폭 줄어듭니다</td><td>총노출 연 1,672억<span class="est">E</span>, 가격·원가 시차 반영 1,003억<span class="est">E</span>(2026E 컨센 OP의 14%<span class="est">E</span>) · KB 민감도 적용 시 OP 약 232억<span class="est">E</span> · 주가: 7-01~9-11 원/달러 -13.4% 동안 주가 +10.0%</td><td>45%<span class="est">E</span> — 9-11 현물이 3Q26 누적 평균(1,432원)보다도 낮고, 연누적 평균환율 환산이라 2027년 1월 기준점이 새로 잡힙니다</td><td>네이버·한은 원/달러 일별, 11-14 분기보고서 GPM·해외 매출(원화), 3Q26 IR 법인별 매출</td></tr><tr><td>②</td><td>광고·마케팅 확대의 상시화</td><td>2Q26 광고선전비 403억(매출의 5.2%, 분기 최대)이 일회성이 아니라 새 기준선이 됩니다</td><td>2025년 광고비율 3.44%와의 차이를 2026E 매출 3조 1,414억에 걸면 연 564억<span class="est">E</span> · 2Q26 OP QoQ -0.5%(원가율 개선을 판관비가 상쇄)</td><td>50%<span class="est">E</span> — 신규 브랜드(1963)·글로벌 캠페인·월드컵이 연속 이벤트이고 회사는 비율 목표를 제시하지 않았습니다</td><td>분기보고서 판관비 주석 광고선전비(3Q26 11-14), IR 판관비 설명 문구</td></tr><tr><td>③</td><td>자싱 지연·램프업 부진</td><td>2027년 1분기 시험가동 예정인 자싱 8라인 11.3억식이 2분기 늦거나 가동률이 느리게 오릅니다</td><td>2027 평균 가동률 55%<span class="est">E</span>가 20%<span class="est">E</span>로 낮아지면 3.96억식 × 식당 921원 = 매출 3,644억<span class="est">E</span>, 공헌 20%로 OP 729억<span class="est">E</span>(2027 컨센 OP 증가분 1,582억의 46%<span class="est">E</span>) · DBS 차입 보증 1,411억(인출 243억)</td><td>30%<span class="est">E</span> — 해외 첫 공장, 라인 6에서 8로 설계 변경(2025-11), 준공 목표 2027-01-31</td><td>주요사항·정정공시(투자 기간), 반기보고서 건설약정(1H26말 2,072억), 중국 법인 부문 자산, 현지 인허가 보도</td></tr><tr><td>④</td><td>중국 유통 재고·채널</td><td>유통 채널에 쌓인 재고가 다음 분기 출고를 줄입니다(3Q25 중국법인 1,846억 급증 뒤 4Q25 1,482억)</td><td>한 번의 이연이 분기 매출 -364억, 한국 부문 이익률 23.8% 적용 OP -87억<span class="est">E</span> · 4Q25 잠정 뒤 1-28~2-05 주가 -10.3%</td><td>35%<span class="est">E</span> — 중국 부문 영업이익 1H26 8.6억(이익률 0.2%)으로 완충이 없고, 특수관계 유통사 매출이 2025년 877억</td><td>IR 중국법인 분기 매출, 연결 재고자산(2Q26 2,776억), 특수관계자 매출채권</td></tr><tr><td>⑤</td><td>미국 관세·통상과 대미 수출 감소</td><td>섹션 301 12.5%(2026-07-24, 라면 세율 문서 미확인) 위에 과잉생산 조사 등 추가 관세가 붙고, 대미 수출 3개월 연속 감소가 수요 둔화로 확인됩니다</td><td>관세 10%p 추가 시 미국법인 연환산 매출 8,144억 × 과세가격 60%<span class="est">E</span> = OP -489억<span class="est">E</span>(가격 전가 전) · 2025-04-04 -5.1%, 2025-04-10 +10.8%</td><td>25%<span class="est">E</span> — 삼양은 미국 공장이 없고 추가 생산기지를 검토하지 않는다고 밝혔습니다(2026-07)</td><td>관세청 대미 라면 수출(매월 15일 확정), 미국 관보·USTR, IR 미국법인 매출</td></tr><tr><td>⑥</td><td>해상운임·원맥 상승</td><td>미주 서안 운임 2026-08 평균 $6,726/FEU(전년 $1,834)와 CBOT 밀(8월 +33%)이 시차를 두고 원가에 들어옵니다</td><td>운임 연 +403억<span class="est">E</span> + 맥분 연 +480억<span class="est">E</span> = OP -883억<span class="est">E</span> · 과거 자: 2021년 OPM 10.2%(2020년 14.7%)</td><td>60%<span class="est">E</span> — 이미 진행 중이며 관건은 크기와 시차입니다</td><td>주간 SCFI·미주서안, CBOT 근월물, 관세청 밀 수입단가, 3Q26 수출제비용·맥분 매입단가(11-14)</td></tr><tr><td>⑦</td><td>브랜드 피로·모방 경쟁</td><td>불닭 브랜드 집중(2Q24 라면 수출의 92.6%, 회사 IR) 속에 닛신 Geki·마루짱 Flamin' Hot 같은 매운 라인이 선반을 나눕니다</td><td>해외 매출 성장률 15%p 둔화 시 2026E 해외 2조 6,042억<span class="est">E</span> 기준 매출 -3,906억 · 공헌 30% OP -1,172억<span class="est">E</span> · 과거 자: 2018 1차 붐 소진 -57.9%</td><td>15%<span class="est">E</span> — 한국 라면 수출 내 삼양 비중 2Q26 65.7%(2Q25 68.9%)로 아직 60%대입니다</td><td>IR 삼양 라면 수출 비중(분기), 관세청 시군 통계, 미국 채널 점유 보도, 비불닭 브랜드 매출 공개 여부</td></tr><tr><td>⑧</td><td>식품 안전·리콜</td><td>2024-06 덴마크 캡사이신 리콜, 2026-04 까르보 불닭 3-MCPD 유럽 5개국 리콜이 반복되고 인니 할랄 의무(10-18)가 시행됩니다</td><td>유럽+영국 분기 매출 1,132억의 20%가 한 분기 멈추면 OP -79억<span class="est">E</span> · 2024-06-11 -4.7%, 2026-04-29 +2.3%</td><td>40%<span class="est">E</span> — 2년 사이 두 번, 유럽이 가장 빠르게 크는 지역입니다</td><td>EU RASFF·각국 리콜 게시, 인니 BPJPH, IR 유럽·영국 법인 매출</td></tr><tr><td>⑨</td><td>오너·지배구조</td><td>부담부증여 20만주의 증여세(할증 적용 약 1,070억<span class="est">E</span>, 조사노트 C 계산)·담보 800억·IBK 300억 10-06 만기·전인장 벌금 191억 확정(9-10)의 재원이 지분 처분이나 담보 추가로 풀립니다</td><td>세액만큼 처분하면 약 83,700주(1.1%<span class="est">E</span>, 9-11 종가 기준 1,070억) · 9-10 확정일 주가 -0.08% · 7-07 +11.3%</td><td>20%<span class="est">E</span> — 합산 지분 44.98%가 유지됐고, 사채 약정은 삼양식품 최대주주(라운드스퀘어)의 변경만을 막습니다</td><td>최대주주등소유주식변동신고·주식담보 공시(수시), 10-06 전후 IBK 담보 처리, 10-31 이후 보도</td></tr><tr><td>⑩</td><td>특수관계 거래·비영업 자산</td><td>특수관계 유통사 매출(삼양애니 상해 2025년 877억)과 지주사 브랜드 수수료(2025년 93.0억)가 늘고, 사옥(2,270억) 같은 비영업 자산 매입이 반복됩니다</td><td>2025년 특수관계자 기타비용 203억 · 비영업 자산 한 건 규모의 자: 용산 토지 1,035억(2025-07 철회)</td><td>25%<span class="est">E</span> — 순현금 763억(IR)과 배당성향 9~11% 정책이 공존하는 구간입니다</td><td>반기·사업보고서 특수관계자 주석, 유형자산 양수 결정 공시, 리스크관리위원회 안건</td></tr><tr><td>⑪</td><td>수급·오버행</td><td>국민연금 10.69%(805,319주)·MSCI 편입 뒤 늘어난 외국인(18.54%)의 비중 조절과 국내 기관의 차익 매도가 겹칩니다</td><td>발행주식 1% = 963억(20일 평균 거래대금 838억) · 8-31~9-11 기관 -1,173억 · 9-07 -6.1%</td><td>35%<span class="est">E</span> — 2026 연중 매수 주체였던 기관(+4,261억)이 9월 들어 매도로 돌아섰습니다</td><td>키움 투자자별 순매수(일별), 국민연금 5% 보고, MSCI 정기변경</td></tr><tr><td>⑫</td><td>멀티플 압축</td><td>후행 PER 19.74배·2026E 17.02배가 역사 밴드(후행 9.0~37.0배) 안에서 아래로 내려갑니다</td><td>2026E PER 1배 = 시총 5,659억 · 2026-07-09 2026E 15.5배(NH 인용)는 9-11보다 1.5배 낮았습니다</td><td>30%<span class="est">E</span> — 성장률 둔화 신호(①~⑦)가 먼저 와야 움직이는 2차 리스크입니다</td><td>네이버 컨센 EPS 주간 변화, 분기 실적 뒤 하우스 EPS 수정 방향</td></tr></table>
+<figure class=""><figcaption>장표 1. 리스크 12종 히트맵 — 가로 발생 확률(작성자 설정 E), 세로 영향(억원, 로그). 점선 상자는 확률 40% 이상·영향 500억 이상</figcaption><svg viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<rect x="66.0" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.045"/>
+<rect x="66.0" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.055"/>
+<rect x="66.0" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.068"/>
+<rect x="66.0" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.084"/>
+<rect x="66.0" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.103"/>
+<rect x="66.0" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.124"/>
+<rect x="178.9" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.055"/>
+<rect x="178.9" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.069"/>
+<rect x="178.9" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.085"/>
+<rect x="178.9" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.104"/>
+<rect x="178.9" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.125"/>
+<rect x="178.9" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.149"/>
+<rect x="291.7" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.069"/>
+<rect x="291.7" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.086"/>
+<rect x="291.7" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.105"/>
+<rect x="291.7" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.126"/>
+<rect x="291.7" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.150"/>
+<rect x="291.7" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.176"/>
+<rect x="404.6" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.087"/>
+<rect x="404.6" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.106"/>
+<rect x="404.6" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.127"/>
+<rect x="404.6" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.151"/>
+<rect x="404.6" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.177"/>
+<rect x="404.6" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.205"/>
+<rect x="517.4" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.107"/>
+<rect x="517.4" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.128"/>
+<rect x="517.4" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.152"/>
+<rect x="517.4" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.178"/>
+<rect x="517.4" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.206"/>
+<rect x="517.4" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.236"/>
+<rect x="630.3" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.130"/>
+<rect x="630.3" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.153"/>
+<rect x="630.3" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.179"/>
+<rect x="630.3" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.207"/>
+<rect x="630.3" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.237"/>
+<rect x="630.3" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.269"/>
+<rect x="743.1" y="313.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.155"/>
+<rect x="743.1" y="256.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.181"/>
+<rect x="743.1" y="200.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.209"/>
+<rect x="743.1" y="143.3" width="112.9" height="56.7" fill="#a44a3f" opacity="0.239"/>
+<rect x="743.1" y="86.7" width="112.9" height="56.7" fill="#a44a3f" opacity="0.271"/>
+<rect x="743.1" y="30.0" width="112.9" height="56.7" fill="#a44a3f" opacity="0.304"/>
+<line x1="66" y1="370.0" x2="856" y2="370.0" stroke="#fff" stroke-width="0.8"/>
+<text x="60" y="374.0" text-anchor="end" font-size="11" fill="#8a857c">50</text>
+<line x1="66" y1="325.5" x2="856" y2="325.5" stroke="#fff" stroke-width="0.8"/>
+<text x="60" y="329.5" text-anchor="end" font-size="11" fill="#8a857c">100</text>
+<line x1="66" y1="255.0" x2="856" y2="255.0" stroke="#fff" stroke-width="0.8"/>
+<text x="60" y="259.0" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<line x1="66" y1="177.8" x2="856" y2="177.8" stroke="#fff" stroke-width="0.8"/>
+<text x="60" y="181.8" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="66" y1="107.3" x2="856" y2="107.3" stroke="#fff" stroke-width="0.8"/>
+<text x="60" y="111.3" text-anchor="end" font-size="11" fill="#8a857c">3,000</text>
+<line x1="66" y1="30.0" x2="856" y2="30.0" stroke="#fff" stroke-width="0.8"/>
+<text x="60" y="34.0" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<text x="66.0" y="386" text-anchor="middle" font-size="11" fill="#8a857c">0%</text>
+<text x="178.9" y="386" text-anchor="middle" font-size="11" fill="#8a857c">10%</text>
+<text x="291.7" y="386" text-anchor="middle" font-size="11" fill="#8a857c">20%</text>
+<text x="404.6" y="386" text-anchor="middle" font-size="11" fill="#8a857c">30%</text>
+<text x="517.4" y="386" text-anchor="middle" font-size="11" fill="#8a857c">40%</text>
+<text x="630.3" y="386" text-anchor="middle" font-size="11" fill="#8a857c">50%</text>
+<text x="743.1" y="386" text-anchor="middle" font-size="11" fill="#8a857c">60%</text>
+<text x="856.0" y="386" text-anchor="middle" font-size="11" fill="#8a857c">70%</text>
+<text x="461" y="408" text-anchor="middle" font-size="11" fill="#8a857c">발생 확률(12개월 창, 작성자 설정 E)</text>
+<text x="66" y="16" font-size="11" fill="#8a857c">영향(억원, 로그) — 채운 원: 연간 영업이익 영향 · 빈 원: 매물·시총 금액</text>
+<rect x="517.4" y="30.0" width="338.6" height="192.2" fill="none" stroke="#a44a3f" stroke-width="1.2" stroke-dasharray="5 3"/>
+<text x="852.0" y="44.0" text-anchor="end" font-size="10.5" fill="#a44a3f">확률 40% 이상 · 영향 500억 이상</text>
+<circle cx="573.9" cy="177.6" r="8" fill="#a44a3f" opacity="0.9"/>
+<text x="573.9" y="181.6" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">①</text>
+<circle cx="630.3" cy="214.5" r="8" fill="#a44a3f" opacity="0.9"/>
+<text x="630.3" y="218.5" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">②</text>
+<circle cx="404.6" cy="198.1" r="8" fill="#1f3a5f" opacity="0.9"/>
+<text x="404.6" y="202.1" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">③</text>
+<circle cx="461.0" cy="334.7" r="8" fill="#1f3a5f" opacity="0.9"/>
+<text x="461.0" y="338.7" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">④</text>
+<circle cx="348.1" cy="223.7" r="8" fill="#1f3a5f" opacity="0.9"/>
+<text x="348.1" y="227.7" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑤</text>
+<circle cx="743.1" cy="185.7" r="8" fill="#a44a3f" opacity="0.9"/>
+<text x="743.1" y="189.7" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑥</text>
+<circle cx="235.3" cy="167.6" r="8" fill="#1f3a5f" opacity="0.9"/>
+<text x="235.3" y="171.6" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑦</text>
+<circle cx="517.4" cy="340.5" r="8" fill="#1f3a5f" opacity="0.9"/>
+<text x="517.4" y="344.5" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">⑧</text>
+<circle cx="291.7" cy="173.4" r="8" fill="#fff" stroke="#2b7a78" stroke-width="2"/>
+<text x="291.7" y="177.4" text-anchor="middle" font-size="10" fill="#2b7a78" font-weight="700">⑨</text>
+<circle cx="348.1" cy="175.6" r="8" fill="#fff" stroke="#2b7a78" stroke-width="2"/>
+<text x="348.1" y="179.6" text-anchor="middle" font-size="10" fill="#2b7a78" font-weight="700">⑩</text>
+<circle cx="461.0" cy="180.2" r="8" fill="#fff" stroke="#2b7a78" stroke-width="2"/>
+<text x="461.0" y="184.2" text-anchor="middle" font-size="10" fill="#2b7a78" font-weight="700">⑪</text>
+<circle cx="404.6" cy="66.5" r="8" fill="#fff" stroke="#2b7a78" stroke-width="2"/>
+<text x="404.6" y="70.5" text-anchor="middle" font-size="10" fill="#2b7a78" font-weight="700">⑫</text>
+<text x="754.1" y="189.7" font-size="10.5" fill="#a44a3f">운임·원맥 883</text>
+<text x="641.3" y="218.5" font-size="10.5" fill="#a44a3f">광고 상시화 564</text>
+<text x="584.9" y="181.6" font-size="10.5" fill="#a44a3f">원화 강세 1,003</text>
+<text x="528.4" y="344.5" font-size="10.5" fill="#1f3a5f">식품 안전 79</text>
+<text x="383.6" y="338.7" font-size="10.5" fill="#1f3a5f">중국 재고 87</text>
+<text x="472.0" y="184.2" font-size="10.5" fill="#2b7a78">수급 오버행 963</text>
+<text x="415.6" y="202.1" font-size="10.5" fill="#1f3a5f">자싱 지연 729</text>
+<text x="415.6" y="70.5" font-size="10.5" fill="#2b7a78">멀티플 압축 5,659</text>
+<text x="359.1" y="227.7" font-size="10.5" fill="#1f3a5f">미국 관세 489</text>
+<text x="290.1" y="161.6" font-size="10.5" fill="#2b7a78">특수관계·비영업 1,035</text>
+<text x="249.4" y="195.4" font-size="10.5" fill="#2b7a78">오너 지분 1,070</text>
+<text x="129.2" y="171.6" font-size="10.5" fill="#1f3a5f">브랜드 피로 1,172</text>
+</svg><div class="src">자료: 표 1의 영향·확률. 채운 원은 연간 영업이익 영향(E 포함), 빈 원은 매물·현금 유출·시총 단위. 좌표와 배경 농도는 코드가 확률×로그 영향으로 계산. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 점선 상자에 들어온 것은 ①원화 강세(1,003억<span class="est">E</span>, 45%<span class="est">E</span>), ⑥운임·원맥(883억<span class="est">E</span>, 60%<span class="est">E</span>), ②광고 상시화(564억<span class="est">E</span>, 50%<span class="est">E</span>) 셋입니다. 영향만 보면 ⑦브랜드 피로(1,172억<span class="est">E</span>)와 ③자싱 지연(729억<span class="est">E</span>)이 크지만 확률이 15~30%<span class="est">E</span>에 머뭅니다. <b>원인.</b> 앞의 셋은 모두 이미 관측되는 변수입니다. 원/달러는 7-01 1,552.5원에서 9-11 1,344.4원까지 내려왔고, 미주 서안 운임은 8월 평균이 전년의 3.7배이며, 광고선전비는 2Q26에 분기 최대를 찍었습니다. 반면 수요와 브랜드 쪽 리스크는 대미 수출 3개월 감소 같은 조짐만 있고 확인된 둔화는 없습니다. <b>함의.</b> 확률과 영향이 함께 앞자리인 셋이 전부 마진 층이라는 점이 이 파트의 첫 결론입니다. 허브 논쟁 2(영업이익률 22~24%의 내구성)가 12개월 안에 가장 먼저, 가장 크게 채점될 논쟁이고, 11-14 3Q26 분기보고서의 OPM이 첫 관측점입니다.</p>
+
+<h3>① 원화 강세 — 순노출로 잰 크기</h3>
+<p>원/달러 9-11 현물 1,344.4원은 2Q26 분기 평균 1,502.8원보다 10.5% 강하고, 같은 창에서 원/위안은 -9.3%, 원/유로는 -10.6%, 원/엔(100엔)은 -7.4% 움직였습니다. 삼양식품의 해외 매출이 2Q26 3개월 기준 6,458억(매출의 83.8%)이니, 주요 통화가 한꺼번에 10% 안팎 강해진 셈입니다. 1Q26·2Q26 영업이익률(24.8%·22.9%)은 원/달러 평균 1,468원·1,503원에서 나온 숫자라는 꼬리표를 떼면 안 됩니다. 문제는 크기입니다. 매출 전체가 아니라 외화 매출에서 외화에 연동된 비용을 뺀 순노출이 영향을 정하므로, 이를 [가정, 근거, 식, 교차검증] 순서로 계산합니다.</p>
+<p><b>가정.</b> 현지 판매가는 그대로이고 주요 통화가 2Q26 평균 대비 10.5% 강한 상태가 12개월 이어진다고 둡니다. 외화 연동 비용은 네 갈래로 나눕니다. 원재료 사용액(재고 변동 반영) 가운데 수입 원맥·팜유·감자전분에 연동된 몫 50%<span class="est">E</span>, 수출제비 및 운반비 가운데 해상운임 등 외화 지출 70%<span class="est">E</span>, 광고선전비 가운데 해외 캠페인 60%<span class="est">E</span>, 그리고 해외법인이 현지에서 쓰는 자체 비용 전액입니다.</p>
+<p><b>근거.</b> 2Q26 비용의 성격별 분류(반기보고서 주석)에서 원재료 사용액은 재고 변동을 반영해 2,983억, 수출제비 및 운반비 544억, 광고선전비 403억입니다. 해외법인 자체 비용은 1H26 해외 부문 외부 매출 9,799억에서 부문 영업이익 661억과 한국 부문이 해외법인에 판 내부거래 8,380억을 빼 758억, 분기 379억으로 역산했습니다. 원가 비중은 농심·삼양이 밀가루 20%·팜유 20%라고 말한 보도(시장경제 2026-02-25)를 참고했습니다.</p>
+<p><b>식.</b> 분기 외화 연동 비용 = 2,983×0.5 + 544×0.7 + 403×0.6 + 379 = 2,493억<span class="est">E</span>입니다. 분기 순노출은 6,458 - 2,493 = 3,965억<span class="est">E</span>(해외 매출의 61%<span class="est">E</span>)이고, 연환산에 10.5%를 곱하면 총노출 영향이 연 1,672억<span class="est">E</span>입니다. 여기서 가격 조정 여지(2025-10 미국 공급가 약 9% 인상의 선례)와 수입 원재료의 원가 시차를 감안해 60%만 12개월 안에 나타난다고 보면 1,003억<span class="est">E</span>이고, 이는 2026년 컨센 영업이익 7,338억의 14%<span class="est">E</span>입니다.</p>
+<p><b>교차검증.</b> 세 가지로 맞춰 봅니다. 첫째, 2Q25에서 2Q26까지 원/달러 분기 평균이 7.2% 올랐을 때 우리 순노출로 계산한 환율 기여는 267억<span class="est">E</span>이고, 같은 기간 실제 영업이익 증가는 561억이었습니다. 회사 IR이 원가 개선 요인으로 고ASP 권역·달러 강세·생산 효율 셋을 꼽았으니 절반 가까이를 환율로 보는 것은 무리가 아닙니다. 둘째, KB(9-02)는 원/달러 1% 상승당 EPS +0.3%를 제시했고, 이를 10.5%에 적용하면 순이익 179억, 영업이익 환산 약 232억<span class="est">E</span>으로 우리 추정의 5분의 1 수준입니다. 차이의 원인은 KB가 가격 전가와 연누적 환산을 반영했을 가능성이지만 산식은 공개되지 않아 미확인입니다. 셋째, 2025 사업보고서의 외환 민감도(USD 10%당 세후 162.9억)는 외화 금융자산·부채의 환산만 잰 것이라 영업 노출과 비교할 대상이 아닙니다. 우리는 KB 값을 하단, 총노출을 상단으로 두고 가운데 값을 매트릭스에 씁니다.</p>
+<p>시점도 중요합니다. 3Q26 누적 평균(9-11까지) 1,431.8원은 2Q26보다 4.7% 강할 뿐이고, 연누적 평균환율로 환산하기 때문에 9월 현물의 강세는 3Q26 보고 숫자에 일부만 들어갑니다. 분기 순노출에 4.7%를 곱한 3Q26 총노출 영향은 187억<span class="est">E</span>(3Q26E 매출 8,201억 대비 OPM 2.3%p<span class="est">E</span>)입니다. 원화 강세의 본격 반영은 2026년 4분기와 2027년 1월 기준점 재설정 때 오며, 그래서 이 리스크의 채점은 3Q26 한 분기로 끝나지 않습니다.</p>
+
+<h3>② 광고·마케팅 확대의 상시화</h3>
+<p>2Q26 광고선전비는 403억으로 1Q25 118억, 2Q25 229억, 1Q26 201억을 지나 분기 최대가 됐고 매출 대비 5.2%입니다. 연간 광고비율은 2023년 3.45%, 2024년 3.60%, 2025년 3.44%, 1H26 4.07%로 올라왔습니다. 회사는 불닭 외에 1963 등 신규 브랜드 마케팅과 코첼라 같은 글로벌 캠페인을 이유로 들었고, 하나(7-02)는 북중미 월드컵 관련 광고·판촉비를 우려로 적었습니다. 2Q26 영업이익이 QoQ -0.5%로 정체한 것은 원가율 5.7%p 개선을 판관비율 7.6%p 상승이 모두 먹은 결과였습니다.</p>
+<p>리스크는 5%대가 새 기준선이 되는 경우입니다. 2025년 비율과의 차이 1.80%p를 2026년 컨센 매출 3조 1,414억에 걸면 연 564억<span class="est">E</span>이 나옵니다. 확률을 50%<span class="est">E</span>로 높게 둔 이유는 신규 브랜드의 해외 출시와 유럽 신규 국가 진입이 이어지는 동안 광고는 매출보다 먼저 집행되는 비용이기 때문입니다. 반대 방향의 증거도 있습니다. KB(9-02)는 3Q26 판관비 축소로 OPM 23%를 방어한다고 봤고, 광고비율이 1H25 수준(3.21%)으로 돌아가면 3Q26E 매출 기준 광고비는 2Q26보다 140억 적습니다. 3Q26 분기보고서의 광고선전비가 이 리스크를 가르는 첫 숫자입니다. 다만 1Q26에 운반비 일부가 매출원가로 옮겨졌다는 LS(5-14)의 설명이 있어, 판관비율과 GPM을 따로 보지 말고 OPM으로 봐야 합니다.</p>
+
+<h3>③ 자싱 지연·램프업 부진</h3>
+<p>자싱 공장은 삼양식품(절강) 유한공사가 짓는 첫 해외 생산기지로, 투자 2,072억(2024-12-16~2027-01-31), 8라인 11.3억식입니다. 2025-11 정정공시에서 6라인 8.2억식이 8라인으로 커졌고, 싱가포르 법인이 90%를 출자하며 나머지 10%는 재무적 투자자입니다. 회사는 2027년 1분기 가동을 말하고, KB는 풀가동까지 7~8개월, 하나는 2027년 초 시험가동과 함께 밀양의 여유 생산능력을 미국·유럽으로 돌린다고 적었습니다. 즉 자싱은 중국 물량을 현지 생산으로 옮기는 동시에 한국 공장의 수출 여력을 늘리는 이중 장치입니다.</p>
+<p>우리는 KB의 풀가동 7~8개월을 1분기 가동 시작에 적용한 2027년 평균 가동률 55%<span class="est">E</span>를 기준으로, 2분기 지연과 느린 램프업이 겹쳐 20%<span class="est">E</span>에 머무는 경우를 리스크로 잡았습니다. 잃는 물량은 3.96억식<span class="est">E</span>이고, 2025년 면스낵 연결 순매출 2조 1,073억을 별도 생산 22.87억식으로 나눈 식당 921원을 곱하면 매출 3,644억<span class="est">E</span>, 공헌이익률 20%<span class="est">E</span>로 영업이익 729억<span class="est">E</span>입니다. 이는 2027년 컨센 영업이익 증가분 1,582억(2026E 7,338억에서 2027E 8,920억)의 46%<span class="est">E</span>에 해당합니다. 재무 쪽 노출은 삼양식품이 선 DBS 차입 보증 CNY 7.1억(공시 환산 1,411억, 기간 2025-09-10~2028-09-10)이지만 1H26 말 실제 인출은 약 243억이라 당장 크지 않습니다. 확률 30%<span class="est">E</span>는 해외 첫 공장이라는 점과 설계 변경 이력에서 나왔고, 회사가 "추가 생산기지는 검토하지 않는다"(2026-07 보도)고 밝힌 만큼 대체 경로도 없습니다.</p>
+
+<h3>④ 중국 유통 재고·채널</h3>
+<p>중국법인 매출은 2Q25 1,256억, 3Q25 1,846억(QoQ +47%), 4Q25 1,482억, 1Q26 1,664억, 2Q26 1,810억으로 움직였습니다. 한화(1-30)는 4Q25 출고분 판매가 1Q26으로 이연됐다고 설명했고, LS(5-14)는 1Q26 상회 요인으로 중국 4분기 재고의 원활한 소진을 꼽았습니다. 한 번의 이연이 분기 매출 364억을 흔들었고, 이익이 한국 부문(1H26 부문 이익률 23.8%)에 쌓이는 구조라 영업이익으로는 약 87억<span class="est">E</span>입니다. 4Q25 잠정(1-29) 뒤 1-28 종가에서 2-05 종가까지 주가는 -10.3%였습니다.</p>
+<p>이 리스크를 키우는 것은 완충의 부재입니다. 중국 부문 영업이익은 1H26 8.6억(1H25 93.0억)으로 매출 3,577억에 대해 이익률 0.2%입니다. 또 특수관계자인 삼양애니(상해)국제무역에 대한 연결 매출이 2023년 85억, 2024년 409억, 2025년 877억, 1H26 340억으로 늘어, 중국 유통의 일부가 오너 계열 경로를 탄다는 점(조사노트 C, 경로의 성격은 추정)이 재고 가시성을 떨어뜨립니다. 연결 재고자산은 1Q26 말 2,337억에서 2Q26 말 2,776억으로 +18.8% 늘었습니다. 확률 35%<span class="est">E</span>는 3Q25에 한 번 실측된 패턴이고, 간식점 채널 비중이 38%(키움·교보 8-18)로 커진 점을 반영했습니다.</p>
+
+<h3>⑤ 미국 관세·통상과 대미 수출 3개월 감소</h3>
+<p>한국산 라면의 대미 관세는 KORUS 무관세에서 10%(2025-04), 15%(2025-08-07)를 거쳐, 2026-02-20 미 연방대법원이 IEEPA의 관세 권한을 부정한 뒤 섹션 122의 10%(2026-02-24~07-24), 섹션 301의 12.5%(2026-07-24)로 옮겨 온 것으로 추정됩니다. 라면 품목에 적용되는 세율을 확정한 문서는 찾지 못해 미확인입니다. 삼양은 미국 공장이 없어 미국 판매 물량 전량이 관세에 노출되고, 증권신고서(2026-04)도 일부 경쟁사가 미국 내 생산거점을 가져 관세·물류에서 우위일 수 있다고 스스로 적었습니다. 삼양은 "관세율은 이전과 비슷하고 불확실성이 더 우려"라고 말했습니다(소셜밸류 보도).</p>
+<p>영향은 관세가 한 번 더 오르는 경우로 잽니다. 미국법인 2Q26 매출 2,036억을 연환산한 8,144억에 과세가격 비중 60%<span class="est">E</span>를 두면 10%p 추가 관세는 가격 전가 전 연 489억<span class="est">E</span>입니다. 선례로 보면 회사는 15% 관세 뒤 2025-10에 미국 공급가를 약 9%, 월마트 소비자가를 5입 6.88달러에서 7.84달러로 올려 전가했습니다. 수요 쪽 신호는 엇갈립니다. 관세청 대미 라면 수출(HS 1902.30)은 4월 43.5백만달러에서 5월 31.2, 6월 23.4, 7월 19.9백만달러로 3개월 연속 줄었지만, 7월은 전년 동월 대비 +39.2%이고 1~7월 누계는 195.3백만달러로 전년 동기 대비 +25.8%입니다. 같은 2Q26 미국법인 매출은 +54.3%였으므로, 4월 선적이 몰린 뒤 현지 재고로 판 흐름일 가능성이 큽니다. 주가는 관세 뉴스에 대칭으로 반응했습니다. 2025-04-04 -5.1%, 4-10 유예에 +10.8%, IEEPA 판결 뒤 첫 거래일(2-23)에 +7.2%(원인 기사 미확인), 섹션 301 발효일에 +2.1%였습니다.</p>
+
+<h3>⑥ 해상운임·원맥 상승</h3>
+<p>미주 서안 컨테이너 운임은 2026-08 평균 $6,726/FEU로 전년 같은 달 $1,834의 3.7배이고 9-04에는 $7,242였습니다(주간 SCFI 기사 집계, 조사노트 B). 분기 평균으로는 2Q26 $3,652에서 3Q26(7~8월) $6,360로 +74%입니다. 원맥은 CBOT 근월물이 8월 평균 676.26센트로 전년 대비 +32.9%, 9월 1~10일 733.64센트까지 올랐지만, 관세청 한국 밀 수입단가는 7월 톤당 281달러로 전년과 같아 아직 들어오지 않았습니다. 회사의 1H26 맥분 매입단가는 kg당 680원으로 2025년 평균보다 8.4% 낮았으니, 하반기부터 방향이 바뀌는 셈입니다.</p>
+<p>크기는 두 갈래로 계산했습니다. 운임은 2Q26 수출제비 및 운반비 544억 가운데 해상운임 50%<span class="est">E</span>, 그중 현물 연동 50%<span class="est">E</span>에 3Q26 상승률을 곱해 연 403억<span class="est">E</span>입니다. 원맥은 2Q26 매출원가 3,998억 가운데 밀가루 비중 20%(보도 인용)에 맥분 매입단가 +15%<span class="est">E</span>를 걸어 연 480억<span class="est">E</span>입니다. 합계 883억<span class="est">E</span>이고 확률은 60%<span class="est">E</span>로 가장 높게 뒀습니다. 과거의 자가 있습니다. 증권신고서는 2021년 수익성 저하 원인으로 라면 수요 둔화·수출용 컨테이너 부족·원재료 가격 상승을 적었고, 그해 영업이익률은 10.2%로 2020년 14.7%보다 4.5%p 낮았습니다. 지금은 가격 결정력과 고ASP 권역 비중이 그때와 다르지만, 운임과 원료가 함께 오르는 조합은 이 회사가 이미 한 번 겪은 경로입니다.</p>
+
+<h3>⑦ 브랜드 피로·모방 경쟁</h3>
+<p>회사 IR이 마지막으로 공개한 불닭 브랜드 비중은 2Q24 별도 라면 수출 매출의 92.6%입니다(이후 공개 중단). 브랜드가 하나에 모인 만큼 경쟁사의 대응은 곧바로 이 회사의 선반을 겨눕니다. 미국 시장 점유(2024, 보도 인용 유로모니터)는 마루짱 31.8%·농심 16.0%·닛신 8.4%·삼양 6.1%(2021 2.1%)이고, 닛신은 FY3/2026 설명자료에서 미국 부진 사유로 한국 경쟁사를 포함한 프리미엄 경쟁 심화를 적었습니다. 닛신은 2025-10-09 매운 라인 Geki를, 마루짱은 2026-04-06 첫 Flamin' Hot 라인을 월마트 독점으로 내놨습니다. 도요스이산 자료에서는 미국 물량 가운데 수입품 비중이 FY2020 4%에서 FY2025 11%로 늘었습니다.</p>
+<p>영향은 해외 매출 성장률이 15%p 둔화하는 경우로 잡았습니다. 2026년 컨센 매출에 1H26 해외 비중 82.9%를 곱한 해외 매출 2조 6,042억<span class="est">E</span>의 15%는 3,906억이고, 공헌이익률 30%<span class="est">E</span>로 영업이익 1,172억<span class="est">E</span>입니다. 확률은 15%<span class="est">E</span>로 낮게 뒀습니다. 한국 라면 수출에서 삼양 비중이 2Q25 68.9%에서 2Q26 65.7%로 조금 내려왔지만 여전히 60%대이고, 1~7월 한국 라면 수출이 +25.9%, 8월 잠정 일평균이 +36.2%(조사노트 B)로 둔화의 증거가 아직 없기 때문입니다. 과거의 자는 2018년 1차 붐 소진기의 -57.9%이며, 그때가 불닭 하나에 기대던 회사가 받은 가장 깊은 할인이었습니다.</p>
+
+<h3>⑧ 식품 안전·리콜</h3>
+<p>해외 규제 이슈는 2년 사이 두 번 있었습니다. 2024-06-11 덴마크 수의식품청이 캡사이신 과다를 이유로 핵불닭 2X·3X·불닭볶음탕면을 회수했고 7월 중순 2종이 해제됐습니다. 2026-04에는 프랑스가 까르보 불닭 컵 일부 로트를 3-MCPD로 회수했고 4-29 벨기에 당국의 판매 중단이 독일·스웨덴·네덜란드로 번졌습니다. 주가 반응은 작았습니다. 2024-06-11 -4.7%였지만 6-21에는 70만원을 넘었고, 2026-04-29는 +2.3%였습니다. 유럽+영국 법인 매출이 2Q26 1,132억으로 가장 빠르게 크는 지역이라, 한 분기에 그 20%가 멈추면 영업이익 79억<span class="est">E</span>(한국 부문과 유럽 부문 이익률을 합친 연쇄 마진 35%<span class="est">E</span>)입니다. 여기에 인도네시아 수입식품 할랄 의무가 2026-10-18 추가 유예 없이 시행됩니다. 인니 법인은 2Q26 매출 103억, 1H26 부문 영업이익 -7.2억으로 크기는 작지만, MUI 인증 밖 품목의 대응 여부는 미확인입니다.</p>
+
+<h3>⑨ 오너·지배구조</h3>
+<p>공시로 확인된 사실부터 적습니다. 2026-07-06 김정수 회장이 보유 283,488주 가운데 20만주를 전병우 171,500주·전하영 28,500주로 증여했고(최대주주등소유주식변동신고서 7-09), 합산 지분 44.98%는 그대로입니다. 보도에 따르면 주식담보대출 약 800억(IBK투자증권·한국증권금융)이 함께 넘어간 부담부증여이며, 그 가운데 IBK 300억의 만기가 10-06, 증여세 신고·납부 기한이 10-31입니다. 평가기간(5-06~9-05) 84거래일 종가 평균은 1,233,012원(키움 일봉 재계산)이고, 조사노트 C는 최대주주 할증 20%를 적용한 산출세액을 약 1,070억<span class="est">E</span>(신고세액공제 반영 1,038억<span class="est">E</span>, 할증 미적용 823억<span class="est">E</span>)으로 계산했습니다. 2026-09-10에는 대법원이 전인장 전 회장의 허위 세금계산서 사건 재상고를 기각해 징역 3년·집행유예 5년·벌금 191억이 확정됐고, 삼양식품 법인은 벌금 1,000만원입니다.</p>
+<p>회사 손익에 닿는 금액은 작습니다. 벌금 191억과 증여세는 개인의 부담이고 법인 벌금은 1,000만원, 2025년 말 소송 관련 충당부채는 2천만원이었습니다. 리스크는 재원이 삼양식품 주식에서 나오는 경우입니다. 세액만큼 처분하면 약 83,700주(발행주식의 1.1%<span class="est">E</span>)이고, 전인장의 벌금 191억은 9-11 종가로 약 14,900주에 해당합니다(보유 236,000주, 약 3,016억). 반대매매 거리는 멉니다. 20만주가 모두 담보라고 가정하면 LTV는 31.3%<span class="est">E</span>이고 담보유지비율 140%를 가정한 반대매매 선은 주당 약 560,000원<span class="est">E</span>으로 9-11 종가의 44%<span class="est">E</span>입니다(담보 주식 수·유지비율은 미확인). 2026-04 회사채 2,000억의 사채관리계약은 삼양식품의 최대주주 변경을 기한이익 상실 사유로 두지만, 최대주주는 삼양라운드스퀘어(35.48%)라 지주사 안에서 지분이 옮겨 가는 승계는 이 조항에 걸리지 않습니다. 확률 20%<span class="est">E</span>는 오너 일가가 지금까지 합산 지분을 줄이지 않았다는 이력에서 나왔고, 반응의 자는 증여 실행 다음 날(7-07) +11.3%(코스피 -4.9%)와 벌금 확정일(9-10) -0.08%입니다.</p>
+
+<h3>⑩ 특수관계 거래·비영업 자산</h3>
+<p>연결 특수관계자 기타비용은 2023년 77억, 2024년 221억, 2025년 203억, 1H26 106억이며, 이 가운데 최대주주 삼양라운드스퀘어에 내는 브랜드 수수료 등이 2025년 93.0억, 1H26 58.2억입니다. 매출 쪽에서는 삼양애니(상해)가 2025년 877억으로 3년 사이 10배가 됐고 1H26 말 매출채권이 86.6억 남아 있습니다. 자산 쪽에서는 2025-05 충무로 사옥을 2,270억(자산총액의 14.23%)에 샀고, 2024-11 결정한 용산 토지 1,035억은 상대방 거래조건 불이행으로 2025-07-30 철회됐습니다. 2025-11에는 자사주 74,887주를 시간외로 전량 처분했습니다(결정 공시 기준가 1,372,000원·예정 1,027억, 실제 처분가 1,326,875원·993.7억, 처분결과보고서 2025-11-24). 매트릭스의 영향 1,035억은 비영업 자산 한 건의 현금 유출 규모를 용산 사례로 잡은 것이고, 확률은 25%<span class="est">E</span>입니다. 회사는 2025-11-12 리스크관리위원회를 신설해 내부거래 안건을 사전 심의한다고 밝혔고, 반기보고서에 자사주 매입·소각 계획이 없다고 적었습니다.</p>
+
+<h3>⑪ 수급·오버행과 ⑫ 멀티플 압축</h3>
+<p>국민연금은 1H26 말 805,319주(10.69%, 9-11 종가 약 10,292억)로 2025년 말 9.65%에서 늘었고, 2023년 말 12.72%에서 줄였던 이력이 있습니다. 2026년 연중 수급은 외국인 -697억, 기관 +4,261억(사모 +2,108·연기금 +1,407), 개인 -3,549억이었는데, 8-31~9-11에는 기관 -1,173억(사모 -593·투신 -565), 외국인 +417억, 개인 +783억으로 매도 주체가 기관으로 바뀌었습니다. 9-07 하루 -6.1%(코스피 +4.6%)는 기관 -336억·사모 -362억과 함께였습니다. 발행주식 1%가 963억이고 20일 평균 거래대금이 838억이니, 5% 주주 한 곳의 1%p 조정은 하루 거래대금을 넘는 물량입니다.</p>
+<p>멀티플은 2차 리스크입니다. 후행 PER은 2022-11 9.0배에서 2025-08 37.0배까지 움직였고 9-11은 19.74배, 2026년 컨센 기준 17.02배, 2027E(FnGuide 순이익 6,760억) 기준 14.2배, 2Q26 BPS 기준 PBR 6.29배입니다. NH(7-09)는 2026E PER 15.5배를 과거 2년 평균 22.5배와 비교했고, 하나(7-02)는 27F PER 13배까지 내려갔다고 적었습니다. 2026년 컨센 순이익 기준 PER 1배는 시총 5,659억입니다. 멀티플은 스스로 움직이기보다 ①~⑦의 성장률 신호를 따라 움직였으므로 확률 30%<span class="est">E</span>는 앞 리스크들이 먼저 나타난다는 조건부 값입니다.</p>
+
+<h2>2. 실측의 자 — 일곱 번의 낙폭과 사건별 반응</h2>
+<p>주가를 값 매기지 않는 대신 이 주식이 실제로 얼마나 내렸는지를 적습니다. 패킷이 키움 수정주가로 기록한 실측 낙폭은 2011년 이후 일곱 구간이고, 마지막은 진행 중인 2026-08 고점 이후 구간입니다. 가장 깊은 것은 2011~2012년 -64.8%와 2018년 -57.9%이고, 최근 세 번은 -34.0%·-37.3%·-18.3%입니다. 표에는 고점을 월말 종가로 되찾은 달을 함께 적어, 조정이 얼마나 오래 갔는지 비교할 수 있게 했습니다.</p>
+<table class="tx"><tr><th>구간</th><th>고점(종가·일자)</th><th>저점(종가·일자)</th><th>낙폭</th><th>기간</th><th>고점 회복(월말 종가)</th><th>원인(출처)</th></tr><tr><td>2011-2012 테마 급등 되돌림</td><td>56,200(2011-12-08)</td><td>19,800(2012-05-21)</td><td><b>-64.8%</b></td><td>5개월</td><td>2017-02</td><td>테마성 급등의 되돌림(원인 기사 미대조)</td></tr><tr><td>2018 불닭 1차 붐 소진</td><td>113,500(2018-06-04)</td><td>47,800(2019-01-03)</td><td><b>-57.9%</b></td><td>142거래일</td><td>2020-05</td><td>불닭 1차 붐 소진, 2019-01부터 오너 횡령 재판과 시기가 겹침(조사노트 C)</td></tr><tr><td>2020-2021 코로나 특수 소진</td><td>137,000(2020-06-17)</td><td>77,400(2021-11-11)</td><td><b>-43.5%</b></td><td>347거래일</td><td>2023-08</td><td>코로나 특수 소진, 2021년 수요 둔화·컨테이너 부족·원재료 상승으로 OPM 10.2%(증권신고서 2026-04)</td></tr><tr><td>2024 1분기 조정</td><td>234,500(2024-01-02)</td><td>170,900(2024-02-29)</td><td><b>-27.1%</b></td><td>40거래일</td><td>2024-04</td><td>연초 급등(2024-01-02 +8.6%) 뒤 되돌림, 원인 미확인</td></tr><tr><td>2024 하반기 급등 후 조정</td><td>712,000(2024-06-18)</td><td>470,000(2024-09-06)</td><td><b>-34.0%</b></td><td>57거래일</td><td>2024-12</td><td>1Q24 상한가 이후 급등의 조정, 6-11 덴마크 리콜, 8-05 글로벌 급락일 -8.7%</td></tr><tr><td>2025-09 고점 이후</td><td>1,630,000(2025-09-11)</td><td>1,022,000(2026-03-09)</td><td><b>-37.3%</b></td><td>115거래일</td><td>미회복</td><td>섹터 로테이션, 4Q25 라면 수출 증가율 +14.9%로 둔화, 밀양2 초기 가동, 외국인 -3,684억, 3-04 시장 폭락</td></tr><tr><td>2026-08 고점 이후</td><td>1,547,000(2026-08-28)</td><td>1,264,000(2026-09-10)</td><td><b>-18.3%</b></td><td>9거래일</td><td>미회복</td><td>원/달러 7-01 1,552.5원에서 9-11 1,344.4원, 7월 라면 수출 둔화 보도, 기관 -1,173억(8-31~9-11)</td></tr></table>
+<figure class=""><figcaption>장표 2. 실측 낙폭 7구간(종가 기준, %) — 황토색 40% 이상, 붉은색 2025년 이후</figcaption><svg viewBox="0 0 880 308" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="250.0" y1="30" x2="250.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="250.0" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-70%</text>
+<line x1="318.6" y1="30" x2="318.6" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="318.6" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-60%</text>
+<line x1="387.1" y1="30" x2="387.1" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="387.1" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-50%</text>
+<line x1="455.7" y1="30" x2="455.7" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="455.7" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-40%</text>
+<line x1="524.3" y1="30" x2="524.3" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="524.3" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-30%</text>
+<line x1="592.9" y1="30" x2="592.9" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="592.9" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-20%</text>
+<line x1="661.4" y1="30" x2="661.4" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="661.4" y="294" text-anchor="middle" font-size="11" fill="#8a857c">-10%</text>
+<line x1="730.0" y1="30" x2="730.0" y2="278" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="730.0" y="294" text-anchor="middle" font-size="11" fill="#8a857c">0%</text>
+<text x="250" y="18" font-size="11" fill="#8a857c">고점 대비 저점 낙폭(종가, 키움 수정주가) · 오른쪽: 고점에서 저점까지 기간과 고점 회복 월</text>
+<rect x="285.7" y="40" width="444.3" height="20" fill="#b07d2b" opacity="0.88"/>
+<text x="279.7" y="55.0" text-anchor="end" font-size="11" fill="#b07d2b" font-weight="700">-64.8%</text>
+<text x="8" y="55.0" font-size="11" fill="#8a857c">2011-12 ~ 2012-05 테마 급등 되돌림</text>
+<text x="738.0" y="55.0" font-size="10.5" fill="#8a857c">5개월 · 회복 2017-02</text>
+<rect x="333.0" y="74" width="397.0" height="20" fill="#b07d2b" opacity="0.88"/>
+<text x="327.0" y="89.0" text-anchor="end" font-size="11" fill="#b07d2b" font-weight="700">-57.9%</text>
+<text x="8" y="89.0" font-size="11" fill="#8a857c">2018-06 ~ 2019-01 불닭 1차 붐 소진</text>
+<text x="738.0" y="89.0" font-size="10.5" fill="#8a857c">7개월 · 회복 2020-05</text>
+<rect x="431.7" y="108" width="298.3" height="20" fill="#b07d2b" opacity="0.88"/>
+<text x="425.7" y="123.0" text-anchor="end" font-size="11" fill="#b07d2b" font-weight="700">-43.5%</text>
+<text x="8" y="123.0" font-size="11" fill="#8a857c">2020-06 ~ 2021-11 코로나 특수 소진</text>
+<text x="738.0" y="123.0" font-size="10.5" fill="#8a857c">17개월 · 회복 2023-08</text>
+<rect x="544.2" y="142" width="185.8" height="20" fill="#1f3a5f" opacity="0.88"/>
+<text x="538.2" y="157.0" text-anchor="end" font-size="11" fill="#1f3a5f" font-weight="700">-27.1%</text>
+<text x="8" y="157.0" font-size="11" fill="#8a857c">2024-01 ~ 2024-02 1분기 조정</text>
+<text x="738.0" y="157.0" font-size="10.5" fill="#8a857c">1개월 · 회복 2024-04</text>
+<rect x="496.9" y="176" width="233.1" height="20" fill="#1f3a5f" opacity="0.88"/>
+<text x="490.9" y="191.0" text-anchor="end" font-size="11" fill="#1f3a5f" font-weight="700">-34.0%</text>
+<text x="8" y="191.0" font-size="11" fill="#8a857c">2024-06 ~ 2024-09 하반기 급등 후 조정</text>
+<text x="738.0" y="191.0" font-size="10.5" fill="#8a857c">3개월 · 회복 2024-12</text>
+<rect x="474.2" y="210" width="255.8" height="20" fill="#a44a3f" opacity="0.88"/>
+<text x="468.2" y="225.0" text-anchor="end" font-size="11" fill="#a44a3f" font-weight="700">-37.3%</text>
+<text x="8" y="225.0" font-size="11" fill="#8a857c">2025-09 ~ 2026-03 고점 이후</text>
+<text x="738.0" y="225.0" font-size="10.5" fill="#8a857c">6개월 · 고점 미회복</text>
+<rect x="604.5" y="244" width="125.5" height="20" fill="#a44a3f" opacity="0.88"/>
+<text x="598.5" y="259.0" text-anchor="end" font-size="11" fill="#a44a3f" font-weight="700">-18.3%</text>
+<text x="8" y="259.0" font-size="11" fill="#8a857c">2026-08 ~ 2026-09 고점 이후</text>
+<text x="738.0" y="259.0" font-size="10.5" fill="#8a857c">1개월 · 고점 미회복</text>
+</svg><div class="src">자료: packet.drawdowns(키움 ka10081 일봉·ka10083 월봉, 수정주가). 기간은 고점 월에서 저점 월까지, 회복은 저점 이후 월말 종가가 고점을 처음 넘은 달. 원인은 조사노트 D·C와 2026-04 증권신고서. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 일곱 구간 가운데 40%를 넘은 것은 셋(-64.8%·-57.9%·-43.5%)이고 모두 2021년 이전입니다. 2024년 이후 네 번은 -18.3%~-37.3%이며, 2024년의 두 번은 2~3개월 만에 고점을 되찾았지만 2025-09 고점(1,630,000원)은 12개월째 회복되지 않았습니다. <b>원인.</b> 깊은 세 번은 이익 자체가 꺾인 국면이었습니다. 2018년은 불닭 1차 붐의 소진, 2020~2021년은 코로나 특수 소진과 운임·원료 상승으로 2021년 OPM이 10.2%까지 내려간 시기입니다. 2024년 이후는 이익이 계속 늘어나는 중에 멀티플과 수급이 조정한 국면이라 폭이 얕았습니다. <b>함의.</b> 허브 판정의 하방 자는 두 층입니다. 이익이 유지되는 조정이면 -27%~-37%(2024~2026 실측), 이익이 꺾이는 조정이면 -43%~-58%(2018·2020~2021 실측)입니다. 리스크 ①②⑥이 영업이익률만 깎는지, ③⑦이 성장률까지 꺾는지가 두 층을 가릅니다.</p>
+<p><b>2018년 -57.9%와 2020~2021년 -43.5%.</b> 2018-06 고점 113,500원은 불닭의 첫 해외 붐이 만든 가격이었고, 2019-01 저점까지 7개월 동안 절반 이상을 잃었습니다. 같은 시기 2019-01부터 오너 일가의 횡령 재판이 진행됐지만(조사노트 C), 주가 하락의 원인을 재판으로 돌릴 근거는 찾지 못했습니다. 2020-06 코로나 특수의 고점 137,000원에서 2021-11 77,400원까지는 17개월이 걸렸고, 회사 스스로 증권신고서에 2021년 수익성 저하 원인을 라면 수요 둔화·컨테이너 부족·원재료 상승으로 적었습니다. 두 번 모두 회복에 2년 가까이 걸렸다는 점이 최근 조정과 다릅니다.</p>
+<p><b>2024년 두 번과 2025-09 이후 -37.3%.</b> 2024-06 고점 712,000원에서 9월 470,000원까지 -34.0%는 1Q24 상한가 뒤 급등의 조정이었고, 덴마크 리콜(6-11)과 글로벌 급락일(8-05, -8.7%)이 끼었습니다. 이익은 그 사이에도 늘었고 12월에 고점을 되찾았습니다. 2025-09-11 고점 1,630,000원에서 2026-03-09 1,022,000원까지 -37.3%는 반도체·자동차·방산으로의 섹터 로테이션, 4Q25 라면 수출 증가율 +14.9%로의 둔화, 밀양2 초기 가동, 외국인 순매도(2025-09-12~2026-03-09 -3,684억)가 겹쳤고, 3-04에는 코스피 -12.06% 폭락일에 -11.3%가 나왔습니다. 그 뒤 3-09에서 8-28까지 +51.4% 반등은 국내 기관(3-10~8-28 +3,517억)이 이끌었습니다.</p>
+<p><b>2026-08 이후 -18.3%와 두 개의 기준가.</b> 8-28 1,547,000원에서 9-10 1,264,000원까지 9거래일 만에 -18.3%였고, 9-11 종가 1,278,000원은 8-28 대비 -17.4%입니다. 이 가격 근처에 두 개의 공시 기준가가 있습니다. 증여 평가기간 84거래일 종가 평균 1,233,012원은 9-11 종가보다 3.5% 낮고, 2025-11 자사주 실제 처분가 1,326,875원(처분결과보고서)은 3.8% 높습니다. 두 값은 적정가치가 아니라 오너 일가와 회사가 실제로 거래나 과세의 기준으로 삼은 가격이라는 뜻에서만 자로 씁니다.</p>
+
+<h3>사건별 일간 반응 — 이 주식은 무엇에 얼마나 움직였나</h3>
+<p>키움 일봉으로 리스크 매트릭스에 닿는 사건일의 등락을 뽑고 같은 날 코스피를 옆에 뒀습니다. 요인은 조사노트 D·B·C의 기사·공시이며, 시점만 겹치고 원인 기사를 확인하지 못한 날은 표에 그렇게 적었습니다. 일간 등락의 절대값이 가장 큰 날은 2025-05-16(+19.07%)입니다.</p>
+<table class=""><tr><th>날짜</th><th>분류</th><th>사건(조사노트 D·B·C)</th><th>삼양식품</th><th>코스피</th><th>종가(원)</th></tr><tr><td>2024-06-11</td><td>식품안전</td><td>덴마크 DVFA 불닭 3종 리콜</td><td><b>-4.68%</b></td><td>+0.15%</td><td>590,000</td></tr><tr><td>2024-08-05</td><td>시장</td><td>글로벌 급락일</td><td><b>-8.65%</b></td><td>-8.77%</td><td>528,000</td></tr><tr><td>2025-04-04</td><td>관세</td><td>미국 상호관세 발표 직후</td><td><b>-5.10%</b></td><td>-0.86%</td><td>800,000</td></tr><tr><td>2025-04-10</td><td>관세</td><td>상호관세 90일 유예</td><td><b>+10.83%</b></td><td>+6.60%</td><td>880,000</td></tr><tr><td>2025-05-16</td><td>실적·수급</td><td>1Q25 실적·MSCI 편입 확정 직후</td><td><b>+19.07%</b></td><td>+0.21%</td><td>1,180,000</td></tr><tr><td>2025-10-30</td><td>관세</td><td>한미 관세 타결(10-29)·미국 공급가 9% 인상 보도일</td><td><b>+6.27%</b></td><td>+0.14%</td><td>1,322,000</td></tr><tr><td>2025-11-14</td><td>실적</td><td>3Q25 분기보고서(원가율 58.7%)</td><td><b>-3.51%</b></td><td>-3.81%</td><td>1,320,000</td></tr><tr><td>2025-11-20</td><td>지배구조</td><td>자사주 74,887주 시간외 처분</td><td><b>+1.89%</b></td><td>+1.92%</td><td>1,401,000</td></tr><tr><td>2026-01-07</td><td>수급</td><td>섹터 로테이션·외국인 -1,094억</td><td><b>-8.24%</b></td><td>+0.57%</td><td>1,158,000</td></tr><tr><td>2026-02-02</td><td>실적·시장</td><td>4Q25 잠정(1-29) 뒤·코스피 급락 동반</td><td><b>-6.78%</b></td><td>-5.26%</td><td>1,100,000</td></tr><tr><td>2026-02-23</td><td>관세</td><td>IEEPA 위법 판결(2-20) 뒤 첫 거래일</td><td><b>+7.22%</b></td><td>+0.65%</td><td>1,248,000</td></tr><tr><td>2026-03-04</td><td>시장</td><td>코스피 폭락일</td><td><b>-11.26%</b></td><td>-12.06%</td><td>1,040,000</td></tr><tr><td>2026-04-29</td><td>식품안전</td><td>벨기에 까르보 불닭 리콜</td><td><b>+2.26%</b></td><td>+0.75%</td><td>1,314,000</td></tr><tr><td>2026-05-14</td><td>실적</td><td>1Q26 컨센 8% 상회</td><td><b>+11.12%</b></td><td>+1.75%</td><td>1,439,000</td></tr><tr><td>2026-07-07</td><td>지배구조</td><td>20만주 증여 실행(7-06) 다음 날</td><td><b>+11.29%</b></td><td>-4.91%</td><td>1,222,000</td></tr><tr><td>2026-07-24</td><td>관세</td><td>섹션 301 12.5% 발효</td><td><b>+2.13%</b></td><td>-5.72%</td><td>1,151,000</td></tr><tr><td>2026-08-14</td><td>실적</td><td>2Q26 실적(OP 1,762억)</td><td><b>+4.18%</b></td><td>+2.42%</td><td>1,270,000</td></tr><tr><td>2026-09-07</td><td>환율·수급</td><td>원화 강세·기관 -336억</td><td><b>-6.14%</b></td><td>+4.61%</td><td>1,330,000</td></tr><tr><td>2026-09-10</td><td>지배구조</td><td>전인장 벌금 191억 확정</td><td><b>-0.08%</b></td><td>-0.25%</td><td>1,264,000</td></tr></table>
+<figure class=""><figcaption>장표 3. 리스크 사건일의 일간 등락률(%) — 남색 실적, 황토색 관세, 붉은색 식품 안전, 파랑 지배구조, 청록 수급·환율, 회색 시장</figcaption><svg viewBox="0 0 880 467" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="330.0" y1="26" x2="330.0" y2="437" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="330.0" y="453" text-anchor="middle" font-size="11" fill="#8a857c">-20%</text>
+<line x1="450.0" y1="26" x2="450.0" y2="437" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="450.0" y="453" text-anchor="middle" font-size="11" fill="#8a857c">-10%</text>
+<line x1="570.0" y1="26" x2="570.0" y2="437" stroke="#d8d4cc" stroke-width="1.2"/>
+<text x="570.0" y="453" text-anchor="middle" font-size="11" fill="#8a857c">+0%</text>
+<line x1="690.0" y1="26" x2="690.0" y2="437" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="690.0" y="453" text-anchor="middle" font-size="11" fill="#8a857c">+10%</text>
+<line x1="810.0" y1="26" x2="810.0" y2="437" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="810.0" y="453" text-anchor="middle" font-size="11" fill="#8a857c">+20%</text>
+<text x="8" y="16" font-size="11" fill="#8a857c">전일 종가 대비 등락률(%) · 막대 옆 회색 숫자 = 같은 날 코스피</text>
+<rect x="513.8" y="33" width="56.2" height="14" fill="#a44a3f" opacity="0.88"/>
+<text x="8" y="43.5" font-size="10.5" fill="#8a857c">2024-06-11 덴마크 DVFA 불닭 3종 리콜</text>
+<text x="507.8" y="43.5" text-anchor="end" font-size="10.5" fill="#a44a3f" font-weight="700">-4.7</text>
+<text x="872" y="43.5" text-anchor="end" font-size="10" fill="#8a857c">+0.2</text>
+<rect x="466.2" y="54" width="103.8" height="14" fill="#8a857c" opacity="0.88"/>
+<text x="8" y="64.5" font-size="10.5" fill="#8a857c">2024-08-05 글로벌 급락일</text>
+<text x="460.2" y="64.5" text-anchor="end" font-size="10.5" fill="#8a857c" font-weight="700">-8.7</text>
+<text x="872" y="64.5" text-anchor="end" font-size="10" fill="#8a857c">-8.8</text>
+<rect x="508.8" y="75" width="61.2" height="14" fill="#b07d2b" opacity="0.88"/>
+<text x="8" y="85.5" font-size="10.5" fill="#8a857c">2025-04-04 미국 상호관세 발표 직후</text>
+<text x="502.8" y="85.5" text-anchor="end" font-size="10.5" fill="#b07d2b" font-weight="700">-5.1</text>
+<text x="872" y="85.5" text-anchor="end" font-size="10" fill="#8a857c">-0.9</text>
+<rect x="570.0" y="96" width="130.0" height="14" fill="#b07d2b" opacity="0.88"/>
+<text x="8" y="106.5" font-size="10.5" fill="#8a857c">2025-04-10 상호관세 90일 유예</text>
+<text x="706.0" y="106.5" text-anchor="start" font-size="10.5" fill="#b07d2b" font-weight="700">+10.8</text>
+<text x="872" y="106.5" text-anchor="end" font-size="10" fill="#8a857c">+6.6</text>
+<rect x="570.0" y="117" width="228.9" height="14" fill="#1f3a5f" opacity="0.88"/>
+<text x="8" y="127.5" font-size="10.5" fill="#8a857c">2025-05-16 1Q25 실적·MSCI 편입 확정 직후</text>
+<text x="804.9" y="127.5" text-anchor="start" font-size="10.5" fill="#1f3a5f" font-weight="700">+19.1</text>
+<text x="872" y="127.5" text-anchor="end" font-size="10" fill="#8a857c">+0.2</text>
+<rect x="570.0" y="138" width="75.2" height="14" fill="#b07d2b" opacity="0.88"/>
+<text x="8" y="148.5" font-size="10.5" fill="#8a857c">2025-10-30 한미 관세 타결·미국 공급가 인상 보도</text>
+<text x="651.2" y="148.5" text-anchor="start" font-size="10.5" fill="#b07d2b" font-weight="700">+6.3</text>
+<text x="872" y="148.5" text-anchor="end" font-size="10" fill="#8a857c">+0.1</text>
+<rect x="527.9" y="159" width="42.1" height="14" fill="#1f3a5f" opacity="0.88"/>
+<text x="8" y="169.5" font-size="10.5" fill="#8a857c">2025-11-14 3Q25 분기보고서(원가율 58.7%)</text>
+<text x="521.9" y="169.5" text-anchor="end" font-size="10.5" fill="#1f3a5f" font-weight="700">-3.5</text>
+<text x="872" y="169.5" text-anchor="end" font-size="10" fill="#8a857c">-3.8</text>
+<rect x="570.0" y="180" width="22.7" height="14" fill="#3a6ea5" opacity="0.88"/>
+<text x="8" y="190.5" font-size="10.5" fill="#8a857c">2025-11-20 자사주 74,887주 시간외 처분</text>
+<text x="598.7" y="190.5" text-anchor="start" font-size="10.5" fill="#3a6ea5" font-weight="700">+1.9</text>
+<text x="872" y="190.5" text-anchor="end" font-size="10" fill="#8a857c">+1.9</text>
+<rect x="471.1" y="201" width="98.9" height="14" fill="#2b7a78" opacity="0.88"/>
+<text x="8" y="211.5" font-size="10.5" fill="#8a857c">2026-01-07 섹터 로테이션·외국인 -1,094억</text>
+<text x="465.1" y="211.5" text-anchor="end" font-size="10.5" fill="#2b7a78" font-weight="700">-8.2</text>
+<text x="872" y="211.5" text-anchor="end" font-size="10" fill="#8a857c">+0.6</text>
+<rect x="488.6" y="222" width="81.4" height="14" fill="#1f3a5f" opacity="0.88"/>
+<text x="8" y="232.5" font-size="10.5" fill="#8a857c">2026-02-02 4Q25 잠정 뒤·코스피 급락 동반</text>
+<text x="482.6" y="232.5" text-anchor="end" font-size="10.5" fill="#1f3a5f" font-weight="700">-6.8</text>
+<text x="872" y="232.5" text-anchor="end" font-size="10" fill="#8a857c">-5.3</text>
+<rect x="570.0" y="243" width="86.6" height="14" fill="#b07d2b" opacity="0.88"/>
+<text x="8" y="253.5" font-size="10.5" fill="#8a857c">2026-02-23 IEEPA 위법 판결 뒤 첫 거래일</text>
+<text x="662.6" y="253.5" text-anchor="start" font-size="10.5" fill="#b07d2b" font-weight="700">+7.2</text>
+<text x="872" y="253.5" text-anchor="end" font-size="10" fill="#8a857c">+0.6</text>
+<rect x="434.8" y="264" width="135.2" height="14" fill="#8a857c" opacity="0.88"/>
+<text x="8" y="274.5" font-size="10.5" fill="#8a857c">2026-03-04 코스피 폭락일</text>
+<text x="428.8" y="274.5" text-anchor="end" font-size="10.5" fill="#8a857c" font-weight="700">-11.3</text>
+<text x="872" y="274.5" text-anchor="end" font-size="10" fill="#8a857c">-12.1</text>
+<rect x="570.0" y="285" width="27.1" height="14" fill="#a44a3f" opacity="0.88"/>
+<text x="8" y="295.5" font-size="10.5" fill="#8a857c">2026-04-29 벨기에 까르보 불닭 리콜</text>
+<text x="603.1" y="295.5" text-anchor="start" font-size="10.5" fill="#a44a3f" font-weight="700">+2.3</text>
+<text x="872" y="295.5" text-anchor="end" font-size="10" fill="#8a857c">+0.8</text>
+<rect x="570.0" y="306" width="133.4" height="14" fill="#1f3a5f" opacity="0.88"/>
+<text x="8" y="316.5" font-size="10.5" fill="#8a857c">2026-05-14 1Q26 컨센 8% 상회</text>
+<text x="709.4" y="316.5" text-anchor="start" font-size="10.5" fill="#1f3a5f" font-weight="700">+11.1</text>
+<text x="872" y="316.5" text-anchor="end" font-size="10" fill="#8a857c">+1.8</text>
+<rect x="570.0" y="327" width="135.5" height="14" fill="#3a6ea5" opacity="0.88"/>
+<text x="8" y="337.5" font-size="10.5" fill="#8a857c">2026-07-07 20만주 증여 실행(7-06) 다음 날</text>
+<text x="711.5" y="337.5" text-anchor="start" font-size="10.5" fill="#3a6ea5" font-weight="700">+11.3</text>
+<text x="872" y="337.5" text-anchor="end" font-size="10" fill="#8a857c">-4.9</text>
+<rect x="570.0" y="348" width="25.6" height="14" fill="#b07d2b" opacity="0.88"/>
+<text x="8" y="358.5" font-size="10.5" fill="#8a857c">2026-07-24 섹션 301 12.5% 발효</text>
+<text x="601.6" y="358.5" text-anchor="start" font-size="10.5" fill="#b07d2b" font-weight="700">+2.1</text>
+<text x="872" y="358.5" text-anchor="end" font-size="10" fill="#8a857c">-5.7</text>
+<rect x="570.0" y="369" width="50.2" height="14" fill="#1f3a5f" opacity="0.88"/>
+<text x="8" y="379.5" font-size="10.5" fill="#8a857c">2026-08-14 2Q26 실적(OP 1,762억)</text>
+<text x="626.2" y="379.5" text-anchor="start" font-size="10.5" fill="#1f3a5f" font-weight="700">+4.2</text>
+<text x="872" y="379.5" text-anchor="end" font-size="10" fill="#8a857c">+2.4</text>
+<rect x="496.3" y="390" width="73.7" height="14" fill="#2b7a78" opacity="0.88"/>
+<text x="8" y="400.5" font-size="10.5" fill="#8a857c">2026-09-07 원화 강세·기관 -336억</text>
+<text x="490.3" y="400.5" text-anchor="end" font-size="10.5" fill="#2b7a78" font-weight="700">-6.1</text>
+<text x="872" y="400.5" text-anchor="end" font-size="10" fill="#8a857c">+4.6</text>
+<rect x="569.1" y="411" width="1.0" height="14" fill="#3a6ea5" opacity="0.88"/>
+<text x="8" y="421.5" font-size="10.5" fill="#8a857c">2026-09-10 전인장 벌금 191억 확정</text>
+<text x="563.1" y="421.5" text-anchor="end" font-size="10.5" fill="#3a6ea5" font-weight="700">-0.1</text>
+<text x="872" y="421.5" text-anchor="end" font-size="10" fill="#8a857c">-0.3</text>
+</svg><div class="src">자료: packet.daily(키움 ka10081 일봉, 9-11 종가)에서 전일 종가 대비 계산. 코스피는 같은 일봉 파일의 지수 종가. 사건 분류는 조사노트 D·B·C. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 큰 등락은 실적과 시장에서 나왔습니다. 1Q25 실적·MSCI 확정 직후 +19.1%, 1Q26 +11.1%, 코스피 폭락일 -11.3%, 1-07 수급 이탈 -8.2%가 상위입니다. 식품 안전 사건일의 절대값은 최대 4.7%, 지배구조 사건일(증여 다음 날 제외)은 최대 1.9%에 그쳤고, 관세는 발표 -5.1%와 유예 +10.8%처럼 양방향이었습니다. <b>원인.</b> 이 주식의 가격은 분기 이익의 서프라이즈와 시장 전체의 위험 선호에 먼저 반응해 왔습니다. 리콜·벌금·증여 같은 사건은 이익 경로를 바꾸지 않는 한 하루 몇 % 안에서 흡수됐습니다. <b>함의.</b> 그래서 매트릭스의 ⑧⑨는 헤드라인이 아니라 이익으로 번질 때만 판정에 닿습니다. 반대로 ①②⑥처럼 분기 OPM으로 바로 나타나는 리스크는 11-14 분기보고서 하루에 큰 반응으로 몰릴 수 있고, 2025-11-14 3Q25 분기보고서 당일 -3.5%(원가율 58.7%)가 그 선례입니다.</p>
+<p>증여 실행 다음 날인 7-07의 +11.3%는 코스피가 -4.9%인 날의 역행이라 눈에 띄지만, 서울경제는 해외 비중이 높은 K푸드 저가 매수를 이유로 보도했고 증여 공시는 7-09에 나왔습니다. 오너 이벤트를 호재로 읽을 근거는 없고, 오히려 증여가 주가에 중립이었다는 정도로만 읽습니다. 9-07의 -6.1%는 코스피 +4.6%와 반대 방향이었고, 원화 강세 기사와 기관 매도가 같은 날 겹쳤습니다.</p>
+
+<h3>원/달러와 주가 — 9월에야 나타난 동행</h3>
+<figure class=""><figcaption>장표 4. 삼양식품 종가(만원, 왼쪽)와 원/달러(원, 오른쪽), 2025-01-02~2026-09-11</figcaption><svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="286.0" x2="810" y2="286.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="290.0" text-anchor="end" font-size="11" fill="#1f3a5f">60</text>
+<line x1="62" y1="241.7" x2="810" y2="241.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="245.7" text-anchor="end" font-size="11" fill="#1f3a5f">80</text>
+<line x1="62" y1="197.3" x2="810" y2="197.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="201.3" text-anchor="end" font-size="11" fill="#1f3a5f">100</text>
+<line x1="62" y1="153.0" x2="810" y2="153.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="157.0" text-anchor="end" font-size="11" fill="#1f3a5f">120</text>
+<line x1="62" y1="108.7" x2="810" y2="108.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="112.7" text-anchor="end" font-size="11" fill="#1f3a5f">140</text>
+<line x1="62" y1="64.3" x2="810" y2="64.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="68.3" text-anchor="end" font-size="11" fill="#1f3a5f">160</text>
+<line x1="62" y1="20.0" x2="810" y2="20.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="24.0" text-anchor="end" font-size="11" fill="#1f3a5f">180</text>
+<text x="816" y="290.0" font-size="11" fill="#b07d2b">1,300</text>
+<text x="816" y="245.7" font-size="11" fill="#b07d2b">1,350</text>
+<text x="816" y="201.3" font-size="11" fill="#b07d2b">1,400</text>
+<text x="816" y="157.0" font-size="11" fill="#b07d2b">1,450</text>
+<text x="816" y="112.7" font-size="11" fill="#b07d2b">1,500</text>
+<text x="816" y="68.3" font-size="11" fill="#b07d2b">1,550</text>
+<text x="816" y="24.0" font-size="11" fill="#b07d2b">1,600</text>
+<text x="62" y="12" font-size="11" fill="#1f3a5f">삼양식품 종가(만원, 왼쪽)</text>
+<text x="810" y="12" text-anchor="end" font-size="11" fill="#b07d2b">원/달러(원, 오른쪽)</text>
+<line x1="62.0" y1="20" x2="62.0" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="62.0" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2025-01</text>
+<line x1="167.3" y1="20" x2="167.3" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="167.3" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2025-04</text>
+<line x1="276.2" y1="20" x2="276.2" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="276.2" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2025-07</text>
+<line x1="394.2" y1="20" x2="394.2" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="394.2" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2025-10</text>
+<line x1="501.4" y1="20" x2="501.4" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="501.4" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2026-01</text>
+<line x1="608.5" y1="20" x2="608.5" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="608.5" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2026-04</text>
+<line x1="719.2" y1="20" x2="719.2" y2="286" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="719.2" y="302" text-anchor="middle" font-size="10" fill="#8a857c">2026-07</text>
+<polyline points="62.0,133.9 63.8,134.4 65.6,141.6 67.4,149.0 69.3,143.2 71.1,143.5 72.9,131.0 74.7,137.0 76.5,143.2 78.3,147.7 80.2,146.3 82.0,144.6 83.8,161.0 85.6,165.0 87.4,164.5 89.2,165.0 91.0,156.5 92.9,145.0 94.7,145.9 96.5,149.9 98.3,157.0 100.1,155.7 101.9,146.1 103.8,151.0 105.6,150.8 107.4,149.9 109.2,159.2 111.0,158.5 112.8,159.2 114.7,159.7 116.5,158.8 118.3,166.6 120.1,163.4 121.9,170.6 123.7,168.3 125.5,165.9 127.4,153.4 129.2,142.4 131.0,148.1 132.8,156.5 134.6,154.3 136.4,153.2 138.3,145.0 140.1,150.3 141.9,151.2 143.7,148.6 145.5,149.0 147.3,157.4 149.1,151.4 151.0,145.6 152.8,138.4 154.6,139.3 156.4,137.3 158.2,140.1 160.0,136.2 161.9,138.8 163.7,134.4 165.5,131.7 167.3,133.9 169.1,137.5 170.9,151.0 172.7,142.8 174.6,134.8 176.4,120.6 178.2,149.0 180.0,149.5 181.8,173.2 183.6,177.8 185.5,172.1 187.3,182.3 189.1,180.0 190.9,176.2 192.7,178.3 194.5,168.5 196.3,172.9 198.2,169.0 200.0,162.3 201.8,164.5 203.6,167.2 205.4,164.1 207.2,213.3 209.1,198.7 210.9,192.6 212.7,197.8 214.5,179.2 216.3,181.8 218.1,189.4 220.0,197.3 221.8,198.2 223.6,206.1 225.4,201.9 227.2,217.7 229.0,212.4 230.8,225.7 232.7,223.9 234.5,218.6 236.3,219.5 238.1,222.2 239.9,211.9 241.7,216.0 243.6,229.7 245.4,230.4 247.2,237.1 249.0,226.3 250.8,223.5 252.6,236.0 254.4,225.3 256.3,233.7 258.1,215.5 259.9,219.9 261.7,217.0 263.5,218.2 265.3,221.7 267.2,233.7 269.0,231.9 270.8,234.1 272.6,229.3 274.4,238.1 276.2,234.6 278.0,236.3 279.9,229.7 281.7,227.0 283.5,218.6 285.3,222.6 287.1,219.7 288.9,221.7 290.8,215.8 292.6,212.2 294.4,208.4 296.2,208.9 298.0,204.9 299.8,204.3 301.7,212.1 303.5,213.7 305.3,218.2 307.1,220.7 308.9,211.1 310.7,206.2 312.5,207.1 314.4,203.5 316.2,201.8 318.0,205.3 319.8,209.7 321.6,208.2 323.4,210.2 325.3,210.6 327.1,204.9 328.9,204.0 330.7,210.2 332.5,215.1 334.3,206.2 336.1,207.3 338.0,203.4 339.8,199.6 341.6,196.0 343.4,209.8 345.2,204.9 347.0,201.8 348.9,202.7 350.7,210.2 352.5,204.9 354.3,203.1 356.1,200.9 357.9,205.3 359.7,202.7 361.6,205.3 363.4,209.3 365.2,206.2 367.0,206.3 368.8,205.8 370.6,202.7 372.5,209.3 374.3,215.2 376.1,214.2 377.9,207.5 379.7,198.2 381.5,204.4 383.3,201.3 385.2,192.9 387.0,189.4 388.8,188.0 390.6,196.9 392.4,192.0 394.2,194.2 396.1,175.4 397.9,165.4 399.7,173.4 401.5,170.3 403.3,177.4 405.1,180.9 407.0,176.2 408.8,177.8 410.6,169.0 412.4,168.3 414.2,164.1 416.0,162.1 417.8,167.6 419.7,166.7 421.5,172.9 423.3,170.3 425.1,169.7 426.9,169.8 428.7,158.3 430.6,161.0 432.4,153.9 434.2,144.1 436.0,147.0 437.8,142.5 439.6,135.7 441.4,134.4 443.3,148.1 445.1,141.9 446.9,143.2 448.7,135.7 450.5,130.8 452.3,133.5 454.2,130.7 456.0,138.6 457.8,134.8 459.6,141.5 461.4,134.8 463.2,134.5 465.0,135.7 466.9,137.9 468.7,130.8 470.5,130.8 472.3,135.7 474.1,134.6 475.9,138.3 477.8,133.1 479.6,128.6 481.4,134.6 483.2,131.3 485.0,127.7 486.8,129.5 488.7,125.5 490.5,125.7 492.3,124.6 494.1,153.0 495.9,157.4 497.7,166.7 499.5,161.0 501.4,155.9 503.2,155.8 505.0,153.9 506.8,152.6 508.6,150.3 510.4,144.2 512.3,137.0 514.1,127.7 515.9,138.4 517.7,135.0 519.5,130.4 521.3,131.3 523.1,126.6 525.0,137.3 526.8,139.7 528.6,148.3 530.4,154.8 532.2,165.9 534.0,167.6 535.9,166.3 537.7,151.2 539.5,149.9 541.3,152.1 543.1,143.7 544.9,136.2 546.7,139.3 548.6,144.6 550.4,145.0 552.2,154.8 554.0,159.7 555.8,150.3 557.6,152.1 559.5,154.8 561.3,156.5 563.1,159.7 564.9,172.9 566.7,168.5 568.5,138.4 570.3,126.4 572.2,141.0 574.0,127.3 575.8,122.0 577.6,137.5 579.4,130.4 581.2,127.3 583.1,116.6 584.9,109.6 586.7,116.2 588.5,119.3 590.3,104.2 592.1,116.6 594.0,102.9 595.8,118.0 597.6,111.3 599.4,104.7 601.2,101.6 603.0,100.7 604.8,93.2 606.7,99.4 608.5,97.1 610.3,97.6 612.1,96.7 613.9,101.1 615.7,111.3 617.6,125.5 619.4,129.9 621.2,118.2 623.0,126.0 624.8,132.2 626.6,129.5 628.4,125.7 630.3,127.0 632.1,133.2 633.9,124.6 635.7,126.8 637.5,122.9 639.3,128.2 641.2,130.8 643.0,131.3 644.8,119.3 646.6,130.4 648.4,136.2 650.2,153.9 652.0,145.9 653.9,140.6 655.7,130.8 657.5,115.8 659.3,118.0 661.1,114.4 662.9,110.4 664.8,115.8 666.6,101.8 668.4,110.0 670.2,103.8 672.0,98.0 673.8,102.0 675.7,106.9 677.5,111.8 679.3,102.0 681.1,95.8 682.9,77.6 684.7,78.5 686.5,55.9 688.4,84.0 690.2,86.9 692.0,86.9 693.8,91.8 695.6,95.6 697.4,94.9 699.3,98.9 701.1,86.1 702.9,75.0 704.7,79.4 706.5,74.5 708.3,79.0 710.1,70.1 712.0,68.8 713.8,75.4 715.6,71.9 717.4,66.1 719.2,62.1 721.0,71.0 722.9,83.0 724.7,81.6 726.5,93.4 728.3,102.5 730.1,102.5 731.9,106.9 733.7,109.1 735.6,116.6 737.4,118.9 739.2,116.6 741.0,127.7 742.8,124.2 744.6,127.3 746.5,129.5 748.3,141.9 750.1,138.8 751.9,148.4 753.7,156.5 755.5,174.1 757.3,161.9 759.2,170.0 761.0,169.8 762.8,176.5 764.6,175.6 766.4,187.6 768.2,180.0 770.1,185.4 771.9,180.5 773.7,179.4 775.5,181.8 777.3,185.4 779.1,206.2 781.0,201.9 782.8,208.9 784.6,211.5 786.4,212.0 788.2,209.7 790.0,213.3 791.8,214.2 793.7,224.4 795.5,219.1 797.3,232.5 799.1,234.1 800.9,242.1 802.7,244.3 804.6,249.2 806.4,249.6 808.2,240.8 810.0,246.6" fill="none" stroke="#b07d2b" stroke-width="1.6"/>
+<polyline points="62.0,255.2 63.8,254.7 65.6,256.3 67.4,256.7 69.3,261.4 71.1,255.0 72.9,252.8 74.7,250.3 76.5,250.1 78.3,251.6 80.2,248.3 82.0,250.1 83.8,255.6 85.6,258.3 87.4,259.6 89.2,264.3 91.0,261.6 92.9,267.4 94.7,262.1 96.5,264.1 98.3,262.9 100.1,239.7 101.9,239.4 103.8,242.1 105.6,238.3 107.4,236.6 109.2,241.0 111.0,225.7 112.8,222.6 114.7,225.3 116.5,222.6 118.3,223.9 120.1,218.2 121.9,220.6 123.7,224.2 125.5,224.8 127.4,223.0 129.2,228.4 131.0,230.1 132.8,221.1 134.6,213.5 136.4,218.2 138.3,220.2 140.1,225.3 141.9,223.9 143.7,223.7 145.5,215.7 147.3,213.7 149.1,213.7 151.0,214.8 152.8,217.7 154.6,215.7 156.4,222.2 158.2,224.6 160.0,225.7 161.9,234.6 163.7,231.9 165.5,228.4 167.3,231.2 169.1,228.4 170.9,232.1 172.7,241.7 174.6,245.7 176.4,240.8 178.2,243.0 180.0,223.9 181.8,218.8 183.6,215.1 185.5,214.4 187.3,212.4 189.1,211.5 190.9,206.0 192.7,206.9 194.5,206.0 196.3,213.7 198.2,213.1 200.0,210.9 201.8,208.6 203.6,201.3 205.4,204.0 207.2,200.0 209.1,208.4 210.9,203.5 212.7,198.9 214.5,209.3 216.3,208.4 218.1,197.6 220.0,199.3 221.8,157.4 223.6,163.6 225.4,165.4 227.2,162.1 229.0,169.6 230.8,165.6 232.7,171.6 234.5,168.7 236.3,173.8 238.1,174.9 239.9,172.7 241.7,179.2 243.6,168.5 245.4,167.9 247.2,166.3 249.0,162.5 250.8,153.7 252.6,154.8 254.4,153.9 256.3,135.5 258.1,133.5 259.9,137.0 261.7,135.0 263.5,129.3 265.3,124.6 267.2,131.7 269.0,131.1 270.8,126.6 272.6,123.3 274.4,109.8 276.2,117.1 278.0,117.1 279.9,124.2 281.7,137.7 283.5,123.3 285.3,100.7 287.1,91.2 288.9,86.9 290.8,93.2 292.6,94.9 294.4,88.5 296.2,91.8 298.0,90.0 299.8,108.2 301.7,110.2 303.5,119.5 305.3,120.9 307.1,125.7 308.9,122.4 310.7,122.0 312.5,117.1 314.4,117.1 316.2,99.4 318.0,102.2 319.8,110.0 321.6,105.1 323.4,102.2 325.3,100.9 327.1,96.5 328.9,86.1 330.7,97.8 332.5,106.4 334.3,113.1 336.1,113.8 338.0,111.8 339.8,119.1 341.6,111.8 343.4,100.2 345.2,101.8 347.0,86.3 348.9,83.8 350.7,65.0 352.5,71.9 354.3,71.6 356.1,75.2 357.9,74.1 359.7,73.0 361.6,75.0 363.4,75.4 365.2,77.2 367.0,75.6 368.8,57.7 370.6,60.8 372.5,64.8 374.3,70.1 376.1,69.2 377.9,67.7 379.7,74.5 381.5,77.2 383.3,84.7 385.2,89.8 387.0,96.3 388.8,94.0 390.6,86.7 392.4,80.1 394.2,73.6 396.1,84.5 397.9,96.7 399.7,102.2 401.5,109.3 403.3,104.0 405.1,115.3 407.0,125.1 408.8,112.9 410.6,126.4 412.4,131.7 414.2,132.4 416.0,134.8 417.8,139.7 419.7,139.5 421.5,143.2 423.3,126.0 425.1,120.2 426.9,118.4 428.7,112.9 430.6,122.2 432.4,128.2 434.2,131.7 436.0,129.5 437.8,139.3 439.6,138.1 441.4,115.8 443.3,126.4 445.1,112.0 446.9,114.9 448.7,114.2 450.5,108.4 452.3,113.1 454.2,118.6 456.0,128.4 457.8,109.6 459.6,96.3 461.4,98.7 463.2,120.6 465.0,123.7 466.9,123.3 468.7,129.9 470.5,131.5 472.3,132.6 474.1,129.9 475.9,132.6 477.8,136.2 479.6,136.8 481.4,146.3 483.2,143.5 485.0,139.3 486.8,135.5 488.7,141.5 490.5,134.4 492.3,137.7 494.1,138.4 495.9,145.7 497.7,138.4 499.5,146.1 501.4,136.2 503.2,136.6 505.0,139.3 506.8,162.3 508.6,157.7 510.4,151.7 512.3,153.9 514.1,154.8 515.9,153.4 517.7,154.8 519.5,154.1 521.3,156.1 523.1,147.9 525.0,153.0 526.8,145.2 528.6,145.2 530.4,148.3 532.2,152.8 534.0,153.2 535.9,149.5 537.7,157.4 539.5,175.2 541.3,172.5 543.1,174.7 544.9,180.5 546.7,184.0 548.6,176.3 550.4,164.5 552.2,160.5 554.0,148.8 555.8,155.2 557.6,159.4 559.5,161.0 561.3,142.4 563.1,145.9 564.9,143.5 566.7,148.6 568.5,148.3 570.3,159.2 572.2,188.5 574.0,184.0 575.8,184.5 577.6,192.5 579.4,190.7 581.2,170.7 583.1,180.7 584.9,178.3 586.7,188.9 588.5,179.2 590.3,173.6 592.1,175.2 594.0,163.9 595.8,167.0 597.6,152.3 599.4,149.5 601.2,155.7 603.0,156.8 604.8,158.8 606.7,153.0 608.5,127.3 610.3,136.8 612.1,144.1 613.9,151.2 615.7,161.0 617.6,159.4 619.4,156.1 621.2,144.6 623.0,133.1 624.8,141.0 626.6,135.0 628.4,115.5 630.3,114.0 632.1,113.8 633.9,117.8 635.7,115.3 637.5,121.1 639.3,127.5 641.2,130.6 643.0,134.2 644.8,127.7 646.6,121.7 648.4,127.3 650.2,132.2 652.0,138.8 653.9,117.5 655.7,126.6 657.5,124.0 659.3,131.9 661.1,100.0 662.9,98.9 664.8,116.2 666.6,110.7 668.4,118.2 670.2,126.6 672.0,127.5 673.8,131.7 675.7,144.8 677.5,150.6 679.3,151.9 681.1,160.5 682.9,166.3 684.7,172.1 686.5,170.7 688.4,182.0 690.2,172.9 692.0,167.2 693.8,158.3 695.6,165.2 697.4,166.5 699.3,165.6 701.1,165.2 702.9,172.7 704.7,174.5 706.5,181.8 708.3,181.4 710.1,170.3 712.0,165.6 713.8,172.7 715.6,161.9 717.4,171.0 719.2,161.4 721.0,162.1 722.9,172.7 724.7,175.6 726.5,148.1 728.3,165.0 730.1,174.5 731.9,166.5 733.7,172.9 735.6,181.4 737.4,181.4 739.2,182.0 741.0,185.6 742.8,171.4 744.6,173.2 746.5,169.2 748.3,163.9 750.1,148.6 751.9,156.8 753.7,148.6 755.5,143.5 757.3,160.1 759.2,163.9 761.0,148.8 762.8,150.8 764.6,145.7 766.4,129.5 768.2,133.5 770.1,141.0 771.9,152.1 773.7,148.8 775.5,137.5 777.3,123.3 779.1,129.9 781.0,109.3 782.8,116.2 784.6,107.8 786.4,102.0 788.2,84.9 790.0,90.9 791.8,76.1 793.7,79.6 795.5,88.3 797.3,92.0 799.1,103.3 800.9,104.9 802.7,124.2 804.6,132.8 806.4,138.6 808.2,138.8 810.0,135.7" fill="none" stroke="#1f3a5f" stroke-width="1.8"/>
+<circle cx="368.8" cy="57.7" r="3" fill="#1f3a5f"/>
+<text x="368.8" y="49.7" text-anchor="middle" font-size="10.5" fill="#a44a3f">2025-09-11 고점</text>
+<circle cx="577.6" cy="192.5" r="3" fill="#1f3a5f"/>
+<text x="577.6" y="208.5" text-anchor="middle" font-size="10.5" fill="#a44a3f">3-09 저점</text>
+<circle cx="791.8" cy="76.1" r="3" fill="#1f3a5f"/>
+<text x="791.8" y="68.1" text-anchor="middle" font-size="10.5" fill="#a44a3f">8-28</text>
+<circle cx="719.2" cy="62.1" r="3" fill="#b07d2b"/>
+<text x="719.2" y="54.1" text-anchor="middle" font-size="10.5" fill="#a44a3f">7-01 원/달러 1,552.5</text>
+</svg><div class="src">자료: packet.daily(키움 일봉 종가)·packet.usdkrw(네이버 원/달러 일별 종가), 두 시계열의 공통 거래일. 상관계수는 20거래일 변화율(겹치는 창) 기준 코드 계산. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 2025-01 이후 20거래일 변화율의 상관계수는 -0.50(표본 393), 2026년만 보면 -0.56이었고, 원화가 약할 때 주가가 약하고 원화가 강할 때 주가가 강한 역방향이 우세했습니다. 2025-09-11~2026-03-09 원/달러 +5.5% 동안 주가 -37.3%, 3-09~8-28 원/달러 -5.9% 동안 주가 +51.4%였습니다. 6-30 이후 창에서만 상관이 +0.45로 바뀌었고, 8-28~9-11 원/달러 -2.7%에 주가는 -17.4%였습니다. <b>원인.</b> 원화 강세가 외국인 자금의 한국 주식 유입과 함께 오는 국면에서는 시장 전체의 위험 선호가 삼양식품의 환산 손실 우려를 덮었습니다. 7-01~8-28 원/달러가 -11.0% 움직이는 동안 주가가 +33.1% 오른 것이 그 예입니다. 9월 들어 언론이 K라면주의 환율 직격탄을 보도했고(뉴시스 9-08), 그때 기관 매도가 겹쳤습니다. <b>함의.</b> 원화 강세 리스크는 주가에 늦게, 그리고 한꺼번에 들어오는 경향이 있습니다. 7~8월의 강세를 무시했던 가격이 9월에 몰아서 반영했으니, 11-14 3Q26 OPM이 유지선(21%)을 지키면 9월의 반영이 과했다는 쪽으로, 깨지면 아직 덜 들어갔다는 쪽으로 읽힙니다.</p>
+<p>하루 변화율로 보면 상관은 +0.01로 사실상 없습니다. 원/달러가 이 주식의 일간 가격을 움직이는 변수가 아니라, 분기 실적과 그 해석을 거쳐 몇 주 단위로 들어오는 변수라는 뜻입니다. 따라서 원화 강세의 관측 신호는 환율 자체보다 환율을 반영한 하우스 EPS 수정(네이버 컨센 EPS의 주간 변화)과 분기보고서의 해외 매출 원화 금액이 더 앞섭니다.</p>
+
+<h2>3. 세 변수 동시 악화 경로 — 원화 1,300원대·광고 5%대·자싱 지연</h2>
+<p>허브가 꼽은 스윙 변수 셋이 같은 12개월 안에 함께 나빠지는 경로를 [가정, 근거, 식, 교차검증] 순서로 계산합니다. 대상은 2027년 연결 영업이익이고 출발점은 FnGuide 컨센(8-28경, KB 9-02 인용) 매출 3조 7,510억·영업이익 8,920억입니다. 반대 방향으로 원화가 약세로 돌아가고 운임이 내리는 경로도 같은 식으로 계산해 나란히 놓습니다. 결과는 이익의 범위일 뿐 주가가 아닙니다.</p>
+<p><b>가정.</b> 컨센에 들어 있는 원/달러를 연 평균 1,400원<span class="est">E</span>으로 둡니다. 컨센이 만들어진 8월 말 현물이 1,381원, 3Q26 누적 평균이 1,432원이었다는 점에서 고른 값이고 컨센의 실제 가정은 공개되지 않았습니다. 악화 경로는 원/달러 1,320원, 광고선전비 매출 대비 5.5%(컨센 내재 4.07%<span class="est">E</span>, 1H26 실적), 자싱 2분기 지연으로 2027년 평균 가동률 20%입니다. 개선 경로는 원/달러 1,450원과 해상운임의 2Q26 수준 복귀입니다.</p>
+<p><b>근거.</b> 원화 효과는 1절 ①의 순노출 비율 61%<span class="est">E</span>와 반영률 60%<span class="est">E</span>를 2027E 해외 매출(컨센 매출 × 해외 비중 84%<span class="est">E</span> = 3조 1,508억<span class="est">E</span>)에 그대로 씁니다. 광고는 2Q26 실측 5.2%보다 약간 높은 5.5%를 악화선으로 둡니다. 자싱은 1절 ③의 물량·식당 매출·공헌이익률을 씁니다. 운임은 1절 ⑥의 3Q26 상승분을 되돌리는 값입니다.</p>
+<table class=""><tr><th>항목</th><th>2027E 컨센</th><th>세 변수 동시 악화</th><th>대칭 개선</th><th>가정·근거</th></tr><tr><td>원/달러(연 평균)</td><td>1,400원<span class="est">E</span>(컨센 내재 가정)</td><td>1,320원</td><td>1,450원</td><td>9-11 현물 1,344.4원 · 3Q26 누적 1,432원</td></tr><tr><td>환율 효과(OP)</td><td>-</td><td>-663</td><td>+415</td><td>2027E 해외 3조 1,508억<span class="est">E</span> × 순노출 61%<span class="est">E</span> × 변화율 × 반영 60%<span class="est">E</span></td></tr><tr><td>광고선전비/매출</td><td>4.07%(1H26)</td><td>5.5%</td><td>4.07%</td><td>2Q26 5.2%, 2025년 3.44%</td></tr><tr><td>광고 효과(OP)</td><td>-</td><td>-536</td><td>0</td><td>2027E 매출 3조 7,510억 × 1.43%p</td></tr><tr><td>자싱 2027 평균 가동률</td><td>55%<span class="est">E</span></td><td>20%</td><td>55%</td><td>3.96억식 × 921원/식 × 공헌 20%<span class="est">E</span></td></tr><tr><td>자싱 효과(OP)</td><td>-</td><td>-729</td><td>0</td><td>매출 -3,644억<span class="est">E</span></td></tr><tr><td>해상운임</td><td>3Q26 수준 유지</td><td>3Q26 수준</td><td>2Q26 수준 복귀</td><td>미주서안 2Q26 $3,652 · 3Q26(7~8월) $6,360/FEU</td></tr><tr><td>운임 효과(OP)</td><td>-</td><td>0</td><td>+403</td><td>수출제비 2Q26 연환산 × 해상 50%E × 현물 연동 50%E</td></tr><tr><td><b>2027E 영업이익</b></td><td><b>8,920</b></td><td><b>6,992</b><span class="est">E</span></td><td><b>9,738</b><span class="est">E</span></td><td>2Q26 연환산 7,047 · 2026E 컨센 7,338</td></tr><tr><td>2027E 매출</td><td>37,510</td><td>32,066<span class="est">E</span></td><td>38,635<span class="est">E</span></td><td>환산 손실·자싱 물량만 반영</td></tr><tr><td>OPM</td><td>23.8%</td><td>21.8%<span class="est">E</span></td><td>25.2%<span class="est">E</span></td><td>논쟁 2 유지선: 3Q26 21%·4Q26 20%</td></tr><tr><td>9-11 시총 대비 2027E PER</td><td>14.2배</td><td>18.2배<span class="est">E</span></td><td>13.0배<span class="est">E</span></td><td>순이익은 컨센 OP 대비 순이익 비율로 환산</td></tr></table>
+<figure class=""><figcaption>장표 5. 2027E 영업이익(억원) — 컨센에서 세 변수 동시 악화와 대칭 개선까지의 가감(E)</figcaption><svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="274.0" x2="860" y2="274.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="278.0" text-anchor="end" font-size="11" fill="#8a857c">5,000</text>
+<line x1="62" y1="232.3" x2="860" y2="232.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="236.3" text-anchor="end" font-size="11" fill="#8a857c">6,000</text>
+<line x1="62" y1="190.7" x2="860" y2="190.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="194.7" text-anchor="end" font-size="11" fill="#8a857c">7,000</text>
+<line x1="62" y1="149.0" x2="860" y2="149.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="153.0" text-anchor="end" font-size="11" fill="#8a857c">8,000</text>
+<line x1="62" y1="107.3" x2="860" y2="107.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="111.3" text-anchor="end" font-size="11" fill="#8a857c">9,000</text>
+<line x1="62" y1="65.7" x2="860" y2="65.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="69.7" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="24.0" x2="860" y2="24.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="28.0" text-anchor="end" font-size="11" fill="#8a857c">11,000</text>
+<line x1="62" y1="188.7" x2="860" y2="188.7" stroke="#2b7a78" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="660.5" y="203.7" text-anchor="middle" font-size="10.5" fill="#2b7a78">점선: 2Q26 OP 연환산 7,047</text>
+<text x="62" y="14" font-size="11" fill="#8a857c">2027E 연결 영업이익(억원) — 컨센에서 출발한 가감(E)</text>
+<rect x="83.9" y="110.7" width="55.9" height="163.3" fill="#1f3a5f" opacity="0.88"/>
+<text x="111.9" y="105.7" text-anchor="middle" font-size="10.5" fill="#1f3a5f" font-weight="700">8,920</text>
+<text x="111.9" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">2027E 컨센</text>
+<rect x="183.7" y="110.7" width="55.9" height="27.6" fill="#b07d2b" opacity="0.88"/>
+<text x="211.6" y="105.7" text-anchor="middle" font-size="10.5" fill="#b07d2b" font-weight="700">-663</text>
+<text x="211.6" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">① 원화 1,320원</text>
+<rect x="283.4" y="138.3" width="55.9" height="22.3" fill="#b07d2b" opacity="0.88"/>
+<text x="311.4" y="133.3" text-anchor="middle" font-size="10.5" fill="#b07d2b" font-weight="700">-536</text>
+<text x="311.4" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">② 광고 5.5%</text>
+<rect x="383.2" y="160.6" width="55.9" height="30.4" fill="#b07d2b" opacity="0.88"/>
+<text x="411.1" y="155.6" text-anchor="middle" font-size="10.5" fill="#b07d2b" font-weight="700">-729</text>
+<text x="411.1" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">③ 자싱 2분기 지연</text>
+<rect x="482.9" y="191.0" width="55.9" height="83.0" fill="#a44a3f" opacity="0.88"/>
+<text x="510.9" y="186.0" text-anchor="middle" font-size="10.5" fill="#a44a3f" font-weight="700">6,992</text>
+<text x="510.9" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">악화 경로</text>
+<rect x="582.7" y="93.4" width="55.9" height="17.3" fill="#2b7a78" opacity="0.88"/>
+<text x="610.6" y="88.4" text-anchor="middle" font-size="10.5" fill="#2b7a78" font-weight="700">+415</text>
+<text x="610.6" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">원화 1,450원</text>
+<rect x="682.4" y="76.6" width="55.9" height="16.8" fill="#2b7a78" opacity="0.88"/>
+<text x="710.4" y="71.6" text-anchor="middle" font-size="10.5" fill="#2b7a78" font-weight="700">+403</text>
+<text x="710.4" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">운임 2Q26 복귀</text>
+<rect x="782.2" y="76.6" width="55.9" height="197.4" fill="#2b7a78" opacity="0.88"/>
+<text x="810.1" y="71.6" text-anchor="middle" font-size="10.5" fill="#2b7a78" font-weight="700">9,738</text>
+<text x="810.1" y="290" text-anchor="middle" font-size="10.5" fill="#8a857c">개선 경로</text>
+<text x="510.9" y="306" text-anchor="middle" font-size="10" fill="#a44a3f">OPM 21.8%</text>
+<text x="810.1" y="306" text-anchor="middle" font-size="10" fill="#2b7a78">OPM 25.2%</text>
+<text x="111.9" y="306" text-anchor="middle" font-size="10" fill="#1f3a5f">OPM 23.8%</text>
+</svg><div class="src">자료: 2027E 컨센은 FnGuide(8-28경, KB 9-02 인용). 가감은 본문 가정(E). 점선은 2Q26 영업이익 1,762억 × 4. 세로축은 5,000억부터. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 악화 경로의 2027E 영업이익은 6,992억<span class="est">E</span>으로 컨센 8,920억보다 1,928억(-21.6%<span class="est">E</span>) 낮고, 2026년 컨센 7,338억보다도 346억 낮습니다. 개선 경로는 9,738억<span class="est">E</span>으로 컨센보다 818억 높습니다. 세 변수의 기여는 자싱 729억, 원화 663억, 광고 536억 순입니다. <b>원인.</b> 자싱이 가장 크게 기여하는 이유는 2027년 성장의 상당 부분이 새 공장의 물량이기 때문입니다. 원화는 해외 매출이 84%<span class="est">E</span>인 회사에서 순노출이 해외 매출의 61%<span class="est">E</span>나 되고, 광고는 매출이 커질수록 같은 비율 차이가 더 큰 금액이 됩니다. <b>함의.</b> 악화 경로는 2027년 이익이 2Q26 연환산 7,047억 근처에 머무는 경로, 즉 1년 동안 이익 성장이 멈추는 경로입니다. 이때 9-11 시총은 2027E 순이익의 18.2배<span class="est">E</span>로, 컨센 기준 14.2배보다 높아집니다.</p>
+<p><b>식.</b> 원화 = 3조 1,508억 × 0.614 × (1,320/1,400 - 1) × 0.6 = -663억<span class="est">E</span>. 광고 = -3조 7,510억 × (5.5 - 4.07)% = -536억<span class="est">E</span>. 자싱 = -3.96억식 × 921원 × 0.2 = -729억<span class="est">E</span>. 합계 8,920 -1,928 = 6,992억<span class="est">E</span>이고, 매출은 환산 손실 1,800억과 자싱 물량 3,644억을 빼 32,066억<span class="est">E</span>, OPM 21.8%<span class="est">E</span>입니다. 개선 경로는 원화 +415억과 운임 +403억을 더해 9,738억<span class="est">E</span>, OPM 25.2%<span class="est">E</span>입니다.</p>
+<p><b>교차검증.</b> 세 가지로 맞춰 봅니다. 첫째, 악화 경로의 OPM 21.8%<span class="est">E</span>는 허브 논쟁 2의 유지선(3Q26 21%·4Q26 20%) 위에 있습니다. 세 변수가 함께 나빠져도 영업이익률이 20%를 깨지는 않는다는 뜻이고, 논쟁 2의 반증(OPM 20% 미만 2분기 연속)은 여기에 맥분 상승(480억<span class="est">E</span>)이나 관세 10%p 추가(489억<span class="est">E</span>) 가운데 하나만 더해지면 OPM 20.3%<span class="est">E</span>, 둘이 함께 오면 18.8%<span class="est">E</span>로 그때 20%가 깨집니다. 둘째, 2Q26 영업이익 연환산 7,047억과 비교하면 악화 경로는 -0.8%로, 2027년 한 해 이익이 제자리인 모습입니다. 셋째, 개선 경로의 9,738억<span class="est">E</span>은 KB의 2027E 9,130억과 비슷한 자리여서, 하우스 추정의 상단이 원화 약세 복귀를 암묵적으로 담고 있을 가능성을 보여 줍니다(KB의 환율 가정은 미확인).</p>
+<p>대칭성에 대해 한 가지를 덧붙입니다. 악화와 개선의 폭이 같지 않은 이유는 자싱이 한쪽에만 있기 때문입니다. 공장이 예정보다 빨리 풀가동에 이르는 경우도 이론상 있지만, 해외 첫 공장에서 계획을 앞당긴 선례를 이 회사의 공시에서 찾지 못했습니다. 밀양2는 2025-06 준공 뒤 1Q26 가동률 82.3%(보도)까지 약 9개월이 걸렸고, 이 속도가 자싱의 기준선입니다. 그래서 2027년 이익의 분포는 컨센 아래쪽 꼬리가 더 길다고 봅니다.</p>
+
+<h2>4. 회사가 스스로 적은 위험 — 2026-04 증권신고서 투자위험요소</h2>
+<p>2026-04 제3회 무보증사채(2,000억, AA-) 증권신고서의 투자위험요소는 사업위험 일곱(산업성장성·원재료와 환율·시장 내 경쟁·식품 안전·해외시장과 미국 관세·해외 진출과 신규 투자·특정 부문 의존), 회사위험 다섯(수익성·재무안정성·현금흐름·재고자산·담보와 우발채무), 기타위험 일곱으로 짜여 있습니다. 회사가 적은 핵심 수치는 해외 매출 비중이 2021년 60.5%에서 2025년 80.1%로, 영업이익률이 2020년 14.7%에서 2025년 22.3%로 올랐고, 면스낵이 2025년 매출의 91.7%라는 것입니다.</p>
+<p>회사위험 장이 가장 솔직합니다. 잉여현금흐름은 2021년 -1,147억, 2022년 -520억, 2023년 1,444억, 2024년 1,436억, 2025년 -1,697억으로 공장을 지을 때마다 마이너스로 돌아섰고, 재고자산은 2025년 말 2,450.1억에 회전율 6.6회(2022년 8.5회)로 떨어졌다고 적었습니다. 담보 설정액은 연결 4,396억(관련 차입 1,791억)이고, 절강 법인 보증 7.1억 위안과 사옥 2,270억을 함께 적었습니다. 1H26에는 영업현금흐름 2,682억에서 유형자산 취득 1,033억을 빼 1,649억이 남았지만, 재고는 2Q26 말 2,776억으로 늘었고 1H26 매출원가 연환산 기준 회전율은 6.2회<span class="est">E</span>로 2025년보다 조금 더 낮습니다.</p>
+<table class="tx"><tr><th>신고서 목차(2026-04)</th><th>회사가 적은 핵심</th><th>매트릭스</th><th>이 파트가 보태는 것</th></tr><tr><td>사업 나. 원재료·환율</td><td>환율 상승 시 원가 부담과 수출 이익이 공존한다고 적음</td><td>①⑥</td><td>원화 강세 쪽의 순노출을 계량(연 1,672억<span class="est">E</span>)</td></tr><tr><td>사업 다. 시장 내 경쟁</td><td>경쟁 심화 시 마케팅 비용 증가·점유율 하락</td><td>②⑦</td><td>미국 매운 라인 출시(닛신 2025-10·마루짱 2026-04)와 광고비율 5.2%</td></tr><tr><td>사업 라. 식품 안전</td><td>위생 사건 시 수익성 악영향(일반론)</td><td>⑧</td><td>덴마크(2024-06)·3-MCPD(2026-04) 실측, 인니 할랄(10-18)</td></tr><tr><td>사업 마. 해외시장(관세)</td><td>미국 판매분 상당 부분을 국내 생산 후 수출, 경쟁사는 미국 생산거점 보유</td><td>⑤</td><td>관세 경로 15%·10%·12.5%와 대미 수출 4~7월 감소</td></tr><tr><td>사업 바. 해외 진출·신규 투자</td><td>신규 투자가 부진한 수익성이면 재무안정성 영향</td><td>③④</td><td>자싱 가동률 민감도, 중국 부문 이익 0</td></tr><tr><td>사업 사. 특정 부문 의존</td><td>면스낵 2025년 91.7%</td><td>⑦</td><td>불닭 브랜드 92.6%(2Q24)는 신고서에 없음</td></tr><tr><td>회사 다. 현금흐름</td><td>FCF 2021 -1,147 · 2022 -520 · 2023 1,444 · 2024 1,436 · 2025 -1,697억</td><td>③⑩</td><td>1H26 CFO 2,682 - CAPEX 1,033 = 1,649억</td></tr><tr><td>회사 라. 재고자산</td><td>2025말 2,450.1억, 회전율 6.6회(2022 8.5회)</td><td>④</td><td>2Q26말 2,776억(QoQ +18.8%), 1H26 연환산 6.2회<span class="est">E</span></td></tr><tr><td>회사 마. 담보·우발</td><td>담보 설정 4,396억(관련 차입 1,791억) · 절강 보증 7.1억 위안 · 사옥 2,270억</td><td>③⑩</td><td>보증 인출은 1H26말 약 243억</td></tr><tr><td>기타 나. 기한이익 상실</td><td>사채관리계약 의무 위반 시(최대주주 변경 제한 포함)</td><td>⑨</td><td>지주사 안의 승계는 삼양식품 최대주주 변경이 아님</td></tr></table>
+<p>신고서에 없는 것도 적어 둡니다. 불닭 한 브랜드의 비중, 특수관계자 거래, 오너 일가의 승계와 담보는 투자위험요소에 나오지 않습니다. 증여는 신고서 제출 뒤인 6월에 계약됐으니 당연하지만, 특수관계 유통사 매출과 지주사 수수료는 제출 당시에도 있었습니다. 해상운임 급등(5월 이후)과 3-MCPD 리콜(4월)도 제출 시점 뒤에 커졌습니다. 회사가 원/달러 상승을 원가 부담과 수출 이익이 공존하는 변수로 적었다는 점은 뒤집어 읽을 만합니다. 원화 강세는 그 반대이므로, 회사 스스로 환율 하락을 수익성 하방 요인으로 인정한 셈입니다.</p>
+
+<h2>5. 오너 담보·일정 타임라인 — 10월에 몰린 날짜</h2>
+<p>리스크 ⑨의 날짜는 한 달 안에 몰려 있습니다. 10-06 IBK 담보대출 300억 만기가 10-31 증여세 신고·납부 기한보다 먼저 오고, 그 사이 10-18 인니 할랄 의무가 시행되며, 11-14 3Q26 분기보고서가 뒤따릅니다. 형법 제69조는 벌금을 판결 확정일부터 30일 안에 내도록 정하므로 전인장 전 회장의 벌금 191억도 10월 초가 기한입니다. 이 날짜들에 삼양식품 주식의 처분·담보 공시가 나오는지가 논쟁 4의 첫 채점입니다.</p>
+<figure class=""><figcaption>장표 6. 오너 담보·지배구조와 회사 차입·사업 일정(2026-06~2028-09)</figcaption><svg viewBox="0 0 880 366" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="24" y1="164" x2="856" y2="164" stroke="#8a857c" stroke-width="1.2"/>
+<line x1="39.6" y1="161" x2="39.6" y2="167" stroke="#8a857c"/>
+<text x="39.6" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-06</text>
+<line x1="108.7" y1="161" x2="108.7" y2="167" stroke="#8a857c"/>
+<text x="108.7" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-07</text>
+<line x1="177.8" y1="161" x2="177.8" y2="167" stroke="#8a857c"/>
+<text x="177.8" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-08</text>
+<line x1="246.9" y1="161" x2="246.9" y2="167" stroke="#8a857c"/>
+<text x="246.9" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-09</text>
+<line x1="315.9" y1="161" x2="315.9" y2="167" stroke="#8a857c"/>
+<text x="315.9" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-10</text>
+<line x1="385.0" y1="161" x2="385.0" y2="167" stroke="#8a857c"/>
+<text x="385.0" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-11</text>
+<line x1="454.1" y1="161" x2="454.1" y2="167" stroke="#8a857c"/>
+<text x="454.1" y="178" text-anchor="middle" font-size="9" fill="#8a857c">26-12</text>
+<line x1="523.2" y1="161" x2="523.2" y2="167" stroke="#8a857c"/>
+<text x="523.2" y="178" text-anchor="middle" font-size="9" fill="#8a857c">27-01</text>
+<line x1="570.7" y1="161" x2="570.7" y2="167" stroke="#8a857c"/>
+<text x="570.7" y="178" text-anchor="middle" font-size="9" fill="#8a857c">27-04</text>
+<line x1="618.3" y1="161" x2="618.3" y2="167" stroke="#8a857c"/>
+<text x="618.3" y="178" text-anchor="middle" font-size="9" fill="#8a857c">27-07</text>
+<line x1="665.8" y1="161" x2="665.8" y2="167" stroke="#8a857c"/>
+<text x="665.8" y="178" text-anchor="middle" font-size="9" fill="#8a857c">27-10</text>
+<line x1="713.4" y1="161" x2="713.4" y2="167" stroke="#8a857c"/>
+<text x="713.4" y="178" text-anchor="middle" font-size="9" fill="#8a857c">28-01</text>
+<line x1="760.9" y1="161" x2="760.9" y2="167" stroke="#8a857c"/>
+<text x="760.9" y="178" text-anchor="middle" font-size="9" fill="#8a857c">28-04</text>
+<line x1="808.5" y1="161" x2="808.5" y2="167" stroke="#8a857c"/>
+<text x="808.5" y="178" text-anchor="middle" font-size="9" fill="#8a857c">28-07</text>
+<line x1="856.0" y1="161" x2="856.0" y2="167" stroke="#8a857c"/>
+<text x="856.0" y="178" text-anchor="middle" font-size="9" fill="#8a857c">28-10</text>
+<rect x="520.2" y="157" width="6" height="14" fill="#fff"/><line x1="520.2" y1="157" x2="520.2" y2="171" stroke="#8a857c"/><line x1="526.2" y1="157" x2="526.2" y2="171" stroke="#8a857c"/>
+<path d="M269.1,162 l-5,-9 h10 z" fill="#b07d2b"/>
+<line x1="844.8" y1="164" x2="844.8" y2="189.0" stroke="#2b7a78" stroke-width="0.8" opacity="0.7"/>
+<circle cx="844.8" cy="164" r="3.6" fill="#2b7a78"/>
+<text x="686.1" y="200.0" font-size="10.5" fill="#2b7a78">2028-09 절강 DBS 보증기간 끝</text>
+<line x1="772.7" y1="164" x2="772.7" y2="142.0" stroke="#2b7a78" stroke-width="0.8" opacity="0.7"/>
+<circle cx="772.7" cy="164" r="3.6" fill="#2b7a78"/>
+<text x="595.1" y="138.0" font-size="10.5" fill="#2b7a78">2028-04 제3-1회 사채 900억 만기</text>
+<line x1="578.4" y1="164" x2="578.4" y2="211.0" stroke="#2b7a78" stroke-width="0.8" opacity="0.7"/>
+<circle cx="578.4" cy="164" r="3.6" fill="#2b7a78"/>
+<text x="575.4" y="222.0" font-size="10.5" fill="#2b7a78">2027-04 제2-2회 사채 500억 만기</text>
+<line x1="546.2" y1="164" x2="546.2" y2="120.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="546.2" cy="164" r="3.6" fill="#1f3a5f"/>
+<text x="543.2" y="116.0" font-size="10.5" fill="#1f3a5f">2027-02 자싱 시험가동(1Q)</text>
+<line x1="538.5" y1="164" x2="538.5" y2="233.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="538.5" cy="164" r="3.6" fill="#1f3a5f"/>
+<text x="535.5" y="244.0" font-size="10.5" fill="#1f3a5f">2027-01 자싱 투자기간 끝</text>
+<line x1="530.4" y1="164" x2="530.4" y2="98.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="530.4" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="527.4" y="94.0" font-size="10.5" fill="#a44a3f">2027-01 전인장 취업제한 만료 보도</text>
+<line x1="414.0" y1="164" x2="414.0" y2="255.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="414.0" cy="164" r="3.6" fill="#1f3a5f"/>
+<text x="411.0" y="266.0" font-size="10.5" fill="#1f3a5f">11-14 3Q26 분기보고서(E)</text>
+<line x1="382.8" y1="164" x2="382.8" y2="76.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="382.8" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="379.8" y="72.0" font-size="10.5" fill="#a44a3f">10-31 증여세 신고·납부 기한</text>
+<line x1="353.8" y1="164" x2="353.8" y2="277.0" stroke="#1f3a5f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="353.8" cy="164" r="3.6" fill="#1f3a5f"/>
+<text x="350.8" y="288.0" font-size="10.5" fill="#1f3a5f">10-18 인니 할랄 의무 시행</text>
+<line x1="327.1" y1="164" x2="327.1" y2="54.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="327.1" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="324.1" y="50.0" font-size="10.5" fill="#a44a3f">10-06 IBK 담보대출 300억 만기</text>
+<line x1="266.9" y1="164" x2="266.9" y2="299.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="266.9" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="263.9" y="310.0" font-size="10.5" fill="#a44a3f">09-10 전인장 벌금 191억 확정</text>
+<line x1="253.5" y1="164" x2="253.5" y2="32.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="253.5" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="250.5" y="28.0" font-size="10.5" fill="#a44a3f">09-04 평가기간 끝(84일 평균 1,233,012원)</text>
+<line x1="119.8" y1="164" x2="119.8" y2="321.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="119.8" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="116.8" y="332.0" font-size="10.5" fill="#a44a3f">07-06 20만주 부담부증여 실행(채무 800억)</text>
+<line x1="46.3" y1="164" x2="46.3" y2="142.0" stroke="#a44a3f" stroke-width="0.8" opacity="0.7"/>
+<circle cx="46.3" cy="164" r="3.6" fill="#a44a3f"/>
+<text x="43.3" y="138.0" font-size="10.5" fill="#a44a3f">06-04 증여계약 체결</text>
+<rect x="24" y="350" width="10" height="10" fill="#a44a3f"/><text x="38" y="359" font-size="10.5" fill="#8a857c">오너·지배구조</text>
+<rect x="144" y="350" width="10" height="10" fill="#1f3a5f"/><text x="158" y="359" font-size="10.5" fill="#8a857c">회사 사업 일정</text>
+<rect x="264" y="350" width="10" height="10" fill="#2b7a78"/><text x="278" y="359" font-size="10.5" fill="#8a857c">회사 차입·보증</text>
+<path d="M389.0,360 l-5,-9 h10 z" fill="#b07d2b"/><text x="398" y="359" font-size="10.5" fill="#8a857c">9-11 작성일 · 2027-01에서 눈금 간격이 바뀝니다(앞 7개월이 폭의 60%)</text>
+</svg><div class="src">자료: 최대주주등소유주식변동신고서(2026-07-09), 조사노트 C(증여·담보·만기, 보도 인용), 반기보고서 사채·보증 주석, 타인에 대한 채무보증 결정(2025-02-11·정정 2025-09-10), 장래사업계획 정정(2025-11-19). 날짜 위치는 코드가 계산. 빈티지 2026-09-11</div></figure>
+<p class="reading"><b>관찰.</b> 2026-10에 오너 쪽 일정 셋(10-06 IBK 만기, 10-31 증여세 기한, 벌금 납입 기한)이 몰리고, 회사 쪽 큰 일정은 2027-01~02(자싱 투자기간 끝과 시험가동)와 2027-04-16 사채 500억 만기로 이어집니다. <b>원인.</b> 부담부증여가 채무를 3세에게 넘기면서 상환·차환 일정도 함께 넘어갔고, 증여세 기한은 법이 정합니다. 회사 쪽 일정은 자싱 착공 때 이미 정해진 것들입니다. <b>함의.</b> 10월의 공시가 조용하면 리스크 ⑨의 확률을 낮추고, 처분·담보 추가가 나오면 올립니다. 2027년 1분기에는 자싱(③)과 전인장 취업제한 만료 보도가 같은 분기에 겹쳐, 사업과 지배구조 두 층의 뉴스가 한꺼번에 나올 수 있습니다.</p>
+
+<h2>6. 접는 조건 통합표 — 논쟁 1~5의 유지선과 반증</h2>
+<p>허브 골격의 채점 KPI·유지선·반증을 한 표로 옮기고 9-11 현재 좌표와 이 파트의 리스크 번호를 붙였습니다. 판정을 접는 기준은 논쟁별 반증이며, 논쟁 1과 2가 판정 가설의 두 기둥(수요가 capa를 넘는가, 이익률이 버티는가)이므로 둘 중 하나의 반증이 확인되면 허브 판정을 다시 씁니다. 논쟁 5는 채점하지 않고 파트 8 조정판으로 연결합니다.</p>
+<table class="tx"><tr><th>논쟁</th><th>채점 KPI(9-11 좌표)</th><th>유지선</th><th>반증(접는 조건)</th><th>시점·관측처</th><th>관련 리스크</th></tr><tr><td>1 자싱을 채울 수요</td><td>해외 매출 YoY(2Q26 +46.7%) · 라면 수출 월간(1~7월 +25.9%) · 미국법인 분기 매출(2,036억)</td><td>3Q26·4Q26 해외 +30% · 미국법인 2,000억 · 중국 부문 흑자 · 자싱 2027-1Q</td><td>해외 +20% 미만 2분기 연속, 또는 수출 월간 한 자릿수 4개월 지속과 재고 증가 동반</td><td>매월 1일(잠정)·15일(확정) 관세청 · 11-14 3Q26 분기보고서 · 2027-1Q 가동 공시</td><td>③④⑤⑦</td></tr><tr><td>2 마진 내구성</td><td>OPM(2Q26 22.9%, 원/달러 평균 1,503원) · 광고비율(5.2%) · GPM(48.1%)</td><td>3Q26 OPM 21% · 4Q26 20%(원/달러 1,350원대) · 광고 5% 이하</td><td>OPM 20% 미만 2분기 연속, 또는 원/달러 1,300원 하회에서 가격 인상 없이 GPM 44% 미만</td><td>11-14 3Q26·2027-03 사업보고서 · 원/달러 일별</td><td>①②⑥</td></tr><tr><td>3 유행인가 카테고리인가</td><td>삼양 라면 수출 비중(65.7%) · 유럽+영국 분기 매출(1,132억) · 비불닭 브랜드</td><td>비중 60%대 · 유럽+영국 1,000억 · 미국 가격 인상 뒤 물량 유지</td><td>비중 60% 하회, 또는 미국법인 매출 QoQ 역성장 2분기 연속</td><td>분기 IR 자료(라면 수출 비중 표) · 미국 채널 보도</td><td>⑦⑧⑤</td></tr><tr><td>4 이익은 소액주주에게</td><td>배당성향(2026 중간 8.6%) · 순현금(763억, IR) · 특수관계 기타비용(2025년 203억)</td><td>10-06 IBK 차환 · 10-31 연부연납이나 현금 납부 · 2026 결산 배당성향 11% 이상 · 비영업 자산 추가 없음</td><td>오너 지분 처분·담보 추가 공시, 배당성향 하향, 비영업 자산 추가 매입</td><td>10-06·10-31 전후 지분 공시 · 2027-02 결산 배당 이사회</td><td>⑨⑩</td></tr><tr><td>5 시총이 값 매기는 것</td><td>채점 없음 — <a href="삼양식품_파트8_밸류모델_260911.html">파트 8 조정판</a></td><td>해당 없음</td><td>해당 없음</td><td>실측 자: PER 2026E 17.02·2027E 14.2·PBR 6.29, 증여 평가 1,233,012원, 자사주 처분 1,326,875원, 낙폭 -37.3%</td><td>⑪⑫</td></tr></table>
+<p>시점별로 읽으면 이렇습니다. 10월 1일과 15일의 관세청 9월 라면 수출은 논쟁 1·3의 월간 채점이고, 대미 수출이 4~7월의 감소를 넘어 네 달째 줄어드는지가 리스크 ⑤와 논쟁 3을 함께 봅니다. 10-06과 10-31은 논쟁 4의 첫 채점입니다. 11-14 3Q26 분기보고서는 논쟁 1(해외 매출 +30%, 중국 부문 이익)과 논쟁 2(OPM 21%, 광고 5% 이하)를 한 번에 채점하고, 원화 강세가 연누적 환산으로 일부만 들어온 첫 분기라는 점을 감안해 4Q26(유지선 20%)과 묶어 봅니다.</p>
+<p>표에 없는 접는 조건을 하나 더 둡니다. 12개월 안에 회사가 비영업 자산을 한 건 더 사거나(사옥·토지 규모), 특수관계 유통사 매출이 연결 중국 매출보다 빠르게 늘면, 논쟁의 채점과 무관하게 리스크 ④⑩의 확률을 올리고 논쟁 4의 판정을 다시 봅니다. 반대로 순현금이 늘어나는 가운데 배당성향이 11%를 넘기거나 자사주 정책이 새로 나오면 ⑩의 확률을 내립니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 1(2027년 자싱 11.3억식을 채울 수요가 있는가)에 주는 리스크 관점.</b> 리스크 ③④⑤⑦이 이 논쟁의 하방입니다. 판정을 뒤집는 것은 수요 쪽 신호이지 공장 쪽 지연이 아닙니다. 자싱이 2분기 늦으면 2027E 영업이익이 729억<span class="est">E</span> 줄지만 그것은 capa 병목이 길어진다는 뜻이라 판정 가설(성장을 막은 것은 capa)과 모순되지 않습니다. 반면 해외 매출 성장이 +20% 미만으로 2분기 이어지거나, 라면 수출 월간 증가율이 한 자릿수로 4개월 가면서 재고가 쌓이면(2Q26 말 2,776억, QoQ +18.8%), 병목이 capa가 아니었다는 반증이 됩니다. 채점 KPI는 3Q26·4Q26 해외 매출 YoY(유지선 +30%), 매월 관세청 라면 수출, 미국법인 분기 매출 2,000억, 중국 부문 영업이익 흑자, 재고 회전입니다.</p>
+<p><b>논쟁 2(영업이익률 22~24%는 원화·판관비·관세를 견디는가)에 주는 리스크 관점.</b> 확률과 영향이 모두 앞자리인 ①②⑥이 전부 이 논쟁에 모였고, 우리는 12개월 안에 가장 먼저 채점될 논쟁으로 봅니다. 세 변수 동시 악화 경로에서도 2027E OPM이 21.8%<span class="est">E</span>라 20%는 지키지만, 여기에 맥분 상승 480억<span class="est">E</span>과 관세 10%p 추가 489억<span class="est">E</span>이 함께 더해지면 18.8%<span class="est">E</span>로 20%를 깹니다(운임은 컨센이 3Q26 수준을 담았다고 보고 중복 계산하지 않았습니다). 판정을 뒤집는 것은 OPM 20% 미만이 2분기 이어지는 것, 또는 원/달러 1,300원 하회에서 가격 인상 없이 GPM이 44% 아래로 내려가는 것입니다. 1Q26 운반비 계정 이동 때문에 GPM 단독 비교는 조심해야 하고, 11-14 분기보고서의 광고선전비·수출제비용·GPM을 OPM과 함께 봐야 합니다.</p>
+<p><b>논쟁 3(불닭은 유행인가 카테고리인가)에 주는 리스크 관점.</b> 리스크 ⑦⑧입니다. 확률은 낮게 두지만(⑦ 15%<span class="est">E</span>) 일어나면 영향이 크고, 과거 자인 2018년 -57.9%가 그 무게를 보여 줍니다. 판정을 뒤집는 것은 한국 라면 수출에서 삼양 비중이 60% 아래로 내려가거나(2Q26 65.7%), 미국법인 매출이 QoQ 2분기 연속 역성장하는 것입니다. 닛신·마루짱의 매운 라인은 선반을 나누는 경쟁이고, 3-MCPD 같은 규제 이슈는 주가 반응이 작았으므로 매출로 번졌는지를 유럽+영국 분기 매출 1,000억 유지로 확인합니다.</p>
+<p><b>논쟁 4(이익은 소액주주에게 오는가)에 주는 리스크 관점.</b> 리스크 ⑨⑩입니다. 회사 손익에 닿는 오너 비용은 작지만(법인 벌금 1,000만원), 증여세 약 1,070억<span class="est">E</span>과 담보 800억, 벌금 191억의 재원이 삼양식품 주식에서 나오면 발행주식의 1% 안팎이 매물로 나옵니다. 판정을 뒤집는 것은 오너 지분 처분·담보 추가 공시, 배당성향 하향, 비영업 자산 추가 매입입니다. 사채의 지배구조변경 제한 조항은 지주사 안의 승계에는 걸리지 않으므로 이 논쟁의 안전판이 되지 못한다는 점도 적어 둡니다. 채점은 10-06, 10-31, 2027-02 결산 배당 이사회 순서입니다.</p>
+<p><b>논쟁 5(시총 9조 6,272억은 무엇을 값 매기고 있나)에 주는 리스크 관점.</b> 허브 규칙대로 채점 없이 자만 놓습니다. 실측 낙폭은 이익이 유지되는 조정에서 -27%~-37%, 이익이 꺾이는 조정에서 -43%~-58%였습니다. 공시 기준가로는 증여 평가 84일 평균 1,233,012원(9-11 종가 대비 -3.5%)과 자사주 실제 처분가 1,326,875원(+3.8%)이 가깝게 있고, PER은 후행 19.74배·2026E 17.02배·2027E 14.2배, 역사 후행 밴드 9.0~37.0배입니다. 세 변수 동시 악화 경로에서 9-11 시총은 2027E 순이익의 18.2배<span class="est">E</span>가 되고 개선 경로에서는 13.0배<span class="est">E</span>가 됩니다. 이 범위가 시총이 무엇을 요구하는지는 <a href="삼양식품_파트8_밸류모델_260911.html">파트 8 조정판</a>이 분해합니다.</p>
+
+<h2>미결</h2>
+<p><b>A급(판정에 직접 닿는 것).</b> 한국산 라면에 실제로 적용되는 미국 관세율(섹션 122·301 경로 추정, 미국 HTS 1902.30 기준 문서 미확인 — 미국 관보·CBP 품목 판정으로만 확인 가능). 컨센 2027E에 들어 있는 원/달러 가정과 KB 민감도(1%당 EPS 0.3%)의 산식(하우스 원문 PDF 표 페이지). 자싱 공장의 인허가·설비 반입 진척(회사 IR·현지 보도, 3Q26 IR에서 질의 가능). 증여세 납부 방식과 IBK 300억 차환 여부(10-06·10-31 전후 공시·보도).</p>
+<p><b>B급(구조를 더 정확히 하는 것).</b> 1Q26 운반비의 매출원가 이동 금액(회사 IR 담당 확인), 해외법인 판관비의 통화 구성과 해상운임의 계약·현물 비중(원가 구조 질의), 삼양애니(상해)를 거치는 중국 매출의 채널 성격(특수관계자 주석에 명세 없음), 주식담보 주식 수와 담보유지비율(주식등의 대량보유 보고 정정분 확인 필요), 최대주주 할증평가 적용 여부(2026 세법 시행령 확인).</p>
+<p><b>C급(있으면 좋은 것).</b> 2Q24 이후 불닭 브랜드 비중(IR 공개 중단), 3-MCPD 리콜 대상 로트의 물량과 매출 영향, 인니 MUI 인증 밖 품목 수, 2011~2012년 낙폭의 원인 기사, 공매도 잔고 추이(거래소 개별종목 공매도 종합정보, 로그인 필요), 국민연금의 보유목적 변경 시점(보도만 있고 공시 원문 미대조).</p>
+<div class="foot">데이터 계보: 2026 반기보고서(8-14; 영업부문·비용의 성격별 분류·판관비·특수관계자·차입금·보증 주석) · 2026-04 제3회 무보증사채 증권신고서(투자위험요소·사채관리계약 제2-5조의2) · 최대주주등소유주식변동신고서(2026-07-09) · 자기주식처분결정(2025-11-19) · 타인에 대한 채무보증 결정(2025-02-11·정정 2025-09-10) · 회사 IR 2Q24~2Q26(법인별 매출·라면 수출 비중) · 키움 ka10081 일봉·ka10083 월봉·ka10059 투자자별 순매수 · 네이버 원/달러·원/위안·원/유로·원/엔 일별과 컨센(9-10 생성) · 관세청 수출입무역통계 HS 1902.30(2026-07 확정, 8월 잠정) · 조사노트 A(실적·컨센)·B(산업·수출·관세·운임)·C(지배구조·증여 추정)·D(주가 사건·PER)·E(공시 원문). 확률과 <span class="est">E</span> 표기 수치는 작성자 추정이며 목표 가격이 아닙니다.</div>
+
+</main></body></html>
