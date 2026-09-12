@@ -1,6 +1,6 @@
 {
  "build_id": "12d6fef13f92",
- "created_at": "2026-09-11T22:40:12+09:00",
+ "created_at": "2026-09-12T22:40:09+09:00",
  "ref_period": {
   "Q": "2Q26",
   "P": "1Q26",
@@ -8,7 +8,7 @@
  },
  "inputs": {
   "backlog_updated": "2026-09-01 02:05",
-  "utd_build": "bd9aa40af280",
+  "utd_build": "35c246cb15ec",
   "cap_as_of": "20260911"
  },
  "counts": {
