@@ -1,0 +1,292 @@
+<!doctype html><html lang="ko" data-rl="hub"><head><meta charset="utf-8">
+<meta name="coverage" content="pmsummary,debatemap,appendix">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>메가터치 허브 — 판정과 파트 지도 · 2026-09-14</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<meta name="theme-color" content="#F2F4F6">
+<style>
+:root{--blue:#3182F6;--blue-50:#E8F3FF;--blue-100:#C9E2FF;--blue-700:#1B64DA;--ink:#191F28;--sub:#4E5968;--dim:#8B95A1;--line:#E5E8EB;--bg:#F2F4F6;--bg2:#F9FAFB;--white:#fff;--red:#F04452;--r:20px;--shadow:0 2px 10px rgba(25,31,40,.05)}
+html[data-theme=dark]{--blue:#4593FC;--blue-50:rgba(49,130,246,.16);--blue-100:rgba(49,130,246,.35);--blue-700:#7BB1FF;--ink:#E5E8EB;--sub:#B0B8C1;--dim:#8B95A1;--line:#2C2C35;--bg:#17171C;--bg2:#26262E;--white:#202027;--red:#FF6B6B;--shadow:0 2px 10px rgba(0,0,0,.25)}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;padding:0 0 96px;color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.72;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+b{font-weight:700}
+p{margin:0 0 1.05em}
+.est{font-size:.68em;vertical-align:super;color:var(--blue);font-weight:800;margin-left:1px}
+.hero{padding:44px 0 8px}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--blue);background:var(--blue-50);border-radius:999px;padding:4px 10px;margin-bottom:14px}
+.hero h1{font-size:34px;line-height:1.25;letter-spacing:-.02em;font-weight:800;margin:0 0 6px}
+.hero h1 small{font-size:16px;font-weight:600;color:var(--dim);margin-left:8px;letter-spacing:0}
+.hero .sub{font-size:14px;color:var(--sub);margin:0 0 18px;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--sub);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+.chip i{font-style:normal;color:var(--dim);font-weight:500}
+.chip.blue{color:var(--blue-700);background:var(--blue-50);border-color:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 12px}
+.stat{background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .l{font-size:12.5px;color:var(--dim);font-weight:600;margin-bottom:6px}
+.stat .v{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.stat .v.up{color:var(--red)} .stat .v.dn{color:var(--blue)}
+.stat .n{font-size:12px;color:var(--dim);margin-top:4px}
+.const{background:var(--white);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow);margin:0 0 14px}
+.const .t{font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.const .t .d{font-size:12px;color:var(--dim);font-weight:500}
+.const .row{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--bg);font-size:13.5px;line-height:1.65}
+.const .row:first-of-type{border-top:0}
+.const .k{font-weight:700;color:var(--ink)}
+.const .k small{display:block;font-weight:500;color:var(--dim);font-size:11.5px;line-height:1.4;margin-top:2px}
+.const .v{color:var(--sub)}
+.topnav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);margin:6px -20px 18px;padding:10px 20px}
+.topnav .in{max-width:880px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.topnav .in::-webkit-scrollbar{display:none}
+.topnav a{flex:none;font-size:13px;font-weight:600;color:var(--sub);background:var(--white);border-radius:999px;padding:7px 13px;box-shadow:var(--shadow)}
+.topnav a:hover{text-decoration:none;color:var(--ink)}
+.topnav a.on{color:var(--bg);background:var(--ink)}
+.sec{background:var(--white);border-radius:var(--r);padding:26px 26px 22px;box-shadow:var(--shadow);margin:0 0 14px;scroll-margin-top:64px}
+.sec h2{font-size:21px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin:0 0 10px}
+.sec h2 .h2sub{display:block;font-size:14px;font-weight:500;color:var(--dim);margin-top:4px;letter-spacing:0}
+.sec > p{color:var(--sub);font-size:14.5px}
+.sec > p b{color:var(--ink)}
+.callout{background:var(--blue-50);border-radius:14px;padding:16px 18px;margin:12px 0 16px;font-size:15px;line-height:1.7;color:var(--ink)}
+.src{color:var(--dim);font-size:12.5px;margin:10px 0 0}
+.cards{display:grid;gap:10px;margin:10px 0 4px}
+.card{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--white);font-size:14px;line-height:1.7;color:var(--sub)}
+.card .q{display:flex;gap:10px;align-items:flex-start;font-weight:700;color:var(--ink);font-size:15px;margin-bottom:8px;line-height:1.45}
+.card .q .num{flex:none;width:26px;height:26px;border-radius:9px;background:var(--blue-50);color:var(--blue-700);font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.card .score{margin-top:12px;background:var(--bg2);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.65;color:var(--sub)}
+.card .score::before{content:"채점";display:inline-block;font-size:11px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.tablewrap{overflow-x:auto;margin:12px 0 0;border-radius:14px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:11px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--bg)}
+th{font-weight:600;color:var(--dim);font-size:12.5px;white-space:nowrap;background:var(--bg2);border-top:0}
+tr:first-child td{border-top:0}
+td:first-child{white-space:nowrap;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:12px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.pill.gray{color:var(--sub);background:var(--bg)}
+.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;color:var(--sub);background:var(--bg)}
+.tag.now{color:var(--blue-700);background:var(--blue-50)}
+.partlist{display:flex;flex-direction:column;gap:10px;margin:14px 0 6px}
+.part{border:1px solid var(--line);border-radius:16px;background:var(--white);overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.part:hover{border-color:var(--blue-100)}
+.part[open]{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+.part summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;padding:14px 16px 14px 18px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+.part summary::-webkit-details-marker{display:none}
+.part summary:hover{background:var(--bg2)}
+.part .pn{font-size:12.5px;font-weight:800;color:var(--blue-700);background:var(--blue-50);border-radius:9px;padding:6px 10px;white-space:nowrap}
+.part .pt{min-width:0}
+.part .pt b{display:block;font-size:15px;font-weight:700;color:var(--ink)}
+.part .pd{display:block;color:var(--dim);font-size:13px;margin-top:2px;line-height:1.5}
+.part .ps{white-space:nowrap}
+.part .chev{width:22px;height:22px;border-radius:50%;background:var(--bg);display:inline-flex;align-items:center;justify-content:center;color:var(--dim);font-size:10px;transition:transform .18s}
+.part[open] .chev{transform:rotate(180deg);background:var(--blue-50);color:var(--blue-700)}
+.part .pbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:9px 18px;border-top:1px solid var(--line);background:var(--bg2);font-size:12.5px}
+.part .popen{font-weight:700}
+.part .pnote{color:var(--dim)}
+.part .pframe{border-top:1px solid var(--line);background:var(--bg)}
+.part iframe{display:block;width:100%;height:80vh;border:0;background:var(--bg)}
+.log{list-style:none;padding:0;margin:8px 0 0}
+.log li{position:relative;padding:0 0 4px 22px;font-size:14px;color:var(--sub);line-height:1.7}
+.log li::before{content:"";position:absolute;left:4px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+.log li b{color:var(--ink)}
+footer{color:var(--dim);font-size:12.5px;text-align:center;padding:14px 0 0;line-height:1.6}
+@media (max-width:720px){
+  body{overflow-x:hidden;word-break:normal;overflow-wrap:anywhere}
+  .stat .v{font-size:18px}.stat,.const .v,.card,.callout,.sec>p{min-width:0}
+  .hero .sub{font-size:13.5px}
+  .hero{padding-top:30px}.hero h1{font-size:28px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .sec{padding:20px 18px 16px;border-radius:16px}.sec h2{font-size:19px}
+  .const{padding:18px}.const .row{grid-template-columns:1fr;gap:4px;padding:9px 0}
+  .part summary{grid-template-columns:auto 1fr auto;gap:10px;padding:12px 14px}
+  .part .ps{display:none}
+}
+</style><script src="../theme.js"></script>
+</head><body>
+
+<div class="wrap">
+<header class="hero">
+<span class="eyebrow">Research Lab · 파트제 커버리지 허브</span>
+<h1>메가터치 <small>446540 · KOSDAQ</small></h1>
+<p class="sub">판정의 정본입니다. 각 파트가 주제 하나를 끝까지 내려가고, 완성될 때마다 이 허브의 판정을 갱신합니다. 목표주가·시나리오 주가·매매 계획은 싣지 않습니다.</p>
+<div class="chips"><span class="chip blue">v1 · 2026-09-14</span><span class="chip"><i>근거</i> 파트 0~8 완주</span><span class="chip"><i>다음 갱신</i> 3Q26 분기보고서 2026-11-14<span class="est">E</span></span></div>
+<div class="stats">
+<div class="stat"><div class="l">주가</div><div class="v ">8,790원</div><div class="n">9-14 기준 최신 종가 · 제3자배정 발행가 3,660원 대비 <b>+140.2%</b></div></div>
+<div class="stat"><div class="l">시가총액</div><div class="v ">2,556억원</div><div class="n">발행주식 29,079,111주 · 주가순자산배수 2.97배</div></div>
+<div class="stat"><div class="l">52주 범위</div><div class="v ">3,245원~10,990원</div><div class="n">저점 2026-03-04 · 고점 2026-05-26</div></div>
+<div class="stat"><div class="l">연초 대비</div><div class="v up">+149.0%</div><div class="n">고점 대비 -20.0% · 상장 첫날 종가 5,590원(2023-11-09)</div></div>
+</div>
+<div class="const"><div class="t">상수 블록 <span class="d">전 파트가 이 값을 인용합니다 · 2026-09-14 현행화</span></div>
+<div class="row"><div class="k">결산·환율</div><div class="v">JPY1 = ₩9.5198(2026-06-30 이사회 기준 매매기준율) · 12월 결산(2026년 = 제17기) · <b>별도 재무제표만 존재</b>(종속기업 없음, 연결재무제표 미제출) · 다음 실적 3Q26 분기보고서 2026-11-14<span class="est">E</span> · 4Q 수치는 연간 − 3Q 누계로 계산</div></div>
+<div class="row"><div class="k">주식수<small>세 단계</small></div><div class="v">20,771,000주에서 2026-01-23 납입으로 25,963,749주, 2026-04-28 납입으로 <b>29,079,111주</b> · 액면 500원 · 자본금 145억 3,956만원 · 주당 지표는 시점 주식수를 밝혀 쓴다</div></div>
+<div class="row"><div class="k">실적<small>별도·억원</small></div><div class="v">2023 매출 501.4 / 영업이익 -2.5 · 2024 529.9 / 40.0 · 2025 432.3 / -41.8 · <b>1H26 410.9 / 66.6</b>(1H25 215.1 / -47.8) · 분기 2Q26 매출 252 / 영업이익 48 · 후행 12개월 매출 628.4 / 영업이익 73.5 / 순이익 75.0</div></div>
+<div class="row"><div class="k">부문<small>매출실적 표</small></div><div class="v">1H26 반도체 257.7(62.7%, 수출 210.5·내수 47.2) · 배터리 89.9(21.9%, 내수 79.8·수출 10.2) · 임가공 63.2(15.4%) — 2023년에는 배터리 328.7(65.6%)·반도체 132.0(26.3%)였다 · <b>부문 영업이익은 공시되지 않는다</b></div></div>
+<div class="row"><div class="k">일회성</div><div class="v">1Q25 대손충당금 <b>48.7억</b> — "최종 고객사의 유동성 악화"로 특정 거래처 채권 100% 설정(제16기). 거래처의 소속 부문은 공시가 특정하지 않는다</div></div>
+<div class="row"><div class="k">자본조달<small>제3자배정 2회</small></div><div class="v">2026-01-23 5,192,749주 · 164.4억 · 3,165원(기준주가 3,514원, 할인 10%) · 시설 100억 + 운영 64.4억 / 2026-04-28 3,115,362주 · 114.0억 · 3,660원(기준주가 4,062원, 할인 10%) · 시설 80억 + 운영 34.0억 · <b>합계 278.4억 · 신주 8,308,111주 = 28.57%</b> · 둘 다 1년 보호예수(해제 2027-01-23 · 2027-04-28)</div></div>
+<div class="row"><div class="k">특수관계자 거래<small>반기보고서 주석 28</small></div><div class="v">지배기업은 (주)티에스이(지분율 40.68%)이며 최상위 지배기업·종속기업은 없다 · <b>1H26 특수관계자 매출 137.0억 = 전사 매출의 33.3%</b>(티에스이 90.5억 + HSIEHCHANG TECHNOLOGY CO., LTD. 46.5억) · 1H25는 77.5억(전사의 36.0%, 티에스이 54.1억 + HSIEHCHANG 23.5억)이므로 비중 자체는 새로 생긴 것이 아니다 · 같은 기간 특수관계자 매입 65.2억(티에스이 35.3억 + HSIEHCHANG 29.9억)</div></div>
+<div class="row"><div class="k">지배구조</div><div class="v">최대주주 <b>(주)티에스이 11,828,700주 · 40.68%</b>(2026-06-30, 증자 전 56.95%) · 신주 배정 대상 공시 표기 Whitston Materials Technology Co., Ltd.(대표 Sun Wen Chun, 최대출자자 Huanli 65%) · <b>배정 사유는 두 번 다 "판매증진 목적으로 주요 고객의 관계사에 신주를 배정함"</b>(주요사항보고서 2025-12-19·2026-04-28) · 2026-03-26 정기주총에서 대표이사 박진(티에스이 계열 메가센 대표)·기타비상무이사 손문군 선임, 윤재홍 사임 · 같은 주총에서 정관상 제3자배정 한도를 20%에서 30%로 변경 · Whitston 2024년 말 자기자본 31.2억으로 투입액 278.4억은 그 8.9배이며 자금 원천은 공시되지 않는다</div></div>
+<div class="row"><div class="k">증설</div><div class="v">2026-06-30 기계장치 양수 결정 P033 50sets(JPY 4억 1,975만) + P034 50sets(JPY 4억 6,975만) = <b>JPY 8억 8,950만</b>(매매기준율 9.5198원/엔 적용 84.7억) · 외부평가 삼화회계법인 '적정' · 계약 20% T/T + 초회 출하 20일 전 80% L/C · 재원은 2026년 유상증자 · <b>양수예정일(최종 입고 예정일) 2027-07-15</b> · 공급사 TSUGAMI Corporation · CNC <b>303대에서 403대로</b>, CNC 가공 기준 월 650만 개 · 1H26 유형자산 취득 117.8억(기말 324.1억)은 이 계약과 무관한 기존 증설분이고 2026-06-30 현금은 274.9억으로 조달액이 거의 그대로 남아 있다</div></div>
+<div class="row"><div class="k">밸류<small>2026-09-14</small></div><div class="v">자본 861.8억 · 주당순자산 2,964원 · 주가순자산배수 2.97배 · 후행 주가수익배수 34.1배 · 주가매출액배수 4.07배 · 차입금 30억 · 현금 275억 · 비교군(같은 날 조회) 리노공업 6.86배 · ISC 6.94배 · 티에스이 6.87배 · 마이크로컨텍솔루션 5.24배 · 오킨스전자 7.69배</div></div>
+</div>
+</header>
+<nav class="topnav"><div class="in"><a href="#verdict">판정</a><a href="#debate">논쟁 지도</a><a href="#catalyst">촉매</a><a href="#parts">파트 지도</a><a href="#appendix">부록</a><a href="#log">갱신 로그</a></div></nav>
+<section class="sec" id="verdict">
+<h2>판정</h2>
+<div class="callout"><b>시가총액 2,556억원이 사고 있는 것은 2026년에 숫자로 증명된 반도체 테스트핀 수출입니다. 다만 증명된 부분은 후행 12개월 매출 628.4억·영업이익 73.5억까지이고, 그 위에 얹힌 두 가지 — CNC 100대 증설과 지분 28.57%를 새로 쥔 주주 — 는 아직 손익계산서에 한 줄도 없습니다. 우리가 채점하는 것은 얹힌 쪽입니다.</b></div>
+<p>이 회사에서 2026년에 일어난 일은 회복이 아니라 교체입니다. 2023년 매출의 65.6%를 내던 배터리 충방전 핀이 2025년 22.8%까지 내려앉는 동안 비메모리 반도체 테스트핀이 26.3%에서 62.7%로 그 자리를 대신했고, 그 결과 2026년 상반기 매출 410.9억원과 영업이익 66.6억원이 나왔습니다. 1년 전 같은 기간은 매출 215.1억원에 영업손실 47.8억원이었습니다. 다만 그 손실의 본체는 영업이 아니라 1분기에 잡은 대손충당금 48.7억원이었으므로, 흑자 전환의 폭을 그대로 체질 개선으로 읽으면 과합니다.</p>
+<p>증명된 축은 하나입니다. 반도체 부문은 2026년 상반기에만 257.7억원으로 2025년 연간(240.3억원)을 반기 만에 넘겼고, 그 안의 81.7%가 수출입니다. 반면 배터리 부문 89.9억원의 증가분은 전부 내수에서 나왔고 수출은 오히려 더 줄었으며, 그 내수마저 물량이 아니라 단가로 설명됩니다. 셀 3사의 2026년 1분기 설비투자는 합계 2조 5,329억원으로 전년 동기 5조 3,372억원의 절반 아래이고 가동률은 36.5~65% 구간입니다. 그러므로 지금의 증익은 세 축 동반 회복이 아니라 한 축 구조라고 봅니다.</p>
+<p>다만 이 매출의 3분의 1은 한 지붕 안에서 납니다. 2026년 상반기 특수관계자 매출은 137.0억원으로 전사 매출의 33.3%이고, 지배기업 티에스이가 90.5억원, 대만 HSIEHCHANG TECHNOLOGY가 46.5억원입니다. 1년 전 같은 기간에도 비중은 36.0%였으므로 새로 생긴 구조는 아니지만, 반도체 부문의 수출 210.5억원을 외부 수요의 증거로만 읽으면 과합니다. 최대주주가 소켓과 프로브카드를 만들고 회사가 그 안에 들어가는 핀을 만드는 수직 관계에서, 우리는 부문 성장과 그룹 내 거래를 갈라서 채점해야 합니다.</p>
+<p>가격이 값 매기는 나머지는 두 가지입니다. 하나는 CNC 303대를 403대로 늘리는 증설인데, 이것은 2026년이 아니라 2027년의 일입니다. 기계장치 양수 84.7억원(JPY 8억 8,950만, 공급사 TSUGAMI)은 2026년 6월 30일에야 이사회를 통과했고 공시된 양수예정일은 최종 입고 예정일인 2027년 7월 15일이며, 대금의 80%는 초회 공장 출하 20일 전에야 나갑니다. 상반기에 집행된 유형자산 취득 117.8억원은 이 계약과 무관한 기존 증설분이고 조달액 278.4억원은 6월 30일 현금 274.9억원으로 거의 그대로 남아 있습니다. 그러므로 지금 주가가 이 증설의 매출을 이미 사고 있다면, 그 매출은 최소 네 분기 뒤의 일입니다. 다른 하나는 두 번의 제3자배정으로 신주 8,308,111주(28.57%)를 받아 간 주주인데, 이쪽은 재무투자가 아니라 고객 쪽의 자본 제휴로 읽습니다. 회사는 배정 사유를 두 번 다 "판매증진 목적으로 주요 고객의 관계사에 신주를 배정함"이라고 적었고, 손문군이 대표인 대만 HSIEHCHANG TECHNOLOGY는 2026년 상반기에 46.5억원을 사 갔습니다. 최대주주 티에스이의 지분율은 56.95%에서 40.68%로 내려갔지만 경영권은 넘어가지 않았습니다 — 격차가 12.11%p이고 새 대표이사 박진은 티에스이 계열 인사이며 신주주 몫은 비상근 이사 한 자리입니다. 다만 Whitston의 2024년 말 자기자본은 31.2억원으로 투입액 278.4억원의 9분의 1이고 그 자금이 어디서 왔는지는 어느 공시에도 없습니다. 그 부분은 미결로 남깁니다.</p>
+<p>주가순자산배수 2.97배는 비교군(리노공업 6.86배·ISC 6.94배·티에스이 6.87배)의 절반 이하입니다. 그 격차는 부품 업체와 완제품 업체의 구조적 마진 차이(후행 12개월 영업이익률 메가터치 11.7% 대 리노공업 49.3%)와 세 해 만에 부문 하나가 3분의 1로 줄어든 이력, 그리고 증권사 정식 커버리지가 확인되지 않는다는 사실을 함께 반영한 값이라고 읽습니다. 낮다는 것이 곧 싸다는 뜻은 아니고, 우리는 적정주가를 내지 않습니다 — 파트 8의 조정판은 지금 시총이 성립하려면 어떤 조합이 참이어야 하는지만 꺼내 보입니다.</p>
+
+</section>
+<section class="sec" id="debate">
+<h2>논쟁 지도<span class="h2sub">이 주가는 계기판 다섯 개로 채점됩니다</span></h2>
+<p>3분기 부문별 누적 매출, 3개월 영업이익률, 유형자산 취득과 감가상각비, 특수관계자 거래 주석과 보호예수 해제, 그리고 연간 실적. 관측처는 금융감독원 전자공시(분기·사업보고서, 주요사항보고서, 자율공시, 대량보유 상황보고서)와 한국거래소 기업설명회 자료이며, 다음 게이트는 2026년 11월 14일 3분기 분기보고서입니다.</p>
+<div class="cards">
+<div class="card"><div class="q"><span class="num">1</span>2026년의 증익은 한 축인가 세 축인가</div>
+<p>한 축이라고 봅니다. 2026년 상반기 매출 410.9억원은 반도체 257.7억원·배터리 89.9억원·임가공 63.2억원으로 갈라지는데, 2025년 연간과 견주면 반도체만 240.3억원을 반기에 넘겼습니다. 배터리 89.9억원은 전년 동기 대비로는 늘었지만 증가분이 전부 내수이고 수출은 더 줄었으며, 내수 회복분도 환산 단가가 오른 결과이지 물량이 돌아온 결과가 아닙니다. 임가공 63.2억원은 2025년 연간 93.1억원 대비 속도는 붙었으나 전사 비중 15.4%의 용역 매출입니다.</p>
+<div class="score">채점: 3Q26 분기보고서(2026-11-14<span class="est">E</span>) 반도체 부문 누적 매출 380억 이상 · 배터리 부문 누적 130억 이상 · 배터리 수출 누계 20억 이상 · 접는 조건: 반도체 누적이 380억에 미달하면서 배터리도 130억 미달 · 증거: 파트 1·파트 2</div></div>
+<div class="card"><div class="q"><span class="num">2</span>2분기 영업이익률 19.0%는 믹스인가 고정비 레버리지인가</div>
+<p>둘 다 섞여 있다고 보되, 회사 고유 요인과 사이클 요인을 나눠 봐야 합니다. 매출이 159억원에서 252억원으로 58.4% 느는 동안 판매비와관리비는 18억원에서 21억원으로만 늘었으므로 증분 마진은 구조적으로 높습니다. 다만 같은 2026년 2분기에 비교군 여러 곳이 동시에 영업이익률을 크게 개선했다는 사실은 이 개선의 상당 부분이 업황이라는 뜻이기도 합니다. 부문 영업이익이 공시되지 않아 순수 핀 마진과 임가공 마진을 가를 수 없다는 한계도 함께 답에 포함합니다.</p>
+<div class="score">채점: 3Q26 3개월 영업이익률 15% 이상 유지 · 판매비와관리비 대 매출 10% 이하 · 매출총이익률 방향 · 접는 조건: 3Q26 영업이익률이 10% 아래로 되돌아가면서 매출은 유지 · 증거: 파트 4·파트 3</div></div>
+<div class="card"><div class="q"><span class="num">3</span>CNC 100대(84.7억원)는 언제 매출이 되는가</div>
+<p>2026년이 아니라 2027년입니다. 기계장치 양수는 2026년 6월 30일 이사회 결의이고 공시된 양수예정일은 최종 입고 예정일인 2027년 7월 15일이며, 대금의 80%는 초회 공장 출하 20일 전에 신용장으로 나갑니다. 공급사는 TSUGAMI Corporation입니다. 2026년 상반기에 유형자산 취득이 117.8억원 집행돼 장부상 유형자산이 279.3억원에서 324.1억원이 된 것은 이 계약과 무관한 기존 증설분이고, 조달액 278.4억원은 6월 30일 현금 274.9억원으로 거의 그대로 남아 있습니다. 회사는 CNC 가공 능력을 월 500만 개에서 650만 개로, 포고핀 조립을 월 350만 개에서 연말 500만 개로 늘린다고 설명했지만(이투데이 2026-09-11) 공시로 확인된 값은 CNC 303대에서 403대라는 기재뿐입니다.</p>
+<div class="score">채점: 3Q26 선급금 또는 건설중인자산이 계약금 16.9억<span class="est">E</span> 안팎으로 증가 · 시설자금 잔여분의 사용처 공시 · 2027년 분기 감가상각비가 분기 20억 이상으로 상승 · 접는 조건: 2027년 상반기까지 입고 관련 공시가 없고 현금이 운영자금으로 소진 · 증거: 파트 5·파트 8</div></div>
+<div class="card"><div class="q"><span class="num">4</span>지분 28.57%를 새로 쥔 주주는 무엇인가</div>
+<p>재무투자가 아니라 고객 쪽의 자본 제휴로 읽습니다. 회사는 배정 사유를 두 번 다 "판매증진 목적으로 주요 고객의 관계사에 신주를 배정함"이라고 적었고(주요사항보고서 2025-12-19·2026-04-28), 기타비상무이사로 들어온 손문군이 대표인 대만 HSIEHCHANG TECHNOLOGY는 반기보고서 주석 28의 기타특수관계자로 2026년 상반기 매출 46.5억원(1H25 23.5억원)·매입 29.9억원을 기록했습니다. 다만 경영권은 넘어가지 않았습니다 — 지분 격차가 12.11%p이고 새 대표이사 박진은 티에스이 계열 인사이며 신주주 몫은 비상근 이사 한 자리입니다. 남는 물음은 자금입니다. Whitston의 2024년 말 자기자본은 31.2억원으로 투입액 278.4억원의 9분의 1이고, 그 자금의 원천은 어느 공시에도 없습니다.</p>
+<div class="score">채점: 3Q26 특수관계자 주석의 HSIEHCHANG 누적 매출 70억 이상 · 전사 매출 대비 특수관계자 비중(1H26 33.3%)의 방향 · Whitston 본인과의 신규 거래 발생 여부 · 보호예수 해제(2027-01-23 5,192,749주 · 2027-04-28 3,115,362주) 전후 대량보유 변동 공시 · 접는 조건: 해제 직후 대량 처분 또는 특수관계자 매출의 급감 · 증거: 파트 5·파트 7</div></div>
+<div class="card"><div class="q"><span class="num">5</span>시가총액 2,556억원은 무엇을 값 매기고 있는가</div>
+<p>후행 12개월 실적(매출 628.4억원·영업이익 73.5억원·순이익 75.0억원)에 주가수익배수 34.1배, 주가순자산배수 2.97배, 주가매출액배수 4.07배가 붙어 있습니다. 비교군의 주가순자산배수가 5~7배인 것과 견주면 배수 자체는 낮은 쪽이고, 영업이익률이 11.7%로 비교군 최하위권인 것과 견주면 그 낮음은 설명이 됩니다. 그러므로 지금 가격은 '싸게 방치된 부품주'라기보다 '한 축이 증명된 뒤 나머지 축과 증설을 기다리는 값'에 가깝다고 봅니다.</p>
+<div class="score">채점 없음 — 파트 8 조정판(2027년 매출·영업이익률·적용 배수·희석 주식수)으로 시총이 요구하는 조합을 읽습니다 · 관측: 2026년 연간 매출 800억 이상·영업이익 130억 이상 달성 여부(2026-11-14, 2027-03 사업보고서) · 증거: 파트 8·파트 6</div></div>
+</div>
+</section>
+<section class="sec" id="catalyst">
+<h2>촉매 캘린더</h2>
+<div class="tablewrap"><table>
+<tr><th>시점</th><th>이벤트</th><th>논쟁</th><th>보는 것</th></tr>
+<tr><td>2026-10월<span class="est">E</span></td><td>3Q26 잠정실적 또는 기업설명회 개최 여부</td><td><span class="pill">1·2</span></td><td>부문별 매출과 영업이익률 · 증설 진행 설명</td></tr>
+<tr><td>2026-11-14<span class="est">E</span></td><td>3Q26 분기보고서</td><td><span class="pill">1·2·3·4</span></td><td>부문 누적 매출 · 3개월 영업이익률 · 유형자산 취득과 감가상각비 · 특수관계자 거래 주석 · 매출채권과 대손충당금</td></tr>
+<tr><td>2026-12-31</td><td>제17기 결산일</td><td><span class="pill">5</span></td><td>연간 매출·영업이익의 확정</td></tr>
+<tr><td>2027-01-23</td><td>1차 제3자배정 신주 5,192,749주 보호예수 해제</td><td><span class="pill">4</span></td><td>발행주식의 17.9% · 대량보유 변동 보고</td></tr>
+<tr><td>2027-02<span class="est">E</span></td><td>매출액 또는 손익구조 30% 이상 변동 공시(전례 2026-02-13·2025-02-18·2024-02-23)</td><td><span class="pill">1·2·5</span></td><td>연간 확정치와 전년 대비 변동률</td></tr>
+<tr><td>2027-03<span class="est">E</span></td><td>2026년 사업보고서 · 정기 주주총회</td><td><span class="pill">3·4·5</span></td><td>부문별 매출실적 · 생산설비 현황(CNC 대수) · 이사회 구성 · 최대주주 지분</td></tr>
+<tr><td>2027-04-28</td><td>2차 제3자배정 신주 3,115,362주 보호예수 해제</td><td><span class="pill">4</span></td><td>발행주식의 10.7% · 두 차례 합산 28.57%</td></tr>
+<tr><td>2027-07-15</td><td>기계장치 양수예정일(최종 입고 예정일)</td><td><span class="pill">3</span></td><td>입고 완료 여부와 감가상각 개시 시점 · 지연 시 변경 공시</td></tr>
+<tr><td>수시</td><td>기계장치 입고 관련 추가 공시 · 5% 대량보유 변동 · 단일판매공급계약 · 세미콘 코리아 등 전시 참가</td><td><span class="pill">3·4</span></td><td>증설 집행과 지분 이동</td></tr>
+</table></div>
+<p class="src">자료: 금융감독원 전자공시(분기·반기·사업보고서, 주요사항보고서, 자율공시, 대량보유 상황보고서)·한국거래소 기업설명회 공시·조사노트. 빈티지 2026-09-14</p>
+</section>
+<section class="sec" id="parts">
+<h2>파트 지도<span class="h2sub">깊이 우선, 시간에 걸쳐</span></h2>
+<p>이 커버리지는 파트제로 만들었습니다. 파트 한 편이 주제 하나를 끝까지 내려가고, 완성될 때마다 이 허브의 판정을 갱신합니다. 아래 목록에서 파트를 누르면 본문이 이 자리에 펼쳐지고, 새 창으로도 열 수 있습니다. 숫자의 정본은 위 상수 블록이고, 각 파트에는 작성 시점 스탬프가 남습니다.</p>
+<div class="partlist">
+<details class="part" data-file="메가터치_파트0_회사진입_260914.html">
+<summary><span class="pn">파트 0</span><span class="pt"><b>회사 진입편</b><span class="pd">2010년 설립·2023년 11월 상장. 활성화 공정 충방전 핀과 비메모리 후공정 포고핀·인터포저라는 두 다리, 그리고 3년 만에 뒤바뀐 부문 비중(배터리 65.6%에서 21.9%로, 반도체 26.3%에서 62.7%로). 티에스이 40.68%와 신주주 28.57%의 소유 지도, 용어집</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트0_회사진입_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 0" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트1_반도체_260914.html">
+<summary><span class="pn">파트 1</span><span class="pt"><b>반도체 부문 해부</b><span class="pd">1H26 257.7억으로 반기 만에 2025년 연간(240.3억)을 넘긴 축. 수출 210.5억(부문의 81.7%)이 2024년부터 이미 200억대였다는 사실과 2026년에 붙은 내수, 제품 단가와 수량의 방향, Pd Alloy 매입 비중 10%에서 28%로의 원가 역풍, CNC 303대에서 403대로가 겨냥하는 것</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트1_반도체_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 1" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트2_배터리_260914.html">
+<summary><span class="pn">파트 2</span><span class="pt"><b>배터리 부문 해부</b><span class="pd">2023년 328.7억에서 2025년 98.8억으로 3분의 1 아래. 1H26 89.9억의 증가분은 전부 내수이고 수출은 더 줄었으며, 그 내수마저 물량이 아니라 단가다. 셀 3사 설비투자 실측과 1Q25 대손 48.7억</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트2_배터리_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 2" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트3_산업경쟁_260914.html">
+<summary><span class="pn">파트 3</span><span class="pt"><b>산업과 경쟁</b><span class="pd">핀에서 소켓·프로브카드를 거쳐 테스트 하우스로 이어지는 자리에서 '소켓을 만들지 않는다'가 왜 판매 채널이 되고 동시에 마진이 되는가. 비교군 배수와 영업이익률 격차, 2Q26에 여러 회사가 동시에 낸 마진 개선, 시장 규모 추정치의 2~3배 편차</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트3_산업경쟁_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 3" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트4_재무해부_260914.html">
+<summary><span class="pn">파트 4</span><span class="pt"><b>재무 해부</b><span class="pd">12분기 별도 손익 지도. 1Q25 판관비 64억에 든 대손 48.7억을 떼면 2025년 적자의 성격이 달라지고, 2Q26 영업이익률 19.0%는 매출 +58.4%에 판관비 18억에서 21억이라는 증분에서 읽는다. 비용의 성격별, 영업현금흐름과 운전자본</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트4_재무해부_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 4" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트5_지배구조자본조달_260914.html">
+<summary><span class="pn">파트 5</span><span class="pt"><b>지배구조와 자본조달</b><span class="pd">다섯 달 사이 주식수 +40.0%. 티에스이 지분이 56.95%에서 40.68%로 내려가고 신주주가 28.57%를 쥐는 동안 대표는 티에스이 계열 인사로 바뀌었다. 278.4억의 행선지와 기계장치 84.7억, 보호예수 해제 2027-01-23·04-28</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트5_지배구조자본조달_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 5" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트6_주가수급_260914.html">
+<summary><span class="pn">파트 6</span><span class="pt"><b>주가와 수급</b><span class="pd">상장 693거래일. 5,590원에서 2,725원까지 내려갔다가 10,990원까지. 국면 셋의 등락률과 거래대금, 사건별 전후 수익률, 주식수 세 단계를 반영한 주가순자산배수 궤적</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트6_주가수급_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 6" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트7_리스크_260914.html">
+<summary><span class="pn">파트 7</span><span class="pt"><b>리스크</b><span class="pd">이미 한 번 일어난 대손 48.7억, 3년 안에 실제로 벌어진 부문 역전, 주식 +40.0%와 2027년 보호예수 해제, 감가상각이 수요보다 먼저 오는 증설, Pd Alloy와 환율, 커버리지 공백</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트7_리스크_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 7" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="메가터치_파트8_밸류모델_260914.html">
+<summary><span class="pn">파트 8</span><span class="pt"><b>밸류 모델</b><span class="pd">시총 2,556억이 성립하려면 무엇이 참이어야 하는가. 1H26을 두 배 하면 안 되는 이유부터 시작해 매출·이익률·배수·주식수를 움직이는 조정판으로 지금 가격에 들어 있는 가정을 꺼낸다. 적정주가는 내지 않는다</span></span><span class="ps"><span class="tag now">완료 (2026-09-14)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="메가터치_파트8_밸류모델_260914.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="메가터치 파트 8" loading="lazy"></iframe></div>
+</details>
+</div>
+<p>다음 증축은 2026년 11월 14일 3분기 분기보고서 뒤 실적 브리프(부문 누적 매출·3개월 영업이익률·유형자산 취득·특수관계자 거래)이고, 2027년 1월과 4월 보호예수 해제 뒤 수급 브리프, 2027년 3월 사업보고서 뒤 증설·지배구조 브리프입니다. 그때 상수 블록과 논쟁 카드의 채점 결과를 갱신합니다.</p>
+</section>
+<section class="sec" id="appendix">
+<h2>부록<span class="h2sub">데이터 패킷 좌표와 미결 총람</span></h2>
+<p>이 커버리지의 숫자는 네 갈래에서 왔습니다. 첫째는 금융감독원 전자공시 원문입니다 — 사업보고서(2023·2024·2025), 반기보고서(2024·2025·2026), 분기보고서(1Q24~1Q26), 주요사항보고서(유상증자 결정 2025-12-19·2026-04-02, 유형자산 양수 결정 2026-06-30), 자율공시(증권 발행결과 2026-01-23·2026-04-28, 기업설명회 개최 2026-09-08), 대량보유 상황보고서(2026-01-29·2026-04-29), 매출액 또는 손익구조 30% 이상 변동(2024-02-23·2025-02-18·2026-02-13)을 원문으로 내려받아 표를 직접 뜯었습니다. 둘째는 전자공시 재무제표 전용 자료로, 별도(OFS) 기준 분기 재무제표를 2021년부터 2026년 2분기까지 받아 4분기 값은 연간에서 3분기 누계를 뺀 방식으로 복원했습니다. 셋째는 증권사 실시간 시세 자료로 상장 첫날인 2023년 11월 9일부터 2026년 9월 14일까지 693거래일의 일봉과 투자주체별 순매수, 그리고 비교군 10개사의 같은 날 기준 배수를 받았습니다. 넷째는 웹 조사 노트 세 편(회사·주가 서사, 반도체 테스트핀 산업, 배터리 활성화 공정 산업)이며, 여기서 온 숫자는 본문에 매체명과 날짜를 함께 적었습니다.</p>
+<p><b>재무제표 기준.</b> 이 회사는 종속기업이 없어 연결재무제표를 제출하지 않습니다. 모든 손익·재무상태·현금흐름 수치는 별도 기준이며, 최상위 지배기업은 (주)티에스이입니다(반기보고서 주석 28). 2023년은 상장 첫해여서 분기 원표가 없어 연간값만 씁니다. 4분기 수치는 연간에서 3분기 누계를 뺀 계산값이고, 각 파트가 그 사실을 밝힙니다.</p>
+<p><b>미결 총람.</b> A급은 판정에 직접 닿는 것입니다. 첫째, 부문별 영업이익이 공시되지 않아 반도체와 배터리 가운데 어느 쪽이 이익을 내는지 확정할 수 없습니다 — 회사는 부문 매출까지만 공개하고 원가·판관비 배부 자료를 내지 않습니다. 둘째, 2025년 1분기 대손충당금 48.7억원을 유발한 거래처가 어느 부문의 고객이었는지 확인하지 못했습니다. 공시 문구는 "최종 고객사의 유동성 악화"까지이고 이름도 부문도 특정하지 않습니다. 셋째, 신주를 받아 간 Whitston Materials Technology의 2024년 말 자기자본은 31.2억원인데 투입액은 278.4억원입니다. 그 차액의 자금 원천은 어느 공시에도 없습니다. 넷째, 매출처 집중도가 공개되지 않아 상위 고객이 매출의 몇 할인지 알 수 없습니다 — 다만 특수관계자 주석이 옆문을 열어 2026년 상반기 기준 33.3%까지는 보입니다.</p>
+<p>B급은 채점의 정밀도를 높이는 것입니다. 배터리 부문에서 신규 납품과 교체 수요의 비율, 충방전 장비 한 대의 자재 명세에서 핀과 클립이 차지하는 금액 비중, 핀의 교체 주기가 여기 들어갑니다. 반도체 쪽에서는 제품 믹스별 판매 단가 분해(공시는 부문 평균 단가까지만 줍니다)와 포고핀·인터포저의 비중, 그리고 회사가 설명회에서 밝힌 조립 능력 숫자의 공시 근거가 남아 있습니다. C급은 배경입니다 — 포고핀 단독 시장 규모는 어떤 공개 출처로도 확인되지 않아 점유율 역산을 하지 않았고, 일본 공급사 설비의 모델 사양(P033·P034)도 공시된 수량과 금액 밖으로는 확인되지 않습니다.</p>
+<p><b>이 문서가 하지 않는 것.</b> 목표주가와 시나리오 주가, 확률가중 기댓값, 매매 밴드를 내지 않습니다. 파트 8의 조정판도 함의 시가총액과 현재 시총 대비 배수에서 멈춥니다. 하방의 자로는 과거 실측 낙폭(2026-05-26 고점 10,990원 대비 -20.0%, 2024-12-09 저점 2,725원), 제3자배정 발행가 3,165원과 3,660원, 그리고 주가순자산배수 밴드만 씁니다.</p>
+
+</section>
+<section class="sec" id="log">
+<h2>갱신 로그</h2>
+<ul class="log">
+<li><b>v1 · 2026-09-14</b> — 파트제 허브 신설, 파트 0~8 같은 날 완주. 판정: 시가총액 2,556억원이 사는 것은 2026년에 증명된 반도체 테스트핀 수출(후행 12개월 매출 628.4억·영업이익 73.5억)이며, 그 위에 얹힌 CNC 100대 증설(84.7억)과 지분 28.57%를 쥔 신주주는 아직 손익계산서에 없다. 2026년 상반기 증익은 세 축 동반 회복이 아니라 반도체 한 축 구조이고, 배터리 부문의 회복분은 물량이 아니라 단가로 설명된다. 신주 배정 사유는 두 번 다 "판매증진 목적으로 주요 고객의 관계사"이며 손문군이 대표인 대만 HSIEHCHANG TECHNOLOGY가 1H26에 46.5억을 사 갔으므로 신주주는 고객 쪽 자본 제휴로 읽고, CNC 100대의 양수예정일은 2027-07-15이므로 증설 매출은 2027년의 일이다. 다음 채점 게이트는 2026-11-14 3분기 분기보고서.</li>
+</ul>
+</section>
+<footer>숫자의 정본은 상단 상수 블록 · 출처·빈티지·E(추정) 태그는 각 파트 본문에 · 이 페이지는 투자 권유가 아닙니다</footer>
+</div>
+<script>
+(function(){
+  // 허브가 %2F 인코딩 경로로 열려도 파트 파일을 같은 폴더에서 찾도록 절대 경로를 만든다
+  var path=location.pathname.replace(/%2F/gi,'/');
+  var dir=path.slice(0,path.lastIndexOf('/')+1);
+  function url(fn){return dir+encodeURIComponent(fn);}
+  function fit(ifr){
+    try{
+      var d=ifr.contentDocument; if(!d||!d.documentElement) return;
+      var m=d.querySelector('main'); var h=m?(m.offsetTop+m.offsetHeight+32):(d.body?d.body.scrollHeight:0);
+      var cur=parseInt(ifr.style.height)||0; if(h>200&&Math.abs(h-cur)>8) ifr.style.height=(h+24)+'px';
+    }catch(e){}
+  }
+  document.querySelectorAll('details.part').forEach(function(det){
+    var fn=det.getAttribute('data-file');
+    var ifr=det.querySelector('iframe');
+    var a=det.querySelector('a.popen'); if(a) a.href=url(fn);
+    det.addEventListener('toggle',function(){
+      if(!det.open||ifr.dataset.loaded) return;
+      ifr.dataset.loaded='1';
+      ifr.addEventListener('load',function(){
+        fit(ifr);
+        try{
+          var d=ifr.contentDocument;
+          // 파트 안의 허브 링크는 허브 페이지 자체(최상위)로 이동
+          d.querySelectorAll('a[href]').forEach(function(x){var hr=x.getAttribute('href');if(hr&&hr.charAt(0)!=='#'){x.target='_top';}});
+          if(window.ResizeObserver&&d.body){new ResizeObserver(function(){fit(ifr);}).observe(d.body);}
+          else{setInterval(function(){fit(ifr);},1500);}
+        }catch(e){}
+      });
+      ifr.src=url(fn);
+    });
+  });
+  // #part3 같은 해시로 열면 해당 파트를 자동 펼침
+  var links=[].slice.call(document.querySelectorAll('.topnav a'));var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function spy(){var y=window.scrollY+90,cur=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i;});links.forEach(function(a,i){a.classList.toggle('on',i===cur);});}
+  window.addEventListener('scroll',spy,{passive:true});spy();
+  var mh=/^#part(\d)$/.exec(location.hash);
+  if(mh){var t=document.querySelector('details.part[data-file*="파트'+mh[1]+'_"]'); if(t){t.open=true; t.scrollIntoView(); setTimeout(spy,400);}}
+})();
+</script>
+</body></html>

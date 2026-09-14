@@ -1,0 +1,446 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="valuation,model">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>메가터치 파트 8 — 밸류 모델 · 2026-09-14</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<div class="hubnav">메가터치 파트제 커버리지 · <a href="메가터치_허브.html">허브(판정·상수 블록·논쟁 지도)</a> · 파트 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / <b>8</b> · 현행 판정은 <a href="메가터치_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 valuation(밸류에이션)·model(조정 모델)을 맡습니다.</div>
+<h1>메가터치 파트 8 — 밸류 모델: 시가총액 2,556억은 무엇을 참이라고 가정하는가</h1>
+<div class="sub">파트제 커버리지 10편(허브 + 파트 0~8) 중 파트 8 · 작성 2026-09-14 · 주가 8,790원(9-14 기준 최신 종가) · 시총 2,556억(발행주식 29,079,111주) · 회계연도 12월(2026 = 제17기) · 재무제표는 전부 별도(종속기업 없음) · 다음 실적 3Q26 분기보고서 2026-11-14<span class="est">E</span> · 엔화 매매기준율 JPY1 = ₩9.5198(2026-06-30 이사회 기준) · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 2026 반기보고서(8-14)·2025 사업보고서·주요사항보고서(유형자산 양수 6-30, 제3자배정 2025-12-19·2026-04-02)·키움 ka10001·ka10081(9-14)·조사 노트(반도체 밸류체인·회사 연혁, 9-14) · 이 파트는 주가 값을 매기지 않고 시총이 요구하는 이익만 분해합니다</div>
+
+<p class="judge"><b>이 파트의 답(논쟁 5).</b> 시총 2,556억은 후행 12개월 순이익 75.0억의 34.1배, 자본 861.8억의 2.97배입니다. PER은 비교군 한가운데(마이크로컨텍솔루션 25.25배와 ISC 68.69배 사이)에 있고 PBR은 비교군 아래쪽에 있습니다. 이 두 자리가 동시에 성립하는 이유는 하나입니다. 분모인 자본이 두 번의 제3자배정 278.4억으로 부풀어 있는데 그 돈이 아직 이익을 낳지 않았기 때문입니다. 역산하면, PER 33.10배에서 이 시총이 요구하는 세후이익은 77.2억, 영업이익은 97.7억입니다. 2Q26 런레이트 연율 매출 1,008.8억<span class="est">E</span>에서는 영업이익률 9.7%<span class="est">E</span>, 1H26 단순 2배 821.8억<span class="est">E</span>에서는 11.9%<span class="est">E</span>면 닿습니다. 둘 다 2Q26 실측 18.9%보다 낮습니다. 즉 현재 시총은 "2Q26이 되돌려지지 않는다"만 참이면 서고, 증설 100대와 새 주주는 그 위에 얹혀 있습니다. 우리가 채점하는 것은 얹힌 부분입니다.</p>
+
+<p>이 파트는 커버리지의 마지막 층입니다. 파트 1이 반도체 부문의 수출 구조를, 파트 2가 배터리 부문의 붕괴와 회복을, 파트 4가 열두 분기의 손익과 비용 성격을, 파트 5가 두 번의 증자와 CNC 100대를, 파트 6이 주가와 수급을, 파트 7이 리스크를 다뤘습니다. 여기서는 그 조각들을 하나의 자 위에 올려 "시총 2,556억은 어떤 조합을 참이라고 가정해야 성립하는가"만 묻습니다. 적정주가를 내는 파트가 아닙니다. 나오는 것은 배수와 요구 이익과 함의 시가총액뿐이고, 조정판도 거기서 멈춥니다.</p>
+
+<p>방법은 단순합니다. 먼저 현재 좌표를 실측값으로 못 박고, 그 다음 연율화의 함정을 먼저 다루고, 그 위에서 역산합니다. 역산은 "주가가 얼마여야 한다"가 아니라 "이 배수와 이 이익이면 시총이 얼마"라는 방향으로만 읽습니다. 자체 추정에는 전부 E 표시를 붙였고, 가정과 근거와 식과 교차검증을 네 단으로 적었습니다. 하방은 예측하지 않고 이미 일어난 낙폭과 이미 정해진 발행가와 자기 PBR 이력으로만 말합니다.</p>
+<div class="gloss">
+<b>주가순자산배수(PBR)</b><span>주가를 주당순자산(BPS)으로 나눈 값입니다. 이 파트의 BPS는 2026-06-30 자본 861.8억을 같은 날 발행주식 29,079,111주로 나눈 2,964원이고, 그래서 PBR은 2.97배입니다.</span>
+<b>주가매출액배수(PSR)</b><span>시총을 매출로 나눈 값입니다. 이익이 아직 얕거나 들쭉날쭉할 때 이익배수 대신 쓰는 자로, 메가터치는 후행 12개월 매출 628.4억 기준 4.07배입니다.</span>
+<b>후행 12개월(TTM)</b><span>가장 최근 네 분기를 더한 값입니다. 여기서는 3Q25·4Q25·1Q26·2Q26의 합이며, 2025년 상반기의 적자 분기가 이미 빠져 있고 대손충당금 48.7억이 들어 있던 1Q25도 빠져 있습니다.</span>
+<b>증분 마진</b><span>매출이 한 단위 늘 때 영업이익이 얼마나 따라 붙는지의 비율입니다. 고정비가 이미 깔려 있으면 증분 마진은 평균 마진보다 높습니다. 실측값은 30.3%(2Q26 대 1Q26)와 33.6%(1H26 대 대손 제외 1H25)입니다.</span>
+<b>희석 주식수</b><span>신주가 더 나왔을 때의 주식수입니다. 메가터치는 이미 20,771,000주에서 29,079,111주로 늘었고, 같은 주가에서도 주식수가 늘면 시총이 커져 그 시총을 정당화할 이익이 커집니다.</span>
+<b>소모품 매출의 재현성</b><span>테스트핀은 접촉 횟수가 쌓이면 교체되는 소모품이라 한 번 채택되면 반복 주문이 붙는다는 성질입니다. 다만 회사가 공시로 교체 주기나 수주잔고를 밝힌 적이 없어, 이 파트는 재현성을 가정하지 않고 분기 실적으로만 확인합니다.</span>
+<b>함의 시가총액</b><span>어떤 이익과 어떤 배수를 참이라고 두었을 때 나오는 시총입니다. 적정 시총이 아니라 가정의 결과값이며, 이 파트는 여기서 멈추고 주식수로 나누지 않습니다.</span>
+<b>기준 시총</b><span>현재 종가 8,790원에 선택한 주식수를 곱한 값입니다. 조정판에서 희석을 반영할 때의 비교 기준이 됩니다.</span>
+</div>
+
+<h2>1. 현재 좌표 — 정본</h2>
+
+<p>2026년 9월 14일 기준 최신 종가는 8,790원이고 발행주식수는 29,079,111주입니다. 곱하면 2,556.1억, 반올림해 2,556억입니다. 이 숫자가 이 파트의 모든 계산의 분자입니다.</p>
+
+<p>주식수를 먼저 정리해야 합니다. 이 회사의 주식수는 2026년에 두 번 바뀌었습니다. 2023년 11월 상장 직후부터 2026년 1월 22일까지는 20,771,000주였습니다. 2025년 12월 19일 이사회에서 결정된 1차 제3자배정 5,192,749주가 2026년 1월 23일 납입되면서 25,963,749주가 됐고, 2026년 4월 2일 결정된 2차 3,115,362주가 4월 28일 납입되면서 29,079,111주가 됐습니다. 늘어난 신주는 합계 8,308,111주로 현재 주식수의 28.57%이고, 기존 주주 기준으로는 40%의 증가입니다. 따라서 이 파트에서 시총이나 주당 지표를 말할 때는 항상 2026년 6월 30일 기준 29,079,111주입니다. 2025년 이전 분기의 주당 값을 말할 때만 20,771,000주를 씁니다.</p>
+
+<p>분모 쪽은 두 갈래입니다. 자산 쪽 분모는 2026년 6월 30일 별도 재무상태표의 자본 861.8억이고, 이를 현재 주식수로 나눈 주당순자산은 2,964원, PBR은 2.97배입니다. 이익 쪽 분모는 후행 12개월입니다. 3Q25부터 2Q26까지 네 분기를 더하면 매출 628.4억, 영업이익 73.5억, 순이익 75.0억이고, 각각 PSR 4.07배, TTM 영업이익률 11.7%, PER 34.1배가 나옵니다.</p>
+
+<table class=""><tr><th>항목</th><th>값</th><th>산식·출처</th></tr><tr><td>종가(2026-09-14)</td><td>8,790원</td><td>키움 일별 종가. 직전일 8,430원</td></tr><tr><td>발행주식수</td><td>29,079,111주</td><td>20,771,000주 → (2026-01-23 납입) 25,963,749주 → (2026-04-28 납입) 29,079,111주</td></tr><tr><td>시가총액</td><td>2,556억</td><td>8,790원 × 29,079,111주 = 2,556.1억</td></tr><tr><td>자본(2026-06-30)</td><td>861.8억</td><td>반기보고서 별도 재무상태표</td></tr><tr><td>주가순자산배수(BPS)</td><td>2,964원</td><td>861.8억 ÷ 29,079,111주</td></tr><tr><td>PBR</td><td>2.97배</td><td>8,790원 ÷ 2,964원</td></tr><tr><td>TTM 매출(3Q25~2Q26)</td><td>628.4억</td><td>100.0 + 117.4 + 158.8 + 252.2 = 628.4</td></tr><tr><td>TTM 영업이익</td><td>73.5억</td><td>-6.2 + 12.6 + 19.4 + 47.7 = 73.5</td></tr><tr><td>TTM 순이익</td><td>75.0억</td><td>-3.6 + 17.8 + 20.0 + 40.8 = 75.0</td></tr><tr><td>PER(TTM)</td><td>34.1배</td><td>2,556억 ÷ 75.0억</td></tr><tr><td>PSR(TTM)</td><td>4.07배</td><td>2,556억 ÷ 628.4억</td></tr><tr><td>TTM 영업이익률</td><td>11.7%</td><td>73.5억 ÷ 628.4억</td></tr></table>
+
+<p>이 표에서 눈에 띄는 것은 PER 34.1배와 PBR 2.97배가 서로 다른 이야기를 한다는 점입니다. 이익 기준으로는 비교군의 중간이고 자산 기준으로는 비교군의 바닥 가까이입니다. 두 값을 잇는 것은 자기자본이익률입니다. PBR을 PER로 나누면 시장이 함의하는 후행 자기자본이익률이 나오는데, 2.97 ÷ 34.1 = 8.7%입니다. 실제로 후행 12개월 순이익 75.0억을 2026년 6월 30일 자본 861.8억으로 나누면 8.7%로 거의 같습니다. 검산이 맞습니다.</p>
+
+<p>여기서 중요한 것은 그 8.7%가 왜 낮은가입니다. 분자인 이익이 작아서만이 아니라 분모인 자본이 최근에 급히 커졌기 때문입니다. 2025년 12월 말 자본은 523.3억이었는데 2026년 6월 말에는 861.8억으로 338.5억 늘었습니다. 이 중 278.4억이 두 번의 제3자배정 납입금이고 나머지가 반기 순이익 61.3억입니다. 즉 자본의 82%가 아직 한 푼의 이익도 낳지 않은 현금입니다. 실제로 2026년 6월 30일 현금성자산은 274.9억으로 자본의 32%입니다.</p>
+
+<p>그래서 PBR 2.97배는 두 겹으로 읽어야 합니다. 자본 861.8억 중 현금 274.9억을 빼면 영업에 쓰이는 자본은 586.9억이고, 시총에서 순현금을 뺀 값으로 그 자본을 나누면 배수가 달라집니다. 차입금은 30.0억이므로 순현금은 244.9억이고, 시총에서 이를 빼면 2311.1억, 영업자본 대비 3.94배입니다. 겉으로 보이는 2.97배보다 높습니다. 낮아 보이는 PBR의 일부는 마진 열위가 아니라 아직 일하지 않는 현금이 만든 착시입니다.</p>
+
+<h2>2. 연율화의 함정</h2>
+
+<p>2026년 상반기 매출은 410.9억, 영업이익은 66.6억입니다. 이것을 단순히 두 배 해서 연간 821.8억·133.2억이라고 부르고 싶어지는데, 이 회사에서는 그 계산이 세 가지 이유로 위험합니다. 함정을 먼저 짚고 나서 그럼에도 우리가 쓸 두 값을 나란히 놓겠습니다.</p>
+
+<p>첫째, 증설이 진행 중입니다. 2026년 6월 30일 이사회는 기계장치 P033 50sets + P034 50sets를 84.7억(JPY 8억 8,950만, 매매기준율 9.5198원/엔)에 양수하기로 결정했습니다. 이 설비는 상반기 매출에 한 푼도 기여하지 않았고 하반기에도 일부만 기여합니다. 상반기 유형자산 취득액 117.8억 중 건설중인자산이 기말 39.7억으로 기초 20.0억보다 늘어 있는 것이 그 증거입니다. 상반기를 두 배 하는 계산은 이 설비가 없는 회사를 두 배 하는 것이므로 아래로 틀리고, 반대로 증설분이 전부 매출이 된다고 보면 위로 틀립니다.</p>
+
+<p>둘째, 이 회사에는 부문이 통째로 사라진 전례가 있습니다. 배터리 부문 매출은 2023년 328.7억으로 전사의 65.6%였는데 2024년 238.5억, 2025년 98.8억으로 2년 만에 70% 줄었습니다. 그 과정에서 2025년 1분기에는 최종 고객사의 유동성 악화로 특정 거래처 채권에 100% 대손충당금 48.7억을 쌓아 분기 영업손실 -47.3억을 냈습니다. 반기를 두 배 하는 계산은 그 반기 안에 그런 사건이 들어 있지 않다는 것만 말할 뿐, 다음 반기에 없다는 것은 말하지 못합니다.</p>
+
+<p>셋째, 분기 편차가 큽니다. 2026년 1분기 매출은 158.8억, 2분기는 252.2억으로 분기 사이에 59%가 벌어졌습니다. 영업이익률도 12.2%와 18.9%로 6.7포인트 차이입니다. 반기를 두 배 하면 이 두 분기의 평균을 네 번 반복한다는 뜻이 되는데, 이 회사에서 평균적인 분기는 관측된 적이 없습니다.</p>
+
+<p>그럼에도 연율은 필요합니다. 배수를 만들려면 분모가 있어야 하기 때문입니다. 그래서 우리는 두 값을 병기합니다. 하나는 1H26 단순 2배로 매출 821.8억<span class="est">E</span>·영업이익 133.2억<span class="est">E</span>, 영업이익률 16.2%입니다. 다른 하나는 2Q26 런레이트 연율입니다. [가정] 2분기의 매출과 마진이 네 분기 반복된다. [근거] 2Q26 매출 252.2억·영업이익 47.7억(반기보고서 실측). [식] 252.2 × 4 = 1,008.8억<span class="est">E</span>, 47.7 × 4 = 190.8억<span class="est">E</span>, 영업이익률 18.9%. [교차검증] 후행 12개월 매출 628.4억은 이 연율의 62%이고, 2025년 연간 432.3억의 2.33배입니다. 즉 2Q26 런레이트를 믿는다는 것은 연간 매출이 1년 만에 두 배 이상 된다고 믿는 것과 같습니다.</p>
+
+<figure class=""><figcaption>장표 2. 연율화의 두 값 — 실적 3년과 2026년의 두 가지 연율 환산</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">-200</text>
+<line x1="62" y1="213.4" x2="730" y2="213.4" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="217.4" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="180.9" x2="730" y2="180.9" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="184.9" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="148.3" x2="730" y2="148.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="152.3" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="115.7" x2="730" y2="115.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="119.7" text-anchor="end" font-size="11" fill="#8a857c">600</text>
+<line x1="62" y1="83.1" x2="730" y2="83.1" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="87.1" text-anchor="end" font-size="11" fill="#8a857c">800</text>
+<line x1="62" y1="50.6" x2="730" y2="50.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="54.6" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">1,200</text>
+<text x="128.8" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2023</text>
+<text x="262.4" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2024</text>
+<text x="396.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="529.6" y="264" text-anchor="middle" font-size="10" fill="#8a857c">1H26×2(E)</text>
+<text x="663.2" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2Q26×4(E)</text>
+<rect x="82.0" y="131.8" width="45.8" height="81.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="105.4" y="127.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">501</text>
+<rect x="128.8" y="213.4" width="45.8" height="0.4" fill="#b07d2b" opacity="0.9"/>
+<text x="152.2" y="224.8" text-anchor="middle" font-size="9.5" fill="#b07d2b">-2</text>
+<rect x="215.6" y="127.1" width="45.8" height="86.3" fill="#1f3a5f" opacity="0.9"/>
+<text x="239.0" y="123.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">530</text>
+<rect x="262.4" y="206.9" width="45.8" height="6.5" fill="#b07d2b" opacity="0.9"/>
+<text x="285.8" y="202.9" text-anchor="middle" font-size="9.5" fill="#b07d2b">40</text>
+<rect x="349.2" y="143.0" width="45.8" height="70.4" fill="#1f3a5f" opacity="0.9"/>
+<text x="372.6" y="139.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">432</text>
+<rect x="396.0" y="213.4" width="45.8" height="6.8" fill="#b07d2b" opacity="0.9"/>
+<text x="419.4" y="231.2" text-anchor="middle" font-size="9.5" fill="#b07d2b">-42</text>
+<rect x="482.8" y="79.6" width="45.8" height="133.8" fill="#1f3a5f" opacity="0.9"/>
+<text x="506.2" y="75.6" text-anchor="middle" font-size="9.5" fill="#1f3a5f">822</text>
+<rect x="529.6" y="191.7" width="45.8" height="21.7" fill="#b07d2b" opacity="0.9"/>
+<text x="553.0" y="187.7" text-anchor="middle" font-size="9.5" fill="#b07d2b">133</text>
+<rect x="616.4" y="49.1" width="45.8" height="164.3" fill="#1f3a5f" opacity="0.9"/>
+<text x="639.8" y="45.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1,009</text>
+<rect x="663.2" y="182.4" width="45.8" height="31.1" fill="#b07d2b" opacity="0.9"/>
+<text x="686.6" y="178.4" text-anchor="middle" font-size="9.5" fill="#b07d2b">191</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">매출</text>
+<rect x="736" y="34" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">영업이익</text>
+</svg><div class="src">연간은 별도 재무제표 실측, 뒤 두 막대는 우리가 환산한 값입니다(E). 2025년 영업손실에는 1분기 대손충당금 48.7억이 들어 있습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 같은 2026년을 연율로 바꾸는데 매출은 821.8억과 1,008.8억, 영업이익은 133.2억과 190.8억으로 갈립니다. 두 값의 차이는 매출 187.0억, 영업이익 57.6억입니다. <b>원인.</b> 1분기 매출 158.8억과 2분기 252.2억의 격차가 그대로 남기 때문입니다. 1분기 영업이익률 12.2%와 2분기 18.9%의 차이가 이익에서는 더 크게 벌어집니다. <b>함의.</b> 어느 연율을 쓰느냐에 따라 같은 시총의 배수가 크게 달라집니다. 이 파트는 두 값을 끝까지 병기하고, 격자표에서는 둘을 모두 통과하는 구간을 봅니다.</p>
+
+<p>두 연율의 차이는 매출에서 187.0억, 영업이익에서 57.6억입니다. 영업이익 기준으로는 1.43배 차이입니다. 같은 시총을 이 두 분모로 나누면 PER은 세후 기준으로 24.3배<span class="est">E</span>와 17.0배<span class="est">E</span>가 됩니다. 시총이 어느 쪽을 사고 있는지는 이 파트가 단정하지 않습니다. 다만 후자라면 이미 싼 값이고, 전자라면 비교군 상단에 붙은 값입니다.</p>
+
+<h2>3. 역산 — 시총이 요구하는 2027년</h2>
+
+<p>이제 방향을 뒤집습니다. 이익을 추정해 주가를 만드는 대신, 지금 시총을 상수로 두고 그것이 성립하려면 2027년 매출과 영업이익률이 어떤 조합이어야 하는지를 봅니다. 축은 비교군의 실제 배수입니다. 2026년 9월 14일 키움 조회 기준으로 리노공업 PER 33.10배·PBR 6.86배, ISC 68.69배·6.94배, 티에스이 70.31배·6.87배, 마이크로컨텍솔루션 25.25배·5.24배입니다. 이 네 배수는 우리가 옳다고 판단한 값이 아니라 시장이 같은 사슬의 다른 회사에 매기고 있는 값입니다.</p>
+
+<p>격자의 한 칸은 이렇게 읽습니다. "2027년 매출이 이만큼이고 영업이익률이 이만큼이면, 그 이익에 이 배수를 곱한 시총은 얼마인가." 주가가 얼마여야 한다는 문장은 어디에도 나오지 않습니다. 세율은 21%<span class="est">E</span>를 씁니다. 근거는 1H26 실측 유효세율 20.9%와 2Q26 실측 22.1%이고, 영업외손익은 넣지 않습니다(1H26 영업외는 +10.9억으로 이익을 키우는 방향이었으므로, 제외한 우리 계산은 보수적입니다).</p>
+
+<table class=""><tr><th>2027 매출</th><th>OPM 12%</th><th>OPM 15%</th><th>OPM 18%</th><th>OPM 21%</th><th>시총 2,556억을 맞추는 OPM</th></tr><tr><td>700억</td><td>2,197억</td><td>2,746억 ★</td><td>3,295억</td><td>3,844억</td><td>14.0%</td></tr><tr><td>800억</td><td>2,510억 ★</td><td>3,138억</td><td>3,765억</td><td>4,393억</td><td>12.2%</td></tr><tr><td>900억</td><td>2,824억</td><td>3,530억</td><td>4,236억</td><td>4,942억</td><td>10.9%</td></tr><tr><td>1,000억</td><td>3,138억</td><td>3,922억</td><td>4,707억</td><td>5,491억</td><td>9.8%</td></tr><tr><td>1,100억</td><td>3,452억</td><td>4,315억</td><td>5,178억</td><td>6,040억</td><td>8.9%</td></tr><tr><td>1,200억</td><td>3,765억</td><td>4,707억</td><td>5,648억</td><td>6,590억</td><td>8.1%</td></tr><tr><td>1,300억</td><td>4,079억</td><td>5,099억</td><td>6,119억</td><td>7,139억</td><td>7.5%</td></tr></table>
+
+<p>표의 별표는 함의 시총이 현재 시총 2,556억의 ±8% 안에 드는 칸입니다. 맨 오른쪽 열은 각 매출에서 시총을 정확히 맞추는 영업이익률입니다. 읽으면 이렇습니다. 2027년 매출이 900억이면 영업이익률 10.9%<span class="est">E</span>, 1,000억이면 9.8%<span class="est">E</span>, 1,200억이면 8.1%<span class="est">E</span>에서 리노공업 배수를 적용한 함의 시총이 현재 시총과 같아집니다.</p>
+
+<figure class=""><figcaption>장표 3. 역산 곡선 — 2027년 매출과 영업이익률의 조합이 만드는 함의 시가총액(적용 PER 33.10배·유효세율 21%(E))</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="216.3" x2="730" y2="216.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.3" text-anchor="end" font-size="11" fill="#8a857c">3,000</text>
+<line x1="62" y1="176.7" x2="730" y2="176.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.7" text-anchor="end" font-size="11" fill="#8a857c">4,000</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">5,000</text>
+<line x1="62" y1="97.3" x2="730" y2="97.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.3" text-anchor="end" font-size="11" fill="#8a857c">6,000</text>
+<line x1="62" y1="57.7" x2="730" y2="57.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.7" text-anchor="end" font-size="11" fill="#8a857c">7,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">8,000</text>
+<line x1="62" y1="233.9" x2="730" y2="233.9" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">700</text>
+<text x="173.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">800</text>
+<text x="284.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">900</text>
+<text x="396.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,000</text>
+<text x="507.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,100</text>
+<text x="618.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1,200</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">1,300</text>
+<polyline points="62.0,248.2 173.3,235.8 284.7,223.3 396.0,210.9 507.3,198.4 618.7,186.0 730.0,173.5" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="248.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="173.3" cy="235.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="284.7" cy="223.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="396.0" cy="210.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="507.3" cy="198.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="618.7" cy="186.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="173.5" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,226.4 173.3,210.9 284.7,195.3 396.0,179.8 507.3,164.2 618.7,148.6 730.0,133.1" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="62.0" cy="226.4" r="2.4" fill="#b07d2b"/>
+<circle cx="173.3" cy="210.9" r="2.4" fill="#b07d2b"/>
+<circle cx="284.7" cy="195.3" r="2.4" fill="#b07d2b"/>
+<circle cx="396.0" cy="179.8" r="2.4" fill="#b07d2b"/>
+<circle cx="507.3" cy="164.2" r="2.4" fill="#b07d2b"/>
+<circle cx="618.7" cy="148.6" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="133.1" r="2.4" fill="#b07d2b"/>
+<polyline points="62.0,204.6 173.3,186.0 284.7,167.3 396.0,148.6 507.3,129.9 618.7,111.3 730.0,92.6" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<circle cx="62.0" cy="204.6" r="2.4" fill="#2b7a78"/>
+<circle cx="173.3" cy="186.0" r="2.4" fill="#2b7a78"/>
+<circle cx="284.7" cy="167.3" r="2.4" fill="#2b7a78"/>
+<circle cx="396.0" cy="148.6" r="2.4" fill="#2b7a78"/>
+<circle cx="507.3" cy="129.9" r="2.4" fill="#2b7a78"/>
+<circle cx="618.7" cy="111.3" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="92.6" r="2.4" fill="#2b7a78"/>
+<polyline points="62.0,182.9 173.3,161.1 284.7,139.3 396.0,117.5 507.3,95.7 618.7,73.9 730.0,52.2" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="62.0" cy="182.9" r="2.4" fill="#a44a3f"/>
+<circle cx="173.3" cy="161.1" r="2.4" fill="#a44a3f"/>
+<circle cx="284.7" cy="139.3" r="2.4" fill="#a44a3f"/>
+<circle cx="396.0" cy="117.5" r="2.4" fill="#a44a3f"/>
+<circle cx="507.3" cy="95.7" r="2.4" fill="#a44a3f"/>
+<circle cx="618.7" cy="73.9" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="52.2" r="2.4" fill="#a44a3f"/>
+<text x="736" y="56.2" font-size="11" fill="#a44a3f">OPM 21% 7,139억</text>
+<text x="736" y="96.6" font-size="11" fill="#2b7a78">OPM 18% 6,119억</text>
+<text x="736" y="137.1" font-size="11" fill="#b07d2b">OPM 15% 5,099억</text>
+<text x="736" y="177.5" font-size="11" fill="#1f3a5f">OPM 12% 4,079억</text>
+</svg><div class="src">세로 점선 수평선은 현재 시총 2,556억. 적용 PER은 비교군 중 리노공업의 33.10배(2026-09-14 키움 조회)를 축으로 쓴 것이지 우리가 옳다고 보는 배수가 아닙니다.</div></figure>
+<p class="reading"><b>관찰.</b> 현재 시총 2,556억을 통과하는 선은 영업이익률 12%에서는 2027년 매출 815억<span class="est">E</span> 자리, 18%에서는 543억<span class="est">E</span> 자리에서 지나갑니다. 구체적으로 PER 33.10배에서 시총이 요구하는 세후이익은 77.2억, 세전 영업이익은 97.7억입니다. <b>원인.</b> 세율 21%<span class="est">E</span>를 통과시키면 요구 영업이익은 요구 순이익의 1.27배가 되고, 매출 축에서는 그 영업이익을 낼 수 있는 매출·마진 조합이 쌍곡선을 그립니다. <b>함의.</b> 시총 2,556억은 2027년에 매출 543억<span class="est">E</span>·영업이익률 18%이거나 매출 815억<span class="est">E</span>·영업이익률 12%인 회사를 사고 있다는 뜻입니다. 앞의 조합은 2Q26 런레이트 연율 1,008.8억에 못 미치고, 뒤의 조합은 그것을 크게 넘습니다.</p>
+
+<p>이 격자에서 나오는 결론은 하나입니다. 현재 시총은 2Q26에서 이미 관측된 것보다 낮은 마진만 요구합니다. 2Q26 실측 영업이익률은 18.9%였는데, 매출 1,009억<span class="est">E</span>에서 시총을 맞추는 데 필요한 영업이익률은 9.7%<span class="est">E</span>입니다. 매출을 1H26 단순 2배인 822억<span class="est">E</span>으로 낮춰도 필요한 영업이익률은 11.9%<span class="est">E</span>로 여전히 2Q26 실측 아래입니다. 즉 리노공업 배수를 그대로 빌려 쓴다면, 이 시총은 "2026년 상반기가 되돌려지지 않는다"만으로 이미 정당화됩니다.</p>
+
+<p>문제는 배수를 빌려 오는 일 자체입니다. 리노공업의 1H26 영업이익률은 49.7%이고 메가터치는 16.3%입니다(조사 노트, DART 반기보고서 기준). 같은 이익 1억에 같은 배수를 매길 근거는 없습니다. 그래서 배수 축을 넓혀 다시 봅니다.</p>
+
+<table class=""><tr><th>적용 PER(배)</th><th>출처</th><th>시총이 요구하는 순이익</th><th>요구 영업이익(세율 21%(E))</th><th>2027 매출 1,009억(E) 기준 요구 OPM</th><th>2027 매출 822억(E) 기준 요구 OPM</th></tr><tr><td>25.25</td><td>마이크로컨텍솔루션</td><td>101.2억</td><td>128.1억</td><td>12.7%</td><td>15.6%</td></tr><tr><td>33.10</td><td>리노공업</td><td>77.2억</td><td>97.7억</td><td>9.7%</td><td>11.9%</td></tr><tr><td>34.10</td><td>메가터치 자신의 TTM</td><td>75.0억</td><td>94.9억</td><td>9.4%</td><td>11.5%</td></tr><tr><td>50.00</td><td>중간값 가정(E)</td><td>51.1억</td><td>64.7억</td><td>6.4%</td><td>7.9%</td></tr><tr><td>68.69</td><td>ISC</td><td>37.2억</td><td>47.1억</td><td>4.7%</td><td>5.7%</td></tr><tr><td>70.31</td><td>티에스이</td><td>36.4억</td><td>46.0억</td><td>4.6%</td><td>5.6%</td></tr></table>
+
+<p>이 표는 배수를 낮출수록 요구 이익이 가파르게 커진다는 것을 보여줍니다. 마이크로컨텍솔루션의 25.25배를 쓰면 시총이 요구하는 영업이익은 128.1억<span class="est">E</span>이 되고, 2Q26 런레이트 매출 1,009억<span class="est">E</span> 기준으로 영업이익률 12.7%<span class="est">E</span>가 필요합니다. 이것은 2Q26 실측 18.9%를 넘습니다. 반대로 티에스이의 70.31배를 쓰면 요구 영업이익은 46.0억<span class="est">E</span>으로 떨어져 1H26 반기 실적만으로도 충족됩니다. 어떤 배수를 빌리느냐가 결론을 다 정해 버립니다.</p>
+
+<p>그래서 우리는 배수를 고르지 않고 조정판을 둡니다. 배수를 고르는 일은 독자의 몫이고, 이 파트가 할 일은 각 선택이 어떤 이익을 요구하는지를 계산 가능하게 만들어 두는 것입니다.</p>
+
+<h2>4. 조정판</h2>
+
+<p>아래 다섯 개의 슬라이더를 움직이면 그 조합이 함의하는 시가총액과 현재 시총 대비 배수가 실시간으로 바뀝니다. 기본값은 전부 패킷의 실측값이거나 실측값에서 한 단계만 환산한 값이고, 각 슬라이더 아래에 그 근거와 출처 파트를 적었습니다. 출력에는 주가가 없습니다. 함의 시총과 배수에서 멈춥니다.</p>
+
+<div class="panel"><b>조정판 — 시총 2,556억 안에 든 가정을 꺼내는 자입니다. 주가를 내지 않습니다.</b><div class="note" style="margin-bottom:8px">다섯 개를 움직이면 그 조합이 함의하는 시가총액과 현재 시총 대비 배수가 바뀝니다. 출력은 시총과 배수까지이고, 주식수로 나눠 주당 값을 만들지 않습니다.</div><div style="margin:10px 0 2px">(가) 2027년 매출(억원) <b><span id="s_rev_v"></span></b><br><input type="range" id="s_rev" min="500" max="1600" step="10" value="1009"><div class="note">기본값 1,009억 = 2Q26 매출 252.2억의 4배. 1H26 단순 2배는 821.8억, 2026년 TTM 실측은 628.4억입니다(파트 4·이 파트 2절).</div></div><div style="margin:10px 0 2px">(나) 2027년 영업이익률(%) <b><span id="s_opm_v"></span></b><br><input type="range" id="s_opm" min="3" max="30" step="0.1" value="18.9"><div class="note">기본값 18.9% = 2Q26 실측 18.9%. 1H26 누계는 16.2%, TTM은 11.7%입니다(파트 4). 증분 마진 실측은 30.3%(2Q26 대비 1Q26)와 33.6%(1H26 대비 대손 제외 1H25)입니다.</div></div><div style="margin:10px 0 2px">(다-1) 적용 PER(배) <b><span id="s_per_v"></span></b><br><input type="range" id="s_per" min="8" max="80" step="0.1" value="34.1"><div class="note">기본값 34.1배 = 메가터치 자신의 TTM PER(패킷 실측). 비교군은 마이크로컨텍솔루션 25.25·리노공업 33.10·ISC 68.69·티에스이 70.31배입니다(2026-09-14 키움 조회).</div></div><div style="margin:10px 0 2px">(다-2) 적용 PBR(배) <b><span id="s_pbr_v"></span></b><br><input type="range" id="s_pbr" min="1" max="9" step="0.01" value="2.97"><div class="note">기본값 2.97배 = 현재 실측 PBR. 상장 이후 분기말 평균은 1.72배, 비교군 완제품 업체는 6.86~6.94배입니다(이 파트 5·6절).</div></div><div style="margin:10px 0 2px">(라) 희석 후 주식수(주) <b><span id="s_sh_v"></span></b><br><input type="range" id="s_sh" min="29079111" max="40000000" step="100000" value="29079111"><div class="note">기본값 29,079,111주 = 2026-06-30 실측. 두 번의 제3자배정으로 이미 20,771,000주에서 40% 늘어난 숫자입니다(파트 5). 이 슬라이더를 올리면 같은 주가에서도 기준 시총이 커져 요구 이익이 올라갑니다.</div></div><div class="out">2027년 영업이익 <span id="o_op">—</span>억 · 세후이익 <span id="o_ni">—</span>억(유효세율 21% 고정, 영업외손익 제외) · 후행 12개월 순이익 대비 <span id="o_grow">—</span>% · 매출은 후행 12개월 대비 <span id="o_growr">—</span>%</div><div class="out">함의 시가총액(PER 축) <span id="o_mper">—</span>억 · 현재 시총 대비 <span id="o_rper">—</span>배 · 그때의 PSR <span id="o_psr">—</span>배</div><div class="out">2027년 말 자본 <span id="o_eq27">—</span>억(E) · 함의 시가총액(PBR 축) <span id="o_mpbr">—</span>억 · 현재 시총 대비 <span id="o_rpbr">—</span>배</div><div class="out" style="font-weight:400">역산: 기준 시총 <span id="o_base">—</span>억(종가 8,790원 × 선택한 주식수)이 선택한 PER에서 요구하는 순이익 <span id="o_reqni">—</span>억 · 요구 영업이익 <span id="o_reqop">—</span>억 · 선택한 매출에서의 요구 영업이익률 <span id="o_reqopm">—</span>%. 함의 시총은 기준 시총의 <span id="o_dir">—</span>쪽으로 <span id="o_gap">—</span>억 떨어져 있습니다.</div><div class="note">식. 영업이익 = 매출 × 영업이익률. 세후이익 = 영업이익 × (1 − 0.21). 세율 21%는 1H26 실측 유효세율 20.9%와 2Q26 실측 22.1%를 반올림한 우리 가정<span class="est">E</span>이고, 영업외손익(1H26 +10.9억)은 넣지 않았습니다. 함의 시총(PER 축) = 세후이익 × 적용 PER. 2027년 말 자본 = 2026-06-30 자본 861.8억 + 세후이익 × 1.5(2026년 하반기와 2027년 여섯 분기를 2027년 이익의 1.5배로 근사한 우리 가정<span class="est">E</span>, 배당·추가 증자 제외). 함의 시총(PBR 축) = 그 자본 × 적용 PBR. 기준 시총 = 종가 8,790원 × 선택한 주식수. 이 계산기는 적정주가도 목표주가도 내지 않으며, 함의 시총과 현재 시총 대비 배수에서 멈춥니다.</div>
+<script>
+(function(){
+var PX=8790,EQ=861.8,TAX=0.21,MCAP0=2556,SH0=29079111,TTMN=75.0,TTMR=628.4;
+var ids=["s_rev","s_opm","s_per","s_pbr","s_sh"];
+function g(i){return +document.getElementById(i).value}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function model(v){
+ var op=v.rev*v.opm/100, ni=op*(1-TAX), base=PX*v.sh/1e8, eq27=EQ+ni*1.5;
+ return {op:op,ni:ni,base:base,eq27:eq27,mper:ni*v.per,mpbr:eq27*v.pbr,
+  rper:ni*v.per/base,rpbr:eq27*v.pbr/base,psr:ni*v.per/v.rev,
+  reqni:base/v.per,reqop:base/v.per/(1-TAX),reqopm:base/v.per/(1-TAX)/v.rev*100,
+  reqbps:base*1e8/v.sh/v.pbr,grow:ni/TTMN*100,growr:v.rev/TTMR*100};}
+function f(){
+ var dd={s_rev:0,s_opm:1,s_per:1,s_pbr:2,s_sh:0};
+ ids.forEach(function(i){document.getElementById(i+"_v").textContent=fm(g(i),dd[i])});
+ var v={rev:g("s_rev"),opm:g("s_opm"),per:g("s_per"),pbr:g("s_pbr"),sh:g("s_sh")};
+ var m=model(v),S=function(i,t){document.getElementById(i).textContent=t};
+ S("o_op",fm(m.op,1));S("o_ni",fm(m.ni,1));S("o_base",fm(m.base,0));
+ S("o_mper",fm(m.mper,0));S("o_rper",fm(m.rper,2));
+ S("o_eq27",fm(m.eq27,1));S("o_mpbr",fm(m.mpbr,0));S("o_rpbr",fm(m.rpbr,2));
+ S("o_psr",fm(m.psr,2));S("o_reqni",fm(m.reqni,1));S("o_reqop",fm(m.reqop,1));S("o_reqopm",fm(m.reqopm,1));
+ S("o_grow",fm(m.grow,0));S("o_growr",fm(m.growr,0));
+ S("o_gap",fm(Math.abs(m.mper-m.base),0));S("o_dir",m.mper>=m.base?"위":"아래");}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+
+<p>기본값에서 나오는 값을 미리 읽어 두면 이렇습니다. 2027년 매출 1,009억·영업이익률 18.9%·적용 PER 34.1배·주식수 29,079,111주에서 영업이익은 190.7억<span class="est">E</span>, 세후이익은 150.7억<span class="est">E</span>, 함의 시총은 5,137억<span class="est">E</span>으로 현재 시총의 2.01배<span class="est">E</span>입니다. 같은 이익을 PBR 축으로 보면 2027년 말 자본은 1087.8억<span class="est">E</span>, PBR 2.97배에서 함의 시총은 3,231억<span class="est">E</span>으로 현재 시총의 1.26배<span class="est">E</span>입니다. 두 축이 비슷한 자리를 가리킵니다.</p>
+
+<p>슬라이더를 건드려 보면 어디가 민감한지가 드러납니다. 매출을 1H26 단순 2배인 822억으로 낮추고 영업이익률을 1H26 누계인 16.2%로 낮추면 함의 시총은 3,589억<span class="est">E</span>으로 현재의 1.40배<span class="est">E</span>가 됩니다. 반대로 적용 PER을 리노공업의 33.10배로, PBR을 6.86배로 올리면 같은 이익에서 함의 시총은 PER 축 4,987억<span class="est">E</span>·PBR 축 7,462억<span class="est">E</span>이 됩니다. 배수를 빌려 오는 선택 하나가 매출·마진 가정 전체보다 크게 움직입니다.</p>
+
+<p>희석 슬라이더의 쓰임은 다릅니다. 주식수를 29,079,111주에서 33,000,000주로 올리면 기준 시총이 2,556억에서 2,901억으로 커지고, 같은 이익과 같은 배수에서 현재 시총 대비 배수는 2.01배<span class="est">E</span>에서 1.77배<span class="est">E</span>로 내려갑니다. 신주가 더 나오면 같은 주가에서도 정당화해야 할 시총이 커진다는 뜻입니다. 이 회사에서 이것은 가상의 이야기가 아닙니다. 이미 아홉 달 사이에 8,308,111주가 나갔고, 증설 재원을 회사가 유상증자로 밝혀 둔 상태입니다.</p>
+
+<h2>5. PBR 밴드</h2>
+
+<p>배수를 빌려 오는 대신 자기 이력을 자로 쓰는 방법이 있습니다. 분기말 자본과 그날의 종가, 그리고 그 시점의 발행주식수로 상장 이후의 PBR을 전부 계산했습니다. 주식수가 세 단계로 바뀌었으므로 2026년 1분기말은 25,963,749주, 2026년 2분기말부터는 29,079,111주를 썼습니다. 이 구분을 하지 않으면 2026년의 BPS가 과대 계산됩니다.</p>
+
+<table class=""><tr><th>분기</th><th>기준일</th><th>종가(원)</th><th>발행주식수</th><th>자본(억)</th><th>BPS(원)</th><th>PBR(배)</th></tr><tr><td>4Q23</td><td>2023-12-28</td><td>5,110</td><td>20,771,000</td><td>501.5</td><td>2,414</td><td>2.12</td></tr><tr><td>1Q24</td><td>2024-03-29</td><td>5,660</td><td>20,771,000</td><td>515.2</td><td>2,480</td><td>2.28</td></tr><tr><td>2Q24</td><td>2024-06-28</td><td>5,440</td><td>20,771,000</td><td>528.9</td><td>2,546</td><td>2.14</td></tr><tr><td>3Q24</td><td>2024-09-30</td><td>4,035</td><td>20,771,000</td><td>538.5</td><td>2,593</td><td>1.56</td></tr><tr><td>4Q24</td><td>2024-12-30</td><td>3,090</td><td>20,771,000</td><td>551.9</td><td>2,657</td><td>1.16</td></tr><tr><td>1Q25</td><td>2025-03-31</td><td>3,700</td><td>20,771,000</td><td>515.8</td><td>2,483</td><td>1.49</td></tr><tr><td>2Q25</td><td>2025-06-30</td><td>4,010</td><td>20,771,000</td><td>509.0</td><td>2,451</td><td>1.64</td></tr><tr><td>3Q25</td><td>2025-09-30</td><td>3,950</td><td>20,771,000</td><td>505.4</td><td>2,433</td><td>1.62</td></tr><tr><td>4Q25</td><td>2025-12-30</td><td>3,530</td><td>20,771,000</td><td>523.3</td><td>2,519</td><td>1.40</td></tr><tr><td>1Q26</td><td>2026-03-31</td><td>4,015</td><td>25,963,749</td><td>707.6</td><td>2,725</td><td>1.47</td></tr><tr><td>2Q26</td><td>2026-06-30</td><td>5,890</td><td>29,079,111</td><td>861.8</td><td>2,964</td><td>1.99</td></tr><tr><td>현재</td><td>2026-09-14</td><td>8,790</td><td>29,079,111</td><td>861.8</td><td>2,964</td><td>2.97</td></tr></table>
+<figure class=""><figcaption>장표 1. PBR 궤적 — 분기말 자본과 그날 종가로 계산한 상장 이후 배수(주식수 3단계 반영)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">1.00</text>
+<line x1="62" y1="196.5" x2="730" y2="196.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="200.5" text-anchor="end" font-size="11" fill="#8a857c">1.50</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">2.00</text>
+<line x1="62" y1="77.5" x2="730" y2="77.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="81.5" text-anchor="end" font-size="11" fill="#8a857c">2.50</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">3.00</text>
+<line x1="62" y1="170.9" x2="730" y2="170.9" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4Q23</text>
+<text x="122.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q24</text>
+<text x="183.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q24</text>
+<text x="244.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3Q24</text>
+<text x="304.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4Q24</text>
+<text x="365.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q25</text>
+<text x="426.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q25</text>
+<text x="487.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3Q25</text>
+<text x="547.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4Q25</text>
+<text x="608.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1Q26</text>
+<text x="669.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2Q26</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">현재</text>
+<polyline points="62.0,122.7 122.7,103.7 183.5,120.3 244.2,189.4 304.9,237.0 365.6,197.7 426.4,179.8 487.1,182.2 547.8,208.4 608.5,200.1 669.3,138.2 730.0,21.6" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="122.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="122.7" cy="103.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="183.5" cy="120.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="244.2" cy="189.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="304.9" cy="237.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="365.6" cy="197.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="426.4" cy="179.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="487.1" cy="182.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="547.8" cy="208.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="608.5" cy="200.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="669.3" cy="138.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="21.6" r="2.4" fill="#1f3a5f"/>
+<text x="736" y="25.6" font-size="11" fill="#1f3a5f">PBR 2.97배</text>
+<text x="304.9" y="253.0" text-anchor="middle" font-size="10.5" fill="#a44a3f">저 1.16배</text>
+<text x="730.0" y="9.6" text-anchor="end" font-size="10.5" fill="#a44a3f">현재 2.97배</text>
+</svg><div class="src">분기말 자본(별도)·해당일 종가(키움)·시점별 발행주식수. 점선은 현재를 뺀 11개 분기 평균 1.72배.</div></figure>
+<p class="reading"><b>관찰.</b> 상장 이후 11개 분기말 PBR은 1.16배(4Q24)에서 2.28배(1Q24)의 좁은 띠 안에 있었고 평균은 1.72배입니다. 현재 2.97배는 그 띠의 바깥, 자기 이력의 최고치입니다. <b>원인.</b> 분자와 분모가 동시에 움직였습니다. 자본은 두 번의 제3자배정으로 523.3억에서 861.8억으로 늘었고 주식수도 20,771,000주에서 29,079,111주로 늘어 BPS 증가는 2,519원에서 2,964원까지로 제한됐는데, 주가는 같은 기간 3,530원에서 8,790원이 됐습니다. <b>함의.</b> 현재 배수는 자본이 아니라 이익 기대가 끌어올린 값입니다. 자본으로 설명되는 부분은 평균 1.72배까지이고, 나머지 1.25배만큼이 이 파트가 분해할 대상입니다.</p>
+
+<p>표를 읽으면 이 회사의 PBR은 상장 후 2년 동안 1.16배에서 2.28배 사이를 오갔습니다. 가장 낮았던 때는 4Q24(2024-12)로 주가 3,090원·BPS 2,657원의 1.16배였습니다. 가장 높았던 분기말은 1Q24의 2.28배입니다. 11개 분기말의 평균은 1.72배입니다.</p>
+
+<p>현재 2.97배는 그 이력 전체의 위에 있습니다. 분기말이 아닌 날까지 포함하면 더 높았던 순간이 있었습니다. 상장 이후 고점 10,990원이 찍힌 2026-05-26에 시장이 알고 있던 자본은 1Q26 707.6억이었고 주식수는 2차 배정까지 반영된 29,079,111주였으므로 BPS는 2,433원, PBR은 4.52배<span class="est">E</span>였습니다. 저점 2,725원이 찍힌 2024-12-09에는 3Q24 자본 538.5억·주식수 20,771,000주 기준 BPS 2,593원, PBR 1.05배<span class="est">E</span>였습니다. 상장 이후 실제로 관측된 PBR의 폭은 대략 1.05배에서 4.52배<span class="est">E</span>입니다.</p>
+
+<p>두 번의 제3자배정 발행가는 이 띠의 아래쪽에 박혀 있습니다. 1차 3,165원은 결정 시점에 시장이 알고 있던 3Q25 자본 505.4억·구 주식수 기준으로 PBR 1.30배<span class="est">E</span>, 2차 3,660원은 1Q26 자본 707.6억·중간 주식수 기준으로 1.34배<span class="est">E</span>입니다. 두 발행가 모두 기준주가에서 10% 할인된 값입니다. 새 주주가 자본의 28.57%를 가져간 가격은 지금 시장이 매기는 가격의 절반 이하였습니다. 이것은 판정이 아니라 사실이고, 하방을 말할 때 우리가 쓰는 세 개의 자 중 하나입니다.</p>
+
+<p>비교군과의 격차를 마지막으로 봅니다.</p>
+
+<figure class=""><figcaption>장표 4. 비교군 PBR — 소켓·프로브카드 완제품 업체와 부품 공급자의 자리(2026-09-14 키움 조회)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0.00</text>
+<line x1="62" y1="181.5" x2="730" y2="181.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="185.5" text-anchor="end" font-size="11" fill="#8a857c">2.00</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">4.00</text>
+<line x1="62" y1="72.5" x2="730" y2="72.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="76.5" text-anchor="end" font-size="11" fill="#8a857c">6.00</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">8.00</text>
+<text x="103.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">리노공업</text>
+<text x="187.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">ISC</text>
+<text x="270.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">티에스이</text>
+<text x="354.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">마이크로컨텍솔</text>
+<text x="437.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">오킨스전자</text>
+<text x="521.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">샘씨엔에스</text>
+<text x="604.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">큐알티</text>
+<text x="688.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">메가터치</text>
+<rect x="74.5" y="49.1" width="57.4" height="186.9" fill="#2b7a78" opacity="0.9"/>
+<text x="103.8" y="45.1" text-anchor="middle" font-size="9.5" fill="#2b7a78">6.86</text>
+<rect x="158.0" y="46.9" width="57.4" height="189.1" fill="#2b7a78" opacity="0.9"/>
+<text x="187.2" y="42.9" text-anchor="middle" font-size="9.5" fill="#2b7a78">6.94</text>
+<rect x="241.5" y="48.8" width="57.4" height="187.2" fill="#2b7a78" opacity="0.9"/>
+<text x="270.8" y="44.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">6.87</text>
+<rect x="325.0" y="93.2" width="57.4" height="142.8" fill="#2b7a78" opacity="0.9"/>
+<text x="354.2" y="89.2" text-anchor="middle" font-size="9.5" fill="#2b7a78">5.24</text>
+<rect x="408.5" y="26.4" width="57.4" height="209.6" fill="#2b7a78" opacity="0.9"/>
+<text x="437.8" y="22.4" text-anchor="middle" font-size="9.5" fill="#2b7a78">7.69</text>
+<rect x="492.0" y="75.8" width="57.4" height="160.2" fill="#2b7a78" opacity="0.9"/>
+<text x="521.2" y="71.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">5.88</text>
+<rect x="575.5" y="189.4" width="57.4" height="46.6" fill="#2b7a78" opacity="0.9"/>
+<text x="604.8" y="185.4" text-anchor="middle" font-size="9.5" fill="#2b7a78">1.71</text>
+<rect x="659.0" y="155.1" width="57.4" height="80.9" fill="#2b7a78" opacity="0.9"/>
+<text x="688.2" y="151.1" text-anchor="middle" font-size="9.5" fill="#2b7a78">2.97</text>
+<rect x="736" y="18" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">PBR(배)</text>
+</svg><div class="src">키움 ka10001 조회값(2026-09-14). 메가터치만 우리가 다시 계산한 자본 861.8억·발행주식 29,079,111주 기준 2.97배로 바꿔 넣었습니다(패킷 조회값 3.49배는 직전 분기 자본 기준으로 보입니다).</div></figure>
+<p class="reading"><b>관찰.</b> 완제품 쪽인 리노공업 6.86배·ISC 6.94배·티에스이 6.87배가 위쪽에 모이고, 메가터치는 2.97배로 큐알티(1.71배) 다음입니다. <b>원인.</b> 조사 노트가 적은 대로 두 가지가 겹칩니다. 하나는 마진입니다. 1H26 영업이익률이 리노공업 49.7%·ISC 31.8%·티에스이 27.8%인 반면 메가터치는 16.3%였습니다(조사 노트, DART 반기보고서 기준). 다른 하나는 이력입니다. 2025년 영업손실 -41.8억이 아직 후행 12개월 안에 남아 있습니다. <b>함의.</b> PBR 격차는 판정이 아니라 질문입니다. 같은 소모품 사슬에 있으면서 배수가 절반 이하라면, 시장은 이 회사의 자본이익률이 비교군만큼 오르지 못한다고 보거나 이익의 재현성을 아직 인정하지 않는 것입니다. 어느 쪽인지는 3Q26 영업이익률로 갈립니다.</p>
+
+<p>완제품 업체 세 곳의 PBR은 6.86~6.94배이고 메가터치는 2.97배로 그 절반 이하입니다. 이 격차가 무엇을 반영하는지는 세 가지로 나눠 볼 수 있습니다. 첫째는 마진입니다. 자본이익률이 낮으면 낮은 PBR이 정상입니다. 둘째는 적자 이력입니다. 2025년 영업손실 -41.8억이 아직 후행 12개월에서 막 빠져나간 참이고, 시장은 보통 네 분기 연속 흑자를 보고 나서야 배수를 올립니다. 셋째는 앞서 본 현금입니다. 자본의 32%가 현금이므로 자본 대비 배수가 구조적으로 눌립니다. 세 번째 이유는 시간이 지나면 저절로 사라집니다. 증설 대금이 집행되면 현금이 유형자산으로 바뀌고, 그 자산이 매출을 내면 분자도 커집니다.</p>
+
+<h2>6. 증설의 값</h2>
+
+<p>시총 안에 얹힌 것 중 첫 번째가 CNC 303대에서 403대로의 증설입니다. 이것이 전부 매출로 바뀌면 얼마이고, 대가로 감가상각비는 얼마나 늘어나는지를 계산합니다. 네 단으로 씁니다.</p>
+
+<p>[가정] 반도체 부문 매출이 CNC 가공 능력에 비례한다. [근거] 반기보고서가 생산설비를 CNC 303대로 적고 여기에 100대를 더해 403대로 늘릴 계획이라고 적었으며, 1H26 반도체 부문 매출은 257.7억입니다. [식] 반기 매출을 대수로 나눈 대당 반기 매출 257.7 ÷ 303 = 0.8505억, 연율로 1.701억, 여기에 100대를 곱하면 170.1억<span class="est">E</span>입니다. [교차검증] 회사가 언론(2026-09-11 보도)에 설명한 CNC 가공 능력은 월 500만 개에서 650만 개로 30% 증가입니다. 반도체 부문 연율 515.4억<span class="est">E</span>의 30%는 154.6억<span class="est">E</span>으로, 앞의 170.1억<span class="est">E</span>과 같은 자리에 떨어집니다. 두 값을 묶어 155~170억<span class="est">E</span>으로 읽습니다.</p>
+
+<p>다만 상단이 더 있을 수 있습니다. 임가공 부문(63.2억, 1H26)도 같은 가공 설비를 쓴다면 대당 매출의 분자가 커집니다. 반도체와 임가공을 합한 연율 641.8억<span class="est">E</span>을 303대로 나눠 100대를 곱하면 211.8억<span class="est">E</span>입니다. 공시는 설비별 부문 귀속을 밝히지 않으므로 이 값은 상단으로만 둡니다. 그리고 여기서 주의할 점이 하나 더 있습니다. 패킷에 담긴 반기보고서 표기는 "CNC 가공 기준 월 6,500,000개"를 303대 기준으로 적고 있는 반면, 언론에 실린 회사 설명은 같은 650만 개를 403대 달성치로 말합니다. 둘 중 어느 쪽이 맞는지에 따라 증설 효과가 절반으로 갈립니다. 미결로 남깁니다.</p>
+
+<p>대가 쪽입니다. [가정] 신규 기계장치를 정액 8년<span class="est">E</span>으로 상각한다. [근거] 양수 결정 금액은 84.7억(JPY 8억 8,950만)이고 외부평가기관 삼화회계법인이 적정 의견을 냈습니다. 대금은 계약시 20% T/T, 초회 출하 20일 전 80% L/C로 나갑니다. [식] 84.7 ÷ 8 = 연 10.6억<span class="est">E</span>, 분기 2.6억<span class="est">E</span>입니다. [교차검증] 1H26 유형자산 상각액은 27.1억으로 분기 13.6억이고, 기초 유형자산 279.3억을 연간 상각 54.2억<span class="est">E</span>으로 나눈 함의 내용연수는 5.2년<span class="est">E</span>입니다. 이 실측 내용연수를 쓰면 신규 설비의 연 상각은 16.4억<span class="est">E</span>으로 올라갑니다.</p>
+
+<p>상반기에 이미 집행된 취득액까지 합치면 그림이 더 커집니다. 1H26 유형자산 취득 117.8억에 신규 양수 84.7억을 더하면 202.5억이고, 이 전부가 가동에 들어가면 8년<span class="est">E</span> 기준 연 25.3억<span class="est">E</span>, 분기 6.3억<span class="est">E</span>의 상각이 추가됩니다. 현재 분기 상각 13.6억에 더하면 분기 19.9억<span class="est">E</span>, 실측 내용연수 5.2년<span class="est">E</span>을 쓰면 분기 23.4억<span class="est">E</span>입니다. 허브의 논쟁 3이 채점 기준으로 잡은 "2027년 분기 감가상각비 20억 이상"은 이 범위의 아래쪽에 있습니다. 즉 그 기준은 증설이 계획대로 가동되면 자연히 충족되는 낮은 문턱이고, 충족되지 않는다면 그것은 설비가 놀고 있다는 신호입니다.</p>
+
+<p>둘을 합치면 증설의 순값이 나옵니다. 늘어나는 매출 170.1억<span class="est">E</span>에 증분 마진 30%<span class="est">E</span>를 적용하면 증분 영업이익은 51.0억<span class="est">E</span>입니다. 증분 마진 30%의 근거는 두 개의 실측입니다. 2Q26이 1Q26보다 매출이 93.4억 늘 때 영업이익이 28.3억 늘어 30.3%였고, 1H26이 대손을 제외한 1H25보다 매출이 195.8억 늘 때 영업이익이 65.7억 늘어 33.6%였습니다. 여기서 신규 설비 상각 10.6억<span class="est">E</span>을 빼면 순증 영업이익은 40.4억<span class="est">E</span>입니다. 세후로는 31.9억<span class="est">E</span>이고, 리노공업 배수 33.10배를 곱하면 1,058억<span class="est">E</span>, 현재 시총의 41%<span class="est">E</span>입니다.</p>
+
+<p>이 마지막 숫자가 이 절의 요점입니다. 증설이 계획대로 전부 매출이 되고 증분 마진이 유지되고 비교군 배수가 빌려지는, 세 가지가 동시에 참일 때 증설이 만드는 값이 현재 시총의 41%<span class="est">E</span>입니다. 반대로 말하면 시총의 나머지 59%<span class="est">E</span>는 이미 증명된 실적과 그 실적의 지속 가정이 지고 있습니다. 증설은 이 이야기의 전부가 아니라 3분의 1 남짓입니다.</p>
+
+<h2>7. 하방의 자</h2>
+
+<p>우리는 하방 목표를 만들지 않습니다. 대신 이미 관측된 것 세 가지를 자로 씁니다.</p>
+
+<figure class=""><figcaption>장표 5. 상장 이후 종가와 하방의 자 — 고점·저점·두 번의 제3자배정 발행가</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="196.5" x2="730" y2="196.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="200.5" text-anchor="end" font-size="11" fill="#8a857c">4,000</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">6,000</text>
+<line x1="62" y1="77.5" x2="730" y2="77.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="81.5" text-anchor="end" font-size="11" fill="#8a857c">8,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="221.3" x2="730" y2="221.3" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">23-11</text>
+<text x="118.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">24-02</text>
+<text x="174.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">24-04</text>
+<text x="230.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">24-07</text>
+<text x="286.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">24-10</text>
+<text x="341.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">25-01</text>
+<text x="397.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">25-04</text>
+<text x="453.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">25-07</text>
+<text x="509.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">25-10</text>
+<text x="565.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">26-01</text>
+<text x="621.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">26-04</text>
+<text x="677.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">26-06</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">26-09</text>
+<polyline points="62.0,149.2 63.0,161.4 63.9,180.1 64.9,149.2 65.9,156.6 66.8,152.2 67.8,166.2 68.8,164.1 69.7,168.1 70.7,160.5 71.7,160.2 72.6,154.6 73.6,160.2 74.5,145.0 75.5,142.9 76.5,104.0 77.4,119.2 78.4,140.9 79.4,150.4 80.3,148.9 81.3,138.8 82.3,143.8 83.2,138.5 84.2,139.1 85.2,154.0 86.1,153.4 87.1,156.0 88.1,157.8 89.0,161.1 90.0,156.6 91.0,156.3 91.9,158.7 92.9,163.2 93.9,166.8 94.8,163.5 95.8,159.6 96.8,160.5 97.7,162.6 98.7,159.6 99.6,160.2 100.6,162.9 101.6,164.7 102.5,164.7 103.5,160.5 104.5,158.4 105.4,158.7 106.4,166.5 107.4,168.5 108.3,166.2 109.3,162.9 110.3,164.1 111.2,166.8 112.2,168.8 113.2,172.6 114.1,175.7 115.1,174.6 116.1,178.9 117.0,186.4 118.0,184.3 119.0,187.6 119.9,181.6 120.9,182.1 121.8,182.8 122.8,183.1 123.8,180.6 124.7,178.4 125.7,181.5 126.7,181.6 127.6,181.2 128.6,184.0 129.6,180.9 130.5,171.2 131.5,175.2 132.5,180.1 133.4,174.9 134.4,179.4 135.4,177.5 136.3,176.0 137.3,176.0 138.3,174.5 139.2,162.9 140.2,140.3 141.2,139.4 142.1,139.4 143.1,133.4 144.1,142.4 145.0,138.8 146.0,133.1 146.9,152.5 147.9,153.1 148.9,140.0 149.8,149.5 150.8,146.2 151.8,149.2 152.7,152.2 153.7,147.1 154.7,139.4 155.6,142.9 156.6,151.9 157.6,149.8 158.5,158.1 159.5,162.9 160.5,160.8 161.4,162.3 162.4,157.5 163.4,157.5 164.3,166.8 165.3,163.2 166.3,149.2 167.2,156.3 168.2,161.4 169.2,160.8 170.1,155.4 171.1,160.5 172.0,160.8 173.0,160.5 174.0,154.8 174.9,154.8 175.9,154.0 176.9,145.6 177.8,147.1 178.8,151.9 179.8,156.9 180.7,157.5 181.7,157.8 182.7,152.8 183.6,157.5 184.6,160.2 185.6,160.5 186.5,161.4 187.5,159.3 188.5,164.4 189.4,163.5 190.4,163.5 191.4,160.5 192.3,154.6 193.3,154.0 194.2,151.6 195.2,158.4 196.2,157.5 197.1,142.1 198.1,144.7 199.1,142.9 200.0,140.6 201.0,135.8 202.0,140.6 202.9,148.3 203.9,148.9 204.9,142.7 205.8,146.8 206.8,147.1 207.8,152.2 208.7,152.5 209.7,151.3 210.7,153.4 211.6,153.7 212.6,156.0 213.6,158.4 214.5,161.7 215.5,159.6 216.5,161.4 217.4,160.8 218.4,157.8 219.3,157.8 220.3,161.1 221.3,164.4 222.2,162.6 223.2,165.9 224.2,167.0 225.1,172.7 226.1,171.2 227.1,177.2 228.0,174.5 229.0,171.8 230.0,175.1 230.9,176.9 231.9,175.7 232.9,177.3 233.8,176.9 234.8,175.1 235.8,183.4 236.7,204.7 237.7,198.0 238.7,195.9 239.6,199.0 240.6,195.3 241.5,191.7 242.5,186.8 243.5,186.8 244.4,185.6 245.4,189.5 246.4,183.7 247.3,185.9 248.3,187.0 249.3,190.3 250.2,189.8 251.2,191.9 252.2,193.7 253.1,192.6 254.1,192.5 255.1,192.9 256.0,195.6 257.0,199.8 258.0,200.7 258.9,205.9 259.9,206.8 260.9,207.5 261.8,208.1 262.8,199.5 263.8,202.0 264.7,202.5 265.7,202.5 266.6,196.1 267.6,196.5 268.6,195.8 269.5,192.9 270.5,194.0 271.5,195.5 272.4,196.6 273.4,197.1 274.4,161.7 275.3,160.5 276.3,165.0 277.3,170.2 278.2,170.6 279.2,168.8 280.2,178.7 281.1,178.5 282.1,188.8 283.1,189.7 284.0,195.5 285.0,191.4 286.0,195.2 286.9,195.3 287.9,192.2 288.8,192.6 289.8,195.0 290.8,195.0 291.7,198.4 292.7,194.4 293.7,194.3 294.6,196.8 295.6,195.6 296.6,195.8 297.5,202.5 298.5,206.5 299.5,209.0 300.4,205.7 301.4,220.6 302.4,221.0 303.3,220.3 304.3,220.7 305.3,220.7 306.2,220.3 307.2,217.2 308.2,218.7 309.1,220.3 310.1,218.7 311.1,224.5 312.0,225.5 313.0,223.4 313.9,225.4 314.9,227.6 315.9,229.1 316.8,234.0 317.8,227.4 318.8,225.2 319.7,222.7 320.7,223.1 321.7,221.9 322.6,220.3 323.6,220.4 324.6,223.0 325.5,225.5 326.5,221.8 327.5,224.6 328.4,223.7 329.4,226.1 330.4,223.6 331.3,224.8 332.3,222.4 333.3,220.2 334.2,221.8 335.2,218.2 336.2,218.2 337.1,217.0 338.1,220.0 339.0,216.7 340.0,218.7 341.0,217.6 341.9,216.6 342.9,217.3 343.9,218.5 344.8,222.2 345.8,222.1 346.8,223.3 347.7,226.2 348.7,228.8 349.7,226.0 350.6,225.7 351.6,225.8 352.6,225.4 353.5,220.0 354.5,221.3 355.5,222.8 356.4,221.6 357.4,221.5 358.4,219.4 359.3,220.9 360.3,209.3 361.2,207.2 362.2,207.2 363.2,193.5 364.1,196.1 365.1,168.5 366.1,177.2 367.0,176.6 368.0,195.3 369.0,194.7 369.9,198.0 370.9,200.8 371.9,203.9 372.8,206.9 373.8,200.5 374.8,202.7 375.7,190.5 376.7,194.7 377.7,194.3 378.6,189.1 379.6,185.5 380.6,195.6 381.5,193.2 382.5,198.0 383.5,196.2 384.4,201.3 385.4,203.9 386.3,205.4 387.3,202.2 388.3,206.5 389.2,210.0 390.2,208.3 391.2,217.0 392.1,217.6 393.1,219.3 394.1,211.1 395.0,210.3 396.0,208.8 397.0,207.7 397.9,210.2 398.9,210.2 399.9,210.5 400.8,212.0 401.8,212.3 402.8,204.5 403.7,206.3 404.7,184.2 405.7,191.6 406.6,190.3 407.6,188.0 408.5,183.7 409.5,182.2 410.5,181.9 411.4,191.7 412.4,186.2 413.4,187.0 414.3,190.5 415.3,190.5 416.3,201.0 417.2,202.0 418.2,202.2 419.2,201.3 420.1,201.7 421.1,205.0 422.1,203.2 423.0,206.2 424.0,191.1 425.0,192.3 425.9,190.7 426.9,192.8 427.9,192.2 428.8,193.4 429.8,193.2 430.8,194.1 431.7,192.2 432.7,191.9 433.6,196.9 434.6,197.8 435.6,195.0 436.5,195.3 437.5,196.5 438.5,192.3 439.4,196.1 440.4,190.7 441.4,192.8 442.3,188.8 443.3,196.1 444.3,196.2 445.2,196.1 446.2,191.6 447.2,186.1 448.1,189.4 449.1,184.3 450.1,182.8 451.0,184.7 452.0,186.4 453.0,186.4 453.9,182.4 454.9,182.2 455.8,181.3 456.8,186.4 457.8,183.9 458.7,185.8 459.7,190.5 460.7,187.1 461.6,187.6 462.6,189.7 463.6,190.5 464.5,191.7 465.5,188.8 466.5,189.8 467.4,194.9 468.4,194.4 469.4,188.0 470.3,187.6 471.3,185.9 472.3,186.4 473.2,182.7 474.2,184.3 475.2,184.5 476.1,186.8 477.1,189.5 478.1,192.6 479.0,198.0 480.0,198.0 480.9,197.1 481.9,196.9 482.9,196.8 483.8,199.3 484.8,201.0 485.8,202.2 486.7,202.7 487.7,201.3 488.7,199.9 489.6,199.8 490.6,199.8 491.6,199.5 492.5,199.5 493.5,197.7 494.5,198.0 495.4,195.2 496.4,191.6 497.4,193.7 498.3,195.9 499.3,190.3 500.3,191.7 501.2,193.4 502.2,192.8 503.2,192.5 504.1,192.3 505.1,196.5 506.0,195.5 507.0,198.0 508.0,196.6 508.9,192.9 509.9,191.7 510.9,190.8 511.8,191.4 512.8,190.0 513.8,189.2 514.7,190.8 515.7,192.9 516.7,192.2 517.6,192.0 518.6,196.2 519.6,186.8 520.5,189.7 521.5,187.6 522.5,190.8 523.4,195.8 524.4,194.9 525.4,195.5 526.3,195.8 527.3,201.0 528.2,198.4 529.2,203.2 530.2,198.1 531.1,196.1 532.1,196.5 533.1,196.5 534.0,200.2 535.0,203.3 536.0,211.2 536.9,212.4 537.9,209.1 538.9,214.3 539.8,214.3 540.8,215.2 541.8,211.1 542.7,211.1 543.7,206.3 544.7,206.2 545.6,205.6 546.6,204.8 547.6,205.0 548.5,203.9 549.5,203.8 550.5,202.6 551.4,204.5 552.4,204.4 553.3,206.0 554.3,206.0 555.3,210.6 556.2,210.0 557.2,211.5 558.2,208.5 559.1,208.4 560.1,209.9 561.1,214.3 562.0,210.8 563.0,211.8 564.0,210.5 564.9,207.8 565.9,207.4 566.9,205.4 567.8,206.9 568.8,209.3 569.8,209.6 570.7,207.8 571.7,207.1 572.7,207.5 573.6,208.5 574.6,212.0 575.5,204.4 576.5,201.9 577.5,204.1 578.4,192.6 579.4,198.0 580.4,183.9 581.3,185.2 582.3,185.3 583.3,185.6 584.2,188.2 585.2,191.7 586.2,189.1 587.1,187.1 588.1,190.5 589.1,192.3 590.0,187.4 591.0,189.5 592.0,191.6 592.9,190.3 593.9,193.8 594.9,190.3 595.8,192.0 596.8,193.7 597.8,191.1 598.7,193.4 599.7,194.3 600.6,196.5 601.6,202.3 602.6,217.8 603.5,204.8 604.5,205.1 605.5,207.5 606.4,206.3 607.4,205.0 608.4,205.4 609.3,203.9 610.3,200.7 611.3,196.6 612.2,195.9 613.2,196.6 614.2,192.6 615.1,195.9 616.1,193.7 617.1,190.4 618.0,192.3 619.0,190.0 620.0,191.4 620.9,196.1 621.9,190.5 622.8,195.3 623.8,191.7 624.8,193.5 625.7,194.4 626.7,191.4 627.7,191.7 628.6,189.5 629.6,190.3 630.6,176.3 631.5,164.1 632.5,142.9 633.5,131.1 634.4,128.7 635.4,133.7 636.4,133.7 637.3,142.1 638.3,146.2 639.3,139.4 640.2,121.5 641.2,98.3 642.2,103.1 643.1,95.6 644.1,85.5 645.1,100.7 646.0,104.9 647.0,104.6 647.9,116.5 648.9,115.6 649.9,92.1 650.8,106.4 651.8,81.7 652.8,64.7 653.7,78.7 654.7,63.2 655.7,21.0 656.6,22.8 657.6,47.2 658.6,62.0 659.5,91.2 660.5,104.6 661.5,114.7 662.4,109.3 663.4,117.4 664.4,123.3 665.3,97.7 666.3,110.2 667.3,75.4 668.2,69.8 669.2,80.5 670.2,83.5 671.1,86.4 672.1,84.3 673.0,107.5 674.0,108.7 675.0,136.7 675.9,142.1 676.9,156.6 677.9,158.7 678.8,142.9 679.8,140.3 680.8,128.4 681.7,153.1 682.7,149.2 683.7,152.2 684.6,145.6 685.6,142.7 686.6,129.6 687.5,115.6 688.5,114.7 689.5,120.0 690.4,100.4 691.4,112.0 692.4,120.6 693.3,116.8 694.3,116.8 695.2,111.7 696.2,128.7 697.2,132.8 698.1,152.2 699.1,157.8 700.1,157.5 701.0,118.9 702.0,133.7 703.0,133.7 703.9,120.6 704.9,119.2 705.9,116.2 706.8,83.7 707.8,68.0 708.8,76.0 709.7,68.6 710.7,74.5 711.7,58.5 712.6,82.3 713.6,102.8 714.6,112.6 715.5,104.3 716.5,100.1 717.5,99.2 718.4,103.1 719.4,111.7 720.3,103.7 721.3,99.5 722.3,97.1 723.2,114.1 724.2,104.0 725.2,104.6 726.1,98.0 727.1,80.2 728.1,72.1 729.0,64.7 730.0,54.0" fill="none" stroke="#1f3a5f" stroke-width="1.4"/>
+<text x="736" y="58.0" font-size="11" fill="#1f3a5f">종가 8,790원</text>
+<text x="656.6" y="10.8" text-anchor="middle" font-size="10.5" fill="#a44a3f">고점 10,990원</text>
+<text x="316.8" y="250.0" text-anchor="middle" font-size="10.5" fill="#a44a3f">저점 2,725원</text>
+<text x="62.0" y="133.2" text-anchor="start" font-size="10.5" fill="#a44a3f">상장 첫날 5,590원</text>
+</svg><div class="src">키움 일별 종가 693거래일(2023-11-09~2026-09-14). 점선은 1차 제3자배정 발행가 3,165원. 2차 발행가는 3,660원입니다.</div></figure>
+<p class="reading"><b>관찰.</b> 현재 8,790원은 고점 10,990원(2026-05-26) 대비 -20.0%, 저점 2,725원(2024-12-09) 대비 +170.9%입니다. <b>원인.</b> 두 번의 제3자배정 발행가 3,165원과 3,660원은 각각 2.78배·2.40배 아래에 있습니다. 발행 시점 자본으로 환산하면 각각 PBR 1.30배·1.34배로, 지금의 2.97배와는 다른 세계의 가격입니다. <b>함의.</b> 우리는 하방을 예측하지 않고 이미 일어난 낙폭으로만 말합니다. 이 종목은 22개월 만에 5,590원에서 2,725원까지 -51.3% 내렸고, 넉 달 전 고점에서 이미 -20.0%를 되돌렸습니다. 두 사건 모두 같은 회사에서 일어났습니다.</p>
+
+<p>첫째 자는 실측 낙폭입니다. 이 종목은 2026년 5월 26일 10,990원에서 현재 8,790원까지 -20.0%를 되돌렸고, 그 전에는 상장 첫날 종가 5,590원에서 2024년 12월 9일 2,725원까지 -51.3% 내린 적이 있습니다. 두 번째 사건이 일어난 2024년은 배터리 부문이 무너지던 해였습니다. 부문 하나가 사라지는 데 걸린 시간이 2년이었고 주가가 반응하는 데 걸린 시간은 그보다 짧았습니다.</p>
+
+<p>둘째 자는 발행가입니다. 3,165원과 3,660원은 회사가 실제로 신주를 넘긴 가격이고 1년 보호예수가 붙어 있습니다. 해제일은 2027년 1월 23일과 2027년 4월 28일입니다. 현재 주가는 두 발행가의 2.78배·2.40배이므로, 보호예수가 풀릴 때 새 주주가 들고 있는 미실현 이익은 작지 않습니다. 그 주주가 무엇을 하는지는 이 파트가 예측하지 않지만, 두 날짜는 달력에 적어 둘 이유가 충분합니다.</p>
+
+<p>셋째 자는 PBR 밴드입니다. 5절의 표에 따르면 상장 이후 분기말 PBR의 평균은 1.72배이고 최저는 1.16배였습니다. 현재 자본 861.8억이 그대로라면 평균 배수는 시총 1,478억<span class="est">E</span>, 최저 배수는 1,002억<span class="est">E</span>에 해당합니다. 이것은 목표가 아니라 "이 회사가 과거에 실제로 받았던 자산 배수를 지금 자본에 적용하면"이라는 산술입니다. 다만 그 시절의 자본은 현금 비중이 지금보다 낮았고 부문 구성도 달랐다는 점을 함께 읽어야 합니다.</p>
+
+<h2>8. 반증 조건</h2>
+
+<p>이 파트의 프라이싱 읽기가 틀렸다고 판명되는 관측 가능한 사건을 다섯 개 둡니다. 전부 날짜와 관측처가 정해져 있습니다.</p>
+
+<p><b>반증 1. 3Q26 3개월 영업이익률이 12% 아래로 내려간다.</b> 관측처는 2026년 11월 14일<span class="est">E</span> 제출 예정인 3Q26 분기보고서의 별도 손익계산서(3분기 누계에서 반기 누계를 뺀 값)입니다. 2Q26의 18.9%가 믹스나 일회성 단가 효과였다면 되돌립니다. 12%는 격자표에서 매출 1,009억<span class="est">E</span> 기준으로 현재 시총을 리노공업 배수로 맞추는 데 필요한 9.7%<span class="est">E</span>보다 약간 높은 자리이므로, 이 아래로 내려가면 "2Q26이 유지되기만 하면 된다"는 이 파트의 판정 전제가 무너집니다.</p>
+
+<p><b>반증 2. 3Q26 유형자산 취득 누계가 60억에 못 미친다.</b> 관측처는 같은 보고서의 유형자산 주석과 현금흐름표의 유형자산 취득입니다. 6월 30일 결정된 84.7억의 대금 구조가 계약 시 20%·출하 20일 전 80%이므로, 3분기에 계약분 20%인 16.9억<span class="est">E</span>조차 나가지 않았다면 증설 일정이 밀린 것입니다. 6절의 증설 값 계산이 통째로 뒤로 밀립니다.</p>
+
+<p><b>반증 3. 2027년 1분기까지 분기 감가상각비가 15억을 넘지 않는다.</b> 관측처는 2027년 5월 제출될 1Q27 분기보고서의 비용 성격별 주석입니다. 6절에서 계산한 분기 19.9억<span class="est">E</span>~23.4억<span class="est">E</span>의 절반에도 못 미친다면 설비가 자산으로 잡히기만 하고 가동에 들어가지 않았다는 뜻입니다.</p>
+
+<p><b>반증 4. 세 번째 증자가 공시된다.</b> 관측처는 DART 주요사항보고서입니다. 조정판의 희석 슬라이더가 보여 주듯, 주식수가 33,000,000주로 늘면 같은 이익에서 현재 시총 대비 배수가 2.01배<span class="est">E</span>에서 1.77배<span class="est">E</span>로 내려갑니다. 증설 재원을 회사가 유상증자로 명시해 둔 상태이므로 이 사건의 확률은 영이 아닙니다.</p>
+
+<p><b>반증 5. 반도체 부문 3Q26 누계가 380억에 못 미치거나, 배터리 누계가 130억에 못 미친다.</b> 관측처는 3Q26 분기보고서의 매출실적 표(사업부문×내수·수출)입니다. 허브 논쟁 1의 채점 기준과 같은 숫자입니다. 밸류 쪽에서 이것이 중요한 이유는, 이 파트의 역산이 전사 매출만 다루기 때문입니다. 같은 전사 매출이라도 반도체 수출이 아니라 임가공이 채운 매출이라면 마진 구조가 달라 격자표의 영업이익률 축이 통째로 왼쪽으로 이동합니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+
+<p><b>논쟁 5(시총 2,556억이 매기는 값)에 정면으로 답합니다.</b> 결론은 이렇습니다. 현재 시총은 비싸지도 싸지도 않은 자리에 있는 것이 아니라, <b>무엇을 분모로 두느냐에 따라 정반대의 자리에 있습니다.</b> 후행 12개월 순이익 75.0억을 분모로 두면 PER 34.1배로 비교군 중간이고 결코 싸지 않습니다. 2Q26 런레이트 연율 세후이익 150.7억<span class="est">E</span>을 분모로 두면 17.0배<span class="est">E</span>로 비교군 전부보다 낮습니다. 두 분모의 차이는 오직 "2Q26이 반복되는가"입니다. 따라서 이 종목의 밸류에이션 논쟁은 배수 논쟁이 아니라 <b>2Q26의 재현성 논쟁</b>입니다. 채점 KPI는 허브가 정한 그대로입니다. 2026년 연간 매출 800억 이상·영업이익 130억 이상. 이 파트의 격자표로 환산하면 그 조합은 영업이익률 16.3%<span class="est">E</span>이고, 리노공업 배수를 적용한 함의 시총은 3,399억<span class="est">E</span>으로 현재 시총의 1.33배<span class="est">E</span>입니다. 즉 허브의 KPI는 현재 시총을 정당화하는 최소선에 가깝지, 그것을 넘어서는 기준이 아닙니다.</p>
+
+<p><b>논쟁 3(CNC 100대는 언제 매출이 되나)에 밸류 쪽에서 덧붙입니다.</b> 6절의 계산에 따르면 증설이 전부 매출로 바뀔 때의 값은 매출 155~170억<span class="est">E</span>, 상각 증가를 뺀 순증 영업이익 40.4억<span class="est">E</span>, 비교군 배수를 곱한 값으로 현재 시총의 41%<span class="est">E</span>입니다. 채점 KPI인 "3Q26·4Q26 유형자산 취득 누계 60억 이상"과 "2027년 분기 감가상각비 20억 이상"은 둘 다 우리 계산의 아래쪽 문턱이므로, 충족은 확인이지 서프라이즈가 아닙니다. 반증 조건은 위 반증 2와 3입니다.</p>
+
+<p><b>논쟁 4(새 주주)에 대해서는 값만 적습니다.</b> 새 주주가 28.57%를 가져간 평균 단가는 3,351원이고 현재 주가는 그 2.62배입니다. 그 자금이 만든 자본 278.4억은 아직 이익을 내지 않았고, 그것이 지금 PBR 2.97배를 비교군 아래로 눌러 두고 있습니다. 자금의 성격이 재무투자인지 전략적 결합인지는 이 파트가 판단하지 않습니다. 밸류 쪽에서 확실한 것은, 그 278.4억이 증설을 통해 이익으로 전환되기 전까지 이 회사의 자기자본이익률은 구조적으로 눌려 있고 PBR도 따라서 눌린다는 것입니다.</p>
+
+<h2>미결</h2>
+
+<p><b>A급(배수의 분모를 바꾸는 것).</b> ① 3Q26 3개월 실적 — 이 파트의 모든 역산이 2Q26 한 분기에 매달려 있습니다. 2026년 11월 14일<span class="est">E</span> 분기보고서가 나오면 격자표의 모든 칸을 다시 계산해야 합니다. ② CNC 가공 능력의 기준 시점 — 패킷에 담긴 반기보고서 표기(월 6,500,000개를 303대 기준으로 기재)와 언론에 실린 회사 설명(월 500만 개에서 650만 개로, 403대 달성치)이 충돌합니다. 6절의 증설 효과가 두 배 차이로 갈리므로, 3Q26 보고서의 생산능력 표나 회사 IR 자료 원문에서 확인해야 합니다. ③ 2026-09-11 IR 자료 원문 — KIND IR 자료실 게재분을 열람하지 못했습니다. 회사가 제시한 하반기 가이던스나 수주잔고 수치가 있다면 연율화의 두 값 중 어느 쪽이 현실에 가까운지가 정해집니다.</p>
+
+<p><b>B급(배수의 자를 바꾸는 것).</b> ① 비교군 배수의 출처 차이 — 이 파트가 쓴 배수는 2026-09-14 키움 조회값(리노공업 PER 33.10배·PBR 6.86배 등)인데, 같은 날 조사 노트가 다른 집계처에서 받은 값은 리노공업 26.7배·6.44배로 다릅니다. 지배주주 귀속 여부와 집계 시점의 차이로 보이나 산출 근거를 확인하지 못했습니다. 이 파트는 패킷의 키움 조회값을 정본으로 쓰고 차이를 여기에 적어 둡니다. ② 메가터치 자신의 PER — 패킷 조회값에는 PER이 비어 있고 PBR이 3.49배로 기록돼 있는데, 이는 직전 분기 자본 기준으로 보입니다. 우리는 2026-06-30 자본 861.8억으로 다시 계산한 2.97배를 씁니다. ③ 소켓·핀의 교체 주기 — 소모품 매출의 재현성을 수치로 검증할 근거가 공개 자료에 없습니다(조사 노트도 확인 실패로 기록). 재현성을 가정하지 않고 분기 실적으로만 확인하는 현재 방식을 유지합니다.</p>
+
+<p><b>C급(참고).</b> ① 증분 마진 30%<span class="est">E</span>의 지속 구간 — 두 개의 실측(30.3%·33.6%)에서 가져왔지만 증설 이후의 고정비 계단이 어디에 생기는지는 알 수 없습니다. ② 유효세율 — 1H26 20.9%·2Q26 22.1%를 21%로 반올림해 썼습니다. 연구개발비 세액공제나 이월결손금 효과가 있다면 실효세율이 더 낮아져 요구 영업이익이 내려갑니다. 2026년 사업보고서의 법인세 주석에서 확인합니다. ③ 2027년 말 자본 근사 — 조정판에서 여섯 분기를 2027년 이익의 1.5배로 근사했습니다. 배당이 시작되거나 추가 증자가 있으면 PBR 축의 함의 시총이 바뀝니다.</p>
+
+<div class="foot">데이터 계보: 2026 반기보고서(별도 재무상태·손익·유형자산·비용 성격별·매출실적·생산설비, 8-14 접수), 2025 사업보고서, 주요사항보고서(유형자산 양수 2026-06-30, 제3자배정 유상증자 2025-12-19·2026-04-02), 키움 ka10001·ka10081(주가·시총·비교군 배수, 2026-09-14 조회), 조사 노트(반도체 테스트 소모품 밸류체인·회사 연혁·언론 보도, 2026-09-14). E 표기는 이 파트의 추정입니다. 이 파트는 주가 값을 매기지 않으며, 조정판을 포함한 모든 출력은 함의 시가총액과 현재 시총 대비 배수에서 멈춥니다.</div>
+
+</main></body></html>
