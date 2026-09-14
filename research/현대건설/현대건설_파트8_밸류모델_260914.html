@@ -1,0 +1,488 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="valuation,model">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>현대건설 파트 8 — 밸류 모델편 · 2026-09-14</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>현대건설 파트 8 — 밸류 모델편</h1>
+<div class="sub">파트제 커버리지 10편(허브 + 파트 0~8) 중 파트 8 · 작성 2026-09-14 · 주가 134,900원(9-11 종가) · 시총 15조 219억(보통주 111,355,765주) · 기준 환율 $1 = ₩1,343.8(9-11, 이 파트는 원화 지표만 다룹니다) · 회계연도 12월(2026 = 제77기, K-IFRS 연결·지배주주 기준) · 다음 실적 3Q26 잠정 2026-10월 말<span class="est">E</span>·분기보고서 11-14<span class="est">E</span> · 다음 갱신 트리거 3Q26 잠정(영업이익·부문 매출총이익률·신규수주)과 컨센서스 갱신, 원전 계약 공시 · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 2026 반기보고서(8-14)·2025 사업보고서·잠정실적 공정공시·전망 공정공시(2-04)·주요사항보고서(전환사채 6-09·7-07)·기업가치 제고 계획(2025-03-28)·컨센서스 집계(9-11 기준, 추정기관 20개사)·키움 ka10001(9-11)·증권사 리포트(하우스명만)·조사 노트 A·D · <b>이 파트는 적정주가를 내지 않습니다.</b> 시총이 값 매기는 것을 분해할 뿐입니다.</div>
+<div class="hubnav">현행 판정은 <a href="현대건설_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 valuation·model을 맡습니다.</div>
+
+<p class="judge"><b>이 파트의 답(논쟁 5).</b> 시총 15조 219억이 요구하는 지속 자기자본이익률은 12.02%<span class="est">E</span>입니다. 회사가 스스로 밝힌 자기자본비용 8.0%와 영구성장률 2.0%<span class="est">E</span>를 (ROE − g) ÷ (COE − g)에 넣고 현재 PBR 1.67배를 거꾸로 푼 값이며, 이는 회사가 2030년 목표로 내건 ROE 12%와 사실상 같습니다. 컨센서스가 보는 ROE는 2026년 5.92%, 2027년 7.01%, 2028년 8.13%이고, 각각이 정당화하는 PBR은 0.65배·0.83배·1.02배입니다. 다시 말해 시총은 컨센서스가 3년 뒤까지 그려 놓은 수익성이 아니라, 그 너머 2030년 목표가 이미 달성되어 영구히 유지되는 상태에 값을 매기고 있습니다. 본업을 국내 건설 3사의 중앙 PBR 0.68배로 재면 6조 3,049억<span class="est">E</span>, 나머지 8조 7,170억<span class="est">E</span>(시총의 58.0%)가 잔고에 한 푼도 들어 있지 않은 원전·전력 파이프라인에 매겨진 값입니다.</p>
+
+<p>이 파트는 커버리지의 마지막 층입니다. 파트 1이 건축·주택 마진을, 파트 2가 플랜트·전력과 원전 잔고를, 파트 6이 현금과 자본을, 파트 5가 주가와 수급을 다뤘다면 여기서는 그 조각을 한 자 위에 올려 "시총 15조 219억은 무엇이 참이어야 성립하는가"만 묻습니다. 결과는 값이 아니라 배수와 요구 수익성, 그리고 잔여로만 적습니다. 조정판의 출력도 주당 값으로 나누지 않습니다. 자체 추정은 가정, 근거, 식, 교차검증의 순서로 적고 숫자 뒤에 E를 붙였습니다. 배수를 말할 때는 예외 없이 지배지분 기준을 씁니다. 현대엔지니어링의 유효지분이 40.47%여서 연결 이익의 상당 부분이 비지배지분 몫이고, 2026-06-30 연결 자본 11조 2,178억 가운데 비지배지분이 1조 9,459억이기 때문입니다.</p>
+<div class="gloss">
+<b>함의 배수</b><span>시총을 어떤 이익이나 자본으로 나눈 값입니다. 같은 시총이라도 분모를 컨센서스 이익으로 두느냐 부문 마진에서 쌓아 올린 이익으로 두느냐에 따라 배수가 달라지고, 이 파트는 그 차이를 읽는 데만 배수를 씁니다.</span>
+<b>내재기대</b><span>현재 시총이 성립하려면 참이어야 하는 미래의 값입니다. 값을 매기는 방향(이익에 배수를 곱해 주가를 구하는 것)을 뒤집어, 주어진 시총에서 이익·성장·수익성을 역산합니다.</span>
+<b>컨센서스 반영률</b><span>이미 나온 실적이 그해 컨센서스나 회사 가이던스의 몇 퍼센트를 채웠는지입니다. 2026년 상반기 영업이익 4,427억은 가이던스 8,000억의 55.3%, 컨센 8,689억의 50.9%입니다.</span>
+<b>자기자본비용(COE)</b><span>주주가 이 회사의 자기자본에 요구하는 연 수익률입니다. 회사는 기업가치 제고 계획에서 8.0%를 제시했고, KB증권은 무위험수익률이 2.78%에서 3.02%로 오른 것을 반영해 자체 산정치를 6.2%에서 7.4%로 올렸습니다.</span>
+<b>잔여이익</b><span>지배순이익에서 자기자본에 자기자본비용을 곱한 금액을 뺀 나머지입니다. 이 값이 0이면 순자산 그대로가 적정 가치이고, 양(+)이면 순자산보다 높은 배수가, 음(−)이면 낮은 배수가 정당화됩니다.</span>
+<b>PBR과 ROE의 관계</b><span>이익을 전부 쌓고 일정 속도로 성장하는 회사의 지속 가능한 PBR은 (ROE − g) ÷ (COE − g)입니다. ROE가 COE와 같으면 PBR은 1배, ROE가 COE보다 높을 때만 1배를 넘습니다. 이 파트의 모든 정당화 배수는 이 한 줄에서 나옵니다.</span>
+<b>리레이팅과 디레이팅</b><span>이익이 그대로인데 시장이 같은 이익에 더 높은(낮은) 배수를 주는 것입니다. 주가 변화는 이익 변화와 배수 변화의 곱이므로, 둘을 로그로 갈라 각각의 기여를 잴 수 있습니다.</span>
+<b>희석 후 주식수</b><span>전환사채가 모두 주식으로 바뀐 뒤의 주식수입니다. 보통주 111,355,765주에 전환 가능 주식 3,319,898주를 더한 114,675,663주이고, 희석률은 2.90%입니다.</span>
+</div>
+
+<h2>1. 현재 좌표 — 시총 15조 219억은 무엇으로 만들어져 있나</h2>
+<p>먼저 분모부터 맞춥니다. 보통주는 111,355,765주이고 9-11 종가 134,900원을 곱하면 시총 15조 219억입니다. 우선주 1,054,693주를 더한 발행주식 총수는 112,410,458주이며, 회사 IR과 컨센서스 집계가 쓰는 주당 지표는 이 총수를 분모로 삼습니다. 2026-06-30 지배지분 자본 92,719억을 보통주로만 나누면 83,264원이지만 총수로 나누면 82,483원이 되고, 스탬프의 BPS 82,483원은 뒤쪽입니다. 어느 분모인지 밝히지 않으면 PBR이 0.62배와 1.64배 사이에서 흔들립니다. 이 파트는 컨센서스와 비교 가능하도록 총수 기준을 씁니다.</p>
+<p>희석은 한 겹 더 있습니다. 2026-06-09 이사회가 결의하고 7-07에 납입된 사모 전환사채 5,000억은 표면이자율과 만기이자율이 모두 0%이고 전환가액이 150,607원입니다. 전액 전환되면 3,319,898주가 새로 나와 보통주는 114,675,663주가 되고, 희석률은 2.90%입니다. 같은 종가로 계산한 완전희석 시총은 15조 4,697억<span class="est">E</span>이며, 컨센 2026E 지배순이익을 희석 후 주식수로 나눈 EPS는 4,480원<span class="est">E</span>(컨센 4,570원 대비 -2.0%), 그에 대응하는 PER은 30.11배<span class="est">E</span>입니다. 다만 전환가액 150,607원은 2026-06-30 지배지분 BPS 82,483원의 1.83배여서 전환이 일어나면 주당 순자산은 오히려 올라갑니다. 전환 후 자본을 92,719억에 5,000억을 더한 값으로 두고 희석 주식수로 나누면 BPS는 84,437원<span class="est">E</span>이 됩니다. 희석은 이익에는 마이너스이고 순자산에는 플러스입니다. 청구 개시일이 2027-07-07이므로 2026년 안에는 실현되지 않습니다.</p>
+<table class=""><tr><th>항목</th><th>2026E</th><th>2027E</th><th>2028E</th></tr><tr><td>EPS(지배, 원)</td><td>4,570</td><td>5,865</td><td>7,292</td></tr><tr><td>BPS(지배, 원)</td><td>80,859</td><td>86,498</td><td>92,922</td></tr><tr><td>PER(9-11 종가, 배)</td><td>29.52</td><td>23.00</td><td>18.50</td></tr><tr><td>PBR(9-11 종가, 배)</td><td>1.67</td><td>1.56</td><td>1.45</td></tr><tr><td>ROE(%)</td><td>5.92</td><td>7.01</td><td>8.13</td></tr><tr><td>ROE가 정당화하는 PBR(배)<span class="est">E</span></td><td>0.65</td><td>0.83</td><td>1.02</td></tr><tr><td>실제 PBR − 정당화 PBR(배)<span class="est">E</span></td><td>+1.02</td><td>+0.73</td><td>+0.43</td></tr><tr><td>매출(억원)</td><td>269,352</td><td>285,996</td><td>307,548</td></tr><tr><td>영업이익(억원)</td><td>8,689</td><td>11,276</td><td>13,762</td></tr><tr><td>지배순이익(억원)</td><td>5,137</td><td>6,592</td><td>8,197</td></tr></table>
+<p>표의 마지막 두 줄이 이 파트 전체의 요약입니다. 컨센서스가 그리는 2026~2028년 ROE는 5.92%에서 8.13%로 올라가지만 자기자본비용 8.0%에는 2028년에도 닿지 못합니다. ROE가 COE를 밑돌면 (ROE − g) ÷ (COE − g)는 1배 아래로 내려가므로, 컨센서스의 수익성만으로 정당화되는 PBR은 2026년 0.65배, 2028년에도 1.02배입니다. 실제 거래되는 PBR은 각각 1.67배·1.45배이니 차이가 1.02배와 0.43배입니다. 이 차이가 곧 뒤에서 잔여로 분해할 크기이고, 그 잔여가 어디를 향하는지가 이 파트의 물음입니다.</p>
+<figure class=""><figcaption>장표 1. PBR 밴드와 현재 위치 — 연중 고가·저가·연말(배, 2021~2026)</figcaption><svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="266.0" x2="730" y2="266.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="270.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="216.4" x2="730" y2="216.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.4" text-anchor="end" font-size="11" fill="#8a857c">0.5</text>
+<line x1="62" y1="166.8" x2="730" y2="166.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="170.8" text-anchor="end" font-size="11" fill="#8a857c">1.0</text>
+<line x1="62" y1="117.2" x2="730" y2="117.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="121.2" text-anchor="end" font-size="11" fill="#8a857c">1.5</text>
+<line x1="62" y1="67.6" x2="730" y2="67.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="71.6" text-anchor="end" font-size="11" fill="#8a857c">2.0</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">2.5</text>
+<line x1="62" y1="166.8" x2="730" y2="166.8" stroke="#a44a3f" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="736" y="170.8" font-size="10.5" fill="#a44a3f">PBR 1.0배(순자산)</text>
+<rect x="105.7" y="172.9" width="24" height="36.6" fill="#1f3a5f" opacity="0.22"/>
+<line x1="117.7" y1="172.9" x2="117.7" y2="209.5" stroke="#1f3a5f" stroke-width="1.4"/>
+<line x1="103.7" y1="197.3" x2="131.7" y2="197.3" stroke="#1f3a5f" stroke-width="2.4"/>
+<text x="117.7" y="166.9" text-anchor="middle" font-size="10" fill="#1f3a5f">0.94</text>
+<text x="117.7" y="222.5" text-anchor="middle" font-size="10" fill="#1f3a5f">0.57</text>
+<text x="117.7" y="284" text-anchor="middle" font-size="10.5" fill="#8a857c">2021</text>
+<rect x="217.0" y="191.9" width="24" height="26.3" fill="#1f3a5f" opacity="0.22"/>
+<line x1="229.0" y1="191.9" x2="229.0" y2="218.1" stroke="#1f3a5f" stroke-width="1.4"/>
+<line x1="215.0" y1="215.4" x2="243.0" y2="215.4" stroke="#1f3a5f" stroke-width="2.4"/>
+<text x="229.0" y="185.9" text-anchor="middle" font-size="10" fill="#1f3a5f">0.75</text>
+<text x="229.0" y="231.1" text-anchor="middle" font-size="10" fill="#1f3a5f">0.48</text>
+<text x="229.0" y="284" text-anchor="middle" font-size="10.5" fill="#8a857c">2022</text>
+<rect x="328.3" y="205.2" width="24" height="16.2" fill="#1f3a5f" opacity="0.22"/>
+<line x1="340.3" y1="205.2" x2="340.3" y2="221.4" stroke="#1f3a5f" stroke-width="1.4"/>
+<line x1="326.3" y1="218.2" x2="354.3" y2="218.2" stroke="#1f3a5f" stroke-width="2.4"/>
+<text x="340.3" y="199.2" text-anchor="middle" font-size="10" fill="#1f3a5f">0.61</text>
+<text x="340.3" y="234.4" text-anchor="middle" font-size="10" fill="#1f3a5f">0.45</text>
+<text x="340.3" y="284" text-anchor="middle" font-size="10.5" fill="#8a857c">2023</text>
+<rect x="439.7" y="216.0" width="24" height="16.5" fill="#1f3a5f" opacity="0.22"/>
+<line x1="451.7" y1="216.0" x2="451.7" y2="232.5" stroke="#1f3a5f" stroke-width="1.4"/>
+<line x1="437.7" y1="230.7" x2="465.7" y2="230.7" stroke="#1f3a5f" stroke-width="2.4"/>
+<text x="451.7" y="210.0" text-anchor="middle" font-size="10" fill="#1f3a5f">0.50</text>
+<text x="451.7" y="245.5" text-anchor="middle" font-size="10" fill="#1f3a5f">0.34</text>
+<text x="451.7" y="284" text-anchor="middle" font-size="10.5" fill="#8a857c">2024</text>
+<rect x="551.0" y="151.2" width="24" height="80.8" fill="#1f3a5f" opacity="0.22"/>
+<line x1="563.0" y1="151.2" x2="563.0" y2="232.0" stroke="#1f3a5f" stroke-width="1.4"/>
+<line x1="549.0" y1="171.4" x2="577.0" y2="171.4" stroke="#1f3a5f" stroke-width="2.4"/>
+<text x="563.0" y="145.2" text-anchor="middle" font-size="10" fill="#1f3a5f">1.16</text>
+<text x="563.0" y="245.0" text-anchor="middle" font-size="10" fill="#1f3a5f">0.34</text>
+<text x="563.0" y="284" text-anchor="middle" font-size="10.5" fill="#8a857c">2025</text>
+<rect x="662.3" y="22.6" width="24" height="159.5" fill="#b07d2b" opacity="0.22"/>
+<line x1="674.3" y1="22.6" x2="674.3" y2="182.1" stroke="#b07d2b" stroke-width="1.4"/>
+<line x1="660.3" y1="100.5" x2="688.3" y2="100.5" stroke="#b07d2b" stroke-width="2.4"/>
+<text x="674.3" y="16.6" text-anchor="middle" font-size="10" fill="#b07d2b">2.45</text>
+<text x="674.3" y="195.1" text-anchor="middle" font-size="10" fill="#b07d2b">0.85</text>
+<text x="674.3" y="284" text-anchor="middle" font-size="10.5" fill="#8a857c">2026</text>
+<circle cx="674.3" cy="100.3" r="4.5" fill="#a44a3f"/>
+<text x="736" y="104.3" font-size="11" fill="#a44a3f">9-11 종가 1.67배</text>
+<line x1="62" y1="57.7" x2="730" y2="57.7" stroke="#2b7a78" stroke-width="0.8" stroke-dasharray="2 3"/>
+<text x="66" y="53.7" font-size="10" fill="#2b7a78">하우스 타깃 배수 상단 2.1배</text>
+<line x1="62" y1="97.4" x2="730" y2="97.4" stroke="#2b7a78" stroke-width="0.8" stroke-dasharray="2 3"/>
+<text x="66" y="93.4" font-size="10" fill="#2b7a78">하우스 타깃 배수 하단 1.7배</text>
+</svg><div class="src">키움 ka10081 무수정 월봉의 연도별 고·저·종가, BPS는 2021~2025년 각 해 실적치, 2026년만 컨센 2026E BPS 80,859원(9-11 기준). 굵은 가로선은 연말·현재 종가의 PBR. 점선은 하우스들이 제시한 타깃 배수 구간 1.7~2.1배.</div></figure>
+<p class="reading"><b>관찰.</b> 2021년부터 2024년까지 이 회사의 PBR은 연중 고가로도 0.94배를 넘지 못했고 2024년에는 연중 저가 0.34배까지 내려갔습니다. 2025년에 처음 1배를 넘어섰고(연중 고가 1.16배), 2026년은 연중 저가 0.85배에서 고가 2.45배까지를 한 해 안에 오갔습니다. <b>원인.</b> 2021~2024년의 분모는 ROE가 5~7%에 머물거나 2024년처럼 적자였던 자본이고, 2025~2026년의 배수는 이익이 아니라 원전 파이프라인에 대한 기대가 매긴 값입니다. 밴드의 폭 자체가 네 배 이상 벌어진 이유가 여기에 있습니다. <b>함의.</b> 과거 밴드를 현재의 자로 쓰기 어렵습니다. 2021~2024년 밴드는 ROE 5~7% 자본에 붙은 배수이고, 현재 1.67배를 받치는 것은 밴드가 아니라 ROE가 두 자리로 올라간다는 전제입니다. 하우스들의 타깃 구간 1.7~2.1배는 현재 배수보다 위에 있으나, 그 구간 역시 같은 전제 위에 서 있습니다.</p>
+
+<h2>2. 리레이팅의 산술 — 주가를 올린 것은 이익이 아닙니다</h2>
+<p>1년 전과 지금을 같은 자로 비교하면 무엇이 주가를 올렸는지가 나눗셈 한 번으로 나옵니다. 2026년 12월 결산에 대한 컨센서스는 1년 전 매출 302,423억·영업이익 11,873억·EPS 6,514원이었고 지금은 매출 269,352억·영업이익 8,689억·EPS 4,570원입니다. 영업이익은 -26.8%, EPS는 -29.8% 깎였습니다. 같은 기간 PER은 8.41배에서 29.52배로, PBR은 0.67배에서 1.67배로 올랐습니다.</p>
+<p><b>가정.</b> 주가는 정의상 EPS와 PER의 곱이므로, 두 시점의 컨센서스 EPS와 그때의 PER을 곱하면 각 시점의 주가가 복원됩니다. <b>근거.</b> 1년 전 컨센서스 EPS 6,514원 × PER 8.41배 = 54,783원이고, 현재 4,570원 × 29.52배 = 134,906원으로 9-11 종가 134,900원과 사실상 같습니다. <b>식.</b> 주가 배율 2.4625 = EPS 배율 0.7016 × PER 배율 3.5101이고, 양변에 로그를 씌워 기여를 나누면 EPS가 -39.3%, 배수가 139.3%입니다. <b>교차검증.</b> PBR 쪽으로도 같은 분해를 하면 BPS 배율 0.9945 × PBR 배율 2.4925 = 2.4788로 주가 배율과 소수 둘째 자리까지 맞습니다. 이익이 주가를 40%가량 끌어내리는 동안 배수가 140%가량 끌어올려 결과적으로 146.2%가 남은 것입니다.</p>
+<table class=""><tr><th>항목</th><th>1년 전</th><th>3개월 전</th><th>1개월 전</th><th>1주 전</th><th>9-11 현재</th><th>1년 전 대비</th></tr><tr><td>매출 컨센(억원)</td><td>302,423</td><td>271,134</td><td>269,155</td><td>269,155</td><td>269,352</td><td>-10.9%</td></tr><tr><td>영업이익 컨센(억원)</td><td>11,873</td><td>8,286</td><td>8,707</td><td>8,707</td><td>8,689</td><td>-26.8%</td></tr><tr><td>EPS 컨센(원)</td><td>6,514</td><td>4,824</td><td>4,573</td><td>4,573</td><td>4,570</td><td>-29.8%</td></tr><tr><td>BPS 컨센(원)</td><td>81,307</td><td>78,106</td><td>80,996</td><td>81,054</td><td>80,859</td><td>-0.6%</td></tr><tr><td>PER(배)</td><td>8.41</td><td>21.41</td><td>28.19</td><td>26.17</td><td>29.52</td><td>+251.0%</td></tr><tr><td>PBR(배)</td><td>0.67</td><td>1.32</td><td>1.59</td><td>1.48</td><td>1.67</td><td>+149.3%</td></tr><tr><td>ROE(%)</td><td>8.33</td><td>6.36</td><td>5.92</td><td>5.92</td><td>5.92</td><td>-2.41%p</td></tr></table>
+<figure class=""><figcaption>장표 2. 컨센서스 표류 — 1년 전을 100으로 둔 지수(2026년 12월 결산 기준)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">50</text>
+<line x1="62" y1="222.0" x2="730" y2="222.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="226.0" text-anchor="end" font-size="11" fill="#8a857c">100</text>
+<line x1="62" y1="188.0" x2="730" y2="188.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="192.0" text-anchor="end" font-size="11" fill="#8a857c">150</text>
+<line x1="62" y1="154.0" x2="730" y2="154.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="158.0" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="120.0" x2="730" y2="120.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="124.0" text-anchor="end" font-size="11" fill="#8a857c">250</text>
+<line x1="62" y1="86.0" x2="730" y2="86.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="90.0" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<line x1="62" y1="52.0" x2="730" y2="52.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="56.0" text-anchor="end" font-size="11" fill="#8a857c">350</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="222.0" x2="730" y2="222.0" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1년 전</text>
+<text x="229.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3개월 전</text>
+<text x="396.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1개월 전</text>
+<text x="563.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">1주 전</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">9-11 현재</text>
+<polyline points="62.0,222.0 229.0,229.0 396.0,229.5 563.0,229.5 730.0,229.4" fill="none" stroke="#8a857c" stroke-width="2"/>
+<circle cx="62.0" cy="222.0" r="2.4" fill="#8a857c"/>
+<circle cx="229.0" cy="229.0" r="2.4" fill="#8a857c"/>
+<circle cx="396.0" cy="229.5" r="2.4" fill="#8a857c"/>
+<circle cx="563.0" cy="229.5" r="2.4" fill="#8a857c"/>
+<circle cx="730.0" cy="229.4" r="2.4" fill="#8a857c"/>
+<polyline points="62.0,222.0 229.0,242.5 396.0,240.1 563.0,240.1 730.0,240.2" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="222.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="229.0" cy="242.5" r="2.4" fill="#1f3a5f"/>
+<circle cx="396.0" cy="240.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="563.0" cy="240.1" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="240.2" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,222.0 229.0,239.6 396.0,242.3 563.0,242.3 730.0,242.3" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<circle cx="62.0" cy="222.0" r="2.4" fill="#2b7a78"/>
+<circle cx="229.0" cy="239.6" r="2.4" fill="#2b7a78"/>
+<circle cx="396.0" cy="242.3" r="2.4" fill="#2b7a78"/>
+<circle cx="563.0" cy="242.3" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="242.3" r="2.4" fill="#2b7a78"/>
+<polyline points="62.0,222.0 229.0,156.0 396.0,128.6 563.0,139.8 730.0,120.5" fill="none" stroke="#a44a3f" stroke-width="2.6"/>
+<circle cx="62.0" cy="222.0" r="2.4" fill="#a44a3f"/>
+<circle cx="229.0" cy="156.0" r="2.4" fill="#a44a3f"/>
+<circle cx="396.0" cy="128.6" r="2.4" fill="#a44a3f"/>
+<circle cx="563.0" cy="139.8" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="120.5" r="2.4" fill="#a44a3f"/>
+<polyline points="62.0,222.0 229.0,116.9 396.0,62.1 563.0,78.4 730.0,51.3" fill="none" stroke="#b07d2b" stroke-width="2.6"/>
+<circle cx="62.0" cy="222.0" r="2.4" fill="#b07d2b"/>
+<circle cx="229.0" cy="116.9" r="2.4" fill="#b07d2b"/>
+<circle cx="396.0" cy="62.1" r="2.4" fill="#b07d2b"/>
+<circle cx="563.0" cy="78.4" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="51.3" r="2.4" fill="#b07d2b"/>
+<text x="736" y="55.3" font-size="11" fill="#b07d2b">PER 351</text>
+<text x="736" y="124.5" font-size="11" fill="#a44a3f">PBR 249</text>
+<text x="736" y="233.4" font-size="11" fill="#8a857c">매출 컨센 89</text>
+<text x="736" y="248.4" font-size="11" fill="#1f3a5f">영업이익 컨센 73</text>
+<text x="736" y="263.4" font-size="11" fill="#2b7a78">EPS 컨센 70</text>
+</svg><div class="src">컨센서스 집계의 2026/12 추이 탭(현재·1주 전·1개월 전·3개월 전·1년 전, 9-11 기준). 각 항목을 1년 전 값으로 나눠 100으로 맞췄습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 매출·영업이익·EPS 세 선은 1년 전 수준 아래로 내려와 각각 89·73·70에 있고, PBR과 PER 두 선은 249과 351로 크게 올라갔습니다. 이익 세 선의 하향은 대부분 3개월 전과 1년 전 사이에서 일어났고 최근 3개월은 오히려 소폭 상향입니다. <b>원인.</b> 2024년 대규모 원가 재추정 이후 매출이 줄면서 마진을 회복하는 국면이라 매출·이익 추정이 함께 내려왔고, 같은 기간 주가는 원전 파이프라인 기대를 반영해 세 배 가까이 올랐습니다. 배수는 이 두 힘의 나눗셈입니다. <b>함의.</b> 컨센서스가 최근 3개월 동안 영업이익을 +4.9% 손본 데 그쳤다는 사실이 중요합니다. 하우스들은 이익 추정을 크게 고치지 않은 채 배수를 통해서만 시각을 바꾸고 있고, 그래서 3Q26 실적이 이익 추정 자체를 움직이면 배수의 근거도 함께 흔들립니다.</p>
+
+<h2>3. PBR과 ROE의 정합성 — 1.67배가 요구하는 자기자본이익률</h2>
+<p>배수를 이익 추정과 떼어 놓고 보려면 한 줄의 식이면 충분합니다. 이익을 전부 쌓지 않고 일부를 배당하며 일정 속도로 커지는 회사의 지속 가능한 PBR은 (ROE − g) ÷ (COE − g)입니다. 분자는 자본이 자기자본비용을 넘겨 버는 초과수익이고 분모는 그 초과수익을 할인하는 속도입니다. ROE가 COE와 같으면 PBR은 정확히 1배가 되고, ROE가 COE를 밑돌면 순자산보다 낮은 배수가 정당화됩니다.</p>
+<p><b>가정.</b> 자기자본비용은 회사가 기업가치 제고 계획에서 밝힌 8.0%를 그대로 쓰고, 영구성장률 g는 2.0%<span class="est">E</span>로 둡니다. <b>근거.</b> COE를 회사 수치로 쓰는 이유는 하우스별 산정치가 KB증권의 6.2%에서 7.4%로 움직이는 등 편차가 크고, 회사가 밝힌 값이 밸류업 목표 ROE 12%와 같은 문서에서 나온 정합적인 짝이기 때문입니다. g 2.0%는 국내 건설시장의 장기 명목 성장률에 대한 보수적 가정입니다. <b>식.</b> PBR = (ROE − g) ÷ (COE − g)를 ROE에 대해 풀면 ROE = g + PBR × (COE − g)입니다. 현재 PBR 1.67배를 넣으면 g가 0%일 때 3.34%, 2.0%일 때 12.02%, 3%일 때 11.35%입니다. <b>교차검증.</b> 방향을 뒤집어 컨센서스 ROE를 식에 넣으면 2026년 5.92%는 PBR 0.65배, 2027년 7.01%는 0.83배, 2028년 8.13%는 1.02배를 정당화합니다. 그리고 밸류업 목표 ROE 12%를 넣으면 1.67배가 나오는데, 이는 현재 PBR 1.67배와 소수 둘째 자리까지 겹칩니다.</p>
+<p>이 겹침이 우연이 아니라는 점을 짚습니다. 시총은 컨센서스가 2028년까지 그려 놓은 경로에 값을 매기는 것이 아니라, 회사가 2030년에 도달하겠다고 밝힌 상태가 이미 이루어졌고 그 뒤로도 영원히 유지된다는 조건에 값을 매기고 있습니다. 2028년 컨센 ROE 8.13%와 요구 ROE 12.02% 사이의 3.89%포인트가 아직 채워지지 않은 몫이며, 이를 금액으로 옮기면 2028년 지배순이익 컨센 8,197억이 같은 자본에서 약 12,120억<span class="est">E</span>이 되어야 한다는 뜻입니다. 차이는 3,922억<span class="est">E</span>입니다.</p>
+<figure class=""><figcaption>장표 3. PBR과 ROE의 짝 — 국내 건설·국내 전력·글로벌 EPC와 현대건설</figcaption><svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="56" y1="314.0" x2="720" y2="314.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="50" y="318.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="56" y1="255.2" x2="720" y2="255.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="50" y="259.2" text-anchor="end" font-size="11" fill="#8a857c">2</text>
+<line x1="56" y1="196.4" x2="720" y2="196.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="50" y="200.4" text-anchor="end" font-size="11" fill="#8a857c">4</text>
+<line x1="56" y1="137.6" x2="720" y2="137.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="50" y="141.6" text-anchor="end" font-size="11" fill="#8a857c">6</text>
+<line x1="56" y1="78.8" x2="720" y2="78.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="50" y="82.8" text-anchor="end" font-size="11" fill="#8a857c">8</text>
+<line x1="56" y1="20.0" x2="720" y2="20.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="50" y="24.0" text-anchor="end" font-size="11" fill="#8a857c">10</text>
+<line x1="97.5" y1="20" x2="97.5" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="97.5" y="331" text-anchor="middle" font-size="10" fill="#8a857c">0%</text>
+<line x1="201.2" y1="20" x2="201.2" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="201.2" y="331" text-anchor="middle" font-size="10" fill="#8a857c">5%</text>
+<line x1="305.0" y1="20" x2="305.0" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="305.0" y="331" text-anchor="middle" font-size="10" fill="#8a857c">10%</text>
+<line x1="408.8" y1="20" x2="408.8" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="408.8" y="331" text-anchor="middle" font-size="10" fill="#8a857c">15%</text>
+<line x1="512.5" y1="20" x2="512.5" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="512.5" y="331" text-anchor="middle" font-size="10" fill="#8a857c">20%</text>
+<line x1="616.2" y1="20" x2="616.2" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="616.2" y="331" text-anchor="middle" font-size="10" fill="#8a857c">25%</text>
+<line x1="720.0" y1="20" x2="720.0" y2="314" stroke="#d8d4cc" stroke-width="0.5"/>
+<text x="720.0" y="331" text-anchor="middle" font-size="10" fill="#8a857c">30%</text>
+<polyline points="139.0,314.0 149.4,311.6 159.8,309.1 170.1,306.6 180.5,304.2 190.9,301.8 201.2,299.3 211.6,296.9 222.0,294.4 232.4,291.9 242.8,289.5 253.1,287.1 263.5,284.6 273.9,282.2 284.2,279.7 294.6,277.2 305.0,274.8 315.4,272.4 325.8,269.9 336.1,267.4 346.5,265.0 356.9,262.5 367.2,260.1 377.6,257.6 388.0,255.2 398.4,252.8 408.8,250.3 419.1,247.8 429.5,245.4 439.9,242.9 450.2,240.5 460.6,238.1 471.0,235.6 481.4,233.2 491.8,230.7 502.1,228.2 512.5,225.8 522.9,223.3 533.2,220.9 543.6,218.5 554.0,216.0 564.4,213.6 574.8,211.1 585.1,208.6 595.5,206.2 605.9,203.8 616.2,201.3 626.6,198.9 637.0,196.4 647.4,193.9 657.8,191.5 668.1,189.0 678.5,186.6 688.9,184.2 699.2,181.7 709.6,179.3 720.0,176.8" fill="none" stroke="#8a857c" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="637.0" y="188.4" font-size="10.5" fill="#8a857c">PBR = (ROE − 2%) ÷ (8% − 2%)</text>
+<circle cx="220.3" cy="264.9" r="5.5" fill="#a44a3f" opacity="0.85"/>
+<text x="227.3" y="268.4" font-size="10" fill="#a44a3f">현대건설 2026E</text>
+<circle cx="266.2" cy="271.4" r="4.2" fill="#b07d2b" opacity="0.85"/>
+<text x="273.2" y="281.4" font-size="10" fill="#b07d2b">현대건설 2028E</text>
+<circle cx="139.0" cy="294.0" r="3.6" fill="#1f3a5f" opacity="0.85"/>
+<text x="146.0" y="297.5" font-size="10" fill="#1f3a5f">GS건설</text>
+<circle cx="249.0" cy="294.0" r="3.6" fill="#1f3a5f" opacity="0.85"/>
+<text x="256.0" y="297.5" font-size="10" fill="#1f3a5f">DL이앤씨</text>
+<circle cx="201.2" cy="299.6" r="3.6" fill="#1f3a5f" opacity="0.85"/>
+<text x="208.2" y="303.1" font-size="10" fill="#1f3a5f">HDC현산</text>
+<circle cx="383.9" cy="252.0" r="3.6" fill="#1f3a5f" opacity="0.85"/>
+<text x="390.9" y="255.5" font-size="10" fill="#1f3a5f">삼성E&amp;A</text>
+<circle cx="222.0" cy="277.5" r="3.6" fill="#1f3a5f" opacity="0.85"/>
+<text x="229.0" y="281.0" font-size="10" fill="#1f3a5f">삼성물산</text>
+<circle cx="392.1" cy="45.3" r="3.6" fill="#2b7a78" opacity="0.85"/>
+<text x="399.1" y="48.8" font-size="10" fill="#2b7a78">한전기술</text>
+<circle cx="290.5" cy="265.5" r="3.6" fill="#2b7a78" opacity="0.85"/>
+<text x="297.5" y="310.5" font-size="10" fill="#2b7a78">한전KPS</text>
+<circle cx="120.3" cy="94.4" r="3.6" fill="#2b7a78" opacity="0.85"/>
+<text x="127.3" y="97.9" font-size="10" fill="#2b7a78">두산에너빌리티</text>
+<circle cx="315.4" cy="111.1" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="322.4" y="114.6" font-size="10" fill="#3a6ea5">Cameco</text>
+<circle cx="373.5" cy="222.9" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="380.5" y="226.4" font-size="10" fill="#3a6ea5">Fluor</text>
+<circle cx="307.1" cy="217.0" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="314.1" y="220.5" font-size="10" fill="#3a6ea5">Aecon</text>
+<circle cx="325.8" cy="237.6" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="332.8" y="241.1" font-size="10" fill="#3a6ea5">Atkins</text>
+<circle cx="686.8" cy="214.0" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="693.8" y="217.5" font-size="10" fill="#3a6ea5">AECOM</text>
+<circle cx="433.6" cy="255.2" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="440.6" y="268.5" font-size="10" fill="#3a6ea5">Vinci</text>
+<circle cx="444.0" cy="122.9" r="3.6" fill="#3a6ea5" opacity="0.85"/>
+<text x="451.0" y="126.4" font-size="10" fill="#3a6ea5">MasTec</text>
+<text x="56" y="354" font-size="10.5" fill="#8a857c">가로축 ROE(%) · 세로축 PBR(배)</text>
+<rect x="726" y="22" width="10" height="10" fill="#a44a3f"/>
+<text x="740" y="31" font-size="10.5" fill="#8a857c">현대건설(컨센)</text>
+<rect x="726" y="38" width="10" height="10" fill="#1f3a5f"/>
+<text x="740" y="47" font-size="10.5" fill="#8a857c">국내 건설</text>
+<rect x="726" y="54" width="10" height="10" fill="#2b7a78"/>
+<text x="740" y="63" font-size="10.5" fill="#8a857c">국내 전력·원전</text>
+<rect x="726" y="70" width="10" height="10" fill="#3a6ea5"/>
+<text x="740" y="79" font-size="10.5" fill="#8a857c">글로벌 EPC·원전</text>
+</svg><div class="src">국내 종목은 키움 ka10001의 후행 PBR·ROE(9-11), 글로벌 7개사는 메리츠증권 2026-07-20 리포트가 인용한 2026E PBR·ROE, 현대건설은 컨센 2026E와 2028E. 점선은 자기자본비용 8.0%·영구성장률 2.0%를 넣은 (ROE − g) ÷ (COE − g) 곡선.</div></figure>
+<p class="reading"><b>관찰.</b> 점선 위쪽에 있으면 수익성이 설명하는 것보다 비싼 값이고 아래쪽이면 싼 값입니다. 국내 건설 3사(GS건설 PBR 0.68배·ROE 2.0%, DL이앤씨 0.68배·7.3%, HDC현대산업개발 0.49배·5.0%)는 모두 점선 아래에 있고, 현대건설 2026E(5.92%·1.67배)는 점선에서 크게 위로 떨어져 있습니다. 두산에너빌리티와 한전기술은 현대건설보다 더 위에 있습니다. <b>원인.</b> 국내 건설 3사는 주택 사이클과 원가 재추정 기억이 배수를 누르고 있고, 전력·원전 종목들은 이익이 아직 따라오지 않은 상태에서 발주 기대가 배수를 끌어올린 무리입니다. 현대건설은 두 무리 사이에 서 있습니다. <b>함의.</b> 현대건설의 자리는 건설 peer가 아니라 전력·원전 peer 쪽에 가깝습니다. 이 배수를 판단하려면 건설업 배수표가 아니라 원전 계약의 진척을 봐야 한다는 뜻이고, 논쟁 1(원전이 언제 손익계산서에 들어오는가)의 채점 결과가 그대로 이 좌표를 움직입니다.</p>
+
+<h2>4. 밸류업 2030 목표를 배수로 옮기면</h2>
+<p>회사는 2025-03-28 기업가치 제고 계획에서 2030년 매출 40조·영업이익률 8%·ROE 12% 이상을 목표로 내걸었고, 2025~2027년 총주주환원율 25% 이상과 최소 주당배당금 800원도 함께 밝혔습니다. 매출과 영업이익률을 곱하면 2030년 영업이익은 3조 2,000억입니다. 문제는 이 세 목표가 서로 정합적인지, 그리고 어느 것이 먼저 깨지는지입니다.</p>
+<p><b>가정.</b> 2026년 말 지배지분 자본을 94,957억<span class="est">E</span>(2026-06-30 실적 92,719억에 하반기 지배순이익 컨센 2,238억을 더한 값)에서 출발시키고, 2027년부터 2030년까지 각 해 지배순이익의 75%를 자본에 쌓습니다. <b>근거.</b> 환원율 25%는 회사의 총주주환원율 목표이고, 자기주식은 0주이며 2025·2026년 중 취득·소각 공시가 없어 환원은 전액 현금배당으로 가정했습니다. <b>식.</b> ROE 12%를 매년 유지한다고 두고 기초·기말 평균 자본으로 순이익을 역산하면 2030년 지배순이익은 1조 5,633억<span class="est">E</span>, 2030년 말 지배자본은 13조 6,138억<span class="est">E</span>입니다. 영업이익 대비 지배순이익 전환율 59.0%<span class="est">E</span>를 적용하면 필요한 영업이익은 2조 6,475억<span class="est">E</span>이고, 매출 40조에 대한 영업이익률은 6.62%입니다. <b>교차검증.</b> 거꾸로 매출 40조 × 영업이익률 8%인 3조 2,000억에 같은 전환율을 곱하면 지배순이익 1조 8,896억<span class="est">E</span>로, ROE 12%가 요구하는 1조 5,633억<span class="est">E</span>보다 3,263억<span class="est">E</span> 많습니다. 즉 세 목표는 서로 모순되지 않고, 오히려 영업이익률 목표가 ROE 목표를 21%<span class="est">E</span>만큼 초과 달성시킵니다. ROE 12%만 맞추려면 영업이익률은 6.62%면 충분합니다.</p>
+<p>이 계산이 주는 함의는 두 가지입니다. 첫째, 시총이 요구하는 ROE 12.02%<span class="est">E</span>는 밸류업 목표와 거의 같으므로 시총은 목표를 깎아서 반영한 것이 아니라 통째로, 그것도 2030년이 아니라 지금 이미 도달한 상태로 반영하고 있습니다. 둘째, 목표를 시간에 놓고 보면 2030년까지 4년 반이 남았고 그동안의 ROE는 컨센서스 기준 5.92%에서 8.13%까지만 올라갑니다. 시총은 이 4년 반의 기다림에 대한 할인을 거의 매기지 않고 있습니다.</p>
+<figure class=""><figcaption>장표 4. 컨센 2026~2028E 경로와 밸류업 2030 목표 사이의 거리</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="66" y1="274.0" x2="720" y2="274.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="278.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="66" y1="211.5" x2="720" y2="211.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="215.5" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="66" y1="149.0" x2="720" y2="149.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="153.0" text-anchor="end" font-size="11" fill="#8a857c">20,000</text>
+<line x1="66" y1="86.5" x2="720" y2="86.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="90.5" text-anchor="end" font-size="11" fill="#8a857c">30,000</text>
+<line x1="66" y1="24.0" x2="720" y2="24.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="28.0" text-anchor="end" font-size="11" fill="#8a857c">40,000</text>
+<text x="724" y="278.0" font-size="10.5" fill="#2b7a78">0%</text>
+<text x="724" y="206.6" font-size="10.5" fill="#2b7a78">4%</text>
+<text x="724" y="135.1" font-size="10.5" fill="#2b7a78">8%</text>
+<text x="724" y="63.7" font-size="10.5" fill="#2b7a78">12%</text>
+<rect x="105.4" y="233.2" width="52" height="40.8" fill="#1f3a5f" opacity="0.85"/>
+<text x="131.4" y="227.2" text-anchor="middle" font-size="10.5" fill="#1f3a5f">6,530</text>
+<text x="131.4" y="291" text-anchor="middle" font-size="10.5" fill="#8a857c">2025A</text>
+<text x="131.4" y="305" text-anchor="middle" font-size="9.5" fill="#a44a3f">정당화 PBR 0.43배</text>
+<rect x="236.2" y="219.7" width="52" height="54.3" fill="#1f3a5f" opacity="0.85"/>
+<text x="262.2" y="213.7" text-anchor="middle" font-size="10.5" fill="#1f3a5f">8,689</text>
+<text x="262.2" y="291" text-anchor="middle" font-size="10.5" fill="#8a857c">2026E</text>
+<text x="262.2" y="305" text-anchor="middle" font-size="9.5" fill="#a44a3f">정당화 PBR 0.65배</text>
+<rect x="367.0" y="203.5" width="52" height="70.5" fill="#1f3a5f" opacity="0.85"/>
+<text x="393.0" y="197.5" text-anchor="middle" font-size="10.5" fill="#1f3a5f">11,276</text>
+<text x="393.0" y="291" text-anchor="middle" font-size="10.5" fill="#8a857c">2027E</text>
+<text x="393.0" y="305" text-anchor="middle" font-size="9.5" fill="#a44a3f">정당화 PBR 0.83배</text>
+<rect x="497.8" y="188.0" width="52" height="86.0" fill="#1f3a5f" opacity="0.85"/>
+<text x="523.8" y="182.0" text-anchor="middle" font-size="10.5" fill="#1f3a5f">13,762</text>
+<text x="523.8" y="291" text-anchor="middle" font-size="10.5" fill="#8a857c">2028E</text>
+<text x="523.8" y="305" text-anchor="middle" font-size="9.5" fill="#a44a3f">정당화 PBR 1.02배</text>
+<rect x="628.6" y="74.0" width="52" height="200.0" fill="#b07d2b" opacity="0.85"/>
+<text x="654.6" y="68.0" text-anchor="middle" font-size="10.5" fill="#b07d2b">32,000</text>
+<text x="654.6" y="291" text-anchor="middle" font-size="10.5" fill="#8a857c">2030 밸류업 목표</text>
+<text x="654.6" y="305" text-anchor="middle" font-size="9.5" fill="#a44a3f">정당화 PBR 1.67배</text>
+<polyline points="131.4,192.2 262.2,168.3 393.0,148.8 523.8,128.8 654.6,59.7" fill="none" stroke="#2b7a78" stroke-width="2.2"/>
+<circle cx="131.4" cy="192.2" r="3" fill="#2b7a78"/>
+<text x="131.4" y="184.2" text-anchor="middle" font-size="10" fill="#2b7a78">4.58%</text>
+<circle cx="262.2" cy="168.3" r="3" fill="#2b7a78"/>
+<text x="262.2" y="160.3" text-anchor="middle" font-size="10" fill="#2b7a78">5.92%</text>
+<circle cx="393.0" cy="148.8" r="3" fill="#2b7a78"/>
+<text x="393.0" y="140.8" text-anchor="middle" font-size="10" fill="#2b7a78">7.01%</text>
+<circle cx="523.8" cy="128.8" r="3" fill="#2b7a78"/>
+<text x="523.8" y="120.8" text-anchor="middle" font-size="10" fill="#2b7a78">8.13%</text>
+<circle cx="654.6" cy="59.7" r="3" fill="#2b7a78"/>
+<text x="654.6" y="51.7" text-anchor="middle" font-size="10" fill="#2b7a78">12.00%</text>
+<line x1="66" y1="131.1" x2="720" y2="131.1" stroke="#a44a3f" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="70" y="126.1" font-size="10.5" fill="#a44a3f">자기자본비용 8.0%(회사 제시)</text>
+<rect x="750" y="20" width="10" height="10" fill="#1f3a5f"/>
+<text x="764" y="29" font-size="10" fill="#8a857c">영업이익(억원, 막대·왼쪽 축)</text>
+<rect x="750" y="35" width="10" height="10" fill="#2b7a78"/>
+<text x="764" y="44" font-size="10" fill="#8a857c">ROE(%, 선·오른쪽 축)</text>
+</svg><div class="src">막대와 왼쪽 축은 영업이익(억원, 2025년은 실적·2026~2028년은 컨센·2030년은 밸류업 목표 매출 40조 × 영업이익률 8%), 선과 오른쪽 축은 ROE. 각 해 아래의 정당화 PBR은 (ROE − 2%) ÷ (8% − 2%)로 계산했습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 컨센서스의 영업이익은 2025년 6,530억에서 2028년 13,762억까지 2.11배가 되지만, 밸류업 2030 목표 3조 2,000억까지는 다시 2.33배가 더 필요합니다. ROE 선은 2028년까지 자기자본비용 8.0% 아래에 머물고, 정당화 PBR은 2028년에도 1.02배입니다. <b>원인.</b> 매출이 줄면서 마진을 올리는 구간이라 이익은 회복하지만 자본이 회계정책 변경과 이익 적립으로 함께 늘어 ROE의 분모가 커지기 때문입니다. 2026년 토지 재평가모형·투자부동산 공정가치모형 도입으로 자본이 늘어난 것도 같은 방향으로 작용합니다. <b>함의.</b> 시총은 막대의 오른쪽 끝(2030년 목표)에 값을 매기고 있고 컨센서스는 왼쪽 네 개를 보고 있습니다. 이 파트의 나머지는 그 사이의 거리를 두 가지 방식으로 재는 작업입니다. 하나는 잔고가 매출로 도는 속도이고, 다른 하나는 시총에서 본업을 뺀 잔여입니다.</p>
+
+<h2>5. 잔고의 매출 전환 모델 — 103조 9,831억은 몇 해에 걸쳐 들어오나</h2>
+<p>2026-06-30 연결 수주잔고는 1,039,831억입니다. 이 숫자는 신규수주 누계가 아니라 계약잔액이며, 연결 단순합계에서 내부거래를 뺀 값입니다. 컨센 2026E 매출 269,352억으로 나누면 3.86년치이고, 이것이 "약 3.8년치 일감"이라는 표현의 출처입니다. 그런데 이 배수는 정지된 사진이라 미래 매출을 만들어 주지 않습니다. 필요한 것은 잔고가 매년 몇 퍼센트씩 매출로 도는지, 그 속도입니다.</p>
+<p><b>가정.</b> 각 해의 매출을 전기말 잔고 × 전환율로 만들고, 같은 해 신규수주를 더하고 매출을 빼서 다음 해 잔고를 구합니다. <b>근거.</b> 이 회사의 실제 전환율은 2024년 36.4%(2023말 잔고 대비), 2025년 32.4%, 2026년 컨센 기준 28.3%로 세 해 연속 낮아졌습니다. 미착공 정비사업 잔고가 12건 약 17조 7,478억으로 쌓여 있고 2Q26 착공이 3,100세대로 연간 계획 16,400세대의 19%에 그친 것이 전환율 하락의 실체입니다. <b>식.</b> 2026년 말 잔고는 1,039,831억 + 하반기 신규수주(가이던스 334,000억 − 상반기 228,230억) − 하반기 매출(컨센 269,352억 − 상반기 131,236억) = 1,007,485억<span class="est">E</span>입니다. 여기에 전환율을 곱해 2027년 매출을 만듭니다. <b>교차검증.</b> 컨센 2027E 매출 285,996억을 이 잔고로 나누면 전환율은 정확히 28.4%입니다. 다시 말해 컨센서스의 2027년 매출은 "2026년 수준의 전환율이 그대로 유지된다"는 가정과 같은 말이고, 별도의 회복을 전제하지 않습니다. 이 값을 모델의 기본값으로 둡니다.</p>
+<p>이익은 부문 매출총이익률로 만듭니다. 2026년 상반기 영업부문 주석의 매출 구성은 건축·주택 49.2%, 플랜트·전력 33.3%, 토목 10.9%, 기타 6.6%이고 같은 기간 부문 매출총이익률은 건축·주택 10.4%, 플랜트·전력 5.0%, 토목 0.3%, 기타 18.7%입니다. 공시가 부문 단계에서 영업이익을 주지 않고 매출총이익까지만 주므로 부문 단계에서는 매출총이익률만 쓰고, 판매비와관리비는 전사 비율 4.63%(2026년 상반기 6,077억 ÷ 131,236억)로 한 번에 뺍니다. 이렇게 만든 2027년 영업이익은 9,789억<span class="est">E</span>으로 컨센 11,276억보다 -13.2% 낮습니다. 컨센 수준의 영업이익이 나오려면 건축·주택 매출총이익률이 11.50%<span class="est">E</span>까지 올라가야 하는데, 이는 2026년 상반기 10.4%와 하우스들이 전한 2Q26 건축·주택 매출총이익률 13.2% 사이의 값입니다.</p>
+<figure class=""><figcaption>장표 5. 잔고 전환 모델 기본값의 매출 경로와 컨센·밸류업 목표(억원)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="66" y1="254.0" x2="712" y2="254.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="258.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="66" y1="196.0" x2="712" y2="196.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="200.0" text-anchor="end" font-size="11" fill="#8a857c">100,000</text>
+<line x1="66" y1="138.0" x2="712" y2="138.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="142.0" text-anchor="end" font-size="11" fill="#8a857c">200,000</text>
+<line x1="66" y1="80.0" x2="712" y2="80.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="84.0" text-anchor="end" font-size="11" fill="#8a857c">300,000</text>
+<line x1="66" y1="22.0" x2="712" y2="22.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="60" y="26.0" text-anchor="end" font-size="11" fill="#8a857c">400,000</text>
+<line x1="66" y1="22.0" x2="712" y2="22.0" stroke="#a44a3f" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="718" y="26.0" font-size="10.5" fill="#a44a3f">밸류업 2030 매출 40조</text>
+<rect x="116.8" y="88.0" width="60" height="166.0" fill="#1f3a5f" opacity="0.82"/>
+<text x="146.8" y="82.0" text-anchor="middle" font-size="10.5" fill="#1f3a5f">286,126</text>
+<text x="146.8" y="271" text-anchor="middle" font-size="10.5" fill="#8a857c">2027E</text>
+<text x="146.8" y="285" text-anchor="middle" font-size="9.5" fill="#2b7a78">잔고 105.5조 · ROE 5.95%</text>
+<line x1="112.8" y1="88.1" x2="180.8" y2="88.1" stroke="#b07d2b" stroke-width="2.2"/>
+<text x="184.8" y="91.6" font-size="9.5" fill="#b07d2b">컨센 285,996</text>
+<rect x="278.2" y="80.2" width="60" height="173.8" fill="#1f3a5f" opacity="0.82"/>
+<text x="308.2" y="74.2" text-anchor="middle" font-size="10.5" fill="#1f3a5f">299,722</text>
+<text x="308.2" y="271" text-anchor="middle" font-size="10.5" fill="#8a857c">2028E</text>
+<text x="308.2" y="285" text-anchor="middle" font-size="9.5" fill="#2b7a78">잔고 109.0조 · ROE 5.96%</text>
+<line x1="274.2" y1="75.6" x2="342.2" y2="75.6" stroke="#b07d2b" stroke-width="2.2"/>
+<text x="346.2" y="79.1" font-size="9.5" fill="#b07d2b">컨센 307,548</text>
+<rect x="439.8" y="74.5" width="60" height="179.5" fill="#1f3a5f" opacity="0.82"/>
+<text x="469.8" y="68.5" text-anchor="middle" font-size="10.5" fill="#1f3a5f">309,457</text>
+<text x="469.8" y="271" text-anchor="middle" font-size="10.5" fill="#8a857c">2029E</text>
+<text x="469.8" y="285" text-anchor="middle" font-size="9.5" fill="#2b7a78">잔고 111.4조 · ROE 5.89%</text>
+<rect x="601.2" y="70.5" width="60" height="183.5" fill="#1f3a5f" opacity="0.82"/>
+<text x="631.2" y="64.5" text-anchor="middle" font-size="10.5" fill="#1f3a5f">316,427</text>
+<text x="631.2" y="271" text-anchor="middle" font-size="10.5" fill="#8a857c">2030E</text>
+<text x="631.2" y="285" text-anchor="middle" font-size="9.5" fill="#2b7a78">잔고 113.2조 · ROE 5.76%</text>
+<text x="66" y="14" font-size="10.5" fill="#8a857c">막대 = 모델 기본값의 매출(억원), 가로선 = 컨센서스 매출</text>
+</svg><div class="src">이 파트 계산. 2026년 말 잔고 추정에서 출발해 전환율 28.4%, 연간 신규수주 33.4조(원전 4.3조 포함)를 유지한 경로입니다. 가로 굵은 선은 컨센 매출, 점선은 밸류업 2030 목표 40조.</div></figure>
+<p class="reading"><b>관찰.</b> 기본값에서 2027년 매출은 286,126억으로 컨센과 같고, 2028년은 299,722억<span class="est">E</span>으로 컨센 307,548억보다 -2.5% 낮으며, 2030년은 31조 6,427억<span class="est">E</span>로 밸류업 목표 40조 대비 -20.9%입니다. 잔고는 같은 기간 105.5조에서 113.2조로 늘어납니다. <b>원인.</b> 가이던스 수준의 신규수주 33조 4,000억을 매년 유지해도 전환율이 지금 수준이면 매출이 잔고를 따라가지 못하고 잔고만 쌓이기 때문입니다. 미착공 정비사업이 잔고에 남아 있는 한 이 구조가 이어집니다. <b>함의.</b> 밸류업 매출 목표 40조는 전환율만으로는 닿지 않습니다. 전환율을 18%에서 60%까지 훑어도 2030년 매출의 최대치는 전환율 49.9%에서 35조 5,219억<span class="est">E</span>이고, 목표까지 -11.2% 모자랍니다. 잔고가 유한하기 때문에 빨리 돌릴수록 잔고가 먼저 말라 뒷해 매출이 줄기 때문입니다. 목표에 닿으려면 연간 신규수주가 46.7조<span class="est">E</span>까지 늘어야 하며, 이는 2025년 사상 최대였던 334,394억을 40%<span class="est">E</span> 웃도는 규모입니다.</p>
+
+<h2>6. 조정판 — 전환율·마진·원전 수주를 같이 움직여 보기</h2>
+<p>조정판은 위 모델을 그대로 슬라이더에 올린 것입니다. 움직이는 변수는 일곱입니다. 잔고의 연간 매출 전환율, 건축·주택 매출총이익률, 플랜트·전력 매출총이익률, 원전 파이프라인의 연간 수주 인식 금액, 그 밖의 연간 신규수주, 판매비와관리비율, 그리고 정당화 배수를 계산할 때 쓰는 영구성장률입니다. 자기자본비용은 회사가 제시한 8.0%로 고정했습니다. 출력은 영업이익과 ROE, 그리고 그 ROE가 정당화하는 PBR이며 주가나 주당 값은 어디에도 나오지 않습니다. 원전 수주는 잔고에 들어가 같은 전환율로 돌 뿐 별도의 마진을 받지 않고, 그 몫은 플랜트·전력 매출총이익률 슬라이더가 대신 담습니다.</p>
+<div class="panel"><b>조정판 — 수주잔고 103조 9,831억이 몇 해에 걸쳐 손익계산서로 들어오고, 그 결과의 자기자본이익률이 어떤 배수를 정당화하는지 읽는 자입니다. 주가도, 주당 값도 출력하지 않습니다.</b><br><br><b>(가) 잔고가 매출로 도는 속도</b><br>잔고의 연간 매출 전환율(전기말 잔고 대비, %) <span id="s_conv_v"></span><br><input type="range" id="s_conv" min="18" max="42" step="0.1" value="28.4"><br><b>(나) 부문 매출총이익률(공시 영업부문 주석 기준)</b><br>건축·주택 GPM(%) <span id="s_gh_v"></span><br><input type="range" id="s_gh" min="6" max="16" step="0.1" value="10.4"><br>플랜트·전력 GPM(%) <span id="s_gp_v"></span><br><input type="range" id="s_gp" min="0" max="16" step="0.1" value="5.0"><br><b>(다) 신규수주</b><br>원전 파이프라인의 연간 수주 인식 금액(조원) <span id="s_nuc_v"></span><br><input type="range" id="s_nuc" min="0" max="12" step="0.1" value="4.3"><br>그 밖의 연간 신규수주(조원) <span id="s_non_v"></span><br><input type="range" id="s_non" min="15" max="45" step="0.5" value="29.1"><br><b>(라) 비용과 할인</b><br>판매비와관리비율(매출 대비, %) <span id="s_sga_v"></span><br><input type="range" id="s_sga" min="3" max="7" step="0.01" value="4.63"><br>영구성장률 g(%, 자기자본비용은 회사 제시 8.0% 고정) <span id="s_g_v"></span><br><input type="range" id="s_g" min="0" max="4" step="0.1" value="2.0"><br><div class="out">2027E 매출 <span id="o_rev27">—</span>억(컨센 대비 <span id="o_dr27">—</span>%) · 영업이익 <span id="o_op27">—</span>억(OPM <span id="o_opm27">—</span>%, 컨센 대비 <span id="o_d27">—</span>%) · 2028E 영업이익 <span id="o_op28">—</span>억(컨센 대비 <span id="o_d28">—</span>%)</div><div class="out">2027E ROE <span id="o_roe27">—</span>% · 그 ROE가 정당화하는 PBR <span id="o_pbr27">—</span>배</div><div class="out">2030E 매출 <span id="o_rev30">—</span>(밸류업 목표 40조 대비 <span id="o_dvu">—</span>%) · 영업이익 <span id="o_op30">—</span> · 2030말 잔고 <span id="o_bl30">—</span>조</div><div class="out">2030E ROE <span id="o_roe30">—</span>% · <b>그 ROE가 정당화하는 PBR <span id="o_pbr30">—</span>배</b>(9-11 종가의 PBR 1.67배와의 차 <span id="o_gap30">—</span>배, 현재 배수의 <span id="o_cov30">—</span>%)</div><div class="note">식. ① 2026년 말 잔고<span class="est">E</span> = 2026-06-30 계약잔액 1,039,831억 + 하반기 신규수주(가이던스 334,000억 − 상반기 실적 228,230억) − 하반기 매출(컨센 269,352억 − 상반기 실적 131,236억) = 1,007,485억. ② 각 해 매출 = 전기말 잔고 × 전환율. ③ 각 해 말 잔고 = 전기말 잔고 + 신규수주(원전 + 그 밖) − 매출. ④ 매출총이익 = 매출 × (건축·주택 49.2% × GPM + 플랜트·전력 33.3% × GPM + 토목 10.9% × 0.3% + 기타 6.6% × 18.7%). 부문 비중은 2026년 상반기 영업부문 주석의 매출 구성을 고정한 값이고, 토목·기타 GPM도 같은 기간 실적으로 고정했습니다. ⑤ 영업이익 = 매출총이익 − 매출 × 판관비율. ⑥ 지배순이익 = 영업이익 × 59.0%<span class="est">E</span>(컨센 2026~2028E 세 해의 영업이익 대비 지배순이익 평균. 2026년 상반기 실적 비율은 65.5%로 이보다 높습니다). ⑦ 지배자본은 2026년 말 94,957억<span class="est">E</span>(2026-06-30 지배지분 92,719억 + 하반기 지배순이익 컨센 2,238억)에서 시작해 2027년부터 2030년까지 각 해 지배순이익의 75%를 쌓습니다(밸류업 총주주환원율 25% 목표를 전액 배당으로 가정<span class="est">E</span>). ⑧ ROE = 지배순이익 ÷ 기초·기말 평균 지배자본. ⑨ 정당화 PBR = (ROE − g) ÷ (8.0% − g). 자기자본비용 8.0%는 회사가 기업가치 제고 계획에서 밝힌 값입니다. 이 모델은 원전 수주를 잔고에 넣어 같은 전환율로 돌릴 뿐, 원전에 별도의 마진을 주지 않습니다. 플랜트·전력 GPM이 그 몫을 대신 담습니다.</div>
+<script>
+(function(){
+var BL=1007484.7,EQ=94957.3,SH_H=0.491836,SH_C=0.108844,SH_P=0.332929,SH_O=0.066391;
+var GPM_C=0.3049,GPM_O=18.6527,CONV=0.590496,PAY=0.25,COE=8.00;
+var OP27=11276.0,OP28=13761.8,REV27=285995.8,REV28=307547.9,VU=400000.0,PBRNOW=1.6700;
+var ids=["s_conv","s_gh","s_gp","s_nuc","s_non","s_sga","s_g"];
+function g(i){return +document.getElementById(i).value}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function jo(v){var n=v<0;v=Math.abs(v);var s=v>=10000?Math.floor(v/10000)+"조 "+fm(Math.round(v%10000),0)+"억":fm(Math.round(v),0)+"억";return (n?"-":"")+s}
+function run(v){
+ var B=BL,eq=EQ,out=[];
+ for(var y=2027;y<=2030;y++){
+  var rev=B*v.conv/100;
+  B=B+(v.nuc+v.non)*10000-rev;
+  var gp=rev*(SH_H*v.gh+SH_P*v.gp+SH_C*GPM_C+SH_O*GPM_O)/100;
+  var op=gp-rev*v.sga/100, ni=op*CONV, eq0=eq;
+  eq=eq+ni*(1-PAY);
+  var roe=ni/((eq0+eq)/2)*100;
+  out.push({y:y,rev:rev,bl:B,op:op,ni:ni,roe:roe,pbr:(roe-v.g)/(COE-v.g),opm:op/rev*100});
+ }
+ return out;}
+function f(){
+ ids.forEach(function(i){var d=(i=="s_sga")?2:1;document.getElementById(i+"_v").textContent=fm(g(i),d)});
+ var v={conv:g("s_conv"),gh:g("s_gh"),gp:g("s_gp"),nuc:g("s_nuc"),non:g("s_non"),sga:g("s_sga"),g:g("s_g")};
+ var m=run(v),a=m[0],b=m[1],d=m[3],S=function(i,t){document.getElementById(i).textContent=t};
+ S("o_op27",fm(a.op,0));S("o_opm27",fm(a.opm,2));S("o_d27",(a.op/OP27*100-100>=0?"+":"")+fm(a.op/OP27*100-100,1));
+ S("o_rev27",fm(a.rev,0));S("o_dr27",(a.rev/REV27*100-100>=0?"+":"")+fm(a.rev/REV27*100-100,1));
+ S("o_op28",fm(b.op,0));S("o_d28",(b.op/OP28*100-100>=0?"+":"")+fm(b.op/OP28*100-100,1));
+ S("o_roe27",fm(a.roe,2));S("o_pbr27",fm(a.pbr,2));
+ S("o_rev30",jo(d.rev));S("o_dvu",(d.rev/VU*100-100>=0?"+":"")+fm(d.rev/VU*100-100,1));
+ S("o_op30",jo(d.op));S("o_roe30",fm(d.roe,2));S("o_pbr30",fm(d.pbr,2));
+ S("o_bl30",fm(d.bl/10000,1));
+ S("o_gap30",(d.pbr-PBRNOW>=0?"+":"")+fm(d.pbr-PBRNOW,2));
+ S("o_cov30",fm(d.pbr/PBRNOW*100,0));}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+<p>기본값에서 2027년 영업이익은 9,789억<span class="est">E</span>(영업이익률 3.42%), ROE는 5.95%<span class="est">E</span>이고 그 ROE가 정당화하는 PBR은 0.66배<span class="est">E</span>입니다. 2030년까지 가도 ROE는 5.76%<span class="est">E</span>, 정당화 PBR은 0.63배<span class="est">E</span>로 현재 배수 1.67배의 38%에 그칩니다. 이 기본값은 2026년 상반기 실적의 부문 마진과 가이던스 수준의 수주를 그대로 5년 연장한 것이므로, 시총이 요구하는 상태와 현재 상태 사이의 거리를 그대로 보여 주는 기준선입니다.</p>
+<table class=""><tr><th>경로</th><th>움직인 변수(나머지 기본값)</th><th>2027E 영업이익</th><th>2030E 매출</th><th>2030E ROE</th><th>2030E ROE가 정당화하는 PBR</th></tr><tr><td>기본값</td><td>전환율 28.4%·건축주택 GPM 10.4%·플랜트전력 5.0%·원전 4.3조·비원전 29.1조</td><td>9,789억<span class="est">E</span></td><td>31조 6,427억<span class="est">E</span></td><td>5.76%</td><td>0.63배</td></tr><tr><td>마진 정상화 + 원전 가속</td><td>건축주택 13.2%(2Q26 실적)·플랜트전력 10.0%·원전 연 8조</td><td>18,493억<span class="est">E</span></td><td>33조 9,846억<span class="est">E</span></td><td>10.27%</td><td>1.38배</td></tr><tr><td>잔고 회전 둔화 + 원전 지연</td><td>전환율 24.0%·건축주택 9.0%·플랜트전력 3.0%·원전 연 1조·비원전 26조</td><td>4,998억<span class="est">E</span></td><td>25조 7,619억<span class="est">E</span></td><td>3.05%</td><td>0.18배</td></tr><tr><td>전환율만 최대로</td><td>전환율 49.9%(2030년 매출이 가장 커지는 값), 나머지 기본값</td><td>17,200억<span class="est">E</span></td><td>35조 5,219억<span class="est">E</span></td><td>6.12%</td><td>0.69배</td></tr><tr><td>밸류업 궤도</td><td>연간 신규수주 46.7조·건축주택 12.0%·플랜트전력 9.0%</td><td>15,851억<span class="est">E</span></td><td>40조 608억<span class="est">E</span></td><td>10.54%</td><td>1.42배</td></tr></table>
+<p>경로 표에서 가장 크게 움직이는 변수는 마진입니다. 건축·주택 매출총이익률을 2Q26 실적인 13.2%로, 플랜트·전력을 10.0%로 올리고 원전 수주를 연 8조로 늘리면 2027년 영업이익은 18,493억<span class="est">E</span>으로 컨센을 +64.0% 웃돌고 2030년 ROE는 10.27%<span class="est">E</span>, 정당화 PBR은 1.38배<span class="est">E</span>가 됩니다. 이 경로에서도 현재 배수 1.67배에는 0.29배<span class="est">E</span>가 모자랍니다. 반대로 전환율이 24.0%로 내려가고 플랜트·전력 매출총이익률이 3.0%로 떨어지며 원전 수주가 연 1조에 그치면 2030년 ROE는 3.05%<span class="est">E</span>, 정당화 PBR은 0.18배<span class="est">E</span>로 순자산 아래입니다. 넷째 줄은 전환율만 최대로 올린 경로인데, 2030년 매출이 35조 5,219억<span class="est">E</span>에서 멈추고 ROE도 6.12%<span class="est">E</span>에 그칩니다. 잔고를 빨리 돌리면 그해 매출은 늘지만 잔고가 먼저 말라 뒷해가 줄기 때문입니다. 마지막 줄의 밸류업 궤도는 연간 신규수주를 46.7조<span class="est">E</span>로 올리고 건축·주택 12.0%·플랜트·전력 9.0%를 동시에 넣은 것으로, 이때 2030년 ROE 10.54%<span class="est">E</span>와 정당화 PBR 1.42배<span class="est">E</span>가 현재 배수에 가장 가까워집니다. 그래도 현재 1.67배에는 0.25배<span class="est">E</span>가 남습니다.</p>
+<p>조정판에서 읽히는 규칙 하나를 적어 둡니다. 원전 수주 슬라이더를 혼자 올려도 ROE는 거의 움직이지 않습니다. 기본값에서 원전 연 수주를 4.3조에서 8조로 올려도 2030년 ROE는 6.16%<span class="est">E</span>로 기본값 5.76%<span class="est">E</span>에서 0.39%포인트<span class="est">E</span> 오르는 데 그칩니다. 잔고에 들어온 수주가 전환율만큼만 매출로 나오고, 그 매출이 플랜트·전력의 낮은 매출총이익률을 지나기 때문입니다. 원전이 배수를 정당화하려면 금액이 아니라 마진이 바뀌어야 한다는 뜻이고, 이것이 논쟁 1의 채점 항목에 "플랜트·전력 부문 매출총이익률이 5.0%에서 두 자리로 올라오는지"가 들어간 이유입니다.</p>
+
+<h2>7. 원전 옵션의 크기 역산 — 잔여는 얼마이고 무엇을 요구하나</h2>
+<p>이 파트의 핵심 계산입니다. 시총에서 건설 본업의 값을 빼면 남는 것이 원전·전력 파이프라인에 매겨진 값입니다. 본업을 재는 자는 하나로 정할 수 없으므로 네 가지를 나란히 놓습니다.</p>
+<p><b>가정.</b> 건설 본업의 값을 ① 국내 주택·건축 중심 3사의 중앙 PBR 0.68배 × 2026-06-30 지배지분 자본, ② 국내 건설업종 56개사 PER 12.98배 × 컨센 2027E 지배순이익, ③ 같은 업종 PER × 컨센 2026E 지배순이익, ④ 지배지분 자본 1.0배의 네 가지로 재고 나머지를 잔여로 둡니다. <b>근거.</b> ①의 3사는 GS건설 0.68배·DL이앤씨 0.68배·HDC현대산업개발 0.49배로 중앙값이 0.68배입니다(키움 ka10001, 9-11 기준 후행). ②의 업종 PER 12.98배는 국내 건설 56개사 집계값이며 조사 노트 D에 출처와 조회일이 있습니다. ④는 원전 기대를 완전히 제거했을 때의 하한입니다. <b>식.</b> ①은 92,719억 × 0.68 = 63,049억<span class="est">E</span>, 잔여 150,219 − 63,049 = 87,170억<span class="est">E</span>(시총의 58.0%). ②는 6,592억 × 12.98 = 85,569억<span class="est">E</span>, 잔여 64,650억<span class="est">E</span>(43.0%). ③은 잔여 83,539억<span class="est">E</span>, ④는 잔여 57,500억<span class="est">E</span>입니다. <b>교차검증.</b> 완전희석 시총 15조 4,697억<span class="est">E</span>을 쓰면 ①의 잔여는 91,648억<span class="est">E</span>, ②는 69,128억<span class="est">E</span>으로 각각 4,478억<span class="est">E</span>씩 커집니다. 네 가지 자 가운데 가장 보수적인 ②로도 잔여는 6조 4,650억<span class="est">E</span>이고, 가장 큰 ④는 5조 7,500억<span class="est">E</span>입니다. 우리는 ①과 ②의 사이, 즉 6조 4,650억에서 8조 7,170억 구간<span class="est">E</span>을 잔여의 중심으로 읽습니다.</p>
+<table class=""><tr><th>본업의 값을 재는 자</th><th>건설 본업 값(억원)</th><th>시총 중 비중</th><th>잔여(억원)</th><th>잔여 ÷ 2026 원전 인식 추정 4조 3,000억</th><th>잔여 ÷ 파이프라인 44.6조</th></tr><tr><td>국내 건설 3사 중앙 PBR 0.68배 × 지배지분 자본</td><td>63,049<span class="est">E</span></td><td>42.0%</td><td>87,170<span class="est">E</span></td><td>2.03배</td><td>19.5%</td></tr><tr><td>건설업종 PER 12.98배 × 컨센 2027E 지배순이익</td><td>85,569<span class="est">E</span></td><td>57.0%</td><td>64,650<span class="est">E</span></td><td>1.50배</td><td>14.5%</td></tr><tr><td>건설업종 PER 12.98배 × 컨센 2026E 지배순이익</td><td>66,680<span class="est">E</span></td><td>44.4%</td><td>83,539<span class="est">E</span></td><td>1.94배</td><td>18.7%</td></tr><tr><td>지배지분 자본 1.0배(순자산)</td><td>92,719<span class="est">E</span></td><td>61.7%</td><td>57,500<span class="est">E</span></td><td>1.34배</td><td>12.9%</td></tr></table>
+<figure class=""><figcaption>장표 6. 시총 15조 219억의 분해 — 건설 본업에 매겨진 값과 잔여(억원)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="189.0" x2="730" y2="189.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="193.0" text-anchor="end" font-size="11" fill="#8a857c">50,000</text>
+<line x1="62" y1="132.0" x2="730" y2="132.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="136.0" text-anchor="end" font-size="11" fill="#8a857c">100,000</text>
+<line x1="62" y1="75.0" x2="730" y2="75.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="79.0" text-anchor="end" font-size="11" fill="#8a857c">150,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">200,000</text>
+<text x="145.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">PBR 0.68배 기준</text>
+<text x="312.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">PER 12.98배 · 2027E</text>
+<text x="479.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">PER 12.98배 · 2026E</text>
+<text x="646.5" y="264" text-anchor="middle" font-size="10" fill="#8a857c">순자산 1.0배 기준</text>
+<rect x="95.4" y="174.1" width="100.2" height="71.9" fill="#1f3a5f" opacity="0.9"/>
+<rect x="95.4" y="74.8" width="100.2" height="99.4" fill="#b07d2b" opacity="0.9"/>
+<text x="145.5" y="70.8" text-anchor="middle" font-size="9.5" fill="#8a857c">150,219</text>
+<rect x="262.4" y="148.5" width="100.2" height="97.5" fill="#1f3a5f" opacity="0.9"/>
+<rect x="262.4" y="74.8" width="100.2" height="73.7" fill="#b07d2b" opacity="0.9"/>
+<text x="312.5" y="70.8" text-anchor="middle" font-size="9.5" fill="#8a857c">150,219</text>
+<rect x="429.4" y="170.0" width="100.2" height="76.0" fill="#1f3a5f" opacity="0.9"/>
+<rect x="429.4" y="74.8" width="100.2" height="95.2" fill="#b07d2b" opacity="0.9"/>
+<text x="479.5" y="70.8" text-anchor="middle" font-size="9.5" fill="#8a857c">150,219</text>
+<rect x="596.4" y="140.3" width="100.2" height="105.7" fill="#1f3a5f" opacity="0.9"/>
+<rect x="596.4" y="74.8" width="100.2" height="65.5" fill="#b07d2b" opacity="0.9"/>
+<text x="646.5" y="70.8" text-anchor="middle" font-size="9.5" fill="#8a857c">150,219</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">건설 본업에 매겨진 값</text>
+<rect x="736" y="34" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">잔여 = 파이프라인 몫</text>
+</svg><div class="src">이 파트 계산. 본업 값은 네 가지 자로 각각 계산했고 잔여는 시총에서 뺀 나머지입니다. 지배지분 자본은 2026-06-30 연결 92,719억, 컨센 지배순이익은 9-11 집계 기준.</div></figure>
+<p class="reading"><b>관찰.</b> 어느 자로 재도 잔여는 시총의 43%에서 38% 사이입니다. 가장 보수적인 ②(업종 PER × 2027E 지배순이익)로도 6조 4,650억<span class="est">E</span>이 남고, 순자산 1배로 재면 5조 7,500억<span class="est">E</span>이 남습니다. <b>원인.</b> 잔고에 반영된 원전은 신한울 3·4호기 1조 6,028억(진행률 16%)과 준공 직전의 바라카(잔액 26억)뿐이고 코즐로두이·팔리세이즈·페르미·테라파워는 잔고 반영이 0이기 때문입니다. 잔여는 계약이 아니라 기대에 매겨진 값입니다. <b>함의.</b> 잔여의 크기 자체보다 중요한 것은 그것이 무엇을 요구하느냐입니다. 증권가가 추정하는 2026년 원전 수주 인식 4조 3,000억(회사 확인치가 아닙니다)과 비교하면 잔여는 2.03배(①) 또는 1.50배(②)이고, 파이프라인 전체 약 44.6조와 비교하면 19.5%(①) 또는 14.5%(②)입니다.</p>
+<p>잔여를 이익으로 옮겨 보면 요구 수준이 더 분명해집니다. <b>가정.</b> 원전 EPC의 매출총이익률을 10.0%<span class="est">E</span>로 두고, 판매비와관리비율 4.63%와 실효세율 24%<span class="est">E</span>를 적용하며, 자본환원 배수는 20배<span class="est">E</span>로 둡니다. <b>근거.</b> 10.0%는 2026년 상반기 플랜트·전력 부문 매출총이익률 5.0%의 두 배이자 건축·주택 부문 10.4%와 비슷한 수준으로, 원전이 일반 플랜트보다 나은 마진을 받는다는 하우스들의 전제를 반영한 낙관적 가정입니다. 자본환원 20배는 글로벌 원전·EPC 7개사의 2027E PER 평균 22.5배보다 약간 낮은 값입니다. 코즐로두이·팔리세이즈·페르미는 모두 별도 법인의 수주여서 비지배지분 차감은 두지 않았습니다. <b>식.</b> 잔여 ①(87,170억<span class="est">E</span>)을 자본환원 20배로 나누면 지속 지배순이익 4,358억<span class="est">E</span>이 필요하고, 세금을 되돌리면 영업이익 5,735억<span class="est">E</span>, 매출총이익률에서 판관비율을 뺀 5.37%로 나누면 필요한 연간 원전 매출은 10조 6,809억<span class="est">E</span>입니다. <b>교차검증.</b> 반대편에서 파이프라인 44.6조를 10년에 걸쳐 매출로 인식한다고 보면 연 매출은 4조 4,600억, 같은 마진으로 영업이익 2,395억<span class="est">E</span>, 지배순이익 1,820억<span class="est">E</span>, 자본환원 20배로 3조 6,399억<span class="est">E</span>의 가치입니다. 이는 잔여 ①의 41.8%<span class="est">E</span>, 잔여 ②의 56.3%<span class="est">E</span>에 해당합니다.</p>
+<p>두 방향의 계산이 같은 말을 합니다. 시총의 잔여분이 요구하는 연간 원전 매출 10조 6,809억<span class="est">E</span>은 회사의 2026년 전체 매출 컨센 269,352억의 40%<span class="est">E</span>에 해당하는 규모이고, 증권가가 추정한 파이프라인 전체를 10년에 나눈 연 4조 4,600억의 2.4배<span class="est">E</span>입니다. 다르게 표현하면, 시총의 잔여분은 현재 알려진 원전 파이프라인을 전부 따내고 그것을 10년에 걸쳐 매출로 인식한 뒤에도 그 1.4배<span class="est">E</span>에 해당하는 추가 파이프라인이 더 있어야 설명되는 크기입니다. 파이프라인 전체를 한 번에 따내고 그 생애 전체에서 버는 세후 이익 1조 8,200억<span class="est">E</span>과 비교하면 잔여 ①은 4.79배<span class="est">E</span>, 잔여 ②는 3.55배<span class="est">E</span>입니다. 배수가 1을 넘는다는 것은 시총이 그 이익을 한 번이 아니라 반복해서 벌 것으로 본다는 뜻이며, 그러려면 원전이 단발 프로젝트가 아니라 지속 사업이 되어야 합니다.</p>
+<p>이 계산에는 우리가 모르는 것이 많습니다. 코즐로두이의 현대건설 지분율과 EPC 금액, 팔리세이즈의 계약 규모와 현대건설 몫, 페르미의 EPC 전환 여부는 전부 미확인이고, 파이프라인 44.6조와 2026년 인식 4조 3,000억은 증권가 추정이지 회사 확인치가 아닙니다. 그래서 이 절의 결론은 "잔여가 과하다"가 아니라 "잔여가 요구하는 규모는 현재 알려진 파이프라인보다 훨씬 크며, 그 간극을 메우는 것은 계약이 아니라 후속 파이프라인에 대한 기대"라는 것입니다. 마진 가정을 올리면 요구 매출은 줄어듭니다. 원전 매출총이익률을 15%로 두면 필요한 연간 원전 매출은 5.5조<span class="est">E</span>로 내려오고, 20%로 두면 3.7조<span class="est">E</span>가 됩니다. 결국 잔여를 정당화하는 길은 금액이 아니라 마진이라는 조정판의 결론과 같은 자리로 돌아옵니다.</p>
+
+<h2>8. 하우스들의 타깃 배수 방법론 — 무엇을 곱하고 무엇을 할인하는가</h2>
+<p>타깃 주가 숫자는 옮기지 않습니다. 대신 어떤 배수를 어디에 곱했고 그 배수의 근거가 무엇인지만 정리합니다. 원문이 확인된 여섯 하우스 가운데 다섯이 12개월 선행 주당순자산에 타깃 PBR을 곱하는 방식을 쓰고, 그 배수는 1.7배에서 2.1배 사이에 모여 있습니다. 한 하우스만 2027년 지배순이익에 글로벌 peer 평균 PER을 곱하는 방식을 씁니다. 투자의견 컨센서스는 5점 만점에 3.95이고 추정기관은 20개사이며, 그 가운데 한 곳이 2026-08-03 비매수 의견으로 내려섰습니다.</p>
+<table class=""><tr><th>하우스</th><th>일자</th><th>산출 방식</th><th>타깃 배수</th><th>배수의 근거</th></tr><tr><td>KB증권</td><td>2026-07-22</td><td>12개월 선행 BPS × 타깃 PBR</td><td>2.1배</td><td>자기자본비용을 6.2%에서 7.4%로 올려(무위험수익률 2.78%에서 3.02%) 하향</td></tr><tr><td>대신증권</td><td>2026-08-03</td><td>12개월 선행 BPS × 타깃 PBR</td><td>2.10배</td><td>중동 플랜트 사이클 평균 2.4배에서 사이클 초입 평균 2.1배로 하향</td></tr><tr><td>LS증권</td><td>2026-08-03</td><td>선행 BPS × 타깃 배수</td><td>2.1배</td><td>원전 peer 평균 대비 10% 할인</td></tr><tr><td>유진투자증권</td><td>2026-08-03</td><td>12개월 선행 BPS × 타깃 PBR</td><td>1.8배</td><td>글로벌 peer 평균 대비 30% 할인</td></tr><tr><td>iM증권</td><td>2026-08-03</td><td>타깃 PBR</td><td>1.7배(2.2배에서 하향)</td><td>2010년대 초 중동 수주 사이클에서 받았던 배수</td></tr><tr><td>메리츠증권</td><td>2026-07-20</td><td>2027E 지배순이익 × 타깃 PER ÷ 112,410천주</td><td>22.5배</td><td>글로벌 원전·에너지 EPC 7개사의 2027E PER 평균</td></tr></table>
+<p>표에서 읽어야 할 것은 배수의 수준이 아니라 배수가 어디서 왔는가입니다. 대신증권과 iM증권은 과거 중동 수주 사이클에서 이 회사가 받았던 배수를 가져왔고, LS증권과 유진투자증권은 글로벌 원전·EPC peer 평균에 할인을 매겼으며, KB증권은 배수 자체보다 할인율의 변화(무위험수익률 2.78%에서 3.02%, 자기자본비용 6.2%에서 7.4%)로 조정했습니다. 셋 다 현재의 수익성에서 배수를 끌어낸 것이 아닙니다. 앞 절의 식에 넣어 보면 타깃 배수 1.7배가 요구하는 지속 ROE는 12.20%<span class="est">E</span>, 2.1배는 14.60%<span class="est">E</span>입니다. 뒤쪽은 밸류업 목표 ROE 12%를 2.60%포인트<span class="est">E</span> 웃도는 수준입니다.</p>
+<p>자기자본비용의 무게도 짚어 둡니다. KB증권이 자기자본비용을 6.2%에서 7.4%로 올린 것만으로 배수가 내려갔는데, 우리 식에서도 같은 일이 일어납니다. 현재 PBR 1.67배가 요구하는 ROE는 자기자본비용을 6.2%로 두면 9.01%, 7.4%면 11.02%, 회사 제시치 8.0%면 12.02%입니다. 무위험수익률이 0.24%포인트 오른 것이 요구 ROE를 2.00%포인트<span class="est">E</span> 밀어 올립니다. 배수로 값을 매기는 방식은 금리에 이만큼 민감하고, 그래서 이익 추정이 그대로여도 타깃이 움직입니다. 우리가 배수로 값을 매기지 않고 요구 ROE로만 읽는 이유이기도 합니다.</p>
+
+<h2>9. 글로벌 peer 대조 — 비율은 같고 무리는 다릅니다</h2>
+<p>메리츠증권 2026-07-20 리포트가 인용한 글로벌 원전·에너지 EPC 7개사의 2026E 평균은 PER 30.3배·PBR 4.3배·ROE 15.7%입니다. 현대건설의 컨센 2026E는 PER 29.52배·PBR 1.67배·ROE 5.92%입니다. ROE는 평균의 38%이고 PBR도 평균의 39%입니다. 두 비율이 거의 같습니다.</p>
+<p>이것은 우연이 아니라 항등식입니다. PER은 정의상 PBR을 ROE로 나눈 값이므로, PBR 비율과 ROE 비율이 같으면 PER 비율은 1이 됩니다. 실제로 현대건설의 PER 29.52배는 7개사 평균 30.3배의 97%로 사실상 같습니다. 다시 말해 시장은 현대건설을 글로벌 원전·EPC 무리와 같은 이익 배수로 값 매기고 있고, 순자산 대비로는 수익성이 낮은 만큼 낮게 매기고 있습니다. 이 대조에서 "글로벌 peer 대비 할인"이라는 표현은 PBR 기준으로만 성립하며 PER 기준으로는 성립하지 않습니다. 유진투자증권의 "글로벌 peer 평균 대비 30% 할인"과 LS증권의 "원전 peer 평균 대비 10% 할인"은 모두 PBR을 자로 삼은 표현입니다.</p>
+<table class=""><tr><th>구분</th><th>회사</th><th>PER 2026E(배)</th><th>PBR 2026E(배)</th><th>ROE 2026E(%)</th></tr><tr><td>글로벌</td><td>Cameco</td><td>75.2</td><td>6.9</td><td>10.5</td></tr><tr><td>글로벌</td><td>Fluor</td><td>18.9</td><td>3.1</td><td>13.3</td></tr><tr><td>글로벌</td><td>Aecon</td><td>36.2</td><td>3.3</td><td>10.1</td></tr><tr><td>글로벌</td><td>Atkins Realis</td><td>22.5</td><td>2.6</td><td>11.0</td></tr><tr><td>글로벌</td><td>AECOM</td><td>11.4</td><td>3.4</td><td>28.4</td></tr><tr><td>글로벌</td><td>Vinci</td><td>12.9</td><td>2.0</td><td>16.2</td></tr><tr><td>글로벌</td><td>MasTec</td><td>36.1</td><td>6.5</td><td>16.7</td></tr><tr><td>글로벌</td><td><b>7개사 평균</b></td><td><b>30.3</b></td><td><b>4.3</b></td><td><b>15.7</b></td></tr><tr><td>국내 건설(후행)</td><td>GS건설</td><td>35.23</td><td>0.68</td><td>2.0</td></tr><tr><td>국내 건설(후행)</td><td>DL이앤씨</td><td>9.95</td><td>0.68</td><td>7.3</td></tr><tr><td>국내 건설(후행)</td><td>HDC현대산업개발</td><td>10.36</td><td>0.49</td><td>5.0</td></tr><tr><td>국내 건설(후행)</td><td>삼성E&amp;A</td><td>16.19</td><td>2.11</td><td>13.8</td></tr><tr><td>국내 전력·원전(후행)</td><td>한전기술</td><td>68.05</td><td>9.14</td><td>14.2</td></tr><tr><td>국내 전력·원전(후행)</td><td>한전KPS</td><td>17.86</td><td>1.65</td><td>9.3</td></tr><tr><td>대상</td><td><b>현대건설(컨센 2026E)</b></td><td><b>29.52</b></td><td><b>1.67</b></td><td><b>5.92</b></td></tr></table>
+<p>국내로 눈을 돌리면 정반대의 그림이 나옵니다. 국내 주택·건축 중심 3사의 PBR은 GS건설 0.68배·DL이앤씨 0.68배·HDC현대산업개발 0.49배이고, 현대건설의 1.67배는 중앙값 대비 2.5배·최저치 대비 3.4배입니다. 국내 건설 56개사 집계로도 업종 PBR 0.79배 대비 프리미엄이고, 업종 PER 12.98배 대비로도 마찬가지입니다. 같은 회사가 글로벌 원전 무리에서는 할인, 국내 건설 무리에서는 두세 배의 프리미엄으로 읽히는 이중성이 이 종목 배수 논쟁의 실체입니다. 어느 무리에 속하는지가 정해지지 않았기 때문에 두 가지 읽기가 동시에 성립합니다.</p>
+<p>한 가지 단서는 수익성의 절대 수준입니다. 글로벌 7개사 가운데 2026E ROE가 10%를 밑도는 곳은 없고 평균은 15.7%입니다. 현대건설의 컨센 2026E ROE 5.92%는 이 무리에서 가장 낮은 Aecon의 10.1%보다도 4.18%포인트 낮습니다. 글로벌 무리의 배수를 적용받으려면 배수를 먼저 받는 것이 아니라 수익성이 먼저 그 무리에 들어가야 한다는 것이, 이 표가 말하는 가장 단순한 사실입니다. 그리고 그 수익성은 원전 계약 금액이 아니라 원전 마진에서 나옵니다.</p>
+
+<h2>10. 컨센 반영률 — 하반기가 져야 할 몫</h2>
+<p>배수를 받치는 분모가 올해 안에 얼마나 채워졌는지도 재 둡니다. 2026년 상반기 연결 영업이익 4,427억은 회사 가이던스 8,000억의 55.3%, 컨센 8,689억의 50.9%입니다. 매출은 131,236억으로 가이던스 274,000억의 47.9%입니다. 컨센 매출 269,352억은 가이던스와 -1.7% 차이로 사실상 같은 곳을 보고 있으니 올해의 쟁점은 매출이 아니라 이익입니다.</p>
+<p>남은 반년이 져야 할 몫은 컨센 기준 4,262억, 가이던스 기준 3,573억입니다. 3분기에 대한 하우스 추정은 2,053억에서 2,299억 사이에 모여 있고, 중간값 2,176억을 쓰면 4분기가 2,086억<span class="est">E</span>을 내야 컨센에 닿습니다. 이는 상반기 분기 평균 2,214억의 94%<span class="est">E</span>이고 2Q26 실적 2,618억의 80%<span class="est">E</span>입니다. 4분기에 원가 재추정과 충당부채 전입이 몰리는 이 회사의 이력을 생각하면 결코 여유 있는 숫자가 아닙니다.</p>
+<p>가이던스와 실적의 관계도 기록해 둡니다. 2025년 영업이익 가이던스는 처음 1조 1,828억이었다가 2026-01-20에 6,500억으로 45% 정정된 뒤 실적 6,530억으로 마무리됐습니다. 정정 사유는 일부 플랜트 현장의 공기 지연에 따른 원가 반영과 연결 종속회사의 본드콜이었습니다. 어닝 서프라이즈 이력을 보면 2024년 연간 실적은 발표 직전 컨센서스 대비 -311.17%, 2025년은 +2.05%였습니다. 앞의 숫자는 가이던스와 컨센서스가 이 회사의 4분기 원가를 예측하지 못했다는 기록이고, 뒤의 숫자는 이미 낮춰 놓은 기준을 맞췄다는 기록입니다. 두 기록 모두 "컨센서스 영업이익 8,689억"이라는 분모를 얼마나 신뢰할 수 있는지에 대한 단서입니다. 배수의 분자가 시총이라면 분모는 이 신뢰도 위에 서 있습니다.</p>
+
+<h2>11. 하방의 자 — 값이 아니라 과거에 실제 거래된 자리</h2>
+<p>이 파트는 적정주가를 내지 않으므로 하방도 값으로 적지 않습니다. 대신 과거에 실제로 거래된 자리를 순자산 대비로 옮겨 적습니다. 2026-07-29 장중 저점 77,700원은 컨센 2026E 주당순자산 80,859원의 0.96배로, 순자산에 거의 정확히 닿았던 자리입니다. 2024-12-09 장중 저점 24,100원은 당시 주당순자산 71,394원의 0.34배였고, 2021~2025년 연말 기준 PBR은 0.36배에서 0.95배 사이였습니다. 4월 고점 대비 실측 낙폭은 9-11 기준 -32.0%이며, 7월 저점에서는 장중 기준 -60.8%, 종가 기준 -55.2%까지 갔습니다.</p>
+<table class=""><tr><th>과거에 실제로 거래된 자리</th><th>주가(원)</th><th>당시·현재 순자산 대비</th><th>9-11 종가 대비</th></tr><tr><td>2026-04-08 장중 사상 최고</td><td>198,400</td><td>2.45배(2026E BPS)</td><td>+47.1%</td></tr><tr><td>2026-07-29 장중 연중 저점</td><td>77,700</td><td>0.96배(2026E BPS)</td><td>-42.4%</td></tr><tr><td>2025-09-30 52주 최저</td><td>54,100</td><td>0.74배(2025 BPS)</td><td>-59.9%</td></tr><tr><td>2024-12-09 장중 저점</td><td>24,100</td><td>0.34배(2024 BPS)</td><td>-82.1%</td></tr><tr><td>전환사채 전환가액(2026-06-09 결정)</td><td>150,607</td><td>1.86배(2026E BPS)·1.74배(2027E BPS)</td><td>+11.6%</td></tr><tr><td>2026-09-11 종가</td><td>134,900</td><td>1.67배(2026E BPS)·1.64배(2Q26 실측 BPS)</td><td>—</td></tr></table>
+<p>표의 다섯째 줄이 특히 유용합니다. 회사는 2026-06-09 이사회에서 전환사채 전환가액을 기준주가의 115%인 150,607원으로 정했습니다. 이 값은 9-11 종가보다 11.6% 높고, 컨센 2026E 주당순자산의 1.86배·2027E의 1.74배입니다. 회사가 스스로 정한 이 가격이 하우스들의 타깃 배수 구간 1.7~2.1배 안에 들어와 있다는 점은 기록해 둘 만합니다. 다만 전환가액은 결의 전일 기산 기준주가에 기계적으로 115%를 곱한 값이지 회사의 가치 판단이 아니므로, 이 일치는 6월 초 주가가 이미 그 배수 구간에 있었다는 사실의 반영으로 읽는 편이 정확합니다. 청구 개시는 2027-07-07이고 현재는 전환가액보다 주가가 낮아 전환 유인이 없습니다.</p>
+<p>정리하면 하방의 자는 셋입니다. 첫째는 순자산입니다. 2026년 7월에 실제로 순자산 근처까지 갔고 2021~2024년에는 줄곧 순자산 아래에 있었습니다. 둘째는 컨센 2027E 주당순자산 86,498원으로, 잔고와 마진이 컨센대로 흘러간다면 순자산 자체가 올라가므로 같은 PBR이라도 좌표가 위로 이동합니다. 셋째는 앞서 계산한 정당화 PBR입니다. 컨센 2028E ROE 8.13%가 정당화하는 1.02배는 순자산에 거의 붙어 있습니다. 원전 기대가 완전히 빠졌을 때 배수가 어디로 수렴하는지를 보여 주는 값이며, 이 셋은 전부 실측이거나 공개된 추정에서 나온 숫자이지 우리가 매긴 값이 아닙니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+<p><b>논쟁 5(시총이 요구하는 것) — 이 파트가 정면으로 맡은 논쟁입니다.</b> 시총 15조 219억은 컨센 2026E 지배순이익 5,137억의 29.52배, 2026-06-30 지배지분 자본 92,719억의 1.64배(총주식수 기준)입니다. 자기자본비용 8.0%·영구성장률 2.0%<span class="est">E</span>로 풀면 이 배수가 요구하는 지속 ROE는 12.02%<span class="est">E</span>이고, 이는 회사가 2030년 목표로 밝힌 12%와 사실상 같습니다. 본업을 국내 건설 3사 중앙 PBR로 재면 잔여는 8조 7,170억<span class="est">E</span>, 업종 PER × 2027E 지배순이익으로 재면 6조 4,650억<span class="est">E</span>이며, 그 잔여가 요구하는 연간 원전 매출은 10조 6,809억<span class="est">E</span>로 파이프라인 전체를 10년에 나눈 연 4조 4,600억의 2.4배<span class="est">E</span>입니다. 채점 KPI는 골격과 같되 이 파트의 자로 다시 적습니다. ① 2027년 이후 컨센 ROE가 7.01%에서 두 자리로 올라오는지 ② 플랜트·전력 부문 매출총이익률이 5.0%에서 두 자리로 올라오는지 ③ 잔고의 연간 매출 전환율이 28.3%에서 30%대로 회복하는지 ④ 원전 계약이 잔고에 금액으로 들어오는지입니다. 반증은 이렇습니다. ②와 ③이 함께 개선되어 조정판에서 2030년 ROE가 10%를 넘으면 현재 배수는 기대가 아니라 경로로 설명되고, 반대로 ②가 5%대에 머문 채 ④만 커지면 잔여는 금액이 아니라 마진 부재를 값 매긴 것이 됩니다.</p>
+<p><b>논쟁 1(원전은 언제 손익계산서에 들어오는가)에 대한 밸류 측 답.</b> 잔고 반영액 0이라는 사실은 이 파트에서 잔여 6조 4,650억에서 8조 7,170억<span class="est">E</span>이라는 금액으로 번역됩니다. 조정판에서 원전 연 수주만 4.3조에서 8조로 올려도 2030년 ROE는 0.39%포인트<span class="est">E</span>만 오릅니다. 따라서 밸류 측에서 보면 논쟁 1의 채점 항목 가운데 계약 금액(팔리세이즈 부분계약, 코즐로두이 FID, 페르미 PPA)보다 다섯 번째 항목인 플랜트·전력 부문 매출총이익률이 배수에 훨씬 크게 작용합니다. 채점 KPI를 하나 덧붙입니다. 원전 계약이 공시될 때 계약금액뿐 아니라 그 계약이 반영되는 첫 분기의 부문 매출총이익률이 함께 나와야 잔여가 이익으로 번역되기 시작합니다.</p>
+<p><b>논쟁 2(줄어드는 매출의 바닥과 2027~28년 매출의 근거)에 대한 밸류 측 답.</b> 컨센 2027E 매출 285,996억은 2026년 말 잔고 1,007,485억<span class="est">E</span>에 전환율 28.4%를 곱한 값과 정확히 같습니다. 즉 컨센서스는 전환율의 회복을 전제하지 않았습니다. 이 전제는 지키기 어렵지 않으나, 같은 전환율을 2030년까지 끌고 가면 매출은 31조 6,427억<span class="est">E</span>로 밸류업 목표 40조에 -20.9% 못 미치고, 전환율을 아무리 올려도 2030년 매출의 상한은 35조 5,219억<span class="est">E</span>입니다. 잔고를 빨리 돌리는 것만으로는 목표에 닿지 못하고 신규수주가 연 46.7조<span class="est">E</span>까지 커져야 한다는 뜻입니다. 채점 KPI는 3Q26 매출의 전년 대비 변화율과 2026년 착공 세대수이며, 전환율이 30%대로 돌아서는지를 분기마다 매출 ÷ 전기말 잔고로 재면 됩니다.</p>
+<p><b>논쟁 3(이익과 현금의 격차)에 대한 밸류 측 답.</b> 이 파트의 모델은 영업이익에서 지배순이익으로 가는 전환율 59.0%<span class="est">E</span>만 쓰고 현금을 따로 다루지 않습니다. 그러나 배수는 결국 현금 위에 섭니다. 4년 반 누적 영업이익 +1조 1,926억에 대해 영업활동현금흐름이 -3조 4,024억이라는 사실은, 위에서 계산한 정당화 PBR이 전부 "장부상 이익이 현금으로 회수된다"는 가정 위에 있음을 뜻합니다. 채점 KPI로 2026년 연간 영업활동현금흐름의 부호를 이 파트의 자에도 넣습니다. 음(-)이 이어지면 같은 ROE라도 자기자본비용을 8.0%보다 높게 잡아야 하고, 그러면 13.69%(COE 9.0% 가정<span class="est">E</span>)처럼 요구 ROE가 더 올라갑니다.</p>
+<p><b>논쟁 4(장부의 질)에 대한 밸류 측 답.</b> 2026년 회계정책 세 건은 전부 ROE의 분모를 키우는 방향입니다. 토지 재평가모형으로 자본이 늘고(재평가 결과 공시 기준 자본 +6,801억), 투자부동산 공정가치모형 소급으로 2025년 말 연결 자본이 +3,233억 조정됐습니다. 같은 이익이라면 ROE는 그만큼 내려가고 정당화 PBR도 내려갑니다. 반대로 PBR의 분모인 BPS는 커지므로 같은 주가에서 PBR은 내려갑니다. 두 효과의 방향이 같아 배수 판단이 크게 흔들리지는 않지만, 2025년 이전 숫자와 비교할 때는 소급 전인지 후인지를 반드시 밝혀야 합니다. 이 파트의 자본은 전부 소급 후 기준입니다.</p>
+
+<h2>미결</h2>
+<p><b>A급(배수의 분모를 직접 바꾸는 것).</b> ① 코즐로두이의 현대건설 지분율과 EPC 계약금액, 팔리세이즈의 계약 규모와 현대건설 몫 — 잔여를 이익으로 번역하는 모든 계산이 이 두 숫자에 걸려 있고, 지금은 증권가 추정(2026년 인식 4조 3,000억, 파이프라인 44.6조)만 있습니다. 계약 공시나 발주처 공식 발표에서 구할 수 있습니다. ② 수주잔고 103조 9,831억의 부문별 분해 — 공시가 매출 구성만 주고 잔고의 부문 구성을 주지 않아, 잔고 전환 모델이 2026년 상반기 매출 비중을 미래에 그대로 고정하는 약점을 안고 있습니다. IR 요청으로 구할 수 있습니다. ③ 원전 EPC의 매출총이익률 — 10.0%<span class="est">E</span>는 우리 가정이며, 신한울 3·4호기의 진행률이 올라가는 2027년 이후 플랜트·전력 부문 매출총이익률에서 간접적으로 읽힐 것입니다.</p>
+<p><b>B급(모델의 정밀도).</b> ① 2026년 분양·착공 계획 세대수 — 전환율의 회복 여부를 미리 재려면 필요한데 공시·IR에서 확인되지 않았습니다. ② 컨센서스 BPS 80,859원과 2026-06-30 실측 지배지분 주당순자산 82,483원의 차이 — 반년 뒤 값이 현재 실측보다 낮은 이유가 집계 기준인지 회계정책 반영 시차인지 확인되지 않아, 이 파트는 실측 자본을 모델 출발점으로 쓰고 컨센 BPS는 비교용으로만 썼습니다. ③ 하우스별 자기자본비용 산정치 — KB증권만 원문이 확인됐고 나머지는 미확인이라, 타깃 배수 1.7~2.1배가 요구하는 ROE를 하우스별로 재구성하지 못했습니다.</p>
+<p><b>C급(참고).</b> ① 2015~2020년 연말 PBR — 밴드 장표를 2021년부터만 그린 이유입니다. ② 12개월 선행 PBR 밴드의 역사적 중앙값 — 증권사 밴드차트가 이미지로만 제공돼 0.3~2.7배라는 범위만 확인했습니다. ③ 영구성장률 g — 2.0%<span class="est">E</span>는 우리 가정이며 조정판에서 0~4%로 움직일 수 있게 두었습니다. g를 3%로 올리면 현재 PBR이 요구하는 ROE는 11.35%<span class="est">E</span>로 내려갑니다.</p>
+<div class="foot">데이터 계보: 2026 반기보고서(8-14, 자본·부문·수주잔고·계약잔액), 2025 사업보고서, 잠정실적 공정공시(2026-07-31·2026-02-04), 전망 공정공시(2026-02-04)와 2026-01-20 정정, 주요사항보고서 전환사채 발행결정(2026-06-09)·발행결과(2026-07-07), 기업가치 제고 계획(2025-03-28)과 이행현황(2025-12-17), 컨센서스 집계(9-11 기준, 추정기관 20개사), 키움 ka10001·ka10081(9-11), 증권사 리포트(KB 7-22, 메리츠 7-20, 대신·LS·유진·iM 8-03 — 하우스명과 방법론만), 조사 노트 A(원전 파이프라인·수주)·D(컨센·배수·주가). E 표기는 이 파트의 추정입니다. <b>이 파트는 적정주가·목표주가·시나리오 주가를 내지 않으며, 증권사 목표주가 숫자도 옮기지 않았습니다.</b></div>
+
+</main></body></html>
