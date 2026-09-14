@@ -103,17 +103,6 @@ main{flex:1;min-width:0;overflow-y:auto}
 .panel.on{display:block}
 .panel.embed{padding:0;max-width:none;margin:0}
 .panel.embed iframe{display:block;width:100%;height:calc(100vh - 99px);border:0;background:var(--bg)}
-/* ── Locked 섹션 ── */
-.lockgate{display:flex;align-items:center;justify-content:center;height:calc(100vh - 99px)}
-.lockcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:34px 40px;text-align:center;max-width:340px}
-.lockico{font-size:34px;margin-bottom:10px}
-.locktitle{font-weight:700;font-size:16px;margin-bottom:4px}
-.lockdesc{color:var(--faint);font-size:12.5px;margin-bottom:14px}
-.lockform{display:flex;gap:8px;justify-content:center}
-.lockpw{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;width:170px}
-.lockbtn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer}
-.lockbtn:disabled{opacity:.5;cursor:wait}
-.lockmsg{color:#e5484d;font-size:12px;margin-top:10px;min-height:16px}
 .ptitle{font-size:20px;font-weight:800;letter-spacing:-.02em}
 .ptitle span{color:var(--faint)!important}
 .pdesc{color:var(--sub);font-size:13px;margin:7px 0 22px}
@@ -424,11 +413,11 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="screening">수주·가동률 스크리닝</button>
     <button class="navitem" data-tab="cost">비용구조 <small>DART</small></button>
     <button class="navitem" data-tab="vs">비용추정 <small>xlsx</small></button>
-    <div class="navgroup">Locked</div>
-    <button class="navitem" data-tab="rrgsec">수급 로테이션 맵 (업종) <small>🔒</small></button>
-    <button class="navitem" data-tab="rrgstk">수급 로테이션 맵 (종목) <small>🔒</small></button>
-    <button class="navitem" data-tab="leaders">주도 섹터 · 주도주 <small>🔒</small></button>
-    <button class="navitem" data-tab="meridian">롱숏 챌린지 <small>🔒</small></button>
+    <div class="navgroup">로테이션 · 주도주</div>
+    <button class="navitem" data-tab="rrgsec">수급 로테이션 맵 (업종)</button>
+    <button class="navitem" data-tab="rrgstk">수급 로테이션 맵 (종목)</button>
+    <button class="navitem" data-tab="leaders">주도 섹터 · 주도주</button>
+    <button class="navitem" data-tab="meridian">롱숏 챌린지</button>
     <button class="archhead" id="archHead" type="button" style="display:none"><span class="arr">▸</span> 보관 <span id="archCnt"></span></button>
     <div class="archlist" id="archList"></div>
     <button class="archmanage" id="archManage" type="button">⚙ 보관 관리</button>
@@ -736,60 +725,20 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <iframe data-src="reports.html" title="증권사 리포트 스크리닝"></iframe>
     </section>
 
-    <section class="panel embed lockp" id="tab-rrgsec" data-enc="locked/rrg.enc">
-      <div class="lockgate">
-        <div class="lockcard">
-          <div class="lockico">🔒</div>
-          <div class="locktitle">수급 로테이션 맵 (업종)</div>
-          <div class="lockdesc">잠긴 콘텐츠입니다. 비밀번호를 입력하세요.</div>
-          <form class="lockform"><input type="password" class="lockpw" placeholder="비밀번호" autocomplete="current-password">
-          <button type="submit" class="lockbtn">열기</button></form>
-          <div class="lockmsg"></div>
-        </div>
-      </div>
-      <iframe title="수급 로테이션 맵 (업종)" style="display:none"></iframe>
+    <section class="panel embed" id="tab-rrgsec">
+      <iframe data-src="rrg.html" title="수급 로테이션 맵 (업종)"></iframe>
     </section>
 
-    <section class="panel embed lockp" id="tab-rrgstk" data-enc="locked/rrg-stock.enc">
-      <div class="lockgate">
-        <div class="lockcard">
-          <div class="lockico">🔒</div>
-          <div class="locktitle">수급 로테이션 맵 (종목)</div>
-          <div class="lockdesc">잠긴 콘텐츠입니다. 비밀번호를 입력하세요.</div>
-          <form class="lockform"><input type="password" class="lockpw" placeholder="비밀번호" autocomplete="current-password">
-          <button type="submit" class="lockbtn">열기</button></form>
-          <div class="lockmsg"></div>
-        </div>
-      </div>
-      <iframe title="수급 로테이션 맵 (종목)" style="display:none"></iframe>
+    <section class="panel embed" id="tab-rrgstk">
+      <iframe data-src="rrg-stock.html" title="수급 로테이션 맵 (종목)"></iframe>
     </section>
 
-    <section class="panel embed lockp" id="tab-leaders" data-enc="locked/leaders.enc">
-      <div class="lockgate">
-        <div class="lockcard">
-          <div class="lockico">🔒</div>
-          <div class="locktitle">주도 섹터 · 주도주</div>
-          <div class="lockdesc">잠긴 콘텐츠입니다. 비밀번호를 입력하세요.</div>
-          <form class="lockform"><input type="password" class="lockpw" placeholder="비밀번호" autocomplete="current-password">
-          <button type="submit" class="lockbtn">열기</button></form>
-          <div class="lockmsg"></div>
-        </div>
-      </div>
-      <iframe title="주도 섹터 · 주도주" style="display:none"></iframe>
+    <section class="panel embed" id="tab-leaders">
+      <iframe data-src="leaders.html" title="주도 섹터 · 주도주"></iframe>
     </section>
 
-    <section class="panel embed lockp" id="tab-meridian" data-enc="locked/meridian.enc">
-      <div class="lockgate">
-        <div class="lockcard">
-          <div class="lockico">🔒</div>
-          <div class="locktitle">롱숏 챌린지</div>
-          <div class="lockdesc">잠긴 콘텐츠입니다. 비밀번호를 입력하세요.</div>
-          <form class="lockform"><input type="password" class="lockpw" placeholder="비밀번호" autocomplete="current-password">
-          <button type="submit" class="lockbtn">열기</button></form>
-          <div class="lockmsg"></div>
-        </div>
-      </div>
-      <iframe title="롱숏 챌린지" style="display:none"></iframe>
+    <section class="panel embed" id="tab-meridian">
+      <iframe data-src="meridian.html" title="롱숏 챌린지"></iframe>
     </section>
 
     <section class="panel" id="tab-telegram">
@@ -2243,7 +2192,8 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
-  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1};
+  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,
+               rrgsec:1,rrgstk:1,leaders:1,meridian:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?'?v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
@@ -2261,66 +2211,19 @@ function openTab(tab){
   if(tab==='term')termStart();
   if(tab==='ram')ramLoad();
   if(tab==='deepresearch')drLoad();
-  if(tab==='rrgsec'||tab==='rrgstk'||tab==='leaders'||tab==='meridian')lockInit(tab);
   if(window.rrOnTab)rrOnTab(tab);
   document.getElementById('nav').classList.remove('open');
   history.replaceState(null,'','#'+tab);
 }
 
-/* ── Locked 섹션: 비밀번호 → PBKDF2/AES-GCM 복호화 → blob iframe ── */
-async function lockDecrypt(pw,buf){
-  const u8=new Uint8Array(buf);
-  if(u8.length<33||u8[0]!==82||u8[1]!==82||u8[2]!==71||u8[3]!==49)throw new Error('잘못된 파일 형식');
-  const salt=u8.slice(4,20),nonce=u8.slice(20,32),ct=u8.slice(32);
-  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
-  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:200000,hash:'SHA-256'},km,
-    {name:'AES-GCM',length:256},false,['decrypt']);
-  const gz=await crypto.subtle.decrypt({name:'AES-GCM',iv:nonce},key,ct);
-  return await new Response(new Response(gz).body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
-}
-async function lockOpen(tab,pw){
-  const panel=document.getElementById('tab-'+tab);
-  if(panel.dataset.unlocked)return;
-  const gate=panel.querySelector('.lockgate'),msg=panel.querySelector('.lockmsg'),
-        btn=panel.querySelector('.lockbtn'),frame=panel.querySelector('iframe');
-  btn.disabled=true;msg.textContent='여는 중…';msg.style.color='var(--faint)';
-  try{
-    const r=await fetch(panel.dataset.enc+'?v='+Math.floor(Date.now()/6e5));
-    if(!r.ok)throw new Error('파일 로드 실패 ('+r.status+')');
-    const html=await lockDecrypt(pw,await r.arrayBuffer());
-    frame.src=URL.createObjectURL(new Blob([html],{type:'text/html'}));
-    frame.style.display='block';gate.style.display='none';
-    panel.dataset.unlocked='1';
-    sessionStorage.setItem('rl-lock-pw',pw);
-    sessionStorage.setItem('rl-lock-ok','1');   // 보관 관리 게이트의 증거
-  }catch(e){
-    msg.style.color='#e5484d';
-    msg.textContent=(e&&(e.name==='OperationError'))?'비밀번호가 올바르지 않습니다.':('오류: '+(e.message||e));
-    sessionStorage.removeItem('rl-lock-pw');
-  }
-  btn.disabled=false;
-}
-function lockInit(tab){
-  const panel=document.getElementById('tab-'+tab);
-  if(!panel.dataset.wired){
-    panel.dataset.wired='1';
-    panel.querySelector('.lockform').addEventListener('submit',ev=>{
-      ev.preventDefault();
-      const pw=panel.querySelector('.lockpw').value;
-      if(pw)lockOpen(tab,pw);
-    });
-  }
-  const saved=sessionStorage.getItem('rl-lock-pw');
-  if(saved&&!panel.dataset.unlocked)lockOpen(tab,saved);
-}
 items.forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
 document.querySelectorAll('[data-go]').forEach(c=>c.addEventListener('click',()=>openTab(c.dataset.go)));
 if(location.hash)openTab(location.hash.slice(1));
 
-/* ── 탭 보관: Locked 해제 세션에서만 편집, 목록은 localStorage ──
-   (예전에는 비밀번호 해시를 이 파일에 박아 검증했다. 저장소가 공개이므로
-    솔트 없는 해시는 오프라인 대입으로 복원돼 .enc까지 열리는 통로가 됐다.
-    이제 검증자는 배포물에 두지 않고, Locked 복호화 성공 자체를 증거로 쓴다.) */
+/* ── 탭 보관: 목록은 localStorage(브라우저별) ──
+   예전에는 Locked 탭 복호화 성공을 증거로 편집을 열어줬다. 2026-09-14 잠금 탭
+   네 개의 비밀번호를 전부 해제하면서 그 증거가 사라졌고, 보관 목록은 어차피
+   방문자 자기 브라우저에만 남으므로 게이트 없이 바로 편집한다. */
 const archNav=document.getElementById('nav'),
       archHead=document.getElementById('archHead'),
       archList=document.getElementById('archList'),
@@ -2368,10 +2271,6 @@ archManage.addEventListener('click',()=>{
   if(archEdit){
     archEdit=false;document.body.classList.remove('archedit');
     archManage.textContent='⚙ 보관 관리';return;
-  }
-  // 유일한 증거: 이번 세션에 Locked 탭 하나를 실제로 복호화했는가.
-  if(sessionStorage.getItem('rl-lock-ok')!=='1'){
-    alert('보관 관리는 Locked 탭을 먼저 연 세션에서만 쓸 수 있습니다.');return;
   }
   archEdit=true;document.body.classList.add('archedit');
   archManage.textContent='✓ 보관 관리 종료';
