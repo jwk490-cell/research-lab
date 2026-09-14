@@ -124,11 +124,11 @@ function card(r,b){
   // ── 메인 표: OP 추정/컨센/직전 + POR ──
   const hasOp=[26,27,28].some(y=>r['op_'+y+'e_eok']!=null);
   const main=ytable(r,[
-    ['OP',y=>r['op_'+y+'e_eok']!=null?eok(r['op_'+y+'e_eok']):null,true],
+    [r.op_proxy?'OP*':'OP',y=>r['op_'+y+'e_eok']!=null?eok(r['op_'+y+'e_eok']):null,true],
     ['컨센',y=>pct(r['op_gap_'+y])],
     ['직전',y=>pct(r['op_rev_'+y])],
     ['POR',y=>fx(r['por_'+y])]]);
-  if(hasOp)h+=main;
+  if(hasOp){h+=main;if(r.op_proxy)h+=`<div class="mline mut">*OP=${r.op_proxy} 대체 (영업이익 행 없는 금융 손익표)</div>`;}
   else{
     if(r.cons_op_26!=null||r.cons_op_27!=null)
       h+=`<div class="mline mut"><span class="lb">OP</span>컨센 26년 ${eok(r.cons_op_26)} / 27년 ${eok(r.cons_op_27)} (애널추정 미검출)</div>`;
