@@ -75,6 +75,9 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 .today .st small{color:var(--faint);font-size:10.5px}
 .today .st.bb{color:var(--sub)}
 .today .dim{color:var(--faint)}
+.today .sec{margin-top:7px;padding-top:5px;border-top:1px dashed var(--line)}
+.today .sec h4{font-size:12px;color:var(--sub);margin-bottom:3px}
+.today .sec h4 small{font-weight:400;color:var(--faint);font-size:10.5px;margin-left:5px}
 .cnt{font-size:11.5px;color:var(--faint);margin-left:auto}
 </style></head><body><div class="wrap">
 <h1>기타법인 수급</h1>
@@ -165,29 +168,22 @@ function stc(r,extra){ return `<span class="st${isBB(r)?' bb':''}" data-j="${r.c
 function today(){
   const all=D.rows.filter(r=>r.streak>=3&&r.s_amt>=3);
   const live=all.filter(r=>!isBB(r));
-  const bd=D.base_dt;
-  // 1) 같은 날 시작한 묶음 — 날짜별로 2종목↑
+  const bd=D.base_dt, nBB=all.length-live.length;
+  const ln=(lb,html)=>`<div class="ln"><span class="lb2">${lb}</span><span>${html||'<span class="dim">해당 없음</span>'}</span></div>`;
+  // 1) 급증 배수 상위 10 — 매집 일평균 ÷ 직전 40일 |순매수| 평균
+  const surge=live.slice().sort((a,b)=>b.surge-a.surge).slice(0,10)
+    .map((r,i)=>stc(r,`${i+1}. ${f1(r.surge)}× · ${r.streak}일 ${eok(r.s_amt)}`)).join(' ');
+  // 2) 5% 임박 상위 5 — 현 속도 유지 시 잔여 거래일 오름차순
+  const d5=live.filter(r=>r.d5!=null).sort((a,b)=>a.d5-b.d5).slice(0,5)
+    .map((r,i)=>stc(r,`${i+1}. ${r.d5<=0?'도달':'D-'+r.d5} · 추정 ${r.est_pct.toFixed(2)}% · ${r.streak}일`)).join(' ');
+  // 3) 동일 날짜 시작 — 같은 날 매집을 시작한 묶음(2종목↑), 최근 날짜부터
   const byStart={}; live.forEach(r=>{(byStart[r.s_start]=byStart[r.s_start]||[]).push(r);});
-  const clusters=Object.entries(byStart).filter(([,v])=>v.length>=2)
-    .sort((a,b)=>b[1].length-a[1].length||b[0].localeCompare(a[0])).slice(0,3);
-  // 2) 신규(최근 2거래일 내 시작)
-  const fresh=live.filter(isNew).sort((a,b)=>b.s_amt-a.s_amt);
-  // 3) 연속성 — 최장 연속 / 가장 규칙적(CV 낮음, 5일↑)
-  const longest=live.slice().sort((a,b)=>b.streak-a.streak||b.s_amt-a.s_amt).slice(0,4);
-  const regular=live.filter(r=>r.streak>=5&&r.cv!=null).sort((a,b)=>a.cv-b.cv).slice(0,4);
-  // 4) 5% 임박 · 지분공시
-  const d5=live.filter(near5).sort((a,b)=>(a.d5??1e9)-(b.d5??1e9));
-  const dart=live.filter(r=>(r.dart||[]).some(x=>x.dt>=bd)).slice(0,5);
-  const nBB=all.length-live.length;
-  const ln=(lb,html)=>html?`<div class="ln"><span class="lb2">${lb}</span><span>${html}</span></div>`:'';
-  $('today').innerHTML=`<h3>오늘의 요약 <small>${bd.slice(4,6)}/${bd.slice(6,8)} 기준 · 연속 3일↑·누적 3억↑ ${all.length}종목${nBB?` (자사주로 설명 ${nBB} 제외)`:''}</small></h3>`
-   +ln('같은 날 시작', clusters.length?clusters.map(([d,v])=>`<span class="dim">${dt8(d)}~ ${v.length}종목</span> ${v.sort((a,b)=>b.s_amt-a.s_amt).map(r=>stc(r,eok(r.s_amt))).join(' ')}`).join('<br>')
-       :'<span class="dim">같은 날 시작한 묶음 없음</span>')
-   +ln('새로 시작', fresh.length?fresh.map(r=>stc(r,`${dt8(r.s_start)}~ ${eok(r.s_amt)}`)).join(' '):'<span class="dim">최근 2거래일 내 새로 시작한 종목 없음</span>')
-   +ln('가장 오래', longest.map(r=>stc(r,`${r.streak}일 ${eok(r.s_amt)}`)).join(' '))
-   +ln('가장 규칙적', regular.length?regular.map(r=>stc(r,`CV ${f2(r.cv)} · ${r.streak}일`)).join(' '):'')
-   +ln('5% 임박', d5.length?d5.map(r=>stc(r,`D-${Math.max(0,r.d5)} · ${r.est_pct.toFixed(2)}%`)).join(' '):'')
-   +ln('오늘 지분공시', dart.length?dart.map(r=>{const x=latestD(r);return stc(r,`${x.kind} ${x.who}`);}).join(' '):'');
+  const same=Object.entries(byStart).filter(([,v])=>v.length>=2).sort((a,b)=>b[0].localeCompare(a[0]))
+    .map(([d,v])=>`<div class="ln"><span class="lb2"><b>${dt8(d)} 시작</b> →</span><span>${v.sort((a,b)=>b.s_amt-a.s_amt).map(r=>stc(r,eok(r.s_amt))).join(' ')}</span></div>`).join('');
+  $('today').innerHTML=`<h3>오늘의 요약 <small>${bd.slice(4,6)}/${bd.slice(6,8)} 기준 · 연속 3일↑·누적 3억↑ ${live.length}종목${nBB?` (자사주로 설명 ${nBB} 제외)`:''}</small></h3>`
+   +`<div class="sec"><h4>급증 배수 상위 10 <small>매집 일평균 ÷ 직전 40일 평균</small></h4>${surge?`<div class="ln"><span>${surge}</span></div>`:ln('','')}</div>`
+   +`<div class="sec"><h4>5% 임박 상위 5 <small>현 속도 유지 시 잔여 거래일</small></h4>${d5?`<div class="ln"><span>${d5}</span></div>`:ln('','')}</div>`
+   +`<div class="sec"><h4>동일 날짜 시작 <small>같은 날 매집을 시작한 묶음</small></h4>${same||ln('','')}</div>`;
   $('today').querySelectorAll('[data-j]').forEach(e=>e.onclick=()=>jump(e.dataset.j));
 }
 function chips(){
