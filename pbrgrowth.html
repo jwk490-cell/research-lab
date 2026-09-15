@@ -53,6 +53,24 @@ tr.det td{background:#0f1319;padding:10px 14px 12px;white-space:normal;cursor:de
 .note b{color:var(--txt)}
 .note h3{font-size:13px;color:var(--txt);margin:0 0 6px}
 .note ul{padding-left:18px}
+.chartbox{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px 8px;margin-bottom:16px}
+.chartbox .cb{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.chartbox select{background:var(--bg);border:1px solid var(--line);color:var(--txt);font:inherit;font-size:12px;padding:5px 8px;border-radius:7px}
+.chartbox svg{width:100%;height:400px;display:block}
+.chartbox .ax{stroke:var(--line)}
+.chartbox .gr{stroke:#1c2129}
+.chartbox text{fill:var(--faint);font-size:10.5px}
+.chartbox .lbl{fill:var(--sub);font-size:11px;font-weight:600}
+.chartbox circle{fill:var(--blu);fill-opacity:.55;stroke:#0d1117;stroke-width:.6;cursor:pointer}
+.chartbox circle.sel{fill:var(--org);fill-opacity:1;stroke:#fff}
+.chartbox circle.under{fill:var(--grn)}
+.chartbox circle.clip{fill:var(--faint);fill-opacity:.35}
+.chartbox .nmlab{fill:var(--txt);font-size:10px;pointer-events:none}
+.chartbox .trend{stroke:var(--org);stroke-width:1.2;stroke-dasharray:4 3;fill:none}
+.chartbox .cstat{font-size:11px;color:var(--faint);margin-top:4px}
+#tip{position:fixed;pointer-events:none;background:#1c2129;border:1px solid #3a4150;border-radius:8px;padding:7px 10px;font-size:11.5px;color:var(--txt);display:none;z-index:9;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+#tip b{display:block;font-size:12.5px;margin-bottom:2px}
+#tip span{color:var(--sub)}
 .empty{padding:26px;text-align:center;color:var(--faint)}
 .cnt{font-size:11.5px;color:var(--faint);margin-left:auto}
 </style></head><body><div class="wrap">
@@ -73,6 +91,19 @@ tr.det td{background:#0f1319;padding:10px 14px 12px;white-space:normal;cursor:de
   <input type="text" id="q" placeholder="종목명·코드 검색">
   <span class="cnt" id="cnt"></span>
 </div>
+
+<div class="chartbox">
+  <div class="cb">
+    <span class="lb">X축</span><select id="cx"></select><label class="ck"><input type="checkbox" id="lx"> 로그</label>
+    <span class="lb">Y축</span><select id="cy"></select><label class="ck"><input type="checkbox" id="ly"> 로그</label>
+    <label class="ck"><input type="checkbox" id="tr" checked> 추세선(OLS) · 아래쪽 = 상대 저평가</label>
+    <label class="ck"><input type="checkbox" id="lab"> 종목명 표시</label>
+    <label class="ck"><input type="checkbox" id="clip" checked> 이상치 절단(2~98%)</label>
+    <span class="cnt" id="cstat"></span>
+  </div>
+  <svg id="sc"></svg>
+</div>
+<div id="tip"></div>
 
 <div class="tw"><table id="tb"><thead></thead><tbody></tbody></table></div>
 
@@ -127,6 +158,7 @@ function render(){
     if(x==null&&y==null)return 0; if(x==null)return 1; if(y==null)return -1;
     return typeof x==='string'?x.localeCompare(y)*sortD:(x-y)*sortD;});
   $('cnt').textContent=`${rows.length}종목`;
+  renderChart(rows);
   $('tb').querySelector('thead').innerHTML='<tr><th>#</th>'+COLS.map(([k,l,c])=>`<th class="${c||''} ${sortK===k?'s':''}" data-k="${k}">${l}${sortK===k?(sortD>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>';
   $('tb').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;
     if(sortK===k)sortD=-sortD;else{sortK=k;sortD=(k==='rk'||k==='name'||k.startsWith('pbr')||k.startsWith('per'))?1:-1;}render();});
@@ -173,6 +205,85 @@ function detail(r){
   <div class="links"><a href="https://finance.naver.com/item/main.naver?code=${r.code}" target="_blank" rel="noopener">네이버 종목 ↗</a> · <a href="https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd=${r.code}" target="_blank" rel="noopener">컨센서스 원표 ↗</a> · <a href="https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(r.name)}" target="_blank" rel="noopener">DART ↗</a></div>
   </div></div></div></td></tr>`;
 }
+
+/* ─── 산점도: 필터 통과 집합을 X·Y 변수로 좌표화. 추세선은 표시 점 OLS, 점이 선 아래면 초록(상대 저평가) ─── */
+const VARS=[
+  ['pbr_t','PBR (직전 결산)',r=>r.pbr_t,'배'],['pbr26','PBR 26E',r=>r.pbr26,'배'],['pbr27','PBR 27E',r=>r.pbr27,'배'],
+  ['per26','PER 26E',r=>r.per26,'배'],['per27','PER 27E',r=>r.per27,'배'],
+  ['roe26','ROE 26E',r=>r.roe[1],'%'],['roe27','ROE 27E',r=>r.roe[2],'%'],['d_roe','ROE 변화 27E−26E',r=>r.d_roe,'%p'],
+  ['g_sales','매출 성장 26→27E',r=>r.g_sales,'%'],['g_op','OP 성장 26→27E',r=>r.g_op,'%'],['g_np','NP 성장 26→27E',r=>r.g_np,'%'],
+  ['g0_sales','매출 성장 25→26E',r=>r.g0_sales,'%'],['g0_op','OP 성장 25→26E',r=>r.g0_op,'%'],['g0_np','NP 성장 25→26E',r=>r.g0_np,'%'],
+  ['opm26','영업이익률 26E',r=>r.opm[1],'%'],['opm27','영업이익률 27E',r=>r.opm[2],'%'],
+  ['dy26','배당수익률 26E',r=>r.dps[1]!=null&&r.price?r.dps[1]/r.price*100:null,'%'],
+  ['mcap','시가총액',r=>r.mcap,'억'],['rk','종합 평균순위',r=>r.rk,''],
+];
+const VM=Object.fromEntries(VARS.map(v=>[v[0],v]));
+let cx='roe26', cy='pbr_t';
+function q(arr,p){if(!arr.length)return null;const a=[...arr].sort((x,y)=>x-y);const i=(a.length-1)*p;const lo=Math.floor(i),hi=Math.ceil(i);return a[lo]+(a[hi]-a[lo])*(i-lo);}
+function niceTicks(lo,hi,n){const span=hi-lo;if(!(span>0))return [lo];const raw=span/n;const mag=Math.pow(10,Math.floor(Math.log10(raw)));const r=raw/mag;const step=(r<1.5?1:r<3.5?2:r<7.5?5:10)*mag;const t=[];for(let v=Math.ceil(lo/step)*step;v<=hi+1e-9;v+=step)t.push(+v.toFixed(10));return t;}
+function logTicks(lo,hi){const t=[];for(let e=Math.floor(Math.log10(lo));e<=Math.ceil(Math.log10(hi));e++)for(const m of [1,1.5,2,3,4,5,7]){const v=m*Math.pow(10,e);if(v>=lo&&v<=hi)t.push(v);}return t;}
+const fv=(v,u)=>v==null?'–':(u==='억'?uk(v):(Math.abs(v)>=100?v.toFixed(0):v.toFixed(u==='배'?2:1))+u);
+function renderChart(rows){
+  const svg=$('sc'), W=svg.clientWidth||1100, H=400, m={l:58,r:16,t:14,b:40};
+  const X=VM[cx], Y=VM[cy];
+  let pts=rows.map(r=>({r,x:X[2](r),y:Y[2](r)})).filter(p=>p.x!=null&&p.y!=null&&isFinite(p.x)&&isFinite(p.y));
+  const lx=$('lx').checked&&pts.every(p=>p.x>0), ly=$('ly').checked&&pts.every(p=>p.y>0);
+  $('lx').disabled=!pts.every(p=>p.x>0); $('ly').disabled=!pts.every(p=>p.y>0);
+  if(!pts.length){svg.innerHTML=`<text x="${W/2}" y="${H/2}" text-anchor="middle">표시할 점이 없습니다</text>`;$('cstat').textContent='';return;}
+  const clip=$('clip').checked&&pts.length>=20;
+  const xs=pts.map(p=>p.x), ys=pts.map(p=>p.y);
+  let x0=clip?q(xs,.02):Math.min(...xs), x1=clip?q(xs,.98):Math.max(...xs), y0=clip?q(ys,.02):Math.min(...ys), y1=clip?q(ys,.98):Math.max(...ys);
+  if(x1===x0){x0-=1;x1+=1} if(y1===y0){y0-=1;y1+=1}
+  const padx=(x1-x0)*.04, pady=(y1-y0)*.05; if(lx){x0*=.93;x1*=1.07}else{x0-=padx;x1+=padx} if(ly){y0*=.93;y1*=1.07}else{y0-=pady;y1+=pady}
+  const tx=v=>lx?Math.log10(v):v, ty=v=>ly?Math.log10(v):v;
+  const sx=v=>m.l+(tx(v)-tx(x0))/(tx(x1)-tx(x0))*(W-m.l-m.r), sy=v=>H-m.b-(ty(v)-ty(y0))/(ty(y1)-ty(y0))*(H-m.t-m.b);
+  const xt=lx?logTicks(x0,x1):niceTicks(x0,x1,8), yt=ly?logTicks(y0,y1):niceTicks(y0,y1,6);
+  let g='';
+  yt.forEach(v=>{const y=sy(v);g+=`<line class="gr" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}"/><text x="${m.l-6}" y="${y+3.5}" text-anchor="end">${fv(v,Y[3])}</text>`});
+  xt.forEach(v=>{const x=sx(v);g+=`<line class="gr" y1="${m.t}" y2="${H-m.b}" x1="${x}" x2="${x}"/><text x="${x}" y="${H-m.b+14}" text-anchor="middle">${fv(v,X[3])}</text>`});
+  if(!lx&&x0<0&&x1>0)g+=`<line class="ax" x1="${sx(0)}" x2="${sx(0)}" y1="${m.t}" y2="${H-m.b}" stroke-dasharray="2 3"/>`;
+  if(!ly&&y0<0&&y1>0)g+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${sy(0)}" y2="${sy(0)}" stroke-dasharray="2 3"/>`;
+  g+=`<line class="ax" x1="${m.l}" x2="${W-m.r}" y1="${H-m.b}" y2="${H-m.b}"/><line class="ax" x1="${m.l}" x2="${m.l}" y1="${m.t}" y2="${H-m.b}"/>`;
+  g+=`<text class="lbl" x="${W-m.r}" y="${H-6}" text-anchor="end">${X[1]} →</text><text class="lbl" x="${m.l+4}" y="${m.t+10}">↑ ${Y[1]}</text>`;
+  // OLS (변환 좌표계)
+  let fit=null;
+  if($('tr').checked&&pts.length>=3){
+    const n=pts.length; let sxx=0,sxy=0,mx=0,my=0; pts.forEach(p=>{mx+=tx(p.x);my+=ty(p.y)}); mx/=n;my/=n;
+    pts.forEach(p=>{sxx+=(tx(p.x)-mx)**2;sxy+=(tx(p.x)-mx)*(ty(p.y)-my)});
+    if(sxx>0){const b=sxy/sxx,a=my-b*mx;let ssr=0,sst=0;pts.forEach(p=>{const yh=a+b*tx(p.x);ssr+=(ty(p.y)-yh)**2;sst+=(ty(p.y)-my)**2});fit={a,b,r2:sst>0?1-ssr/sst:0};
+      const X0=tx(x0),X1=tx(x1),Y0=a+b*X0,Y1=a+b*X1, py=v=>H-m.b-(v-ty(y0))/(ty(y1)-ty(y0))*(H-m.t-m.b);
+      g+=`<line class="trend" x1="${m.l}" x2="${W-m.r}" y1="${py(Y0)}" y2="${py(Y1)}"/>`;}
+  }
+  const cl=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+  const lab=$('lab').checked;
+  pts.forEach(p=>{
+    const out=p.x<x0||p.x>x1||p.y<y0||p.y>y1;
+    const x=sx(cl(p.x,x0,x1)), y=sy(cl(p.y,y0,y1));
+    const under=fit&&ty(p.y)<fit.a+fit.b*tx(p.x);
+    const rad=p.r.mcap?cl(2.5+Math.log10(p.r.mcap)*1.1,3,8):3.5;
+    g+=`<circle data-c="${p.r.code}" cx="${x}" cy="${y}" r="${rad}" class="${sel===p.r.code?'sel':out?'clip':under?'under':''}"/>`;
+    if(lab||sel===p.r.code)g+=`<text class="nmlab" x="${x+rad+2}" y="${y+3.5}">${p.r.name}</text>`;
+  });
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.innerHTML=g;
+  const nOut=pts.filter(p=>p.x<x0||p.x>x1||p.y<y0||p.y>y1).length, nUnder=fit?pts.filter(p=>ty(p.y)<fit.a+fit.b*tx(p.x)).length:0;
+  $('cstat').textContent=`${pts.length}점${nOut?` · 범위 밖 ${nOut}(회색, 가장자리 고정)`:''}${fit?` · 추세선 R² ${fit.r2.toFixed(2)} · 선 아래 ${nUnder}`:''} · 점 크기 = 시총`;
+  const tip=$('tip');
+  svg.querySelectorAll('circle').forEach(c=>{
+    c.onmousemove=e=>{const r=D.rows.find(z=>z.code===c.dataset.c);tip.style.display='block';tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+12)+'px';
+      tip.innerHTML=`<b>${r.name} <span>${r.code}</span></b>${X[1]} <b style="display:inline">${fv(X[2](r),X[3])}</b> · ${Y[1]} <b style="display:inline">${fv(Y[2](r),Y[3])}</b><br><span>시총 ${uk(r.mcap)} · PBR ${f2(r.pbr_t)} · ROE 26E ${f1(r.roe[1])}% · OP성장 ${r.g_op==null?(r.f_op||'–'):r.g_op.toFixed(1)+'%'}</span>`;};
+    c.onmouseleave=()=>tip.style.display='none';
+    c.onclick=()=>{sel=sel===c.dataset.c?null:c.dataset.c;render();const tr=document.querySelector(`tr.row[data-c="${c.dataset.c}"]`);if(tr&&sel)tr.scrollIntoView({block:'center',behavior:'smooth'});};
+  });
+}
+function initChart(){
+  const opt=cur=>VARS.map(v=>`<option value="${v[0]}" ${v[0]===cur?'selected':''}>${v[1]}</option>`).join('');
+  $('cx').innerHTML=opt(cx); $('cy').innerHTML=opt(cy);
+  $('cx').onchange=()=>{cx=$('cx').value;render()}; $('cy').onchange=()=>{cy=$('cy').value;render()};
+  ['lx','ly','tr','lab','clip'].forEach(id=>$(id).onchange=render);
+  $('ly').checked=true;
+  window.addEventListener('resize',()=>D&&render());
+}
+
 function renderFilters(){
   const mkb=(id,items,cur,set)=>{$(id).innerHTML=items.map(([k,l])=>`<button class="${String(cur)===String(k)?'on':''}" data-k="${k}">${l}</button>`).join('');
     $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.k);renderFilters();render();});};
@@ -193,7 +304,7 @@ fetch('data/pbrgrowth.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).the
     [both.length,'저PBR + 4지표 모두 개선','매출·OP·NP 성장 >0 · ROE 상승'],
     [le1.filter(r=>r.g_op!=null&&r.g_op>=20).length,'저PBR + OP 성장 20%↑',`NP 20%↑ ${le1.filter(r=>r.g_np!=null&&r.g_np>=20).length}`],
   ].map(([n,l,s])=>`<div class="chip"><b>${n}</b><span>${l}</span><small>${s}</small></div>`).join('');
-  renderFilters(); render();
+  initChart(); renderFilters(); render();
   $('q').oninput=render; $('pos').onchange=render; $('prof').onchange=render;
   $('note').innerHTML=`<h3>방법론</h3><ul>
   <li><b>유니버스</b> 코스피·코스닥 보통주 전 종목(스팩·우선주·거래정지 제외). 이 중 증권사 컨센서스가 ${d.y0}E와 ${d.y1}E 두 해 모두 존재하는 종목만 대상 — 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작은 종목일수록 의심).</li>
@@ -201,6 +312,7 @@ fetch('data/pbrgrowth.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).the
   <li><b>ROE</b> 컨센서스 ROE ${d.y0}E·${d.y1}E와 그 차이(%p). 순이익 급증 종목은 ROE도 같이 뛰므로 NP 성장과 상관이 높다 — 4지표 평균순위에서 이중 반영되는 점을 감안.</li>
   <li><b>PBR</b> 두 기준을 모두 제공. <b>직전 결산 BPS</b>(현재가 ÷ 최근 확정 연도 BPS, 기본)와 <b>${d.y0}E BPS</b>(현재가 ÷ 컨센 BPS). 이익이 많이 나는 해엔 26E BPS가 커져 PBR이 낮아지므로 26E 기준이 더 관대하다. 현재가는 네이버 실시간(장중이면 장중가).</li>
   <li><b>종합</b> = 필터를 통과한 종목 집합 안에서 4지표 각각의 순위(1=최고)를 평균한 값. 필터를 바꾸면 순위도 그 집합 기준으로 다시 매겨진다. 표 헤더 클릭으로 개별 지표 정렬.</li>
+  <li><b>산점도</b> 표와 같은 필터 집합을 X·Y 변수로 좌표화. 추세선은 표시 점의 OLS(로그축이면 로그 좌표에서 적합) — 예: X=ROE 26E, Y=PBR이면 선 아래(초록)가 같은 ROE 대비 PBR이 낮은 상대 저평가군. 이상치 절단은 2~98% 분위 밖을 회색으로 가장자리에 고정. 점 클릭 시 표에서 해당 종목 펼침.</li>
   <li><b>3월 결산</b> 종목은 연도 숫자로 매핑(2026E = FY2026.03). 태그로 표시.</li>
   <li><b>갱신</b> 매주 월요일 새벽 자동 + 수동 갱신 버튼. 컨센서스는 실적 시즌 직후 가장 크게 움직인다.</li></ul>`;
 }).catch(e=>{$('hd').textContent='데이터 로드 실패: '+e;});
