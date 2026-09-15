@@ -106,7 +106,7 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 </div>
 <script>
 const $=id=>document.getElementById(id);
-let D=null, view='streak', minSk=3, minAmt=10, mk='all', minCap=0, sortK='score', sortD=1, sel=null, chipF=null;
+let D=null, view='streak', minSk=3, minAmt=10, mk='all', minCap=0, sortK='surge', sortD=1, sel=null, chipF=null;
 const fmt=n=>n==null?'–':Math.round(n).toLocaleString();
 const f1=n=>n==null?'–':n.toFixed(1);
 const f2=n=>n==null?'–':n.toFixed(2);
@@ -124,7 +124,7 @@ const latestD=r=>{const a=(r.dart||[]).slice().sort((x,y)=>y.dt.localeCompare(x.
 // 종합 점수: 연속 누적액(로그) × 회전비중 × 규칙성 — 기계적 매집일수록 높음
 const score=r=>{ if(r.streak<3) return 0; const a=Math.log10(1+r.s_amt), t=Math.min(r.turn||0,60)/60, reg=r.cv==null?0.5:Math.max(0,1-Math.min(r.cv,1.5)/1.5); return a*(0.4+t)*(0.5+reg)*Math.min(r.streak,20)/10; };
 
-const SORTS=[['score','종합'],['s_amt','연속 누적'],['streak','연속일'],['turn','회전비중'],['est_pct','추정 지분'],['d5','5% 임박'],['surge','급증 배수'],['cum20','20일 누적'],['max1','단일일 최대'],['mcap','시총']];
+const SORTS=[['surge','급증 배수'],['s_amt','연속 누적'],['streak','연속일'],['turn','회전비중'],['est_pct','추정 지분'],['mcap','시총']];
 
 function seg(id,items,cur,cb){ const el=$(id); el.innerHTML=''; items.forEach(([v,l])=>{ const b=document.createElement('button'); b.textContent=l; if(v===cur) b.classList.add('on'); b.onclick=()=>{cb(v);ui();render();}; el.appendChild(b); }); }
 function ui(){
@@ -133,7 +133,7 @@ function ui(){
   seg('am',[[0,'없음'],[10,'10억'],[30,'30억'],[100,'100억'],[300,'300억']],minAmt,v=>{minAmt=v;});
   seg('mf',[['all','전체'],['KOSPI','코스피'],['KOSDAQ','코스닥']],mk,v=>{mk=v;});
   seg('cf',[[0,'전체'],[1000,'1천억↑'],[3000,'3천억↑'],[10000,'1조↑'],[50000,'5조↑']],minCap,v=>{minCap=v;});
-  seg('sf',SORTS,sortK,v=>{sortK=v;sortD=v==='d5'?-1:1;});
+  seg('sf',SORTS,sortK,v=>{sortK=v;sortD=v==='cv'?-1:1;});
 }
 function rows(){
   const q=$('q').value.trim().toLowerCase();
@@ -175,14 +175,14 @@ function today(){
     .map((r,i)=>stc(r,`${i+1}. ${f1(r.surge)}× · ${r.streak}일 ${eok(r.s_amt)}`)).join(' ');
   // 2) 5% 임박 상위 5 — 현 속도 유지 시 잔여 거래일 오름차순
   const d5=live.filter(r=>r.d5!=null).sort((a,b)=>a.d5-b.d5).slice(0,5)
-    .map((r,i)=>stc(r,`${i+1}. ${r.d5<=0?'도달':'D-'+r.d5} · 추정 ${r.est_pct.toFixed(2)}% · ${r.streak}일`)).join(' ');
+    .map(r=>stc(r,`${r.est_pct.toFixed(2)}%`)).join(' ');
   // 3) 동일 날짜 시작 — 같은 날 매집을 시작한 묶음(2종목↑), 최근 날짜부터
   const byStart={}; live.forEach(r=>{(byStart[r.s_start]=byStart[r.s_start]||[]).push(r);});
   const same=Object.entries(byStart).filter(([,v])=>v.length>=2).sort((a,b)=>b[0].localeCompare(a[0]))
     .map(([d,v])=>`<div class="ln"><span class="lb2"><b>${dt8(d)} 시작</b> →</span><span>${v.sort((a,b)=>b.s_amt-a.s_amt).map(r=>stc(r,eok(r.s_amt))).join(' ')}</span></div>`).join('');
   $('today').innerHTML=`<h3>오늘의 요약 <small>${bd.slice(4,6)}/${bd.slice(6,8)} 기준 · 연속 3일↑·누적 3억↑ ${live.length}종목${nBB?` (자사주로 설명 ${nBB} 제외)`:''}</small></h3>`
    +`<div class="sec"><h4>급증 배수 상위 10 <small>매집 일평균 ÷ 직전 40일 평균</small></h4>${surge?`<div class="ln"><span>${surge}</span></div>`:ln('','')}</div>`
-   +`<div class="sec"><h4>5% 임박 상위 5 <small>현 속도 유지 시 잔여 거래일</small></h4>${d5?`<div class="ln"><span>${d5}</span></div>`:ln('','')}</div>`
+   +`<div class="sec"><h4>5% 임박 상위 5 <small>종목(현재 추정 취득 지분) · 잔여일 짧은 순</small></h4>${d5?`<div class="ln"><span>${d5}</span></div>`:ln('','')}</div>`
    +`<div class="sec"><h4>동일 날짜 시작 <small>같은 날 매집을 시작한 묶음</small></h4>${same||ln('','')}</div>`;
   $('today').querySelectorAll('[data-j]').forEach(e=>e.onclick=()=>jump(e.dataset.j));
 }
@@ -199,26 +199,26 @@ function chips(){
   $('chips').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const k=c.dataset.k||null; chipF=(chipF===k)?null:k; if(k==='bb'){$('xbb').checked=false;} chips(); render();});
 }
 function head(){
-  const H=[['rk','#',''],['name','종목','',1],['mkt','시장','',1],['mcap','시총',''],['close','종가','등락'],
+  const H=[['rk','#',''],['surge','급증','직전40일 대비 배수'],['name','종목','',1],['mkt','시장','',1],['mcap','시총',''],['close','종가','등락'],
     ['streak','연속','시작일'],['s_amt','연속 누적','억'],['avg','일평균','억'],['avg_sh','일평균','추정 주수'],['turn','회전비중','순매수/거래대금'],
-    ['cv','규칙성','CV↓ 기계적'],['est_pct','추정 취득','상장주식 대비'],['d5','5%까지','잔여 거래일'],['surge','급증','직전40일 대비 배수'],
-    ['cum20','20일 누적','억 · /시총'],['max1','단일일 최대','억 · 날짜'],['ch_s','매집중 주가','시작 전일 대비']];
+    ['cv','규칙성','CV↓ 기계적'],['est_pct','추정 취득','상장주식 대비']];
   $('tb').tHead.innerHTML='<tr>'+H.map(([k,l,s,left])=>`<th class="${left?'l ':''}${sortK===k?'s':''}" data-k="${k}">${l}${s?`<small>${s}</small>`:''}</th>`).join('')+'</tr>';
-  $('tb').tHead.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k; if(k==='rk')return; if(sortK===k)sortD=-sortD; else{sortK=k;sortD=(k==='d5'||k==='cv')?-1:1;} ui(); render();});
+  $('tb').tHead.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k; if(k==='rk')return; if(sortK===k)sortD=-sortD; else{sortK=k;sortD=(k==='cv')?-1:1;} ui(); render();});
 }
 function render(){
   const rs=rows();
-  const val=r=>{ if(sortK==='score') return score(r); const v=r[sortK]; if(sortK==='d5') return v==null?1e9:v; if(sortK==='cv') return v==null?1e9:v; return v==null?-1e18:v; };
+  const val=r=>{ const v=r[sortK]; if(sortK==='cv') return v==null?1e9:v; return v==null?-1e18:v; };
   rs.sort((a,b)=>{const x=val(a),y=val(b); if(typeof x==='string'||typeof y==='string') return sortD>0?String(x).localeCompare(String(y),'ko'):String(y).localeCompare(String(x),'ko'); return sortD>0?y-x:x-y;});
   // d5·cv 는 오름차순이 기본 정렬(sortD=-1)
   $('cnt').textContent=`${rs.length}종목`;
   const tb=$('tb').tBodies[0]; tb.innerHTML='';
-  if(!rs.length){tb.innerHTML='<tr><td colspan="17" class="empty">조건에 맞는 종목이 없습니다</td></tr>';return;}
+  if(!rs.length){tb.innerHTML='<tr><td colspan="13" class="empty">조건에 맞는 종목이 없습니다</td></tr>';return;}
   rs.forEach((r,i)=>{
     const tr=document.createElement('tr'); tr.className='row'+(sel===r.code?' sel':''); tr.dataset.c=r.code;
     const ld=latestD(r);
     const tags=(isNew(r)?'<span class="tag new">신규</span>':'')+(r.bb?`<span class="tag bb">자사주 ${r.bb.share!=null?r.bb.share+'%':''}</span>`:'')+(near5(r)&&!isBB(r)?'<span class="tag d5">5% 임박</span>':'')+(ld?`<span class="tag dm">${ld.kind} ${dt8(ld.dt)}</span>`:'');
     tr.innerHTML=`<td><span class="rk${i<10?' top':''}">${i+1}</span></td>
+      <td>${r.streak?`<b class="${r.surge>=10?'b':''}">${f1(r.surge)}×</b><br><small class="f">기준 ${eok(r.base)}</small>`:'–'}</td>
       <td class="l"><span class="nm">${r.name}</span><span class="cd">${r.code}</span>${tags}</td>
       <td class="l f">${r.mkt==='KOSPI'?'코스피':'코스닥'}</td>
       <td>${uk(r.mcap)}</td>
@@ -230,14 +230,10 @@ function render(){
       <td>${r.turn!=null?`${f1(r.turn)}%`:'–'}</td>
       <td>${r.cv!=null?`<span class="${r.cv>=1?'f':''}">${f2(r.cv)}</span>`:'–'}</td>
       <td>${r.streak?`<b class="${r.est_pct>=1?'b':''}">${r.est_pct.toFixed(2)}%</b>`:'–'}</td>
-      <td>${r.d5==null||r.streak<3?'–':r.d5<=0?'<span class="b">도달</span>':`<span class="${r.d5<=10?'b':''}">D-${r.d5}</span>`}</td>
-      <td>${r.streak?`${f1(r.surge)}×<br><small class="f">기준 ${eok(r.base)}</small>`:'–'}</td>
-      <td>${eok(r.cum20)}<br><small class="f">${f2(r.cum20_mcap)}%</small></td>
-      <td>${eok(r.max1)}<br><small class="f">${dt8(r.max1_dt)}</small></td>
-      <td>${r.streak?pct(r.ch_s):'–'}</td>`;
+`;
     tr.onclick=()=>{sel=sel===r.code?null:r.code;render();};
     tb.appendChild(tr);
-    if(sel===r.code){const d=document.createElement('tr');d.className='det';d.innerHTML=`<td colspan="17">${detail(r)}</td>`;tb.appendChild(d);}
+    if(sel===r.code){const d=document.createElement('tr');d.className='det';d.innerHTML=`<td colspan="13">${detail(r)}</td>`;tb.appendChild(d);}
   });
 }
 function chart(r){
