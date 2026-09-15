@@ -189,15 +189,7 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
 }
 
 /* ───────── 종목 분석 (서브탭 레일) ───────── */
-#qtLayout{display:grid;grid-template-columns:196px 1fr;gap:18px;align-items:start}
-#qtSubNav{position:sticky;top:16px;display:flex;flex-direction:column;gap:4px}
-.qtnav{border:1px solid transparent;background:transparent;border-radius:10px;padding:11px 14px;text-align:left;cursor:pointer;font-family:inherit;color:var(--sub);transition:.12s}
-.qtnav b{display:block;font-size:14px;font-weight:600}
-.qtnav small{display:block;font-size:11.5px;color:var(--faint);margin-top:2px;font-weight:400}
-.qtnav.on{background:var(--hover);border-color:rgba(77,125,245,.4);color:var(--text)}
-.qtnav:hover{color:var(--text)}
-.qtchip{font-size:12px;color:var(--sub);background:var(--hover);border-radius:6px;padding:3px 8px}
-@media(max-width:900px){#qtLayout{grid-template-columns:1fr}#qtSubNav{position:static;flex-direction:row;overflow-x:auto}.qtnav small{display:none}}
+
 
 /* ══ 종목 분석 리디자인 (2026-09) ══ */
 .qcard{background:var(--surface);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
@@ -264,9 +256,6 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
 @media(max-width:700px){#qtLw{height:300px}#qtVol{height:84px}.lwlg{font-size:10.5px;white-space:normal}
   .ftab th,.ftab td{padding:7px 9px}}
 @media(max-width:900px){
-  #qtSubNav{gap:6px;padding-bottom:4px}
-  .qtnav{white-space:nowrap;flex:none;padding:9px 13px}
-  #qtHeadStats{width:100%;grid-template-columns:repeat(auto-fit,minmax(78px,1fr))!important;gap:12px 10px!important;margin-top:4px}
   .qtiles{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
   .qcard{padding:16px 14px;border-radius:16px}
   .scrollx{margin:0 -14px;padding:0 14px}
@@ -1903,7 +1892,7 @@ function qtSearchRun(q){
 const qtCap=v=>v==null?'—':v>=10000?(v/10000).toLocaleString('ko-KR',{maximumFractionDigits:1})+'조':v.toLocaleString('ko-KR',{maximumFractionDigits:0})+'억';
 const qtNum=(v,d)=>v==null?'—':v.toLocaleString('ko-KR',{maximumFractionDigits:d==null?2:d});
 const qtChg=v=>v==null?'':`<span class="${v>=0?'up':'down'}">${v>=0?'▲':'▼'}${Math.abs(v).toFixed(2)}%</span>`;
-let qtTab='ov',qtFlowN=20,qtFlowMode='bar',qtFinFreq='y';
+let qtFlowN=20,qtFlowMode='bar';
 
 /* ── 숫자 포맷 공통: 천 단위 콤마 · 음수는 괄호 ── */
 function nf(v,d){
@@ -1949,6 +1938,7 @@ function pLabel(p,e,freq){
   const q=(+mm)%3===0?((+mm)/3):null;
   return (q?q+'Q'+yy:yy+'.'+mm)+(e?'E':'');
 }
+const qtShareFmt=n=>n>=1e8?nf(n/1e8,2)+'억주':nf(Math.round(n/1e4),0)+'만주';
 const qtEok=v=>v==null?'—':(Math.abs(v)>=1e4?nf(v/1e4,1)+'조':nf(Math.round(v),0));
 
 function qtRender(){
@@ -1988,7 +1978,7 @@ function qtRender(){
         <div class="qlab">BUSINESS</div>
         <div class="qsec">${esc(s.sec||'—')} <span class="qsub2" style="margin-left:6px">${mkt}</span></div>
         <div class="qkv wide">
-          ${[['발행주식수',s.sh?nf(s.sh,0)+'주':((s.v&&s.p)?qtShares(s.v,s.p):'—')],
+          ${[['발행주식수',s.sh?qtShareFmt(s.sh):((s.v&&s.p)?qtShares(s.v,s.p):'—')],
              ['평균거래대금(20일)','—'],
              ['목표주가',s.tgt==null?'—':nf(s.tgt,0)+'원'],
              ['투자의견',s.rec==null?'—':nf(s.rec,2)+' / 5']].map(([k,v])=>
@@ -2120,7 +2110,7 @@ function qtPerfRender(s,W){
     </div>
     ${R.length?`<canvas id="qtPerfCv"></canvas>
     <div class="clegend" style="margin:10px 0 4px">
-      <i style="background:var(--dim2)"></i>총비용&nbsp;&nbsp;<i style="background:var(--accent)"></i>영업이익&nbsp;&nbsp;
+      <i style="background:rgba(140,150,165,.55)"></i>총비용&nbsp;&nbsp;<i style="background:var(--accent)"></i>영업이익&nbsp;&nbsp;
       <i style="background:#37b98a"></i>매출액&nbsp;&nbsp;<span style="color:var(--faint)">점선 = 컨센서스</span></div>
     <div class="scrollx"><table class="ftab"><thead><tr><th class="lb"></th>
       ${R.map(r=>`<th class="${r.e?'e':''}">${pLabel(r.p,r.e,freq)}</th>`).join('')}</tr></thead><tbody>
@@ -2164,8 +2154,8 @@ function qtPerfChart(cv,R,freq){
     x.save();
     if(r.e){x.setLineDash([3,3]);x.lineWidth=1.2;}
     if(cost>0){const h=sc(cost);
-      x.fillStyle=r.e?'rgba(140,150,165,.20)':(g('--surface2')||'#e9ecef');
-      x.globalAlpha=r.e?1:.9;x.fillRect(x0,zero-h,bw,h);x.globalAlpha=1;
+      x.fillStyle=r.e?'rgba(140,150,165,.18)':'rgba(140,150,165,.42)';
+      x.fillRect(x0,zero-h,bw,h);
       if(r.e){x.strokeStyle=GY;x.strokeRect(x0,zero-h,bw,h);}}
     if(op>0){const hc=sc(Math.max(cost,0)),h=sc(op);
       x.fillStyle=r.e?'rgba(49,104,240,.35)':AC;x.fillRect(x0,zero-hc-h,bw,h);
