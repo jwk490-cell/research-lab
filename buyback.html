@@ -101,7 +101,7 @@ function rowsFor(){
   else if(view==='ending')L=L.filter(c=>c.status==='ended'||(c.days_left<=10)||(c.pct!=null&&c.pct>=95));
   return L;
 }
-const COLS_LIVE=[['name','종목','l'],['next_qty','신청수량(주)'],['price','현재가'],['vwap','VWAP'],['est_exec','예상 체결'],['est_amt','예상 매수금액'],['vol_share','당일 거래량 대비'],['pct_live','진행률(추정)'],['days_left','잔여 거래일']];
+const COLS_LIVE=[['name','종목','l'],['next_qty','신청수량(주)'],['price','현재가'],['vwap','VWAP'],['now_exec','현재까지 체결≈'],['est_exec','장 종료 예상'],['est_amt','예상 매수금액'],['vol_share','당일 거래량 대비'],['pct_live','진행률(추정)'],['days_left','잔여 거래일']];
 const COLS={
   next:[['name','종목','l'],['next_qty','신청수량(주)'],['next_amt','예상금액'],['avg_daily','최근 10일 평균'],['chg','평소 대비'],['vol_ratio','거래량 대비'],['pct','진행률'],['days_left','잔여 거래일']],
   today:[['name','종목','l'],['t_appl','신청'],['t_exec','체결'],['t_rate','체결률'],['t_px','체결단가'],['t_amt','매수금액'],['vol_ratio','거래량 대비'],['pct','진행률']],
@@ -115,6 +115,7 @@ function val(c,k){
     case 'price':return c.live?c.live.price:null;
     case 'vwap':return c.live?c.live.vwap:null;
     case 'est_exec':return c.live?c.live.est_exec:null;
+    case 'now_exec':return c.live?c.live.now_exec:null;
     case 'est_amt':return c.live?c.live.est_amt:null;
     case 'vol_share':return c.live?c.live.vol_share:null;
     case 'pct_live':return c.live?c.live.pct_live:c.pct;
@@ -138,6 +139,7 @@ function cell(c,k){
     case 'next_qty':return `<td class="o">${fmt(v)}</td>`;
     case 'price':return `<td>${fmt(v)}${c.live&&c.live.chg!=null?` <small class="${c.live.chg>0?'r':c.live.chg<0?'b':'f'}">${c.live.chg>0?'+':''}${c.live.chg.toFixed(1)}%</small>`:''}</td>`;
     case 'vwap':return `<td>${fmt(v)}</td>`;
+    case 'now_exec':return `<td class="o">${fmt(v)}${c.live?` <small class="f">${Math.round(LV.tfrac*100)}%</small>`:''}</td>`;
     case 'est_exec':return `<td>${fmt(v)}${c.live&&c.live.fill<100?` <small class="o">${c.live.fill.toFixed(0)}%</small>`:''}</td>`;
     case 'est_amt':return `<td class="g">${uk(v)}</td>`;
     case 'vol_share':return `<td class="${v!=null&&v>=20?'o':''}">${v==null?'<span class="f">–</span>':v.toFixed(1)+'%'}<span class="vb"><i style="width:${Math.min(100,(v||0)*2)}%"></i></span></td>`;
@@ -173,7 +175,7 @@ function renderDetail(){
   const planTxt=c.plan_amt?uk(c.plan_amt):(c.decl_qty?fmt(c.decl_qty)+'주':'–');
   const doneTxt=c.plan_amt?uk(c.cum_amt):(c.cum_qty!=null?fmt(c.cum_qty)+'주':'–');
   const L=c.live;
-  const nextRow=c.next?(L?`<tr class="next"><td class="l">${md(c.next[0])} (${dow(c.next[0])}) 장중 추정</td><td>${fmt(c.next[1])}</td><td>≈${fmt(L.est_exec)}</td><td>${L.fill.toFixed(0)}%<small class="f"> 최근${L.fill_n}회</small></td><td>≈${fmt(L.vwap)}<small class="f"> VWAP</small></td><td>≈${uk(L.est_amt)}</td><td>${fmt(L.vol)}</td><td>${L.vol_share.toFixed(1)}%<span class="vb"><i style="width:${Math.min(100,L.vol_share*3)}%"></i></span></td></tr>`:`<tr class="next"><td class="l">${md(c.next[0])} (${dow(c.next[0])}) 예정</td><td>${fmt(c.next[1])}</td><td colspan="6" class="l f">매수 신청분 · 체결 전${c.last_px?` · 현재가 기준 ≈ ${uk(c.next[1]*c.last_px)}`:''}</td></tr>`):'';
+  const nextRow=c.next?(L?`<tr class="next"><td class="l">${md(c.next[0])} (${dow(c.next[0])}) 장중 추정</td><td>${fmt(c.next[1])}</td><td>≈${fmt(L.now_exec)}<small class="f"> 현재 · 종료 ${fmt(L.est_exec)}</small></td><td>${L.fill.toFixed(0)}%<small class="f"> 최근${L.fill_n}회</small></td><td>≈${fmt(L.vwap)}<small class="f"> VWAP</small></td><td>≈${uk(L.est_amt)}</td><td>${fmt(L.vol)}</td><td>${L.vol_share.toFixed(1)}%<span class="vb"><i style="width:${Math.min(100,L.vol_share*3)}%"></i></span></td></tr>`:`<tr class="next"><td class="l">${md(c.next[0])} (${dow(c.next[0])}) 예정</td><td>${fmt(c.next[1])}</td><td colspan="6" class="l f">매수 신청분 · 체결 전${c.last_px?` · 현재가 기준 ≈ ${uk(c.next[1]*c.last_px)}`:''}</td></tr>`):'';
   const rows=[...c.rows].filter(r=>!(c.next&&r[0]===c.next[0]&&r[2]==null)).reverse().map(r=>{
     const [d,ap,ex,amt,px,vol,cl]=r;const rate=ap&&ex!=null?ex/ap*100:null;const vr=vol&&ex?ex/vol*100:null;
     return `<tr><td class="l">${md(d)} (${dow(d)})</td><td>${fmt(ap)}</td><td>${fmt(ex)}</td><td class="${rate==null?'':rate>=99.9?'g':rate<50?'r':'o'}">${rate==null?'<span class="f">–</span>':rate.toFixed(1)+'%'}</td><td>${fmt(px)}</td><td class="g">${amt?uk(amt):'<span class="f">–</span>'}</td><td>${fmt(vol)}</td><td class="${vr!=null&&vr>=10?'o':''}">${vr==null?'<span class="f">–</span>':vr.toFixed(1)+'%'}<span class="vb"><i style="width:${Math.min(100,(vr||0)*3)}%"></i></span></td></tr>`}).join('');
@@ -238,7 +240,7 @@ Promise.all([fetch('data/buyback.json?v='+Math.floor(Date.now()/3e5)).then(r=>r.
   $('q').oninput=renderList;
   const ex=(d.extras||[]).filter(e=>e.side!=='매도');
   $('note').innerHTML=`<b>소스</b> 한국거래소 일일 공시 「자기주식매매 신청내역·체결내역」(유가·코스닥·코넥스, 매 거래일 18~20시 발행) + KIND 자사주 취득 신고내역(누적) + DART 주요사항보고서(계약금액·위탁기관·1일 한도) + 일봉 거래량.
-  <b>신청내역</b>은 전일 18시까지 거래소에 제출한 익일 매수 주문 예고이며 체결은 다음 날 저녁 확정됩니다. 장중 실시간 체결은 공개되지 않습니다. <b>장중 추정</b>(09:05~15:55 10분 갱신)은 당일 신청수량 × 계약별 최근 10회 체결률 × 당일 VWAP(거래대금÷거래량)으로 근사한 값이며, 저녁 공시가 확정되면 자동으로 확정치로 바뀝니다.<br>
+  <b>신청내역</b>은 전일 18시까지 거래소에 제출한 익일 매수 주문 예고이며 체결은 다음 날 저녁 확정됩니다. 장중 실시간 체결은 공개되지 않습니다. <b>장중 추정</b>(09:05~15:55 10분 갱신)은 당일 신청수량 × 계약별 최근 10회 체결률 × 당일 VWAP(거래대금÷거래량)으로 근사하고, 현재까지 체결은 정규장(09:00~15:20) 시간 경과 비율을 곱한 값입니다(2026-09-15 HTS 실측 대조: 대형주 체결은 시간에 비례, 평균체결가는 VWAP과 0.3% 이내). 값은, 저녁 공시가 확정되면 자동으로 확정치로 바뀝니다.<br>
   <b>진행률</b> 신탁은 누적 체결금액 ÷ 계약금액, 직접은 누적 체결량 ÷ 신고수량. <b>예상 종료일</b>은 최근 10회 체결 평균 페이스로 남은 수량(신탁은 현재가 환산)을 나눈 평일 근사치. <b>거래량 대비</b>는 최근 10회 평균 체결량 ÷ 10일 평균 거래량.
   코스닥 체결 공시에는 신청수량 열이 없어 전일 신청내역과 조인하며, 코넥스·스톡옵션·처분(매도) 건은 목록에서 제외됩니다.${ex.length?`<br><b>신고내역 미매칭 당일 신청·체결</b> ${ex.slice(0,30).map(e=>`${e.name}(${e.type||'?'}${e.appl?' 신청 '+fmt(e.appl):''}${e.exec!=null?' 체결 '+fmt(e.exec):''})`).join(', ')}${ex.length>30?' 외 '+(ex.length-30)+'건':''}`:''}<br>
   최근 공시: ${(d.docs_latest||[]).map(x=>`${x[0].slice(5)} ${x[1].replace('자기주식매매','').replace(/\s/g,'')}(${x[3]})`).join(' · ')}`;
