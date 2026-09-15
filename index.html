@@ -273,6 +273,51 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
   .ftab .lb{padding-left:0}
 }
 
+/* ══ 단일 스크롤 구성 (Financial Terminal 레이아웃) ══ */
+.qwrap{display:flex;flex-direction:column;gap:14px}
+.qwrap>div:empty{display:none}
+.qgrid{display:grid;gap:14px}
+.qgrid.pb{grid-template-columns:1fr 1.45fr}
+.qgrid.s3{grid-template-columns:repeat(3,1fr)}
+.qgrid.two{grid-template-columns:1fr 1fr}
+@media(max-width:820px){.qgrid.pb,.qgrid.s3,.qgrid.two{grid-template-columns:1fr}}
+
+.qhero{padding:2px}
+.qhero-t{font-size:11.5px;color:var(--faint);letter-spacing:.06em;margin-bottom:5px}
+.qhero-n{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.qhero-n b{font-size:25px;font-weight:800;letter-spacing:-.025em;color:var(--accent)}
+.qhero-d{font-size:11.5px;color:var(--faint);margin-left:auto}
+.qlink{font-size:11.5px;color:var(--sub);border:1px solid var(--line);border-radius:7px;padding:3px 9px;text-decoration:none}
+.qlink:hover{color:var(--text);border-color:var(--faint)}
+
+.qlab{font-size:10.5px;color:var(--faint);letter-spacing:.1em;font-weight:700;margin-bottom:10px}
+.qbig{font-size:32px;font-weight:800;letter-spacing:-.025em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
+.qdelta{font-size:14px;font-weight:700;letter-spacing:0}
+.qsub2{font-size:11.5px;color:var(--faint)}
+.qsec{font-size:14.5px;font-weight:700}
+.qkv{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:12.5px;margin-top:14px;font-variant-numeric:tabular-nums}
+.qkv.wide{grid-template-columns:auto 1fr auto 1fr}
+.qkv .k{color:var(--faint)}
+.qkv .v{font-weight:600}
+@media(max-width:560px){.qkv.wide{grid-template-columns:auto 1fr}}
+
+.qcard.st{padding:16px 18px}
+.qcard.st .stv{font-size:21px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.qcard.st .stv small{font-size:11px;font-weight:500;color:var(--faint);margin-left:2px}
+.qcard.st .stv .up,.qcard.st .stv .down{font-size:12.5px;font-weight:700;margin-left:4px}
+
+.ftab.val tbody tr.est td{background:rgba(214,158,46,.09)}
+.ftab.val tbody tr.est .lb{background:rgba(214,158,46,.09);color:#b3781a}
+html.dark .ftab.val tbody tr.est .lb{color:#e0b062}
+.ftab.val tbody tr.est:hover td,.ftab.val tbody tr.est:hover .lb{background:rgba(214,158,46,.16)}
+
+.qrep{font-size:12.5px;padding:10px 0;border-bottom:1px solid var(--line2)}
+.qrep:last-child{border-bottom:none}
+.qpill{font-size:12px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:6px 13px;text-decoration:none}
+.qpill:hover{border-color:var(--accent-line);background:var(--accent-soft)}
+.qnote .qul{margin:0 0 4px 16px;padding:0;font-size:12.5px;color:var(--sub);line-height:1.8}
+.qnote .qul b{color:var(--text)}
+
 /* ───────── 韓/美 시황 ───────── */
 .mwtxt{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.74;color:var(--text)}
 .mwtxt .mwhead{display:block;font-size:14.5px;font-weight:800;margin-bottom:4px}
@@ -1893,214 +1938,467 @@ const QT_INV=[
   {i:12,k:'ntfr',n:'기타외국인',c:'#0ea5e9'},
   {i:13,k:'natn',n:'국가',      c:'#a3a3a3'}];
 let qtFlowSel=new Set(['frgn','orgn','indv']);
-const QT_TABS=[['ov','종목개요','요약 · 차트 · 컨센서스'],['val','밸류에이션','PER·PBR 밴드 · Peer'],['flow','수급','투자자 13주체'],['fin','재무','연간 · 분기'],['news','리포트·링크','최신 소식']];
+/* ══════════ 종목 분석 — 단일 스크롤 구성 (2026-09-15 개편) ══════════ */
+let qtPerfFreq='y';                       /* 실적: 연간 y / 분기 q */
+const QT_SRC='네이버 종목분석(FnGuide)';
+
+/* 기간 라벨: 연간 2025/12 → 25Y(E) · 분기 2026/06 → 2Q26(E) */
+function pLabel(p,e,freq){
+  const yy=p.slice(2,4),mm=p.slice(5,7);
+  if(freq==='y')return yy+'Y'+(e?'E':'');
+  const q=(+mm)%3===0?((+mm)/3):null;
+  return (q?q+'Q'+yy:yy+'.'+mm)+(e?'E':'');
+}
+const qtEok=v=>v==null?'—':(Math.abs(v)>=1e4?nf(v/1e4,1)+'조':nf(Math.round(v),0));
+
 function qtRender(){
   const s=QT&&QT.stocks.find(x=>x.c===qtSel);if(!s)return;
   const body=document.getElementById('qtBody');
   const up=s.f>=0;
   const chgAbs=(s.p!=null&&s.f!=null)?Math.round(s.p-s.p/(1+s.f/100)):null;
-  const pos52=(s.h52&&s.l52&&s.p&&s.h52>s.l52)?Math.min(100,Math.max(0,(s.p-s.l52)/(s.h52-s.l52)*100)):null;
+  const mkt=s.m==='KS'?'KOSPI':'KOSDAQ';
   body.innerHTML=`
-  <div class="qcard" style="padding:22px 24px;margin-bottom:16px">
-    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
-      <div>
-        <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;flex-wrap:wrap">
-          <span style="font-size:22px;font-weight:800;letter-spacing:-.02em">${esc(s.n)}</span>
-          <span class="qtchip">${s.c} · ${s.m==='KS'?'KOSPI':'KOSDAQ'}</span>
-          ${s.sec?`<span class="qtchip">${esc(s.sec)}</span>`:''}
+  <div class="qwrap">
+    <!-- 헤더 -->
+    <div class="qhero">
+      <div class="qhero-t">🇰🇷 ${s.c} · KRW · ${mkt}</div>
+      <div class="qhero-n">
+        <b>${esc(s.n)}</b>
+        <a class="qlink" href="https://m.stock.naver.com/domestic/stock/${s.c}/total" target="_blank" rel="noopener">네이버증권 ↗</a>
+        <a class="qlink" href="https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(s.n)}" target="_blank" rel="noopener">DART ↗</a>
+        <span class="qhero-d">${QT.updated} · 일별 스냅샷</span>
+      </div>
+    </div>
+
+    <!-- PRICE / BUSINESS -->
+    <div class="qgrid pb">
+      <div class="qcard">
+        <div class="qlab">PRICE</div>
+        <div class="qbig ${up?'up':'down'}">${nf(s.p,0)}
+          <span class="qdelta ${up?'up':'down'}">${up?'▲':'▼'} ${chgAbs==null?'':Math.abs(chgAbs).toLocaleString('ko-KR')} (${s.f>=0?'+':''}${(s.f??0).toFixed(2)}%)</span></div>
+        <div class="qsub2">KRW · 네이버증권 일별 종가</div>
+        <div class="qkv">
+          ${[['52주 최고',nf(s.h52,0)],['52주 최저',nf(s.l52,0)],
+             ['거래대금',s.tv==null?'—':(s.tv>=10000?nf(s.tv/10000,2)+'조':nf(Math.round(s.tv),0)+'억')],
+             ['외국인비중',s.fgn==null?'—':nf(s.fgn,2)+'%']].map(([k,v])=>
+            `<span class="k">${k}</span><span class="v">${v}</span>`).join('')}
         </div>
-        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
-          <span class="num ${up?'up':'down'}" style="font-size:34px;font-weight:800;letter-spacing:-.025em">${nf(s.p,0)}</span>
-          <span class="${up?'up':'down'}" style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums">${up?'▲':'▼'} ${chgAbs==null?'':Math.abs(chgAbs).toLocaleString('ko-KR')} <span style="font-weight:600">(${s.f>=0?'+':''}${(s.f??0).toFixed(2)}%)</span></span>
-          <span style="font-size:12px;color:var(--faint)">원 · 일별 종가 기준</span>
+      </div>
+      <div class="qcard">
+        <div class="qlab">BUSINESS</div>
+        <div class="qsec">${esc(s.sec||'—')} <span class="qsub2" style="margin-left:6px">${mkt}</span></div>
+        <div class="qkv wide">
+          ${[['발행주식수',s.sh?nf(s.sh,0)+'주':((s.v&&s.p)?qtShares(s.v,s.p):'—')],
+             ['평균거래대금(20일)','—'],
+             ['목표주가',s.tgt==null?'—':nf(s.tgt,0)+'원'],
+             ['투자의견',s.rec==null?'—':nf(s.rec,2)+' / 5']].map(([k,v])=>
+            `<span class="k">${k}</span><span class="v" data-kv="${k}">${v}</span>`).join('')}
+        </div>
+        <div class="qfoot" id="qtRelRow">상승률 · 지수 대비 상대수익률</div>
+      </div>
+    </div>
+
+    <!-- 3 스탯 -->
+    <div class="qgrid s3" id="qtStat3"></div>
+
+    <!-- 주가 -->
+    <div class="qcard" style="padding:16px 18px 12px">
+      <div class="qch">
+        <h3>주가</h3>
+        <span class="meta"><b class="${up?'up':'down'}">${nf(s.p,0)}</b> (${s.f>=0?'+':''}${(s.f??0).toFixed(2)}%) · 일봉 2년 수정주가</span>
+        <div class="rt">
+          <div class="rngwrap" id="qtCvBar">${[['day','일'],['week','주'],['month','월'],['y5','5년']].map(([k,l])=>`<button class="rng${qtCv===k?' on':''}" data-cv="${k}">${l}</button>`).join('')}</div>
+          <div class="rngwrap" id="qtStyleBar">${[['candle','캔들'],['line','라인']].map(([k,l])=>`<button class="rng${qtStyle===k?' on':''}" data-st="${k}">${l}</button>`).join('')}</div>
+          <div id="qtMaBar" class="subchips">${[5,10,20,60,120].map(w=>`<button class="subchip${qtMA.has(w)?' on':''}" data-ma="${w}" style="--c:${MA_COLORS[w]}"><i class="dot"></i>${w}</button>`).join('')}</div>
+          <div class="rngwrap" id="qtRngBar">${[['1M','1M'],['3M','3M'],['6M','6M'],['YTD','YTD'],['1Y','1Y'],['ALL','전체']].map(([k,l])=>`<button class="rng${qtRng===k?' on':''}" data-rg="${k}">${l}</button>`).join('')}</div>
         </div>
       </div>
-      <div id="qtHeadStats" style="display:grid;grid-template-columns:repeat(5,auto);gap:11px 30px;font-size:12.5px;font-variant-numeric:tabular-nums">
-        ${[['시가총액',qtCap(s.v)],['PER',qtNum(s.per)+'배'],['PBR',qtNum(s.pbr)+'배'],['배당수익률',qtNum(s.dvr)+'%'],['거래대금',s.tv==null?'—':(s.tv>=10000?(s.tv/10000).toFixed(2)+'조':nf(Math.round(s.tv),0)+'억')]].map(([l,v])=>
-          `<div><div style="color:var(--faint);margin-bottom:5px;font-size:11.5px">${l}</div><div style="font-weight:700;font-size:13.5px">${v}</div></div>`).join('')}
+      <div id="qtLwWrap">
+        <div class="lwbox"><div class="lwlg" id="qtLwLegend"></div><div id="qtLw"></div></div>
+        <div class="lwbox volbox" id="qtVolBox"><div class="lwlg" id="qtVolLegend"></div><div id="qtVol"></div></div>
       </div>
+      <div class="qfoot">차트 Lightweight Charts™ by TradingView · 시세 네이버증권 · 주/월봉은 일봉 합산, 5년은 월별 종가</div>
     </div>
-    ${pos52!=null?`<div style="margin-top:18px">
-      <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-bottom:7px;font-variant-numeric:tabular-nums">
-        <span>52주 최저 <b style="color:var(--sub)">${nf(s.l52,0)}</b></span><span>52주 최고 <b style="color:var(--sub)">${nf(s.h52,0)}</b></span></div>
-      <div style="position:relative;height:4px;background:var(--line);border-radius:2px">
-        <div style="position:absolute;left:0;width:${pos52.toFixed(1)}%;height:100%;background:linear-gradient(90deg,var(--accent-line),var(--accent));border-radius:2px"></div>
-        <div style="position:absolute;left:${pos52.toFixed(1)}%;top:-3px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--accent);border:2px solid var(--surface);box-sizing:border-box"></div>
-      </div></div>`:''}
-  </div>
-  <div id="qtLayout">
-    <div id="qtSubNav">${QT_TABS.map(([k,t,c])=>`<button class="qtnav${qtTab===k?' on':''}" data-qtab="${k}"><b>${t}</b><small>${c}</small></button>`).join('')}</div>
-    <div id="qtView" style="display:flex;flex-direction:column;gap:14px;min-width:0"></div>
+
+    <div id="qtPerf"></div>
+    <div id="qtProfit"></div>
+    <div id="qtVal"></div>
+    <div id="qtBandWrap"></div>
+    <div id="qtFlowSec"></div>
+    <div id="qtOscSec"></div>
+    <div id="qtPeer"></div>
+    <div id="qtLinks"></div>
+    <div class="qcard qnote" id="qtNote"></div>
   </div>`;
-  document.getElementById('qtSubNav').onclick=e=>{const b=e.target.closest('[data-qtab]');if(!b)return;
-    qtTab=b.dataset.qtab;qtViewRender(s);};
-  qtViewRender(s);
-  needExt().then(()=>{if(qtSel===s.c&&!document.getElementById('qtView').dataset.extDone){
-    document.getElementById('qtView').dataset.extDone='1';qtViewRender(s);}});
-}
-function qtViewRender(s){
-  const view=document.getElementById('qtView');if(!view||qtSel!==s.c)return;
-  document.querySelectorAll('.qtnav').forEach(b=>b.classList.toggle('on',b.dataset.qtab===qtTab));
-  if(QTX)view.dataset.extDone='1';
-  ({ov:qtViewOv,val:qtViewVal,flow:qtViewFlow,fin:qtViewFin,news:qtViewNews}[qtTab]||qtViewOv)(s,view);
-}
-/* ── 뷰 1: 종목개요 ── */
-function qtViewOv(s,view){
-  const gain=s.tgt&&s.p?((s.tgt/s.p-1)*100):null;
-  const recPct=s.rec?Math.min(100,s.rec/5*100):null;
-  const e=(QTX&&QTX.s||{})[s.c];
-  const idx=(QTX&&QTX.idx||{})[s.m]||{};
-  const rel=(r,ir)=>(r==null||ir==null)?null:r-ir;
-  const cell=v=>v==null?'—':`<span class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(1)}%</span>`;
-  view.innerHTML=`
-  <div class="qcard" style="padding:14px 16px 12px">
-    <div class="qch" style="margin-bottom:10px">
-      <div class="rngwrap" id="qtCvBar">${[['day','일'],['week','주'],['month','월'],['y5','5년']].map(([k,l])=>`<button class="rng${qtCv===k?' on':''}" data-cv="${k}">${l}</button>`).join('')}</div>
-      <div class="rngwrap" id="qtStyleBar">${[['candle','캔들'],['line','라인']].map(([k,l])=>`<button class="rng${qtStyle===k?' on':''}" data-st="${k}">${l}</button>`).join('')}</div>
-      <div id="qtMaBar" class="subchips">${[5,10,20,60,120].map(w=>`<button class="subchip${qtMA.has(w)?' on':''}" data-ma="${w}" style="--c:${MA_COLORS[w]}"><i class="dot"></i>${w}</button>`).join('')}</div>
-      <div class="rt"><div class="rngwrap" id="qtRngBar">${[['1M','1M'],['3M','3M'],['6M','6M'],['YTD','YTD'],['1Y','1Y'],['ALL','전체']].map(([k,l])=>`<button class="rng${qtRng===k?' on':''}" data-rg="${k}">${l}</button>`).join('')}</div></div>
-    </div>
-    <div id="qtLwWrap">
-      <div class="lwbox"><div class="lwlg" id="qtLwLegend"></div><div id="qtLw"></div></div>
-      <div class="lwbox volbox" id="qtVolBox"><div class="lwlg" id="qtVolLegend"></div><div id="qtVol"></div></div>
-    </div>
-    <div class="qfoot">TradingView Lightweight Charts · 일봉 2년(수정주가 ADJ) · 주/월봉은 일봉 합산 · 5년은 월별 종가</div>
-  </div>
-  <div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div class="qcard">
-      <div class="qch"><h3>컨센서스</h3><span class="meta">네이버 컨센서스</span></div>
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:5px">
-        <span style="font-size:25px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">${nf(s.tgt,0)}</span>
-        ${gain!=null?`<span class="${gain>=0?'up':'down'}" style="font-size:13.5px;font-weight:700">상승여력 ${gain>=0?'+':''}${gain.toFixed(1)}%</span>`:''}
-      </div>
-      <div style="font-size:11.5px;color:var(--faint);margin-bottom:16px">평균 목표주가 (원)</div>
-      ${recPct!=null?`<div style="display:flex;height:7px;border-radius:4px;overflow:hidden;background:var(--line);margin-bottom:9px">
-        <div style="width:${recPct.toFixed(0)}%;background:var(--up)"></div></div>
-      <div style="font-size:12px;color:var(--sub)">투자의견 <b style="color:var(--text)">${qtNum(s.rec)}</b> / 5점 <span style="color:var(--faint)">(높을수록 매수 우위)</span></div>`:'<div style="font-size:12px;color:var(--faint)">투자의견 데이터 없음</div>'}
-    </div>
-    <div class="qcard">
-      <div class="qch"><h3>기업 개요</h3><span class="meta">상대수익률 = 소속 지수 대비</span></div>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:12.5px;font-variant-numeric:tabular-nums">
-        <span style="color:var(--faint)">업종</span><span>${esc(s.sec||'—')}</span>
-        <span style="color:var(--faint)">발행주식수</span><span>${(s.v&&s.p)?qtShares(s.v,s.p):'—'}</span>
-        <span style="color:var(--faint)">외국인비중</span><span>${qtNum(s.fgn)}%</span>
-        <span style="color:var(--faint)">평균거래대금</span><span>${e&&e.avt!=null?nf(e.avt,1)+'억 (20일)':'—'}</span>
-      </div>
-      <div class="scrollx" style="margin-top:14px"><table class="ftab">
-      <thead><tr><th class="lb">상승률</th><th>1개월</th><th>6개월</th><th>12개월</th></tr></thead>
-      <tbody><tr><td class="lb">절대</td><td>${cell(e&&e.r1)}</td><td>${cell(e&&e.r6)}</td><td>${cell(e&&e.r12)}</td></tr>
-      <tr><td class="lb">상대</td><td>${cell(e&&rel(e.r1,idx.r1))}</td><td>${cell(e&&rel(e.r6,idx.r6))}</td><td>${cell(e&&rel(e.r12,idx.r12))}</td></tr></tbody></table></div>
-    </div>
-  </div>`;
-  const qtBarBind=(id,key,fn)=>{document.getElementById(id).onclick=e=>{const b=e.target.closest(`[data-${key}]`);if(!b)return;
-    fn(b.dataset[key],b);qtDrawLw(s);};};
-  qtBarBind('qtCvBar','cv',v=>{qtCv=v;document.querySelectorAll('#qtCvBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.cv===v));});
-  qtBarBind('qtStyleBar','st',v=>{qtStyle=v;document.querySelectorAll('#qtStyleBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.st===v));});
-  qtBarBind('qtMaBar','ma',(v,b)=>{const w=+v;qtMA.has(w)?qtMA.delete(w):qtMA.add(w);b.classList.toggle('on',qtMA.has(w));});
-  qtBarBind('qtRngBar','rg',v=>{qtRng=v;document.querySelectorAll('#qtRngBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.rg===v));});
+
+  /* 차트 바 바인딩 */
+  const bind=(id,key,fn)=>{const el=document.getElementById(id);if(!el)return;
+    el.onclick=e=>{const b=e.target.closest(`[data-${key}]`);if(!b)return;fn(b.dataset[key],b);qtDrawLw(s);};};
+  bind('qtCvBar','cv',v=>{qtCv=v;document.querySelectorAll('#qtCvBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.cv===v));});
+  bind('qtStyleBar','st',v=>{qtStyle=v;document.querySelectorAll('#qtStyleBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.st===v));});
+  bind('qtMaBar','ma',(v,b)=>{const w=+v;qtMA.has(w)?qtMA.delete(w):qtMA.add(w);b.classList.toggle('on',qtMA.has(w));});
+  bind('qtRngBar','rg',v=>{qtRng=v;document.querySelectorAll('#qtRngBar .rng').forEach(x=>x.classList.toggle('on',x.dataset.rg===v));});
   qtDrawLw(s);
-}
-/* ── 뷰 2: 밸류에이션 (밴드 + 지표 + Peer) ── */
-function qtViewVal(s,view){
-  view.innerHTML=`
-  <div class="rgrid2" id="qtBands" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
-    <div class="qcard"><div class="qch"><h3>PER 밴드</h3><span class="meta">월별 종가 × 연간 EPS (컨센 포함)</span></div><canvas id="qtBandPer"></canvas><div class="clegend" id="qtBandPerLg"></div></div>
-    <div class="qcard"><div class="qch"><h3>PBR 밴드</h3><span class="meta">월별 종가 × 연간 BPS</span></div><canvas id="qtBandPbr"></canvas><div class="clegend" id="qtBandPbrLg"></div></div>
-  </div>
-  <div class="qtiles" id="qtValStats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"></div>
-  <div id="qtPeer"></div>`;
-  const e=(QTX&&QTX.s||{})[s.c];
-  let perStat=null,pbrStat=null;
-  if(e&&e.m&&e.fin){
-    perStat=qtBandDraw(document.getElementById('qtBandPer'),document.getElementById('qtBandPerLg'),e.m,e.fin,'eps');
-    pbrStat=qtBandDraw(document.getElementById('qtBandPbr'),document.getElementById('qtBandPbrLg'),e.m,e.fin,'bps');
-    if(!perStat)document.getElementById('qtBandPer').parentElement.style.display='none';
-    if(!pbrStat)document.getElementById('qtBandPbr').parentElement.style.display='none';
-  }else{
-    document.getElementById('qtBands').innerHTML='<div class="empty"><b>밴드 데이터 불러오는 중…</b></div>';
-  }
-  const lastRev=e&&e.fin?[...e.fin].reverse().find(f=>!f.c&&f.rev):null;
-  const psr=(lastRev&&s.v)?s.v/lastRev.rev:null;
-  const stat=(label,val,avg)=>{
-    let sub='';
-    if(val!=null&&avg!=null&&avg>0){const d=(val/avg-1)*100;
-      sub=`<div class="ts ${d<=0?'down':'up'}" style="font-weight:600">5Y 평균 대비 ${d>=0?'+':''}${d.toFixed(0)}%</div>`;}
-    return `<div class="qtile"><div class="tl">${label}</div>
-      <div class="tv">${val==null?'—':nf(val,2)}</div>${sub}</div>`;};
-  document.getElementById('qtValStats').innerHTML=
-    stat('PER (배)',s.per,perStat&&perStat.avg)+stat('PBR (배)',s.pbr,pbrStat&&pbrStat.avg)
-    +stat('추정 PER (배)',s.cper,perStat&&perStat.avg)+stat(`PSR (배)${lastRev?' · '+lastRev.y:''}`,psr,null);
+  qtLinksRender(s);
   qtPeerRender(s);
+  needExt().then(()=>{if(qtSel===s.c)qtExtFill(s);});
+  qtPackFill(s);
 }
-/* ── 뷰 3: 수급 (투자자 세부 주체 · 키움 ka10059) ── */
-async function qtViewFlow(s,view){
-  const sels=QT_INV.filter(o=>qtFlowSel.has(o.k));
-  view.innerHTML=`
+
+/* quotes_ext 의존 — 상대수익률·평균거래대금·밴드 */
+function qtExtFill(s){
+  const e=(QTX&&QTX.s||{})[s.c],idx=(QTX&&QTX.idx||{})[s.m]||{};
+  const avt=document.querySelector('[data-kv="평균거래대금(20일)"]');
+  if(avt&&e&&e.avt!=null)avt.textContent=nf(e.avt,1)+'억';
+  const rel=document.getElementById('qtRelRow');
+  if(rel&&e){
+    const c=(v)=>v==null?'—':`<b class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(1)}%</b>`;
+    const d=(a,b)=>(a==null||b==null)?null:a-b;
+    rel.innerHTML=`상승률 1M ${c(e.r1)} · 6M ${c(e.r6)} · 12M ${c(e.r12)}`
+      +` <span style="color:var(--faint)">|</span> 지수대비 1M ${c(d(e.r1,idx.r1))} · 6M ${c(d(e.r6,idx.r6))} · 12M ${c(d(e.r12,idx.r12))}`;
+  }
+  const bw=document.getElementById('qtBandWrap');
+  if(bw&&e&&e.m&&e.fin){
+    bw.innerHTML=`<div class="qgrid two">
+      <div class="qcard"><div class="qch"><h3>PER 밴드</h3><span class="meta">월별 종가 × 연간 EPS(컨센 포함)</span></div><canvas id="qtBandPer"></canvas><div class="clegend" id="qtBandPerLg"></div></div>
+      <div class="qcard"><div class="qch"><h3>PBR 밴드</h3><span class="meta">월별 종가 × 연간 BPS</span></div><canvas id="qtBandPbr"></canvas><div class="clegend" id="qtBandPbrLg"></div></div></div>`;
+    if(!qtBandDraw(document.getElementById('qtBandPer'),document.getElementById('qtBandPerLg'),e.m,e.fin,'eps'))
+      document.getElementById('qtBandPer').parentElement.style.display='none';
+    if(!qtBandDraw(document.getElementById('qtBandPbr'),document.getElementById('qtBandPbrLg'),e.m,e.fin,'bps'))
+      document.getElementById('qtBandPbr').parentElement.style.display='none';
+  }
+}
+
+/* 샤드 의존 — 실적·수익성·밸류에이션·수급·오실레이터 */
+async function qtPackFill(s){
+  const pack=await qtCandles(s.c);
+  if(qtSel!==s.c)return;
+  const W=(pack&&pack.w)||{};
+  qtPerfRender(s,W);
+  qtProfitRender(s,W);
+  qtValRender(s,W);
+  qtFlowRender(s,pack);
+  qtOscRender(s,pack);
+  const nY=(W.y||[]).length,nQ=(W.q||[]).length;
+  document.getElementById('qtNote').innerHTML=
+    `<div class="qch"><h3>참고</h3></div>
+     <ul class="qul">
+       <li>실적 기간은 연간 ${nY}개 · 분기 ${nQ}개입니다 — ${QT_SRC}가 제공하는 만큼만 표시합니다 (각 최근 5개 확정 + 3개 컨센서스).</li>
+       <li>E 표기는 컨센서스 추정치입니다. 모든 금액은 <b>억원</b>, 음수는 <b>(괄호)</b>로 표시합니다.</li>
+       <li>수급은 키움 ka10059 KRX 잠정치 기준이며 당일 장중에는 일부 주체가 0으로 집계됩니다.</li>
+       <li><b>사업부문별 매출(세그먼트)</b>은 DART 사업보고서 XBRL 파싱이 필요해 아직 제공하지 않습니다.</li>
+     </ul>
+     <div class="qfoot">데이터 · 네이버증권 · ${QT_SRC} · 키움 REST(ka10059) · 차트 Lightweight Charts</div>`;
+}
+
+/* ── 3 스탯 카드 ── */
+function qtStat3(s,W){
+  const Y=(W.y||[]);
+  const lastA=[...Y].reverse().find(r=>!r.e&&r.rev!=null);
+  const firstE=Y.find(r=>r.e&&r.rev!=null);
+  const g=(lastA&&firstE)?grw(firstE.rev,lastA.rev):null;
+  const el=document.getElementById('qtStat3');if(!el)return;
+  el.innerHTML=[
+    ['시가총액', s.v==null?'—':(s.v>=10000?nf(Math.floor(s.v/10000),0)+'조 '+nf(Math.round(s.v%10000),0)+'억원':nf(Math.round(s.v),0)+'억원'),''],
+    [`최근 연간 매출 · ${lastA?pLabel(lastA.p,0,'y'):'—'}`, lastA?nf(Math.round(lastA.rev),0):'—','억원'],
+    [`컨센서스 매출 · ${firstE?pLabel(firstE.p,1,'y'):'—'}`, firstE?nf(Math.round(firstE.rev),0):'—',
+      g==null?'':`<span class="${g>=0?'up':'down'}">${g>=0?'+':''}${g.toFixed(1)}%</span>`]
+  ].map(([k,v,x])=>`<div class="qcard st"><div class="qlab">${k}</div><div class="stv">${v} <small>${x}</small></div></div>`).join('');
+}
+
+/* ── 실적 (연간 / 분기) ── */
+function qtPerfRender(s,W){
+  const el=document.getElementById('qtPerf');if(!el)return;
+  qtStat3(s,W);
+  const freq=qtPerfFreq, R=(W[freq]||[]);
+  el.innerHTML=`
   <div class="qcard">
-    <div class="qch">
-      <h3>투자자별 순매수</h3>
-      <span class="meta">일별 · 억원 · 키움 ka10059 (KRX 잠정)</span>
+    <div class="qch"><h3>실적</h3><span class="meta">억원</span>
+      <div class="rt"><div class="rngwrap" id="qtPerfBar">
+        <button class="rng${freq==='y'?' on':''}" data-pf="y">연간 ${(W.y||[]).length}Y</button>
+        <button class="rng${freq==='q'?' on':''}" data-pf="q">분기 ${(W.q||[]).length}Q</button></div></div>
+    </div>
+    ${R.length?`<canvas id="qtPerfCv"></canvas>
+    <div class="clegend" style="margin:10px 0 4px">
+      <i style="background:var(--dim2)"></i>총비용&nbsp;&nbsp;<i style="background:var(--accent)"></i>영업이익&nbsp;&nbsp;
+      <i style="background:#37b98a"></i>매출액&nbsp;&nbsp;<span style="color:var(--faint)">점선 = 컨센서스</span></div>
+    <div class="scrollx"><table class="ftab"><thead><tr><th class="lb"></th>
+      ${R.map(r=>`<th class="${r.e?'e':''}">${pLabel(r.p,r.e,freq)}</th>`).join('')}</tr></thead><tbody>
+      ${[['매출액','rev'],['영업이익','op'],['순이익','np']].map(([lbl,k])=>
+        `<tr class="hl"><td class="lb">${lbl}</td>`+R.map((r,i)=>{
+          const gv=i>=(freq==='q'?4:1)?grw(r[k],R[i-(freq==='q'?4:1)][k]):null;
+          const neg=(typeof r[k]==='number'&&r[k]<0);
+          return `<td class="${[r.e?'e':'',neg?'neg':''].filter(Boolean).join(' ')}">${nf(r[k]==null?null:Math.round(r[k]),0)}${gv!=null?pctTag(gv):''}</td>`;
+        }).join('')+`</tr>`).join('')}
+    </tbody></table></div>
+    <div class="qfoot">${QT_SRC} 연결 기준 · ${freq==='q'?'전년 동기':'전년'} 대비 증감률 · 매출원가를 별도 공시하지 않는 기업이 있어 비용은 <b>총비용</b>(매출액−영업이익)으로 묶어 표시합니다.</div>`
+    :'<div class="empty"><b>실적 데이터가 아직 없습니다</b>평일 16:20 빌드 후 이용 가능합니다.</div>'}
+  </div>`;
+  const bar=document.getElementById('qtPerfBar');
+  if(bar)bar.onclick=e=>{const b=e.target.closest('[data-pf]');if(!b)return;qtPerfFreq=b.dataset.pf;qtPerfRender(s,W);};
+  if(R.length)qtPerfChart(document.getElementById('qtPerfCv'),R,freq);
+}
+/* 총비용+영업이익 누적 막대 + 매출액 라인 */
+function qtPerfChart(cv,R,freq){
+  if(!cv)return;
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||800,H=250;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';cv.style.width='100%';
+  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim();
+  const AC=g('--accent')||'#3168f0',LN=g('--line2')||'#eef0f3',FT=g('--faint')||'#8b95a1',GY=g('--dim2')||'#8b95a1';
+  const P={l:76,r:10,t:14,b:30},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  const tops=R.map(r=>Math.max(r.rev||0,(r.rev||0)-Math.min(0,r.op||0)));
+  const bots=R.map(r=>Math.min(0,r.op||0));
+  const mx=Math.max(...tops,1),mn=Math.min(...bots,0);
+  const span=(mx-mn)||1, zero=P.t+IH*(mx/span), sc=v=>IH*(v/span);
+  x.font='10px "Pretendard Variable",Pretendard,sans-serif';x.textAlign='right';
+  for(let i=0;i<=4;i++){const v=mn+(mx-mn)*i/4,y=P.t+IH*((mx-v)/span);
+    x.strokeStyle=Math.abs(v)<1e-9?(g('--line')||'#e7eaee'):LN;x.lineWidth=1;
+    x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();
+    x.fillStyle=FT;x.fillText(nf(Math.round(v),0),P.l-8,y+3.5);}
+  const gw=IW/R.length, bw=Math.min(54,gw*0.56);
+  const line=[];
+  R.forEach((r,i)=>{
+    const cx=P.l+gw*i+gw/2, x0=cx-bw/2;
+    const rev=r.rev||0, op=r.op||0, cost=rev-op;
+    x.save();
+    if(r.e){x.setLineDash([3,3]);x.lineWidth=1.2;}
+    if(cost>0){const h=sc(cost);
+      x.fillStyle=r.e?'rgba(140,150,165,.20)':(g('--surface2')||'#e9ecef');
+      x.globalAlpha=r.e?1:.9;x.fillRect(x0,zero-h,bw,h);x.globalAlpha=1;
+      if(r.e){x.strokeStyle=GY;x.strokeRect(x0,zero-h,bw,h);}}
+    if(op>0){const hc=sc(Math.max(cost,0)),h=sc(op);
+      x.fillStyle=r.e?'rgba(49,104,240,.35)':AC;x.fillRect(x0,zero-hc-h,bw,h);
+      if(r.e){x.strokeStyle=AC;x.strokeRect(x0,zero-hc-h,bw,h);}}
+    else if(op<0){const h=sc(-op);
+      x.fillStyle=r.e?'rgba(52,133,250,.35)':(g('--down')||'#3485fa');x.fillRect(x0,zero,bw,h);
+      if(r.e){x.strokeStyle=g('--down')||'#3485fa';x.strokeRect(x0,zero,bw,h);}}
+    x.restore();
+    if(r.rev!=null)line.push([cx,zero-sc(r.rev)]);
+    x.fillStyle=r.e?AC:(g('--sub')||'#4e5968');x.textAlign='center';
+    x.font=(r.e?'700 ':'')+'10.5px "Pretendard Variable",Pretendard,sans-serif';
+    x.fillText(pLabel(r.p,r.e,freq),cx,H-10);
+    x.font='10px "Pretendard Variable",Pretendard,sans-serif';
+  });
+  if(line.length>1){
+    x.strokeStyle='#37b98a';x.lineWidth=1.8;x.beginPath();
+    line.forEach(([px,py],i)=>i?x.lineTo(px,py):x.moveTo(px,py));x.stroke();
+    x.fillStyle='#37b98a';line.forEach(([px,py])=>{x.beginPath();x.arc(px,py,2.6,0,7);x.fill();});
+  }
+}
+
+/* ── 수익성 · 안정성 ── */
+const PROF_ROWS=[['영업이익률 OPM','opm'],['순이익률 NPM','npm'],['ROE','roe'],['ROA','roa'],
+  ['부채비율','debt'],['자본유보율','resv'],['현금배당성향','pay'],['현금배당수익률','dvr']];
+const PROF_LINES=[['OPM','opm','#3b82f6'],['NPM','npm','#a855f7'],['ROE','roe','#f04452'],['ROA','roa','#37b98a']];
+function qtProfitRender(s,W){
+  const el=document.getElementById('qtProfit');if(!el)return;
+  const R=(W.y||[]);
+  if(!R.length){el.innerHTML='';return;}
+  el.innerHTML=`
+  <div class="qcard">
+    <div class="qch"><h3>수익성 · 안정성</h3><span class="meta">%</span></div>
+    <canvas id="qtProfCv"></canvas>
+    <div class="clegend" style="margin:10px 0 6px">${PROF_LINES.map(([n,,c])=>
+      `<i style="background:${c}"></i>${n}&nbsp;&nbsp;`).join('')}</div>
+    <div class="scrollx"><table class="ftab"><thead><tr><th class="lb"></th>
+      ${R.map(r=>`<th class="${r.e?'e':''}">${pLabel(r.p,r.e,'y')}</th>`).join('')}</tr></thead><tbody>
+      ${PROF_ROWS.map(([lbl,k])=>R.some(r=>r[k]!=null)?
+        `<tr><td class="lb">${lbl}</td>`+R.map(r=>{
+          const neg=(typeof r[k]==='number'&&r[k]<0);
+          return `<td class="${[r.e?'e':'',neg?'neg':''].filter(Boolean).join(' ')}">${r[k]==null?'—':nf(r[k],1)+'%'}</td>`;
+        }).join('')+`</tr>`:'').join('')}
+    </tbody></table></div>
+    <div class="qfoot">${QT_SRC} 기준 · E=컨센서스 · 매출총이익률(GPM)·EBITDA마진율·ROIC·유동비율은 원천에서 제공되지 않아 제외했습니다.</div>
+  </div>`;
+  qtRatioChart(document.getElementById('qtProfCv'),R);
+}
+function qtRatioChart(cv,R){
+  if(!cv)return;
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||800,H=210;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';cv.style.width='100%';
+  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim();
+  const LN=g('--line2')||'#eef0f3',FT=g('--faint')||'#8b95a1',AC=g('--accent')||'#3168f0';
+  const P={l:54,r:10,t:12,b:26},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  const vals=[];PROF_LINES.forEach(([,k])=>R.forEach(r=>{if(r[k]!=null)vals.push(r[k]);}));
+  if(!vals.length)return;
+  let mx=Math.max(...vals,0),mn=Math.min(...vals,0);
+  const pad=(mx-mn)*0.12||1;mx+=pad;mn-=pad;
+  const span=mx-mn,py=v=>P.t+IH*((mx-v)/span);
+  x.font='10px "Pretendard Variable",Pretendard,sans-serif';x.textAlign='right';
+  for(let i=0;i<=4;i++){const v=mn+(mx-mn)*i/4,y=py(v);
+    x.strokeStyle=Math.abs(v)<1e-9?(g('--line')||'#e7eaee'):LN;x.lineWidth=1;
+    x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();
+    x.fillStyle=FT;x.fillText(nf(v,0)+'%',P.l-8,y+3.5);}
+  const gw=IW/R.length, px=i=>P.l+gw*i+gw/2;
+  PROF_LINES.forEach(([,k,c])=>{
+    x.strokeStyle=c;x.lineWidth=1.8;x.beginPath();let st=false;
+    R.forEach((r,i)=>{if(r[k]==null)return;
+      if(!st){x.moveTo(px(i),py(r[k]));st=true;}else x.lineTo(px(i),py(r[k]));});
+    x.stroke();
+    x.fillStyle=c;R.forEach((r,i)=>{if(r[k]==null)return;
+      x.beginPath();x.arc(px(i),py(r[k]),2.4,0,7);x.fill();});
+  });
+  x.textAlign='center';
+  R.forEach((r,i)=>{x.fillStyle=r.e?AC:FT;
+    x.fillText(pLabel(r.p,r.e,'y'),px(i),H-8);});
+}
+
+/* ── 밸류에이션 ── */
+const VAL_COLS=[['EPS(원)','eps',0],['BPS(원)','bps',0],['PER(배)','per',2],
+  ['PBR(배)','pbr',2],['ROE(%)','roe',2],['DPS(원)','dps',0],['배당수익률(%)','dvr',2]];
+function qtValRender(s,W){
+  const el=document.getElementById('qtVal');if(!el)return;
+  const R=(W.y||[]);
+  if(!R.length){el.innerHTML='';return;}
+  el.innerHTML=`
+  <div class="qcard">
+    <div class="qch"><h3>밸류에이션</h3><span class="meta">연간 · (A)=확정 (E)=컨센서스</span></div>
+    <div class="scrollx"><table class="ftab val"><thead><tr><th class="lb">재무연월</th>
+      ${VAL_COLS.map(([n])=>`<th>${n}</th>`).join('')}</tr></thead><tbody>
+      ${R.map(r=>`<tr class="${r.e?'est':''}"><td class="lb">${r.p.slice(2,4)}${r.e?'(E)':'(A)'}<small>${r.p}</small></td>
+        ${VAL_COLS.map(([,k,d])=>nc(r[k],d)).join('')}</tr>`).join('')}
+    </tbody></table></div>
+    <div class="qfoot">${QT_SRC} · PER/PBR 음수는 원천에서 N/A 처리됩니다 · EV/EBITDA는 원천 미제공으로 DPS·배당수익률로 대체했습니다.</div>
+  </div>`;
+}
+
+/* ── 수급 오실레이터 ── */
+function qtOscRender(s,pack){
+  const el=document.getElementById('qtOscSec');if(!el)return;
+  const O=(pack&&pack.o)||[];
+  if(O.length<20){el.innerHTML='';return;}
+  const last=O[O.length-1];
+  el.innerHTML=`
+  <div class="qcard">
+    <div class="qch"><h3>수급 오실레이터</h3>
+      <span class="meta">(기관계+외국인총합) 5일누적 순매수 ÷ 시가총액 · MACD(12,26,9) 히스토그램</span></div>
+    <canvas id="qtOscCv"></canvas>
+    <div class="clegend" style="margin-top:10px">
+      <i style="background:var(--sub)"></i>시가총액 <b style="margin:0 12px 0 4px">${nf(last[2],1)}조</b>
+      <i style="background:var(--accent)"></i>수급 오실레이터
+      <b class="${last[1]>=0?'up':'down'}" style="margin-left:4px">${last[1]>=0?'+':''}${(last[1]/100).toFixed(4)}%</b></div>
+    <div class="qfoot">(기관+외국인) 5일누적 순매수를 시가총액으로 나눈 값에 표준 MACD(12,26,9)를 적용한 히스토그램(MACD − 시그널)입니다.
+      순매수 <b>규모</b>가 아니라 수급 <b>모멘텀</b>이라 — 0 위면 최근 수급이 중기 평균보다 강해지는 중, 0 아래면 약해지는 중입니다.
+      시총으로 나눠 대형주·중소형주를 같은 잣대로 봅니다. KRX 기준 · 20${O[0][0].slice(0,2)}-${O[0][0].slice(2,4)}-${O[0][0].slice(4)} ~ 20${last[0].slice(0,2)}-${last[0].slice(2,4)}-${last[0].slice(4)}.</div>
+  </div>`;
+  qtOscChart(document.getElementById('qtOscCv'),O);
+}
+function qtOscChart(cv,O){
+  if(!cv)return;
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||800,H=230;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';cv.style.width='100%';
+  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim();
+  const LN=g('--line2')||'#eef0f3',FT=g('--faint')||'#8b95a1',AC=g('--accent')||'#3168f0',SB=g('--sub')||'#4e5968';
+  const P={l:56,r:62,t:12,b:24},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  const caps=O.map(r=>r[2]),oscs=O.map(r=>r[1]);
+  let cmx=Math.max(...caps),cmn=Math.min(...caps);
+  const cp=(cmx-cmn)*0.12||1;cmx+=cp;cmn-=cp;
+  let omx=Math.max(...oscs.map(Math.abs))||1;omx*=1.15;
+  const cy=v=>P.t+IH*((cmx-v)/((cmx-cmn)||1));
+  const oy=v=>P.t+IH/2-(v/omx)*(IH/2);
+  const px=i=>P.l+IW*(O.length>1?i/(O.length-1):0.5);
+  x.font='10px "Pretendard Variable",Pretendard,sans-serif';
+  /* 좌: 시가총액 */
+  x.textAlign='right';
+  for(let i=0;i<=3;i++){const v=cmn+(cmx-cmn)*i/3,y=cy(v);
+    x.strokeStyle=LN;x.lineWidth=1;x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();
+    x.fillStyle=FT;x.fillText(nf(v,0),P.l-8,y+3.5);}
+  /* 우: 오실레이터 */
+  x.textAlign='left';
+  [omx,0,-omx].forEach(v=>{const y=oy(v);
+    if(v===0){x.strokeStyle=g('--line')||'#e7eaee';x.lineWidth=1;x.beginPath();
+      x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();}
+    x.fillStyle=FT;x.fillText((v>=0?'+':'')+(v/100).toFixed(3)+'%',W-P.r+8,y+3.5);});
+  const draw=(vals,fy,color,w)=>{x.strokeStyle=color;x.lineWidth=w;x.beginPath();
+    vals.forEach((v,i)=>i?x.lineTo(px(i),fy(v)):x.moveTo(px(i),fy(v)));x.stroke();};
+  draw(caps,cy,SB,1.4);
+  draw(oscs,oy,AC,1.7);
+  x.fillStyle=FT;x.textAlign='center';
+  const step=Math.max(1,Math.ceil(O.length/7));
+  O.forEach((r,i)=>{if(i%step===0||i===O.length-1)
+    x.fillText('20'+r[0].slice(0,2)+'-'+r[0].slice(2,4),px(i),H-6);});
+}
+
+/* ── 수급 (투자자 13주체) ── */
+function qtFlowRender(s,pack){
+  const el=document.getElementById('qtFlowSec');if(!el)return;
+  const flows=(pack&&pack.f)||[];
+  if(!flows.length){el.innerHTML='';return;}
+  const rows=flows.slice(-qtFlowN);
+  const detail=rows[0].length>4;
+  const sels=QT_INV.filter(o=>qtFlowSel.has(o.k)&&(detail||o.i<=3));
+  const shown=detail?QT_INV:QT_INV.filter(o=>o.i<=3);
+  const tot=i=>rows.reduce((a,r)=>a+(r[i]||0),0);
+  el.innerHTML=`
+  <div class="qcard">
+    <div class="qch"><h3>투자자별 순매수</h3><span class="meta">억원 · 키움 ka10059 (KRX 잠정)</span>
       <div class="rt">
         <div class="rngwrap" id="qtFlowMode">
           <button class="rng${qtFlowMode==='bar'?' on':''}" data-fm="bar">일별</button>
           <button class="rng${qtFlowMode==='cum'?' on':''}" data-fm="cum">누적</button></div>
         <div class="rngwrap" id="qtFlowBar">
           <button class="rng${qtFlowN===20?' on':''}" data-fn="20">20일</button>
-          <button class="rng${qtFlowN===60?' on':''}" data-fn="60">60일</button></div>
-      </div>
+          <button class="rng${qtFlowN===60?' on':''}" data-fn="60">60일</button></div></div>
     </div>
     <div class="subchips" id="qtInvChips" style="margin-bottom:14px">
-      ${QT_INV.map(o=>`<button class="subchip${qtFlowSel.has(o.k)?' on':''}" data-inv="${o.k}" style="--c:${o.c}"><i class="dot"></i>${o.n}</button>`).join('')}
-    </div>
+      ${shown.map(o=>`<button class="subchip${qtFlowSel.has(o.k)?' on':''}" data-inv="${o.k}" style="--c:${o.c}"><i class="dot"></i>${o.n}</button>`).join('')}</div>
     <canvas id="qtFlowCv"></canvas>
+    <div class="qtiles" style="margin-top:16px">
+      ${shown.map(o=>{const v=tot(o.i);
+        return `<div class="qtile" style="--c:${o.c}"><div class="tl"><i></i>${o.n}</div>
+          <div class="tv ${v>=0?'up':'down'}">${nf(Math.round(v),0)}</div>
+          <div class="ts">${qtFlowN}일 누적 (억)</div></div>`;}).join('')}
+    </div>
+    <div class="scrollx" style="margin-top:16px"><table class="ftab"><thead><tr>
+      <th class="lb">일자</th><th>종가</th>${sels.map(o=>`<th style="color:${o.c}">${o.n}</th>`).join('')}</tr></thead><tbody>
+      ${rows.slice().reverse().map(r=>{
+        const cl=(pack.c||[]).find(c=>c[0]===r[0]);
+        return `<tr><td class="lb">${'20'+r[0].slice(0,2)+'.'+r[0].slice(2,4)+'.'+r[0].slice(4)}</td>
+          <td>${cl?nf(cl[4],0):'—'}</td>${sels.map(o=>nc(r[o.i],0)).join('')}</tr>`;}).join('')}
+      <tr class="hl"><td class="lb">${qtFlowN}일 합계</td><td>—</td>
+        ${sels.map(o=>nc(Math.round(tot(o.i)),0)).join('')}</tr>
+    </tbody></table></div>
     <div class="qfoot">주체를 눌러 켜고 끕니다 · 기관계 = 금융투자+투신+연기금+사모+보험+은행+기타금융 합계 · 외국인 총합 = 외국인 + 기타외국인</div>
-  </div>
-  <div class="qtiles" id="qtFlowSum" style="margin-top:14px"></div>
-  <div class="qcard" style="margin-top:14px">
-    <div class="qch"><h3>일자별 순매수</h3><span class="meta">억원 · 최근 ${qtFlowN}일 · 음수는 (괄호)</span></div>
-    <div class="scrollx" id="qtFlowTbl"></div>
   </div>`;
-  const rerender=()=>qtViewFlow(s,view);
-  view.querySelector('#qtFlowBar').onclick=e=>{const b=e.target.closest('[data-fn]');if(b){qtFlowN=+b.dataset.fn;rerender();}};
-  view.querySelector('#qtFlowMode').onclick=e=>{const b=e.target.closest('[data-fm]');if(b){qtFlowMode=b.dataset.fm;rerender();}};
-  view.querySelector('#qtInvChips').onclick=e=>{const b=e.target.closest('[data-inv]');if(!b)return;
+  const re=()=>qtFlowRender(s,pack);
+  el.querySelector('#qtFlowBar').onclick=e=>{const b=e.target.closest('[data-fn]');if(b){qtFlowN=+b.dataset.fn;re();}};
+  el.querySelector('#qtFlowMode').onclick=e=>{const b=e.target.closest('[data-fm]');if(b){qtFlowMode=b.dataset.fm;re();}};
+  el.querySelector('#qtInvChips').onclick=e=>{const b=e.target.closest('[data-inv]');if(!b)return;
     const k=b.dataset.inv;
     if(qtFlowSel.has(k)){if(qtFlowSel.size>1)qtFlowSel.delete(k);}else qtFlowSel.add(k);
-    rerender();};
-
-  const pack=await qtCandles(s.c);
-  if(qtSel!==s.c||qtTab!=='flow')return;
-  const flows=(pack&&pack.f)||[];
-  const cv=document.getElementById('qtFlowCv');
-  if(!flows.length){if(cv)cv.outerHTML='<div class="empty"><b>수급 데이터가 아직 없습니다</b></div>';return;}
-  const rows=flows.slice(-qtFlowN);
-  const detail=rows.length&&rows[0].length>4;   /* 구버전 샤드(4열) 호환 */
-  const use=detail?sels:sels.filter(o=>o.i<=3);
-  qtFlowChart(cv,rows,use,qtFlowMode);
-
-  /* 주체별 누적 타일 (전 주체) */
-  const tot=i=>rows.reduce((a,r)=>a+(r[i]||0),0);
-  const shown=detail?QT_INV:QT_INV.filter(o=>o.i<=3);
-  document.getElementById('qtFlowSum').innerHTML=shown.map(o=>{
-    const v=tot(o.i);
-    return `<div class="qtile" style="--c:${o.c}">
-      <div class="tl"><i></i>${o.n}</div>
-      <div class="tv ${v>=0?'up':'down'}">${nf(Math.round(v),0)}</div>
-      <div class="ts">${qtFlowN}일 누적 (억)</div></div>`;}).join('');
-
-  /* 일자별 표 (선택 주체, 최신순) */
-  const tb=rows.slice().reverse();
-  document.getElementById('qtFlowTbl').innerHTML=`<table class="ftab"><thead><tr>
-    <th class="lb">일자</th><th>종가</th>${use.map(o=>`<th style="color:${o.c}">${o.n}</th>`).join('')}</tr></thead><tbody>
-    ${tb.map((r,j)=>{
-      const cl=(pack.c||[]).find(c=>c[0]===r[0]);
-      return `<tr><td class="lb">${'20'+r[0].slice(0,2)+'.'+r[0].slice(2,4)+'.'+r[0].slice(4)}</td>`
-        +`<td>${cl?nf(cl[4],0):'—'}</td>`
-        +use.map(o=>nc(r[o.i],0)).join('')+`</tr>`;}).join('')}
-    <tr class="hl"><td class="lb">${qtFlowN}일 합계</td><td>—</td>
-      ${use.map(o=>nc(Math.round(tot(o.i)),0)).join('')}</tr>
-    </tbody></table>`;
+    re();};
+  qtFlowChart(document.getElementById('qtFlowCv'),rows,sels,qtFlowMode);
 }
+
+/* ── 리포트 · 바로가기 ── */
+function qtLinksRender(s){
+  const el=document.getElementById('qtLinks');if(!el)return;
+  el.innerHTML=`
+  <div class="qgrid two">
+    <div class="qcard">
+      <div class="qch"><h3>최근 리포트</h3><span class="meta">네이버 리서치</span></div>
+      ${(s.res&&s.res.length)?s.res.map(r=>`<div class="qrep">
+        <b>${esc(r.t||'')}</b><div class="qsub2">${esc(r.b||'')} · ${esc(r.d||'')}</div></div>`).join('')
+      :'<div class="qsub2">최근 리포트 없음</div>'}
+    </div>
+    <div class="qcard">
+      <div class="qch"><h3>바로가기</h3></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${[['네이버증권 종목홈',`https://m.stock.naver.com/domestic/stock/${s.c}/total`],
+           ['종목분석(FnGuide)',`https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd=${s.c}`],
+           ['네이버 뉴스',`https://search.naver.com/search.naver?where=news&query=${encodeURIComponent(s.n)}`],
+           ['DART 공시',`https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(s.n)}`],
+           ['네이버 리서치',`https://m.stock.naver.com/domestic/stock/${s.c}/research`]].map(([t,u])=>
+          `<a class="qpill" href="${u}" target="_blank" rel="noopener">${t} →</a>`).join('')}
+      </div>
+      <div class="qfoot">종목별 실시간 뉴스·공시 수집은 정적 사이트 특성상 미제공 — 위 링크로 원문 확인</div>
+    </div>
+  </div>`;
+}
+
 /* 일별 그룹 막대 / 누적 라인 */
 function qtFlowChart(cv,rows,sels,mode){
   if(!cv||!sels.length)return;
@@ -2153,159 +2451,7 @@ function qtFlowChart(cv,rows,sels,mode){
   rows.forEach((r,i)=>{if(i%step===0||i===rows.length-1)
     x.fillText(r[0].slice(2,4)+'.'+r[0].slice(4),P.l+gw*i+gw/2,H-6);});
 }
-/* ── 뷰 4: 재무 (연간 / 분기) ── */
-const FIN_ROWS=[
-  ['매출액','억원','rev',0,1],['영업이익','억원','op',0,1],['영업이익률','%','opm',1,0],
-  ['당기순이익','억원','npall',0,1],['지배주주순이익','억원','ni',0,1],['순이익률','%','npm',1,0],
-  ['EPS','원','eps',0,1],['BPS','원','bps',0,0],
-  ['PER','배','per',2,0],['PBR','배','pbr',2,0],['ROE','%','roe',2,0],
-  ['부채비율','%','debt',1,0],['유보율','%','resv',1,0],['주당배당금','원','dps',0,0]];
-/* 라벨: 연간 2025 / 2026E, 분기 2Q26 / 3Q26E */
-function finLabel(f,freq){
-  if(freq==='y')return f.y+(f.c?'E':'');
-  const y=f.y.slice(2,4),m=f.y.slice(4,6);
-  const q={'03':'1Q','06':'2Q','09':'3Q','12':'4Q'}[m];
-  return (q?q+y:y+'.'+m)+(f.c?'E':'');
-}
-function qtFinRender(view,F,freq){
-  const box=view.querySelector('#qtFinBox');if(!box)return;
-  if(!F||!F.length){box.innerHTML='<div class="empty"><b>'+(freq==='q'?'분기':'연간')+' 재무 데이터가 없습니다</b>네이버 종목분석에 공시된 기간만 표시됩니다.</div>';return;}
-  const lag=freq==='q'?4:1;                       /* 전년 동기 대비 */
-  const yoy=(i,key)=>i>=lag?grw(F[i][key],F[i-lag][key]):null;
-  box.innerHTML=`
-  <div class="qcard" style="margin-bottom:14px">
-    <div class="qch"><h3>실적 추이</h3>
-      <span class="meta">${freq==='y'?'연간 · 매출액·영업이익(억원) · 영업이익률(%)':'분기 · 매출액·영업이익(억원) · 영업이익률(%)'} · E=컨센서스</span></div>
-    <canvas id="qtFinCv"></canvas>
-    <div class="clegend" style="margin-top:10px">
-      <i style="background:var(--accent-line)"></i>매출액&nbsp;&nbsp;
-      <i style="background:var(--accent)"></i>영업이익&nbsp;&nbsp;
-      <i style="background:#37b98a"></i>영업이익률(우)&nbsp;&nbsp;
-      <span style="color:var(--faint)">점선 = 컨센서스 구간</span></div>
-  </div>
-  <div class="qcard">
-    <div class="qch"><h3>Financial Data</h3>
-      <span class="meta">${freq==='y'?'연간':'분기'} · 단위 표기 · ${lag===4?'전년 동기':'전년'} 대비 증감률 · 음수는 (괄호)</span></div>
-    <div class="scrollx"><table class="ftab"><thead><tr><th class="lb"></th>
-    ${F.map(f=>`<th class="${f.c?'e':''}">${finLabel(f,freq)}</th>`).join('')}</tr></thead><tbody>
-    ${FIN_ROWS.map(([lbl,unit,key,dec,showG])=>{
-      if(!F.some(f=>f[key]!=null))return '';
-      return `<tr${key==='rev'||key==='op'?' class="hl"':''}><td class="lb">${lbl}<small>${unit}</small></td>`
-      +F.map((f,i)=>{
-        const g=showG?yoy(i,key):null;
-        const neg=(typeof f[key]==='number'&&f[key]<0);
-        return `<td class="${[f.c?'e':'',neg?'neg':''].filter(Boolean).join(' ')}">${nf(f[key],dec)}${g!=null?pctTag(g):''}</td>`;
-      }).join('')+`</tr>`;}).join('')}
-    </tbody></table></div>
-    <div class="qfoot">네이버 종목분석(FnGuide) 연결 기준 · E = 컨센서스 추정 · PER/PBR은 해당 기간 종가 기준</div>
-  </div>`;
-  qtFinChart(document.getElementById('qtFinCv'),F,freq);
-}
-/* 매출·영업이익 막대 + 영업이익률 라인 콤보 */
-function qtFinChart(cv,F,freq){
-  if(!cv)return;
-  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||760,H=240;
-  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';cv.style.width='100%';
-  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
-  const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim();
-  const AC=g('--accent')||'#3168f0',LN=g('--line2')||'#eef0f3',FT=g('--faint')||'#8b95a1',TX=g('--text')||'#191f28';
-  const P={l:8,r:8,t:26,b:34},IW=W-P.l-P.r,IH=H-P.t-P.b;
-  const vals=F.flatMap(f=>[f.rev,f.op].filter(v=>v!=null));
-  if(!vals.length)return;
-  const mx=Math.max(...vals,0),mn=Math.min(...vals,0);
-  const span=(mx-mn)||1, zero=P.t+IH*(mx/span);
-  const sc=v=>IH*(v/span);
-  x.font='10.5px "Pretendard Variable",Pretendard,sans-serif';
-  /* 0선 */
-  x.strokeStyle=LN;x.lineWidth=1;x.beginPath();x.moveTo(P.l,zero);x.lineTo(W-P.r,zero);x.stroke();
-  const gw=IW/F.length, bw=Math.min(46,gw*0.30);
-  const fmtA=v=>v==null?'—':(Math.abs(v)>=1e4?(v/1e4).toFixed(1)+'조':nf(Math.round(v),0));
-  /* 영업이익률 라인 좌표 */
-  const opmPts=[];
-  F.forEach((f,i)=>{
-    const cx=P.l+gw*i+gw/2;
-    const draw=(val,color,off,dash)=>{
-      if(val==null)return;
-      const h=sc(val), y=val>=0?zero-h:zero, hh=Math.max(1.5,Math.abs(h));
-      x.save();
-      if(dash){x.setLineDash([3,3]);x.strokeStyle=color;x.lineWidth=1.2;
-        x.fillStyle=color.replace(/[\d.]+\)$/,'.14)');
-        x.fillRect(cx+off-bw/2,y,bw,hh);x.strokeRect(cx+off-bw/2,y,bw,hh);}
-      else{x.fillStyle=color;x.fillRect(cx+off-bw/2,y,bw,hh);}
-      x.restore();};
-    const softC=g('--accent-line')||'rgba(49,104,240,.28)';
-    draw(f.rev,f.c?'rgba(49,104,240,.55)':softC,-bw*0.55,!!f.c);
-    draw(f.op, f.c?'rgba(49,104,240,.85)':AC,      bw*0.55,!!f.c);
-    /* 매출 값 라벨 */
-    let revY=null;
-    if(f.rev!=null){revY=Math.max(12,(f.rev>=0?zero-sc(f.rev):zero)-7);
-      x.fillStyle=FT;x.textAlign='center';x.fillText(fmtA(f.rev),cx,revY);}
-    /* 기간 라벨 */
-    x.fillStyle=f.c?AC:g('--sub')||'#4e5968';x.textAlign='center';
-    x.font=(f.c?'700 ':'')+'10.5px "Pretendard Variable",Pretendard,sans-serif';
-    x.fillText(finLabel(f,freq),cx,H-14);
-    x.font='10.5px "Pretendard Variable",Pretendard,sans-serif';
-    if(f.opm!=null)opmPts.push([cx,f.opm,revY]);
-  });
-  /* 영업이익률 라인 (우측 스케일) */
-  if(opmPts.length>1){
-    const os=opmPts.map(p=>p[1]),omx=Math.max(...os),omn=Math.min(...os,0);
-    const osp=(omx-omn)||1;
-    const oy=v=>P.t+6+(IH-16)*(1-(v-omn)/osp);
-    x.strokeStyle='#37b98a';x.lineWidth=1.8;x.beginPath();
-    opmPts.forEach(([cx,v],i)=>i?x.lineTo(cx,oy(v)):x.moveTo(cx,oy(v)));x.stroke();
-    x.fillStyle='#37b98a';
-    opmPts.forEach(([cx,v])=>{x.beginPath();x.arc(cx,oy(v),2.6,0,7);x.fill();});
-    x.textAlign='center';x.font='600 10px "Pretendard Variable",Pretendard,sans-serif';
-    opmPts.forEach(([cx,v,revY])=>{           /* 매출 라벨과 겹치면 점 아래로 */
-      const y0=oy(v);
-      const up=(revY==null||Math.abs((y0-9)-revY)>13);
-      x.fillText(v.toFixed(1)+'%',cx,up?y0-9:y0+15);});
-  }
-}
-async function qtViewFin(s,view){
-  const e=(QTX&&QTX.s||{})[s.c];
-  view.innerHTML=`
-  <div class="qch" style="margin:0 2px 2px">
-    <h3 style="font-size:15px">실적 · 재무</h3>
-    <span class="meta">네이버 종목분석(FnGuide) · 연결 기준</span>
-    <div class="rt"><div class="rngwrap" id="qtFinFreq">
-      <button class="rng${qtFinFreq==='y'?' on':''}" data-fq="y">연간</button>
-      <button class="rng${qtFinFreq==='q'?' on':''}" data-fq="q">분기</button></div></div>
-  </div>
-  <div id="qtFinBox"><div class="empty"><b>재무 데이터 불러오는 중…</b></div></div>`;
-  view.querySelector('#qtFinFreq').onclick=ev=>{const b=ev.target.closest('[data-fq]');if(!b)return;
-    qtFinFreq=b.dataset.fq;qtViewFin(s,view);};
-  if(qtFinFreq==='y'){
-    qtFinRender(view,(e&&e.fin)||[],'y');
-  }else{
-    const pack=await qtCandles(s.c);
-    if(qtSel!==s.c||qtTab!=='fin'||qtFinFreq!=='q')return;
-    qtFinRender(view,(pack&&pack.q)||[],'q');
-  }
-}
-/* ── 뷰 5: 리포트·링크 ── */
-function qtViewNews(s,view){
-  view.innerHTML=`
-  <div class="qcard">
-    <div class="qch"><h3>최근 리포트</h3><span class="meta">네이버 리서치</span></div>
-    ${(s.res&&s.res.length)?s.res.map(r=>`<div style="font-size:12.5px;padding:11px 0;border-bottom:1px solid var(--line2)">
-      <span style="font-size:11px;font-weight:700;color:var(--accent);background:rgba(77,125,245,.12);border-radius:5px;padding:2px 7px;margin-right:7px">리포트</span>
-      <b>${esc(r.t||'')}</b><div style="font-size:11px;color:var(--dim2);margin-top:4px">${esc(r.b||'')} · ${esc(r.d||'')}</div></div>`).join('')
-    :'<div style="font-size:12px;color:var(--dim2)">최근 리포트 없음</div>'}
-  </div>
-  <div class="qcard">
-    <div class="qch"><h3>바로가기</h3></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      ${[['네이버증권 종목홈',`https://m.stock.naver.com/domestic/stock/${s.c}/total`],
-         ['네이버 뉴스 검색',`https://search.naver.com/search.naver?where=news&query=${encodeURIComponent(s.n)}`],
-         ['DART 공시',`https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(s.n)}`],
-         ['네이버 리서치',`https://m.stock.naver.com/domestic/stock/${s.c}/research`]].map(([t,u])=>
-        `<a href="${u}" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 14px;text-decoration:none">${t} →</a>`).join('')}
-    </div>
-    <div class="qfoot">종목별 실시간 뉴스·공시 수집은 정적 사이트 특성상 미제공 — 위 링크로 원문 확인</div>
-  </div>`;
-}
+
 /* ── TradingView Lightweight Charts (KRX는 TV 호스팅 위젯 임베드 불가 → OSS 라이브러리 + 자체 데이터) ── */
 let lwReady=null,lwChart=null,lwVol=null,QTC={};
 function needLW(){
