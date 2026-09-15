@@ -263,6 +263,15 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
 #qtVol{height:112px}
 @media(max-width:700px){#qtLw{height:300px}#qtVol{height:84px}.lwlg{font-size:10.5px;white-space:normal}
   .ftab th,.ftab td{padding:7px 9px}}
+@media(max-width:900px){
+  #qtSubNav{gap:6px;padding-bottom:4px}
+  .qtnav{white-space:nowrap;flex:none;padding:9px 13px}
+  #qtHeadStats{width:100%;grid-template-columns:repeat(auto-fit,minmax(78px,1fr))!important;gap:12px 10px!important;margin-top:4px}
+  .qtiles{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
+  .qcard{padding:16px 14px;border-radius:16px}
+  .scrollx{margin:0 -14px;padding:0 14px}
+  .ftab .lb{padding-left:0}
+}
 
 /* ───────── 韓/美 시황 ───────── */
 .mwtxt{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.74;color:var(--text)}
@@ -1099,6 +1108,7 @@ function lineChart(cv,cfg){
   (cfg.hlines||[]).forEach(l=>{lo=Math.min(lo,l.y);hi=Math.max(hi,l.y)});
   if(!isFinite(lo)){return}
   const pad=(hi-lo)*0.07||1;lo-=pad;hi+=pad;
+  if(cfg.ymin!=null&&lo<cfg.ymin)lo=cfg.ymin;
   const n=cfg.labels.length;
   const px=i=>P.l+IW*(n>1?i/(n-1):0.5), py=v=>P.t+IH*(1-(v-lo)/(hi-lo));
   const yfmt=cfg.yfmt||(v=>v.toLocaleString('ko-KR'));
@@ -1900,7 +1910,7 @@ function qtRender(){
           <span style="font-size:12px;color:var(--faint)">원 · 일별 종가 기준</span>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(5,auto);gap:11px 30px;font-size:12.5px;font-variant-numeric:tabular-nums">
+      <div id="qtHeadStats" style="display:grid;grid-template-columns:repeat(5,auto);gap:11px 30px;font-size:12.5px;font-variant-numeric:tabular-nums">
         ${[['시가총액',qtCap(s.v)],['PER',qtNum(s.per)+'배'],['PBR',qtNum(s.pbr)+'배'],['배당수익률',qtNum(s.dvr)+'%'],['거래대금',s.tv==null?'—':(s.tv>=10000?(s.tv/10000).toFixed(2)+'조':nf(Math.round(s.tv),0)+'억')]].map(([l,v])=>
           `<div><div style="color:var(--faint);margin-bottom:5px;font-size:11.5px">${l}</div><div style="font-weight:700;font-size:13.5px">${v}</div></div>`).join('')}
       </div>
@@ -2514,8 +2524,8 @@ function qtBandDraw(cv,lg,months,fin,key){
   const series=levels.map(lv=>({color:grey,w:1,
     data:months.map(([ym])=>{const v=val(ym);return v>0?v*lv:null;})}));
   series.push({color:'#3168f0',w:2.2,data:months.map(m=>m[1])});
-  lineChart(cv,{labels:months.map(m=>m[0]),h:230,pl:52,series,
-    yfmt:v=>v>=1e4?(v/1e4).toFixed(1)+'만':v.toFixed(0),
+  lineChart(cv,{labels:months.map(m=>m[0]),h:230,pl:56,series,ymin:0,
+    yfmt:v=>v>=1e4?(v/1e4).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만':Math.round(v).toLocaleString('ko-KR'),
     xfmt:ym=>"'"+ym.slice(0,2)+'.'+ym.slice(2)});
   lg.innerHTML=`<i style="background:#3168f0"></i>주가&nbsp;&nbsp;<span style="color:var(--dim2)">밴드 ${levels.map(l=>l.toFixed(1)+'x').join(' / ')} (${key==='eps'?'PER':'PBR'} 5년 최저~최고)</span>`;
   return {avg:ratios.reduce((a,b)=>a+b,0)/ratios.length,cur:ratios[ratios.length-1]};
