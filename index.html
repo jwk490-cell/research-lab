@@ -385,6 +385,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="semicand">반도체 편입 후보 <small>9/11</small></button>
     <button class="navitem" data-tab="align">정배열 트래커</button>
     <button class="navitem" data-tab="macd">MACD 트래커</button>
+    <button class="navitem" data-tab="buyback">자사주 매수 트래커</button>
     <div class="navgroup">비교 · 밸류</div>
     <button class="navitem" data-tab="caps">시총비교</button>
     <button class="navitem" data-tab="basket7">업종 시총비중</button>
@@ -478,6 +479,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="semicand"><h3>반도체 편입 후보 <span class="tag">KRX 반도체 9월 정기변경</span></h3><p>현행 35종 밖 소부장·기판 25종을 GICS → 중대형 TMI 규모 → 거래대금 90% 관문으로 판정, 편입 시 예상 비중·매수액</p></button>
           <button class="card" data-go="align"><h3>정배열 트래커 <span class="tag">韓 종목 · 韓 ETF · 美 ETF</span></h3><p>완전(현재가&gt;4주&gt;13주&gt;26주&gt;52주)·이평 정배열 유지일 랭킹 — 수급150 종목 / 국내 ETF 46종 / 미국 ETF 96종 3판 통합</p></button>
           <button class="card" data-go="macd"><h3>MACD 트래커 <span class="tag">韓 종목 · 12·26·9</span></h3><p>수급150 종목 일봉 MACD 국면 4분면(강세·회복·조정·약세) — 골든/데드크로스 유지일, 0선 돌파, 히스토그램 바닥 반전 선행 시그널</p></button>
+          <button class="card" data-go="buyback"><h3>자사주 매수 트래커 <span class="tag">매 거래일 저녁 갱신</span></h3><p>전 상장사 자기주식 취득 신청·체결 일별 추적 — 내일 매수 신청 랭킹, 당일 체결률·단가·금액, 진행률·예상 종료일, 거래량 대비 매수 비중</p></button>
         </div>
       </section>
 
@@ -655,6 +657,10 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-macd">
       <iframe data-src="macd.html" title="MACD 트래커"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-buyback">
+      <iframe data-src="buyback.html" title="자사주 매수 트래커"></iframe>
     </section>
 
     <section class="panel embed" id="tab-semietf">
@@ -2192,7 +2198,7 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
-  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,
+  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,
                rrgsec:1,rrgstk:1,leaders:1,meridian:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?'?v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
@@ -2440,7 +2446,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
   supply:{m:'a',eta:'~7분'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
-  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'},
+  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
   export:{m:'a',eta:'~1분'}, corpexport:{m:'a',eta:'~3분'},

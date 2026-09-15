@@ -1,0 +1,230 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>자사주 매수 트래커</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#21262d;--txt:#e6edf3;--sub:#8b949e;--faint:#6e7681;
+--red:#f85149;--org:#ffa657;--grn:#3fb950;--blu:#58a6ff;--pur:#bc8cff;--yel:#d29922;--teal:#39d3bb}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;padding:18px 20px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:19px;margin-bottom:2px}
+.sub{color:var(--sub);font-size:12px;margin-bottom:12px}
+.sub b{color:var(--txt)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 13px;min-width:120px;cursor:pointer}
+.chip:hover{border-color:#3a4150}
+.chip.on{border-color:var(--blu);background:#13233a}
+.chip b{display:block;font-size:19px;line-height:1.15}
+.chip span{font-size:11px;color:var(--sub)}
+.chip small{display:block;font-size:10.5px;color:var(--faint)}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.bar input{background:var(--card);border:1px solid var(--line);color:var(--txt);font:inherit;font-size:13px;padding:7px 11px;border-radius:8px;width:220px}
+.filt{display:flex;gap:5px;flex-wrap:wrap}
+.filt button{background:var(--card);border:1px solid var(--line);color:var(--sub);font:inherit;font-size:11.5px;padding:4px 10px;border-radius:999px;cursor:pointer}
+.filt button.on{color:var(--txt);border-color:var(--blu);background:#13233a}
+.tw{overflow-x:auto;margin-bottom:22px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+th{color:var(--faint);font-weight:600;font-size:11px;text-align:right;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+th.l,td.l{text-align:left}
+th.s{color:var(--blu)}
+td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:#1c2129}
+tbody tr.sel td{background:#13233a}
+.nm{font-weight:600}
+.cd{color:var(--faint);font-size:11px;margin-left:5px}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:999px;border:1px solid var(--line);color:var(--sub);margin-left:4px;vertical-align:1px}
+.tag.T{color:var(--teal);border-color:#1f4d45}.tag.N{color:var(--org);border-color:#5a3d1a}.tag.S{color:var(--pur);border-color:#4a3566}
+.tag.Q{color:var(--sub)}
+.g{color:var(--grn)}.r{color:var(--red)}.o{color:var(--org)}.b{color:var(--blu)}.f{color:var(--faint)}
+.pbar{display:inline-block;width:70px;height:6px;background:#21262d;border-radius:3px;vertical-align:middle;margin-right:6px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--grn)}
+.vb{display:inline-block;width:40px;height:6px;background:#21262d;border-radius:3px;vertical-align:middle;margin-left:6px;overflow:hidden}
+.vb i{display:block;height:100%;background:var(--blu)}
+.none{color:var(--faint);font-size:12px;padding:14px}
+.note{color:var(--faint);font-size:11.5px;line-height:1.7;margin-top:18px;border-top:1px solid var(--line);padding-top:10px}
+.note b{color:var(--sub)}
+/* 상세 카드 */
+.det{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:20px}
+.det .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.det .hd h2{font-size:18px}
+.det .hd .meta{color:var(--sub);font-size:12px}
+.det .hd .x{margin-left:auto;background:none;border:1px solid var(--line);color:var(--sub);border-radius:8px;padding:4px 10px;cursor:pointer;font:inherit;font-size:12px}
+.prog{position:relative;height:30px;background:#0d1117;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.prog i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#1f6f4a,#3fb950)}
+.prog span{position:absolute;left:12px;top:0;line-height:30px;font-weight:700;font-size:13px}
+.prog em{position:absolute;right:12px;top:0;line-height:30px;font-style:normal;font-size:12px;color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px;margin-bottom:8px}
+.st{background:#0d1117;border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.st span{display:block;font-size:10.5px;color:var(--faint);margin-bottom:2px}
+.st b{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.st small{display:block;font-size:10.5px;color:var(--sub)}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.8;margin:8px 0 10px}
+.desc b{color:var(--txt)}
+.desc a{color:var(--blu);text-decoration:none}
+.det h3{font-size:12.5px;color:var(--sub);margin:12px 0 6px}
+.det table tbody tr{cursor:default}
+.det tr.next td{color:var(--org);background:#1f1a10}
+@media(max-width:640px){body{padding:12px 10px 40px}.chip{min-width:0;flex:1}.bar input{width:100%}}
+</style></head><body><div class="wrap">
+<h1>자사주 매수 트래커</h1>
+<div class="sub" id="hd">불러오는 중…</div>
+<div class="chips" id="chips"></div>
+<div id="detail"></div>
+<div class="bar"><input id="q" placeholder="종목명 · 코드 검색"><span class="filt" id="mf"></span><span class="filt" id="tf"></span></div>
+<div class="tw" id="list"></div>
+<div class="note" id="note"></div>
+</div>
+<script>
+const $=s=>document.getElementById(s);
+const fmt=n=>n==null?'<span class="f">–</span>':Number(n).toLocaleString('ko-KR');
+const uk=n=>{if(n==null)return '<span class="f">–</span>';const a=n/1e8;if(Math.abs(a)>=1e4)return (a/1e4).toFixed(2).replace(/\.?0+$/,'')+'조';if(Math.abs(a)>=100)return Math.round(a).toLocaleString()+'억';if(Math.abs(a)>=1)return a.toFixed(1).replace(/\.0$/,'')+'억';return Math.round(n/1e4).toLocaleString()+'만'};
+const dt=s=>s?s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6):'–';
+const md=s=>s?s.slice(4,6)+'-'+s.slice(6):'–';
+const DOW='일월화수목금토';
+const dow=s=>s?DOW[new Date(+s.slice(0,4),+s.slice(4,6)-1,+s.slice(6)).getDay()]:'';
+const tcls={'신탁':'T','직접':'N','스톡옵션':'S'};
+const tag=t=>`<span class="tag ${tcls[t]||'Q'}">${t||'?'}</span>`;
+let D=null,view='next',mk='all',ty='all',sel=null,sortK=null,sortD=-1;
+const VIEWS={next:'내일 매수 신청',today:'당일 체결',active:'진행 중 계약',ending:'종료 임박·완료'};
+
+function ratio(c){return c.vol_ratio}
+function rowsFor(){
+  let L=D.contracts.filter(c=>(mk==='all'||c.mkt===mk)&&(ty==='all'||c.type===ty));
+  const q=$('q').value.trim().toLowerCase();
+  if(q)L=L.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.code||'').includes(q));
+  if(view==='next')L=L.filter(c=>c.next);
+  else if(view==='today')L=L.filter(c=>c.today&&c.today[1]!=null);
+  else if(view==='active')L=L.filter(c=>c.status==='active');
+  else if(view==='ending')L=L.filter(c=>c.status==='ended'||(c.days_left<=10)||(c.pct!=null&&c.pct>=95));
+  return L;
+}
+const COLS={
+  next:[['name','종목','l'],['next_qty','신청수량(주)'],['next_amt','예상금액'],['avg_daily','최근 10일 평균'],['chg','평소 대비'],['vol_ratio','거래량 대비'],['pct','진행률'],['days_left','잔여 거래일']],
+  today:[['name','종목','l'],['t_appl','신청'],['t_exec','체결'],['t_rate','체결률'],['t_px','체결단가'],['t_amt','매수금액'],['vol_ratio','거래량 대비'],['pct','진행률']],
+  active:[['name','종목','l'],['plan','예정금액·수량'],['done','매입완료'],['pct','진행률'],['avg_daily','하루 평균'],['vol_ratio','거래량 대비'],['last_exec','최근 매수일'],['end','종료일'],['days_left','잔여'],['est_end','예상 종료']],
+  ending:[['name','종목','l'],['plan','예정금액·수량'],['done','매입완료'],['pct','진행률'],['avg_daily','하루 평균'],['last_exec','최근 매수일'],['end','종료일'],['days_left','잔여'],['status','상태']],
+};
+function val(c,k){
+  switch(k){
+    case 'name':return c.name;
+    case 'next_qty':return c.next?c.next[1]:null;
+    case 'next_amt':return c.next&&c.last_px?c.next[1]*c.last_px:null;
+    case 'chg':return c.next&&c.avg_daily?c.next[1]/c.avg_daily*100-100:null;
+    case 't_appl':return c.today?c.today[0]:null;
+    case 't_exec':return c.today?c.today[1]:null;
+    case 't_rate':return c.today&&c.today[0]?c.today[1]/c.today[0]*100:null;
+    case 't_px':return c.today&&c.today[1]&&c.today[2]?c.today[2]/c.today[1]:null;
+    case 't_amt':return c.today?c.today[2]:null;
+    case 'plan':return c.plan_amt||c.decl_qty||0;
+    case 'done':return c.cum_amt||0;
+    case 'status':return c.status;
+    default:return c[k];
+  }
+}
+function cell(c,k){
+  const v=val(c,k);
+  switch(k){
+    case 'name':return `<td class="l"><span class="nm">${c.name}</span><span class="cd">${c.code||'?'}</span>${tag(c.type)}<span class="tag Q">${c.mkt==='KOSPI'?'유가':c.mkt==='KOSDAQ'?'코스닥':'코넥스'}</span></td>`;
+    case 'next_qty':return `<td class="o">${fmt(v)}</td>`;
+    case 'next_amt':case 't_amt':return `<td>${uk(v)}</td>`;
+    case 'chg':return `<td class="${v==null?'':v>5?'r':v<-5?'b':''}">${v==null?'<span class="f">–</span>':(v>0?'+':'')+v.toFixed(0)+'%'}</td>`;
+    case 'vol_ratio':return `<td>${v==null?'<span class="f">–</span>':v.toFixed(1)+'%'}<span class="vb"><i style="width:${Math.min(100,v||0)*2}%"></i></span></td>`;
+    case 'pct':return `<td><span class="pbar"><i style="width:${Math.min(100,v||0)}%"></i></span>${v==null?'<span class="f">–</span>':v.toFixed(1)+'%'}</td>`;
+    case 't_rate':return `<td class="${v==null?'':v>=99.9?'g':v<50?'r':'o'}">${v==null?'<span class="f">–</span>':v.toFixed(1)+'%'}</td>`;
+    case 't_px':return `<td>${v==null?'<span class="f">–</span>':fmt(Math.round(v))}</td>`;
+    case 'plan':return `<td>${c.plan_amt?uk(c.plan_amt):'<span class="f">–</span>'}${c.decl_qty?`<small class="f"> · ${fmt(c.decl_qty)}주</small>`:''}</td>`;
+    case 'done':return `<td>${uk(c.cum_amt)}${c.cum_qty?`<small class="f"> · ${fmt(c.cum_qty)}주</small>`:''}</td>`;
+    case 'last_exec':case 'end':case 'est_end':return `<td class="${k==='est_end'&&v&&c.end&&v>c.end?'r':''}">${md(v)}</td>`;
+    case 'days_left':return `<td>${c.status==='active'?'D-'+v:'<span class="f">종료</span>'}</td>`;
+    case 'status':return `<td>${c.status==='active'?(c.pct>=95?'<span class="g">거의 완료</span>':'<span class="o">임박</span>'):'<span class="f">종료</span>'}</td>`;
+    default:return `<td>${fmt(v)}</td>`;
+  }
+}
+function renderList(){
+  const L=rowsFor();
+  const cols=COLS[view];
+  const sk=sortK&&cols.some(c=>c[0]===sortK)?sortK:cols[1][0];
+  L.sort((a,b)=>{const x=val(a,sk),y=val(b,sk);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return (x>y?1:x<y?-1:0)*sortD});
+  if(!L.length){$('list').innerHTML=`<div class="none">해당 조건의 종목이 없습니다.</div>`;return}
+  $('list').innerHTML=`<table><thead><tr>${cols.map(c=>`<th class="${c[2]||''} ${c[0]===sk?'s':''}" data-k="${c[0]}">${c[1]}${c[0]===sk?(sortD<0?' ▼':' ▲'):''}</th>`).join('')}</tr></thead><tbody>${
+    L.map(c=>`<tr data-id="${c.code}|${c.type}|${c.decl_dt}" class="${sel===c.code+'|'+c.type+'|'+c.decl_dt?'sel':''}">${cols.map(k=>cell(c,k[0])).join('')}</tr>`).join('')}</tbody></table>`;
+  $('list').querySelectorAll('th').forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortK===k)sortD=-sortD;else{sortK=k;sortD=-1}renderList()});
+  $('list').querySelectorAll('tbody tr').forEach(r=>r.onclick=()=>{sel=r.dataset.id;renderDetail();renderList();$('detail').scrollIntoView({behavior:'smooth',block:'start'})});
+}
+function renderDetail(){
+  const c=D.contracts.find(x=>x.code+'|'+x.type+'|'+x.decl_dt===sel);
+  if(!c){$('detail').innerHTML='';return}
+  const planTxt=c.plan_amt?uk(c.plan_amt):(c.decl_qty?fmt(c.decl_qty)+'주':'–');
+  const doneTxt=c.plan_amt?uk(c.cum_amt):(c.cum_qty!=null?fmt(c.cum_qty)+'주':'–');
+  const nextRow=c.next?`<tr class="next"><td class="l">${md(c.next[0])} (${dow(c.next[0])}) 예정</td><td>${fmt(c.next[1])}</td><td colspan="6" class="l f">매수 신청분 · 체결 전${c.last_px?` · 현재가 기준 ≈ ${uk(c.next[1]*c.last_px)}`:''}</td></tr>`:'';
+  const rows=[...c.rows].filter(r=>!(c.next&&r[0]===c.next[0]&&r[2]==null)).reverse().map(r=>{
+    const [d,ap,ex,amt,px,vol,cl]=r;const rate=ap&&ex!=null?ex/ap*100:null;const vr=vol&&ex?ex/vol*100:null;
+    return `<tr><td class="l">${md(d)} (${dow(d)})</td><td>${fmt(ap)}</td><td>${fmt(ex)}</td><td class="${rate==null?'':rate>=99.9?'g':rate<50?'r':'o'}">${rate==null?'<span class="f">–</span>':rate.toFixed(1)+'%'}</td><td>${fmt(px)}</td><td class="g">${amt?uk(amt):'<span class="f">–</span>'}</td><td>${fmt(vol)}</td><td class="${vr!=null&&vr>=10?'o':''}">${vr==null?'<span class="f">–</span>':vr.toFixed(1)+'%'}<span class="vb"><i style="width:${Math.min(100,(vr||0)*3)}%"></i></span></td></tr>`}).join('');
+  const dartUrl=c.rcept?`https://dart.fss.or.kr/dsaf001/main.do?rcpNo=${c.rcept}`:`https://dart.fss.or.kr/dsab007/main.do?textCrpNm=${encodeURIComponent(c.name)}`;
+  const kindUrl=`https://kind.krx.co.kr/corpgeneral/treasurystk.do?method=loadInitPage`;
+  $('detail').innerHTML=`<div class="det">
+  <div class="hd"><h2>${c.name}</h2><span class="meta">${c.code||''} · ${c.mkt==='KOSPI'?'유가증권':c.mkt==='KOSDAQ'?'코스닥':'코넥스'} ${tag(c.type)}${c.last_px?` · 현재가 ${fmt(c.last_px)}`:''}</span><span class="meta">${dt(c.start)} ~ ${dt(c.end)}${c.status==='active'?` (D-${c.days_left} 종료)`:' (종료)'}</span><button class="x" id="dclose">✕</button></div>
+  <div class="prog"><i style="width:${Math.min(100,c.pct||0)}%"></i><span>진행률 ${c.pct==null?'–':c.pct.toFixed(1)+'%'}</span><em>${doneTxt} / ${planTxt}</em></div>
+  <div class="grid">
+    <div class="st"><span>${c.type==='신탁'?'계약금액':'취득 예정금액'}</span><b>${planTxt}</b></div>
+    <div class="st"><span>매입 완료</span><b class="g">${doneTxt}</b></div>
+    <div class="st"><span>남은 ${c.plan_amt?'금액':'수량'}</span><b class="b">${c.plan_amt?uk(c.remain_amt):(c.remain_qty!=null?fmt(c.remain_qty)+'주':'–')}</b></div>
+    <div class="st"><span>신고수량</span><b>${c.decl_qty?fmt(c.decl_qty):'–'}</b>${c.type==='신탁'&&!c.decl_qty?'<small>신탁은 금액 기준</small>':''}</div>
+    <div class="st"><span>매입 수량</span><b>${fmt(c.cum_qty)}</b></div>
+    <div class="st"><span>남은 수량</span><b>${c.remain_qty!=null?fmt(c.remain_qty):(c.remain_amt&&c.last_px?'≈'+fmt(Math.round(c.remain_amt/c.last_px)):'–')}</b>${c.remain_qty==null&&c.remain_amt&&c.last_px?'<small>현재가 환산</small>':''}</div>
+    <div class="st"><span>평균 매입단가</span><b>${fmt(c.avg_px)}</b></div>
+    <div class="st"><span>1일 매수한도</span><b>${c.d1_limit?fmt(c.d1_limit):'–'}</b>${c.d1_limit?'<small>DART 신고 기준</small>':''}</div>
+  </div>
+  <div class="grid">
+    <div class="st"><span>최근 매수일</span><b>${dt(c.last_exec)}</b></div>
+    <div class="st"><span>하루 평균 매수</span><b>${fmt(c.avg_daily)}</b><small>최근 10회${c.avg_daily&&c.last_px?` ≈ ${uk(c.avg_daily*c.last_px)} / 일`:''}</small></div>
+    <div class="st"><span>다음 매수 신청</span><b class="o">${c.next?fmt(c.next[1]):'–'}</b><small>${c.next?dt(c.next[0])+' 예정':'신청 없음'}</small></div>
+    <div class="st"><span>평소 신청 대비</span><b class="${c.next&&c.avg_daily?(c.next[1]>c.avg_daily*1.05?'r':c.next[1]<c.avg_daily*0.95?'b':''):''}">${c.next&&c.avg_daily?((c.next[1]/c.avg_daily*100-100)>0?'+':'')+(c.next[1]/c.avg_daily*100-100).toFixed(0)+'%':'–'}</b><small>평소 ${fmt(c.avg_daily)}주</small></div>
+    <div class="st"><span>예상 종료일</span><b class="${c.est_end&&c.end&&c.est_end>c.end?'r':''}">${c.est_end?md(c.est_end):'–'}</b><small>${c.est_end&&c.end?(c.est_end>c.end?'계약 종료일 초과 페이스':'현 페이스 기준'):'체결 이력 부족'}</small></div>
+    <div class="st"><span>10일 평균 거래량</span><b>${fmt(c.vol10)}</b></div>
+    <div class="st"><span>거래량 대비 매수</span><b>${c.vol_ratio!=null?c.vol_ratio.toFixed(1)+'%':'–'}</b><small>일평균 ÷ 10일 평균거래량</small></div>
+    <div class="st"><span>체결 일수</span><b>${c.n_exec}</b><small>표시 구간 내</small></div>
+  </div>
+  <div class="desc">${c.purpose?`<b>${c.purpose}</b><br>`:''}${c.broker?`위탁/수탁기관 <b>${c.broker}</b><br>`:''}신고일 ${dt(c.decl_dt)} · 취득기간 ${dt(c.start)} ~ ${dt(c.end)}${c.held?` · 신고 전 보유 자사주 ${fmt(c.held)}주 (${c.held_rt||''}%)`:''}<br>
+  <a href="${dartUrl}" target="_blank" rel="noopener">DART 원문 ↗</a> · <a href="${kindUrl}" target="_blank" rel="noopener">KIND 자사주 취득/처분 ↗</a> · <a href="https://finance.naver.com/item/main.naver?code=${c.code}" target="_blank" rel="noopener">종목 시세 ↗</a></div>
+  <h3>일자별 매입현황 (${c.rows.length}거래일 · 최근순)</h3>
+  <div class="tw"><table><thead><tr><th class="l">매매일</th><th>신청수량</th><th>체결수량</th><th>체결률</th><th>체결단가</th><th>매수금액</th><th>거래량</th><th>거래량 대비</th></tr></thead><tbody>${nextRow}${rows||'<tr><td colspan="8" class="none">표시 구간 내 체결 이력 없음</td></tr>'}</tbody></table></div>
+  </div>`;
+  $('dclose').onclick=()=>{sel=null;renderDetail();renderList()};
+}
+function renderChips(){
+  const A=D.contracts.filter(c=>c.status==='active');
+  const N=D.contracts.filter(c=>c.next);const T=D.contracts.filter(c=>c.today&&c.today[1]!=null);
+  const tAmt=T.reduce((s,c)=>s+(c.today[2]||0),0);const nQty=N.reduce((s,c)=>s+(c.next[1]||0),0);
+  const nAmt=N.reduce((s,c)=>s+(c.last_px?c.next[1]*c.last_px:0),0);
+  const full=T.filter(c=>c.today[0]&&c.today[1]>=c.today[0]).length;
+  const E=D.contracts.filter(c=>c.status==='ended'||c.days_left<=10||(c.pct!=null&&c.pct>=95));
+  $('chips').innerHTML=[
+    ['next',N.length,'내일 매수 신청 종목',`${fmt(nQty)}주 · 현재가 ≈ ${uk(nAmt)}`],
+    ['today',T.length,'당일 체결 종목',`매수금액 ${uk(tAmt)} · 전량체결 ${full}`],
+    ['active',A.length,'진행 중 취득 계약',`직접 ${A.filter(c=>c.type==='직접').length} · 신탁 ${A.filter(c=>c.type==='신탁').length}`],
+    ['ending',E.length,'종료 임박·완료',`D-10 이내 · 진행률 95%↑ · 최근 종료`],
+  ].map(([k,n,l,s])=>`<div class="chip ${view===k?'on':''}" data-v="${k}"><b>${n}</b><span>${l}</span><small>${s}</small></div>`).join('');
+  $('chips').querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{view=ch.dataset.v;sortK=null;sortD=-1;renderChips();renderList()});
+}
+function renderFilters(){
+  $('mf').innerHTML=[['all','전체'],['KOSPI','유가'],['KOSDAQ','코스닥']].map(([k,l])=>`<button class="${mk===k?'on':''}" data-k="${k}">${l}</button>`).join('');
+  $('tf').innerHTML=[['all','직접+신탁'],['직접','직접'],['신탁','신탁'],['스톡옵션','스톡옵션']].map(([k,l])=>`<button class="${ty===k?'on':''}" data-k="${k}">${l}</button>`).join('');
+  $('mf').querySelectorAll('button').forEach(b=>b.onclick=()=>{mk=b.dataset.k;renderFilters();renderList()});
+  $('tf').querySelectorAll('button').forEach(b=>b.onclick=()=>{ty=b.dataset.k;renderFilters();renderList()});
+}
+fetch('data/buyback.json?v='+Math.floor(Date.now()/3e5)).then(r=>r.json()).then(d=>{
+  D=d;
+  $('hd').innerHTML=`체결 기준 <b>${dt(d.last_exec)} (${dow(d.last_exec)})</b> · 신청 기준 <b>${dt(d.last_appl)} (${dow(d.last_appl)}) 매매분</b> · 빌드 ${d.built_at} · 진행 중 ${d.contracts.filter(c=>c.status==='active').length}건 / 전체 ${d.contracts.length}건`;
+  renderChips();renderFilters();renderList();
+  $('q').oninput=renderList;
+  const ex=(d.extras||[]).filter(e=>e.side!=='매도');
+  $('note').innerHTML=`<b>소스</b> 한국거래소 일일 공시 「자기주식매매 신청내역·체결내역」(유가·코스닥·코넥스, 매 거래일 18~20시 발행) + KIND 자사주 취득 신고내역(누적) + DART 주요사항보고서(계약금액·위탁기관·1일 한도) + 일봉 거래량.
+  <b>신청내역</b>은 전일 18시까지 거래소에 제출한 익일 매수 주문 예고이며 체결은 다음 날 저녁 확정됩니다. 장중 실시간 체결은 공개되지 않습니다.<br>
+  <b>진행률</b> 신탁은 누적 체결금액 ÷ 계약금액, 직접은 누적 체결량 ÷ 신고수량. <b>예상 종료일</b>은 최근 10회 체결 평균 페이스로 남은 수량(신탁은 현재가 환산)을 나눈 평일 근사치. <b>거래량 대비</b>는 최근 10회 평균 체결량 ÷ 10일 평균 거래량.
+  코스닥 체결 공시에는 신청수량 열이 없어 전일 신청내역과 조인하며, 코넥스·스톡옵션·처분(매도) 건은 목록에서 제외됩니다.${ex.length?`<br><b>신고내역 미매칭 당일 신청·체결</b> ${ex.slice(0,30).map(e=>`${e.name}(${e.type||'?'}${e.appl?' 신청 '+fmt(e.appl):''}${e.exec!=null?' 체결 '+fmt(e.exec):''})`).join(', ')}${ex.length>30?' 외 '+(ex.length-30)+'건':''}`:''}<br>
+  최근 공시: ${(d.docs_latest||[]).map(x=>`${x[0].slice(5)} ${x[1].replace('자기주식매매','').replace(/\s/g,'')}(${x[3]})`).join(' · ')}`;
+}).catch(e=>{$('hd').textContent='데이터를 불러오지 못했습니다: '+e});
+</script></body></html>
