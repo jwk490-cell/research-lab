@@ -451,6 +451,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="supply">투자자별 수급/거래량 증감</button>
     <button class="navitem" data-tab="streak">수급 연속 <small>새벽</small></button>
     <button class="navitem" data-tab="flowosc">수급 오실레이터 <small>MACD</small></button>
+    <button class="navitem" data-tab="etccorp">기타법인 수급 <small>매일</small></button>
     <button class="navitem" data-tab="krhigh">韓 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="ushigh">美 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="rs">RS 분석</button>
@@ -546,6 +547,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div class="grid">
           <button class="card" data-go="supply"><h3>투자자별 수급/거래량 증감 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
           <button class="card" data-go="streak"><h3>수급 연속 <span class="tag">평일 06:30</span></h3><p>사모·투신·외국인·프로그램 N거래일 연속 순매수 — 시총대비 누적 랭킹, 일자별 아카이브</p></button>
+          <button class="card" data-go="etccorp"><h3>기타법인 수급 <span class="tag">평일 16:35 · 21:30</span></h3><p>기타법인(지주·계열사·대주주 법인)이 매일 기계적으로 사 모으는 종목 — 연속 매집일·누적·거래대금 비중·추정 취득 지분·5% 보고까지 잔여일, 자사주 교차·DART 지분공시 연결</p></button>
           <button class="card" data-go="krhigh"><h3>韓 신고가 (20·60일·52주) <span class="tag">평일 21:35</span></h3><p>20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 30억↑ — 키움 전수판정</p></button>
           <button class="card" data-go="ushigh"><h3>美 신고가 (20·60일·52주) <span class="tag">매일 아침</span></h3><p>미국 세션 20일·60일·52주 신고가 종목 — 섹터별 분류, 시총·등락</p></button>
           <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
@@ -735,6 +737,9 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <iframe data-src="macd.html" title="MACD 트래커"></iframe>
     </section>
 
+    <section class="panel embed" id="tab-etccorp">
+      <iframe data-src="etccorp.html" title="기타법인 수급"></iframe>
+    </section>
     <section class="panel embed" id="tab-buyback">
       <iframe data-src="buyback.html" title="자사주 매수 트래커"></iframe>
     </section>
@@ -2567,7 +2572,7 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
-  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,
+  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,etccorp:1,
                rrgsec:1,rrgstk:1,leaders:1,meridian:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?'?v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
@@ -2815,7 +2820,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
   supply:{m:'a',eta:'~7분'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
-  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'},
+  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'}, etccorp:{m:'a',eta:'~1분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
   export:{m:'a',eta:'~1분'}, corpexport:{m:'a',eta:'~3분'},
