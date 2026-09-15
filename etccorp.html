@@ -65,10 +65,21 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 .note h3{font-size:13px;color:var(--txt);margin:0 0 6px}
 .note ul{padding-left:18px}
 .empty{padding:26px;text-align:center;color:var(--faint)}
+.today{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blu);border-radius:10px;padding:12px 16px 10px;margin-bottom:14px;font-size:12.5px;line-height:1.7}
+.today h3{font-size:13px;color:var(--txt);margin:0 0 4px;display:flex;align-items:baseline;gap:8px}
+.today h3 small{font-size:11px;color:var(--faint);font-weight:400}
+.today .ln{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;padding:2px 0}
+.today .lb2{flex:none;font-size:11px;color:var(--faint);min-width:96px}
+.today .st{display:inline-flex;align-items:baseline;gap:4px;background:#1c2129;border:1px solid var(--line);border-radius:6px;padding:1px 7px;cursor:pointer;color:var(--txt);white-space:nowrap}
+.today .st:hover{border-color:var(--blu)}
+.today .st small{color:var(--faint);font-size:10.5px}
+.today .st.bb{color:var(--sub)}
+.today .dim{color:var(--faint)}
 .cnt{font-size:11.5px;color:var(--faint);margin-left:auto}
 </style></head><body><div class="wrap">
 <h1>기타법인 수급</h1>
 <div class="sub" id="hd">불러오는 중…</div>
+<div class="today" id="today"></div>
 <div class="chips" id="chips"></div>
 
 <div class="bar">
@@ -139,6 +150,45 @@ function rows(){
     if(q&&!(r.name.toLowerCase().includes(q)||r.code.includes(q))) return false;
     return true;
   });
+}
+function jump(code){
+  const r=D.rows.find(x=>x.code===code); if(!r) return;
+  // 요약에서 고른 종목이 필터에 가려지지 않도록 필요한 것만 푼다
+  if(r.streak<3) view='all'; if(r.streak<minSk) minSk=0;
+  const amt=r.streak>=3?r.s_amt:Math.max(r.cum20,r.max1); if(amt<minAmt) minAmt=0;
+  if(mk!=='all'&&r.mkt!==mk) mk='all'; if(minCap&&r.mcap<minCap) minCap=0;
+  if(isBB(r)) $('xbb').checked=false; if($('onlyd').checked&&!hasD(r)) $('onlyd').checked=false;
+  chipF=null; $('q').value=''; sel=code; ui(); chips(); render();
+  const tr=$('tb').querySelector(`tr.row[data-c="${code}"]`); if(tr) tr.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function stc(r,extra){ return `<span class="st${isBB(r)?' bb':''}" data-j="${r.code}">${r.name}${extra?`<small>${extra}</small>`:''}</span>`; }
+function today(){
+  const all=D.rows.filter(r=>r.streak>=3&&r.s_amt>=3);
+  const live=all.filter(r=>!isBB(r));
+  const bd=D.base_dt;
+  // 1) 같은 날 시작한 묶음 — 날짜별로 2종목↑
+  const byStart={}; live.forEach(r=>{(byStart[r.s_start]=byStart[r.s_start]||[]).push(r);});
+  const clusters=Object.entries(byStart).filter(([,v])=>v.length>=2)
+    .sort((a,b)=>b[1].length-a[1].length||b[0].localeCompare(a[0])).slice(0,3);
+  // 2) 신규(최근 2거래일 내 시작)
+  const fresh=live.filter(isNew).sort((a,b)=>b.s_amt-a.s_amt);
+  // 3) 연속성 — 최장 연속 / 가장 규칙적(CV 낮음, 5일↑)
+  const longest=live.slice().sort((a,b)=>b.streak-a.streak||b.s_amt-a.s_amt).slice(0,4);
+  const regular=live.filter(r=>r.streak>=5&&r.cv!=null).sort((a,b)=>a.cv-b.cv).slice(0,4);
+  // 4) 5% 임박 · 지분공시
+  const d5=live.filter(near5).sort((a,b)=>(a.d5??1e9)-(b.d5??1e9));
+  const dart=live.filter(r=>(r.dart||[]).some(x=>x.dt>=bd)).slice(0,5);
+  const nBB=all.length-live.length;
+  const ln=(lb,html)=>html?`<div class="ln"><span class="lb2">${lb}</span><span>${html}</span></div>`:'';
+  $('today').innerHTML=`<h3>오늘의 요약 <small>${bd.slice(4,6)}/${bd.slice(6,8)} 기준 · 연속 3일↑·누적 3억↑ ${all.length}종목${nBB?` (자사주로 설명 ${nBB} 제외)`:''}</small></h3>`
+   +ln('같은 날 시작', clusters.length?clusters.map(([d,v])=>`<span class="dim">${dt8(d)}~ ${v.length}종목</span> ${v.sort((a,b)=>b.s_amt-a.s_amt).map(r=>stc(r,eok(r.s_amt))).join(' ')}`).join('<br>')
+       :'<span class="dim">같은 날 시작한 묶음 없음</span>')
+   +ln('새로 시작', fresh.length?fresh.map(r=>stc(r,`${dt8(r.s_start)}~ ${eok(r.s_amt)}`)).join(' '):'<span class="dim">최근 2거래일 내 새로 시작한 종목 없음</span>')
+   +ln('가장 오래', longest.map(r=>stc(r,`${r.streak}일 ${eok(r.s_amt)}`)).join(' '))
+   +ln('가장 규칙적', regular.length?regular.map(r=>stc(r,`CV ${f2(r.cv)} · ${r.streak}일`)).join(' '):'')
+   +ln('5% 임박', d5.length?d5.map(r=>stc(r,`D-${Math.max(0,r.d5)} · ${r.est_pct.toFixed(2)}%`)).join(' '):'')
+   +ln('오늘 지분공시', dart.length?dart.map(r=>{const x=latestD(r);return stc(r,`${x.kind} ${x.who}`);}).join(' '):'');
+  $('today').querySelectorAll('[data-j]').forEach(e=>e.onclick=()=>jump(e.dataset.j));
 }
 function chips(){
   const all=D.rows.filter(r=>r.streak>=3&&r.s_amt>=10);
@@ -242,7 +292,7 @@ function note(){
 async function load(){
   const r=await fetch('data/etccorp.json?v='+Math.floor(Date.now()/6e5)); D=await r.json();
   $('hd').innerHTML=`기준일 <b>${D.base_dt.slice(0,4)}-${D.base_dt.slice(4,6)}-${D.base_dt.slice(6,8)}</b> ${D.provisional?'<span class="prov">(장중·잠정치)</span>':'(확정치)'} · 스캔 ${fmt(D.n_universe)}종목 → 수록 ${D.n_rows} · 빌드 ${D.built_at}`;
-  ui(); head(); chips(); render(); note();
+  ui(); head(); today(); chips(); render(); note();
   ['q'].forEach(id=>$(id).oninput=render); ['xbb','onlyd'].forEach(id=>$(id).onchange=render);
 }
 load();
