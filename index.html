@@ -1878,7 +1878,7 @@ const QT_INV=[
   {i:12,k:'ntfr',n:'기타외국인',c:'#0ea5e9'},
   {i:13,k:'natn',n:'국가',      c:'#a3a3a3'}];
 let qtFlowSel=new Set(['frgn','orgn','indv']);
-const QT_TABS=[['ov','종목개요','요약 · 차트 · 컨센서스'],['val','밸류에이션','PER·PBR 밴드 · Peer'],['flow','수급','외국인 · 기관 · 개인'],['fin','재무','실적 추이 · 컨센서스'],['news','리포트·링크','최신 소식']];
+const QT_TABS=[['ov','종목개요','요약 · 차트 · 컨센서스'],['val','밸류에이션','PER·PBR 밴드 · Peer'],['flow','수급','투자자 13주체'],['fin','재무','연간 · 분기'],['news','리포트·링크','최신 소식']];
 function qtRender(){
   const s=QT&&QT.stocks.find(x=>x.c===qtSel);if(!s)return;
   const body=document.getElementById('qtBody');
@@ -1886,36 +1886,36 @@ function qtRender(){
   const chgAbs=(s.p!=null&&s.f!=null)?Math.round(s.p-s.p/(1+s.f/100)):null;
   const pos52=(s.h52&&s.l52&&s.p&&s.h52>s.l52)?Math.min(100,Math.max(0,(s.p-s.l52)/(s.h52-s.l52)*100)):null;
   body.innerHTML=`
-  <div class="rcard" style="padding:20px 22px;margin-bottom:16px">
-    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px">
+  <div class="qcard" style="padding:22px 24px;margin-bottom:16px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
       <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <span style="font-size:21px;font-weight:800;letter-spacing:-.01em">${esc(s.n)}</span>
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;flex-wrap:wrap">
+          <span style="font-size:22px;font-weight:800;letter-spacing:-.02em">${esc(s.n)}</span>
           <span class="qtchip">${s.c} · ${s.m==='KS'?'KOSPI':'KOSDAQ'}</span>
           ${s.sec?`<span class="qtchip">${esc(s.sec)}</span>`:''}
         </div>
         <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
-          <span class="num ${up?'up':'down'}" style="font-size:33px;font-weight:800;letter-spacing:-.02em">${qtNum(s.p,0)}</span>
-          <span class="${up?'up':'down'}" style="font-size:15px;font-weight:600">${up?'▲':'▼'} ${chgAbs==null?'':Math.abs(chgAbs).toLocaleString('ko-KR')} (${s.f>=0?'+':''}${(s.f??0).toFixed(2)}%)</span>
-          <span style="font-size:12px;color:var(--dim2)">원 · 일별 종가 기준</span>
+          <span class="num ${up?'up':'down'}" style="font-size:34px;font-weight:800;letter-spacing:-.025em">${nf(s.p,0)}</span>
+          <span class="${up?'up':'down'}" style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums">${up?'▲':'▼'} ${chgAbs==null?'':Math.abs(chgAbs).toLocaleString('ko-KR')} <span style="font-weight:600">(${s.f>=0?'+':''}${(s.f??0).toFixed(2)}%)</span></span>
+          <span style="font-size:12px;color:var(--faint)">원 · 일별 종가 기준</span>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(5,auto);gap:10px 28px;font-size:12.5px">
-        ${[['시가총액',qtCap(s.v)],['PER',qtNum(s.per)+'배'],['PBR',qtNum(s.pbr)+'배'],['배당수익률',qtNum(s.dvr)+'%'],['거래대금',s.tv==null?'—':(s.tv>=10000?(s.tv/10000).toFixed(2)+'조':Math.round(s.tv).toLocaleString('ko-KR')+'억')]].map(([l,v])=>
-          `<div><div style="color:var(--faint);margin-bottom:4px">${l}</div><div style="font-weight:700">${v}</div></div>`).join('')}
+      <div style="display:grid;grid-template-columns:repeat(5,auto);gap:11px 30px;font-size:12.5px;font-variant-numeric:tabular-nums">
+        ${[['시가총액',qtCap(s.v)],['PER',qtNum(s.per)+'배'],['PBR',qtNum(s.pbr)+'배'],['배당수익률',qtNum(s.dvr)+'%'],['거래대금',s.tv==null?'—':(s.tv>=10000?(s.tv/10000).toFixed(2)+'조':nf(Math.round(s.tv),0)+'억')]].map(([l,v])=>
+          `<div><div style="color:var(--faint);margin-bottom:5px;font-size:11.5px">${l}</div><div style="font-weight:700;font-size:13.5px">${v}</div></div>`).join('')}
       </div>
     </div>
-    ${pos52!=null?`<div style="margin-top:16px">
-      <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-bottom:6px">
-        <span>52주 최저 ${qtNum(s.l52,0)}</span><span>52주 최고 ${qtNum(s.h52,0)}</span></div>
+    ${pos52!=null?`<div style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-bottom:7px;font-variant-numeric:tabular-nums">
+        <span>52주 최저 <b style="color:var(--sub)">${nf(s.l52,0)}</b></span><span>52주 최고 <b style="color:var(--sub)">${nf(s.h52,0)}</b></span></div>
       <div style="position:relative;height:4px;background:var(--line);border-radius:2px">
-        <div style="position:absolute;left:0;width:${pos52.toFixed(1)}%;height:100%;background:linear-gradient(90deg,rgba(77,125,245,.35),var(--accent));border-radius:2px"></div>
+        <div style="position:absolute;left:0;width:${pos52.toFixed(1)}%;height:100%;background:linear-gradient(90deg,var(--accent-line),var(--accent));border-radius:2px"></div>
         <div style="position:absolute;left:${pos52.toFixed(1)}%;top:-3px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--accent);border:2px solid var(--surface);box-sizing:border-box"></div>
       </div></div>`:''}
   </div>
   <div id="qtLayout">
-    <nav id="qtSubNav">${QT_TABS.map(([k,t,c])=>`<button class="qtnav${qtTab===k?' on':''}" data-qtab="${k}"><b>${t}</b><small>${c}</small></button>`).join('')}</nav>
-    <main id="qtView" style="display:flex;flex-direction:column;gap:16px;min-width:0"></main>
+    <div id="qtSubNav">${QT_TABS.map(([k,t,c])=>`<button class="qtnav${qtTab===k?' on':''}" data-qtab="${k}"><b>${t}</b><small>${c}</small></button>`).join('')}</div>
+    <div id="qtView" style="display:flex;flex-direction:column;gap:14px;min-width:0"></div>
   </div>`;
   document.getElementById('qtSubNav').onclick=e=>{const b=e.target.closest('[data-qtab]');if(!b)return;
     qtTab=b.dataset.qtab;qtViewRender(s);};
@@ -1952,28 +1952,29 @@ function qtViewOv(s,view){
     <div class="qfoot">TradingView Lightweight Charts · 일봉 2년(수정주가 ADJ) · 주/월봉은 일봉 합산 · 5년은 월별 종가</div>
   </div>
   <div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div class="rcard" style="padding:18px 20px">
-      <h3 style="font-size:14.5px;margin-bottom:12px">컨센서스</h3>
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px">
-        <span style="font-size:24px;font-weight:800">${qtNum(s.tgt,0)}</span>
+    <div class="qcard">
+      <div class="qch"><h3>컨센서스</h3><span class="meta">네이버 컨센서스</span></div>
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:5px">
+        <span style="font-size:25px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">${nf(s.tgt,0)}</span>
         ${gain!=null?`<span class="${gain>=0?'up':'down'}" style="font-size:13.5px;font-weight:700">상승여력 ${gain>=0?'+':''}${gain.toFixed(1)}%</span>`:''}
       </div>
-      <div style="font-size:11.5px;color:var(--faint);margin-bottom:14px">평균 목표주가(원) · 네이버 컨센서스</div>
-      ${recPct!=null?`<div style="display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line);margin-bottom:8px">
+      <div style="font-size:11.5px;color:var(--faint);margin-bottom:16px">평균 목표주가 (원)</div>
+      ${recPct!=null?`<div style="display:flex;height:7px;border-radius:4px;overflow:hidden;background:var(--line);margin-bottom:9px">
         <div style="width:${recPct.toFixed(0)}%;background:var(--up)"></div></div>
-      <div style="font-size:12px;color:var(--sub)">투자의견 <b style="color:var(--text)">${qtNum(s.rec)}</b> / 5점 <span style="color:var(--faint)">(높을수록 매수 우위)</span></div>`:'<div style="font-size:12px;color:var(--dim2)">투자의견 데이터 없음</div>'}
+      <div style="font-size:12px;color:var(--sub)">투자의견 <b style="color:var(--text)">${qtNum(s.rec)}</b> / 5점 <span style="color:var(--faint)">(높을수록 매수 우위)</span></div>`:'<div style="font-size:12px;color:var(--faint)">투자의견 데이터 없음</div>'}
     </div>
-    <div class="rcard" style="padding:18px 20px">
-      <h3 style="font-size:14.5px;margin-bottom:12px">기업 개요</h3>
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:12.5px">
+    <div class="qcard">
+      <div class="qch"><h3>기업 개요</h3><span class="meta">상대수익률 = 소속 지수 대비</span></div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:12.5px;font-variant-numeric:tabular-nums">
         <span style="color:var(--faint)">업종</span><span>${esc(s.sec||'—')}</span>
         <span style="color:var(--faint)">발행주식수</span><span>${(s.v&&s.p)?qtShares(s.v,s.p):'—'}</span>
         <span style="color:var(--faint)">외국인비중</span><span>${qtNum(s.fgn)}%</span>
-        <span style="color:var(--faint)">평균거래대금</span><span>${e&&e.avt!=null?e.avt.toLocaleString('ko-KR')+'억 (20일)':'—'}</span>
+        <span style="color:var(--faint)">평균거래대금</span><span>${e&&e.avt!=null?nf(e.avt,1)+'억 (20일)':'—'}</span>
       </div>
-      <table class="ddt" style="margin-top:12px"><thead><tr><th style="text-align:left">상승률</th><th>1개월</th><th>6개월</th><th>12개월</th></tr></thead>
-      <tbody><tr><td style="text-align:left">절대</td><td>${cell(e&&e.r1)}</td><td>${cell(e&&e.r6)}</td><td>${cell(e&&e.r12)}</td></tr>
-      <tr><td style="text-align:left">상대</td><td>${cell(e&&rel(e.r1,idx.r1))}</td><td>${cell(e&&rel(e.r6,idx.r6))}</td><td>${cell(e&&rel(e.r12,idx.r12))}</td></tr></tbody></table>
+      <div class="scrollx" style="margin-top:14px"><table class="ftab">
+      <thead><tr><th class="lb">상승률</th><th>1개월</th><th>6개월</th><th>12개월</th></tr></thead>
+      <tbody><tr><td class="lb">절대</td><td>${cell(e&&e.r1)}</td><td>${cell(e&&e.r6)}</td><td>${cell(e&&e.r12)}</td></tr>
+      <tr><td class="lb">상대</td><td>${cell(e&&rel(e.r1,idx.r1))}</td><td>${cell(e&&rel(e.r6,idx.r6))}</td><td>${cell(e&&rel(e.r12,idx.r12))}</td></tr></tbody></table></div>
     </div>
   </div>`;
   const qtBarBind=(id,key,fn)=>{document.getElementById(id).onclick=e=>{const b=e.target.closest(`[data-${key}]`);if(!b)return;
@@ -1988,10 +1989,10 @@ function qtViewOv(s,view){
 function qtViewVal(s,view){
   view.innerHTML=`
   <div class="rgrid2" id="qtBands" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))">
-    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">PER 밴드 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">월별 종가 × 연간 EPS(컨센 포함)</span></h3><canvas id="qtBandPer"></canvas><div class="clegend" id="qtBandPerLg"></div></div>
-    <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">PBR 밴드 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">월별 종가 × 연간 BPS</span></h3><canvas id="qtBandPbr"></canvas><div class="clegend" id="qtBandPbrLg"></div></div>
+    <div class="qcard"><div class="qch"><h3>PER 밴드</h3><span class="meta">월별 종가 × 연간 EPS (컨센 포함)</span></div><canvas id="qtBandPer"></canvas><div class="clegend" id="qtBandPerLg"></div></div>
+    <div class="qcard"><div class="qch"><h3>PBR 밴드</h3><span class="meta">월별 종가 × 연간 BPS</span></div><canvas id="qtBandPbr"></canvas><div class="clegend" id="qtBandPbrLg"></div></div>
   </div>
-  <div class="rgrid2" id="qtValStats" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"></div>
+  <div class="qtiles" id="qtValStats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"></div>
   <div id="qtPeer"></div>`;
   const e=(QTX&&QTX.s||{})[s.c];
   let perStat=null,pbrStat=null;
@@ -2008,120 +2009,278 @@ function qtViewVal(s,view){
   const stat=(label,val,avg)=>{
     let sub='';
     if(val!=null&&avg!=null&&avg>0){const d=(val/avg-1)*100;
-      sub=`<div style="font-size:11px;margin-top:5px" class="${d<=0?'down':'up'}">5Y 평균 대비 ${d>=0?'+':''}${d.toFixed(0)}%</div>`;}
-    return `<div class="rcard" style="padding:14px 16px"><div style="font-size:11.5px;color:var(--faint);margin-bottom:6px">${label}</div>
-      <div style="font-size:19px;font-weight:800">${val==null?'—':val.toFixed(2)}</div>${sub}</div>`;};
+      sub=`<div class="ts ${d<=0?'down':'up'}" style="font-weight:600">5Y 평균 대비 ${d>=0?'+':''}${d.toFixed(0)}%</div>`;}
+    return `<div class="qtile"><div class="tl">${label}</div>
+      <div class="tv">${val==null?'—':nf(val,2)}</div>${sub}</div>`;};
   document.getElementById('qtValStats').innerHTML=
     stat('PER (배)',s.per,perStat&&perStat.avg)+stat('PBR (배)',s.pbr,pbrStat&&pbrStat.avg)
     +stat('추정 PER (배)',s.cper,perStat&&perStat.avg)+stat(`PSR (배)${lastRev?' · '+lastRev.y:''}`,psr,null);
   qtPeerRender(s);
 }
-/* ── 뷰 3: 수급 ── */
+/* ── 뷰 3: 수급 (투자자 세부 주체 · 키움 ka10059) ── */
 async function qtViewFlow(s,view){
+  const sels=QT_INV.filter(o=>qtFlowSel.has(o.k));
   view.innerHTML=`
-  <div class="rcard" style="padding:16px 18px">
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-      <h3 style="font-size:14px;margin:0">투자자별 순매수 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">일별 · 억원 · 키움(KRX 잠정)</span></h3>
-      <span style="font-size:11px;margin-left:6px"><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--accent);margin-right:4px"></i>외국인 <i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#e8b45a;margin:0 4px 0 10px"></i>기관</span>
-      <div class="rngwrap" style="margin-left:auto" id="qtFlowBar">
-        <button class="rng${qtFlowN===20?' on':''}" data-fn="20">20일</button>
-        <button class="rng${qtFlowN===60?' on':''}" data-fn="60">60일</button></div>
+  <div class="qcard">
+    <div class="qch">
+      <h3>투자자별 순매수</h3>
+      <span class="meta">일별 · 억원 · 키움 ka10059 (KRX 잠정)</span>
+      <div class="rt">
+        <div class="rngwrap" id="qtFlowMode">
+          <button class="rng${qtFlowMode==='bar'?' on':''}" data-fm="bar">일별</button>
+          <button class="rng${qtFlowMode==='cum'?' on':''}" data-fm="cum">누적</button></div>
+        <div class="rngwrap" id="qtFlowBar">
+          <button class="rng${qtFlowN===20?' on':''}" data-fn="20">20일</button>
+          <button class="rng${qtFlowN===60?' on':''}" data-fn="60">60일</button></div>
+      </div>
+    </div>
+    <div class="subchips" id="qtInvChips" style="margin-bottom:14px">
+      ${QT_INV.map(o=>`<button class="subchip${qtFlowSel.has(o.k)?' on':''}" data-inv="${o.k}" style="--c:${o.c}"><i class="dot"></i>${o.n}</button>`).join('')}
     </div>
     <canvas id="qtFlowCv"></canvas>
+    <div class="qfoot">주체를 눌러 켜고 끕니다 · 기관계 = 금융투자+투신+연기금+사모+보험+은행+기타금융 합계 · 외국인 총합 = 외국인 + 기타외국인</div>
   </div>
-  <div class="rgrid2" id="qtFlowSum" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))"></div>
-  <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">최근 매매동향 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">순매수 주식수 · 네이버</span></h3>
-    ${(s.deal&&s.deal.length)?`<table class="ddt"><thead><tr><th style="text-align:left">일자</th><th>외국인</th><th>기관</th><th>개인</th></tr></thead><tbody>
-    ${s.deal.map(d=>`<tr><td style="text-align:left">${esc((d.d||'').replace(/(\d{4})(\d{2})(\d{2})/,'$2.$3'))}</td>
-      ${[d.fr,d.og,d.in].map(v=>`<td class="${v>0?'up':v<0?'down':''}">${v==null?'—':(v>0?'+':'')+v.toLocaleString('ko-KR')}</td>`).join('')}</tr>`).join('')}</tbody></table>`
-    :'<div style="font-size:12px;color:var(--dim2)">데이터 없음</div>'}</div>`;
-  document.getElementById('qtFlowBar').onclick=e=>{const b=e.target.closest('[data-fn]');if(!b)return;
-    qtFlowN=+b.dataset.fn;qtViewFlow(s,view);};
+  <div class="qtiles" id="qtFlowSum" style="margin-top:14px"></div>
+  <div class="qcard" style="margin-top:14px">
+    <div class="qch"><h3>일자별 순매수</h3><span class="meta">억원 · 최근 ${qtFlowN}일 · 음수는 (괄호)</span></div>
+    <div class="scrollx" id="qtFlowTbl"></div>
+  </div>`;
+  const rerender=()=>qtViewFlow(s,view);
+  view.querySelector('#qtFlowBar').onclick=e=>{const b=e.target.closest('[data-fn]');if(b){qtFlowN=+b.dataset.fn;rerender();}};
+  view.querySelector('#qtFlowMode').onclick=e=>{const b=e.target.closest('[data-fm]');if(b){qtFlowMode=b.dataset.fm;rerender();}};
+  view.querySelector('#qtInvChips').onclick=e=>{const b=e.target.closest('[data-inv]');if(!b)return;
+    const k=b.dataset.inv;
+    if(qtFlowSel.has(k)){if(qtFlowSel.size>1)qtFlowSel.delete(k);}else qtFlowSel.add(k);
+    rerender();};
+
   const pack=await qtCandles(s.c);
   if(qtSel!==s.c||qtTab!=='flow')return;
   const flows=(pack&&pack.f)||[];
-  const cv=document.getElementById('qtFlowCv'),sum=document.getElementById('qtFlowSum');
+  const cv=document.getElementById('qtFlowCv');
   if(!flows.length){if(cv)cv.outerHTML='<div class="empty"><b>수급 데이터가 아직 없습니다</b></div>';return;}
   const rows=flows.slice(-qtFlowN);
-  qtFlowChart(cv,rows);
+  const detail=rows.length&&rows[0].length>4;   /* 구버전 샤드(4열) 호환 */
+  const use=detail?sels:sels.filter(o=>o.i<=3);
+  qtFlowChart(cv,rows,use,qtFlowMode);
+
+  /* 주체별 누적 타일 (전 주체) */
   const tot=i=>rows.reduce((a,r)=>a+(r[i]||0),0);
-  const card=(label,v,color)=>`<div class="rcard" style="padding:15px 18px"><div style="font-size:11.5px;color:var(--faint);margin-bottom:6px">${label} 누적 (${qtFlowN}일)</div>
-    <div style="font-size:19px;font-weight:800" class="${v>=0?'up':'down'}">${v>=0?'+':''}${Math.round(v).toLocaleString('ko-KR')}억</div>
-    <div style="font-size:11px;color:var(--dim2);margin-top:4px">${color}</div></div>`;
-  sum.innerHTML=card('외국인',tot(1),'순매수 금액 합계')+card('기관',tot(2),'순매수 금액 합계')+card('개인',tot(3),'순매수 금액 합계');
+  const shown=detail?QT_INV:QT_INV.filter(o=>o.i<=3);
+  document.getElementById('qtFlowSum').innerHTML=shown.map(o=>{
+    const v=tot(o.i);
+    return `<div class="qtile" style="--c:${o.c}">
+      <div class="tl"><i></i>${o.n}</div>
+      <div class="tv ${v>=0?'up':'down'}">${nf(Math.round(v),0)}</div>
+      <div class="ts">${qtFlowN}일 누적 (억)</div></div>`;}).join('');
+
+  /* 일자별 표 (선택 주체, 최신순) */
+  const tb=rows.slice().reverse();
+  document.getElementById('qtFlowTbl').innerHTML=`<table class="ftab"><thead><tr>
+    <th class="lb">일자</th><th>종가</th>${use.map(o=>`<th style="color:${o.c}">${o.n}</th>`).join('')}</tr></thead><tbody>
+    ${tb.map((r,j)=>{
+      const cl=(pack.c||[]).find(c=>c[0]===r[0]);
+      return `<tr><td class="lb">${'20'+r[0].slice(0,2)+'.'+r[0].slice(2,4)+'.'+r[0].slice(4)}</td>`
+        +`<td>${cl?nf(cl[4],0):'—'}</td>`
+        +use.map(o=>nc(r[o.i],0)).join('')+`</tr>`;}).join('')}
+    <tr class="hl"><td class="lb">${qtFlowN}일 합계</td><td>—</td>
+      ${use.map(o=>nc(Math.round(tot(o.i)),0)).join('')}</tr>
+    </tbody></table>`;
 }
-function qtFlowChart(cv,rows){
-  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||800,H=210;
+/* 일별 그룹 막대 / 누적 라인 */
+function qtFlowChart(cv,rows,sels,mode){
+  if(!cv||!sels.length)return;
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||800,H=250;
   cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';cv.style.width='100%';
   const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
-  const cs=getComputedStyle(document.documentElement);
-  const P={l:46,r:8,t:8,b:18},IW=W-P.l-P.r,IH=H-P.t-P.b;
-  let mx=0;rows.forEach(r=>{mx=Math.max(mx,Math.abs(r[1]||0),Math.abs(r[2]||0));});
-  if(mx<=0)mx=1;
-  const zero=P.t+IH/2,scale=(IH/2-4)/mx;
-  x.strokeStyle=cs.getPropertyValue('--line').trim()||'#272930';x.lineWidth=1;
-  x.beginPath();x.moveTo(P.l,zero);x.lineTo(W-P.r,zero);x.stroke();
-  x.fillStyle=cs.getPropertyValue('--faint').trim()||'#8b95a1';x.font='10px Pretendard, sans-serif';
+  const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim();
+  const LN=g('--line2')||'#eef0f3',FT=g('--faint')||'#8b95a1';
+  const P={l:56,r:10,t:12,b:22},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  /* 값 배열 */
+  const series=sels.map(o=>{
+    let acc=0;
+    return {o:o,v:rows.map(r=>{const d=r[o.i]||0;acc+=d;return mode==='cum'?acc:d;})};});
+  let mx=0,mn=0;
+  series.forEach(s=>s.v.forEach(v=>{mx=Math.max(mx,v);mn=Math.min(mn,v);}));
+  if(mx===0&&mn===0){mx=1;mn=-1;}
+  const pad=(mx-mn)*0.08||1; mx+=pad; mn-=pad;
+  const span=mx-mn, zero=P.t+IH*(mx/span), sc=v=>IH*(v/span);
+  x.font='10px "Pretendard Variable",Pretendard,sans-serif';
+  /* 가로 격자 + 눈금 */
   x.textAlign='right';
-  [mx,0,-mx].forEach(v=>{x.fillText(Math.round(v).toLocaleString('ko-KR'),P.l-6,zero-v*scale+3);});
-  const gw=IW/rows.length,bw=Math.max(2,Math.min(9,gw*0.32));
-  const AC=cs.getPropertyValue('--accent').trim()||'#4d7df5';
-  rows.forEach((r,i)=>{
-    const cx0=P.l+gw*i+gw/2;
-    [[r[1],AC,-bw-1],[r[2],'#e8b45a',1]].forEach(([v,c,off])=>{
-      if(v==null)return;const h=v*scale;
-      x.fillStyle=c;x.fillRect(cx0+off,h>=0?zero-h:zero,bw,Math.abs(h)||1);});
-    if(rows.length<=20||i%10===0){x.fillStyle=cs.getPropertyValue('--faint').trim();x.textAlign='center';
-      x.fillText(r[0].slice(2,4)+'.'+r[0].slice(4),cx0,H-5);}
-  });
+  [mx,mx/2,0,mn/2,mn].filter((v,i,a)=>a.indexOf(v)===i).forEach(v=>{
+    const y=P.t+IH*((mx-v)/span);
+    x.strokeStyle=v===0?(g('--line')||'#e7eaee'):LN;x.lineWidth=1;
+    x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();
+    x.fillStyle=FT;x.fillText(nf(Math.round(v),0),P.l-7,y+3.5);});
+  const gw=IW/rows.length;
+  if(mode==='bar'){
+    const n=series.length, bw=Math.max(1.5,Math.min(10,(gw*0.72)/n));
+    rows.forEach((r,i)=>{
+      const cx=P.l+gw*i+gw/2, x0=cx-(bw*n)/2;
+      series.forEach((s,k)=>{
+        const v=s.v[i];if(!v)return;
+        const h=sc(v);
+        x.fillStyle=s.o.c;
+        x.globalAlpha=.82;
+        x.fillRect(x0+bw*k,v>=0?zero-h:zero,Math.max(1.2,bw-0.8),Math.max(1,Math.abs(h)));
+        x.globalAlpha=1;});});
+  }else{
+    series.forEach(s=>{
+      x.strokeStyle=s.o.c;x.lineWidth=1.8;x.beginPath();
+      s.v.forEach((v,i)=>{const cx=P.l+gw*i+gw/2,y=zero-sc(v);i?x.lineTo(cx,y):x.moveTo(cx,y);});
+      x.stroke();
+      const lv=s.v[s.v.length-1];
+      x.fillStyle=s.o.c;x.beginPath();x.arc(P.l+gw*(rows.length-1)+gw/2,zero-sc(lv),3,0,7);x.fill();});
+  }
+  /* 날짜축 */
+  x.fillStyle=FT;x.textAlign='center';
+  const step=Math.max(1,Math.ceil(rows.length/8));
+  rows.forEach((r,i)=>{if(i%step===0||i===rows.length-1)
+    x.fillText(r[0].slice(2,4)+'.'+r[0].slice(4),P.l+gw*i+gw/2,H-6);});
 }
-/* ── 뷰 4: 재무 ── */
-function qtViewFin(s,view){
-  const e=(QTX&&QTX.s||{})[s.c];
-  if(!e||!e.fin||!e.fin.length){view.innerHTML='<div class="empty"><b>재무 데이터 불러오는 중…</b></div>';return;}
-  const F=e.fin;
-  const mxRev=Math.max(...F.map(f=>f.rev||0),1);
-  const fmt=(v,d)=>v==null?'—':v.toLocaleString('ko-KR',{maximumFractionDigits:d==null?1:d});
-  const epsG=i=>{const a=F[i].eps,b=i>0?F[i-1].eps:null;
-    return (a!=null&&b!=null&&b!==0)?((a/Math.abs(b)-1)*100):null;};
-  const rows=[
-    ['매출액(억)',f=>fmt(f.rev,0)],['영업이익(억)',f=>fmt(f.op,0)],['지배주주순이익(억)',f=>fmt(f.ni,0)],
-    ['EPS(원)',f=>fmt(f.eps,0)],['EPS 증감률(%)',(f,i)=>{const g=epsG(i);return g==null?'—':`<span class="${g>=0?'up':'down'}">${g>=0?'+':''}${g.toFixed(1)}</span>`;}],
-    ['BPS(원)',f=>fmt(f.bps,0)],['PER(배)',f=>fmt(f.per)],['PBR(배)',f=>fmt(f.pbr)],
-    ['ROE(%)',f=>fmt(f.roe)],['부채비율(%)',f=>fmt(f.debt)],['주당배당금(원)',f=>fmt(f.dps,0)]];
-  view.innerHTML=`
-  <div class="rcard" style="padding:18px 20px">
-    <h3 style="font-size:14px;margin-bottom:16px">실적 추이 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">연간 매출액 · 막대 위 영업이익 · E=컨센서스</span></h3>
-    <div style="display:flex;align-items:flex-end;gap:${F.length>5?'12':'26'}px;height:190px;padding:0 6px">
-      ${F.map(f=>{
-        const h=Math.max(8,(f.rev||0)/mxRev*140);
-        const opC=(f.op??0)>=0?'':' class="down"';
-        return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%">
-          <div style="font-size:11.5px;font-weight:700;margin-bottom:5px"${opC}>${f.op==null?'':'OP '+fmt(f.op,0)}</div>
-          <div style="width:70%;max-width:74px;height:${h}px;border-radius:6px 6px 0 0;background:${f.c?'linear-gradient(180deg,var(--accent),rgba(77,125,245,.45))':'linear-gradient(180deg,rgba(77,125,245,.55),rgba(77,125,245,.22))'}"></div>
-          <div style="font-size:11px;color:var(--faint);margin-top:7px">${f.y}${f.c?'E':''} · ${fmt(f.rev,0)}</div>
-        </div>`;}).join('')}
-    </div>
+/* ── 뷰 4: 재무 (연간 / 분기) ── */
+const FIN_ROWS=[
+  ['매출액','억원','rev',0,1],['영업이익','억원','op',0,1],['영업이익률','%','opm',1,0],
+  ['당기순이익','억원','npall',0,1],['지배주주순이익','억원','ni',0,1],['순이익률','%','npm',1,0],
+  ['EPS','원','eps',0,1],['BPS','원','bps',0,0],
+  ['PER','배','per',2,0],['PBR','배','pbr',2,0],['ROE','%','roe',2,0],
+  ['부채비율','%','debt',1,0],['유보율','%','resv',1,0],['주당배당금','원','dps',0,0]];
+/* 라벨: 연간 2025 / 2026E, 분기 2Q26 / 3Q26E */
+function finLabel(f,freq){
+  if(freq==='y')return f.y+(f.c?'E':'');
+  const y=f.y.slice(2,4),m=f.y.slice(4,6);
+  const q={'03':'1Q','06':'2Q','09':'3Q','12':'4Q'}[m];
+  return (q?q+y:y+'.'+m)+(f.c?'E':'');
+}
+function qtFinRender(view,F,freq){
+  const box=view.querySelector('#qtFinBox');if(!box)return;
+  if(!F||!F.length){box.innerHTML='<div class="empty"><b>'+(freq==='q'?'분기':'연간')+' 재무 데이터가 없습니다</b>네이버 종목분석에 공시된 기간만 표시됩니다.</div>';return;}
+  const lag=freq==='q'?4:1;                       /* 전년 동기 대비 */
+  const yoy=(i,key)=>i>=lag?grw(F[i][key],F[i-lag][key]):null;
+  box.innerHTML=`
+  <div class="qcard" style="margin-bottom:14px">
+    <div class="qch"><h3>실적 추이</h3>
+      <span class="meta">${freq==='y'?'연간 · 매출액·영업이익(억원) · 영업이익률(%)':'분기 · 매출액·영업이익(억원) · 영업이익률(%)'} · E=컨센서스</span></div>
+    <canvas id="qtFinCv"></canvas>
+    <div class="clegend" style="margin-top:10px">
+      <i style="background:var(--accent-line)"></i>매출액&nbsp;&nbsp;
+      <i style="background:var(--accent)"></i>영업이익&nbsp;&nbsp;
+      <i style="background:#37b98a"></i>영업이익률(우)&nbsp;&nbsp;
+      <span style="color:var(--faint)">점선 = 컨센서스 구간</span></div>
   </div>
-  <div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">Financial Data <span style="font-size:10.5px;color:var(--dim2);font-weight:600">연간 · E = 컨센서스 추정</span></h3>
-    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left"></th>
-    ${F.map(f=>`<th style="${f.c?'color:var(--accent)':''}">${f.y}${f.c?'E':''}</th>`).join('')}</tr></thead><tbody>
-    ${rows.map(([lbl,fn])=>`<tr><td style="text-align:left;font-weight:600;white-space:nowrap">${lbl}</td>
-      ${F.map((f,i)=>`<td style="${f.c?'background:rgba(77,125,245,.05)':''}">${fn(f,i)}</td>`).join('')}</tr>`).join('')}
-    </tbody></table></div></div>`;
+  <div class="qcard">
+    <div class="qch"><h3>Financial Data</h3>
+      <span class="meta">${freq==='y'?'연간':'분기'} · 단위 표기 · ${lag===4?'전년 동기':'전년'} 대비 증감률 · 음수는 (괄호)</span></div>
+    <div class="scrollx"><table class="ftab"><thead><tr><th class="lb"></th>
+    ${F.map(f=>`<th class="${f.c?'e':''}">${finLabel(f,freq)}</th>`).join('')}</tr></thead><tbody>
+    ${FIN_ROWS.map(([lbl,unit,key,dec,showG])=>{
+      if(!F.some(f=>f[key]!=null))return '';
+      return `<tr${key==='rev'||key==='op'?' class="hl"':''}><td class="lb">${lbl}<small>${unit}</small></td>`
+      +F.map((f,i)=>{
+        const g=showG?yoy(i,key):null;
+        const neg=(typeof f[key]==='number'&&f[key]<0);
+        return `<td class="${[f.c?'e':'',neg?'neg':''].filter(Boolean).join(' ')}">${nf(f[key],dec)}${g!=null?pctTag(g):''}</td>`;
+      }).join('')+`</tr>`;}).join('')}
+    </tbody></table></div>
+    <div class="qfoot">네이버 종목분석(FnGuide) 연결 기준 · E = 컨센서스 추정 · PER/PBR은 해당 기간 종가 기준</div>
+  </div>`;
+  qtFinChart(document.getElementById('qtFinCv'),F,freq);
+}
+/* 매출·영업이익 막대 + 영업이익률 라인 콤보 */
+function qtFinChart(cv,F,freq){
+  if(!cv)return;
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||cv.parentElement.clientWidth||760,H=240;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';cv.style.width='100%';
+  const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim();
+  const AC=g('--accent')||'#3168f0',LN=g('--line2')||'#eef0f3',FT=g('--faint')||'#8b95a1',TX=g('--text')||'#191f28';
+  const P={l:8,r:8,t:26,b:34},IW=W-P.l-P.r,IH=H-P.t-P.b;
+  const vals=F.flatMap(f=>[f.rev,f.op].filter(v=>v!=null));
+  if(!vals.length)return;
+  const mx=Math.max(...vals,0),mn=Math.min(...vals,0);
+  const span=(mx-mn)||1, zero=P.t+IH*(mx/span);
+  const sc=v=>IH*(v/span);
+  x.font='10.5px "Pretendard Variable",Pretendard,sans-serif';
+  /* 0선 */
+  x.strokeStyle=LN;x.lineWidth=1;x.beginPath();x.moveTo(P.l,zero);x.lineTo(W-P.r,zero);x.stroke();
+  const gw=IW/F.length, bw=Math.min(46,gw*0.30);
+  const fmtA=v=>v==null?'—':(Math.abs(v)>=1e4?(v/1e4).toFixed(1)+'조':nf(Math.round(v),0));
+  /* 영업이익률 라인 좌표 */
+  const opmPts=[];
+  F.forEach((f,i)=>{
+    const cx=P.l+gw*i+gw/2;
+    const draw=(val,color,off,dash)=>{
+      if(val==null)return;
+      const h=sc(val), y=val>=0?zero-h:zero, hh=Math.max(1.5,Math.abs(h));
+      x.save();
+      if(dash){x.setLineDash([3,3]);x.strokeStyle=color;x.lineWidth=1.2;
+        x.fillStyle=color.replace(/[\d.]+\)$/,'.14)');
+        x.fillRect(cx+off-bw/2,y,bw,hh);x.strokeRect(cx+off-bw/2,y,bw,hh);}
+      else{x.fillStyle=color;x.fillRect(cx+off-bw/2,y,bw,hh);}
+      x.restore();};
+    const softC=g('--accent-line')||'rgba(49,104,240,.28)';
+    draw(f.rev,f.c?'rgba(49,104,240,.55)':softC,-bw*0.55,!!f.c);
+    draw(f.op, f.c?'rgba(49,104,240,.85)':AC,      bw*0.55,!!f.c);
+    /* 매출 값 라벨 */
+    let revY=null;
+    if(f.rev!=null){revY=Math.max(12,(f.rev>=0?zero-sc(f.rev):zero)-7);
+      x.fillStyle=FT;x.textAlign='center';x.fillText(fmtA(f.rev),cx,revY);}
+    /* 기간 라벨 */
+    x.fillStyle=f.c?AC:g('--sub')||'#4e5968';x.textAlign='center';
+    x.font=(f.c?'700 ':'')+'10.5px "Pretendard Variable",Pretendard,sans-serif';
+    x.fillText(finLabel(f,freq),cx,H-14);
+    x.font='10.5px "Pretendard Variable",Pretendard,sans-serif';
+    if(f.opm!=null)opmPts.push([cx,f.opm,revY]);
+  });
+  /* 영업이익률 라인 (우측 스케일) */
+  if(opmPts.length>1){
+    const os=opmPts.map(p=>p[1]),omx=Math.max(...os),omn=Math.min(...os,0);
+    const osp=(omx-omn)||1;
+    const oy=v=>P.t+6+(IH-16)*(1-(v-omn)/osp);
+    x.strokeStyle='#37b98a';x.lineWidth=1.8;x.beginPath();
+    opmPts.forEach(([cx,v],i)=>i?x.lineTo(cx,oy(v)):x.moveTo(cx,oy(v)));x.stroke();
+    x.fillStyle='#37b98a';
+    opmPts.forEach(([cx,v])=>{x.beginPath();x.arc(cx,oy(v),2.6,0,7);x.fill();});
+    x.textAlign='center';x.font='600 10px "Pretendard Variable",Pretendard,sans-serif';
+    opmPts.forEach(([cx,v,revY])=>{           /* 매출 라벨과 겹치면 점 아래로 */
+      const y0=oy(v);
+      const up=(revY==null||Math.abs((y0-9)-revY)>13);
+      x.fillText(v.toFixed(1)+'%',cx,up?y0-9:y0+15);});
+  }
+}
+async function qtViewFin(s,view){
+  const e=(QTX&&QTX.s||{})[s.c];
+  view.innerHTML=`
+  <div class="qch" style="margin:0 2px 2px">
+    <h3 style="font-size:15px">실적 · 재무</h3>
+    <span class="meta">네이버 종목분석(FnGuide) · 연결 기준</span>
+    <div class="rt"><div class="rngwrap" id="qtFinFreq">
+      <button class="rng${qtFinFreq==='y'?' on':''}" data-fq="y">연간</button>
+      <button class="rng${qtFinFreq==='q'?' on':''}" data-fq="q">분기</button></div></div>
+  </div>
+  <div id="qtFinBox"><div class="empty"><b>재무 데이터 불러오는 중…</b></div></div>`;
+  view.querySelector('#qtFinFreq').onclick=ev=>{const b=ev.target.closest('[data-fq]');if(!b)return;
+    qtFinFreq=b.dataset.fq;qtViewFin(s,view);};
+  if(qtFinFreq==='y'){
+    qtFinRender(view,(e&&e.fin)||[],'y');
+  }else{
+    const pack=await qtCandles(s.c);
+    if(qtSel!==s.c||qtTab!=='fin'||qtFinFreq!=='q')return;
+    qtFinRender(view,(pack&&pack.q)||[],'q');
+  }
 }
 /* ── 뷰 5: 리포트·링크 ── */
 function qtViewNews(s,view){
   view.innerHTML=`
-  <div class="rcard" style="padding:18px 20px">
-    <h3 style="font-size:14px;margin-bottom:10px">최근 리포트 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">네이버 리서치</span></h3>
+  <div class="qcard">
+    <div class="qch"><h3>최근 리포트</h3><span class="meta">네이버 리서치</span></div>
     ${(s.res&&s.res.length)?s.res.map(r=>`<div style="font-size:12.5px;padding:11px 0;border-bottom:1px solid var(--line2)">
       <span style="font-size:11px;font-weight:700;color:var(--accent);background:rgba(77,125,245,.12);border-radius:5px;padding:2px 7px;margin-right:7px">리포트</span>
       <b>${esc(r.t||'')}</b><div style="font-size:11px;color:var(--dim2);margin-top:4px">${esc(r.b||'')} · ${esc(r.d||'')}</div></div>`).join('')
     :'<div style="font-size:12px;color:var(--dim2)">최근 리포트 없음</div>'}
   </div>
-  <div class="rcard" style="padding:18px 20px">
-    <h3 style="font-size:14px;margin-bottom:12px">바로가기</h3>
+  <div class="qcard">
+    <div class="qch"><h3>바로가기</h3></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       ${[['네이버증권 종목홈',`https://m.stock.naver.com/domestic/stock/${s.c}/total`],
          ['네이버 뉴스 검색',`https://search.naver.com/search.naver?where=news&query=${encodeURIComponent(s.n)}`],
@@ -2129,11 +2288,11 @@ function qtViewNews(s,view){
          ['네이버 리서치',`https://m.stock.naver.com/domestic/stock/${s.c}/research`]].map(([t,u])=>
         `<a href="${u}" target="_blank" rel="noopener" style="font-size:12.5px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 14px;text-decoration:none">${t} →</a>`).join('')}
     </div>
-    <div style="font-size:11px;color:var(--dim2);margin-top:12px">종목별 실시간 뉴스·공시 수집은 정적 사이트 특성상 미제공 — 위 링크로 원문 확인</div>
+    <div class="qfoot">종목별 실시간 뉴스·공시 수집은 정적 사이트 특성상 미제공 — 위 링크로 원문 확인</div>
   </div>`;
 }
 /* ── TradingView Lightweight Charts (KRX는 TV 호스팅 위젯 임베드 불가 → OSS 라이브러리 + 자체 데이터) ── */
-let lwReady=null,lwChart=null,QTC={};
+let lwReady=null,lwChart=null,lwVol=null,QTC={};
 function needLW(){
   if(!lwReady)lwReady=new Promise((res,rej)=>{const sc=document.createElement('script');
     sc.src='https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js';
@@ -2162,7 +2321,18 @@ function lwAgg(rows,mode){ /* 일봉 → 주봉/월봉 합산 */
   if(cur)out.push(cur);
   return out;
 }
-const MA_COLORS={5:'#f0a860',10:'#e0d060',20:'#b08ad6',60:'#2dd4bf',120:'#8ab4f8'};
+const MA_COLORS={5:'#f2a33c',10:'#d16ba5',20:'#37b98a',60:'#7c6cf0',120:'#94a3b8'};
+const lwPrice=v=>{
+  if(v==null||!isFinite(v))return '';
+  const a=Math.abs(v);
+  return a>=1000?Math.round(v).toLocaleString('ko-KR')
+        :v.toLocaleString('ko-KR',{maximumFractionDigits:2});
+};
+const lwVolFmt=v=>v==null?'':v>=1e8?(v/1e8).toFixed(2)+'억':v>=1e4?Math.round(v/1e4).toLocaleString('ko-KR')+'만':String(Math.round(v));
+const DOW=['일','월','화','수','목','금','토'];
+const lwDateLabel=ymd=>{const d=new Date(lwDate(ymd));
+  return `20${ymd.slice(0,2)}.${ymd.slice(2,4)}.${ymd.slice(4,6)}(${DOW[d.getDay()]})`;};
+
 async function qtDrawLw(s){
   const el=document.getElementById('qtLw');if(!el)return;
   try{await needLW();}catch(e){el.innerHTML='<div class="empty"><b>차트 라이브러리 로드 실패</b></div>';return;}
@@ -2171,66 +2341,149 @@ async function qtDrawLw(s){
   if(qtCv!=='y5'){const pack=await qtCandles(code);rows=pack&&pack.c;}
   if(qtSel!==code||!document.getElementById('qtLw'))return; /* 종목/뷰 변경 가드 */
   if(lwChart){lwChart.remove();lwChart=null;}
+  if(lwVol){lwVol.remove();lwVol=null;}
   el.innerHTML='';
-  const legend=document.getElementById('qtLwLegend'),maLg=document.getElementById('qtMaLg');
+  const volEl=document.getElementById('qtVol'),volBox=document.getElementById('qtVolBox');
+  if(volEl)volEl.innerHTML='';
+  const legend=document.getElementById('qtLwLegend'),volLg=document.getElementById('qtVolLegend');
   const cs=getComputedStyle(document.documentElement);
   const v=n=>cs.getPropertyValue(n).trim();
-  lwChart=LightweightCharts.createChart(el,{
-    layout:{background:{color:'transparent'},textColor:v('--sub')||'#9aa2ad',fontFamily:'Pretendard, sans-serif'},
-    grid:{vertLines:{color:v('--line2')||v('--line')||'#272930'},horzLines:{color:v('--line2')||v('--line')||'#272930'}},
-    rightPriceScale:{borderVisible:false},timeScale:{borderVisible:false},
-    crosshair:{mode:0},autoSize:true});
+  const GRID=v('--line2')||v('--line')||'#272930', TXT=v('--faint')||'#8b95a1';
   const UP='#f04452',DN='#3485fa';
-  const fmtP=x=>x>=1e4?x.toLocaleString('ko-KR'):String(Math.round(x*100)/100);
+  const PW=76;   /* 두 차트 가격축 폭 동기화 */
+  const base=(extra)=>Object.assign({
+    layout:{background:{color:'transparent'},textColor:TXT,fontSize:11,
+      fontFamily:'"Pretendard Variable",Pretendard,sans-serif',attributionLogo:false},
+    grid:{vertLines:{color:GRID,style:0},horzLines:{color:GRID,style:0}},
+    rightPriceScale:{borderVisible:false,minimumWidth:PW,scaleMargins:{top:.12,bottom:.08}},
+    crosshair:{mode:1,
+      vertLine:{color:TXT,width:1,style:2,labelBackgroundColor:v('--sub')||'#4e5968'},
+      horzLine:{color:TXT,width:1,style:2,labelBackgroundColor:v('--sub')||'#4e5968'}},
+    handleScale:{axisPressedMouseMove:{price:false}},
+    localization:{locale:'ko-KR',priceFormatter:lwPrice},
+    autoSize:true},extra||{});
+
+  /* ── 5년 월봉: 단일 영역 차트 ── */
   if(qtCv==='y5'){
-    const e=(QTX&&QTX.s||{})[code];
-    const m=e&&e.m;
-    if(!m||m.length<6){el.innerHTML='<div class="empty"><b>장기 데이터가 아직 없습니다</b></div>';legend.innerHTML='';maLg.innerHTML='';return;}
-    const line=lwChart.addAreaSeries({lineColor:'#3168f0',topColor:'rgba(49,104,240,.25)',bottomColor:'rgba(49,104,240,.02)',lineWidth:2});
-    line.setData(m.map(([ym,c])=>({time:'20'+ym.slice(0,2)+'-'+ym.slice(2)+'-28',value:c})));
-    legend.innerHTML=`<b>${esc(s.n)}</b> · 월별 종가 5년`;maLg.innerHTML='';
+    if(volBox)volBox.style.display='none';
+    const e=(QTX&&QTX.s||{})[code], m=e&&e.m;
+    if(!m||m.length<6){el.innerHTML='<div class="empty"><b>장기 데이터가 아직 없습니다</b></div>';legend.innerHTML='';return;}
+    lwChart=LightweightCharts.createChart(el,base({timeScale:{borderVisible:false}}));
+    const line=lwChart.addAreaSeries({lineColor:v('--accent')||'#3168f0',
+      topColor:'rgba(49,104,240,.22)',bottomColor:'rgba(49,104,240,.01)',lineWidth:2,
+      priceLineStyle:2,priceLineWidth:1});
+    const pts=m.map(([ym,c])=>({time:'20'+ym.slice(0,2)+'-'+ym.slice(2)+'-28',value:c}));
+    line.setData(pts);
+    const setLg=(ym,c,prev)=>{const ch=prev?((c/prev-1)*100):null;
+      legend.innerHTML=`<span class="row"><span class="ttl">${esc(s.n)}</span><span class="k">월봉 5년</span> `
+        +`20${ym.slice(0,2)}.${ym.slice(2)} <b>${lwPrice(c)}</b> `
+        +(ch==null?'':`<span class="${ch>=0?'up':'down'}">${ch>=0?'+':''}${ch.toFixed(2)}%</span>`)+`</span>`;};
+    setLg(m[m.length-1][0],m[m.length-1][1],m.length>1?m[m.length-2][1]:null);
+    const mIdx={};m.forEach(([ym],i)=>mIdx['20'+ym.slice(0,2)+'-'+ym.slice(2)+'-28']=i);
+    lwChart.subscribeCrosshairMove(p=>{
+      const i=(p&&p.time)?mIdx[p.time]:null;
+      const j=i==null?m.length-1:i;
+      setLg(m[j][0],m[j][1],j>0?m[j-1][1]:null);});
     lwChart.timeScale().fitContent();return;
   }
-  if(!rows||rows.length<5){el.innerHTML='<div class="empty"><b>캔들 데이터가 아직 없습니다</b>평일 16:20 빌드 후 이용 가능합니다.</div>';legend.innerHTML='';return;}
+  if(volBox)volBox.style.display='';
+  if(!rows||rows.length<5){el.innerHTML='<div class="empty"><b>캔들 데이터가 아직 없습니다</b>평일 16:20 빌드 후 이용 가능합니다.</div>';legend.innerHTML='';volLg.innerHTML='';return;}
   const agg=lwAgg(rows,qtCv);
+
+  /* ── 가격 패널 ── */
+  lwChart=LightweightCharts.createChart(el,base({timeScale:{visible:false,borderVisible:false}}));
   let main;
+  const pl={priceLineVisible:true,priceLineStyle:2,priceLineWidth:1,priceLineColor:v('--accent')||'#3168f0'};
   if(qtStyle==='candle'){
-    main=lwChart.addCandlestickSeries({upColor:UP,downColor:DN,borderUpColor:UP,borderDownColor:DN,wickUpColor:UP,wickDownColor:DN});
+    main=lwChart.addCandlestickSeries(Object.assign({upColor:UP,downColor:DN,borderUpColor:UP,
+      borderDownColor:DN,wickUpColor:UP,wickDownColor:DN},pl));
     main.setData(agg.map(r=>({time:lwDate(r[0]),open:r[1],high:r[2],low:r[3],close:r[4]})));
   }else{
-    main=lwChart.addAreaSeries({lineColor:'#3168f0',topColor:'rgba(49,104,240,.22)',bottomColor:'rgba(49,104,240,.02)',lineWidth:2});
+    main=lwChart.addAreaSeries(Object.assign({lineColor:v('--accent')||'#3168f0',
+      topColor:'rgba(49,104,240,.20)',bottomColor:'rgba(49,104,240,.01)',lineWidth:2},pl));
     main.setData(agg.map(r=>({time:lwDate(r[0]),value:r[4]})));
   }
-  const vol=lwChart.addHistogramSeries({priceScaleId:'vol',priceFormat:{type:'volume'},lastValueVisible:false,priceLineVisible:false});
-  lwChart.priceScale('vol').applyOptions({scaleMargins:{top:0.84,bottom:0}});
-  vol.setData(agg.map((r,i)=>({time:lwDate(r[0]),value:r[5],
-    color:(i>0&&r[4]>=agg[i-1][4])?'rgba(240,68,82,.45)':'rgba(52,133,250,.45)'})));
-  /* 이동평균 (지표) */
+  /* 이동평균 */
   const closes=agg.map(r=>r[4]);
+  const maSer=[];
   [...qtMA].sort((a,b)=>a-b).forEach(w=>{
     if(closes.length<w+1)return;
-    const ma=lwChart.addLineSeries({color:MA_COLORS[w]||'#999',lineWidth:1,lastValueVisible:false,priceLineVisible:false,crosshairMarkerVisible:false});
-    const pts=[];let sum=0;
+    const ser=lwChart.addLineSeries({color:MA_COLORS[w]||'#999',lineWidth:1.4,
+      lastValueVisible:false,priceLineVisible:false,crosshairMarkerVisible:false});
+    const pts=[],val=new Array(closes.length).fill(null);let sum=0;
     for(let i=0;i<closes.length;i++){sum+=closes[i];if(i>=w)sum-=closes[i-w];
-      if(i>=w-1)pts.push({time:lwDate(agg[i][0]),value:sum/w});}
-    ma.setData(pts);});
-  maLg.innerHTML=[...qtMA].sort((a,b)=>a-b).map(w=>`<span style="color:${MA_COLORS[w]}">— MA${w}</span>`).join(' ');
-  /* 시고저종 레전드 (크로스헤어 연동, 기본=마지막 봉) */
-  const unit={day:'일',week:'주',month:'월'}[qtCv];
-  const showBar=(r,prevClose)=>{
-    const ch=prevClose?((r[4]/prevClose-1)*100):null;
-    const cc=ch==null?'':`<span class="${ch>=0?'up':'down'}">${ch>=0?'+':''}${ch.toFixed(2)}%</span>`;
-    legend.innerHTML=`<b style="color:var(--text)">${esc(s.n)}</b> · 1${unit} · ADJ&nbsp;&nbsp;시 <b>${fmtP(r[1])}</b> 고 <b class="up">${fmtP(r[2])}</b> 저 <b class="down">${fmtP(r[3])}</b> 종 <b style="color:var(--text)">${fmtP(r[4])}</b> ${cc}`;
+      if(i>=w-1){val[i]=sum/w;pts.push({time:lwDate(agg[i][0]),value:val[i]});}}
+    ser.setData(pts);maSer.push({w:w,val:val});});
+
+  /* ── 거래량 패널 ── */
+  lwVol=LightweightCharts.createChart(volEl,base({
+    rightPriceScale:{borderVisible:false,minimumWidth:PW,scaleMargins:{top:.18,bottom:0}},
+    localization:{locale:'ko-KR',priceFormatter:lwVolFmt},
+    timeScale:{borderVisible:false,timeVisible:false}}));
+  const vs=lwVol.addHistogramSeries({priceFormat:{type:'volume'},lastValueVisible:false,priceLineVisible:false});
+  vs.setData(agg.map((r,i)=>({time:lwDate(r[0]),value:r[5],
+    color:(r[4]>=r[1])?'rgba(240,68,82,.5)':'rgba(52,133,250,.5)'})));
+
+  /* 시간축 · 크로스헤어 동기화 */
+  let syncing=false;
+  const link=(a,b)=>a.timeScale().subscribeVisibleLogicalRangeChange(r=>{
+    if(!r||syncing)return;syncing=true;
+    try{b.timeScale().setVisibleLogicalRange(r);}finally{syncing=false;}});
+  link(lwChart,lwVol);link(lwVol,lwChart);
+
+  /* ── 범례 (크로스헤어 연동, 기본=마지막 봉) ── */
+  const unit={day:'1일',week:'1주',month:'1월'}[qtCv];
+  const cl=x=>x>=0?'up':'down';
+  const sg=x=>(x>=0?'+':'')+x.toFixed(2)+'%';
+  const showBar=i=>{
+    const r=agg[i],pc=i>0?agg[i-1][4]:null;
+    const rel=x=>pc?`<span class="${cl(x/pc-1)}">${sg((x/pc-1)*100)}</span>`:'';
+    legend.innerHTML=
+      `<span class="row"><span class="ttl">${esc(s.n)}</span><span class="k">${unit}·ADJ</span>&nbsp;&nbsp;`
+      +`${lwDateLabel(r[0])}&nbsp;&nbsp;`
+      +`<span class="k">시</span> <b>${lwPrice(r[1])}</b> ${rel(r[1])}&nbsp; `
+      +`<span class="k">고</span> <b>${lwPrice(r[2])}</b> ${rel(r[2])}&nbsp; `
+      +`<span class="k">저</span> <b>${lwPrice(r[3])}</b> ${rel(r[3])}&nbsp; `
+      +`<span class="k">종</span> <b>${lwPrice(r[4])}</b> ${rel(r[4])}</span>`
+      +(maSer.length?`<span class="row"><span class="k">단순이동평균</span> `
+        +maSer.map(m=>`<span style="color:${MA_COLORS[m.w]}">${m.w} ${m.val[i]==null?'—':lwPrice(m.val[i])}</span>`).join('&nbsp; ')
+        +`</span>`:'');
+    const pv=i>0?agg[i-1][5]:null, vch=(pv&&pv>0)?((r[5]/pv-1)*100):null;
+    volLg.innerHTML=`<span class="row"><span class="k">거래량</span> <b>${(r[5]||0).toLocaleString('ko-KR')}</b> `
+      +(vch==null?'':`<span class="${cl(vch)}">${sg(vch)}</span>`)+`</span>`;
   };
-  showBar(agg[agg.length-1],agg.length>1?agg[agg.length-2][4]:null);
   const timeMap={};agg.forEach((r,i)=>timeMap[lwDate(r[0])]=i);
-  lwChart.subscribeCrosshairMove(p=>{
-    if(!p||!p.time){showBar(agg[agg.length-1],agg.length>1?agg[agg.length-2][4]:null);return;}
-    const i=timeMap[typeof p.time==='string'?p.time:'']; if(i==null)return;
-    showBar(agg[i],i>0?agg[i-1][4]:null);
-  });
-  /* 레인지 */
-  const last=new Date(lwDate(agg[agg.length-1][0]));
+  const lastI=agg.length-1;
+  showBar(lastI);
+  const onMove=p=>{
+    if(!p||!p.time){showBar(lastI);return;}
+    const i=timeMap[typeof p.time==='string'?p.time:''];
+    if(i!=null)showBar(i);
+  };
+  lwChart.subscribeCrosshairMove(onMove);
+  lwVol.subscribeCrosshairMove(onMove);
+
+  /* ── 보이는 구간 최고·최저 마커 ── */
+  let mkTimer=null;
+  const updMarkers=()=>{
+    const r=lwChart.timeScale().getVisibleLogicalRange();if(!r)return;
+    const i0=Math.max(0,Math.ceil(r.from)),i1=Math.min(lastI,Math.floor(r.to));
+    if(i1<=i0)return;
+    let hi=i0,lo=i0;
+    for(let i=i0;i<=i1;i++){if(agg[i][2]>agg[hi][2])hi=i;if(agg[i][3]<agg[lo][3])lo=i;}
+    const cur=agg[lastI][4];
+    const mk=[
+      {i:hi,time:lwDate(agg[hi][0]),position:'aboveBar',color:UP,shape:'arrowDown',
+       text:`최고 ${lwPrice(agg[hi][2])} (${sg((cur/agg[hi][2]-1)*100)})`},
+      {i:lo,time:lwDate(agg[lo][0]),position:'belowBar',color:DN,shape:'arrowUp',
+       text:`최저 ${lwPrice(agg[lo][3])} (${sg((cur/agg[lo][3]-1)*100)})`}];
+    main.setMarkers(mk.sort((a,b)=>a.i-b.i).map(({i,...m})=>m));
+  };
+  lwChart.timeScale().subscribeVisibleLogicalRangeChange(()=>{
+    clearTimeout(mkTimer);mkTimer=setTimeout(updMarkers,120);});
+
+  /* ── 초기 레인지 ── */
+  const last=new Date(lwDate(agg[lastI][0]));
   let from=null;
   if(qtRng==='YTD')from=new Date(last.getFullYear(),0,1);
   else if(qtRng!=='ALL'){const mm={'1M':1,'3M':3,'6M':6,'1Y':12}[qtRng];
@@ -2238,9 +2491,10 @@ async function qtDrawLw(s){
   if(from){
     const f=from.toISOString().slice(0,10);
     const first=agg.find(r=>lwDate(r[0])>=f);
-    if(first)lwChart.timeScale().setVisibleRange({from:lwDate(first[0]),to:lwDate(agg[agg.length-1][0])});
+    if(first)lwChart.timeScale().setVisibleRange({from:lwDate(first[0]),to:lwDate(agg[lastI][0])});
     else lwChart.timeScale().fitContent();
   }else lwChart.timeScale().fitContent();
+  setTimeout(updMarkers,160);
 }
 const qtShares=(vEok,p)=>{const n=vEok*1e8/p;return n>=1e8?(n/1e8).toFixed(2)+'억주':(n/1e4).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')+'만주';};
 function qtBandDraw(cv,lg,months,fin,key){
@@ -2272,13 +2526,13 @@ function qtPeerRender(s){
   const peers=QT.stocks.filter(x=>x.sec===s.sec).sort((a,b)=>(b.v||0)-(a.v||0)).slice(0,8);
   if(peers.length<2){el.innerHTML='';return;}
   const fmt=v=>v==null?'—':v.toLocaleString('ko-KR',{maximumFractionDigits:1});
-  el.innerHTML=`<div class="rcard"><h3 style="font-size:13.5px;margin-bottom:8px">Peer 비교 <span style="font-size:10.5px;color:var(--dim2);font-weight:600">${esc(s.sec)} 시총 상위 · 컨센서스 기준</span></h3>
-    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">종목</th><th>시총</th><th>등락률</th><th>PER</th><th>추정PER</th><th>PBR</th><th>배당(%)</th><th>외국인(%)</th></tr></thead><tbody>
-    ${peers.map(p=>`<tr${p.c===s.c?' style="background:rgba(77,125,245,.08)"':''}>
-      <td style="text-align:left;font-weight:${p.c===s.c?'800':'600'}"><a href="#" data-qc="${p.c}" style="color:${p.c===s.c?'var(--accent)':'var(--text)'};text-decoration:none">${esc(p.n)}</a></td>
-      <td>${qtCap(p.v)}</td><td>${qtChg(p.f)}</td><td>${fmt(p.per)}</td><td>${fmt(p.cper)}</td><td>${fmt(p.pbr)}</td><td>${fmt(p.dvr)}</td><td>${fmt(p.fgn)}</td></tr>`).join('')}
+  el.innerHTML=`<div class="qcard"><div class="qch"><h3>Peer 비교</h3><span class="meta">${esc(s.sec)} 시총 상위 · 컨센서스 기준</span></div>
+    <div class="scrollx"><table class="ftab"><thead><tr><th class="lb">종목</th><th>시총</th><th>등락률</th><th>PER</th><th>추정PER</th><th>PBR</th><th>배당(%)</th><th>외국인(%)</th></tr></thead><tbody>
+    ${peers.map(p=>`<tr${p.c===s.c?' class="hl"':''}>
+      <td class="lb"><a href="#" data-qc="${p.c}" style="color:${p.c===s.c?'var(--accent)':'var(--text)'};text-decoration:none;font-weight:${p.c===s.c?'800':'600'}">${esc(p.n)}</a></td>
+      <td>${qtCap(p.v)}</td><td>${qtChg(p.f)}</td>${nc(p.per,2)}${nc(p.cper,2)}${nc(p.pbr,2)}${nc(p.dvr,2)}${nc(p.fgn,2)}</tr>`).join('')}
     </tbody></table></div>
-    <div style="font-size:11px;color:var(--dim2);margin-top:8px">업종 분류: 키움 업종(sector_cap) 기준 · 종목 클릭 시 이동</div></div>`;
+    <div class="qfoot">업종 분류: 키움 업종(sector_cap) 기준 · 종목 클릭 시 이동</div></div>`;
   el.querySelectorAll('[data-qc]').forEach(a=>a.addEventListener('click',e=>{
     e.preventDefault();qtSel=a.dataset.qc;qtRender();}));
 }
