@@ -245,4 +245,12 @@ Promise.all([fetch('data/buyback.json?v='+Math.floor(Date.now()/3e5)).then(r=>r.
   코스닥 체결 공시에는 신청수량 열이 없어 전일 신청내역과 조인하며, 코넥스·스톡옵션·처분(매도) 건은 목록에서 제외됩니다.${ex.length?`<br><b>신고내역 미매칭 당일 신청·체결</b> ${ex.slice(0,30).map(e=>`${e.name}(${e.type||'?'}${e.appl?' 신청 '+fmt(e.appl):''}${e.exec!=null?' 체결 '+fmt(e.exec):''})`).join(', ')}${ex.length>30?' 외 '+(ex.length-30)+'건':''}`:''}<br>
   최근 공시: ${(d.docs_latest||[]).map(x=>`${x[0].slice(5)} ${x[1].replace('자기주식매매','').replace(/\s/g,'')}(${x[3]})`).join(' · ')}`;
 }).catch(e=>{$('hd').textContent='데이터를 불러오지 못했습니다: '+e});
+// 장중 추정 JSON 1분 자동 재조회 (페이지 새로고침 없이 갱신)
+setInterval(()=>{if(!D)return;fetch('data/buyback_live.json?v='+Date.now()).then(r=>r.json()).then(lv=>{
+  if(!(lv&&lv.rows&&lv.rows.length&&lv.phase!=='confirmed'&&lv.dt===D.last_appl&&D.last_exec!==lv.dt))return;
+  if(LV&&LV.asof===lv.asof)return;
+  LV=lv;const M={};lv.rows.forEach(r=>M[r.code+'|'+r.type+'|'+r.decl_dt]=r);D.contracts.forEach(c=>{const r=M[c.code+'|'+c.type+'|'+c.decl_dt];c.live=(r&&c.next)?r:undefined;});
+  $('hd').innerHTML=$('hd').innerHTML.replace(/장중 추정 \d\d:\d\d/,'장중 추정 '+lv.asof.slice(11));
+  renderChips();renderList();if(sel)renderDetail();
+}).catch(()=>{})},60000);
 </script></body></html>
