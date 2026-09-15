@@ -199,6 +199,71 @@ button.card:hover{box-shadow:var(--shadow-hover);transform:none}
 .qtchip{font-size:12px;color:var(--sub);background:var(--hover);border-radius:6px;padding:3px 8px}
 @media(max-width:900px){#qtLayout{grid-template-columns:1fr}#qtSubNav{position:static;flex-direction:row;overflow-x:auto}.qtnav small{display:none}}
 
+/* ══ 종목 분석 리디자인 (2026-09) ══ */
+.qcard{background:var(--surface);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.qch{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.qch h3{font-size:14.5px;font-weight:700;letter-spacing:-.01em;margin:0}
+.qch .meta{font-size:11px;color:var(--faint);font-weight:500;letter-spacing:.01em}
+.qch .rt{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qfoot{font-size:11px;color:var(--faint);margin-top:11px;line-height:1.65}
+.scrollx{overflow-x:auto;margin:0 -20px;padding:0 20px}
+.scrollx::-webkit-scrollbar{height:7px}
+.scrollx::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+
+/* 재무·수급 표 */
+.ftab{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.ftab th,.ftab td{padding:8px 13px;text-align:right;white-space:nowrap}
+.ftab thead th{font-size:11px;font-weight:700;color:var(--faint);border-bottom:1px solid var(--line);padding-bottom:9px}
+.ftab thead th.e{color:var(--accent)}
+.ftab tbody td{border-bottom:1px solid var(--line2)}
+.ftab tbody tr:last-child td{border-bottom:none}
+.ftab tbody tr:hover td{background:var(--hover)}
+.ftab .lb{text-align:left;font-weight:600;color:var(--sub);position:sticky;left:0;z-index:1;
+  background:var(--surface);padding-left:0}
+.ftab thead .lb{background:var(--surface)}
+.ftab tbody tr:hover .lb{background:var(--hover)}
+.ftab .lb small{display:block;font-size:10px;font-weight:500;color:var(--faint);margin-top:1px}
+.ftab td.e{background:var(--accent-soft)}
+.ftab td.neg{color:var(--down)}
+.ftab tr.hl td{font-weight:700;color:var(--text)}
+.ftab .yoy{font-size:10px;font-weight:600;margin-left:6px;letter-spacing:-.01em}
+.ftab .yoy.up{color:var(--up)}.ftab .yoy.down{color:var(--down)}
+
+/* 선택 칩 (수급 주체 · MA) */
+.subchips{display:flex;gap:6px;flex-wrap:wrap}
+.subchip{border:1px solid var(--line);background:var(--surface);color:var(--faint);font-family:inherit;
+  font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:999px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;transition:.12s;line-height:1.2}
+.subchip:hover{color:var(--sub);border-color:var(--faint)}
+.subchip .dot{width:8px;height:8px;border-radius:2.5px;background:var(--c,var(--faint));opacity:.22;flex:none}
+.subchip.on{color:var(--text);background:var(--hover);border-color:transparent}
+.subchip.on .dot{opacity:1}
+
+/* 요약 타일 */
+.qtiles{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
+.qtile{background:var(--surface);border-radius:14px;padding:13px 14px;box-shadow:var(--shadow)}
+.qtile .tl{font-size:11px;color:var(--faint);margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.qtile .tl i{width:7px;height:7px;border-radius:2px;background:var(--c,var(--faint));flex:none}
+.qtile .tv{font-size:16.5px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.qtile .ts{font-size:10.5px;color:var(--faint);margin-top:3px}
+
+/* 차트 (알파스퀘어형 2단 패널) */
+#qtLwWrap{position:relative}
+.lwbox{position:relative}
+.lwbox.volbox{border-top:1px solid var(--line2);margin-top:4px;padding-top:2px}
+.lwlg{position:absolute;left:11px;top:8px;z-index:4;pointer-events:none;font-size:11.5px;line-height:1.7;
+  font-variant-numeric:tabular-nums;color:var(--sub);white-space:nowrap}
+.lwlg .row{display:block}
+.lwlg .k{color:var(--faint);margin-right:1px}
+.lwlg b{font-weight:700;color:var(--text)}
+.lwlg .up{color:var(--up)}.lwlg .down{color:var(--down)}
+.lwlg .ttl{font-weight:700;color:var(--text);margin-right:7px}
+#qtLw{height:400px}
+#qtVol{height:112px}
+@media(max-width:700px){#qtLw{height:300px}#qtVol{height:84px}.lwlg{font-size:10.5px;white-space:normal}
+  .ftab th,.ftab td{padding:7px 9px}}
+
 /* ───────── 韓/美 시황 ───────── */
 .mwtxt{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.74;color:var(--text)}
 .mwtxt .mwhead{display:block;font-size:14.5px;font-weight:800;margin-bottom:4px}
@@ -1778,7 +1843,41 @@ function qtSearchRun(q){
 const qtCap=v=>v==null?'—':v>=10000?(v/10000).toLocaleString('ko-KR',{maximumFractionDigits:1})+'조':v.toLocaleString('ko-KR',{maximumFractionDigits:0})+'억';
 const qtNum=(v,d)=>v==null?'—':v.toLocaleString('ko-KR',{maximumFractionDigits:d==null?2:d});
 const qtChg=v=>v==null?'':`<span class="${v>=0?'up':'down'}">${v>=0?'▲':'▼'}${Math.abs(v).toFixed(2)}%</span>`;
-let qtTab='ov',qtFlowN=20;
+let qtTab='ov',qtFlowN=20,qtFlowMode='bar',qtFinFreq='y';
+
+/* ── 숫자 포맷 공통: 천 단위 콤마 · 음수는 괄호 ── */
+function nf(v,d){
+  if(v==null||v===''||typeof v!=='number'||!isFinite(v))return '—';
+  d=d==null?0:d;
+  const a=Math.abs(v).toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  return v<0?'('+a+')':a;
+}
+/* 값 셀 — 음수는 괄호 + 하락색 */
+function nc(v,d,cls){
+  const neg=(typeof v==='number'&&isFinite(v)&&v<0);
+  const c=[cls||'',neg?'neg':''].filter(Boolean).join(' ');
+  return `<td${c?` class="${c}"`:''}>${nf(v,d)}</td>`;
+}
+const pctTag=(v,d)=>(v==null||!isFinite(v))?'':
+  `<span class="yoy ${v>=0?'up':'down'}">${v>=0?'+':'-'}${Math.abs(v).toFixed(d==null?1:d)}%</span>`;
+const grw=(a,b)=>(a==null||b==null||b===0)?null:(a/Math.abs(b)-1)*100;
+
+/* ── 수급 주체 (샤드 f 열 = quote_universe.FLOW_COLS) ── */
+const QT_INV=[
+  {i:1, k:'frgn',n:'외국인',    c:'#3b82f6'},
+  {i:2, k:'orgn',n:'기관계',    c:'#f59e0b'},
+  {i:3, k:'indv',n:'개인',      c:'#94a3b8'},
+  {i:4, k:'fnnc',n:'금융투자',  c:'#10b981'},
+  {i:5, k:'invt',n:'투신',      c:'#a855f7'},
+  {i:6, k:'pens',n:'연기금',    c:'#ef4444'},
+  {i:7, k:'samo',n:'사모',      c:'#06b6d4'},
+  {i:8, k:'insr',n:'보험',      c:'#eab308'},
+  {i:9, k:'bank',n:'은행',      c:'#6366f1'},
+  {i:10,k:'etcf',n:'기타금융',  c:'#84cc16'},
+  {i:11,k:'corp',n:'기타법인',  c:'#f472b6'},
+  {i:12,k:'ntfr',n:'기타외국인',c:'#0ea5e9'},
+  {i:13,k:'natn',n:'국가',      c:'#a3a3a3'}];
+let qtFlowSel=new Set(['frgn','orgn','indv']);
 const QT_TABS=[['ov','종목개요','요약 · 차트 · 컨센서스'],['val','밸류에이션','PER·PBR 밴드 · Peer'],['flow','수급','외국인 · 기관 · 개인'],['fin','재무','실적 추이 · 컨센서스'],['news','리포트·링크','최신 소식']];
 function qtRender(){
   const s=QT&&QT.stocks.find(x=>x.c===qtSel);if(!s)return;
@@ -1839,18 +1938,18 @@ function qtViewOv(s,view){
   const rel=(r,ir)=>(r==null||ir==null)?null:r-ir;
   const cell=v=>v==null?'—':`<span class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(1)}%</span>`;
   view.innerHTML=`
-  <div class="rcard" style="padding:14px">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+  <div class="qcard" style="padding:14px 16px 12px">
+    <div class="qch" style="margin-bottom:10px">
       <div class="rngwrap" id="qtCvBar">${[['day','일'],['week','주'],['month','월'],['y5','5년']].map(([k,l])=>`<button class="rng${qtCv===k?' on':''}" data-cv="${k}">${l}</button>`).join('')}</div>
       <div class="rngwrap" id="qtStyleBar">${[['candle','캔들'],['line','라인']].map(([k,l])=>`<button class="rng${qtStyle===k?' on':''}" data-st="${k}">${l}</button>`).join('')}</div>
-      <div id="qtMaBar" style="display:flex;gap:5px;flex-wrap:wrap">${[5,10,20,60,120].map(w=>`<button class="rng${qtMA.has(w)?' on':''}" data-ma="${w}" style="font-size:11px;padding:4px 9px">MA${w}</button>`).join('')}</div>
-      <div class="rngwrap" id="qtRngBar" style="margin-left:auto">${[['1M','1M'],['3M','3M'],['6M','6M'],['YTD','YTD'],['1Y','1Y'],['ALL','전체']].map(([k,l])=>`<button class="rng${qtRng===k?' on':''}" data-rg="${k}">${l}</button>`).join('')}</div>
+      <div id="qtMaBar" class="subchips">${[5,10,20,60,120].map(w=>`<button class="subchip${qtMA.has(w)?' on':''}" data-ma="${w}" style="--c:${MA_COLORS[w]}"><i class="dot"></i>${w}</button>`).join('')}</div>
+      <div class="rt"><div class="rngwrap" id="qtRngBar">${[['1M','1M'],['3M','3M'],['6M','6M'],['YTD','YTD'],['1Y','1Y'],['ALL','전체']].map(([k,l])=>`<button class="rng${qtRng===k?' on':''}" data-rg="${k}">${l}</button>`).join('')}</div></div>
     </div>
-    <div style="position:relative">
-      <div id="qtLwLegend" style="position:absolute;top:8px;left:10px;z-index:5;font-size:11.5px;color:var(--sub);background:color-mix(in srgb, var(--surface) 72%, transparent);padding:4px 9px;border-radius:8px;pointer-events:none"></div>
-      <div id="qtLw" style="height:420px"></div>
+    <div id="qtLwWrap">
+      <div class="lwbox"><div class="lwlg" id="qtLwLegend"></div><div id="qtLw"></div></div>
+      <div class="lwbox volbox" id="qtVolBox"><div class="lwlg" id="qtVolLegend"></div><div id="qtVol"></div></div>
     </div>
-    <div style="display:flex;gap:10px;font-size:11px;color:var(--dim2);margin-top:7px"><span>TradingView Lightweight Charts · 일봉 2년(수정주가 ADJ) · 주/월봉은 일봉 합산, 5년은 월별 종가</span><span id="qtMaLg" style="margin-left:auto"></span></div>
+    <div class="qfoot">TradingView Lightweight Charts · 일봉 2년(수정주가 ADJ) · 주/월봉은 일봉 합산 · 5년은 월별 종가</div>
   </div>
   <div class="rgrid2" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
     <div class="rcard" style="padding:18px 20px">
