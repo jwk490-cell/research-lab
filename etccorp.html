@@ -10,7 +10,7 @@ body{background:var(--bg);color:var(--txt);font:14px/1.55 -apple-system,BlinkMac
 h1{font-size:19px;margin-bottom:2px}
 .sub{color:var(--sub);font-size:12px;margin-bottom:12px}
 .sub b{color:var(--txt)}
-.sub .prov{color:var(--org);font-weight:600}
+.sub .prov{color:var(--sub);font-weight:600}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 13px;min-width:130px;cursor:pointer}
 .chip.on{border-color:var(--blu);background:#13233a}
@@ -39,7 +39,7 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 .nm{font-weight:600}
 .cd{color:var(--faint);font-size:11px;margin-left:5px}
 .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:999px;border:1px solid var(--line);color:var(--sub);margin-left:4px;vertical-align:1px}
-.tag.new{color:var(--grn);border-color:#1f4a2a}.tag.bb{color:var(--yel);border-color:#5a4a1a}.tag.d5{color:var(--pur);border-color:#4a3566}.tag.dm{color:var(--blu);border-color:#1f3a5a}
+.tag.new,.tag.d5{color:var(--blu);border-color:#1f3a5a}.tag.bb,.tag.dm{color:var(--sub);border-color:var(--line)}
 .g{color:var(--grn)}.r{color:var(--red)}.o{color:var(--org)}.b{color:var(--blu)}.f{color:var(--faint)}.y{color:var(--yel)}.p{color:var(--pur)}
 .rk{display:inline-block;min-width:26px;text-align:center;border-radius:6px;padding:1px 5px;font-size:11.5px;background:#1c2129;color:var(--sub)}
 .rk.top{background:#13233a;color:var(--blu);font-weight:600}
@@ -57,7 +57,7 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 .det svg{width:100%;height:200px;display:block;margin-bottom:8px}
 .det svg text{fill:var(--faint);font-size:10px}
 .det .bpos{fill:#4ea1ff}.det .bneg{fill:#f85149}.det .bout{fill:#2b3340}
-.det .px{stroke:var(--org);stroke-width:1.4;fill:none}
+.det .px{stroke:var(--sub);stroke-width:1.4;fill:none}
 .det .ax{stroke:var(--line)}
 .det .dtt td{white-space:nowrap}
 .note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:12.5px;color:var(--sub);line-height:1.7}
@@ -76,6 +76,7 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
   <span class="lb">최소 연속</span><div class="filt" id="sk"></div>
   <span class="lb">최소 누적</span><div class="filt" id="am"></div>
   <span class="lb">시장</span><div class="filt" id="mf"></div>
+  <span class="lb">시총</span><div class="filt" id="cf"></div>
 </div>
 <div class="bar">
   <span class="lb">정렬</span><div class="filt" id="sf"></div>
@@ -91,7 +92,7 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 </div>
 <script>
 const $=id=>document.getElementById(id);
-let D=null, view='streak', minSk=3, minAmt=10, mk='all', sortK='score', sortD=1, sel=null, chipF=null;
+let D=null, view='streak', minSk=3, minAmt=10, mk='all', minCap=0, sortK='score', sortD=1, sel=null, chipF=null;
 const fmt=n=>n==null?'–':Math.round(n).toLocaleString();
 const f1=n=>n==null?'–':n.toFixed(1);
 const f2=n=>n==null?'–':n.toFixed(2);
@@ -111,12 +112,13 @@ const score=r=>{ if(r.streak<3) return 0; const a=Math.log10(1+r.s_amt), t=Math.
 
 const SORTS=[['score','종합'],['s_amt','연속 누적'],['streak','연속일'],['turn','회전비중'],['est_pct','추정 지분'],['d5','5% 임박'],['surge','급증 배수'],['cum20','20일 누적'],['max1','단일일 최대'],['mcap','시총']];
 
-function seg(id,items,cur,cb){ const el=$(id); el.innerHTML=''; items.forEach(([v,l])=>{ const b=document.createElement('button'); b.textContent=l; if(v===cur) b.classList.add('on'); b.onclick=()=>{cb(v);render();}; el.appendChild(b); }); }
+function seg(id,items,cur,cb){ const el=$(id); el.innerHTML=''; items.forEach(([v,l])=>{ const b=document.createElement('button'); b.textContent=l; if(v===cur) b.classList.add('on'); b.onclick=()=>{cb(v);ui();render();}; el.appendChild(b); }); }
 function ui(){
   seg('vm',[['streak','연속 매집'],['all','전체(급증·단일일 포함)']],view,v=>{view=v;if(v==='all'){minSk=0;}else if(minSk<3)minSk=3;});
   seg('sk',[[0,'없음'],[3,'3일'],[5,'5일'],[10,'10일'],[20,'20일']],minSk,v=>{minSk=v;});
   seg('am',[[0,'없음'],[10,'10억'],[30,'30억'],[100,'100억'],[300,'300억']],minAmt,v=>{minAmt=v;});
   seg('mf',[['all','전체'],['KOSPI','코스피'],['KOSDAQ','코스닥']],mk,v=>{mk=v;});
+  seg('cf',[[0,'전체'],[1000,'1천억↑'],[3000,'3천억↑'],[10000,'1조↑'],[50000,'5조↑']],minCap,v=>{minCap=v;});
   seg('sf',SORTS,sortK,v=>{sortK=v;sortD=v==='d5'?-1:1;});
 }
 function rows(){
@@ -127,6 +129,7 @@ function rows(){
     const amt=r.streak>=3?r.s_amt:Math.max(r.cum20,r.max1);
     if(amt<minAmt) return false;
     if(mk!=='all'&&r.mkt!==mk) return false;
+    if(minCap&&!(r.mcap>=minCap)) return false;
     if($('xbb').checked&&isBB(r)) return false;
     if($('onlyd').checked&&!hasD(r)) return false;
     if(chipF==='new'&&!isNew(r)) return false;
@@ -160,7 +163,7 @@ function head(){
 function render(){
   const rs=rows();
   const val=r=>{ if(sortK==='score') return score(r); const v=r[sortK]; if(sortK==='d5') return v==null?1e9:v; if(sortK==='cv') return v==null?1e9:v; return v==null?-1e18:v; };
-  rs.sort((a,b)=>{const x=val(a),y=val(b); return (sortK==='d5'||sortK==='cv')?(sortD>0?y-x:x-y):(sortD>0?y-x:x-y);});
+  rs.sort((a,b)=>{const x=val(a),y=val(b); if(typeof x==='string'||typeof y==='string') return sortD>0?String(x).localeCompare(String(y),'ko'):String(y).localeCompare(String(x),'ko'); return sortD>0?y-x:x-y;});
   // d5·cv 는 오름차순이 기본 정렬(sortD=-1)
   $('cnt').textContent=`${rs.length}종목`;
   const tb=$('tb').tBodies[0]; tb.innerHTML='';
@@ -178,10 +181,10 @@ function render(){
       <td>${r.streak?`<b>${eok(r.s_amt)}</b>`:'–'}</td>
       <td>${r.streak?eok(r.avg):'–'}</td>
       <td>${r.streak?man(r.avg_sh)+'주':'–'}</td>
-      <td>${r.turn!=null?`<span class="${r.turn>=20?'o':''}">${f1(r.turn)}%</span>`:'–'}</td>
-      <td>${r.cv!=null?`<span class="${r.cv<=0.3?'g':r.cv>=1?'f':''}">${f2(r.cv)}</span>`:'–'}</td>
-      <td>${r.streak?`<b class="${r.est_pct>=1?'p':''}">${r.est_pct.toFixed(2)}%</b>`:'–'}</td>
-      <td>${r.d5==null||r.streak<3?'–':r.d5<=0?'<span class="p">도달</span>':`<span class="${r.d5<=10?'p':''}">D-${r.d5}</span>`}</td>
+      <td>${r.turn!=null?`${f1(r.turn)}%`:'–'}</td>
+      <td>${r.cv!=null?`<span class="${r.cv>=1?'f':''}">${f2(r.cv)}</span>`:'–'}</td>
+      <td>${r.streak?`<b class="${r.est_pct>=1?'b':''}">${r.est_pct.toFixed(2)}%</b>`:'–'}</td>
+      <td>${r.d5==null||r.streak<3?'–':r.d5<=0?'<span class="b">도달</span>':`<span class="${r.d5<=10?'b':''}">D-${r.d5}</span>`}</td>
       <td>${r.streak?`${f1(r.surge)}×<br><small class="f">기준 ${eok(r.base)}</small>`:'–'}</td>
       <td>${eok(r.cum20)}<br><small class="f">${f2(r.cum20_mcap)}%</small></td>
       <td>${eok(r.max1)}<br><small class="f">${dt8(r.max1_dt)}</small></td>
@@ -221,7 +224,7 @@ function detail(r){
   const kv=`<div class="kv"><span>연속 매집</span><b>${r.streak}거래일 (${dt8(r.s_start)}~) · 누적 ${eok(r.s_amt)} · 일평균 ${eok(r.avg)} ≈ ${man(r.avg_sh)}주</b>
     <span>추정 취득 지분</span><b>${r.est_pct.toFixed(3)}% <small class="f">(속도 ${(r.pace).toFixed(3)}%/일 → 5%까지 ${r.d5==null?'–':r.d5<=0?'도달':'약 '+r.d5+'거래일'})</small></b>
     <span>거래대금 비중</span><b>${f1(r.turn)}% · 규칙성 CV ${f2(r.cv)} · 직전 40일 대비 ${f1(r.surge)}×</b></div>`;
-  return `<div class="det"><div class="grid"><div><h4>기타법인 일별 순매수(억, 파랑=매집 구간) · 주황=종가 — 최근 ${r.ser.length}거래일</h4>${chart(r)}${kv}${bb}<h4>지분공시 (OpenDART · 매집 시작 7일 전~)</h4>${dl}
+  return `<div class="det"><div class="grid"><div><h4>기타법인 일별 순매수(억, 파랑=매집 구간) · 회색=종가 — 최근 ${r.ser.length}거래일</h4>${chart(r)}${kv}${bb}<h4>지분공시 (OpenDART · 매집 시작 7일 전~)</h4>${dl}
     <div style="font-size:12px"><a target="_blank" rel="noopener" href="https://finance.naver.com/item/frgn.naver?code=${r.code}">네이버 투자자별 매매동향</a> · <a target="_blank" rel="noopener" href="https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(r.name)}">DART 공시검색</a></div></div>
     <div><h4>최근 20거래일</h4>${tbl}</div></div></div>`;
 }
