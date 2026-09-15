@@ -392,6 +392,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="gap">괴리율</button>
     <button class="navitem" data-tab="etfgap">ETF 괴리율</button>
     <button class="navitem" data-tab="dd">전고대비</button>
+    <button class="navitem" data-tab="pbrgrowth">저PBR × 컨센 성장 <small>매주</small></button>
     <div class="navgroup">매크로 데이터</div>
     <button class="navitem" data-tab="ram">메모리 가격</button>
     <button class="navitem" data-tab="semiexport">반도체/전기전자 수출 추이</button>
@@ -490,6 +491,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="basket7"><h3>업종 시총비중 <span class="tag">매일 16:40</span></h3><p>KOSPI·KOSDAQ 투자포인트 기준 업종(메모리·소부장·기판·이차전지·전력기기·화장품…) 시총 대비 비중</p></button>
           <button class="card" data-go="gap"><h3>괴리율 <span class="tag">2010~</span></h3><p>삼성 보통/우선 괴리율 · SK스퀘어 NAV 할인율</p></button>
           <button class="card" data-go="etfgap"><h3>ETF 괴리율 <span class="tag">5분</span></h3><p>단일종목 레버리지·인버스 시장가 vs NAV 게이지</p></button>
+          <button class="card" data-go="pbrgrowth"><h3>저PBR × 컨센 성장 스크리너 <span class="tag">매주 월요일</span></h3><p>PBR 1배 이하 종목을 26E→27E 컨센서스 성장률 4지표(매출·영업이익·지배순이익·ROE)로 랭킹 — 직전결산/26E BPS 기준 토글, 시장·시총 필터, 종목별 3개년 컨센 상세</p></button>
           <button class="card" data-go="dd"><h3>전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이 + −15% 이상 하락 구간 기록</p></button>
         </div>
       </section>
@@ -661,6 +663,10 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-buyback">
       <iframe data-src="buyback.html" title="자사주 매수 트래커"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-pbrgrowth">
+      <iframe data-src="pbrgrowth.html" title="저PBR × 컨센 성장 스크리너"></iframe>
     </section>
 
     <section class="panel embed" id="tab-semietf">
@@ -2198,7 +2204,7 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
-  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,
+  const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,
                rrgsec:1,rrgstk:1,leaders:1,meridian:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?'?v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
@@ -2446,7 +2452,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
   supply:{m:'a',eta:'~7분'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
-  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'},
+  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
   export:{m:'a',eta:'~1분'}, corpexport:{m:'a',eta:'~3분'},

@@ -1,0 +1,207 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>저PBR × 컨센서스 성장 스크리너</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#21262d;--txt:#e6edf3;--sub:#8b949e;--faint:#6e7681;
+--red:#f85149;--org:#ffa657;--grn:#3fb950;--blu:#58a6ff;--pur:#bc8cff;--yel:#d29922;--teal:#39d3bb}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;padding:18px 20px 60px}
+.wrap{max-width:1280px;margin:0 auto}
+h1{font-size:19px;margin-bottom:2px}
+.sub{color:var(--sub);font-size:12px;margin-bottom:12px}
+.sub b{color:var(--txt)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 13px;min-width:130px}
+.chip b{display:block;font-size:19px;line-height:1.15}
+.chip span{font-size:11px;color:var(--sub)}
+.chip small{display:block;font-size:10.5px;color:var(--faint)}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.bar .lb{font-size:11px;color:var(--faint);margin-right:-4px}
+.bar input[type=text]{background:var(--card);border:1px solid var(--line);color:var(--txt);font:inherit;font-size:13px;padding:6px 11px;border-radius:8px;width:180px}
+.filt{display:flex;gap:4px;flex-wrap:wrap}
+.filt button{background:var(--card);border:1px solid var(--line);color:var(--sub);font:inherit;font-size:11.5px;padding:4px 10px;border-radius:999px;cursor:pointer}
+.filt button.on{color:var(--txt);border-color:var(--blu);background:#13233a}
+label.ck{font-size:11.5px;color:var(--sub);display:flex;align-items:center;gap:4px;cursor:pointer}
+.tw{overflow-x:auto;margin-bottom:22px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+th{color:var(--faint);font-weight:600;font-size:11px;text-align:right;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none;vertical-align:bottom}
+th.l,td.l{text-align:left}
+th.s{color:var(--blu)}
+th small{display:block;font-weight:400;font-size:10px;color:var(--faint)}
+td{padding:6px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+tbody tr.row{cursor:pointer}
+tbody tr.row:hover td{background:#1c2129}
+tbody tr.row.sel td{background:#13233a}
+tr.det td{background:#0f1319;padding:10px 14px 12px;white-space:normal;cursor:default}
+.nm{font-weight:600}
+.cd{color:var(--faint);font-size:11px;margin-left:5px}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:999px;border:1px solid var(--line);color:var(--sub);margin-left:4px;vertical-align:1px}
+.tag.P{color:var(--blu);border-color:#1f3a5a}.tag.Q{color:var(--pur);border-color:#4a3566}.tag.F{color:var(--yel);border-color:#5a4a1a}
+.g{color:var(--grn)}.r{color:var(--red)}.o{color:var(--org)}.b{color:var(--blu)}.f{color:var(--faint)}.y{color:var(--yel)}
+.fl{font-size:10.5px;color:var(--org)}
+.rk{display:inline-block;min-width:26px;text-align:center;border-radius:6px;padding:1px 5px;font-size:11.5px;background:#1c2129;color:var(--sub)}
+.rk.top{background:#13233a;color:var(--blu);font-weight:600}
+.det .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.det table{font-size:12px;background:transparent;border:0}
+.det th{cursor:default;padding:4px 8px}
+.det td{padding:4px 8px}
+.det h4{font-size:12px;color:var(--sub);margin-bottom:4px;font-weight:600}
+.det .links{margin-top:8px;font-size:12px;color:var(--sub)}
+.det a{color:var(--blu);text-decoration:none}
+.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:12.5px;color:var(--sub);line-height:1.7}
+.note b{color:var(--txt)}
+.note h3{font-size:13px;color:var(--txt);margin:0 0 6px}
+.note ul{padding-left:18px}
+.empty{padding:26px;text-align:center;color:var(--faint)}
+.cnt{font-size:11.5px;color:var(--faint);margin-left:auto}
+</style></head><body><div class="wrap">
+<h1>저PBR × 컨센서스 성장 스크리너</h1>
+<div class="sub" id="hd">불러오는 중…</div>
+<div class="chips" id="chips"></div>
+
+<div class="bar">
+  <span class="lb">PBR 기준</span><div class="filt" id="pb"></div>
+  <span class="lb">임계</span><div class="filt" id="pt"></div>
+  <span class="lb">시장</span><div class="filt" id="mf"></div>
+  <span class="lb">시총</span><div class="filt" id="cf"></div>
+</div>
+<div class="bar">
+  <span class="lb">정렬</span><div class="filt" id="sf"></div>
+  <label class="ck"><input type="checkbox" id="pos"> 4지표 모두 개선(성장률 &gt;0 · ROE 상승)만</label>
+  <label class="ck"><input type="checkbox" id="prof" checked> 26E 영업이익·순이익 흑자만</label>
+  <input type="text" id="q" placeholder="종목명·코드 검색">
+  <span class="cnt" id="cnt"></span>
+</div>
+
+<div class="tw"><table id="tb"><thead></thead><tbody></tbody></table></div>
+
+<div class="note" id="note"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let D=null, pbBasis='t', pbTh=1.0, mk='all', capMin=0, sortK='rk', sortD=1, sel=null;
+const fmt=n=>n==null?'–':Math.round(n).toLocaleString();
+const f1=n=>n==null?'–':n.toFixed(1);
+const f2=n=>n==null?'–':n.toFixed(2);
+const pct=(g,fl)=>g==null?(fl?`<span class="fl">${fl}</span>`:'–'):`<span class="${g>0?'g':g<0?'r':''}">${g>0?'+':''}${g.toFixed(1)}%</span>`;
+const pp=d=>d==null?'–':`<span class="${d>0?'g':d<0?'r':''}">${d>0?'+':''}${d.toFixed(1)}p</span>`;
+const uk=n=>n==null?'–':n>=10000?(n/10000).toFixed(1)+'조':fmt(n)+'억';
+const pbr=r=>pbBasis==='t'?r.pbr_t:r.pbr26;
+
+function filtered(){
+  const q=$('q').value.trim().toLowerCase();
+  const pos=$('pos').checked, prof=$('prof').checked;
+  return D.rows.filter(r=>{
+    const p=pbr(r);
+    if(pbTh!=null&&(p==null||p>pbTh))return false;
+    if(mk!=='all'&&r.mkt!==mk)return false;
+    if(capMin&&(r.mcap==null||r.mcap<capMin))return false;
+    if(prof&&!(r.op[1]>0&&r.np[1]>0))return false;
+    if(pos&&!(r.g_sales>0&&r.g_op>0&&r.g_np>0&&r.d_roe>0))return false;
+    if(q&&!(r.name.toLowerCase().includes(q)||r.code.includes(q)))return false;
+    return true;
+  });
+}
+// 필터 통과 집합 안에서 4지표 순위(1=최고)·평균 순위 재계산
+function rank(rows){
+  const ks=[['g_sales','rs'],['g_op','ro'],['g_np','rn'],['d_roe','rr']];
+  ks.forEach(([k,o])=>{
+    const ord=rows.map((r,i)=>i).sort((a,b)=>{
+      const x=rows[a][k],y=rows[b][k];
+      if(x==null&&y==null)return 0; if(x==null)return 1; if(y==null)return -1; return y-x;});
+    ord.forEach((i,pos)=>rows[i][o]=pos+1);
+  });
+  rows.forEach(r=>r.rk=(r.rs+r.ro+r.rn+r.rr)/4);
+}
+const COLS=[
+  ['name','종목','l'],['mcap','시총'],['price','현재가'],['pbr_t','PBR<small>직전결산</small>'],['pbr26','PBR<small>26E</small>'],
+  ['per26','PER<small>26E</small>'],['per27','PER<small>27E</small>'],
+  ['g_sales','매출 성장<small>26E→27E</small>'],['g_op','OP 성장<small>26E→27E</small>'],['g_np','NP 성장<small>26E→27E</small>'],
+  ['roe26','ROE 26E'],['roe27','ROE 27E'],['d_roe','ROE 변화<small>27E−26E</small>'],['rk','종합<small>4지표 평균순위</small>'],
+];
+const val=(r,k)=>k==='roe26'?r.roe[1]:k==='roe27'?r.roe[2]:r[k];
+function render(){
+  const rows=filtered(); rank(rows);
+  rows.sort((a,b)=>{const x=val(a,sortK),y=val(b,sortK);
+    if(x==null&&y==null)return 0; if(x==null)return 1; if(y==null)return -1;
+    return typeof x==='string'?x.localeCompare(y)*sortD:(x-y)*sortD;});
+  $('cnt').textContent=`${rows.length}종목`;
+  $('tb').querySelector('thead').innerHTML='<tr><th>#</th>'+COLS.map(([k,l,c])=>`<th class="${c||''} ${sortK===k?'s':''}" data-k="${k}">${l}${sortK===k?(sortD>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>';
+  $('tb').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;
+    if(sortK===k)sortD=-sortD;else{sortK=k;sortD=(k==='rk'||k==='name'||k.startsWith('pbr')||k.startsWith('per'))?1:-1;}render();});
+  const tb=$('tb').querySelector('tbody');
+  if(!rows.length){tb.innerHTML=`<tr><td colspan="${COLS.length+1}" class="empty">조건에 맞는 종목이 없습니다</td></tr>`;return;}
+  tb.innerHTML=rows.map((r,i)=>`<tr class="row ${sel===r.code?'sel':''}" data-c="${r.code}">
+    <td class="f">${i+1}</td>
+    <td class="l"><span class="nm">${r.name}</span><span class="cd">${r.code}</span><span class="tag ${r.mkt==='KOSPI'?'P':'Q'}">${r.mkt==='KOSPI'?'유가':'코스닥'}</span>${r.fy!==12?`<span class="tag F">${r.fy}월 결산</span>`:''}</td>
+    <td>${uk(r.mcap)}</td><td>${fmt(r.price)}</td>
+    <td class="${r.pbr_t!=null&&r.pbr_t<=1?'b':''}">${f2(r.pbr_t)}</td><td class="${r.pbr26!=null&&r.pbr26<=1?'b':''}">${f2(r.pbr26)}</td>
+    <td>${f1(r.per26)}</td><td>${f1(r.per27)}</td>
+    <td>${pct(r.g_sales,r.f_sales)}</td><td>${pct(r.g_op,r.f_op)}</td><td>${pct(r.g_np,r.f_np)}</td>
+    <td>${f1(r.roe[1])}${r.roe[1]!=null?'%':''}</td><td>${f1(r.roe[2])}${r.roe[2]!=null?'%':''}</td><td>${pp(r.d_roe)}</td>
+    <td><span class="rk ${r.rk<=rows.length*0.1?'top':''}">${r.rk.toFixed(1)}</span></td>
+  </tr>${sel===r.code?detail(r):''}`).join('');
+  tb.querySelectorAll('tr.row').forEach(tr=>tr.onclick=()=>{sel=sel===tr.dataset.c?null:tr.dataset.c;render();});
+}
+function detail(r){
+  const y0=D.y0, y1=D.y1;
+  const line=(l,a,u,g0,f0,g1,f1_)=>`<tr><th class="l">${l}</th><td>${a[0]==null?'–':u(a[0])}</td><td>${u(a[1])}</td><td>${u(a[2])}</td><td>${pct(g0,f0)}</td><td>${pct(g1,f1_)}</td></tr>`;
+  const money=v=>v==null?'–':fmt(v);
+  const p=v=>v==null?'–':v.toFixed(1)+'%';
+  const w=v=>v==null?'–':fmt(v)+'원';
+  return `<tr class="det"><td colspan="${COLS.length+1}"><div class="det"><div class="grid">
+  <div><h4>컨센서스 (억원) · ${y0-1}A → ${y0}E → ${y1}E</h4>
+  <table><thead><tr><th class="l"></th><th>${y0-1}A</th><th>${y0}E</th><th>${y1}E</th><th>${String(y0-1).slice(2)}→${String(y0).slice(2)}</th><th>${String(y0).slice(2)}→${String(y1).slice(2)}</th></tr></thead><tbody>
+  ${line('매출액',r.sales,money,r.g0_sales,r.f0_sales,r.g_sales,r.f_sales)}
+  ${line('영업이익',r.op,money,r.g0_op,r.f0_op,r.g_op,r.f_op)}
+  ${line('지배순이익',r.np,money,r.g0_np,r.f0_np,r.g_np,r.f_np)}
+  <tr><th class="l">영업이익률</th><td>${p(r.opm[0])}</td><td>${p(r.opm[1])}</td><td>${p(r.opm[2])}</td><td></td><td></td></tr>
+  <tr><th class="l">ROE</th><td>${p(r.roe[0])}</td><td>${p(r.roe[1])}</td><td>${p(r.roe[2])}</td><td>${r.roe[0]!=null&&r.roe[1]!=null?pp(+(r.roe[1]-r.roe[0]).toFixed(1)):'–'}</td><td>${pp(r.d_roe)}</td></tr>
+  <tr><th class="l">EPS</th><td>${w(r.eps[0])}</td><td>${w(r.eps[1])}</td><td>${w(r.eps[2])}</td><td></td><td></td></tr>
+  <tr><th class="l">DPS</th><td>${w(r.dps[0])}</td><td>${w(r.dps[1])}</td><td>${w(r.dps[2])}</td><td></td><td></td></tr>
+  </tbody></table></div>
+  <div><h4>밸류에이션 (현재가 ${fmt(r.price)}원 · ${r.pdate})</h4>
+  <table><tbody>
+  <tr><th class="l">PBR 직전결산</th><td>${f2(r.pbr_t)}배</td><td class="f">BPS ${r.bps_year} ${w(r.bps_t)}</td></tr>
+  <tr><th class="l">PBR ${y0}E</th><td>${f2(r.pbr26)}배</td><td class="f">BPS ${w(r.bps26)}</td></tr>
+  <tr><th class="l">PBR ${y1}E</th><td>${f2(r.pbr27)}배</td><td></td></tr>
+  <tr><th class="l">PER ${y0}E / ${y1}E</th><td>${f1(r.per26)} / ${f1(r.per27)}배</td><td></td></tr>
+  <tr><th class="l">시가총액</th><td>${uk(r.mcap)}</td><td></td></tr>
+  <tr><th class="l">4지표 순위</th><td colspan="2" class="l">매출 ${r.rs} · OP ${r.ro} · NP ${r.rn} · ROE ${r.rr} → 평균 <b>${r.rk.toFixed(1)}</b></td></tr>
+  </tbody></table>
+  <div class="links"><a href="https://finance.naver.com/item/main.naver?code=${r.code}" target="_blank" rel="noopener">네이버 종목 ↗</a> · <a href="https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd=${r.code}" target="_blank" rel="noopener">컨센서스 원표 ↗</a> · <a href="https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(r.name)}" target="_blank" rel="noopener">DART ↗</a></div>
+  </div></div></div></td></tr>`;
+}
+function renderFilters(){
+  const mkb=(id,items,cur,set)=>{$(id).innerHTML=items.map(([k,l])=>`<button class="${String(cur)===String(k)?'on':''}" data-k="${k}">${l}</button>`).join('');
+    $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.k);renderFilters();render();});};
+  mkb('pb',[['t','직전 결산 BPS'],['26','26E BPS']],pbBasis,v=>pbBasis=v);
+  mkb('pt',[['0.5','≤0.5'],['0.8','≤0.8'],['1','≤1.0'],['1.2','≤1.2'],['null','전체']],pbTh==null?'null':String(+pbTh),v=>pbTh=v==='null'?null:+v);
+  mkb('mf',[['all','전체'],['KOSPI','유가'],['KOSDAQ','코스닥']],mk,v=>mk=v);
+  mkb('cf',[['0','전체'],['1000','1,000억↑'],['3000','3,000억↑'],['10000','1조↑']],capMin,v=>capMin=+v);
+  mkb('sf',[['rk','종합'],['g_sales','매출 성장'],['g_op','OP 성장'],['g_np','NP 성장'],['d_roe','ROE 개선'],['roe27','ROE 27E']],sortK,v=>{sortK=v;sortD=v==='rk'?1:-1;});
+}
+fetch('data/pbrgrowth.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{
+  D=d;
+  $('hd').innerHTML=`컨센서스 기준 <b>${d.asof}</b> · 빌드 ${d.built} · 유니버스 <b>${d.n_universe.toLocaleString()}</b>종목(코스피·코스닥 보통주) 중 ${d.y0}E·${d.y1}E 컨센서스 보유 <b>${d.n_cons}</b>종목 · 단위 억원`;
+  const all=d.rows, le1=all.filter(r=>r.pbr_t!=null&&r.pbr_t<=1), le1e=all.filter(r=>r.pbr26!=null&&r.pbr26<=1);
+  const both=le1.filter(r=>r.g_sales>0&&r.g_op>0&&r.g_np>0&&r.d_roe>0);
+  $('chips').innerHTML=[
+    [d.n_cons,`${d.y0}E·${d.y1}E 컨센 보유`,`유니버스 ${d.n_universe.toLocaleString()} 중`],
+    [le1.length,'PBR ≤ 1.0 (직전 결산)',`26E BPS 기준 ${le1e.length}`],
+    [both.length,'저PBR + 4지표 모두 개선','매출·OP·NP 성장 >0 · ROE 상승'],
+    [le1.filter(r=>r.g_op!=null&&r.g_op>=20).length,'저PBR + OP 성장 20%↑',`NP 20%↑ ${le1.filter(r=>r.g_np!=null&&r.g_np>=20).length}`],
+  ].map(([n,l,s])=>`<div class="chip"><b>${n}</b><span>${l}</span><small>${s}</small></div>`).join('');
+  renderFilters(); render();
+  $('q').oninput=render; $('pos').onchange=render; $('prof').onchange=render;
+  $('note').innerHTML=`<h3>방법론</h3><ul>
+  <li><b>유니버스</b> 코스피·코스닥 보통주 전 종목(스팩·우선주·거래정지 제외). 이 중 증권사 컨센서스가 ${d.y0}E와 ${d.y1}E 두 해 모두 존재하는 종목만 대상 — 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작은 종목일수록 의심).</li>
+  <li><b>성장률</b> = ${d.y1}E ÷ ${d.y0}E − 1. 매출액·영업이익(발표기준)·<b>지배주주순이익</b>(자회사 상장사의 전체 순이익 괴리 방지). 기준연도가 적자면 비율이 무의미하므로 흑전·적전·적지·적확으로 표기하고 순위는 최하위 처리. 「26E 흑자만」 체크(기본)가 이 케이스를 걸러낸다.</li>
+  <li><b>ROE</b> 컨센서스 ROE ${d.y0}E·${d.y1}E와 그 차이(%p). 순이익 급증 종목은 ROE도 같이 뛰므로 NP 성장과 상관이 높다 — 4지표 평균순위에서 이중 반영되는 점을 감안.</li>
+  <li><b>PBR</b> 두 기준을 모두 제공. <b>직전 결산 BPS</b>(현재가 ÷ 최근 확정 연도 BPS, 기본)와 <b>${d.y0}E BPS</b>(현재가 ÷ 컨센 BPS). 이익이 많이 나는 해엔 26E BPS가 커져 PBR이 낮아지므로 26E 기준이 더 관대하다. 현재가는 네이버 실시간(장중이면 장중가).</li>
+  <li><b>종합</b> = 필터를 통과한 종목 집합 안에서 4지표 각각의 순위(1=최고)를 평균한 값. 필터를 바꾸면 순위도 그 집합 기준으로 다시 매겨진다. 표 헤더 클릭으로 개별 지표 정렬.</li>
+  <li><b>3월 결산</b> 종목은 연도 숫자로 매핑(2026E = FY2026.03). 태그로 표시.</li>
+  <li><b>갱신</b> 매주 월요일 새벽 자동 + 수동 갱신 버튼. 컨센서스는 실적 시즌 직후 가장 크게 움직인다.</li></ul>`;
+}).catch(e=>{$('hd').textContent='데이터 로드 실패: '+e;});
+</script></body></html>
