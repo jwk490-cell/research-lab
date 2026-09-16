@@ -182,7 +182,7 @@ function today(){
     .map(([d,v])=>`<div class="ln"><span class="lb2"><b>${dt8(d)} 시작</b> →</span><span>${v.sort((a,b)=>b.s_amt-a.s_amt).map(r=>stc(r,eok(r.s_amt))).join(' ')}</span></div>`).join('');
   $('today').innerHTML=`<h3>오늘의 요약 <small>${bd.slice(4,6)}/${bd.slice(6,8)} 기준 · 연속 3일↑·누적 3억↑ ${live.length}종목${nBB?` (자사주로 설명 ${nBB} 제외)`:''}</small></h3>`
    +`<div class="sec"><h4>급증 배수 상위 10 <small>매집 일평균 ÷ 직전 40일 평균</small></h4>${surge?`<div class="ln"><span>${surge}</span></div>`:ln('','')}</div>`
-   +`<div class="sec"><h4>5% 임박 상위 5 <small>종목(현재 추정 취득 지분) · 잔여일 짧은 순</small></h4>${d5?`<div class="ln"><span>${d5}</span></div>`:ln('','')}</div>`
+   +`<div class="sec"><h4>5% 임박 상위 5 <small>종목(현재 취득 지분) · 잔여일 짧은 순</small></h4>${d5?`<div class="ln"><span>${d5}</span></div>`:ln('','')}</div>`
    +`<div class="sec"><h4>동일 날짜 시작 <small>같은 날 매집을 시작한 묶음</small></h4>${same||ln('','')}</div>`;
   $('today').querySelectorAll('[data-j]').forEach(e=>e.onclick=()=>jump(e.dataset.j));
 }
@@ -200,8 +200,8 @@ function chips(){
 }
 function head(){
   const H=[['rk','#',''],['surge','급증','직전40일 대비 배수'],['name','종목','',1],['mkt','시장','',1],['mcap','시총',''],['close','종가','등락'],
-    ['streak','연속','시작일'],['s_amt','연속 누적','억'],['avg','일평균','억'],['avg_sh','일평균','추정 주수'],['turn','회전비중','순매수/거래대금'],
-    ['cv','규칙성','CV↓ 기계적'],['est_pct','추정 취득','상장주식 대비']];
+    ['streak','연속','시작일'],['s_amt','연속 누적','억'],['avg','일평균','억'],['avg_sh','일평균','순매수 주수'],['turn','회전비중','순매수/거래대금'],
+    ['cv','규칙성','CV↓ 기계적'],['est_pct','취득 지분','상장주식 대비']];
   $('tb').tHead.innerHTML='<tr>'+H.map(([k,l,s,left])=>`<th class="${left?'l ':''}${sortK===k?'s':''}" data-k="${k}">${l}${s?`<small>${s}</small>`:''}</th>`).join('')+'</tr>';
   $('tb').tHead.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k; if(k==='rk')return; if(sortK===k)sortD=-sortD; else{sortK=k;sortD=(k==='cv')?-1:1;} ui(); render();});
 }
@@ -254,17 +254,18 @@ function chart(r){
 }
 function detail(r){
   let cum=0;
-  const dtRows=r.ser.slice(0,20).map(s=>{const sh=s[1]>0?s[2]*1e6/s[1]:0; return [s,sh];});
+  const dtRows=r.ser.slice(0,20).map(s=>{const sh=(s[4]!=null)?s[4]:(s[1]>0?s[2]*1e6/s[1]:0); return [s,sh];});
+  const qLabel=r.qty?'순매수 수량':'추정 주수';
   // 누적은 오래된→최신으로 계산
   const cums=[]; dtRows.slice().reverse().forEach(([s,sh])=>{cum+=sh;cums.push(cum);}); cums.reverse();
-  const tbl=`<table class="dtt"><thead><tr><th>날짜</th><th>종가</th><th>기타법인</th><th>거래대금</th><th>비중</th><th>추정 주수</th><th>20일 누적 지분</th></tr></thead><tbody>`+
-    dtRows.map(([s,sh],i)=>`<tr><td>${dt8(s[0])}</td><td>${fmt(s[1])}</td><td class="${s[2]>0?'b':s[2]<0?'r':'f'}">${f1(s[2]/100)}억</td><td class="f">${eok(s[3]/100)}</td><td>${s[3]>0?f1(s[2]/s[3]*100)+'%':'–'}</td><td>${man(Math.round(sh))}</td><td class="f">${(cums[i]/r.list*100).toFixed(2)}%</td></tr>`).join('')+'</tbody></table>';
+  const tbl=`<table class="dtt"><thead><tr><th>날짜</th><th>종가</th><th>기타법인</th><th>거래대금</th><th>비중</th><th>${qLabel}</th><th>20일 누적 지분</th></tr></thead><tbody>`+
+    dtRows.map(([s,sh],i)=>`<tr><td>${dt8(s[0])}</td><td>${fmt(s[1])}</td><td class="${s[2]>0?'b':s[2]<0?'r':'f'}">${f1(s[2]/100)}억</td><td class="f">${eok(s[3]/100)}</td><td>${s[3]>0?f1(s[2]/s[3]*100)+'%':'–'}</td><td class="${s[4]!=null?'':'f'}">${man(Math.round(sh))}</td><td class="f">${(cums[i]/r.list*100).toFixed(2)}%</td></tr>`).join('')+'</tbody></table>';
   const dart=(r.dart||[]).slice().sort((a,b)=>b.dt.localeCompare(a.dt));
   const dl=dart.length?'<ul>'+dart.map(x=>`<li><span class="tag dm">${x.kind}</span> ${dt8(x.dt)} <b>${x.who}</b> · <a target="_blank" rel="noopener" href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=${x.no}">${x.nm}</a></li>`).join('')+'</ul>'
     :`<div class="f" style="font-size:12px;margin-bottom:10px">${r.streak>=3&&r.s_amt>=5?'매집 시작 7일 전부터 접수된 지분공시 없음':'지분공시 조회 대상 아님(연속 3일·5억 미만)'}</div>`;
   const bb=r.bb?`<div class="kv"><span>자사주 매수</span><b>${r.bb.type||''} · ${r.bb.status==='active'?'진행중':'종료'} ${r.bb.start?dt8(r.bb.start)+'~'+dt8(r.bb.end||''):''}</b><span>구간 체결액</span><b>${eok(r.bb.amt)} <small class="f">(기타법인 순매수의 ${r.bb.share!=null?r.bb.share+'%':'–'})</small></b><span>진행률</span><b>${r.bb.pct!=null?r.bb.pct+'%':'–'}</b></div>`:'';
-  const kv=`<div class="kv"><span>연속 매집</span><b>${r.streak}거래일 (${dt8(r.s_start)}~) · 누적 ${eok(r.s_amt)} · 일평균 ${eok(r.avg)} ≈ ${man(r.avg_sh)}주</b>
-    <span>추정 취득 지분</span><b>${r.est_pct.toFixed(3)}% <small class="f">(속도 ${(r.pace).toFixed(3)}%/일 → 5%까지 ${r.d5==null?'–':r.d5<=0?'도달':'약 '+r.d5+'거래일'})</small></b>
+  const kv=`<div class="kv"><span>연속 매집</span><b>${r.streak}거래일 (${dt8(r.s_start)}~) · 누적 ${eok(r.s_amt)} · 일평균 ${eok(r.avg)} ${r.qty?'=':'≈'} ${man(r.avg_sh)}주</b>
+    <span>${r.qty?'취득 지분':'추정 취득 지분'}</span><b>${r.est_pct.toFixed(3)}% <small class="f">(속도 ${(r.pace).toFixed(3)}%/일 → 5%까지 ${r.d5==null?'–':r.d5<=0?'도달':'약 '+r.d5+'거래일'})</small></b>
     <span>거래대금 비중</span><b>${f1(r.turn)}% · 규칙성 CV ${f2(r.cv)} · 직전 40일 대비 ${f1(r.surge)}×</b></div>`;
   return `<div class="det"><div class="grid"><div><h4>기타법인 일별 순매수(억, 파랑=매집 구간) · 회색=종가 — 최근 ${r.ser.length}거래일</h4>${chart(r)}${kv}${bb}<h4>지분공시 (OpenDART · 매집 시작 7일 전~)</h4>${dl}
     <div style="font-size:12px"><a target="_blank" rel="noopener" href="https://finance.naver.com/item/frgn.naver?code=${r.code}">네이버 투자자별 매매동향</a> · <a target="_blank" rel="noopener" href="https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=${encodeURIComponent(r.name)}">DART 공시검색</a></div></div>
@@ -275,11 +276,11 @@ function note(){
   $('note').innerHTML=`<h3>읽는 법</h3><ul>
   <li><b>기타법인</b>은 KRX 투자자 분류(금융투자·보험·투신·사모·은행·기타금융·연기금·국가·기타법인·개인·외국인)에서 금융회사가 아닌 일반 법인의 매매. 지주회사·계열사·대주주 법인의 지분 매집, 상장사의 <b>자사주 직접 매수</b>, 벤처캐피탈·일반 법인의 블록 매매가 여기 잡힌다.</li>
   <li><b>연속 매집</b>: 유의 하한(최근 5일 양수 평균의 15%, 최소 0.1억) 이상의 순매수가 끊기지 않은 거래일 수. 매일 비슷한 금액이 들어오면(규칙성 CV 낮음) 분할 매수 프로그램일 가능성 — 5% 보고 전 단계에서 흔한 형태.</li>
-  <li><b>추정 취득 지분</b> = Σ(일별 순매수액 ÷ 그날 종가) ÷ 상장주식수. 기타법인 전체의 순매수라 단일 매수자로 확정할 수 없고, 매수자가 이미 보유한 지분은 모름. <b>5%까지 잔여일</b>은 매집 시작을 0%로 놓고 현재 속도가 유지될 때의 산술 추정이며, 기존 5% 이상 보유자는 1%p 변동마다 보고 의무가 있어 그전에 공시가 나올 수 있다.</li>
+  <li><b>취득 지분</b> = Σ(일별 기타법인 순매수 수량) ÷ 상장주식수. 수량은 키움 ka10059 수량 모드로 포착 종목만 재조회한 실제 순매수 주수(확정치)이며, 수량을 못 받은 종목만 순매수액÷종가로 추정(회색 표기·≈). 기타법인 전체의 순매수라 단일 매수자로 확정할 수 없고, 매수자가 이미 보유한 지분은 모름. <b>5%까지 잔여일</b>은 매집 시작을 0%로 놓고 현재 속도가 유지될 때의 산술 추정이며, 기존 5% 이상 보유자는 1%p 변동마다 보고 의무가 있어 그전에 공시가 나올 수 있다.</li>
   <li><b>자사주</b> 태그: 자사주 매수 트래커(KIND 신청·체결)의 같은 구간 체결액 ÷ 기타법인 순매수. 70% 이상이면 자사주로 설명된다고 보고 기본 제외.</li>
   <li><b>지분공시</b>: 포착 종목(연속 3일·5억↑)에 한해 OpenDART 지분공시(주식등의대량보유상황보고서=5%, 임원ㆍ주요주주특정증권등소유상황보고서)를 매집 시작 7일 전부터 조회. 보고자(flr_nm)가 매수 주체의 힌트.</li>
   <li>수록 게이트: 시총 ${fmt(g.mcap_min_eok)}억↑ 보통주 중 (연속 ${g.streak}일↑ &amp; 연속 누적 ${g.streak_amt_eok}억↑) 또는 20일 누적 ${g.cum20_eok}억↑ 또는 단일일 ${g.max1_eok}억↑. 급증 배수 = 매집 일평균 ÷ 직전 ${g.base_days}일 |순매수| 평균(하한 0.5억).</li>
-  <li>데이터: 키움 ka10059 종목별 투자자 순매수 금액(KRX 기준·NXT 제외·백만원), 평일 16:05 잠정·21:00 확정 수집분. 사용자 출처의 "일평균 매수량"은 총매수 주수라 여기 순매수 추정 주수보다 다소 크게 나온다.</li></ul>`;
+  <li>데이터: 키움 ka10059 종목별 투자자 순매수 금액(KRX 기준·NXT 제외·백만원), 평일 16:05 잠정·21:00 확정 수집분. 수량은 같은 API의 수량 모드(주)로 포착 종목만 재조회. 사용자 출처의 "일평균 매수량"은 총매수 주수라 여기 순매수 주수보다 다소 크게 나온다.</li></ul>`;
 }
 async function load(){
   const r=await fetch('data/etccorp.json?v='+Math.floor(Date.now()/6e5)); D=await r.json();
