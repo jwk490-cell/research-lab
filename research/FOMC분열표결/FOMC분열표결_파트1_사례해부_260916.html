@@ -1,0 +1,350 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="segdive,costs">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FOMC 분열 표결 사례집 파트 1 — 7:5 사례 해부 · 2026-09-16</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>FOMC 분열 표결 인상 사례집 파트 1 — 7:5 사례 해부: 반대 5표는 두 번 다 "더 완화" 쪽이었고, 시장은 표결을 모른 채 움직였습니다</h1>
+<div class="sub">파트제 커버리지 6편(허브+파트 0~5) 중 파트 1 · 작성 2026-09-16 · 기준 가격 S&amp;P500 7,585.73·코스피 6,627.26·미10년 4.996%·원달러 1,345.6(9-15 종가) · 다음 이벤트 FOMC 2026-09-16 14:00 ET(한국 9-17 03:00)·워시 기자회견 14:30 ET · 숫자 정본: 허브 상수 블록 · 환율 병기 기준 $1 = ₩1,345.6(이 파트는 인용만 합니다) · 소스: 연준 Record of Policy Actions 1983-05-24(1983-07-15 공개)·연차보고서 1962·1963·1964(fomcropa19621218·19630507·19640818), 볼커 의장 1983-07-20 의회 증언(FRASER bog_19830720), 세인트루이스 연준 FOMC 반대표 데이터(Thornton & Wheelock 데이터 부록, 2026-07-31 갱신, 1936-03-19~2026-07-29 표결 860건), FRED FEDFUNDS 월평균(실효연방기금금리), S&P500·나스닥종합·코스피·미10년(^TNX)·원달러 일봉(야후 파이낸스), 코스피 1997-07부터, 원달러 2003-12부터 유효</div>
+<div class="hubnav">현행 판정은 <a href="FOMC분열표결_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 segdive·costs를 맡습니다.</div>
+
+<div class="judge"><b>이 파트가 답하는 것.</b> "7:5로 금리를 올린 적이 있는가"라는 물음에 원자료로 답합니다. 1936년 이후 표결 860건 가운데 반대 5표는 5건이고 그중 찬성 7 대 반대 5는 1962-12-18과 1983-05-24 두 번입니다. 두 번 다 다수가 긴축 쪽, 반대 5명이 완화(현상 유지) 쪽이었습니다. 1983년은 표결 뒤 석 달 동안 연방기금금리가 8.63%에서 9.56%로 93bp 올랐고 10년물은 10.56%에서 12.20%로 164bp 올랐습니다. 1962년은 금리가 거의 움직이지 않았고 다음 해 8월에야 3.49%로 올라섰습니다. 그리고 두 번 다 시장은 표결 결과를 모르는 상태에서 반응했습니다.</div>
+
+<p>이 파트가 커버리지에서 맡는 자리는 허브 논쟁 1 "표결 폭이 시장을 움직이는가, 방향이 움직이는가"의 원자료편입니다. 허브는 그 논쟁에 1983-05-24의 실측치를 붙여 답하는데, 그 실측치가 어떤 회의에서 어떤 문구로 나왔고 반대 5명이 무슨 논리로 반대했으며 의장이 그 뒤 무엇이라고 말했는지를 이 파트가 원문으로 확인합니다. 순서는 이렇습니다. 0절에서 1994년 이전 표결을 읽는 데 필요한 용어를 정리하고, 1절에서 1983-05-24를 지시문·다수 근거·반대 논리·의장 증언·금리와 시장 경로의 다섯 층으로 해부합니다. 2절은 같은 틀로 1962-12-18을 보고, 3절은 반대 5표의 나머지 3건인 6:5 회의를 표로 묶습니다. 4절은 두 7:5의 공통 구조와 그 실측치를 오늘에 붙일 때의 한계를 적고, 5절과 6절은 논쟁에 주는 답과 미결입니다. 반대 4표 회의 22건 전체와 1979-09-18은 파트 2가, 기자회견 시대 인상 18건은 파트 3이 맡으므로 여기서는 다루지 않습니다.</p>
+<p>먼저 못 박아 둘 사실이 하나 있습니다. 이 두 회의에서 표결 대상은 금리 인상이 아니었습니다. 1994년 이전 위원회는 금리 수준을 표결하지 않고 뉴욕 연은에 내리는 공개시장조작 지시문의 문구, 즉 지급준비금을 얼마나 빡빡하게 공급할지를 표결했습니다. 그래서 "7:5로 금리 인상"이라는 표현은 엄밀히는 "7:5로 지준 긴축 정도를 소폭 높이는 지시문 채택"으로 고쳐 읽어야 하고, 금리는 그 지시문을 데스크가 집행한 결과로 뒤따라 움직였습니다. 이 파트가 연방기금금리 월평균을 장표로 따라가는 이유가 그것입니다. 표결 당일의 금리가 아니라 표결 뒤 몇 달의 금리가 그 결정의 실제 크기입니다.</p>
+
+<h2>0. 용어집 — 여덟 개만 먼저</h2>
+<div class="gloss"><b>지준 긴축 정도</b><div>reserve restraint. 1994년 이전 위원회가 표결한 대상입니다. 금리 수준이 아니라 뉴욕 연은 공개시장 데스크가 은행 지급준비금을 얼마나 빡빡하게 공급할지의 정도를 지시문 문구로 정했습니다. 1983년 문구는 "increase only slightly the degree of reserve restraint"입니다.</div><b>차입지준·재할인창구 차입</b><div>지준을 빡빡하게 공급하면 은행은 모자란 지준을 연준 재할인창구에서 빌립니다. 그래서 당시 긴축의 첫 관측치는 금리가 아니라 창구 차입액이었고, 볼커 증언도 "some increase in borrowings at the discount window"로 긴축을 설명합니다.</div><b>M1·M2·M3</b><div>통화량 지표입니다. M1은 현금과 요구불성 예금, M2는 M1에 저축성 예금 등을 더한 것, M3는 M2에 대형 정기예금 등을 더한 것입니다. 1983년 위원회는 M2·M3에 무게를 두고 M1은 신뢰도가 낮다고 보았는데, 다수와 소수가 갈린 지점이 바로 M1 해석입니다.</div><b>FF 허용 밴드</b><div>intermeeting range. 지시문 끝에 붙는 연방기금금리 범위(1983년 6~10%)입니다. 목표가 아니라 금리가 이 밖으로 지속되면 의장이 위원회 협의를 소집한다는 발동 장치였습니다.</div><b>지시문</b><div>domestic policy directive. 위원회가 뉴욕 연은에 내리는 공개시장조작 지시서입니다. 표결은 이 문서의 채택 여부에 대한 것이고, 반대표는 문구의 방향(더 긴축·더 완화)을 두고 갈립니다.</div><b>Record of Policy Actions</b><div>회의 결정과 표결, 반대 이유를 적은 공식 기록입니다. 1983년 기록은 회의 뒤 약 7주가 지난 7월 15일 보도자료로 공개됐고("For Use at 4:30 p.m. July 15, 1983"), 1962년 기록은 다음 해 연차보고서에 실렸습니다. 시장은 그 전까지 표결을 모릅니다.</div><b>자유지준</b><div>free reserves. 초과지준에서 차입지준을 뺀 값으로 1960년대 완화 정도의 지표였습니다. 1962년 기록이 "Free reserves ... at the lowest level in 2 years"라고 적은 것이 그 용법입니다.</div><b>계절적 T-bill 금리 하락</b><div>연말이 지나면 자금 수요가 줄어 단기 재정증권 금리가 내려가는 계절성입니다. 1962년 다수는 이 하락을 방치하면 자본유출이 커진다고 보고 "firmer tone"으로 상쇄하자고 했습니다.</div></div>
+
+<h2>1. 1983-05-24 볼커 위원회 7:5 — 지시문, 반대 논리, 증언, 그리고 석 달</h2>
+<h3>1-1. 지시문 원문과 다수의 근거</h3>
+<p>1983-05-24 회의가 채택한 지시문의 핵심 문장은 한 줄입니다. "The Committee seeks in the short run to increase only slightly the degree of reserve restraint." 우리말로 옮기면 "위원회는 단기적으로 지준 긴축 정도를 아주 조금만 높이고자 한다"입니다. 여기서 "only slightly"라는 두 단어가 중요합니다. 기록은 다수 위원들이 추가 긴축의 정확한 정도에서는 서로 달랐지만 "이전 회의에서 승인한 것보다 아주 조금 더 긴축하는 지시문"을 받아들이는 데 합의했다고 적고 있습니다. 즉 7명 안에서도 강도는 갈렸고, 표결에 올라간 문구는 그 가운데 가장 온건한 쪽으로 수렴한 결과였습니다. 연방기금금리 허용 밴드는 6~10%로 이전 회의와 같게 유지됐습니다. 이 밴드는 목표가 아니라, 금리가 이 범위를 계속 벗어나면 의장이 위원회 협의를 소집한다는 발동 장치였다는 점을 용어집에서 적었습니다.</p>
+<p>다수가 든 근거는 지시문 안에 그대로 적혀 있습니다. 결정은 "M2 and M3 remaining slightly below the rates of growth of 9 and 8 percent, respectively, established earlier for the quarter and within their long-term ranges, M1 growing well above anticipated levels for some time, and evidence of some acceleration in the rate of business recovery"를 배경으로 취해졌다고 했습니다. 패킷은 이것을 "M2·M3는 분기 목표(9%·8%)를 약간 밑돌고 연간 범위 안, M1은 예상을 크게 상회, 경기 회복 가속 징후"로 요약합니다. 세 가지가 한 문장에 들어 있습니다. 넓은 통화량인 M2·M3는 분기 목표를 약간 밑돌아 긴축의 근거가 되지 않고, 좁은 통화량인 M1은 예상을 크게 웃돌며, 경기 회복이 빨라지고 있다는 것입니다. 다수는 뒤의 둘을 앞의 하나보다 무겁게 보았습니다.</p>
+<p>기록의 토론 요약을 보면 다수의 논리는 "지금 조금 조여야 나중에 크게 조이는 일을 피한다"는 선제론이었습니다. 원문은 "Several members commented that slightly greater restraint on reserves would be desirable at this point to minimize the possible need for more substantial restraint later, reducing the interest rate impact on financial markets over time and helping to sustain the expansion"이라고 적고, 마지막에 "Deferring any action could well pose a greater dilemma at a later time"이라고 덧붙였습니다. 인플레이션 억제에 대한 시장의 인식을 좋게 하면 장기금리가 오히려 안정될 수 있다는 논리도 같이 나옵니다. 이 논리는 두 달 뒤 의장 증언에서 거의 같은 문장으로 다시 나타납니다. 1-3절에서 대조합니다.</p>
+<p>이 지시문이 어떻게 집행됐는지도 기록에 남아 있습니다. 회의 한 달 뒤인 6월 23일 위원회는 전화 회의를 열어 "a modest increase in reserve restraint, within the framework of the directive adopted at the May 24 meeting and consistent with recent reserve conditions, remained appropriate"라는 합의를 확인했습니다. 즉 5월 24일 지시문은 한 번 조이고 끝난 것이 아니라 6월 말에 다시 한 번 "적절하다"고 재확인됐고, 패킷의 다음 회의 메모대로 이후 회의(1983-07-13)에서 다시 소폭 긴축 유지, 재할인율은 1984-04까지 미변경. 이것이 5월 이후 석 달 동안 금리가 계단식으로 오른 배경입니다.</p>
+
+<h3>1-2. 반대 5인의 논리 — 원문 두 문장</h3>
+<p>반대한 다섯 명은 솔로몬(Solomon, 뉴욕 연은 총재), 거피(Guffey), 모리스(Morris), 라이스(Rice), 티터스(Teeters)입니다. 기록은 이들이 "wanted open market operations to continue being directed toward maintaining approximately the degree of reserve restraint approved at the previous meeting", 즉 이전 회의 수준의 지준 긴축 정도를 그대로 유지하기를 원했다고 적었습니다. 반대의 방향은 다섯 명 모두 같습니다. 더 조이자는 반대는 한 명도 없었고, 다섯 명 전원이 "지금은 그대로 두자"였습니다. 허브 판정 가설의 "매파 5명이 인상을 밀어붙인 7:5는 없다"는 문장은 이 기록에서 나옵니다.</p>
+<p>반대 논리의 첫 문장은 통화량 해석입니다. "a firming of reserve conditions was not warranted by the performance of the monetary aggregates or by the current economic situation" 우리말로 "통화량 지표의 움직임으로 보나 현재 경제 상황으로 보나 지준 여건을 조이는 것은 정당화되지 않는다"입니다. 기록은 그 근거를 더 풀어 적었습니다. M2·M3는 2분기에 위원회 예상보다 느리게 늘고 있고 연초 이래 연간 범위 안에 있으며, M1은 예상을 크게 웃돌지만 "this aggregate was not viewed as a sufficiently reliable guide for policy, at least for the present, since its performance was substantially distorted by various developments and it was not predictably related to nominal GNP"라는 것입니다. 다수와 소수가 같은 데이터를 보고 갈린 지점이 여기입니다. 다수는 M1의 급증을 무시할 수 없다고 했고, 소수는 M1이 신뢰할 수 없는 지표라고 했습니다.</p>
+<p>둘째 문장은 시장 반응의 위험입니다. "the implementation of firmer reserve conditions would also incur an undue risk of an exaggerated reaction in domestic and international financial markets" 우리말로 "지금의 경제·금융 여건에서 지준 여건을 더 조이면 국내외 금융시장이 과잉 반응할 부당한 위험까지 떠안게 된다"입니다. 이어서 "Substantially higher domestic interest rates would have damaging consequences for interest-sensitive industries and could limit the recovery in economic activity"라고 했고, 티터스는 한 걸음 더 나가 "lower interest rates might well be needed later to sustain the recovery", 즉 회복을 지키려면 나중에 오히려 금리를 내려야 할 수도 있다고 보았습니다. 패킷의 요약으로는 "M2·M3 목표 안 · M1은 신뢰 못 할 지표 · 금리 상승이 금리민감 산업·회복 제약 · 강달러·개도국 부채·수출 부진(Solomon·Guffey·Morris) · Teeters는 이후 금리 인하 필요 가능성까지"입니다.</p>
+<p>국제 쪽 논거는 세 총재의 이름이 따로 적혀 있습니다. "Messrs. Solomon, Guffey, and Morris in particular believed that the already strong dollar in foreign exchange markets, the tenuous situation of some of the developing countries, the still fragile economic recovery in other industrial countries, and the continuing weak outlook for U.S. exports counseled against an increase in reserve restraint." 이미 강한 달러, 개도국의 위태로운 사정, 다른 선진국의 취약한 회복, 미국 수출의 약한 전망이 긴축을 말린다는 것입니다. 1983년은 1982년 멕시코 위기 직후여서 개도국 부채가 위원회 토론에 계속 올라오던 시기였고, 소수의 반대 논리 가운데 국제 부분은 다수의 기록에서도 "a dilemma for monetary policy"로 언급됐습니다. 즉 다수도 그 위험을 몰랐던 것이 아니라 무게를 다르게 두었습니다.</p>
+<table class=""><tr><th>위원</th><th>소속</th><th>표</th></tr><tr><td>Volcker</td><td>이사회 의장</td><td>찬성</td></tr><tr><td>Gramley</td><td>이사</td><td>찬성</td></tr><tr><td>Keehn</td><td>시카고 총재</td><td>찬성</td></tr><tr><td>Martin(Preston)</td><td>이사(부의장)</td><td>찬성</td></tr><tr><td>Partee</td><td>이사</td><td>찬성</td></tr><tr><td>Roberts</td><td>세인트루이스 총재</td><td>찬성</td></tr><tr><td>Wallich</td><td>이사</td><td>찬성</td></tr><tr><td>Solomon</td><td>뉴욕 총재(FOMC 부의장)</td><td>반대(현행 유지)</td></tr><tr><td>Guffey</td><td>캔자스시티 총재</td><td>반대(현행 유지)</td></tr><tr><td>Morris</td><td>보스턴 총재</td><td>반대(현행 유지)</td></tr><tr><td>Rice</td><td>이사</td><td>반대(현행 유지)</td></tr><tr><td>Teeters</td><td>이사</td><td>반대(현행 유지·이후 인하 여지)</td></tr></table>
+<p>표에서 볼 것은 두 가지입니다. 하나는 반대 5명 가운데 3명이 지역연은 총재이고 그 가운데 뉴욕 연은 총재가 들어 있다는 점입니다. 뉴욕 연은 총재는 FOMC 부의장이자 지시문을 집행하는 데스크의 감독자여서, 자기가 집행할 지시문에 반대표를 던진 셈입니다. 다른 하나는 찬성 7명 가운데 5명이 이사회 이사라는 점입니다. 의장을 포함한 이사회 다수가 긴축 쪽에 섰고 지역연은 총재는 5명 중 3명이 반대 쪽에 섰습니다. 소속 표기는 연준 이사회·지역연은 명부에서 이름을 대조해 붙인 것이고 이름 자체는 기록 원문과 패킷의 것입니다. 2026년 7월 회의의 반대 3표가 전부 지역연은 총재(해맥·카시카리·로건)였다는 점과 같이 놓고 보면, 지역연은 총재가 반대 쪽에 몰리는 구도는 같지만 방향은 정반대입니다. 1983년 총재들은 완화 쪽으로, 2026년 총재들은 인상 쪽으로 반대했습니다.</p>
+
+<h3>1-3. 의장 증언 1983-07-20 — 세 문장과 hawkish 판정</h3>
+<p>1983년에는 기자회견이 없었으므로 의장의 공개 설명은 회의 두 달 뒤인 7월 20일 의회 반기 통화정책 증언이 처음입니다. 이 증언은 회의 기록이 7월 15일에 공개된 닷새 뒤였습니다. 볼커(Volcker) 의장은 세 문장으로 5월 이후의 조치를 설명했습니다. 첫째, "the Federal Open Market Committee, beginning in late May, has taken a slightly less accommodative posture toward the provision of bank reserves through open market operations, leading to some increase in borrowings at the discount window." 우리말로 "위원회는 5월 하순부터 공개시장조작을 통한 은행 지준 공급에서 아주 조금 덜 완화적인 태도를 취해 왔고, 그 결과 재할인창구 차입이 다소 늘었다"입니다. 여기서 "slightly less accommodative"는 지시문의 "increase only slightly the degree of reserve restraint"를 의장의 말로 옮긴 것이고, 긴축의 관측치를 금리가 아니라 창구 차입으로 든 것은 당시 운영 방식 그대로입니다.</p>
+<p>둘째 문장이 성격을 결정합니다. "limited, timely and potentially reversible measures now, when the economy is expanding strongly, are clearly preferable to the risks of permitting a situation to develop that would require much more abrupt and forceful action later to deal with new inflationary pressures" 우리말로 "경제가 강하게 확장하는 지금 제한적이고 시의적절하며 되돌릴 수도 있는 조치를 취하는 것이, 나중에 새로운 인플레이션 압력에 대응하려고 훨씬 급격하고 강한 조치가 필요해질 상황을 방치하는 위험보다 분명히 낫다"입니다. 이 문장은 1-1절의 다수 논리, 즉 "slightly greater restraint on reserves would be desirable at this point to minimize the possible need for more substantial restraint later"를 의장이 의회에서 공개적으로 반복한 것입니다. 표결에서 7명이 채택한 논리가 두 달 뒤 의장의 공식 입장이 됐고, 반대 5명의 "과잉 반응 위험" 논리는 증언에 들어가지 않았습니다.</p>
+<p>셋째 문장은 시장이 이미 움직였음을 인정하는 대목입니다. "These steps have been accompanied by increases, ranging from ¾ to 1 percent or more, in both long- and short-term market interest rates." 우리말로 "이 조치들에는 장단기 시장금리의 4분의 3에서 1퍼센트포인트 또는 그 이상의 상승이 동반됐다"입니다. 그리고 바로 이어 "Apart from any monetary policy actions, these limited changes ... appear also to have been influenced by larger private and government credit demands currently, as well as by expectations generated by stronger economic and monetary growth and the budgetary deficit"라고 해서, 금리 상승의 일부를 정책이 아닌 민간·정부 신용 수요와 재정적자 기대로 돌렸습니다. 금리 상승을 부정하지 않으면서 그 책임을 나눈 화법입니다.</p>
+<p>패킷은 이 증언의 성격을 "hawkish(선제 긴축 정당화, 추가 긴축 여지)"로 분류합니다. 근거는 세 문장 자체에 있습니다. 첫째, 긴축을 "덜 완화적"이라는 완곡한 말로 표현하면서도 그 사실을 부정하지 않았습니다. 둘째, "limited, timely and potentially reversible measures now"는 지금의 조치를 정당화하는 동시에 "much more abrupt and forceful action later"를 피하기 위한 것이라고 해서 인플레이션 쪽 위험을 더 무겁게 두었습니다. 셋째, 금리가 이미 4분의 3에서 1퍼센트포인트 올랐다고 말하면서 그것을 되돌리겠다는 말은 하지 않았습니다. 파트 3의 기자회견 시대 분류 기준으로 옮기면 "추가 긴축 여지를 닫지 않은 발언"에 해당합니다. 다만 이 판정은 파트 3의 hawkish/dovish처럼 당시 보도된 시장 해석을 인용한 것이 아니라 증언 문구를 읽은 우리 판정이라는 점을 밝혀 둡니다. 1983년의 증언 당일 시장 반응은 패킷에 없습니다.</p>
+<p>재지명 일정은 이 증언을 읽을 때 같이 놓아야 하는 맥락입니다. 패킷에 따르면 1983-06-18 레이건 재지명 발표, 상원 인준 84-16입니다. 즉 7:5 표결이 있은 지 25일 뒤에 레이건 대통령이 볼커 의장의 재지명을 발표했고, 7월 20일 증언은 재지명이 발표된 뒤 인준을 앞둔 상태에서 나온 것입니다. 분열 표결 직후에 의장이 교체되지 않고 오히려 재지명됐다는 사실은, 1983년의 7:5가 의장의 지도력 위기로 읽히지 않았다는 방증입니다. 이 점은 1979년 9월의 8-4가 "결의 부족"으로 읽혀 3주 뒤 볼커 개혁으로 이어진 것과 대비되는데, 그 비교는 파트 2의 몫입니다.</p>
+
+<h3>1-4. 금리와 시장 — 표결 뒤 석 달</h3>
+<figure class=""><figcaption>장표 1. 1983년 연방기금금리 월평균 — 5월 8.63%에서 8월 9.56%까지 93bp</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">8.40</text>
+<line x1="62" y1="216.3" x2="730" y2="216.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.3" text-anchor="end" font-size="11" fill="#8a857c">8.60</text>
+<line x1="62" y1="176.7" x2="730" y2="176.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.7" text-anchor="end" font-size="11" fill="#8a857c">8.80</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">9.00</text>
+<line x1="62" y1="97.3" x2="730" y2="97.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.3" text-anchor="end" font-size="11" fill="#8a857c">9.20</text>
+<line x1="62" y1="57.7" x2="730" y2="57.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.7" text-anchor="end" font-size="11" fill="#8a857c">9.40</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">9.60</text>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2월</text>
+<text x="128.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">3월</text>
+<text x="195.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">4월</text>
+<text x="262.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">5월</text>
+<text x="329.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">6월</text>
+<text x="396.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">7월</text>
+<text x="462.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">8월</text>
+<text x="529.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">9월</text>
+<text x="596.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">10월</text>
+<text x="663.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">11월</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">12월</text>
+<polyline points="62.0,234.2 128.8,182.6 195.6,176.7 262.4,210.4 329.2,141.0 396.0,63.6 462.8,25.9 529.6,47.8 596.4,41.8 663.2,69.6 730.0,43.8" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="234.2" r="2.4" fill="#1f3a5f"/>
+<circle cx="128.8" cy="182.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="195.6" cy="176.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="262.4" cy="210.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="329.2" cy="141.0" r="2.4" fill="#1f3a5f"/>
+<circle cx="396.0" cy="63.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="462.8" cy="25.9" r="2.4" fill="#1f3a5f"/>
+<circle cx="529.6" cy="47.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="596.4" cy="41.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="663.2" cy="69.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="43.8" r="2.4" fill="#1f3a5f"/>
+<text x="736" y="47.8" font-size="11" fill="#1f3a5f">FF 월평균 9.47%</text>
+<text x="262.4" y="226.4" text-anchor="middle" font-size="10.5" fill="#a44a3f">5-24 표결 7:5</text>
+<text x="462.8" y="11.9" text-anchor="middle" font-size="10.5" fill="#1f3a5f">5월 대비 +93bp</text>
+</svg><div class="src">자료: 연준 Record of Policy Actions(fomcropa19830524.pdf, 1983-07-15 공개), FRED FEDFUNDS 월평균, S&P500·미10년 일봉(야후 파이낸스). 패킷 case_1983.</div></figure>
+<p class="reading"><b>관찰.</b> 표결이 있던 5월의 월평균은 8.63%로 4월 8.80%보다 오히려 17bp 낮았습니다. 6월 8.98%, 7월 9.37%, 8월 9.56%로 석 달 연속 올라 5월 대비 93bp 상승했고, 9월부터 12월까지는 9.45%에서 9.47% 사이에서 멈췄습니다. 12월은 5월 대비 84bp입니다. <b>원인.</b> 지시문이 금리 목표가 아니라 지준 긴축 정도였으므로 금리는 표결 당일이 아니라 데스크가 지준을 줄여 가는 몇 주에 걸쳐 올랐습니다. 6월 23일 전화 회의와 7월 13일 회의에서 소폭 긴축이 재확인된 것이 6~8월의 계단을 만들었습니다. <b>함의.</b> '7:5로 금리 인상'을 오늘의 25bp 인상에 대응시키려면 표결일이 아니라 이 석 달 93bp를 한 단위로 보아야 합니다. 그리고 그 석 달 동안 시장은 표결 결과를 7월 15일까지 몰랐습니다.</p>
+<p>연방기금금리가 석 달에 93bp 올랐다는 것은 패킷의 ff_move_bp_may_aug 값 93과 우리가 월평균 차이로 다시 계산한 값이 같다는 뜻입니다. 계산은 8월 9.56에서 5월 8.63를 뺀 것입니다. 이 숫자를 읽을 때 주의할 점은 5월 월평균이 표결 전후를 섞은 값이라는 것입니다. 기록은 회의 직전 기간에 연방기금금리가 "generally traded in a range of 8-1/2 to 8-3/4 percent"였다고 적었으므로, 표결 전 수준은 5월 평균보다 조금 낮은 쪽에 있었을 것으로 읽힙니다. 그렇다면 표결 전 대비 8월까지의 상승 폭은 93bp보다 조금 더 클 수 있지만, 우리는 패킷 월평균 밖의 숫자를 만들지 않고 93bp를 정본으로 씁니다.</p>
+<figure class=""><figcaption>장표 2. 1983-05-23부터 08-31까지 S&P500과 미10년물 — 주식은 6월 말까지 올랐다가 8-08 저점, 금리는 8-08까지 164bp 상승</figcaption><svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="276.0" x2="710" y2="276.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="280.0" text-anchor="end" font-size="11" fill="#1f3a5f">158</text>
+<line x1="62" y1="225.2" x2="710" y2="225.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="229.2" text-anchor="end" font-size="11" fill="#1f3a5f">160</text>
+<line x1="62" y1="174.4" x2="710" y2="174.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="178.4" text-anchor="end" font-size="11" fill="#1f3a5f">162</text>
+<line x1="62" y1="123.6" x2="710" y2="123.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="127.6" text-anchor="end" font-size="11" fill="#1f3a5f">164</text>
+<line x1="62" y1="72.8" x2="710" y2="72.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="76.8" text-anchor="end" font-size="11" fill="#1f3a5f">166</text>
+<line x1="62" y1="22.0" x2="710" y2="22.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="26.0" text-anchor="end" font-size="11" fill="#1f3a5f">168</text>
+<text x="716" y="280.0" font-size="11" fill="#a44a3f">10.5%</text>
+<text x="716" y="216.5" font-size="11" fill="#a44a3f">11.0%</text>
+<text x="716" y="153.0" font-size="11" fill="#a44a3f">11.5%</text>
+<text x="716" y="89.5" font-size="11" fill="#a44a3f">12.0%</text>
+<text x="716" y="26.0" font-size="11" fill="#a44a3f">12.5%</text>
+<text x="62.0" y="294" text-anchor="start" font-size="10" fill="#8a857c">5-23</text>
+<text x="68.5" y="294" text-anchor="middle" font-size="10" fill="#8a857c">5-24</text>
+<text x="308.2" y="294" text-anchor="middle" font-size="10" fill="#8a857c">6-30</text>
+<text x="496.2" y="294" text-anchor="middle" font-size="10" fill="#8a857c">7-29</text>
+<text x="561.0" y="294" text-anchor="middle" font-size="10" fill="#8a857c">8-08</text>
+<text x="710.0" y="294" text-anchor="end" font-size="10" fill="#8a857c">8-31</text>
+<line x1="68.5" y1="22" x2="68.5" y2="276" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="73.5" y="34" font-size="10.5" fill="#8a857c">5-24 표결</text>
+<polyline points="62.0,138.1 68.5,84.5 308.2,31.1 496.2,160.2 561.0,246.0 710.0,113.4" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<polyline points="62.0,267.1 68.5,268.4 308.2,217.6 496.2,116.0 561.0,60.1 710.0,88.0" fill="none" stroke="#a44a3f" stroke-width="2" stroke-dasharray="6 3"/>
+<circle cx="62.0" cy="138.1" r="2.6" fill="#1f3a5f"/>
+<circle cx="68.5" cy="84.5" r="2.6" fill="#1f3a5f"/>
+<circle cx="308.2" cy="31.1" r="2.6" fill="#1f3a5f"/>
+<circle cx="496.2" cy="160.2" r="2.6" fill="#1f3a5f"/>
+<circle cx="561.0" cy="246.0" r="2.6" fill="#1f3a5f"/>
+<circle cx="710.0" cy="113.4" r="2.6" fill="#1f3a5f"/>
+<circle cx="62.0" cy="267.1" r="2.6" fill="#a44a3f"/>
+<circle cx="68.5" cy="268.4" r="2.6" fill="#a44a3f"/>
+<circle cx="308.2" cy="217.6" r="2.6" fill="#a44a3f"/>
+<circle cx="496.2" cy="116.0" r="2.6" fill="#a44a3f"/>
+<circle cx="561.0" cy="60.1" r="2.6" fill="#a44a3f"/>
+<circle cx="710.0" cy="88.0" r="2.6" fill="#a44a3f"/>
+<rect x="762" y="238" width="10" height="10" fill="#1f3a5f"/><text x="776" y="247" font-size="11" fill="#8a857c">S&amp;P500(좌)</text>
+<rect x="762" y="254" width="10" height="10" fill="#a44a3f"/><text x="776" y="263" font-size="11" fill="#8a857c">미10년(우)</text>
+<text x="561.0" y="262.0" text-anchor="middle" font-size="10.5" fill="#1f3a5f">8-08 159.18</text>
+<text x="561.0" y="52.1" text-anchor="middle" font-size="10.5" fill="#a44a3f">8-08 12.20%</text>
+</svg><div class="src">자료: 연준 Record of Policy Actions(fomcropa19830524.pdf, 1983-07-15 공개), FRED FEDFUNDS 월평균, S&P500·미10년 일봉(야후 파이낸스). 패킷 case_1983. x축은 실제 날짜 간격.</div></figure>
+<p class="reading"><b>관찰.</b> S&P500은 표결일 +1.29%로 올랐고 6월 말 167.64까지 표결일 대비 +1.27% 더 올랐습니다. 그 뒤 7월 말 162.56, 8월 8일 159.18로 내려 6월 말 대비 -5.05%였고, 8월 말에는 164.40로 되돌아 표결 전일 대비 +0.59%입니다. 10년물은 표결일 10.56%에서 6월 말 10.96%(+39bp), 7월 말 11.76%(+80bp), 8월 8일 12.20%(+44bp)로 올라 누적 +164bp였고 8월 말 11.98%로 -22bp 되돌렸습니다. <b>원인.</b> 주식은 표결 사실을 모른 채 경기 회복 가속을 반영해 올랐고, 채권은 6월부터 데스크의 지준 긴축이 창구 차입과 단기금리로 드러나면서 뒤늦게 크게 반응했습니다. 의장이 7월 20일 증언에서 금리가 이미 4분의 3에서 1퍼센트포인트 올랐다고 말한 시점이 바로 이 경로의 한가운데입니다. <b>함의.</b> 1983년의 교훈은 '분열 표결에 주식이 올랐다'가 아니라 '표결이 공개되지 않은 채 채권이 석 달에 걸쳐 긴축을 가격에 넣었다'입니다. 채권이 주식보다 크게, 그리고 늦게 반응했습니다.</p>
+<table class=""><tr><th>구간</th><th>S&P500</th><th>구간 등락</th><th>미10년</th><th>구간 변화</th></tr><tr><td>5-23(전일)</td><td>163.43</td><td>-</td><td>10.57%</td><td>-</td></tr><tr><td>5-24(표결일)</td><td>165.54</td><td>+1.29%</td><td>10.56%</td><td>-1bp</td></tr><tr><td>6-30</td><td>167.64</td><td>+1.27%</td><td>10.96%</td><td>+40bp</td></tr><tr><td>7-29</td><td>162.56</td><td>-3.03%</td><td>11.76%</td><td>+80bp</td></tr><tr><td>8-08(주가 저점·금리 고점)</td><td>159.18</td><td>-2.08%</td><td>12.20%</td><td>+44bp</td></tr><tr><td>8-31</td><td>164.40</td><td>+3.28%</td><td>11.98%</td><td>-22bp</td></tr><tr><td>5-24부터 8-08까지 누적</td><td></td><td>-3.84%</td><td></td><td>+164bp</td></tr></table>
+<figure class=""><figcaption>장표 3. 1983-05-24 표결일 기준 S&P500 창별 등락 — 당일과 20일은 플러스, 5일과 8-08까지는 마이너스</figcaption><svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="216.0" x2="730" y2="216.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.0" text-anchor="end" font-size="11" fill="#8a857c">-4.00%</text>
+<line x1="62" y1="176.4" x2="730" y2="176.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.4" text-anchor="end" font-size="11" fill="#8a857c">-2.00%</text>
+<line x1="62" y1="136.8" x2="730" y2="136.8" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="140.8" text-anchor="end" font-size="11" fill="#8a857c">0.00%</text>
+<line x1="62" y1="97.2" x2="730" y2="97.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.2" text-anchor="end" font-size="11" fill="#8a857c">2.00%</text>
+<line x1="62" y1="57.6" x2="730" y2="57.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.6" text-anchor="end" font-size="11" fill="#8a857c">4.00%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">6.00%</text>
+<text x="128.8" y="234" text-anchor="middle" font-size="10" fill="#8a857c">당일</text>
+<text x="262.4" y="234" text-anchor="middle" font-size="10" fill="#8a857c">익일 누적</text>
+<text x="396.0" y="234" text-anchor="middle" font-size="10" fill="#8a857c">5일</text>
+<text x="529.6" y="234" text-anchor="middle" font-size="10" fill="#8a857c">20일</text>
+<text x="663.2" y="234" text-anchor="middle" font-size="10" fill="#8a857c">8-08까지</text>
+<rect x="82.0" y="111.3" width="92.5" height="25.5" fill="#1f3a5f" opacity="0.9"/>
+<text x="128.8" y="107.3" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1.29</text>
+<rect x="215.6" y="103.1" width="92.5" height="33.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="262.4" y="99.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1.70</text>
+<rect x="349.2" y="136.8" width="92.5" height="12.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="396.0" y="160.5" text-anchor="middle" font-size="9.5" fill="#1f3a5f">-0.64</text>
+<rect x="482.8" y="50.9" width="92.5" height="85.9" fill="#1f3a5f" opacity="0.9"/>
+<text x="529.6" y="46.9" text-anchor="middle" font-size="9.5" fill="#1f3a5f">4.34</text>
+<rect x="616.4" y="136.8" width="92.5" height="76.0" fill="#1f3a5f" opacity="0.9"/>
+<text x="663.2" y="207.8" text-anchor="middle" font-size="9.5" fill="#fff">-3.84</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">S&P500 등락(%)</text>
+</svg><div class="src">자료: 연준 Record of Policy Actions(fomcropa19830524.pdf, 1983-07-15 공개), FRED FEDFUNDS 월평균, S&P500·미10년 일봉(야후 파이낸스). 패킷 case_1983.</div></figure>
+<p class="reading"><b>관찰.</b> 당일 +1.29%, 익일 누적 +1.70%, 5일 -0.64%, 20일 +4.34%, 8월 8일 저점까지 -3.84%입니다. 창을 어디에 두느냐에 따라 부호가 바뀝니다. <b>원인.</b> 표결일 전후 이틀의 상승은 표결과 무관한 경기 뉴스의 몫이고, 5일 창에서 마이너스로 바뀐 뒤 20일 창에서 다시 플러스가 된 것은 6월 말까지 이어진 회복 랠리 때문입니다. 8월 저점은 채권 금리가 정점을 찍은 날과 같습니다. <b>함의.</b> 허브 논쟁 1이 인용하는 '당일 +1.29%'는 이 다섯 창 가운데 하나일 뿐이고, 오늘에 대응시킬 때는 창을 명시해야 합니다. 이 파트는 채점 KPI로 당일과 5일과 20일 세 창을 함께 붙이기를 권합니다.</p>
+<p>표와 장표를 합쳐 읽으면 1983년의 시장 반응은 "주식은 당일 무반응에 가깝고 채권은 석 달 뒤 크게 반응"으로 요약됩니다. 이 요약에는 조건이 붙습니다. 당일 반응은 표결을 모르는 상태의 반응입니다. 위원회 결정은 즉시 공표되지 않았고, 기록은 다음 정례 회의 며칠 뒤에 공개하는 것이 관행이었으며 실제로 1983-05-24 회의 기록은 7월 15일 보도자료로 나왔습니다. 그러므로 5월 24일의 +1.29%와 -1bp는 표결에 대한 반응이 아니라 그날의 경제 뉴스에 대한 반응이고, 표결에 대한 반응이라고 부를 수 있는 것은 7월 15일 이후의 움직임뿐입니다. 그런데 7월 15일 이후의 움직임에는 이미 6~7월의 지준 긴축 집행과 7월 20일 증언이 섞여 있어 표결 공개 자체의 효과를 분리할 수 없습니다. 이 한계는 4절에서 다시 적습니다.</p>
+
+<h2>2. 1962-12-18 마틴 위원회 7:5 — 국제수지가 만든 분열</h2>
+<h3>2-1. 지시문 원문과 다수의 근거</h3>
+<p>1962-12-18 회의의 지시문은 뉴욕 연은에 다음 3주 동안 "offsetting the anticipated seasonal easing of Treasury bill rates, if necessary through maintaining a firmer tone in money markets, while continuing to provide moderate reserve expansion"를 목표로 운영하라고 했습니다. 우리말로 "필요하다면 자금시장에 더 조인 기조를 유지해서라도 예상되는 재정증권 금리의 계절적 하락을 상쇄하되, 은행 시스템에 완만한 지준 확대는 계속 제공하라"입니다. 문장 구조에 주의해야 합니다. "firmer tone"은 목적이 아니라 수단이고 "if necessary"라는 조건이 붙어 있으며, 뒤에는 완만한 확대를 계속하라는 단서가 있습니다. 1983년의 "increase only slightly the degree of reserve restraint"보다 한 단계 더 조심스러운 문구입니다. 지시문의 정책 문단도 "the unsatisfactory level of domestic activity, the continuing underutilization of resources, and the absence of inflationary pressures"를 함께 인정했습니다.</p>
+<p>다수의 근거는 국제수지였습니다. 기록은 다수 입장이 "the anticipated downward pressures on short-term rates of a seasonal nature"를 고려한 것이며, 계절적으로 금리가 크게 내리는 환경에서 현재의 완화 정도를 그대로 두면 "might have unfavorable effects, especially from the standpoint of the balance of payments"라고 적었습니다. 여기에 "the relatively high rate of increase in bank reserves in recent weeks and the degree of liquidity in the economy"가 덧붙었습니다. 패킷의 요약은 "국제수지 미개선·자본유출 우려, 최근 은행 지준 증가율 높음, 계절적 금리 하락 방치 시 국제수지 악영향"입니다. 1962년의 미국은 고정환율 아래에서 금 유출을 걱정하던 나라였고, 단기금리가 유럽보다 낮아지면 자본이 빠져나간다는 것이 위원회의 상시 의제였습니다. 다수가 지키려 한 것은 인플레이션이 아니라 단기금리의 바닥이었습니다.</p>
+<p>이 회의의 성격은 직전 회의와 이어 읽어야 보입니다. 기록은 이전 회의들에서 현행 정책을 지지한 여러 위원이 "a somewhat less easy policy might be appropriate after the economy had passed the peak of seasonal credit demand"라는 견해를 같이 밝혔고, "This now proved to be the majority position"이라고 적었습니다. 즉 12월 18일의 7:5는 갑자기 생긴 분열이 아니라 몇 회의에 걸쳐 예고된 이동이 계절 요인의 전환점에서 표결로 확정된 것입니다. 기록은 또 "no Committee member recommending a decisive move in the direction of either more or less monetary ease"라고 해서, 다수와 소수 사이의 거리가 "slightly more, slightly less, or the same degree of ease"의 폭 안에 있었다고 명시했습니다.</p>
+
+<h3>2-2. 반대 5인의 논리</h3>
+<p>반대한 다섯 명은 브라이언(Bryan), 데밍(Deming), 밀스(Mills), 미첼(Mitchell), 로버트슨(Robertson)입니다. 기록은 소수 입장을 "doubt that net capital outflows would be much affected by some seasonal easing of U.S. interest rates in the present slightly improved atmosphere in international financial markets"로 요약하고, 이들이 "preferred to continue undiminished the prevailing financial stimulus to domestic activity"했다고 적었습니다. 국제 금융시장 분위기가 조금 나아진 지금 계절적 금리 하락이 자본유출을 크게 늘리지 않을 것이고, 그러니 국내 경기 부양을 줄이지 말자는 것입니다. 1983년과 마찬가지로 다섯 명 전원이 완화 유지 쪽이었고 더 조이자는 반대는 없었습니다.</p>
+<p>개인 의견이 따로 기록된 위원은 로버트슨 한 명입니다. "it would be a mistake to undertake a firming of the money market simply in order to offset anticipated declines in Treasury bill rates" 우리말로 "예상되는 재정증권 금리 하락을 상쇄하려는 목적만으로 자금시장을 조이는 것은 잘못일 것"입니다. 기록은 이어 "With the pace of domestic business activity still undesirably slow and short-term international financial flows less troublesome than earlier, he felt that it would be appropriate to maintain reserve availability at a level that would sustain a gradual further monetary expansion even if some seasonal decline in short-term interest rates developed"라고 적었습니다. 패킷의 요약은 "국내 경기 여전히 부진, 단기 국제자금 흐름은 이전보다 덜 위협적, 완만한 통화 확장 유지가 적절(Robertson)"입니다. 로버트슨의 논리는 다수의 논리를 정면으로 뒤집은 것입니다. 다수는 계절적 하락을 상쇄해야 한다고 했고, 로버트슨은 계절적 하락을 상쇄하는 것 자체가 목적이 될 수 없다고 했습니다.</p>
+<table class=""><tr><th>위원</th><th>소속</th><th>표</th></tr><tr><td>Martin</td><td>이사회 의장</td><td>찬성</td></tr><tr><td>Hayes</td><td>뉴욕 총재(FOMC 부의장)</td><td>찬성</td></tr><tr><td>Balderston</td><td>이사(부의장)</td><td>찬성</td></tr><tr><td>Ellis</td><td>보스턴 총재</td><td>찬성</td></tr><tr><td>Fulton</td><td>클리블랜드 총재</td><td>찬성</td></tr><tr><td>King</td><td>이사</td><td>찬성</td></tr><tr><td>Shepardson</td><td>이사</td><td>찬성</td></tr><tr><td>Bryan</td><td>애틀랜타 총재</td><td>반대(현행 완화 유지)</td></tr><tr><td>Deming</td><td>미니애폴리스 총재</td><td>반대(현행 완화 유지)</td></tr><tr><td>Mills</td><td>이사</td><td>반대(현행 완화 유지)</td></tr><tr><td>Mitchell</td><td>이사</td><td>반대(현행 완화 유지)</td></tr><tr><td>Robertson</td><td>이사</td><td>반대(현행 완화 유지)</td></tr></table>
+<p>1962년의 표는 1983년과 구성이 다릅니다. 반대 5명 가운데 이사회 이사가 3명이고 지역연은 총재가 2명입니다. 찬성 7명 가운데 지역연은 총재는 3명이고 그 안에 뉴욕 연은 총재 헤이즈(Hayes)가 들어 있습니다. 헤이즈는 직전 회의에서 혼자 반대표를 던지며 "a somewhat less easy policy was appropriate"라고 했던 인물이므로, 12월 18일의 다수 이동은 헤이즈의 소수 의견 쪽으로 위원회가 옮겨 간 것입니다. 1983년에는 뉴욕 연은 총재가 반대 쪽에, 1962년에는 찬성 쪽에 있었다는 점이 두 7:5의 표를 나란히 놓을 때 첫 번째로 눈에 들어옵니다.</p>
+
+<h3>2-3. 금리 경로 — 거의 움직이지 않았고, 8월에 움직였습니다</h3>
+<figure class=""><figcaption>장표 4. 1962-10부터 1963-09까지 연방기금금리 월평균 — 표결 뒤 7개월 동안 최고와 최저의 차이가 12bp</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">2.80</text>
+<line x1="62" y1="222.0" x2="730" y2="222.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="226.0" text-anchor="end" font-size="11" fill="#8a857c">2.90</text>
+<line x1="62" y1="188.0" x2="730" y2="188.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="192.0" text-anchor="end" font-size="11" fill="#8a857c">3.00</text>
+<line x1="62" y1="154.0" x2="730" y2="154.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="158.0" text-anchor="end" font-size="11" fill="#8a857c">3.10</text>
+<line x1="62" y1="120.0" x2="730" y2="120.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="124.0" text-anchor="end" font-size="11" fill="#8a857c">3.20</text>
+<line x1="62" y1="86.0" x2="730" y2="86.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="90.0" text-anchor="end" font-size="11" fill="#8a857c">3.30</text>
+<line x1="62" y1="52.0" x2="730" y2="52.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="56.0" text-anchor="end" font-size="11" fill="#8a857c">3.40</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">3.50</text>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">62-10</text>
+<text x="122.7" y="274" text-anchor="middle" font-size="10" fill="#8a857c">62-11</text>
+<text x="183.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">62-12</text>
+<text x="244.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-01</text>
+<text x="304.9" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-02</text>
+<text x="365.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-03</text>
+<text x="426.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-04</text>
+<text x="487.1" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-05</text>
+<text x="547.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-06</text>
+<text x="608.5" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-07</text>
+<text x="669.3" y="274" text-anchor="middle" font-size="10" fill="#8a857c">63-08</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">63-09</text>
+<polyline points="62.0,222.0 122.7,211.8 183.5,215.2 244.2,188.0 304.9,194.8 365.6,194.8 426.4,222.0 487.1,188.0 547.8,191.4 608.5,181.2 669.3,21.4 730.0,24.8" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<circle cx="62.0" cy="222.0" r="2.4" fill="#2b7a78"/>
+<circle cx="122.7" cy="211.8" r="2.4" fill="#2b7a78"/>
+<circle cx="183.5" cy="215.2" r="2.4" fill="#2b7a78"/>
+<circle cx="244.2" cy="188.0" r="2.4" fill="#2b7a78"/>
+<circle cx="304.9" cy="194.8" r="2.4" fill="#2b7a78"/>
+<circle cx="365.6" cy="194.8" r="2.4" fill="#2b7a78"/>
+<circle cx="426.4" cy="222.0" r="2.4" fill="#2b7a78"/>
+<circle cx="487.1" cy="188.0" r="2.4" fill="#2b7a78"/>
+<circle cx="547.8" cy="191.4" r="2.4" fill="#2b7a78"/>
+<circle cx="608.5" cy="181.2" r="2.4" fill="#2b7a78"/>
+<circle cx="669.3" cy="21.4" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="24.8" r="2.4" fill="#2b7a78"/>
+<text x="736" y="28.8" font-size="11" fill="#2b7a78">FF 월평균 3.48%</text>
+<text x="183.5" y="199.2" text-anchor="middle" font-size="10.5" fill="#a44a3f">12-18 표결 7:5</text>
+<text x="487.1" y="172.0" text-anchor="middle" font-size="10.5" fill="#a44a3f">5-07 표결 6:5</text>
+<text x="669.3" y="35.4" text-anchor="middle" font-size="10.5" fill="#2b7a78">7월 대비 +47bp</text>
+</svg><div class="src">자료: 연준 연차보고서 1962(fomcropa19621218.pdf)·1963(fomcropa19630507.pdf), FRED FEDFUNDS 월평균. 패킷 case_1962.</div></figure>
+<p class="reading"><b>관찰.</b> 1962년 12월 2.92%에서 1963년 1월 3.00%(+8bp), 4월 2.90%(-2bp), 7월 3.02%로 움직였습니다. 10월부터 7월까지 최고 3.02%와 최저 2.90%의 차이가 12bp입니다. 8월에 3.49%로 7월 대비 +47bp 올라 표결 월 대비 +57bp가 됐고 9월 3.48%로 유지됐습니다. <b>원인.</b> 12월 지시문은 계절적 하락을 상쇄하는 것이 목표였으므로 금리를 올리는 결정이 아니라 내리지 않게 하는 결정이었고, 월평균이 평평한 것은 그 목표가 달성됐다는 뜻입니다. 8월의 상승은 1963년 5월 7일 6:5 결정과 7월 재할인율 인상의 결과입니다. <b>함의.</b> 1962년의 7:5는 '인상'의 사례가 아니라 '하락 방어'의 사례입니다. 오늘의 25bp 인상에 대응시킬 실측치로는 1983년보다 약하고, 다만 분열 표결이 다음 회의의 분열로 이어진 사례로는 의미가 있습니다.</p>
+<p>이 장표를 1983년의 장표 1과 나란히 놓으면 두 7:5의 크기 차이가 드러납니다. 1983년은 표결 뒤 석 달에 93bp였고 1962년은 표결 뒤 석 달에 +6bp였습니다. 1962년의 지시문이 "if necessary"와 "while continuing to provide moderate reserve expansion"이라는 단서를 달고 있었던 것과 정확히 맞는 결과입니다. 문구가 약하면 집행도 약했습니다. 1963년 연차보고서의 요약도 1월부터 5월 중순까지의 조작 목적을 "in accordance with the policy of slightly reduced reserve availability adopted at the December 18, 1962, meeting"이라고 적어, 12월 결정이 다섯 달 동안 운영의 기준이었음을 확인해 줍니다.</p>
+<p>주식과 채권의 당일 반응은 패킷에 있습니다. S&P500은 표결일 -0.48%, 익일 누적 +0.34%, 5일 +0.42%, 20일 +3.69%였고 10년물은 당일 -2bp였습니다. 지수 수준으로는 12월 3일 61.94, 12월 17일 62.37, 1월 2일 62.69, 1월 30일 65.85로 표결 전일부터 1월 말까지 +5.58%입니다. 1962년 12월의 주식시장은 그해 5월의 급락에서 회복하던 국면이었고, 이 반응이 표결과 관련이 있다고 볼 근거는 없습니다. 결정은 다음 해 연차보고서에서야 공개됐으므로 당일의 시장은 표결은 물론 회의에서 무엇이 결정됐는지도 알지 못했습니다.</p>
+
+<h3>2-4. 후속 — 1963-05-07 6:5와 8월 3.49%</h3>
+<p>1962년 12월의 분열은 다섯 달 뒤 같은 구도로 반복됐습니다. 패킷의 후속 메모는 "1963-05-07 6-5로 'slightly less ease' 결정(반대 5 완화), 1963-07 재할인율 3.5%로 인상 후 8월 FF 3.49%"입니다. 1963-05-07 기록을 보면 다수는 "the domestic economy had already strengthened sufficiently to permit a move to slightly less ease in order to place greater emphasis on this country's balance of payments problem"이라고 판단했고, 지시문은 "achieving a slightly greater degree of firmness in the money market than has prevailed in recent weeks, while accommodating moderate reserve expansion"으로 바뀌었습니다. 반대한 다섯 명은 봅(Bopp), 클레이(Clay), 미첼, 로버트슨, 스캔런(Scanlon)이었고 기록은 이들이 "it would be unwise to risk dampening the budding expansion in domestic activity at this juncture by even a slight reduction in the degree of monetary ease"라고 보았다고 적었습니다. 12월과 같은 국제수지 대 국내 경기의 대립이고, 미첼과 로버트슨은 두 번 다 반대 쪽에 있었습니다.</p>
+<p>1963년 연차보고서의 정책 요약은 5월 중순부터 7월 하순까지 "Reduced the degree of reserve availability slightly further"했고 7월 중순에 "Raised the discount rate from 3 to 3½ per cent"했다고 적었습니다. 이 두 조치의 결과가 장표 4의 8월 3.49%입니다. 즉 1962년 12월의 7:5에서 시작해 1963년 5월의 6:5, 7월의 재할인율 인상까지 세 단계를 거쳐서야 연방기금금리가 +57bp 올랐습니다. 반대 5표가 두 번 연속 나왔지만 정책은 반대 쪽으로 가지 않았고, 오히려 두 번째 분열 뒤에 더 큰 조치가 따랐습니다. 1983년에도 7:5 뒤에 6월 전화 회의와 7월 회의의 재확인이 따랐으므로, "반대 5표는 정책 방향을 되돌리지 못했다"는 관찰은 두 사례에 공통입니다.</p>
+
+<h2>3. 6:5 3건 — 반대 5표의 나머지</h2>
+<p>반대 5표는 데이터베이스 전체 860건 가운데 5건으로 0.58%입니다. 계산은 5을 860으로 나눈 것입니다. 만장일치가 549건으로 63.8%이고 반대 4표 이상은 22건이며, 반대 6표 이상은 없습니다. 반대 5표 5건 가운데 2건이 앞의 7:5이고 나머지 3건이 6:5입니다. 6:5는 위원이 11명일 때 나오는 표결이므로 7:5보다 한 명이 빈 위원회였고, 찬성 6 대 반대 5는 한 표만 옮겨도 뒤집히는 가장 좁은 다수입니다. 세 건의 날짜와 방향, 반대 명단은 패킷에서 그대로 옮겼습니다.</p>
+<table class=""><tr><th>회의</th><th>의장</th><th>표결</th><th>결정 방향</th><th>반대 5인</th><th>S&P 당일</th><th>익일 누적</th><th>5일</th><th>20일</th><th>미10년 당일</th></tr><tr><td>1963-05-07</td><td>Martin</td><td>6-5</td><td>다수='slightly less ease'(국제수지), 반대 5 완화 유지</td><td>Bopp, Clay, Mitchell, Robertson, Scanlon</td><td>-0.13%</td><td>+0.69%</td><td>+1.37%</td><td>+1.68%</td><td>-1bp</td></tr><tr><td>1964-08-18</td><td>Martin</td><td>6-5</td><td>다수=firmer, 반대 5 완화(정책 변경 불필요·기대 촉발 위험)</td><td>Daane, Mitchell, Robertson, Swan, Wayne</td><td>+0.05%</td><td>-0.05%</td><td>-0.55%</td><td>+0.78%</td><td>+0bp</td></tr><tr><td>1973-10-02</td><td>Burns</td><td>6-5</td><td>반대 5명 완화 선호</td><td>Balles, Bucher, Francis, Morris, Sheehan</td><td>+0.54%</td><td>+0.53%</td><td>+1.87%</td><td>+2.72%</td><td>-2bp</td></tr></table>
+<p>세 건 모두 반대 5명이 완화 쪽이었습니다. 1963-05-07은 2-4절에서 본 대로 "slightly less ease"의 6:5입니다. 1964-08-18은 다수가 "maintaining slightly firmer conditions in the money market"을 택했고, 기록은 반대 위원들이 "a firmer policy was not called for at present by domestic conditions"라고 보았으며 "even a slight policy shift might affect interest rate expectations and trigger market reactions leading to much firmer conditions than intended"라고 우려했다고 적었습니다. 패킷의 요약 "다수=firmer, 반대 5 완화(정책 변경 불필요·기대 촉발 위험)"이 이것입니다. 시장이 조치보다 기대에 더 크게 반응할 수 있다는 논리는 1983년 소수의 "exaggerated reaction" 논리와 같은 계열입니다. 1973-10-02는 번스(Burns) 의장 아래에서 나온 6:5로 패킷은 "반대 5명 완화 선호"로만 적고 있고, 이 회의의 기록 원문은 이번 조사 자료에 없어 반대 논리를 인용하지 못합니다.</p>
+<figure class=""><figcaption>장표 5. 반대 5표 5건의 S&P500 반응 — 당일·5일·20일 창, 전부 표결을 모르는 상태의 반응</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">-1.00%</text>
+<line x1="62" y1="199.7" x2="730" y2="199.7" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="203.7" text-anchor="end" font-size="11" fill="#8a857c">0.00%</text>
+<line x1="62" y1="163.3" x2="730" y2="163.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="167.3" text-anchor="end" font-size="11" fill="#8a857c">1.00%</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">2.00%</text>
+<line x1="62" y1="90.7" x2="730" y2="90.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="94.7" text-anchor="end" font-size="11" fill="#8a857c">3.00%</text>
+<line x1="62" y1="54.3" x2="730" y2="54.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="58.3" text-anchor="end" font-size="11" fill="#8a857c">4.00%</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">5.00%</text>
+<text x="128.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">62-12-18</text>
+<text x="262.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">63-05-07</text>
+<text x="396.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">64-08-18</text>
+<text x="529.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">73-10-02</text>
+<text x="663.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">83-05-24</text>
+<rect x="82.0" y="199.7" width="30.2" height="17.4" fill="#1f3a5f" opacity="0.9"/>
+<text x="97.6" y="228.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">-0.48</text>
+<rect x="113.2" y="184.4" width="30.2" height="15.3" fill="#b07d2b" opacity="0.9"/>
+<text x="128.8" y="180.4" text-anchor="middle" font-size="9.5" fill="#b07d2b">0.42</text>
+<rect x="144.4" y="65.6" width="30.2" height="134.1" fill="#2b7a78" opacity="0.9"/>
+<text x="160.0" y="61.6" text-anchor="middle" font-size="9.5" fill="#2b7a78">3.69</text>
+<rect x="215.6" y="199.7" width="30.2" height="4.7" fill="#1f3a5f" opacity="0.9"/>
+<text x="231.2" y="215.4" text-anchor="middle" font-size="9.5" fill="#1f3a5f">-0.13</text>
+<rect x="246.8" y="149.9" width="30.2" height="49.8" fill="#b07d2b" opacity="0.9"/>
+<text x="262.4" y="145.9" text-anchor="middle" font-size="9.5" fill="#b07d2b">1.37</text>
+<rect x="278.0" y="138.6" width="30.2" height="61.0" fill="#2b7a78" opacity="0.9"/>
+<text x="293.6" y="134.6" text-anchor="middle" font-size="9.5" fill="#2b7a78">1.68</text>
+<rect x="349.2" y="197.8" width="30.2" height="1.8" fill="#1f3a5f" opacity="0.9"/>
+<text x="364.8" y="193.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">0.05</text>
+<rect x="380.4" y="199.7" width="30.2" height="20.0" fill="#b07d2b" opacity="0.9"/>
+<text x="396.0" y="230.7" text-anchor="middle" font-size="9.5" fill="#b07d2b">-0.55</text>
+<rect x="411.6" y="171.3" width="30.2" height="28.3" fill="#2b7a78" opacity="0.9"/>
+<text x="427.2" y="167.3" text-anchor="middle" font-size="9.5" fill="#2b7a78">0.78</text>
+<rect x="482.8" y="180.0" width="30.2" height="19.6" fill="#1f3a5f" opacity="0.9"/>
+<text x="498.4" y="176.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">0.54</text>
+<rect x="514.0" y="131.7" width="30.2" height="67.9" fill="#b07d2b" opacity="0.9"/>
+<text x="529.6" y="127.7" text-anchor="middle" font-size="9.5" fill="#b07d2b">1.87</text>
+<rect x="545.2" y="100.8" width="30.2" height="98.8" fill="#2b7a78" opacity="0.9"/>
+<text x="560.8" y="96.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">2.72</text>
+<rect x="616.4" y="152.8" width="30.2" height="46.9" fill="#1f3a5f" opacity="0.9"/>
+<text x="632.0" y="148.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1.29</text>
+<rect x="647.6" y="199.7" width="30.2" height="23.3" fill="#b07d2b" opacity="0.9"/>
+<text x="663.2" y="233.9" text-anchor="middle" font-size="9.5" fill="#b07d2b">-0.64</text>
+<rect x="678.8" y="42.0" width="30.2" height="157.7" fill="#2b7a78" opacity="0.9"/>
+<text x="694.4" y="38.0" text-anchor="middle" font-size="9.5" fill="#2b7a78">4.34</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">당일</text>
+<rect x="736" y="34" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">5일</text>
+<rect x="736" y="50" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">20일</text>
+</svg><div class="src">자료: 세인트루이스 연준 FOMC 반대표 데이터(Thornton & Wheelock 데이터 부록, 2026-07-31 갱신, 1936-03-19~2026-07-29 표결 860건). 시장 반응은 패킷 dissent_meeting_reactions.</div></figure>
+<p class="reading"><b>관찰.</b> 당일은 1962-12-18 -0.48%와 1963-05-07 -0.13%가 마이너스, 1964-08-18 +0.05%·1973-10-02 +0.54%·1983-05-24 +1.29%가 플러스입니다. 20일 창은 다섯 건 모두 플러스이고 가장 큰 것이 1983년 +4.34%, 가장 작은 것이 1964년 +0.78%입니다. 5일 창만 1964년 -0.55%와 1983년 -0.64%가 마이너스입니다. <b>원인.</b> 다섯 건 모두 결정이 즉시 공표되지 않던 시기의 회의이므로 당일 등락에 표결의 정보가 들어갈 통로가 없었습니다. 20일 창의 플러스는 다섯 회의가 전부 경기 확장 국면에서 열렸다는 공통점의 결과로 읽는 것이 자연스럽습니다. <b>함의.</b> 반대 5표 5건의 평균을 내어 '분열 표결에 주식은 오른다'고 말하는 것은 표본 5건에 정보 통로가 없었다는 두 겹의 이유로 성립하지 않습니다. 이 장표는 대응표에 붙일 실측치이지 규칙이 아닙니다.</p>
+<p>세 6:5의 10년물 당일 변화는 -1bp, +0bp, -2bp입니다. 채권도 당일에는 움직이지 않았습니다. 1964-08-18 기록은 회의 직전 재정증권 금리가 "returned to about 3.50 per cent in mid-August"였다고 적고 있어 시장이 이미 소폭 조인 상태였음을 보여 주는데, 이것이 반대 위원들이 "with the market already somewhat tighter"라고 말한 배경입니다. 코스피는 1997년 7월부터 자료가 있으므로 이 다섯 건의 한국 반응은 전부 자료 없음입니다.</p>
+
+<h2>4. 두 7:5의 공통 구조와 실측치의 한계</h2>
+<table class=""><tr><th>항목</th><th>1962-12-18(마틴)</th><th>1983-05-24(볼커)</th></tr><tr><td>표결</td><td>7-5</td><td>7-5</td></tr><tr><td>다수 방향</td><td>계절적 금리 하락 상쇄(firmer tone)</td><td>지준 긴축 소폭 강화(slightly more restraint)</td></tr><tr><td>반대 5인 방향</td><td>현행 완화 유지</td><td>현행 유지(전원 완화 쪽)</td></tr><tr><td>반대 가운데 지역연은 총재</td><td>2명</td><td>3명</td></tr><tr><td>결정 공개</td><td>다음 해 연차보고서</td><td>7-15 보도자료(약 7주 뒤)</td></tr><tr><td>FF 표결 월 대비 3개월 뒤</td><td>2.92%에서 2.98%(+6bp)</td><td>8.63%에서 9.56%(+93bp)</td></tr><tr><td>S&P 당일 / 5일 / 20일</td><td>-0.48% / +0.42% / +3.69%</td><td>+1.29% / -0.64% / +4.34%</td></tr><tr><td>미10년 당일</td><td>-2bp</td><td>-1bp</td></tr><tr><td>의장 공개 발언</td><td>기록 없음(연차보고서 서술만)</td><td>7-20 의회 증언(hawkish)</td></tr></table>
+<p>두 7:5의 공통 구조는 세 가지입니다. 첫째, 다수가 긴축 쪽이고 소수 5명이 완화 쪽이었습니다. 1962년의 반대는 "continue undiminished the prevailing financial stimulus"였고 1983년의 반대는 "maintaining approximately the degree of reserve restraint approved at the previous meeting"이었습니다. 두 번 다 반대의 내용은 "바꾸지 말자"였지 "더 조이자"가 아니었습니다. 그러므로 2026-09-16에 매파 반대가 여럿 나오는 인상, 즉 "더 올렸어야 했다"는 반대가 붙은 인상은 역사상 대응 사례가 없습니다. 반대로 비둘기 반대가 여럿 나오는 인상, 즉 "올리지 말았어야 했다"는 반대가 붙은 인상은 1983-05-24가 가장 가까운 사례입니다.</p>
+<p>둘째, 결정이 공표되지 않았습니다. 1962년은 다음 해 연차보고서, 1983년은 약 7주 뒤 보도자료였습니다. 즉시 공표는 1994-02-04(그린스펀 첫 즉시 공표)부터, 정례 기자회견은 2011-04-27(버냉키 첫 정례 기자회견)부터, 점도표는 2012-01(점도표)부터입니다. 그래서 이 파트가 적은 당일·5일·20일 등락은 전부 "표결을 모르는 시장"의 숫자입니다. 이것은 실측치의 가치를 없애지는 않지만 용도를 바꿉니다. 이 숫자들은 "분열 표결에 시장이 어떻게 반응했는가"의 답이 아니라 "분열 표결이 있었던 시기의 시장이 어떻게 움직였는가"의 기록입니다. 2026년의 표결은 14시에 성명서와 함께 공개되고 30분 뒤 의장이 설명하므로, 정보 통로의 구조 자체가 다릅니다.</p>
+<p>셋째, 정책은 반대 쪽으로 가지 않았습니다. 1983년은 표결 뒤 석 달 93bp, 1962년은 다음 회의의 6:5와 재할인율 인상을 거쳐 여덟 달 뒤 +57bp였습니다. 반대 5표는 지시문의 문구를 "only slightly"와 "if necessary"로 누그러뜨리는 데는 영향을 주었을 수 있지만 방향을 바꾸지는 못했습니다. 그리고 두 의장 모두 그 뒤에 물러나지 않았습니다. 볼커는 표결 25일 뒤 재지명됐고 마틴은 1970년까지 의장이었습니다. 다만 마틴의 임기는 패킷 밖 사실이므로 여기서는 방향만 적습니다.</p>
+<p>이 실측치를 오늘에 붙일 때의 한계를 STYLE의 주의 1에 따라 다시 명시합니다. 1983-05-24 당일의 +1.29%는 표결에 대한 반응이 아닙니다. 7월 15일 기록 공개 이후의 움직임도 6~7월의 긴축 집행과 7월 20일 증언, 그리고 그 사이의 경제 지표가 겹쳐 있어 표결 공개의 효과만 떼어낼 수 없습니다. 우리가 가진 가장 깨끗한 "공개된 표결에 대한 당일 반응"은 즉시 공표가 시작된 1994-02-04의 -2.27%(5일 -2.45%, 10년물 +13bp)부터이고, 그것은 파트 3의 영역입니다. 1983년의 실측치가 오늘에 주는 것은 당일 등락이 아니라 "비둘기 다수 반대 속의 긴축이 석 달 뒤 채권에 어떻게 쌓였는가"라는 경로입니다.</p>
+<p>덧붙여 두 7:5의 반대 이유가 오늘의 위원회 논쟁과 어떻게 겹치는지를 적어 둡니다. 1983년 소수는 넓은 통화량이 목표 안에 있으니 좁은 통화량의 급증을 무시하자고 했고, 다수는 좁은 통화량과 경기 가속을 무시할 수 없다고 했습니다. 지표를 어느 것으로 볼지의 싸움이었습니다. 2026년 7월 회의의 반대 3명은 성명대로 "monetary policy is not restraining the economy"라고 했고, 동결 쪽은 "Give disinflation a chance"라고 했습니다. 이것도 지표의 싸움입니다. 다만 1983년은 "조이지 말자"가 소수였고 2026년 7월은 "조이자"가 소수였다는 점에서 자리가 바뀌어 있습니다. 9월 16일에 자리가 어떻게 배치되는지가 허브 논쟁 1의 채점 대상입니다.</p>
+
+<h2>5. 논쟁에 주는 답</h2>
+<p><b>논쟁 1(표결 폭이 시장을 움직이는가, 방향이 움직이는가)에 주는 답.</b> 이 파트의 답은 "1983년과 1962년의 실측치로는 폭의 효과를 검정할 수 없고, 방향의 효과는 채권에서 석 달 뒤에 나타났다"입니다. 반대 5표라는 폭은 두 번 다 시장에 알려지지 않은 상태였으므로 당일 등락에 폭이 들어갈 통로가 없었습니다. 대신 방향은 분명히 나타났습니다. 1983년 10년물은 표결일 10.56%에서 8월 8일 12.20%까지 +164bp 올랐고 연방기금금리는 93bp 올랐습니다. 주식은 당일 +1.29%, 20일 +4.34%, 8월 8일 저점까지 -3.84%였습니다. 채점 KPI는 허브의 것을 따라 반대표 수와 방향, 성명서 표결 문단이고, 이 파트가 보태는 조건은 "반대가 비둘기 쪽 4표 이상이면 1983-05-24의 채권 경로를 대응시키되 창을 당일이 아니라 5일·20일·석 달으로 둘 것"입니다. 반증 조건은 반대 4표 이상이 매파 쪽으로 나오는 경우입니다. 그때는 7:5 두 사례가 대응 사례가 아니며 파트 2의 1979-09-18 쪽으로 옮겨야 합니다.</p>
+<p><b>논쟁 2(워시 회견은 hawkish/neutral/dovish 어디로 읽히는가)에 주는 답.</b> 이 파트는 회견이 없던 시대의 의장 발언 하나를 분류했습니다. 볼커 의장의 1983-07-20 증언은 "limited, timely and potentially reversible measures now"로 긴축을 정당화하고 "much more abrupt and forceful action later"를 피하기 위한 것이라고 해서 인플레이션 쪽 위험에 무게를 두었으며, 금리가 이미 4분의 3에서 1퍼센트포인트 올랐다고 인정하면서 되돌릴 뜻을 밝히지 않았습니다. 이 셋을 근거로 hawkish로 분류합니다. 파트 3의 기자회견 시대 집계는 패킷 기준 hawkish 6건 평균 S&P 당일 -1.26%·5일 -2.51%, dovish 5건 평균 +1.48%·+1.20%인데, 1983년 증언은 그 집계에 들어가지 않습니다. 회견이 아니라 증언이고, 결정 두 달 뒤였으며, 당일 시장 반응이 패킷에 없기 때문입니다. 이 파트가 논쟁 2에 보태는 것은 판정이 아니라 기준입니다. 워시 의장의 회견에서 "지금 조치가 나중의 더 큰 조치를 피하기 위한 것"이라는 선제론 문구가 나오면 1983년 증언과 같은 계열로 읽고, "잠재적으로 되돌릴 수 있다"는 문구가 같이 나오면 볼커의 "potentially reversible"에 대응시킵니다. 채점 KPI는 허브의 "additional firming"류 문구 유무이고, 반증 조건은 회견이 인상을 "one-and-done"으로 명시하는 경우입니다.</p>
+
+<h2>6. 미결</h2>
+<p><b>A급(판정에 직접 닿는 것).</b> 첫째, 1983년 시장이 표결 결과를 언제 알았는지입니다. 기록 공개일이 7월 15일이라는 것은 보도자료 원문으로 확인됐지만, 그 전에 5월 하순부터 데스크의 지준 긴축이 창구 차입과 단기금리로 드러나면서 시장이 "위원회가 조였다"는 사실을 언제 어떻게 읽었는지, 그리고 7월 15일 공개 당일과 이튿날의 S&P·10년물이 어떻게 움직였는지는 패킷에 없습니다. 야후 파이낸스 일봉으로 1983-07-15와 07-18을 뽑고 당시 신문(월스트리트저널·뉴욕타임스) 기사를 확인하면 메워집니다. 둘째, 볼커 의장이 5월 24일과 7월 20일 사이에 회의 밖에서 한 발언입니다. 이번 조사는 7월 20일 증언만 확보했으며 6월 18일 재지명 발표 전후의 발언이나 6월 23일 전화 회의의 세부는 FRASER의 볼커 연설 아카이브와 회의록에서 구할 수 있습니다.</p>
+<p><b>B급(구조를 더 정확히 하는 것).</b> 1962년 연차보고서의 실제 발간 시점입니다. 기록은 "다음 해 연차보고서"라고만 되어 있어 1963년 몇 월에 시장이 12월 18일 표결을 알게 됐는지가 비어 있습니다. 연준 연차보고서의 의회 제출일을 확인하면 됩니다. 1973-10-02 6:5의 반대 논리와 지시문 원문도 이번 자료에 없어 패킷의 방향 요약만 옮겼습니다. fomcropa19731002를 받으면 3절의 표를 채울 수 있습니다. 1983년 5월 표결 전 연방기금금리 수준도 기록의 "8-1/2 to 8-3/4 percent"라는 구간 서술만 있어 표결 전 대비 상승 폭을 월평균보다 정밀하게 계산하지 못했습니다. FRED의 일별 실효금리(DFF)로 5월 23일 값을 뽑으면 됩니다.</p>
+<p><b>C급(있으면 좋은 것).</b> 두 7:5의 위원 소속은 연준 명부에서 이름을 대조해 붙인 것으로 패킷에는 없습니다. 1983년 반대 5인 가운데 지역연은 총재 3명이 각각 어느 쪽 논거(국내·국제)를 주로 들었는지는 기록이 솔로몬·거피·모리스를 국제 쪽으로 묶어 준 것까지만 확인됩니다. 1962년과 1963년 두 분열에서 미첼과 로버트슨이 연속 반대한 배경, 그리고 1964-08-18 반대 5인 가운데 3명이 이사회 이사였다는 점의 의미는 회의록 전문이 있어야 풀립니다. 이 항목들은 판정을 바꾸기보다 표의 해상도를 올리는 쪽입니다.</p>
+
+<div class="foot">데이터 계보: 연준 Record of Policy Actions 1983-05-24(보도자료 1983-07-15, fomcropa19830524.pdf), 연준 연차보고서 1962·1963·1964의 Record of Policy Actions(fomcropa19621218·19630507·19640818.pdf), 볼커 의장 1983-07-20 의회 증언(FRASER bog_19830720.pdf), 세인트루이스 연준 FOMC 반대표 데이터(Thornton & Wheelock 데이터 부록, 2026-07-31 갱신, 1936-03-19~2026-07-29 표결 860건), FRED FEDFUNDS 월평균(실효연방기금금리), S&P500·나스닥종합·코스피·미10년(^TNX)·원달러 일봉(야후 파이낸스), 코스피 1997-07부터, 원달러 2003-12부터 유효. 지시문·반대 이유·증언은 영어 원문을 그대로 인용했고 우리말 풀이는 우리 번역입니다. 금리·지수·등락률은 전부 packet.json(case_1983·case_1962·db·dissent_meeting_reactions·hike_agg·hike_1994)에서 읽었고, 구간 등락과 bp 차이는 그 값들의 차이와 비율로 코드에서 계산했습니다. 위원 소속은 연준 이사회·지역연은 명부를 대조해 붙인 것이며 이름은 기록 원문과 같습니다. E 표기는 없습니다.</div>
+
+</main></body></html>
