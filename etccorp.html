@@ -280,11 +280,11 @@ function note(){
   <li><b>자사주</b> 태그: 자사주 매수 트래커(KIND 신청·체결)의 같은 구간 체결액 ÷ 기타법인 순매수. 70% 이상이면 자사주로 설명된다고 보고 기본 제외.</li>
   <li><b>지분공시</b>: 포착 종목(연속 3일·5억↑)에 한해 OpenDART 지분공시(주식등의대량보유상황보고서=5%, 임원ㆍ주요주주특정증권등소유상황보고서)를 매집 시작 7일 전부터 조회. 보고자(flr_nm)가 매수 주체의 힌트.</li>
   <li>수록 게이트: 시총 ${fmt(g.mcap_min_eok)}억↑ 보통주 중 (연속 ${g.streak}일↑ &amp; 연속 누적 ${g.streak_amt_eok}억↑) 또는 20일 누적 ${g.cum20_eok}억↑ 또는 단일일 ${g.max1_eok}억↑. 급증 배수 = 매집 일평균 ÷ 직전 ${g.base_days}일 |순매수| 평균(하한 0.5억).</li>
-  <li>데이터: 키움 ka10059 종목별 투자자 순매수 금액(KRX 기준·NXT 제외·백만원), 평일 16:05 잠정·21:00 확정 수집분. 수량은 같은 API의 수량 모드(주)로 포착 종목만 재조회. 사용자 출처의 "일평균 매수량"은 총매수 주수라 여기 순매수 주수보다 다소 크게 나온다.</li></ul>`;
+  <li>데이터: 키움 ka10059 종목별 투자자 순매수 금액(KRX 기준·NXT 제외·백만원)·거래대금·종가, 평일 21:00 확정 수집분만 사용(잠정치 미게시 — 당일 행은 21:30 빌드에 반영). 거래대금 비중 = 기타법인 순매수액 ÷ 당일 KRX 거래대금(둘 다 확정치). 수량은 같은 API의 수량 모드(주)로 포착 종목만 재조회. 사용자 출처의 "일평균 매수량"은 총매수 주수라 여기 순매수 주수보다 다소 크게 나온다.</li></ul>`;
 }
 async function load(){
   const r=await fetch('data/etccorp.json?v='+Math.floor(Date.now()/6e5)); D=await r.json();
-  $('hd').innerHTML=`기준일 <b>${D.base_dt.slice(0,4)}-${D.base_dt.slice(4,6)}-${D.base_dt.slice(6,8)}</b> ${D.provisional?'<span class="prov">(장중·잠정치)</span>':'(확정치)'} · 스캔 ${fmt(D.n_universe)}종목 → 수록 ${D.n_rows} · 빌드 ${D.built_at}`;
+  $('hd').innerHTML=`기준일 <b>${D.base_dt.slice(0,4)}-${D.base_dt.slice(4,6)}-${D.base_dt.slice(6,8)}</b> ${D.provisional?'<span class="prov">(장중·잠정치)</span>':'(확정치 · 당일분 21:30 반영)'} · 스캔 ${fmt(D.n_universe)}종목 → 수록 ${D.n_rows} · 빌드 ${D.built_at}`;
   ui(); head(); today(); chips(); render(); note();
   ['q'].forEach(id=>$(id).oninput=render); ['xbb','onlyd'].forEach(id=>$(id).onchange=render);
 }
