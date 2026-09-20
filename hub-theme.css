@@ -171,3 +171,10 @@ html.ht-weekly{--content-max:min(96%,1720px)}
 .ht-weekly .ipo-kind.listing{background:rgba(77,125,245,.15);border-color:rgba(77,125,245,.35);color:var(--accent-deep)}
 .ht-weekly .ipo-kind.offer{background:rgba(45,212,191,.13);border-color:rgba(45,212,191,.3);color:var(--c-ir)}
 .ht-weekly .ipo-note{border-radius:10px;background:#17181d;border:1px solid #272930}
+/* ht-weekly: 추가상장 탭 (2026-09-21 추가 — CB·BW 전환/행사·유증·스톡옵션) */
+.ht-weekly .ipo-kind.cb{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.38);color:#f5b342}
+.ht-weekly .ipo-kind.lock{background:#1b1c22;border-color:#2a2c34;color:var(--ink-4)}
+.ht-weekly .ipo-kind.plan{background:transparent;border:1px dashed #4a4d59;color:var(--ink-3)}
+.ht-weekly .add-table .add-val{color:var(--ink-3)}
+.ht-weekly .cell-bullets li.auto-addlist{color:#f5b342}
+.ht-weekly .detail-group.addlist .detail-group-h{border-left:3px solid #f59e0b}
