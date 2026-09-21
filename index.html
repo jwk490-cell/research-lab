@@ -407,6 +407,73 @@ main canvas{display:block;width:100%}
 .nt:hover{color:var(--accent)}
 .nmeta{font-size:11px;color:var(--faint);margin-top:2px}
 
+/* ───────── 우선주 괴리율 · 배당 (2단: 괴리율 | 배당) + 호버 차트 툴팁 ───────── */
+.gpcols{display:grid;gap:18px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}
+@media(max-width:1020px){.gpcols{grid-template-columns:minmax(0,1fr)}}
+.gpcol{display:flex;flex-direction:column;gap:12px;min-width:0}
+.gpcard{background:var(--surface);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);min-width:0}
+.gpcard h3{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.gpcard h3 .sub{font-size:11px;font-weight:500;color:var(--faint)}
+.gpcard h3 .rt{margin-left:auto}
+.gpchip{font-size:10.5px;font-weight:700;border-radius:999px;padding:2.5px 9px;background:var(--surface2);color:var(--sub);white-space:nowrap}
+.gpchip.live{background:var(--accent-soft);color:var(--accent)}
+.gphero .lb{font-size:12.5px;color:var(--sub);font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gphero .big{font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-top:8px}
+.gphero .big small{font-size:22px;font-weight:700;margin-left:2px}
+.gphero .dl{font-size:12.5px;color:var(--sub);margin-top:5px}
+.gphero .dl .up{color:var(--up);font-weight:700}.gphero .dl .down{color:var(--down);font-weight:700}
+.gpmeter{position:relative;height:8px;border-radius:999px;background:var(--accent-soft);margin:20px 0 0}
+.gpmeter .avg{position:absolute;top:-4px;bottom:-4px;width:2px;border-radius:2px;background:var(--faint);transform:translateX(-50%)}
+.gpmeter .dot{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--accent);
+  border:2px solid var(--surface);transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.gpmlab{position:relative;display:flex;justify-content:space-between;font-size:10.5px;color:var(--faint);margin-top:8px;
+  font-variant-numeric:tabular-nums;height:14px}
+.gpmlab .mid{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.gprow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gprow .lab{font-size:11px;color:var(--faint);font-weight:700}
+.gpq{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.gpq th{font-size:10.5px;color:var(--faint);font-weight:700;text-align:right;padding:0 0 8px 10px;white-space:nowrap}
+.gpq th:first-child{text-align:left;padding-left:0}
+.gpq td{padding:9px 0 9px 10px;text-align:right;border-top:1px solid var(--line2);white-space:nowrap;font-size:13px}
+.gpq td:first-child{text-align:left;padding-left:0}
+.gpq .nm{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px}
+.gpq .nm i{display:inline-block;width:9px;height:9px;border-radius:3px;flex:none}
+.gpq .cd{font-size:10.5px;color:var(--faint);font-weight:500;margin-top:2px;padding-left:16px}
+.gpq .px{font-weight:800;font-size:15px}
+.gpq .chg{font-size:11px;margin-top:2px}.gpq .chg.up{color:var(--up)}.gpq .chg.down{color:var(--down)}
+.gpq tfoot td{font-size:11.5px;color:var(--sub);padding-top:10px}
+.gpq tfoot b{color:var(--text)}
+.gpq tfoot td{white-space:normal;line-height:1.55}
+.gpq th .w{font-weight:500}
+@media(max-width:560px){.gpcard{padding:16px}.gpq .chg .abs,.gpq th .w{display:none}.gpq td{font-size:12px;padding-left:8px}
+  .gpq .px{font-size:13.5px}.gpq .nm{font-size:12.5px}.gphero .big{font-size:40px}}
+.gptbl{overflow-x:auto}
+.gptbl .ddt td.cur{color:var(--sub)}
+.gptbl .ddt th,.gptbl .ddt td{padding:7px 7px}
+.gpnote{font-size:11px;color:var(--faint);margin-top:10px;line-height:1.6}
+.gpsub{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);min-width:0}
+.gpsub summary{cursor:pointer;list-style:none;padding:13px 18px;font-size:12.5px;font-weight:700;color:var(--sub);
+  display:flex;align-items:center;gap:8px;user-select:none}
+.gpsub summary::-webkit-details-marker{display:none}
+.gpsub summary::before{content:'▸';font-size:10px;color:var(--faint);transition:transform .15s}
+.gpsub[open] summary::before{transform:rotate(90deg)}
+.gpsub summary .sub{font-weight:500;color:var(--faint);font-size:11px}
+.gpsub .in{padding:2px 18px 16px}
+.clegend i.rect{width:10px;height:10px;border-radius:3px}
+.cvwrap{position:relative}
+.cvwrap canvas{touch-action:pan-y;outline:none;cursor:crosshair}
+.cvwrap canvas:focus-visible{outline:2px solid var(--accent-line);outline-offset:3px;border-radius:8px}
+.cvtip{position:absolute;top:6px;left:0;display:none;pointer-events:none;z-index:5;background:var(--surface);
+  border:1px solid var(--line);border-radius:10px;padding:8px 11px;box-shadow:var(--shadow-hover);
+  font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cvtip .tt{font-weight:700;color:var(--sub);font-size:11px;margin-bottom:4px}
+.cvtip .tr{display:flex;align-items:center;justify-content:space-between;gap:16px;line-height:1.65}
+.cvtip .tr .k{display:flex;align-items:center;gap:6px;color:var(--sub)}
+.cvtip .tr .k i{display:inline-block;width:10px;height:3px;border-radius:2px}
+.cvtip .tr .k i.rect{height:10px;border-radius:3px}
+.cvtip .tr b{color:var(--text);font-weight:800}
+.cvtip .tn{color:var(--faint);font-size:10.5px;margin-top:4px;white-space:normal;max-width:220px}
+
 /* ───────── 실시간 한국주식 (Hyperliquid) ───────── */
 .rgrid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
 .rcard{background:var(--surface);border:none;border-radius:20px;padding:24px 26px;box-shadow:var(--shadow)}
@@ -498,7 +565,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <div class="navgroup">비교 · 밸류</div>
     <button class="navitem" data-tab="caps">시총비교</button>
     <button class="navitem" data-tab="basket7">업종 시총비중</button>
-    <button class="navitem" data-tab="gap">괴리율</button>
+    <button class="navitem" data-tab="gap">우선주 괴리율·배당</button>
     <button class="navitem" data-tab="etfgap">ETF 괴리율</button>
     <button class="navitem" data-tab="dd">전고대비</button>
     <button class="navitem" data-tab="pbrgrowth">저PBR × 컨센 성장 <small>매일</small></button>
@@ -599,7 +666,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div class="grid">
           <button class="card" data-go="caps"><h3>시총비교 <span class="tag">2010~</span></h3><p>시가총액 추이 · 격차 · 비율 · 추월 필요주가</p></button>
           <button class="card" data-go="basket7"><h3>업종 시총비중 <span class="tag">매일 16:40</span></h3><p>KOSPI·KOSDAQ 투자포인트 기준 업종(메모리·소부장·기판·이차전지·전력기기·화장품…) 시총 대비 비중</p></button>
-          <button class="card" data-go="gap"><h3>괴리율 <span class="tag">2010~</span></h3><p>삼성 보통/우선 괴리율 · SK스퀘어 NAV 할인율</p></button>
+          <button class="card" data-go="gap"><h3>우선주 괴리율·배당 <span class="tag">2010~</span></h3><p>삼성전자 보통주↔우선주 괴리율 추이 · 최근 10년 주당배당금(DPS)</p></button>
           <button class="card" data-go="etfgap"><h3>ETF 괴리율 <span class="tag">5분</span></h3><p>단일종목 레버리지·인버스 시장가 vs NAV 게이지</p></button>
           <button class="card" data-go="pbrgrowth"><h3>저PBR × 컨센 성장 스크리너 <span class="tag">평일 16:55</span></h3><p>PBR 1배 이하 종목을 26E→27E 컨센서스 성장률 4지표(매출·영업이익·지배순이익·ROE)로 랭킹 — 직전결산/26E BPS 기준 토글, 시장·시총 필터, 종목별 3개년 컨센 상세</p></button>
           <button class="card" data-go="dd"><h3>전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이 + −15% 이상 하락 구간 기록</p></button>
@@ -654,11 +721,9 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     </section>
 
     <section class="panel" id="tab-gap">
-      <div class="ptitle">괴리율 <span style="font-size:12px;font-weight:600;color:var(--dim2)">삼성전자↔우선주 · 하이닉스↔SK스퀘어</span></div>
+      <div class="ptitle">삼성전자 보통주 · 우선주 <span style="font-size:12px;font-weight:600;color:var(--dim2)">괴리율 추이 · 10년 DPS</span></div>
       <div class="pdesc" id="gapMeta">불러오는 중…</div>
-      <div class="pairwrap" id="gapPair" style="margin-bottom:10px"></div>
-      <div class="rngwrap" id="gapRng" style="margin-bottom:14px"></div>
-      <div id="gapBody" style="display:flex;flex-direction:column;gap:14px"></div>
+      <div id="gapBody"></div>
     </section>
 
     <section class="panel" id="tab-etfgap">
@@ -1278,62 +1343,307 @@ function capsInit(){
   capsLoad();
 }
 
-/* ══════════ 괴리율 ══════════ */
-let gapRange='1Y',gapPair='sam';
+/* ══════════ 공용: 호버 차트 (크로스헤어 라인 · 스택/그룹 막대) ══════════ */
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function niceTicks(lo,hi,n){
+  const raw=((hi-lo)||1)/Math.max(1,n),mag=Math.pow(10,Math.floor(Math.log10(raw))),r=raw/mag;
+  const step=(r<=1?1:r<=2?2:r<=2.5?2.5:r<=5?5:10)*mag,out=[];
+  for(let v=Math.ceil(lo/step-1e-9)*step;v<=hi+step*1e-9;v+=step)out.push(+v.toFixed(10));
+  return out;
+}
+function cvSize(cv,H){
+  const dpr=window.devicePixelRatio||1,W=cv.clientWidth||600;
+  if(cv.width!==Math.round(W*dpr)||cv.height!==Math.round(H*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);cv.style.height=H+'px';}
+  const x=cv.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);x.clearRect(0,0,W,H);
+  return {x,W};
+}
+function cvTipShow(cv,px,tip){   /* tip={title,rows:[{c,k,v,rect}],note} — 전부 textContent로 삽입 */
+  let t=cv.parentElement.querySelector('.cvtip');
+  if(!t){t=document.createElement('div');t.className='cvtip';cv.parentElement.appendChild(t);}
+  t.textContent='';
+  const mk=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;};
+  t.appendChild(mk('div','tt',tip.title));
+  tip.rows.forEach(r=>{const row=mk('div','tr'),k=mk('span','k');
+    if(r.c){const i=mk('i',r.rect?'rect':'');i.style.background=r.c;k.appendChild(i);}
+    k.appendChild(document.createTextNode(r.k));row.appendChild(k);row.appendChild(mk('b','',r.v));t.appendChild(row);});
+  if(tip.note)t.appendChild(mk('div','tn',tip.note));
+  t.style.display='block';
+  const W=cv.clientWidth,tw=t.offsetWidth;
+  t.style.left=Math.max(0,Math.min(W-tw,px+14+tw>W?px-14-tw:px+14))+'px';
+}
+function cvTipHide(cv){const t=cv.parentElement.querySelector('.cvtip');if(t)t.style.display='none';}
+function cvHover(cv,n,idxAt,draw){   /* 포인터·터치·키보드(←→ Home End Esc) 공통 — 호버 인덱스만 바꿔 다시 그린다 */
+  let hv=null;
+  const set=i=>{if(i===hv)return;hv=i;draw(hv);if(hv==null)cvTipHide(cv);};
+  cv.onpointermove=cv.onpointerdown=e=>{const r=cv.getBoundingClientRect();set(idxAt(e.clientX-r.left));};
+  cv.onpointerleave=()=>set(null);
+  cv.tabIndex=0;
+  cv.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End','Escape'].includes(e.key))return;e.preventDefault();
+    if(e.key==='Escape')return set(null);
+    const cur=hv==null?n-1:hv,st=e.shiftKey?10:1;
+    set(e.key==='Home'?0:e.key==='End'?n-1:Math.max(0,Math.min(n-1,cur+(e.key==='ArrowLeft'?-st:st))));};
+  cv.onfocus=()=>{if(hv==null&&cv.matches(':focus-visible'))set(n-1);};
+  cv.onblur=()=>set(null);
+}
+function hvLine(cv,cfg){   /* cfg: labels, series[{data,color,w,fill}], band{lo,hi}, hlines[{y,color,label}], xticks[{i,t}], yfmt, endLabel, tip(i), h */
+  const n=cfg.labels.length;let geo=null;
+  const near=i=>{const s=cfg.series[0].data;if(s[i]!=null)return i;
+    for(let k=1;k<n;k++){if(i-k>=0&&s[i-k]!=null)return i-k;if(i+k<n&&s[i+k]!=null)return i+k;}return null;};
+  const draw=hv=>{
+    const H=cfg.h||300,{x,W}=cvSize(cv,H);
+    const P={l:cfg.pl||44,r:cfg.endLabel?58:16,t:14,b:24},IW=W-P.l-P.r,IH=H-P.t-P.b;
+    let lo=Infinity,hi=-Infinity;
+    cfg.series.forEach(s=>s.data.forEach(v=>{if(v!=null&&isFinite(v)){lo=Math.min(lo,v);hi=Math.max(hi,v);}}));
+    if(cfg.band){lo=Math.min(lo,cfg.band.lo);hi=Math.max(hi,cfg.band.hi);}
+    (cfg.hlines||[]).forEach(l=>{lo=Math.min(lo,l.y);hi=Math.max(hi,l.y);});
+    if(!isFinite(lo))return;
+    const pad=(hi-lo)*0.08||1;lo-=pad;hi+=pad;
+    const px=i=>P.l+IW*(n>1?i/(n-1):0.5),py=v=>P.t+IH*(1-(v-lo)/(hi-lo));
+    geo={P,IW};
+    const yfmt=cfg.yfmt||(v=>v.toLocaleString('ko-KR')),surf=cssv('--surface')||'#fff';
+    x.font='10.5px Pretendard, sans-serif';x.lineWidth=1;
+    niceTicks(lo,hi,5).forEach(v=>{const y=Math.round(py(v))+.5;
+      x.strokeStyle=cssv('--line2')||'#eef0f3';x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();
+      x.fillStyle=cssv('--faint')||'#8b95a1';x.textAlign='right';x.fillText(yfmt(v),P.l-7,y+3.5);});
+    x.fillStyle=cssv('--faint')||'#8b95a1';
+    (cfg.xticks||[]).forEach(t=>{const X=px(t.i),w=x.measureText(t.t).width;
+      x.textAlign='center';x.fillText(t.t,Math.max(P.l+w/2-8,Math.min(W-P.r-w/2+8,X)),H-7);});
+    if(cfg.band){x.fillStyle='rgba(139,149,161,.13)';x.fillRect(P.l,py(cfg.band.hi),IW,py(cfg.band.lo)-py(cfg.band.hi));}
+    (cfg.hlines||[]).forEach(l=>{x.strokeStyle=l.color||cssv('--faint');x.setLineDash([5,4]);x.beginPath();
+      x.moveTo(P.l,py(l.y));x.lineTo(W-P.r,py(l.y));x.stroke();x.setLineDash([]);
+      if(l.label){x.fillStyle=cssv('--sub')||'#4e5968';x.textAlign='left';x.fillText(l.label,P.l+5,py(l.y)-5);}});
+    cfg.series.forEach(s=>{
+      const pts=[];s.data.forEach((v,i)=>{if(v!=null)pts.push([px(i),py(v)]);});
+      if(!pts.length)return;
+      if(s.fill){x.beginPath();pts.forEach((p,k)=>k?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));
+        x.lineTo(pts[pts.length-1][0],P.t+IH);x.lineTo(pts[0][0],P.t+IH);x.closePath();x.fillStyle=s.fill;x.fill();}
+      x.beginPath();x.strokeStyle=s.color;x.lineWidth=s.w||2;x.lineJoin='round';x.lineCap='round';
+      pts.forEach((p,k)=>k?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.stroke();x.lineWidth=1;});
+    const dot=(X,Y,c)=>{x.beginPath();x.arc(X,Y,6,0,Math.PI*2);x.fillStyle=surf;x.fill();
+      x.beginPath();x.arc(X,Y,4,0,Math.PI*2);x.fillStyle=c;x.fill();};
+    if(cfg.endLabel){const s=cfg.series[0],li=near(n-1);
+      if(li!=null){dot(px(li),py(s.data[li]),s.color);
+        x.fillStyle=cssv('--text')||'#191f28';x.textAlign='left';x.font='700 11.5px Pretendard, sans-serif';
+        x.fillText(cfg.endLabel,px(li)+10,py(s.data[li])+4);x.font='10.5px Pretendard, sans-serif';}}
+    if(hv!=null){const i=near(hv);if(i==null)return;const X=Math.round(px(i))+.5;
+      x.strokeStyle=cssv('--faint')||'#8b95a1';x.beginPath();x.moveTo(X,P.t);x.lineTo(X,P.t+IH);x.stroke();
+      cfg.series.forEach(s=>{if(s.data[i]!=null)dot(px(i),py(s.data[i]),s.color);});
+      if(cfg.tip)cvTipShow(cv,px(i),cfg.tip(i));}
+  };
+  draw(null);
+  cvHover(cv,n,mx=>geo?Math.max(0,Math.min(n-1,Math.round((mx-geo.P.l)/geo.IW*(n-1)))):null,draw);
+}
+function hvBars(cv,cfg){   /* cfg: labels, short[], sub[], series[{name,color,data}], mode:'stack'|'group', yfmt, cap(i), capKeep[], tip(i), h */
+  const n=cfg.labels.length,k=cfg.series.length;let geo=null;
+  const draw=hv=>{
+    const H=cfg.h||300,{x,W}=cvSize(cv,H);
+    const hasSub=(cfg.sub||[]).some(Boolean);
+    const P={l:cfg.pl||44,r:10,t:22,b:hasSub?36:24},IW=W-P.l-P.r,IH=H-P.t-P.b,band=IW/n;
+    geo={P,band};
+    const colMax=i=>cfg.mode==='stack'?cfg.series.reduce((a,s)=>a+(s.data[i]||0),0):Math.max(...cfg.series.map(s=>s.data[i]||0));
+    const vmax=Math.max(...cfg.labels.map((_,i)=>colMax(i)),1e-9);
+    const ticks=niceTicks(0,vmax*1.1,4),top=Math.max(vmax*1.1,ticks[ticks.length-1]);
+    const py=v=>P.t+IH*(1-v/top),yfmt=cfg.yfmt||(v=>v.toLocaleString('ko-KR'));
+    const surf=cssv('--surface')||'#fff';
+    x.font='10.5px Pretendard, sans-serif';x.lineWidth=1;
+    ticks.forEach(v=>{const y=Math.round(py(v))+.5;
+      x.strokeStyle=v===0?(cssv('--line')||'#e7eaee'):(cssv('--line2')||'#eef0f3');x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();
+      x.fillStyle=cssv('--faint')||'#8b95a1';x.textAlign='right';x.fillText(yfmt(v),P.l-7,y+3.5);});
+    if(hv!=null){x.fillStyle='rgba(139,149,161,.14)';x.fillRect(P.l+band*hv+1,P.t-8,band-2,IH+8);}
+    const bar=(X,Y,w,h,round)=>{if(h<=0)return;const r=round?Math.min(4,w/2,h):0;
+      x.beginPath();x.moveTo(X,Y+h);x.lineTo(X,Y+r);x.quadraticCurveTo(X,Y,X+r,Y);x.lineTo(X+w-r,Y);
+      x.quadraticCurveTo(X+w,Y,X+w,Y+r);x.lineTo(X+w,Y+h);x.closePath();x.fill();};
+    const base=py(0),tops=[];
+    for(let i=0;i<n;i++){const cx=P.l+band*(i+.5);
+      if(cfg.mode==='stack'){const bw=Math.min(24,band*.6);let y=base;
+        const live=cfg.series.map((s,j)=>j).filter(j=>(cfg.series[j].data[i]||0)>0);
+        live.forEach((j,q)=>{const hpx=(cfg.series[j].data[i]/top)*IH,last=q===live.length-1,gap=last||hpx<4?0:2;
+          x.fillStyle=cfg.series[j].color;bar(cx-bw/2,y-hpx+gap,bw,Math.max(1,hpx-gap),last);y-=hpx;});
+        tops.push(y);
+      }else{const bw=Math.min(14,(band*.72-2*(k-1))/k),tw=bw*k+2*(k-1);let ty=base;
+        cfg.series.forEach((s,j)=>{const v=s.data[i];if(v==null)return;const hpx=(v/top)*IH;
+          x.fillStyle=s.color;bar(cx-tw/2+j*(bw+2),base-hpx,bw,hpx,true);ty=Math.min(ty,base-hpx);});
+        tops.push(ty);}
+    }
+    if(cfg.cap){x.font='600 10.5px Pretendard, sans-serif';x.textAlign='center';x.fillStyle=cssv('--sub')||'#4e5968';
+      const caps=cfg.labels.map((_,i)=>cfg.cap(i)),fit=caps.every(c=>!c||x.measureText(c).width<=band-3);
+      caps.forEach((c,i)=>{if(c&&(fit||(cfg.capKeep||[]).includes(i)))x.fillText(c,P.l+band*(i+.5),tops[i]-6);});
+      x.font='10.5px Pretendard, sans-serif';}
+    x.fillStyle=cssv('--faint')||'#8b95a1';x.textAlign='center';
+    const lab=band<36&&cfg.short?cfg.short:cfg.labels;
+    lab.forEach((t,i)=>{x.fillText(t,P.l+band*(i+.5),base+15);
+      if(cfg.sub&&cfg.sub[i]){x.font='9.5px Pretendard, sans-serif';x.fillText(cfg.sub[i],P.l+band*(i+.5),base+27);x.font='10.5px Pretendard, sans-serif';}});
+    if(hv!=null&&cfg.tip)cvTipShow(cv,P.l+band*(hv+.5),cfg.tip(hv));
+  };
+  draw(null);
+  cvHover(cv,n,mx=>{if(!geo)return null;const i=Math.floor((mx-geo.P.l)/geo.band);return i>=0&&i<n?i:null;},draw);
+}
+
+/* ══════════ 우선주 괴리율 · 배당 (삼성전자 보통주 ↔ 우선주) ══════════ */
+let gapRange='1Y',gapDpsView='dps',gapTblView='year',gapOpen={px:false,rec:false,how:false},DPS=null;
+async function needDps(){if(!DPS)DPS=await getJson('data/samsung_dps.json');return DPS;}
+const gapDark=()=>document.documentElement.classList.contains('dark');
+/* 팔레트: 2계열(보통주·우선주)과 분기 서열 램프 — 라이트/다크 표면 각각 CVD·대비 검증값 */
+const gapBlue=()=>gapDark()?'#4d7df5':'#3168f0',GAP_AMBER='#d97706';
+const gapQ=()=>gapDark()?['#2f52a8','#446fdc','#6b94f8','#a9c2fb']:['#8fadf7','#628cf4','#3168f0','#1d44ad'];
+const gapWon=v=>Math.round(v).toLocaleString('ko-KR');
+function gapLive(ref,lastDate){   /* 5분 피드에 두 종목 시세가 있고 정규장 중일 때만 — 16시 이후 체결가는 애프터마켓이라 쓰지 않는다 */
+  const a=ref&&ref.stocks&&ref.stocks.SMSN,b=ref&&ref.stocks&&ref.stocks.SMSNP;
+  if(!a||!b||!a.price||!b.price||a.status!=='OPEN'||b.status!=='OPEN'||!ref.updated)return null;
+  const day=ref.updated.slice(0,10).replace(/-/g,''),hm=ref.updated.slice(11,16).replace(':','');
+  if(day<=lastDate||hm<'0900'||hm>='1530')return null;
+  return {s:a.price,sp:b.price,ts:ref.updated.slice(11,16)};
+}
+function gapXticks(L,range){
+  const out=[],n=L.length;
+  if(['1M','3M','6M'].includes(range)){const m=Math.min(5,n-1)||1;for(let k=0;k<=m;k++){const i=Math.round((n-1)*k/m);out.push({i,t:fmtDate8(L[i]).slice(3)});}return out;}
+  const byMonth=range==='1Y',key=d=>byMonth?d.slice(0,6):d.slice(0,4);
+  let marks=[];for(let i=1;i<n;i++)if(key(L[i])!==key(L[i-1]))marks.push(i);
+  const every=Math.ceil(marks.length/(byMonth?6:8))||1;
+  marks.filter((_,j)=>j%every===0).forEach(i=>out.push({i,t:byMonth?L[i].slice(2,4)+'.'+L[i].slice(4,6):L[i].slice(0,4)}));
+  return out;
+}
 async function gapLoad(){
-  const d=await needCaps();
-  const el=document.getElementById('gapBody');
-  const dates=d.dates;
-  let series,aName,bName,aArr,bArr,fml;
-  if(gapPair==='sam'){
-    aName='삼성전자(005930)';bName='삼성전자우(005935)';
-    aArr=d.close.s;bArr=d.close.sp;
-    series=dates.map((_,i)=>aArr[i]&&bArr[i]?(aArr[i]-bArr[i])/aArr[i]*100:null);
-    fml='괴리율 = (보통주 − 우선주) ÷ 보통주 × 100';
-  }else{
-    aName='SK하이닉스 지분가치(20.07%)';bName='SK스퀘어(402340)';
-    aArr=dates.map((_,i)=>d.close.h[i]?d.close.h[i]*d.shares.h*d.sq_stake_hynix:null);
-    bArr=dates.map((_,i)=>d.close.sq[i]?d.close.sq[i]*d.shares.sq:null);
-    series=dates.map((_,i)=>aArr[i]&&bArr[i]?(aArr[i]-bArr[i])/aArr[i]*100:null);
-    fml='NAV 할인율 = (하이닉스 지분가치 − 스퀘어 시총) ÷ 지분가치 × 100';
-  }
-  const idxs=dates.map((_,i)=>i).filter(i=>series[i]!=null);
-  const rIdx=sliceR(idxs,gapRange);
-  const L=rIdx.map(i=>dates[i]),V=rIdx.map(i=>series[i]);
-  const cur=V[V.length-1],avg=V.reduce((a,b)=>a+b,0)/V.length;
-  const sd=Math.sqrt(V.reduce((a,b)=>a+(b-avg)**2,0)/V.length);
-  const mx=Math.max(...V),mn=Math.min(...V);
-  const mxD=L[V.indexOf(mx)],mnD=L[V.indexOf(mn)];
-  document.getElementById('gapMeta').textContent=`출처: 네이버 일봉 종가 · 마지막 빌드 ${CAPS.updated} · ${fml}`;
-  el.innerHTML=`
-  <div class="statrow">
-    <div class="stc"><div class="k">현재 ${gapPair==='sam'?'괴리율':'할인율'}</div><div class="v" style="font-size:19px;color:var(--gold-hi)">${cur.toFixed(2)}%</div><div class="s">${fmtDate8(L[L.length-1])}</div></div>
-    <div class="stc"><div class="k">기간 평균</div><div class="v">${avg.toFixed(2)}%</div><div class="s">σ ${sd.toFixed(2)}pp</div></div>
-    <div class="stc"><div class="k">최대</div><div class="v" style="color:var(--down)">${mx.toFixed(2)}%</div><div class="s">${fmtDate8(mxD)}</div></div>
-    <div class="stc"><div class="k">최소</div><div class="v" style="color:var(--up)">${mn.toFixed(2)}%</div><div class="s">${fmtDate8(mnD)}</div></div>
-    <div class="stc"><div class="k">데이터 일수</div><div class="v">${V.length}일</div></div>
+  const el=document.getElementById('gapBody'),meta=document.getElementById('gapMeta');
+  let d,dv=null;
+  try{d=await needCaps();}catch(e){el.innerHTML='<div class="empty"><b>가격 데이터를 불러오지 못했습니다</b></div>';return;}
+  const ref=await needRa();
+  try{dv=await needDps();}catch(e){dv=null;}
+  const dates=d.dates,S=d.close.s,Pf=d.close.sp,blue=gapBlue(),Q=gapQ();
+  const idx=dates.map((_,i)=>i).filter(i=>S[i]&&Pf[i]),sprd=i=>(S[i]-Pf[i])/S[i]*100;
+  const li=idx[idx.length-1],pi=idx[idx.length-2],live=gapLive(ref,dates[li]);
+  const curS=live?live.s:S[li],curP=live?live.sp:Pf[li],cur=(curS-curP)/curS*100;
+  const prevSp=live?sprd(li):sprd(pi),dlt=cur-prevSp,baseS=live?S[li]:S[pi],baseP=live?Pf[li]:Pf[pi];
+  /* 10년 분포 (기간 칩과 무관한 고정 맥락) */
+  const tV=sliceR(idx,'10Y').map(sprd),tMin=Math.min(...tV),tMax=Math.max(...tV),tAvg=tV.reduce((a,b)=>a+b,0)/tV.length;
+  const tPct=tV.filter(v=>v<=cur).length/tV.length*100,pos=v=>Math.max(0,Math.min(100,(v-tMin)/(tMax-tMin)*100));
+  /* 선택 기간 */
+  const rIdx=sliceR(idx,gapRange),L=rIdx.map(i=>dates[i]),V=rIdx.map(sprd);
+  const avg=V.reduce((a,b)=>a+b,0)/V.length,sd=Math.sqrt(V.reduce((a,b)=>a+(b-avg)**2,0)/V.length);
+  const mx=Math.max(...V),mn=Math.min(...V),mxD=L[V.indexOf(mx)],mnD=L[V.indexOf(mn)],z=sd?(cur-avg)/sd:0;
+  const sg=v=>(v>=0?'+':'')+v.toFixed(2),cls=v=>v>=0?'up':'down',arrow=v=>v>=0?'▲':'▼';
+  const basis=live?`<span class="gpchip live">장중 ${live.ts} · 5분 피드</span>`:`<span class="gpchip">${fmtDate8(dates[li])} 정규장 종가</span>`;
+  meta.textContent=`괴리율 = (보통주 − 우선주) ÷ 보통주 × 100 · 정규장 종가 기준 · 가격 ${d.updated}${dv?' · 배당 '+dv.updated+' (DART)':''}`;
+
+  /* ── 배당 파생값 ── */
+  const ys=dv?dv.years:[],ttm=dv&&dv.ttm,doneYs=ys.filter(r=>r.done),lastDone=doneYs[doneYs.length-1];
+  const yEnd=y=>{const c=idx.filter(i=>dates[i].startsWith(String(y)));return c.length?sprd(c[c.length-1]):null;};
+  const yC=ttm?ttm.c/curS*100:null,yP=ttm?ttm.p/curP*100:null;
+  const qrow=(nm,code,color,px,base,dps,yld)=>`<tr>
+    <td><div class="nm"><i style="background:${color}"></i>${nm}</div><div class="cd">${code}</div></td>
+    <td><div class="px">${gapWon(px)}</div><div class="chg ${cls(px-base)}">${arrow(px-base)} <span class="abs">${gapWon(Math.abs(px-base))} · </span>${sg((px/base-1)*100)}%</div></td>
+    <td>${dps!=null?gapWon(dps)+'원':'–'}</td><td><b>${yld!=null?yld.toFixed(2)+'%':'–'}</b></td></tr>`;
+  const chips=(attr,curv,opts)=>`<span class="rngwrap">${opts.map(o=>`<button class="rng${o[0]===curv?' on':''}" ${attr}="${o[0]}">${o[1]}</button>`).join('')}</span>`;
+  const ytd=ys.find(r=>!r.done),ytdQ=ytd?ytd.c.filter(q=>q!=null).length:0;
+  const tblYear=()=>`<table class="ddt"><thead><tr><th>연도</th><th>보통주</th><th>우선주</th><th>수익률 보통</th><th>수익률 우선</th><th>배당성향</th><th>연말 괴리율</th></tr></thead><tbody>${
+    ys.slice().reverse().map(r=>{const e=yEnd(r.y);return `<tr><td>${r.y}${r.done?'':` <span class="gpchip">${ytdQ}Q 누적</span>`}${r.note?' <span title="'+r.note+'">※</span>':''}</td>
+      <td><b>${gapWon(r.ct)}</b></td><td><b>${gapWon(r.pt)}</b></td><td>${r.yc!=null?r.yc.toFixed(1)+'%':'–'}</td><td>${r.yp!=null?r.yp.toFixed(1)+'%':'–'}</td>
+      <td>${r.payout!=null?r.payout.toFixed(1)+'%':'–'}</td><td${r.done?'':' class="cur"'}>${e!=null?e.toFixed(1)+'%':'–'}${r.done?'':' (현재)'}</td></tr>`;}).join('')}</tbody></table>`;
+  const tblQ=()=>`<table class="ddt"><thead><tr><th>연도</th><th>1Q</th><th>2Q</th><th>3Q</th><th>4Q 보통 / 우선</th><th>합계 보통 / 우선</th><th>배당총액</th></tr></thead><tbody>${
+    ys.slice().reverse().map(r=>{const q=i=>r.c[i]!=null?gapWon(r.c[i]):'–';return `<tr><td>${r.y}${r.note?' <span title="'+r.note+'">※</span>':''}</td>
+      <td>${q(0)}</td><td>${q(1)}</td><td>${q(2)}</td><td>${r.c[3]!=null?gapWon(r.c[3])+' / '+gapWon(r.p[3]):'–'}</td>
+      <td><b>${gapWon(r.ct)} / ${gapWon(r.pt)}</b></td><td>${r.total!=null?fmtJo(r.total*1e6):'–'}</td></tr>`;}).join('')}</tbody></table>`;
+  const notes=ys.filter(r=>r.note).map(r=>`※ ${r.y}년 ${r.note}`).join(' · ');
+  const recent=dv&&dv.recent||[];
+
+  el.innerHTML=`<div class="gpcols">
+  <div class="gpcol">
+    <div class="gpcard gphero">
+      <div class="lb">우선주 괴리율 ${basis}</div>
+      <div class="big">${cur.toFixed(2)}<small>%</small></div>
+      <div class="dl">${live?'전일 종가':'전 거래일'} 대비 <span class="${cls(dlt)}">${arrow(dlt)} ${Math.abs(dlt).toFixed(2)}%p</span> · 우선주 가격 = 보통주의 ${(curP/curS*100).toFixed(1)}%</div>
+      <div class="gpmeter" role="img" aria-label="최근 10년 범위 ${tMin.toFixed(1)}%~${tMax.toFixed(1)}% 중 현재 ${cur.toFixed(1)}%"><div class="avg" style="left:${pos(tAvg)}%"></div><div class="dot" style="left:${pos(cur)}%"></div></div>
+      <div class="gpmlab"><span>최저 ${tMin.toFixed(1)}%</span><span class="mid" style="left:${Math.max(30,Math.min(70,pos(tAvg)))}%">평균 ${tAvg.toFixed(1)}%</span><span>최고 ${tMax.toFixed(1)}%</span></div>
+      <div class="dl" style="margin-top:10px">최근 10년 거래일의 <b style="color:var(--text)">${tPct.toFixed(0)}%</b>가 지금보다 괴리율이 낮았습니다</div>
+    </div>
+    <div class="gprow"><span class="lab">기간</span>${chips('data-gr',gapRange,['1M','3M','6M','1Y','3Y','5Y','10Y','ALL'].map(c=>[c,c==='ALL'?'전체':c]))}</div>
+    <div class="gpcard">
+      <h3>괴리율 추이 <span class="sub">${fmtDate8(L[0])} ~ ${fmtDate8(L[L.length-1])} · ${V.length.toLocaleString()}거래일</span></h3>
+      <div class="cvwrap"><canvas id="gapCv1" aria-label="보통주 대비 우선주 괴리율 추이"></canvas></div>
+      <div class="clegend"><i style="background:${blue}"></i>괴리율 <i style="background:var(--faint);margin-left:14px"></i>기간 평균 ${avg.toFixed(2)}% <i class="rect" style="background:rgba(139,149,161,.3);margin-left:14px"></i>평균 ±1σ (${(avg-sd).toFixed(1)}~${(avg+sd).toFixed(1)}%)</div>
+    </div>
+    <div class="statrow" style="grid-template-columns:repeat(auto-fit,minmax(118px,1fr))">
+      <div class="stc"><div class="k">기간 평균</div><div class="v">${avg.toFixed(2)}%</div><div class="s">σ ${sd.toFixed(2)}%p</div></div>
+      <div class="stc"><div class="k">현재 위치</div><div class="v">${sg(z)}σ</div><div class="s">평균 대비 ${sg(cur-avg)}%p</div></div>
+      <div class="stc"><div class="k">기간 최고</div><div class="v">${mx.toFixed(2)}%</div><div class="s">${fmtDate8(mxD)}</div></div>
+      <div class="stc"><div class="k">기간 최저</div><div class="v">${mn.toFixed(2)}%</div><div class="s">${fmtDate8(mnD)}</div></div>
+    </div>
+    <details class="gpsub" id="gapSubPx"${gapOpen.px?' open':''}><summary>종가 비교 <span class="sub">보통주 · 우선주 (선택 기간)</span></summary><div class="in">
+      <div class="cvwrap"><canvas id="gapCv2" aria-label="보통주와 우선주 종가"></canvas></div>
+      <div class="clegend"><i style="background:${blue}"></i>삼성전자 <i style="background:${GAP_AMBER};margin-left:14px"></i>삼성전자우</div></div></details>
   </div>
-  <div class="rcard"><h3 style="font-size:14px;margin-bottom:10px">${gapPair==='sam'?'괴리율':'NAV 할인율'} 추이</h3><canvas id="gapCv1"></canvas>
-    <div class="clegend"><i style="background:#3168f0"></i>${gapPair==='sam'?'괴리율':'할인율'} <i style="background:#c9a24a;margin-left:14px"></i>평균 ${avg.toFixed(2)}%</div></div>
-  <div class="rcard"><h3 style="font-size:14px;margin-bottom:10px">${gapPair==='sam'?'종가 비교':'가치 비교'}</h3><canvas id="gapCv2"></canvas>
-    <div class="clegend"><i style="background:#3168f0"></i>${aName} <i style="background:#f59e0b;margin-left:14px"></i>${bName}</div></div>`;
-  lineChart(document.getElementById('gapCv1'),{labels:L,series:[
-    {data:V,color:'#3168f0',fill:'rgba(49,104,240,.13)',w:1.7}],
-    hlines:[{y:avg,color:'#f59e0b'}],yfmt:v=>v.toFixed(1)+'%',
-    xfmt:['1M','3M','6M'].includes(gapRange)?fmtDate8:xYear});
-  const aV=rIdx.map(i=>aArr[i]),bV=rIdx.map(i=>bArr[i]);
-  lineChart(document.getElementById('gapCv2'),{labels:L,series:[
-    {data:aV,color:'#3168f0',w:1.6},{data:bV,color:'#f59e0b',w:1.6}],
-    yfmt:gapPair==='sam'?(v=>Math.round(v/1000)+'천'):(v=>Math.round(v/1e12)+'조'),
-    xfmt:['1M','3M','6M'].includes(gapRange)?fmtDate8:xYear});
+  <div class="gpcol">
+    <div class="gpcard">
+      <div class="gptbl"><table class="gpq"><thead><tr><th>${live?'장중 '+live.ts:fmtDate8(dates[li])+' 종가'}</th><th>주가</th><th>DPS <span class="w">최근 4분기</span></th><th>배당수익률</th></tr></thead><tbody>
+        ${qrow('삼성전자','005930 · 보통주',blue,curS,baseS,ttm&&ttm.c,yC)}
+        ${qrow('삼성전자우','005935 · 우선주',GAP_AMBER,curP,baseP,ttm&&ttm.p,yP)}</tbody>
+        ${ttm?`<tfoot><tr><td colspan="4">우선주 수익률이 <b>${sg(yP-yC)}%p</b> 높음 · DPS 합산 구간 ${ttm.from} ~ ${ttm.to}${lastDone?` · ${lastDone.y}년 연간 ${gapWon(lastDone.ct)} / ${gapWon(lastDone.pt)}원`:''}</td></tr></tfoot>`:''}</table></div>
+    </div>
+    ${dv?`<div class="gpcard">
+      <h3>${gapDpsView==='dps'?'주당배당금 (DPS)':'배당수익률'} <span class="sub">${ys[0].y}~${ys[ys.length-1].y} · ${gapDpsView==='dps'?'보통주 기준, 분기별 누적':'사업보고서 공시값'}</span>
+        <span class="rt">${chips('data-gv',gapDpsView,[['dps','DPS'],['yld','수익률']])}</span></h3>
+      <div class="cvwrap"><canvas id="gapCv3" aria-label="${gapDpsView==='dps'?'연도별 주당배당금':'연도별 배당수익률'}"></canvas></div>
+      <div class="clegend">${gapDpsView==='dps'
+        ?Q.map((c,j)=>`<i class="rect" style="background:${c}${j?';margin-left:12px':''}"></i>${j+1}Q`).join('')+`<span style="margin-left:14px;color:var(--faint)">우선주 = 보통주 + 연 1원 (4Q 가산)</span>`
+        :`<i class="rect" style="background:${blue}"></i>보통주 <i class="rect" style="background:${GAP_AMBER};margin-left:14px"></i>우선주`}</div>
+    </div>
+    <div class="gpcard">
+      <h3>연도별 DPS <span class="sub">원 · 2018년 액면분할(50:1) 환산</span><span class="rt">${chips('data-gt',gapTblView,[['year','연간'],['q','분기']])}</span></h3>
+      <div class="gptbl">${gapTblView==='year'?tblYear():tblQ()}</div>
+      ${notes?`<div class="gpnote">${notes}</div>`:''}
+    </div>
+    <details class="gpsub" id="gapSubRec"${gapOpen.rec?' open':''}><summary>최근 배당 결정 <span class="sub">이사회 결의 공시 ${recent.length}건</span></summary><div class="in gptbl">
+      <table class="ddt"><thead><tr><th>기준일</th><th>구분</th><th>보통주</th><th>우선주</th><th>시가배당률 보통 / 우선</th><th>지급일</th></tr></thead><tbody>${
+        recent.map(r=>`<tr><td>${r.rec}</td><td>${r.kind||''}</td><td>${gapWon(r.c)}</td><td>${gapWon(r.p)}</td><td>${r.yc!=null?r.yc+'%':'–'} / ${r.yp!=null?r.yp+'%':'–'}</td><td>${r.pay||'주총 후'}</td></tr>`).join('')}</tbody></table></div></details>`
+    :'<div class="gpcard"><div class="empty"><b>배당 데이터를 불러오지 못했습니다</b></div></div>'}
+    <details class="gpsub" id="gapSubHow"${gapOpen.how?' open':''}><summary>산식 · 기준</summary><div class="in gpnote" style="margin-top:0">
+      · 괴리율 = (보통주 − 우선주) ÷ 보통주 × 100. 값이 클수록 우선주가 보통주보다 싸게 거래됩니다.<br>
+      · 종가는 정규장(15:30 종가 단일가) 기준입니다. 2026-09-14 애프터마켓(16~20시) 개시 이후 일봉 종가는 20시 체결가라, 그날부터는 15:30 단일가를 따로 받아 씁니다.<br>
+      · DPS는 DART 정기보고서 「배당에 관한 사항」의 누적 주당배당금을 분기별로 차분한 값이고, 2018년 5월 액면분할(50:1) 이전분은 50으로 나눠 환산했습니다. 보고서가 나오기 전 분기는 배당결정 공시로 먼저 채웁니다.<br>
+      · 표의 배당수익률·배당성향은 사업보고서 공시값(연말 주가 기준), 상단 카드의 배당수익률은 최근 4분기 DPS ÷ 현재 주가입니다.<br>
+      · 우선주는 보통주보다 액면가(100원)의 1%인 연 1원을 더 받습니다.</div></details>
+  </div></div>`;
+
+  /* ── 차트 ── */
+  hvLine(document.getElementById('gapCv1'),{labels:L,h:300,series:[{data:V,color:blue,w:2,fill:gapDark()?'rgba(77,125,245,.12)':'rgba(49,104,240,.10)'}],
+    band:{lo:avg-sd,hi:avg+sd},hlines:[{y:avg}],xticks:gapXticks(L,gapRange),yfmt:v=>v.toFixed(v%1?1:0)+'%',endLabel:V[V.length-1].toFixed(2)+'%',
+    tip:i=>({title:fmtDate8(L[i]),rows:[{c:blue,k:'괴리율',v:V[i].toFixed(2)+'%'},{k:'삼성전자',v:gapWon(S[rIdx[i]])+'원'},{k:'삼성전자우',v:gapWon(Pf[rIdx[i]])+'원'}]})});
+  const pxChart=()=>hvLine(document.getElementById('gapCv2'),{labels:L,h:240,pl:52,series:[{data:rIdx.map(i=>S[i]),color:blue,w:2},{data:rIdx.map(i=>Pf[i]),color:GAP_AMBER,w:2}],
+    xticks:gapXticks(L,gapRange),yfmt:v=>(v/1e4).toFixed(v%1e4?1:0)+'만',
+    tip:i=>({title:fmtDate8(L[i]),rows:[{c:blue,k:'삼성전자',v:gapWon(S[rIdx[i]])+'원'},{c:GAP_AMBER,k:'삼성전자우',v:gapWon(Pf[rIdx[i]])+'원'},{k:'괴리율',v:V[i].toFixed(2)+'%'}]})});
+  if(gapOpen.px)pxChart();
+  [['gapSubPx','px'],['gapSubRec','rec'],['gapSubHow','how']].forEach(([id,k])=>{const n=document.getElementById(id);
+    if(n)n.ontoggle=()=>{gapOpen[k]=n.open;if(k==='px'&&n.open)pxChart();};});
+  if(dv){const cv=document.getElementById('gapCv3'),lab=ys.map(r=>String(r.y)),short=ys.map(r=>"'"+String(r.y).slice(2));
+    if(gapDpsView==='dps'){
+      const maxI=ys.reduce((m,r,i)=>r.ct>ys[m].ct?i:m,0);
+      hvBars(cv,{labels:lab,short,sub:ys.map(r=>r.done?'':ytdQ+'Q 누적'),mode:'stack',h:300,
+        series:Q.map((c,j)=>({name:(j+1)+'Q',color:c,data:ys.map(r=>r.c[j])})),
+        cap:i=>gapWon(ys[i].ct),capKeep:[maxI,ys.indexOf(lastDone)],yfmt:v=>v.toLocaleString('ko-KR'),
+        tip:i=>{const r=ys[i];return {title:r.y+'년'+(r.done?'':' ('+ytdQ+'Q 누적)'),note:r.note,
+          rows:[{k:'보통주',v:gapWon(r.ct)+'원'},{k:'우선주',v:gapWon(r.pt)+'원'},
+            ...r.c.map((q,j)=>({c:Q[j],rect:1,k:(j+1)+'Q',v:q!=null?gapWon(q)+(j===3&&r.p[3]!==q?' / '+gapWon(r.p[3]):'')+'원':'–'})),
+            ...(r.total!=null?[{k:'배당총액',v:fmtJo(r.total*1e6)}]:[])]};}});
+    }else{
+      const rows=doneYs.map(r=>({t:String(r.y),s:"'"+String(r.y).slice(2),c:r.yc,p:r.yp}));
+      if(yC!=null)rows.push({t:'현재',s:'현재',c:+yC.toFixed(2),p:+yP.toFixed(2),now:1});
+      hvBars(cv,{labels:rows.map(r=>r.t),short:rows.map(r=>r.s),sub:rows.map(r=>r.now?'최근 4분기':''),mode:'group',h:300,
+        series:[{name:'보통주',color:blue,data:rows.map(r=>r.c)},{name:'우선주',color:GAP_AMBER,data:rows.map(r=>r.p)}],
+        yfmt:v=>v.toFixed(v%1?1:0)+'%',
+        tip:i=>{const r=rows[i];return {title:r.now?'현재 (최근 4분기 DPS ÷ 현재 주가)':r.t+'년 (공시값)',
+          rows:[{c:blue,rect:1,k:'보통주',v:r.c.toFixed(r.now?2:1)+'%'},{c:GAP_AMBER,rect:1,k:'우선주',v:r.p.toFixed(r.now?2:1)+'%'},{k:'격차',v:sg(r.p-r.c)+'%p'}]};}});
+    }}
 }
 function gapInit(){
-  const pb=document.getElementById('gapPair');
-  pb.innerHTML=`<button class="pair${gapPair==='sam'?' on':''}" data-p="sam">삼성 보통/우선</button><button class="pair${gapPair==='sq'?' on':''}" data-p="sq">하이닉스 / SK스퀘어</button>`;
-  pb.onclick=e=>{const b=e.target.closest('.pair');if(b){gapPair=b.dataset.p;gapInit();}};
-  rngBar(document.getElementById('gapRng'),gapRange,['1M','3M','6M','1Y','3Y','5Y','10Y','ALL'],r=>{gapRange=r;gapInit();});
+  const el=document.getElementById('gapBody');
+  el.onclick=e=>{const b=e.target.closest('.rng');if(!b)return;
+    if(b.dataset.gr)gapRange=b.dataset.gr;else if(b.dataset.gv)gapDpsView=b.dataset.gv;else if(b.dataset.gt)gapTblView=b.dataset.gt;else return;
+    gapLoad();};
   gapLoad();
 }
+let gapRz=null;
+window.addEventListener('resize',()=>{clearTimeout(gapRz);gapRz=setTimeout(()=>{
+  const p=document.getElementById('tab-gap');if(p&&p.classList.contains('on'))gapLoad();},200);});
 
 /* ══════════ ETF 괴리율 ══════════ */
 async function etfgLoad(){
