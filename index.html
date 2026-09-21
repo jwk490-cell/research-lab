@@ -488,6 +488,22 @@ main canvas{display:block;width:100%}
   padding:5px 12px;border-radius:999px;cursor:pointer}
 .gpbtn:hover{color:var(--text);border-color:var(--faint)}
 .gpscn .gptbl .ddt td,.gpscn .gptbl .ddt th{padding:7px 8px}
+.gpcase{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 14px}
+.gpcase .cs{display:inline-flex;align-items:center;gap:6px;padding:4px 8px 4px 4px;border-radius:999px;border:1px solid transparent}
+.gpcase .cs.on{background:var(--accent-soft);border-color:var(--accent-line)}
+.gpcase .cs.on .gpbtn{color:var(--accent);border-color:var(--accent-line);font-weight:700}
+.gpcase input[type=number]{width:58px;border:1px solid var(--line);background:var(--surface2);color:var(--text);border-radius:8px;padding:4px 6px;
+  font-family:inherit;font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
+.gpcase i{font-style:normal;font-size:11px;color:var(--faint)}
+.gpadv{margin-top:2px}
+.gpadv summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--sub);margin:2px 0 12px;user-select:none}
+.gpadv summary .hint{font-weight:500;color:var(--faint);font-size:11px;margin-left:6px}
+.gprel{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--surface2)}
+.gprel .f{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.gprel .f b{font-weight:800;color:var(--accent)}
+.gprel .d{font-size:12.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+.gprel .d b{color:var(--text);font-weight:700}
+.gpscn .ddt .ex{font-size:10.5px;color:var(--faint);font-weight:500;margin-top:1px}
 .cvwrap{position:relative}
 .cvwrap canvas{touch-action:pan-y;outline:none;cursor:crosshair}
 .cvwrap canvas:focus-visible{outline:2px solid var(--accent-line);outline-offset:3px;border-radius:8px}
@@ -1509,8 +1525,19 @@ function hvBars(cv,cfg){   /* cfg: labels, short[], sub[], series[{name,color,da
 
 /* ══════════ 우선주 괴리율 · 배당 (삼성전자 보통주 ↔ 우선주) ══════════ */
 let gapRange='1Y',gapDpsView='dps',gapTblView='year',gapOpen={px:false,rec:false,how:false,scn:true},DPS=null;
-const GAP_SCN0={mode:'amt',A:10,tgt:15,gc:0,Y:0.8,sig:null,adv:null,part:25};   /* sig·adv는 null이면 빌더 기본값 */
-let gapScn={...GAP_SCN0},gapScnCtx=null;
+const GAP_SCN0={mode:'tgt',A:10,tgt:17,gc:0,Y:0.8,sig:null,adv:null,part:25,cases:{bear:28,base:17,bull:10}};   /* sig·adv는 null이면 빌더 기본값 */
+const GAP_CASES=[['bear','Bear'],['base','Base'],['bull','Bull']];
+function gapScnLoad(){   /* 보는 사람 브라우저에만 남는 편의 저장 — 없거나 막혀 있어도 기본값으로 동작 */
+  const st=JSON.parse(JSON.stringify(GAP_SCN0));
+  try{const o=JSON.parse(localStorage.getItem('rl-gap-scn')||'null');
+    if(o){for(const k of ['A','tgt','gc','Y','part'])if(isFinite(o[k]))st[k]=+o[k];
+      for(const k of ['sig','adv'])if(o[k]!=null&&isFinite(o[k]))st[k]=+o[k];
+      if(o.mode==='amt'||o.mode==='tgt')st.mode=o.mode;
+      if(o.cases)for(const [k] of GAP_CASES)if(isFinite(o.cases[k]))st.cases[k]=Math.max(0,Math.min(60,+o.cases[k]));}}catch(e){}
+  return st;
+}
+function gapScnSave(){try{localStorage.setItem('rl-gap-scn',JSON.stringify(gapScn));}catch(e){}}
+let gapScn=gapScnLoad(),gapScnCtx=null,gapScnAdv=false;
 async function needDps(){if(!DPS)DPS=await getJson('data/samsung_dps.json');return DPS;}
 const gapDark=()=>document.documentElement.classList.contains('dark');
 /* 팔레트: 2계열(보통주·우선주)과 분기 서열 램프 — 라이트/다크 표면 각각 CVD·대비 검증값 */
@@ -1647,9 +1674,11 @@ async function gapLoad(){
     <div class="in" id="gapScnBody"></div></details>`;
 
   const lq=d.liq&&d.liq.sp||{};
+  const avgIn=(a,b)=>{const v=idx.filter(i=>dates[i]>=a&&dates[i]<=b).map(sprd);return v.length?v.reduce((x,y)=>x+y,0)/v.length:null;};
   gapScnCtx={pc:curS,pp:curP,live:!!live,basis:live?`장중 ${live.ts}`:`${fmtDate8(dates[li])} 정규장 종가`,
     prefSh:d.shares&&d.shares.sp||802371000,elig:dv&&dv.elig||6566563106,reg:dv&&dv.regular_annual||9.8e12,
-    adv0:lq.adv20&&lq.adv60?Math.round((lq.adv20+lq.adv60)/2/1e10)*100:7500,sig0:lq.sig20||3,lq};
+    adv0:lq.adv20&&lq.adv60?Math.round((lq.adv20+lq.adv60)/2/1e10)*100:7500,sig0:lq.sig20||3,lq,
+    anc:{t10:tAvg,a2022:avgIn('20200101','20221231'),a1519:avgIn('20151101','20191231'),pre:avgIn('20260101','20260820'),post:avgIn('20260821','20260914')}};
   gapScnMount();
 
   /* ── 차트 ── */
@@ -1708,7 +1737,20 @@ function gapScnCalc(){
   set('gsDn',A>0?(m.dn/1e4>=1e4?(m.dn/1e8).toFixed(2)+'억 주':won(m.dn/1e4)+'만 주'):'–',A>0?`우선주의 ${(m.dn/c.prefSh*100).toFixed(1)}% · 배당 대상 주식의 ${(m.dn/c.elig*100).toFixed(2)}%`:'');
   set('gsDps',`${won(m.dps0)} → ${won(m.dps1)}원`,`정규배당 연 ${(c.reg/1e12).toFixed(1)}조 기준 ${sg((m.dps1/m.dps0-1)*100)}% · 같은 돈 보통주 소각 시 ${sg((m.dpsC/m.dps0-1)*100)}%`);
   set('gsDay',A>0?Math.ceil(m.days)+'거래일':'–',`일평균 대금 ${won(o.adv)}억의 ${o.part}% 참여 가정`);
-  const rows=[...new Set([5,10,20,30,...(st.mode==='amt'&&st.A>0?[st.A]:[])])].sort((a,b)=>a-b);
+  const wrap=document.getElementById('gsTblWrap');
+  if(st.mode==='tgt'){   /* 관계식: 우선주 수익률 = (k−1) + k × 보통주 수익률, k = (1 − 목표 괴리율) ÷ (1 − 현재 괴리율) */
+    const r0=c.pp/c.pc,K=t=>(1-t/100)/r0,G=[-20,-10,0,10,20,30],pc=v=>sg(v)+'%';
+    const k=K(st.tgt),gx=o.gc||10,gp=(k*(1+gx/100)-1)*100,be=(1/k-1)*100;
+    document.getElementById('gsRel').innerHTML=`<div class="f">목표 괴리율 <b>${st.tgt.toFixed(1)}%</b> → 우선주 수익률 = <b>${pc((k-1)*100)}</b> + <b>${k.toFixed(2)}</b> × 보통주 수익률</div>
+      <div class="d">보통주가 ${pc(gx)} 움직이면 우선주는 <b>${pc(gp)}</b> — 보통주보다 <b>${sg(gp-gx)}%p</b> ${gp-gx>=0?'더':'덜'} 움직입니다 · ${k>1?`보통주가 <b>${pc(be)}</b>까지 내려도 우선주는 본전`:k<1?`보통주가 <b>${pc(be)}</b> 올라야 우선주 본전`:'괴리율 변화 없음'}</div>`;
+    const list=GAP_CASES.map(([id,nm])=>({nm,t:st.cases[id]}));
+    if(!list.some(x=>x.t===st.tgt))list.push({nm:'직접 입력',t:st.tgt});
+    wrap.innerHTML=`<table class="ddt"><thead><tr><th>케이스</th><th>목표 괴리율</th><th>관계식 (우선주 = a + k × 보통주)</th><th>우선주 본전이 되는 보통주</th>${G.map(g=>`<th>보통주 ${pc(g).replace('.0','')}</th>`).join('')}</tr></thead><tbody>${
+      list.map(x=>{const kk=K(x.t),on=x.t===st.tgt;return `<tr${on?' style="background:var(--accent-soft)"':''}><td>${x.nm}</td><td>${x.t.toFixed(1)}%</td><td>${pc((kk-1)*100)} + ${kk.toFixed(2)} × 보통주</td><td>${pc((1/kk-1)*100)}</td>${
+        G.map(g=>{const v=(kk*(1+g/100)-1)*100;return `<td><b>${pc(v)}</b><div class="ex">${sg(v-g)}%p</div></td>`;}).join('')}</tr>`;}).join('')}</tbody></table>`;
+    return;}
+  const rows=[...new Set([5,10,20,30,...(st.A>0?[st.A]:[])])].sort((a,b)=>a-b);
+  wrap.innerHTML=`<table class="ddt"><thead><tr><th>매입액</th><th>우선주 시총 대비</th><th>예상 괴리율</th><th>우선주 업사이드</th><th>우선주 목표가</th><th>소각 주식 (우선주 대비)</th><th>정규 DPS</th><th>집행 소요</th></tr></thead><tbody id="gsTbl"></tbody></table>`;
   document.getElementById('gsTbl').innerHTML=rows.map(a=>{const r=gapScnModel(a*1e12,o),on=st.mode==='amt'&&a===st.A;
     return `<tr${on?' style="background:var(--accent-soft)"':''}><td>${a%1?a.toFixed(1):a}조</td><td>${r.cov.toFixed(1)}%</td><td>${r.s1.toFixed(1)}%</td><td><b>${sg(r.up)}%</b></td><td>${won(r.pp1)}</td>
       <td>${won(r.dn/1e4)}만 주 (${(r.dn/c.prefSh*100).toFixed(1)}%)</td><td>${won(r.dps1)}원 (${sg((r.dps1/r.dps0-1)*100)}%)</td><td>${Math.ceil(r.days)}일</td></tr>`;}).join('');
@@ -1726,12 +1768,15 @@ function gapScnMount(){
   <div class="gpscng">
     <div>
       ${st.mode==='amt'?ctl('A','우선주 매입·소각 금액','10조 ≈ 2015년 1차 매입과 같은 상대 규모',0,40,0.5,st.A,'조원')
-                       :ctl('tgt','목표 괴리율','10년 평균 16.9% · 2015~22년 9~20%',0,40,0.5,st.tgt,'%')}
+        :`<div class="gpcase">${GAP_CASES.map(([id,nm])=>`<span class="cs${st.cases[id]===st.tgt?' on':''}"><button class="gpbtn" data-gc="${id}">${nm}</button><input type="number" data-case="${id}" min="0" max="60" step="0.5" value="${st.cases[id]}" aria-label="${nm} 목표 괴리율"><i>%</i></span>`).join('')}</div>
+        ${ctl('tgt','목표 괴리율','케이스 버튼을 누르거나 직접 조정',0,40,0.5,st.tgt,'%')}`}
       ${ctl('gc','보통주 주가 변화 가정','우선주 목표가 = 보통주 가정가 × (1 − 괴리율)',-30,30,1,st.gc,'%')}
+      ${st.mode==='tgt'?`<details class="gpadv" id="gsAdv"${gapScnAdv?' open':''}><summary>필요 매입액 역산용 모형 변수 <span class="hint">충격 계수 · 변동성 · 거래대금 · 참여율</span></summary>`:''}
       ${ctl('Y','가격 충격 계수 Y','경험 범위 0.5~1.0 · 2015년 사례 역산 0.7~0.9',0.3,1.2,0.05,st.Y,'')}
       ${ctl('sig','우선주 일간 변동성',`최근 20일 ${c.lq.sig20??'–'}% · 60일 ${c.lq.sig60??'–'}%`,1,8,0.1,sig,'%')}
       ${ctl('adv','우선주 일평균 거래대금',`최근 20일 ${c.lq.adv20?Math.round(c.lq.adv20/1e8).toLocaleString('ko-KR'):'–'}억 · 60일 ${c.lq.adv60?Math.round(c.lq.adv60/1e8).toLocaleString('ko-KR'):'–'}억`,2000,15000,100,adv,'억원')}
       ${ctl('part','매입 참여율','집행 소요일 계산용 — 일평균 대금 대비',5,50,5,st.part,'%')}
+      ${st.mode==='tgt'?'</details>':''}
     </div>
     <div>
       <div class="gpout" aria-live="polite">
@@ -1745,25 +1790,35 @@ function gapScnMount(){
       </div>
     </div>
   </div>
-  <div class="gptbl" style="margin-top:14px"><table class="ddt"><thead><tr><th>매입액</th><th>우선주 시총 대비</th><th>예상 괴리율</th><th>우선주 업사이드</th><th>우선주 목표가</th><th>소각 주식 (우선주 대비)</th><th>정규 DPS</th><th>집행 소요</th></tr></thead><tbody id="gsTbl"></tbody></table></div>
+  ${st.mode==='tgt'?'<div class="gprel" id="gsRel" aria-live="polite"></div>':''}
+  <div class="gptbl" id="gsTblWrap" style="margin-top:14px"></div>
   <div class="gpnote">
+    ${st.mode==='tgt'?`· 케이스 기준점 — Base: 최근 10년 평균 ${c.anc.t10.toFixed(1)}% 부근(자기 평균으로 회귀, 매입액 모형의 10조원·2015년 선례 환산 17~19%와 같은 구간) · Bull: 2020~22년 평균 ${c.anc.a2022!=null?c.anc.a2022.toFixed(1):'–'}%(특별배당 시기)이자 2015년 "10% 이상 싸면 우선주 비중 확대" 방침의 기준선 · Bear: 환원계획·주주제안 이전 수준(2026-01~08 평균 ${c.anc.pre!=null?c.anc.pre.toFixed(1):'–'}%, 계획 발표 후 ${c.anc.post!=null?c.anc.post.toFixed(1):'–'}%). 케이스 값은 옆 숫자 칸에서 바꿀 수 있고 이 브라우저에 저장됩니다.<br>
+    · 관계식은 항등식입니다: 우선주 가격 = 보통주 가격 × (1 − 괴리율)이므로, 괴리율이 현재값에서 목표값으로 바뀌면 우선주 수익률 = k × (1 + 보통주 수익률) − 1, k = (1 − 목표) ÷ (1 − 현재). 표의 작은 숫자는 보통주 대비 초과 수익(%p)이며, 보통주가 오를수록 초과 폭도 k − 1 배만큼 커집니다.<br>`:''}
     · 모형: 우선주의 보통주 대비 재평가율 = Y × 일간 변동성 × √(매입액 ÷ 일평균 거래대금). 대량 매수의 가격 충격을 추정하는 제곱근 경험식이며, 2015-10-29 삼성전자 사례(우선주 1.27조원 = 당시 우선주 시총의 5.4%, 매입 금액의 30%를 우선주에 배정)에 대입하면 +5~10%로 실제(+7~9%, 괴리율 21.9% → 발표 직후 12.9% → 6개월 14.5~16.6%)와 크기가 맞습니다.<br>
     · 괴리율은 0% 아래로 내려가지 않게 막았고(할인 거래 시에만 매입한다는 전제), 평균 체결가는 현재가와 재평가 후 가격의 중간으로 가정했습니다. 충격 추정은 집행 말기 기준이라 이후 일부 되돌려질 수 있습니다.<br>
     · 정규 DPS = 정규배당 연간 총액 ÷ 배당 대상 주식(${(c.elig/1e8).toFixed(2)}억 주, 직전 분기배당 기준). 소각의 DPS 효과는 작고, 효과 대부분은 괴리율(가격)에서 납니다.<br>
     · 반대 사례: 우선주를 비중대로만 포함한 2024~25년 삼성전자 매입 3회는 괴리율에 효과가 없었고, 보통주 급등기(현대차 2026-01, 미래에셋증권 2026)에는 우선주 매입에도 괴리율이 벌어졌습니다. 회사가 채택하지 않으면 기대분이 되돌려질 수 있습니다.</div>`;
+  const advEl=document.getElementById('gsAdv');if(advEl)advEl.ontoggle=()=>{gapScnAdv=advEl.open;};
   gapScnCalc();
 }
 function gapInit(){
   const el=document.getElementById('gapBody');
   el.onclick=e=>{
     const m=e.target.closest('[data-gm]');   /* 시나리오 모드·리셋은 계산기만 다시 그린다 */
-    if(m){if(m.dataset.gm==='reset')gapScn={...GAP_SCN0,mode:gapScn.mode};else gapScn.mode=m.dataset.gm;gapScnMount();return;}
+    if(m){if(m.dataset.gm==='reset')gapScn={...JSON.parse(JSON.stringify(GAP_SCN0)),mode:gapScn.mode};else gapScn.mode=m.dataset.gm;gapScnSave();gapScnMount();return;}
+    const cs=e.target.closest('[data-gc]');   /* 케이스 버튼 → 목표 괴리율에 반영 */
+    if(cs){gapScn.tgt=gapScn.cases[cs.dataset.gc];gapScnSave();gapScnMount();return;}
     const b=e.target.closest('.rng');if(!b)return;
     if(b.dataset.gr)gapRange=b.dataset.gr;else if(b.dataset.gv)gapDpsView=b.dataset.gv;else if(b.dataset.gt)gapTblView=b.dataset.gt;else return;
     gapLoad();};
-  el.oninput=e=>{const t=e.target,k=t.dataset&&t.dataset.k;if(!k||!t.closest('#gapScnBody'))return;
-    let v=parseFloat(t.value);if(!isFinite(v))return;v=Math.max(+t.min,Math.min(+t.max,v));gapScn[k]=v;
-    t.closest('.gpin').querySelectorAll('[data-k]').forEach(n=>{if(n!==t)n.value=v;});gapScnCalc();};
+  el.oninput=e=>{const t=e.target,ds=t.dataset||{};if(!t.closest('#gapScnBody'))return;
+    let v=parseFloat(t.value);if(!isFinite(v))return;v=Math.max(+t.min,Math.min(+t.max,v));
+    if(ds.case){const old=gapScn.cases[ds.case];gapScn.cases[ds.case]=v;
+      if(gapScn.tgt===old){gapScn.tgt=v;document.querySelectorAll('#gapScnBody [data-k="tgt"]').forEach(n=>n.value=v);}   /* 선택 중인 케이스는 목표값도 같이 이동 */
+    }else if(ds.k){gapScn[ds.k]=v;t.closest('.gpin').querySelectorAll('[data-k]').forEach(n=>{if(n!==t)n.value=v;});}else return;
+    document.querySelectorAll('#gapScnBody .gpcase .cs').forEach(n=>n.classList.toggle('on',gapScn.cases[n.querySelector('[data-case]').dataset.case]===gapScn.tgt));
+    gapScnSave();gapScnCalc();};
   gapLoad();
 }
 let gapRz=null;
