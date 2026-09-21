@@ -409,8 +409,8 @@ main canvas{display:block;width:100%}
 
 /* ───────── 우선주 괴리율 · 배당 (2단: 괴리율 | 배당) + 호버 차트 툴팁 ───────── */
 .gpcols{display:grid;gap:18px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}
-@media(max-width:1020px){.gpcols{grid-template-columns:minmax(0,1fr)}}
-.gpcol{display:flex;flex-direction:column;gap:12px;min-width:0}
+@media(max-width:1240px){.gpcols{grid-template-columns:minmax(0,1fr)}}
+.gpcol{display:flex;flex-direction:column;gap:12px;min-width:0;container-type:inline-size}
 .gpcard{background:var(--surface);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);min-width:0}
 .gpcard h3{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .gpcard h3 .sub{font-size:11px;font-weight:500;color:var(--faint)}
@@ -444,7 +444,9 @@ main canvas{display:block;width:100%}
 .gpq tfoot td{font-size:11.5px;color:var(--sub);padding-top:10px}
 .gpq tfoot b{color:var(--text)}
 .gpq tfoot td{white-space:normal;line-height:1.55}
-.gpq th .w{font-weight:500}
+.gpq th .w{display:block;font-weight:500}
+@container (max-width:480px){.gptbl .ddt{font-size:11.5px}.gptbl .ddt th,.gptbl .ddt td{padding:6px 4px}.gptbl .ddt .gpchip{font-size:9.5px;padding:2px 6px}.gptbl .ddt th{white-space:normal;line-height:1.3;vertical-align:bottom}}
+@container (max-width:450px){.gpq .chg .abs{display:none}.gpq td{font-size:12px;padding-left:8px}.gpq .px{font-size:13.5px}.gpq .nm{font-size:12.5px}}
 @media(max-width:560px){.gpcard{padding:16px}.gpq .chg .abs,.gpq th .w{display:none}.gpq td{font-size:12px;padding-left:8px}
   .gpq .px{font-size:13.5px}.gpq .nm{font-size:12.5px}.gphero .big{font-size:40px}}
 .gppend h3{margin-bottom:8px;font-size:12.5px;color:var(--sub);font-weight:700}
