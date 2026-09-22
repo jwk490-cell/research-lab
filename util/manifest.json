@@ -1,11 +1,11 @@
 {
- "build_id": "6e2808430a85",
- "created_at": "2026-09-18T22:40:07+09:00",
+ "build_id": "e2afcf1e7c10",
+ "created_at": "2026-09-22T22:40:09+09:00",
  "parser_version": "v4",
  "coverage": {
-  "companies": 1560,
-  "with_series": 1420,
-  "observations": 23615,
+  "companies": 1561,
+  "with_series": 1421,
+  "observations": 23617,
   "periods": [
    "2020.09",
    "2026.06"
