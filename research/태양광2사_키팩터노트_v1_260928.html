@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="ko" data-rl="note">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>태양광 2사 키팩터 노트 v1 (OCI홀딩스·한화솔루션) · 심층리서치 · 2026-09-28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4; --ink:#16202B; --muted:#5B6B7A; --line:#D6DEE4; --line-strong:#B9C5CF;
+  --accent:#1F5F8B; --accent-ink:#FFFFFF; --accent-soft:#E3EEF6;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --up:#B8322F; --down:#2B5FA8; --warn-bg:#FFF4E0; --warn-ink:#7A4B00; --good-bg:#E6F4EC; --good-ink:#1E5A34;
+  --chart-grid:#E3E8EC; --chart-text:#5B6B7A;
+  --shadow:0 1px 2px rgba(22,32,43,.06), 0 8px 24px rgba(22,32,43,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E141A; --surface:#161E26; --surface-2:#1D2731; --ink:#E8EDF2; --muted:#9AA8B5; --line:#2A3641; --line-strong:#3A4855;
+    --accent:#5FA3D6; --accent-ink:#0E141A; --accent-soft:#1B2C3A;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+    --up:#E5736F; --down:#7AA7E0; --warn-bg:#3A2A10; --warn-ink:#F2C98A; --good-bg:#153224; --good-ink:#9BDDB5;
+    --chart-grid:#26313B; --chart-text:#9AA8B5;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1D2731; --ink:#E8EDF2; --muted:#9AA8B5; --line:#2A3641; --line-strong:#3A4855;
+  --accent:#5FA3D6; --accent-ink:#0E141A; --accent-soft:#1B2C3A;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --up:#E5736F; --down:#7AA7E0; --warn-bg:#3A2A10; --warn-ink:#F2C98A; --good-bg:#153224; --good-ink:#9BDDB5;
+  --chart-grid:#26313B; --chart-text:#9AA8B5;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 24px 80px}
+header.hero{padding:44px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Noto Serif KR",serif;font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.25;margin:10px 0 8px;text-wrap:balance;letter-spacing:-.01em}
+.sub{font-size:16px;color:var(--muted);max-width:62ch;margin:0}
+.srcstrip{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+footer.tail{margin-top:44px;padding:20px 0 0;border-top:1px solid var(--line)}
+footer.tail .t{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+footer.tail .sub{font-size:14px;max-width:none}
+footer.tail .srcstrip{margin-top:12px}
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;background:var(--surface);color:var(--muted);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;padding-top:28px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:13px}
+nav.toc .t{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+nav.toc a{display:block;color:var(--ink);text-decoration:none;padding:5px 8px;border-left:2px solid var(--line);line-height:1.35}
+nav.toc a:hover,nav.toc a:focus{border-left-color:var(--accent);color:var(--accent);outline:none}
+nav.toc a .n{font-family:"IBM Plex Mono",monospace;color:var(--muted);margin-right:6px;font-size:11px}
+main{min-width:0;max-width:1040px}
+section.q{padding:34px 0 10px;border-top:1px solid var(--line)}
+section.q:first-of-type{border-top:0;padding-top:8px}
+.qn{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+h2{font-family:"Noto Serif KR",serif;font-weight:700;font-size:clamp(21px,2.2vw,26px);line-height:1.35;margin:6px 0 14px;text-wrap:balance;letter-spacing:-.01em}
+h3{font-size:16px;font-weight:700;margin:26px 0 8px;letter-spacing:-.005em}
+p{max-width:72ch;margin:0 0 12px}
+.answer{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;margin:0 0 18px;max-width:none}
+.answer b{color:var(--accent)}
+.answer ul{margin:6px 0 0 0;padding-left:18px}
+.answer li{margin:3px 0}
+ul.tight{margin:0 0 12px;padding-left:20px;max-width:78ch}
+ul.tight li{margin:4px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:8px 0 16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;box-shadow:var(--shadow)}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:700}
+.card p{font-size:14px;margin:0 0 6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 20px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.kpi .l{font-size:12px;color:var(--muted);line-height:1.3}
+.kpi .v{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:500;line-height:1.2;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12px;color:var(--muted);margin-top:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+.tbl{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:var(--surface-2);font-weight:700;font-size:12.5px;color:var(--ink);white-space:nowrap}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.hd{font-weight:700;white-space:nowrap}
+.cap{font-size:12px;color:var(--muted);margin:-8px 0 16px;max-width:none}
+.note{background:var(--warn-bg);color:var(--warn-ink);border-radius:6px;padding:10px 14px;font-size:13.5px;margin:8px 0 16px;max-width:none}
+.good{background:var(--good-bg);color:var(--good-ink);border-radius:6px;padding:10px 14px;font-size:13.5px;margin:8px 0 16px;max-width:none}
+.tag{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:3px;margin:1px 2px 1px 0;border:1px solid var(--line-strong);color:var(--ink);white-space:nowrap}
+.tag.crude{border-color:var(--s1);color:var(--s1)} .tag.diesel{border-color:var(--s2);color:var(--s2)} .tag.gas{border-color:var(--s3);color:var(--s3)} .tag.lng{border-color:var(--s4);color:var(--s4)} .tag.pol{background:var(--surface-2)}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 14px 8px;margin:10px 0 18px;box-shadow:var(--shadow)}
+.fig .ft{font-size:13.5px;font-weight:700;margin:0 0 2px}
+.fig .fs{font-size:12px;color:var(--muted);margin:0 0 8px}
+.fig svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:4px 0 6px}
+.legend span i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.stars{font-family:"IBM Plex Mono",monospace;letter-spacing:1px;white-space:nowrap}
+.src{font-size:12px;color:var(--muted);margin:2px 0 8px;max-width:none}
+.src b{color:var(--muted);font-weight:500}
+.ol{padding-left:22px;max-width:78ch;margin:0 0 12px}
+.ol li{margin:5px 0}
+.svg-text{fill:var(--chart-text);font-family:"IBM Plex Mono",monospace;font-size:11px}
+.svg-lab{fill:var(--ink);font-family:"Noto Sans KR",sans-serif;font-size:11.5px}
+.svg-grid{stroke:var(--chart-grid);stroke-width:1}
+.svg-axis{stroke:var(--line-strong);stroke-width:1}
+@media (max-width:1100px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;flex-wrap:wrap;gap:4px}nav.toc .t{width:100%}nav.toc a{border-left:0;border:1px solid var(--line);border-radius:4px;padding:4px 9px}}
+@media (max-width:640px){.wrap{padding:0 14px 60px}}
+
+
+.tag.poly{border-color:var(--s1);color:var(--s1)} .tag.wafer{border-color:var(--s4);color:var(--s4)} .tag.mod{border-color:var(--s2);color:var(--s2)} .tag.dem{border-color:var(--s3);color:var(--s3)}
+.tag.est{background:var(--warn-bg);color:var(--warn-ink);border-color:transparent}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.tl{list-style:none;padding:0;margin:0 0 14px;max-width:none}
+.tl li{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.tl li b.d{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--muted);font-size:12px;padding-top:2px}
+.sim{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:18px;margin:8px 0 18px}
+@media (max-width:900px){.sim{grid-template-columns:minmax(0,1fr)}}
+.sim .panel{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;box-shadow:var(--shadow)}
+.sim h4{margin:0 0 8px;font-size:13px;font-family:"IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sim .grp{margin:10px 0 4px;font-size:12.5px;font-weight:700;color:var(--accent);border-top:1px dashed var(--line);padding-top:8px}
+.sim .row{display:grid;grid-template-columns:1fr 92px;gap:8px;align-items:center;margin:4px 0}
+.sim .row label{font-size:12.5px;line-height:1.3}
+.sim .row label small{display:block;color:var(--muted);font-size:11px}
+.sim .row input[type=number]{width:100%;font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:4px 6px;border:1px solid var(--line-strong);border-radius:4px;background:var(--surface-2);color:var(--ink)}
+.sim .row input[type=range]{width:100%;grid-column:1 / span 2;margin:0 0 2px;accent-color:var(--accent)}
+.sim .presets{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.sim button{font:inherit;font-size:12px;padding:4px 9px;border:1px solid var(--line-strong);border-radius:4px;background:var(--surface-2);color:var(--ink);cursor:pointer}
+.sim button.on,.sim button:hover{border-color:var(--accent);color:var(--accent)}
+.sim .out .kpis{margin:0 0 12px}
+.sim .kpi .v{font-size:19px}
+.sim .kpi .v .d2{font-size:12px;color:var(--muted);font-family:"IBM Plex Mono",monospace;margin-left:4px}
+.sim table{font-size:12.5px}
+.sim td.num,.sim th.num{font-family:"IBM Plex Mono",monospace}
+.sim .pos{color:var(--up)} .sim .neg{color:var(--down)}
+.formula{font-size:12px;color:var(--muted);line-height:1.6;margin:6px 0 0;max-width:none}
+.formula code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;background:var(--surface-2);padding:0 4px;border-radius:3px}
+.tabs{display:flex;gap:6px;margin:6px 0 10px}
+.tabs button{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line-strong);border-radius:4px;background:var(--surface-2);color:var(--ink);cursor:pointer}
+.tabs button.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+</style><link rel="stylesheet" href="theme.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">2026-09-28 (v1) · Section 232 시행 D-67 (12/4) · 미중 정상회담 직후 · 미국 모듈 오퍼가 인상 국면 · OCI홀딩스 / 한화솔루션</div>
+  <h1>한국 태양광주 Update</h1>
+  <p class="sub">하나증권 윤재성 위원의 최근 1개월 발간물(8/27~9/28 8건)과 텔레그램 채널 글 97건을 뼈대로, DART 반기보고서·키움 시세·컨센서스·타사 노트(KB·메리츠·NH)·1차 출처(백악관 포고문·PV Magazine·SEIA 등)를 붙여 “태양광 2사가 무엇에 연동되는가”를 정리했다. 주가는 정규장 종가(15:30 단일가) 기준이고 9/28은 10:46 장중이다. 목표주가·시나리오 주가는 쓰지 않았다.</p>
+  <div class="srcstrip">
+    <span class="chip k">하나 태양광 산업 9/23</span><span class="chip k">하나 Weekly 9/28 · 9/21 · 9/14 · 9/7 · 8/31</span><span class="chip k">하나 8/10 해석편 · 8/5 점검 · 7/23 OCI · 7/29 한화</span><span class="chip">TG 하나 윤재성 8/25~9/28</span><span class="chip">KB 8/31 · 메리츠 9/15 · NH 9/21 (한화솔루션)</span><span class="chip">DART 반기보고서 2026.06 (양사)</span><span class="chip">키움 시세 · WiseReport 컨센</span><span class="chip">백악관 포고문 8/6 · PV Magazine · SEIA · EIA</span>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <div class="t">Contents</div>
+  <a href="#s0"><span class="n">00</span>한 장 요약 · 팩터 보드</a>
+  <a href="#q1"><span class="n">Q1</span>최근 5주 실증: 주가 × 가격 × 사건</a>
+  <a href="#q2"><span class="n">Q2</span>Section 232 해부: MIP·관세·예외</a>
+  <a href="#q3"><span class="n">Q3</span>가격 보드: 세 개의 폴리실리콘 가격</a>
+  <a href="#q4"><span class="n">Q4</span>미국 수요: 43GW와 금리 5%</a>
+  <a href="#q5"><span class="n">Q5</span>미국 공급망 CAPA와 병목</a>
+  <a href="#q6"><span class="n">Q6</span>글로벌 폴리·웨이퍼 수급</a>
+  <a href="#q7"><span class="n">Q7</span>OCI홀딩스 해부</a>
+  <a href="#q8"><span class="n">Q8</span>한화솔루션 해부</a>
+  <a href="#q9"><span class="n">Q9</span>2사 매력도 스코어카드</a>
+  <a href="#q10"><span class="n">Q10</span>미국·글로벌 피어와의 격차</a>
+  <a href="#q11"><span class="n">Q11</span>리스크 · 반증 조건</a>
+  <a href="#fact"><span class="n">FC</span>팩트체크 · 출처 등급</a>
+  <a href="#src"><span class="n">--</span>출처 · 미반영 자료</a>
+  <a href="#appx"><span class="n">AP</span>어닝 시뮬레이터 (OCI홀딩스 · 한화솔루션)</a>
+</nav>
+<main>
+<section class="q" id="s0">
+  <div class="qn">00 · Summary</div>
+  <h2>한 장 요약: 태양광 2사는 “설치량”이 아니라 “MIP까지의 가격 갭 × 물량 × 원가 전가력”에 연동된다</h2>
+  <div class="answer">
+    <b>결론 9줄</b>
+    <ul>
+      <li><b>가장 큰 팩터는 12/4 이후의 미국 가격이다.</b> Section 232(8/6 포고, 12/4 시행)는 폴리 21$/kg·잉곳/웨이퍼 100$/kg·셀 0.22$/W·모듈 0.38$/W의 최저수입가격(MIP)과 폴리를 뺀 15% 관세를 세웠다. 비중국 폴리는 16.92$(PV Insight 9/24, OPIS 19.23)로 MIP까지 +9~24%, 미국 DDP 모듈은 0.313$/W로 +21%, 미국산 폴리는 20.45$로 +3%가 남았다. 웨이퍼는 중국 1.9c/W vs MIP 12c/W로 갭이 6배다(Q2·Q3).</li>
+      <li><b>가격은 이미 움직이기 시작했다 — 오퍼에서.</b> Anza 기준 공급사 55%가 232 반영가를 제시했고 12/4 이후 납품 오퍼 중간값은 0.27 → 0.38$/W(+40.7%, 동일조건 +15%)다. 그러나 체결가는 아니다. OPIS의 1H27 인도 선도 지표는 0.345$/W, 회사는 “아직 상승 없음, 관망”(NH 9/21)이라 했다. 오퍼와 체결의 간극이 4분기 실적과 2027년 추정치의 간극이다(Q3·Q10).</li>
+      <li><b>정책의 설계는 “Upstream 수익성 보장”이다.</b> 폴리 MIP 21$는 Hemlock(변동비 20$)·Wacker(16$)를 지키는 값이고, 웨이퍼 MIP는 미국 웨이퍼 원가(12~13c/W)와 같다. 미국은 모듈 66GW에 셀 3~11GW·웨이퍼 7~10GW뿐이라 병목이 웨이퍼이고, 미국에서 웨이퍼를 뽑는 곳은 한화 카터스빌(3.3GW)과 코닝(~2.5GW)뿐이다. 그래서 하나의 표현대로 “최대 수혜는 셀·모듈이 아니라 폴리·웨이퍼”다(Q2·Q5).</li>
+      <li><b>비중국 폴리는 미국 수요 하나로 꽉 찬다.</b> 가동 중인 비중국 폴리 능력 약 9.2만톤(Intertek) vs 미국 설치 50GW의 소요 10~12.5만톤. Wacker는 태양광용 축소를 시사(9/17)하고 REC Silicon은 문을 닫았다. 늘리는 곳은 OCI 말레이(35 → 70kt, 2029)뿐이고, 변수는 오만 United Solar 10만톤(중국계, FEOC 준수 자체 주장)이다. 중국은 가동률 34%·재고 54만톤의 딴 세상이다(Q6).</li>
+      <li><b>OCI홀딩스는 “가격 갭의 레버리지”다.</b> 폴리는 원가가 안 변하니 1$/kg = 476억, 웨이퍼 1c/W = 367억이 그대로 이익이다. 그런데 그 사업은 1H26 매출의 11%(2,170억)이고 영업이익은 −273억이며, 2Q 판매량은 약 4,800톤(삼성 추정)으로 능력의 55%다. 하나의 3Q 폴리 OP 653억은 20$ 가정이고 실제 3Q 평균은 16.8$였다. 2027~28 폴리 완판(LTA 15kt + 미국 20kt)·2028~29 웨이퍼 완판은 사실이지만 2027년 EPS에는 일부만 들어 있다. PBR 1.08배는 3년 밴드(0.3~0.9)의 위다(Q7).</li>
+      <li><b>한화솔루션은 “물량·보조금의 바닥에 판가 옵션”이다.</b> 달튼 95% 가동, 카터스빌 셀 6/9 가동(풀램프 4Q), AMPC 2Q 2,140억 → 3Q 2,300 → 4Q 3,100억(회사), 2027년 1.2조(하나)가 바닥이고, 2027년 OP 1.29조(하나)의 93%가 AMPC다. 판가 30 → 38c면 9GW 기준 매출 +1조이나 달튼(셀 외부구매)은 셀 원가 +3.3c를 되돌려준다(KB). 분모가 크다 — 유증 5,300만주(+31%)·순차입 12.7조·부채비율 184%·커버넌트 Waiver. 컨센서스 2027E 1.30조는 232를 거의 안 넣었다(Q8).</li>
+      <li><b>두 회사는 공급자와 고객이다.</b> 한화 카터스빌의 폴리는 REC Silicon 실패 후 OCI 말레이 LTA(12억$/10년, 선수금 1.6억$)로 채워진다. 한화가 미국에서 셀을 더 만들수록 OCI 웨이퍼·폴리의 고객이 는다. 이 연결이 “한국 2사”를 한 묶음으로 볼 근거다(Q5·Q7).</li>
+      <li><b>9월의 주가는 가격이 아니라 헤드라인이 움직였다.</b> 8/28 → 9/22 OCI −31%·한화 −17%(First Solar −12%, TAN −7%). 9/1~9/3 3일 −18%/−10%는 미국이 조용한 주에 났다(미중 회담 규제 완화 루머·유증 희석 목표가 하향·높은 3Q 눈높이). 9/23 +9.7%/+6.5%는 하나 노트 다음 날, 9/28 장중 +10.4%/+10.4%는 미중 회담에 태양광이 없었던 날이다. 반면 First Solar는 232 서명 뒤 −27%(금리 4.69 → 5.23%)다 — 미국은 금리를, 한국은 정책을 판 5주였다(Q1·Q4).</li>
+      <li><b>서열은 OCI(가격 확인 전 기대) → 한화(가격 확인 후 실적), 공통 반증은 하나다.</b> 12/4 이후에도 미국 체결가가 오르지 않는 것. 그 전까지의 관찰치는 Anza 체결가·OPIS 선도·비중국 폴리 주간가·상무부 시행 지침(고정계약 예외 범위) 네 개이고, 일정은 ITC 10/14 → FOMC 10/27 → 한화 3Q(10월 말) → 명령 11/2 → 중간선거 11/3 → OCI 3Q(11월 중순) → 12/4 순이다(Q9·Q11).</li>
+    </ul>
+  </div>
+
+  <h3>현재 수준 (9/24~28 기준)</h3>
+  <div class="kpis">
+    <div class="kpi"><div class="l">비중국 폴리실리콘</div><div class="v">16.92</div><div class="d">$/kg · PV Insight 9/24 (+0.5% WoW) · OPIS 19.23 (9/1) · MIP 21 (D-67)</div></div>
+    <div class="kpi"><div class="l">미국산 폴리 / 중국 폴리</div><div class="v">20.45 / 5.07</div><div class="d">$/kg · 9/24 (+1.5%) / 3주 보합 · 중국 OPIS 5.56 · 301 포함 중국산 31.5</div></div>
+    <div class="kpi"><div class="l">미국 DDP 모듈 (양면 Mono PERC)</div><div class="v">0.313</div><div class="d">$/W · 9/25 주 · 연초 대비 +20% · OPIS TOPCon 0.290 · 미국 조립(수입셀) 0.321</div></div>
+    <div class="kpi"><div class="l">Anza 오퍼 (12/4 이후 납품)</div><div class="v">0.38</div><div class="d">$/W 중간값 · 8/7 이전 0.27 · +40.7% · 동일조건 +15% · 체결가 아님 · OPIS 1H27 선도 0.345</div></div>
+    <div class="kpi"><div class="l">웨이퍼 · 셀 (중국 vs MIP)</div><div class="v">1.9 → 12 · 3.7 → 22</div><div class="d">c/W · 웨이퍼 0.149$/장 FOB vs 100$/kg · 셀 0.037$/W vs 0.22$/W</div></div>
+    <div class="kpi"><div class="l">중국 모듈 · 유럽향 · 인도</div><div class="v">0.083 · 0.119 · 0.14</div><div class="d">$/W · PV Insight · InfoLink FOB · 미국의 27~38%</div></div>
+    <div class="kpi"><div class="l">주가 OCI홀딩스 / 한화솔루션</div><div class="v">227,500 / 32,250</div><div class="d">원 · 9/28 10:46 (+10.4% / +10.4%) · 9/23 정규장 206,000 / 29,200 · 9/22 저점 188,200 / 27,600</div></div>
+    <div class="kpi"><div class="l">시총 · PBR</div><div class="v">4.25조 · 1.08 / 7.25조 · 0.67</div><div class="d">BPS 210,598 / 47,898원 (키움) · 3년 밴드 0.3~0.9 / 0.3~1.2</div></div>
+    <div class="kpi"><div class="l">컨센 OP 2026E / 2027E (억)</div><div class="v">3,468 / 5,565 · 8,898 / 12,985</div><div class="d">WiseReport 9/28 · 하나 3,950 / 6,056 · 9,365 / 12,900 · PER 27E 12.8 / 11.1배</div></div>
+    <div class="kpi"><div class="l">미국 10년물 · 원/달러</div><div class="v">5.23% · 1,361</div><div class="d">9/26 (8/6 4.69) · 9/28 (6월 평균 1,532, −11%) · 연준 9/16 +25bp</div></div>
+    <div class="kpi"><div class="l">미국 수요</div><div class="v">43.4GW · 11.4GWdc</div><div class="d">2026 계획 신규 발전원 51% (EIA) · 2Q26 설치 +45% (SEIA) · 우드맥 연 ~44GWdc</div></div>
+    <div class="kpi"><div class="l">하나 롱온리 비중 (9/28)</div><div class="v">30% · 20%</div><div class="d">OCI홀딩스(최대) · 한화솔루션 · SK이노 30 · S-Oil 20 · 현금 0 (9/21: 10·10·현금 50)</div></div>
+  </div>
+  <p class="src"><b>출처</b> 하나 Weekly 9/28·TG 9/24, OPIS·InfoLink·Bernreuter(9/1~9/25), Anza 9/22, 키움 9/28 10:46, WiseReport 9/28, FRED·CNBC, 네이버 환율, EIA 2/20, SEIA/우드맥 9/10.</p>
+
+  <h3>팩터 보드: 무엇이, 어느 방향으로, 얼마나</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>변수</th><th>주가 방향</th><th>시차</th><th>민감도 · 근거</th><th>지금 상태</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">① 비중국 폴리 가격 (→ MIP 21$)</td><td>＋ OCI 최대</td><td>즉시~1분기 (LTA 포뮬러 시차)</td><td>1$/kg × 3.5만톤 × 1,360원 = 476억 (원가 불변, 추정). 하나: +5$ → 2.5천억</td><td>16.92 (PV Insight) · 19.23 (OPIS) · 갭 +9~24% · 고정계약 예외 범위 미확정</td></tr>
+      <tr><td class="hd">② 웨이퍼 프리미엄 (→ 100$/kg)</td><td>＋ OCI</td><td>2027년 미국 출하부터</td><td>1c/W × 2.7GW = 367억. 하나: +7~8c → 2.7~3천억. 2029 11.5GW 완판</td><td>중국 1.9c/W vs MIP 12c · NST 6월 상업생산 · 미국 셀 건설 25.3GW</td></tr>
+      <tr><td class="hd">③ 미국 모듈 체결가 (→ 0.38~0.437$/W)</td><td>＋ 한화</td><td>4Q26~1Q27 계약분</td><td>1c/W × 9GW = 1,224억 매출. 달튼 셀 원가 −3.3c 상쇄(KB). 하나: +8c → 매출 +1조</td><td>DDP 0.313 · 오퍼 0.38 · 선도 0.345 · 회사 “아직 상승 없음”</td></tr>
+      <tr><td class="hd">④ 판매량 · 가동</td><td>＋ 양사</td><td>3Q~4Q</td><td>OCI 2Q 4,800톤(추정) → 이연 판매 · 한화 출하 1.3 → 2.4~2.5GW, 카터스빌 풀램프</td><td>OCI 3Q 컨센 1,064억(연결) · 한화 3Q 2,061~2,126억 · 회장 “3Q &gt; 2Q”</td></tr>
+      <tr><td class="hd">⑤ AMPC · DCA</td><td>＋ 한화</td><td>분기마다</td><td>2Q 2,140 → 3Q 2,300 → 4Q 3,100억(회사) · 2027 1.2조 = OP의 93% · 수직계열 0.15$/W vs 모듈 단독 0.07</td><td>유동화 매각 진행(Carlyle 1억$ 등) · FEOC 제안 규정 미발표</td></tr>
+      <tr><td class="hd">⑥ 미국 금리 · 프로젝트 수익성</td><td>−</td><td>2027 하반기 이후 착공</td><td>모듈 +10c = PPA +4~5$/MWh(Roth) · Intertek: 2027~30 유틸리티 취소 · First Solar 9/24 −10.3%</td><td>10Y 5.23% (2007 이후 최고) · 연준 추가 인상 66% · 세이프하버 216~240GW는 확정</td></tr>
+      <tr><td class="hd">⑦ 정책 되돌림 (미중·MIP 조정·FEOC)</td><td>− 양사 최대</td><td>헤드라인 즉시</td><td>정책 헤드라인 하루 ±10~20% (5/15 −20%대, 9/23 +9.7%, 9/28 +10.4%)</td><td>미중 휴전 2027-01-10 연장 · 태양광 언급 없음 · 상무부 MIP 조정권</td></tr>
+      <tr><td class="hd">⑧ 환율</td><td>− (원화 강세 시)</td><td>당분기</td><td>달러 매출 100%인 폴리·미국 모듈: 환율 −10% = 원화 매출 −10%</td><td>1,361 (6월 1,532 → −11%) · 3Q 평균 약 1,418</td></tr>
+      <tr><td class="hd">⑨ 중국 가격 · 반내권</td><td>간접</td><td>—</td><td>웨이퍼 경로(인도·미국 밖 셀)·원산지 세탁 셀. 폴리는 시장이 분리</td><td>5.07 3주 보합 · 4Q 50만톤 중단 서약 · 가동률 35% 가이드</td></tr>
+      <tr><td class="hd">⑩ 재무 분모</td><td>− 한화</td><td>—</td><td>이자(차입 15.4조)·주식수 +31%가 이익을 먼저 나눔 · OCI 순차입 1.2조·TSR 50%</td><td>한화 연말 부채비율 150% 목표 · 자산 매각 2,998+1,255억 · RCPS 3,000억</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: 하나 8/10·9/28, KB 8/31, NH 9/21, DART, Anza·OPIS, Roth·Intertek(PV Magazine), 키움. “추정”은 본 노트의 계산.</p>
+</section>
+
+<section class="q" id="q1">
+  <div class="qn">Q1 · Evidence, 8/14 → 9/28</div>
+  <h2>최근 5주 실증: 9월 첫째 주의 급락은 미국 태양광주와 무관한 한국 고유 조정이었고, 9/23·9/28의 반등은 “하나 노트 + 미중 회담 무사 통과 + 오퍼가 인상”이 만들었다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 8/28 → 9/22 OCI홀딩스 −31%, 한화솔루션 −17%. 같은 기간 First Solar −12%, TAN −7%, 코스피 +4%였다. 특히 9/1~9/3 3거래일에 OCI −18%·한화 −10%가 났는데 그 주 First Solar는 0.0%, TAN −1.3%였다 — 미국 정책이나 가격이 아니라 <b>한국 시장 안의 요인(미중 정상회담을 앞둔 중국 규제 완화 루머, 8/31 유증 희석을 반영한 목표가 하향, 높은 3Q 눈높이)</b>이 만든 조정이다(하나 9/23의 진단과 일치). 9/23(+9.7%·+6.5%)은 하나 태양광 노트(9/22 17:05 발송) 다음 날이고, 9/28 장중 +10.4%·+10.4%는 미중 회담에서 태양광 완화가 없었던 것과 Anza 오퍼가 인상이 겹친 결과다(하나 TG 9/28 09:23). 미국 쪽은 다르다. First Solar는 232 서명일(8/6) 244$에서 9/25 178$로 −27%, 미국 10년물은 같은 기간 4.67 → 5.18%로 올랐다. <b>미국 태양광주는 금리에, 한국 태양광주는 정책 헤드라인에 반응한 5주</b>였다.
+  </div>
+
+  <div class="fig"><p class="ft">2026년 주가 지수 비교: OCI홀딩스·한화솔루션 vs First Solar·TAN·코스피 (2025-12-30=100)</p><p class="fs">한국 종목은 키움 일봉 종가(9/14 이후 20시 애프터마켓 종가 포함, 9/28은 10:46 장중), 미국은 Yahoo 9/25 종가, 코스피 9/28 장중. 주 단위 표본.</p><div class="legend"><span><i style="background:var(--s1)"></i>OCI홀딩스</span><span><i style="background:var(--s2)"></i>한화솔루션</span><span><i style="background:var(--s3)"></i>First Solar</span><span><i style="background:var(--s4)"></i>TAN</span><span><i style="background:var(--muted)"></i>코스피</span></div><svg viewBox="0 0 700 320" role="img" aria-label="2026 YTD 지수">
+<line class="svg-grid" x1="70" y1="260.0" x2="660" y2="260.0"/>
+<text class="svg-text" x="62" y="264.0" text-anchor="end">0</text>
+<line class="svg-grid" x1="70" y1="185.6" x2="660" y2="185.6"/>
+<text class="svg-text" x="62" y="189.6" text-anchor="end">100</text>
+<line class="svg-grid" x1="70" y1="111.2" x2="660" y2="111.2"/>
+<text class="svg-text" x="62" y="115.2" text-anchor="end">200</text>
+<line class="svg-grid" x1="70" y1="36.7" x2="660" y2="36.7"/>
+<text class="svg-text" x="62" y="40.7" text-anchor="end">300</text>
+<line class="svg-axis" x1="70" y1="260" x2="660" y2="260"/>
+<text class="svg-text" x="70.0" y="278" text-anchor="middle">12/30</text>
+<text class="svg-text" x="151.9" y="278" text-anchor="middle">02/05</text>
+<text class="svg-text" x="233.9" y="278" text-anchor="middle">03/18</text>
+<text class="svg-text" x="315.8" y="278" text-anchor="middle">04/22</text>
+<text class="svg-text" x="397.8" y="278" text-anchor="middle">06/01</text>
+<text class="svg-text" x="479.7" y="278" text-anchor="middle">07/07</text>
+<text class="svg-text" x="561.7" y="278" text-anchor="middle">08/12</text>
+<text class="svg-text" x="660.0" y="278" text-anchor="end">09/28</text>
+<polyline fill="none" stroke="var(--s1)" stroke-width="2" points="70.0,185.6 86.4,194.2 102.8,183.1 119.2,185.5 135.6,182.7 151.9,170.5 168.3,159.5 184.7,162.5 201.1,182.1 217.5,165.2 233.9,134.9 250.3,141.9 266.7,135.0 283.1,132.6 299.4,108.2 315.8,57.1 332.2,20.0 348.6,54.2 365.0,72.0 381.4,56.8 397.8,33.2 414.2,94.6 430.6,54.6 446.9,120.5 463.3,121.4 479.7,132.2 496.1,141.1 512.5,137.3 528.9,150.1 545.3,101.1 561.7,94.6 578.1,72.7 594.4,81.7 610.8,113.0 627.2,116.9 643.6,128.9 660.0,113.0"/>
+<g fill="var(--s1)"><circle cx="70.0" cy="185.6" r="3"><title>OCI홀딩스 12/30: 100</title></circle><circle cx="102.8" cy="183.1" r="3"><title>OCI홀딩스 01/15: 103</title></circle><circle cx="135.6" cy="182.7" r="3"><title>OCI홀딩스 01/29: 104</title></circle><circle cx="168.3" cy="159.5" r="3"><title>OCI홀딩스 02/12: 135</title></circle><circle cx="201.1" cy="182.1" r="3"><title>OCI홀딩스 03/04: 105</title></circle><circle cx="233.9" cy="134.9" r="3"><title>OCI홀딩스 03/18: 168</title></circle><circle cx="266.7" cy="135.0" r="3"><title>OCI홀딩스 04/01: 168</title></circle><circle cx="299.4" cy="108.2" r="3"><title>OCI홀딩스 04/15: 204</title></circle><circle cx="332.2" cy="20.0" r="3"><title>OCI홀딩스 04/29: 322</title></circle><circle cx="365.0" cy="72.0" r="3"><title>OCI홀딩스 05/15: 253</title></circle><circle cx="397.8" cy="33.2" r="3"><title>OCI홀딩스 06/01: 305</title></circle><circle cx="430.6" cy="54.6" r="3"><title>OCI홀딩스 06/16: 276</title></circle><circle cx="463.3" cy="121.4" r="3"><title>OCI홀딩스 06/30: 186</title></circle><circle cx="496.1" cy="141.1" r="3"><title>OCI홀딩스 07/14: 160</title></circle><circle cx="528.9" cy="150.1" r="3"><title>OCI홀딩스 07/29: 148</title></circle><circle cx="561.7" cy="94.6" r="3"><title>OCI홀딩스 08/12: 222</title></circle><circle cx="594.4" cy="81.7" r="3"><title>OCI홀딩스 08/27: 240</title></circle><circle cx="627.2" cy="116.9" r="3"><title>OCI홀딩스 09/10: 192</title></circle><circle cx="660.0" cy="113.0" r="3"><title>OCI홀딩스 09/28: 197</title></circle></g>
+<text class="svg-lab" x="666.0" y="117.0" text-anchor="start" style="font-size:11px">197</text>
+<polyline fill="none" stroke="var(--s2)" stroke-width="2" points="70.0,185.6 86.4,186.4 102.8,177.8 119.2,182.0 135.6,179.9 151.9,158.9 168.3,128.0 184.7,118.7 201.1,149.1 217.5,117.3 233.9,118.9 250.3,135.0 266.7,155.7 283.1,148.1 299.4,142.3 315.8,128.0 332.2,126.8 348.6,128.7 365.0,147.3 381.4,141.4 397.8,147.3 414.2,161.3 430.6,135.8 446.9,159.8 463.3,160.0 479.7,167.6 496.1,172.1 512.5,180.1 528.9,192.7 545.3,171.2 561.7,154.9 578.1,156.4 594.4,161.7 610.8,172.0 627.2,170.9 643.6,175.6 660.0,164.9"/>
+<g fill="var(--s2)"><circle cx="70.0" cy="185.6" r="3"><title>한화솔루션 12/30: 100</title></circle><circle cx="102.8" cy="177.8" r="3"><title>한화솔루션 01/15: 110</title></circle><circle cx="135.6" cy="179.9" r="3"><title>한화솔루션 01/29: 108</title></circle><circle cx="168.3" cy="128.0" r="3"><title>한화솔루션 02/12: 177</title></circle><circle cx="201.1" cy="149.1" r="3"><title>한화솔루션 03/04: 149</title></circle><circle cx="233.9" cy="118.9" r="3"><title>한화솔루션 03/18: 190</title></circle><circle cx="266.7" cy="155.7" r="3"><title>한화솔루션 04/01: 140</title></circle><circle cx="299.4" cy="142.3" r="3"><title>한화솔루션 04/15: 158</title></circle><circle cx="332.2" cy="126.8" r="3"><title>한화솔루션 04/29: 179</title></circle><circle cx="365.0" cy="147.3" r="3"><title>한화솔루션 05/15: 151</title></circle><circle cx="397.8" cy="147.3" r="3"><title>한화솔루션 06/01: 151</title></circle><circle cx="430.6" cy="135.8" r="3"><title>한화솔루션 06/16: 167</title></circle><circle cx="463.3" cy="160.0" r="3"><title>한화솔루션 06/30: 134</title></circle><circle cx="496.1" cy="172.1" r="3"><title>한화솔루션 07/14: 118</title></circle><circle cx="528.9" cy="192.7" r="3"><title>한화솔루션 07/29: 90</title></circle><circle cx="561.7" cy="154.9" r="3"><title>한화솔루션 08/12: 141</title></circle><circle cx="594.4" cy="161.7" r="3"><title>한화솔루션 08/27: 132</title></circle><circle cx="627.2" cy="170.9" r="3"><title>한화솔루션 09/10: 120</title></circle><circle cx="660.0" cy="164.9" r="3"><title>한화솔루션 09/28: 128</title></circle></g>
+<text class="svg-lab" x="666.0" y="168.9" text-anchor="start" style="font-size:11px">128</text>
+<polyline fill="none" stroke="var(--s3)" stroke-width="2" points="70.0,184.7 86.4,189.8 102.8,190.6 119.2,191.7 135.6,196.2 151.9,193.2 168.3,197.2 184.7,190.7 201.1,203.8 217.5,203.0 233.9,203.6 250.3,204.9 266.7,203.2 283.1,202.8 299.4,204.4 315.8,206.2 332.2,205.7 348.6,197.3 365.0,193.5 381.4,186.5 397.8,173.7 414.2,185.3 430.6,184.7 446.9,189.0 463.3,192.8 479.7,195.1 496.1,197.2 512.5,200.5 528.9,203.2 545.3,192.5 561.7,195.4 578.1,199.0 594.4,200.1 610.8,200.9 627.2,201.0 643.6,202.7 660.0,209.4"/>
+<g fill="var(--s3)"><circle cx="70.0" cy="184.7" r="3"><title>First Solar 12/30: 101</title></circle><circle cx="102.8" cy="190.6" r="3"><title>First Solar 01/15: 93</title></circle><circle cx="135.6" cy="196.2" r="3"><title>First Solar 01/29: 86</title></circle><circle cx="168.3" cy="197.2" r="3"><title>First Solar 02/12: 84</title></circle><circle cx="201.1" cy="203.8" r="3"><title>First Solar 03/04: 76</title></circle><circle cx="233.9" cy="203.6" r="3"><title>First Solar 03/18: 76</title></circle><circle cx="266.7" cy="203.2" r="3"><title>First Solar 04/01: 76</title></circle><circle cx="299.4" cy="204.4" r="3"><title>First Solar 04/15: 75</title></circle><circle cx="332.2" cy="205.7" r="3"><title>First Solar 04/29: 73</title></circle><circle cx="365.0" cy="193.5" r="3"><title>First Solar 05/15: 89</title></circle><circle cx="397.8" cy="173.7" r="3"><title>First Solar 06/01: 116</title></circle><circle cx="430.6" cy="184.7" r="3"><title>First Solar 06/16: 101</title></circle><circle cx="463.3" cy="192.8" r="3"><title>First Solar 06/30: 90</title></circle><circle cx="496.1" cy="197.2" r="3"><title>First Solar 07/14: 84</title></circle><circle cx="528.9" cy="203.2" r="3"><title>First Solar 07/29: 76</title></circle><circle cx="561.7" cy="195.4" r="3"><title>First Solar 08/12: 87</title></circle><circle cx="594.4" cy="200.1" r="3"><title>First Solar 08/27: 80</title></circle><circle cx="627.2" cy="201.0" r="3"><title>First Solar 09/10: 79</title></circle><circle cx="660.0" cy="209.4" r="3"><title>First Solar 09/28: 68</title></circle></g>
+<text class="svg-lab" x="666.0" y="213.4" text-anchor="start" style="font-size:11px">68</text>
+<polyline fill="none" stroke="var(--s4)" stroke-width="2" points="70.0,185.0 86.4,183.6 102.8,181.3 119.2,178.2 135.6,175.5 151.9,175.4 168.3,173.9 184.7,168.3 201.1,176.9 217.5,175.6 233.9,174.3 250.3,173.7 266.7,174.7 283.1,175.9 299.4,176.2 315.8,173.6 332.2,175.0 348.6,166.2 365.0,161.6 381.4,160.1 397.8,152.2 414.2,166.3 430.6,168.2 446.9,171.3 463.3,170.4 479.7,177.0 496.1,176.5 512.5,178.6 528.9,187.8 545.3,182.3 561.7,180.7 578.1,184.7 594.4,184.6 610.8,187.7 627.2,188.7 643.6,189.8 660.0,193.2"/>
+<g fill="var(--s4)"><circle cx="70.0" cy="185.0" r="3"><title>TAN ETF 12/30: 101</title></circle><circle cx="102.8" cy="181.3" r="3"><title>TAN ETF 01/15: 106</title></circle><circle cx="135.6" cy="175.5" r="3"><title>TAN ETF 01/29: 113</title></circle><circle cx="168.3" cy="173.9" r="3"><title>TAN ETF 02/12: 116</title></circle><circle cx="201.1" cy="176.9" r="3"><title>TAN ETF 03/04: 112</title></circle><circle cx="233.9" cy="174.3" r="3"><title>TAN ETF 03/18: 115</title></circle><circle cx="266.7" cy="174.7" r="3"><title>TAN ETF 04/01: 115</title></circle><circle cx="299.4" cy="176.2" r="3"><title>TAN ETF 04/15: 113</title></circle><circle cx="332.2" cy="175.0" r="3"><title>TAN ETF 04/29: 114</title></circle><circle cx="365.0" cy="161.6" r="3"><title>TAN ETF 05/15: 132</title></circle><circle cx="397.8" cy="152.2" r="3"><title>TAN ETF 06/01: 145</title></circle><circle cx="430.6" cy="168.2" r="3"><title>TAN ETF 06/16: 123</title></circle><circle cx="463.3" cy="170.4" r="3"><title>TAN ETF 06/30: 120</title></circle><circle cx="496.1" cy="176.5" r="3"><title>TAN ETF 07/14: 112</title></circle><circle cx="528.9" cy="187.8" r="3"><title>TAN ETF 07/29: 97</title></circle><circle cx="561.7" cy="180.7" r="3"><title>TAN ETF 08/12: 107</title></circle><circle cx="594.4" cy="184.6" r="3"><title>TAN ETF 08/27: 101</title></circle><circle cx="627.2" cy="188.7" r="3"><title>TAN ETF 09/10: 96</title></circle><circle cx="660.0" cy="193.2" r="3"><title>TAN ETF 09/28: 90</title></circle></g>
+<text class="svg-lab" x="666.0" y="197.2" text-anchor="start" style="font-size:11px">90</text>
+<polyline fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 4" points="70.0,185.6 86.4,179.6 102.8,175.3 119.2,172.5 135.6,167.8 151.9,168.8 168.3,162.5 184.7,154.6 201.1,170.0 217.5,160.9 233.9,155.4 250.3,160.4 266.7,163.2 283.1,156.3 299.4,152.4 315.8,146.7 332.2,141.8 348.6,127.6 365.0,127.7 381.4,121.4 397.8,104.8 414.2,117.0 430.6,105.9 446.9,115.1 463.3,110.3 479.7,124.8 496.1,138.9 512.5,140.0 528.9,160.0 545.3,143.5 561.7,143.8 578.1,139.0 594.4,137.9 610.8,143.8 627.2,135.8 643.6,141.4 660.0,137.1"/>
+<g fill="var(--muted)"><circle cx="70.0" cy="185.6" r="3"><title>코스피 12/30: 100</title></circle><circle cx="102.8" cy="175.3" r="3"><title>코스피 01/15: 114</title></circle><circle cx="135.6" cy="167.8" r="3"><title>코스피 01/29: 124</title></circle><circle cx="168.3" cy="162.5" r="3"><title>코스피 02/12: 131</title></circle><circle cx="201.1" cy="170.0" r="3"><title>코스피 03/04: 121</title></circle><circle cx="233.9" cy="155.4" r="3"><title>코스피 03/18: 141</title></circle><circle cx="266.7" cy="163.2" r="3"><title>코스피 04/01: 130</title></circle><circle cx="299.4" cy="152.4" r="3"><title>코스피 04/15: 145</title></circle><circle cx="332.2" cy="141.8" r="3"><title>코스피 04/29: 159</title></circle><circle cx="365.0" cy="127.7" r="3"><title>코스피 05/15: 178</title></circle><circle cx="397.8" cy="104.8" r="3"><title>코스피 06/01: 209</title></circle><circle cx="430.6" cy="105.9" r="3"><title>코스피 06/16: 207</title></circle><circle cx="463.3" cy="110.3" r="3"><title>코스피 06/30: 201</title></circle><circle cx="496.1" cy="138.9" r="3"><title>코스피 07/14: 163</title></circle><circle cx="528.9" cy="160.0" r="3"><title>코스피 07/29: 134</title></circle><circle cx="561.7" cy="143.8" r="3"><title>코스피 08/12: 156</title></circle><circle cx="594.4" cy="137.9" r="3"><title>코스피 08/27: 164</title></circle><circle cx="627.2" cy="135.8" r="3"><title>코스피 09/10: 167</title></circle><circle cx="660.0" cy="137.1" r="3"><title>코스피 09/28: 165</title></circle></g>
+<text class="svg-lab" x="666.0" y="141.1" text-anchor="start" style="font-size:11px">165</text>
+</svg></div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>주 (금요일 종가)</th><th class="num">OCI홀딩스</th><th class="num">한화솔루션</th><th class="num">First Solar</th><th class="num">TAN</th><th class="num">코스피</th><th class="num">미국 10Y (주말)</th><th>그 주의 사건 · 하나 코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">8/14</td><td class="num up">+2.4%</td><td class="num up">+4.4%</td><td class="num down">−9.8%</td><td class="num down">−1.5%</td><td class="num up">+11.5%</td><td class="num">4.70%</td><td>8/10 하나 “Section 232, 반도체까지 엮인 Upstream 구축이 핵심”(Top Picks 1위 OCI). 8/11 테슬라 Project Crystal Sun 101억$ 세제 신청 보도. 8/13 중국 폴리 +22%, 비중국 16.83</td></tr>
+      <tr><td class="hd">8/21</td><td class="num down">−5.0%</td><td class="num down">−9.5%</td><td class="num down">−5.0%</td><td class="num down">−5.1%</td><td class="num down">−0.9%</td><td class="num">4.74%</td><td>8/20 중국 폴리 2주 +32%·웨이퍼·셀 +21%(공급 조절), 원산지 세탁 셀 미국 유입 지적. 8/17 하나 Weekly는 정유(디젤) 이슈</td></tr>
+      <tr><td class="hd">8/28</td><td class="num up">+3.6%</td><td class="num up">+5.3%</td><td class="num down">−4.6%</td><td class="num down">−1.4%</td><td class="num down">−1.8%</td><td class="num">4.72%</td><td>8/24 Solar Power World: ES Foundry “웨이퍼 MIP 0.15$/W, 독립 셀 업체 수익성 부족”. 8/27 중국 폴리 5.27(−4.4%), 미국 모듈 안정</td></tr>
+      <tr><td class="hd">9/4</td><td class="num down"><b>−17.1%</b></td><td class="num down"><b>−11.0%</b></td><td class="num">0.0%</td><td class="num down">−1.3%</td><td class="num down">−1.5%</td><td class="num">4.78%</td><td>8/31 KB 한화솔루션 TP 6.7 → 5.0만(유증 주식수 +31%). 9/1 OCI −5.0%·9/2 −8.5%·9/3 −5.6%. 9/3 중국 태양광 전 제품 하락, 일부 폴리 업체 오퍼가 인하. 하나 9/7 Weekly 태양광 “전 제품 하락”</td></tr>
+      <tr><td class="hd">9/11</td><td class="num down">−4.0%</td><td class="num down">−0.8%</td><td class="num up">+2.2%</td><td class="num down">−1.9%</td><td class="num up">+3.3%</td><td class="num">4.97%</td><td>9/8 후티 사우디 공격·9/10 동서송유관 피격·두바이 120$ — 에너지 섹터 자금이 정유로. 9/9 Anza 조사 기준일</td></tr>
+      <tr><td class="hd">9/18</td><td class="num down">−6.9%</td><td class="num down">−3.9%</td><td class="num down">−6.3%</td><td class="num down">−3.2%</td><td class="num down">−0.2%</td><td class="num">5.00%</td><td>9/14 하나 Top Picks 1·2위를 OCI·한화로 올리고 코오롱인더·KCC·효성티앤씨 편출(비중 15%씩). 9/15 메리츠 한화 “에너지 인플레이션 최선호”. 9/16 Fed +25bp, 10년물 5% 돌파. 9/15~18 NH Corp Day(싱가포르·홍콩)</td></tr>
+      <tr><td class="hd">9/23 (3거래일)</td><td class="num up">+1.5%</td><td class="num up">+2.6%</td><td class="num down">−9.3% (~9/25)</td><td class="num down">−3.5%</td><td class="num up">+2.7%</td><td class="num">5.18%</td><td>9/21 NH “Corp Day 후기: 판가 상승 + AMPC 확대”. 9/22 OCI 188,200원(8/28 대비 −31%)·한화 27,600원 저점. <b>9/22 17:05 하나 “태양광은 미국의 국가안보 전략자산이다”</b> → 9/23 OCI +9.7%·한화 +6.5%. 9/24~25 추석 휴장</td></tr>
+      <tr><td class="hd">9/28 장중 (10:46)</td><td class="num up"><b>+10.4%</b></td><td class="num up"><b>+10.4%</b></td><td class="num">—</td><td class="num">—</td><td class="num down">−0.3%</td><td class="num">—</td><td>9/26~27 미중 정상회담: 석탄 구매·비전략 품목 관세 완화만, 태양광 언급 없음. 9/27 하나 Weekly “미국 태양광 가격 상승 중”, 롱온리 비중 OCI 30%(최대)·한화 20%. 하나 TG 09:23 “강세 배경 3가지: 규제 완화 불확실성 해소·모듈 오퍼가 상향·밸류체인 가격 실제 상승”</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: 키움 ka10081 일봉(정규장 15:30 종가는 9/14 이후 20시 애프터마켓 종가와 다를 수 있음 — 9/23 정규장 종가는 OCI 206,000·한화 29,200, 일봉 종가는 206,500·29,400), Yahoo Finance(FSLR·TAN·^TNX, 미국은 목·금 기준), 하나 위클리 추천종목 리뷰(8/31~9/28), 하나 TG. 9/18 → 9/23 주는 추석 연휴로 3거래일이며 미국 열은 9/18 → 9/25.</p>
+
+  <div class="fig"><p class="ft">주간 수익률: 8/14 ~ 9/23 (금요일 종가 대비) 와 9/28 장중</p><p class="fs">키움 일봉 종가 기준. 9/18 → 9/23은 추석 연휴(9/24~25)로 3거래일. *9/28은 10:46 장중 등락률(전일 정규장 종가 대비). 9/14 이후 일봉 종가는 20시 애프터마켓 체결가.</p><div class="legend"><span><i style="background:var(--s1)"></i>OCI홀딩스</span><span><i style="background:var(--s2)"></i>한화솔루션</span></div><svg viewBox="0 0 700 260" role="img" aria-label="주간 수익률 %">
+<line class="svg-grid" x1="62" y1="214.0" x2="680" y2="214.0"/>
+<text class="svg-text" x="54" y="218.0" text-anchor="end">-20%</text>
+<line class="svg-grid" x1="62" y1="151.5" x2="680" y2="151.5"/>
+<text class="svg-text" x="54" y="155.5" text-anchor="end">-10%</text>
+<line class="svg-grid" x1="62" y1="89.0" x2="680" y2="89.0"/>
+<text class="svg-text" x="54" y="93.0" text-anchor="end">0%</text>
+<line class="svg-grid" x1="62" y1="26.5" x2="680" y2="26.5"/>
+<text class="svg-text" x="54" y="30.5" text-anchor="end">10%</text>
+<line class="svg-axis" x1="62" y1="89.0" x2="680" y2="89.0"/>
+<text class="svg-text" x="100.6" y="232" text-anchor="middle">8/14</text>
+<rect x="73.6" y="74.0" width="25.0" height="15.0" fill="var(--s1)"><title>OCI홀딩스 8/14: +2.4</title></rect>
+<text class="svg-lab" x="86.1" y="70.0" text-anchor="middle" style="font-size:10.5px">+2.4</text>
+<rect x="100.6" y="61.5" width="25.0" height="27.5" fill="var(--s2)"><title>한화솔루션 8/14: +4.4</title></rect>
+<text class="svg-lab" x="113.1" y="57.5" text-anchor="middle" style="font-size:10.5px">+4.4</text>
+<text class="svg-text" x="177.9" y="232" text-anchor="middle">8/21</text>
+<rect x="150.8" y="89.0" width="25.0" height="31.3" fill="var(--s1)"><title>OCI홀딩스 8/21: -5.0</title></rect>
+<text class="svg-lab" x="163.4" y="132.2" text-anchor="middle" style="font-size:10.5px">-5.0</text>
+<rect x="177.9" y="89.0" width="25.0" height="59.4" fill="var(--s2)"><title>한화솔루션 8/21: -9.5</title></rect>
+<text class="svg-lab" x="190.4" y="160.4" text-anchor="middle" style="font-size:10.5px">-9.5</text>
+<text class="svg-text" x="255.1" y="232" text-anchor="middle">8/28</text>
+<rect x="228.1" y="66.5" width="25.0" height="22.5" fill="var(--s1)"><title>OCI홀딩스 8/28: +3.6</title></rect>
+<text class="svg-lab" x="240.6" y="62.5" text-anchor="middle" style="font-size:10.5px">+3.6</text>
+<rect x="255.1" y="55.9" width="25.0" height="33.1" fill="var(--s2)"><title>한화솔루션 8/28: +5.3</title></rect>
+<text class="svg-lab" x="267.6" y="51.9" text-anchor="middle" style="font-size:10.5px">+5.3</text>
+<text class="svg-text" x="332.4" y="232" text-anchor="middle">9/4</text>
+<rect x="305.3" y="89.0" width="25.0" height="106.9" fill="var(--s1)"><title>OCI홀딩스 9/4: -17.1</title></rect>
+<text class="svg-lab" x="317.9" y="207.9" text-anchor="middle" style="font-size:10.5px">-17.1</text>
+<rect x="332.4" y="89.0" width="25.0" height="68.8" fill="var(--s2)"><title>한화솔루션 9/4: -11.0</title></rect>
+<text class="svg-lab" x="344.9" y="169.8" text-anchor="middle" style="font-size:10.5px">-11.0</text>
+<text class="svg-text" x="409.6" y="232" text-anchor="middle">9/11</text>
+<rect x="382.6" y="89.0" width="25.0" height="25.0" fill="var(--s1)"><title>OCI홀딩스 9/11: -4.0</title></rect>
+<text class="svg-lab" x="395.1" y="126.0" text-anchor="middle" style="font-size:10.5px">-4.0</text>
+<rect x="409.6" y="89.0" width="25.0" height="5.0" fill="var(--s2)"><title>한화솔루션 9/11: -0.8</title></rect>
+<text class="svg-lab" x="422.1" y="106.0" text-anchor="middle" style="font-size:10.5px">-0.8</text>
+<text class="svg-text" x="486.9" y="232" text-anchor="middle">9/18</text>
+<rect x="459.8" y="89.0" width="25.0" height="43.1" fill="var(--s1)"><title>OCI홀딩스 9/18: -6.9</title></rect>
+<text class="svg-lab" x="472.4" y="144.1" text-anchor="middle" style="font-size:10.5px">-6.9</text>
+<rect x="486.9" y="89.0" width="25.0" height="24.4" fill="var(--s2)"><title>한화솔루션 9/18: -3.9</title></rect>
+<text class="svg-lab" x="499.4" y="125.4" text-anchor="middle" style="font-size:10.5px">-3.9</text>
+<text class="svg-text" x="564.1" y="232" text-anchor="middle">9/23</text>
+<rect x="537.1" y="79.6" width="25.0" height="9.4" fill="var(--s1)"><title>OCI홀딩스 9/23: +1.5</title></rect>
+<text class="svg-lab" x="549.6" y="75.6" text-anchor="middle" style="font-size:10.5px">+1.5</text>
+<rect x="564.1" y="72.8" width="25.0" height="16.2" fill="var(--s2)"><title>한화솔루션 9/23: +2.6</title></rect>
+<text class="svg-lab" x="576.6" y="68.8" text-anchor="middle" style="font-size:10.5px">+2.6</text>
+<text class="svg-text" x="641.4" y="232" text-anchor="middle">9/28*</text>
+<rect x="614.3" y="24.0" width="25.0" height="65.0" fill="var(--s1)"><title>OCI홀딩스 9/28*: +10.4</title></rect>
+<text class="svg-lab" x="626.9" y="20.0" text-anchor="middle" style="font-size:10.5px">+10.4</text>
+<rect x="641.4" y="24.0" width="25.0" height="65.0" fill="var(--s2)"><title>한화솔루션 9/28*: +10.4</title></rect>
+<text class="svg-lab" x="653.9" y="20.0" text-anchor="middle" style="font-size:10.5px">+10.4</text>
+</svg></div>
+
+  <h3>무엇이 주가를 움직였고 무엇이 움직이지 않았나</h3>
+  <ul class="tight">
+    <li><b>움직인 것: 헤드라인.</b> 하나 태양광 노트(9/22 저녁) 다음 날 +9.7%/+6.5%, 미중 회담 무사 통과(9/27) 다음 거래일 +10%/+10%. 두 번의 반등 모두 회사 숫자가 바뀐 날이 아니다. 반대로 9/1~9/3의 급락도 실적·가격 데이터가 바뀐 날이 아니었다 — 하나(9/23)는 “금리 상승 수요 둔화 우려, 단기 실적 부진 가능성, 미중 정상회담 경계감”을 꼽았다.</li>
+    <li><b>움직이지 않은 것: 가격.</b> 5주 동안 비중국 폴리는 16.85 → 16.92$(+0.4%), 중국 폴리는 5.27 → 5.07$(−3.8%), 미국 DDP 모듈은 0.31대에서 소폭 상승했다(Q3). 주가 −31%와 +10%를 설명할 만한 가격 변화는 없었다. 즉 이 종목들의 9월은 “12/4 이후 가격”에 대한 확률 재평가의 5주였다.</li>
+    <li><b>미국과의 디커플링.</b> First Solar는 5/29 306.8$(18년래 최고) → 8/7 250$ → 9/25 177.7$. 232 서명 이후 −29%다. 같은 기간 미국 10년물 4.66 → 5.18%. 하나가 6/1에 “232 최대 수혜”로 꼽았던 First Solar가 232 확정 후 오히려 내린 것은, 미국 태양광주의 가격 결정 변수가 정책에서 <b>금리·프로젝트 수익성</b>으로 넘어갔다는 뜻이다(Q4·Q10). 한국 2사도 미국 설치 수요의 함수인 이상, 이 변수는 아직 한국 주가에 덜 반영돼 있다.</li>
+    <li><b>수급의 흔적.</b> 하나 추천종목 롱온리 비중은 8/31 OCI 10%·한화 10%(7종목 분산) → 9/14 15%·15%(현금 50%) → 9/21 10%·10% → 9/28 30%·20%(현금 0)로 움직였다. 9/14의 편출·집중은 정유주 급등 뒤 “단기 조정 주의” 국면에서 태양광으로 무게를 옮긴 것이고, 9/28의 현금 소진은 “9월 말~10월 말이 마지막 매수 기회”라는 9/23 콜의 실행이다.</li>
+  </ul>
+  <div class="note">읽는 법: 9/22 저점 대비 9/28 장중 OCI +21%·한화 +17%다. 두 회사의 3Q 실적(한화 10월 말, OCI 11월 중순)까지는 “가격 데이터”가 아니라 “12/4 이후 가격에 대한 기대”가 주가를 정한다. 그 기대를 검증할 수 있는 관찰치는 Anza 체결가, 비중국 폴리 주간가, 상무부·CBP의 시행 지침 세 가지뿐이다(Q2).</div>
+</section>
+
+<section class="q" id="q2">
+  <div class="qn">Q2 · Section 232</div>
+  <h2>Section 232 해부: 모듈 보호가 아니라 “폴리실리콘·웨이퍼의 수익성 보장”이고, 12/4 이후의 가격은 MIP가 아니라 “MIP + 관세”로 형성된다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 8/6 포고문의 뼈대는 ① 폴리실리콘과 파생제품 전 단계의 최저수입가격(MIP), ② 폴리를 뺀 잉곳·웨이퍼·셀·모듈의 15% 관세, ③ 2029-1-20까지 모듈을 제외한 증설 투자분의 관세 상쇄, ④ 8/6 이전 고정계약의 MIP 예외, ⑤ 12/4 이전 사재기 제재의 다섯 개다(하나 8/10 해석편, 백악관 8/6). 이 조합은 “미국 안에서 폴리·잉곳·웨이퍼·셀을 만들면 돈이 되게” 설계됐고, 반도체용 폴리실리콘(Hemlock·Wacker)까지 같은 그물에 넣었다. 그래서 하나의 표현대로 <b>“최대 수혜는 셀·모듈이 아니라 폴리·웨이퍼”</b>이고, 수입 모듈 가격은 MIP 0.38$/W가 하한이 아니라 <b>0.38 + 15% = 0.437$/W</b>로 수렴한다는 것이 KB(8/31)의 계산이다. NH(9/21)는 회사 IR을 인용해 “시행 후 38센트를 상회”라고만 썼다. 둘의 차이(5.7c/W)가 한화솔루션 2027년 판가 논쟁의 폭이다.
+  </div>
+
+  <h3>제도의 구조: 다섯 개 조항과 각각의 목적</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>조항</th><th>내용</th><th>목적 (하나 8/10 해석)</th><th>수혜·피해</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">① 최저수입가격 (MIP)</td><td>폴리실리콘 21$/kg · 잉곳/웨이퍼 100$/kg · 셀 0.22$/W · 모듈 0.38$/W. 수입가가 MIP보다 낮으면 차액만큼 추가 관세. 향후 조정 가능</td><td>자국 공급망의 수익성 하한을 정부가 보증</td><td>비중국 폴리(OCI 말레이·Wacker)는 21$까지 “허용된” 상승, 중국산은 301 관세 50%가 얹혀 31.5$로 경쟁력 상실</td></tr>
+      <tr><td class="hd">② 15% 관세</td><td>잉곳·웨이퍼·셀·모듈에만 부과, 폴리실리콘은 제외. 한국·일본·EU·대만·스위스는 MFN과 합산해 15%, 영국 10%. 중국은 “기타국”으로 15%가 가산되고 301(폴리·웨이퍼 50%)·AD/CVD는 그대로(중첩 여부는 로펌 해석 상충, FC-4)</td><td>미국 내 CAPA가 특히 부족한 잉곳·웨이퍼·셀의 증설 유인을 MIP 위에 한 겹 더</td><td>폴리 사용자(웨이퍼·셀 공장)의 원가 부담은 덜어 주고, 완제품 수입은 더 비싸게</td></tr>
+      <tr><td class="hd">③ 온쇼어링 프로그램</td><td>2029-1-20까지 미국 내 폴리·잉곳·웨이퍼·셀 생산시설에 투자하면 투자금에 상응하는 장비·관련 제품을 232 관세 없이 수입(모듈은 제외)</td><td>Upstream 투자 인센티브</td><td>한화 카터스빌(잉곳·웨이퍼·셀), 테슬라 텍사스, OCI의 미국 셀 검토(Mission Solar 부지)에 유리</td></tr>
+      <tr><td class="hd">④ 고정계약 예외</td><td>8/6 이전에 체결된 고정 조건(Fixed Terms) 계약의 첫 정상거래는 MIP 인증 예외. 면제되는 것은 MIP 차액 관세뿐이고 15%는 그대로 붙는다(Foley 8/13·Hunton 8/11). 기간 제한 없음</td><td>기존 계약의 안정성</td><td><b>OCI의 리스크</b>: 포뮬러 가격 LTA가 예외로 인정되면 MIP 아래 거래가 이어져 “21$ 수렴” 효과가 상쇄될 수 있다(하나 8/10)</td></tr>
+      <tr><td class="hd">⑤ 사재기 제재</td><td>12/4 이전 재고 비축(Stockpiling)으로 제도를 회피하면 수입 제한. 상무부 임시 최종규칙(9/24, 91 FR 60505, 9/22~12/3 시행): 8/6 이후 주간 수입량을 2025년·2026년 1~8월 평균과 비교 감시, 신규 수입업자는 주당 폴리 12kg·웨이퍼 7kg·셀 2,000장·모듈 55장 상한(면제 신청 가능). 허위 인증 시 수입업자와 계열사 영구 수입 금지(3조)</td><td>정상적 가격 메커니즘</td><td>Anza가 말한 “시행 전 저가 물량 확보 기회”의 상한선</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: 백악관 포고문 11052 “Adjusting Imports of Polysilicon and Its Derivatives into the United States”(2026-08-06, FR 8/11; 하나 TG 8/7 요약), 상무부 사재기 제한 임시 최종규칙(9/24), Foley·Hunton·Wiley 해설, 하나 Weekly 8/10 “Section 232, 반도체까지 엮인 Upstream 구축이 핵심”(8/31~9/28 위클리에 매주 재수록). MIP 차액 관세는 통관가액(entered value) 기준이며, DDP·FOB 기준·포뮬러 가격 처리에 대한 상무부·CBP FAQ는 9/28 현재 없다. 미해결 쟁점 하나: 수입 셀로 미국에서 조립한 모듈이 “셀 MIP 0.22 + 15%”로 통관되는지, 모듈 MIP 0.38의 적용을 받는지(PV Magazine/OPIS 9/25). 온쇼어링 프로그램의 신청 절차 고시도 아직 없다.</p>
+
+  <h3>왜 폴리실리콘에는 관세를 붙이지 않았나: 21$는 Hemlock·Wacker의 변동비다</h3>
+  <p>미국 안의 폴리실리콘 공장은 두 곳뿐이다. Hemlock Semiconductor(미시간, Corning·신에츠 JV)와 Wacker Chemie(테네시). 둘 다 반도체용 폴리실리콘에서 독보적이고, 2025년 상무부는 CHIPS Act 지원금으로 Hemlock의 반도체용 초고순도 폴리 전용 공장을 지원했다(하나 8/10). 하나는 Hemlock의 변동비를 20$/kg, Wacker를 16$/kg으로 추정하고, <b>MIP 21$는 이 두 회사를 지키고 증설을 유도하는 최소한의 가격</b>이라고 읽는다. 중국산에는 이미 2025년 1월부터 301 관세 50%와 UFLPA 수입 금지가 있어 MIP 21$에 50%를 얹으면 31.5$가 되므로 추가 15%가 없어도 장벽은 충분하다. 반면 잉곳·웨이퍼·셀은 미국 CAPA가 절대적으로 부족해(Q5) 대부분 수입에 의존하므로 MIP 위에 15%를 얹어 증설 유인을 키웠다. 폴리에 15%를 붙이면 밸류체인 전체 원가가 오르니 뺐다. 이 구조에서 <b>비중국 폴리의 “허용된 상승 폭”은 16.9 → 21$(+24%)</b>이고, 9/24 미국산 폴리는 이미 20.45$까지 올라와 있다(Q3).</p>
+
+  <h3>웨이퍼 MIP 100$/kg의 크기: 중국산의 3~5배</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>환산 주체</th><th class="num">100$/kg → c/W</th><th>근거</th><th>함의</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">하나 (OCI홀딩스 기준)</td><td class="num">10~12</td><td>OCI NST 웨이퍼 원단위 기준. 중국산 2c/W, 미국향 3~4c/W의 3~4배</td><td>MIP까지 +7~8c/W → NST 2.7GW 매출 +2.7~3천억(원가 불변)</td></tr>
+      <tr><td class="hd">ES Foundry CEO (미국 셀 업체)</td><td class="num">15 (PERC) · +15% 관세 = 17</td><td>Solar Power World 8/24 (하나 TG 8/25)</td><td>셀 MIP 0.22와의 차이 5c/W로는 독립 셀 업체가 못 버틴다 → 셀·모듈 수직계열화 유도</td></tr>
+      <tr><td class="hd">Wells Fargo</td><td class="num">+8</td><td>하나 8/10 인용</td><td>모듈 원가 상승분의 절반 이상이 웨이퍼</td></tr>
+      <tr><td class="hd">KB (한화 카터스빌 기준)</td><td class="num">폴리 3 → 4c/W, 웨이퍼·셀 미국 생산비 +5c/W 가정</td><td>KB 8/31</td><td>카터스빌 마진 +7.7c/W(판가 +13.7 − 원가 +6)</td></tr>
+    </tbody></table></div>
+  <p class="cap">환산값이 갈리는 이유는 g/W 원단위(셀 효율·웨이퍼 두께)가 회사마다 달라서다. 하나의 10~12c/W는 n-type 박형, ES Foundry의 15c/W는 PERC 기준으로 읽힌다(팩트체크 FC-3).</p>
+
+  <h3>12/4 이후 미국 모듈 가격은 어디로 수렴하나: 0.38인가 0.437인가</h3>
+  <div class="grid2">
+    <div class="card"><h4>0.38$/W 하한론 (회사·NH·Anza 오퍼)</h4><p>회사는 MIP 38c를 “미국 모듈 제조사의 원가 부담을 해소하는 최소 수준”으로 보고 현재 20센트 중후반인 유틸리티·커머셜 가격이 시행 후 38센트를 상회할 것으로 본다(NH 9/21). Anza의 12/4 이후 납품 오퍼 중간값이 정확히 0.38$/W라는 점은 공급자들이 MIP를 새 앵커로 쓰기 시작했다는 뜻이다(PV Magazine 9/26, 하나 9/28).</p></div>
+    <div class="card"><h4>0.437$/W 수렴론 (KB)</h4><p>경쟁자는 수입산이고 수입산의 미국 도착가는 “MIP 38c + 15% 관세 5.7c = 43.7c”이므로 미국산 모듈 판가도 여기로 수렴하는 것이 합리적이라는 계산(KB 8/31). 달튼(셀 외부구매) 마진 +10.4c/W, 카터스빌 +7.7c/W, 한국 공장 수출 재개 시 +16c/W가 이 가정에서 나온다.</p></div>
+  </div>
+  <p>두 논리의 차이는 “관세를 누가 부담하느냐”다. 수입업자가 15%를 흡수하면 0.38에 가깝고, 전가하면 0.437에 가깝다. 8/7 이전 수입 모듈 중간가 0.27$/W(Anza)와 중국의 미국향 수출 평균 0.27$/W(Bloomberg, 하나 9/28 도표 18)가 일치하는 것을 보면 지금까지의 수입가는 관세 전 가격이었다. 시행 후 가격 형성은 결국 <b>미국 내 재고가 얼마나 남았는지</b>(사재기 조항이 상한)와 <b>2027년 설치 수요가 44c를 감당하느냐</b>(Q4)에 달려 있다. 노트의 기준은 “38c 하한 + 관세 일부 전가”로 두고, 시뮬레이터(AP)에서 30 → 38 → 43.7c를 슬라이더로 열어 두었다.</p>
+
+  <h3>제도 일정과 채점 포인트</h3>
+  <ul class="tl">
+    <li><b class="d">2025-07-01</b><span>상무부 폴리실리콘·파생제품 Section 232 조사 개시</span></li>
+    <li><b class="d">2026-08-04~05</b><span>Reuters “MIP + 관세 하이브리드” 보도 → 8/5 하나 “우호적인 정책 방향성”(Top Picks 한화솔루션·OCI홀딩스)</span></li>
+    <li><b class="d">2026-08-06</b><span>트럼프 포고문 서명(고정계약 예외 기준일). 8/7 세부 공개</span></li>
+    <li><b class="d">2026-09-09</b><span>Anza 기준일: 공급사 55%가 232 반영 가격 제시(모듈의 65%)</span></li>
+    <li><b class="d">2026-09-26~27</b><span>미중 정상회담: 석탄 1,000만톤 구매·비전략 품목 300억$ 관세 완화 협의. 태양광·폴리실리콘 언급 없음(백악관 성명, Bloomberg 9/26)</span></li>
+    <li><b class="d">2026-12-04</b><span><b>시행일</b>. MIP·15% 관세 발효. 시행 직전 재고 확보 마감</span></li>
+    <li><b class="d">2029-01-20</b><span>온쇼어링 프로그램(투자분 관세 상쇄) 마감</span></li>
+  </ul>
+  <div class="note">채점 포인트: (1) 시행 전 상무부·CBP 지침에서 “고정계약 예외”의 범위(포뮬러 가격 계약 포함 여부)와 MIP 산정 기준(DDP·FOB)이 어떻게 정해지는가, (2) 12/4 이후 Anza 체결가(오퍼가 아닌)가 0.38을 넘는가, (3) 비중국 폴리 현물이 21$에 얼마나 빨리 붙는가. 이 셋이 OCI·한화의 2027년 추정치를 가르는 변수다.</div>
+</section>
+
+<section class="q" id="q3">
+  <div class="qn">Q3 · Price board</div>
+  <h2>가격 보드: 폴리실리콘은 이미 “중국 5$ · 비중국 17$ · 미국 20$”의 세 시장으로 갈라졌고, 모듈은 중국 8센트에서 미국 44센트까지 사다리다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 9월 넷째 주 기준 중국 폴리는 5.07$/kg로 3주째 보합, 비중국은 16.92$(+0.5% WoW), 미국산은 20.45$(+1.5%)로 MIP 21$에 붙었다(하나 9/28). 모듈은 중국 내수 0.083, 중국의 미국향 수출 0.27, 미국 DDP 0.313(연초 대비 +20%), Anza의 시행 후 오퍼 0.38$/W다. 즉 <b>비중국 폴리의 “남은 갭”은 24%(16.92 → 21), 미국 모듈의 남은 갭은 21%(0.313 → 0.38)이고, 미국산 폴리는 갭이 3%밖에 남지 않았다.</b> 가격이 먼저 움직인 곳은 미국산 폴리 → 미국 모듈 오퍼 → 비중국 폴리 순서이고, 중국 내수 가격은 반내권 반짝 급등(8월 초 +32%) 뒤 되밀려 이 사다리와 무관하게 움직인다.
+  </div>
+
+  <div class="fig"><p class="ft">폴리실리콘: 세 개의 가격과 MIP 21$/kg ($/kg)</p><p class="fs">하나 Weekly 9/28(PV Insight 기준)·텔레그램 9/24, DART OCI홀딩스 반기보고서(1H26 평균 판매가 17.50$/kg), 변동비 추정은 하나 8/10 해석편.</p><svg viewBox="0 0 760 222" role="img">
+<text class="svg-lab" x="202" y="27.0" text-anchor="end">중국 Mono (PV Insight)</text>
+<rect x="210" y="14" width="68.6" height="18" fill="var(--muted)" rx="2"><title>중국 Mono (PV Insight): 5.07$ 9/25 주 · 3주 보합</title></rect>
+<text class="svg-text" x="284.6" y="27.0">5.07$ · 9/25 주 · 3주 보합</text>
+<text class="svg-lab" x="202" y="53.0" text-anchor="end">비중국 (Non-China)</text>
+<rect x="210" y="40" width="228.9" height="18" fill="var(--s1)" rx="2"><title>비중국 (Non-China): 16.92$ 9/24 · WoW +0.5%</title></rect>
+<text class="svg-text" x="444.9" y="53.0">16.92$ · 9/24 · WoW +0.5%</text>
+<text class="svg-lab" x="202" y="79.0" text-anchor="end">OCI 공시 참고시세 1H26</text>
+<rect x="210" y="66" width="236.8" height="18" fill="var(--s1)" rx="2"><title>OCI 공시 참고시세 1H26: 17.50$ Energy Trend 비중국 평균</title></rect>
+<text class="svg-text" x="452.8" y="79.0">17.50$ · Energy Trend 비중국 평균</text>
+<text class="svg-lab" x="202" y="105.0" text-anchor="end">미국산 (Made in US)</text>
+<rect x="210" y="92" width="276.7" height="18" fill="var(--s2)" rx="2"><title>미국산 (Made in US): 20.45$ 9/24 · WoW +1.5%</title></rect>
+<text class="svg-text" x="492.7" y="105.0">20.45$ · 9/24 · WoW +1.5%</text>
+<text class="svg-lab" x="202" y="131.0" text-anchor="end">Hemlock 변동비 (하나 추정)</text>
+<rect x="210" y="118" width="270.6" height="18" fill="var(--s3)" rx="2"><title>Hemlock 변동비 (하나 추정): 20.00$ </title></rect>
+<text class="svg-text" x="486.6" y="131.0">20.00$</text>
+<text class="svg-lab" x="202" y="157.0" text-anchor="end">Wacker 변동비 (하나 추정)</text>
+<rect x="210" y="144" width="216.5" height="18" fill="var(--s3)" rx="2"><title>Wacker 변동비 (하나 추정): 16.00$ </title></rect>
+<text class="svg-text" x="432.5" y="157.0">16.00$</text>
+<text class="svg-lab" x="202" y="183.0" text-anchor="end">중국산 + 301 관세 50% (MIP 기준)</text>
+<rect x="210" y="170" width="426.2" height="18" fill="var(--muted)" rx="2"><title>중국산 + 301 관세 50% (MIP 기준): 31.50$ </title></rect>
+<text class="svg-text" x="642.2" y="183.0">31.50$</text>
+<line x1="494.1" y1="6" x2="494.1" y2="200" stroke="var(--up)" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text class="svg-lab" x="494.1" y="214" text-anchor="middle" style="fill:var(--up)">MIP 21$/kg (12/4~)</text>
+</svg></div>
+
+  <div class="note">집계 기관에 따라 비중국 폴리 가격이 다르다. 하나가 쓰는 PV Insight는 16.92$(9/24)이지만 OPIS Global Polysilicon Marker는 19.23$(8/7·9/1 동일), Bernreuter 18.50$, InfoLink 18.5$(9/23)다. OCI가 반기보고서에 적은 참고 시세(Energy Trend 비중국 평균)는 1H26 17.50$였다. “MIP까지 +24%”는 PV Insight 기준의 상단이고 OPIS 기준으로는 +9%다(FC-1). 미국산 20.45$는 PV Insight 단일 값이며 OPIS는 미국 스팟을 공표하지 않는다(FC-2).</div>
+  <h3>주간 보드: 하나 Weekly 5주치 (PV Insight 기준)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>주(발간일)</th><th class="num">중국 폴리 Mono ($/kg)</th><th class="num">비중국 폴리 ($/kg)</th><th class="num">미국산 폴리 ($/kg)</th><th class="num">웨이퍼 ($/156mm)</th><th class="num">셀 ($/W)</th><th class="num">중국 모듈 ($/W)</th><th class="num">미국 DDP 모듈 ($/W)</th><th>하나 코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">8/31</td><td class="num">5.27 (−4.4%)</td><td class="num">16.85 (−0.1%)</td><td class="num">—</td><td class="num">0.116 (보합)</td><td class="num">0.038 (−7.3%)</td><td class="num">0.084 (−1.2%)</td><td class="num">—</td><td>웨이퍼만 상대 강세: 232 앞둔 해외 셀 업체 선재고 + 인도 성수기</td></tr>
+      <tr><td class="hd">9/7</td><td class="num">5.07 (−3.8%)</td><td class="num">16.83 (−0.1%)</td><td class="num">—</td><td class="num">0.115 (−0.9%)</td><td class="num">0.037 (−2.6%)</td><td class="num">0.083 (−1.2%)</td><td class="num">—</td><td>전 제품 하락. 다운스트림 하락이 업스트림으로 확산, 일부 폴리 업체 오퍼가 인하</td></tr>
+      <tr><td class="hd">9/14</td><td class="num">5.07 (보합)</td><td class="num">16.83 (보합)</td><td class="num">—</td><td class="num">0.115</td><td class="num">0.037</td><td class="num">0.083</td><td class="num">—</td><td>전 제품 보합. 셀은 원산지 세탁용 주문으로 중국 선두 업체 고가동 지속</td></tr>
+      <tr><td class="hd">9/21</td><td class="num">5.07</td><td class="num">16.83</td><td class="num">—</td><td class="num">0.115</td><td class="num">0.037</td><td class="num">0.083</td><td class="num">—</td><td>2주 보합</td></tr>
+      <tr><td class="hd">9/28</td><td class="num">5.07 (3주 보합)</td><td class="num"><b>16.92 (+0.5%)</b></td><td class="num"><b>20.45 (+1.5%)</b></td><td class="num">0.115</td><td class="num">0.037</td><td class="num">0.083</td><td class="num"><b>0.313 (+0.6%)</b></td><td>미국산 폴리 21$ 근접, 미국 공급업체 선제적 판가 인상 시작</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: 하나 에너지/화학 Weekly Monitor 태양광 면(8/31 p5, 9/7 p5, 9/14 p6, 9/21 p5, 9/28 p4). 9/28호부터 미국산 폴리·미국 DDP 모듈 열이 새로 생겼다. 참고로 8/13 텔레그램: 중국 5.08(+22% WoW)·비중국 16.83, 8/20: 중국 +8.5%(2주 +32%)·웨이퍼·셀 +21%(2주 +35%·+32%).</p>
+
+  <div class="fig"><p class="ft">모듈: 중국 8센트에서 미국 44센트까지, 가격 사다리 ($/W)</p><p class="fs">PV Insight·Bloomberg(하나 Weekly 9/28 도표 11·16·18), PV Infolink(NH 9/21 그림1), Anza(PV Magazine 9/26), KB 8/31 표11. 미국 가격은 관세지급인도(DDP) 기준.</p><svg viewBox="0 0 760 280" role="img">
+<text class="svg-lab" x="222" y="25.5" text-anchor="end">중국 내수 모듈 (PV Insight)</text>
+<rect x="230" y="14" width="76.1" height="16" fill="var(--muted)" rx="2"><title>중국 내수 모듈 (PV Insight): 0.083$ 9/25 주</title></rect>
+<text class="svg-text" x="312.1" y="25.5">0.083$ · 9/25 주</text>
+<text class="svg-lab" x="222" y="49.5" text-anchor="end">중국 → EU 수출 평균 (Bloomberg)</text>
+<rect x="230" y="38" width="110.0" height="16" fill="var(--muted)" rx="2"><title>중국 → EU 수출 평균 (Bloomberg): 0.120$ 2026-07</title></rect>
+<text class="svg-text" x="346.0" y="49.5">0.120$ · 2026-07</text>
+<text class="svg-lab" x="222" y="73.5" text-anchor="end">인도 모듈 (PV Infolink, TOPCon)</text>
+<rect x="230" y="62" width="128.3" height="16" fill="var(--muted)" rx="2"><title>인도 모듈 (PV Infolink, TOPCon): 0.140$ NH 9/21 그림1</title></rect>
+<text class="svg-text" x="364.3" y="73.5">0.140$ · NH 9/21 그림1</text>
+<text class="svg-lab" x="222" y="97.5" text-anchor="end">셀 MIP</text>
+<rect x="230" y="86" width="201.7" height="16" fill="var(--s4)" rx="2"><title>셀 MIP: 0.220$ 12/4~ · 중국 셀 0.037</title></rect>
+<text class="svg-text" x="437.7" y="97.5">0.220$ · 12/4~ · 중국 셀 0.037</text>
+<text class="svg-lab" x="222" y="121.5" text-anchor="end">중국 → 미국 수출 평균 (Bloomberg)</text>
+<rect x="230" y="110" width="247.5" height="16" fill="var(--s2)" rx="2"><title>중국 → 미국 수출 평균 (Bloomberg): 0.270$ 8/7 이전 수입 중간가와 동일</title></rect>
+<text class="svg-text" x="483.5" y="121.5">0.270$ · 8/7 이전 수입 중간가와 동일</text>
+<text class="svg-lab" x="222" y="145.5" text-anchor="end">미국 동남아산 모듈 (Infolink)</text>
+<rect x="230" y="134" width="247.5" height="16" fill="var(--s2)" rx="2"><title>미국 동남아산 모듈 (Infolink): 0.270$ NH 9/21 그림1</title></rect>
+<text class="svg-text" x="483.5" y="145.5">0.270$ · NH 9/21 그림1</text>
+<text class="svg-lab" x="222" y="169.5" text-anchor="end">미국 DDP 양면 Mono PERC</text>
+<rect x="230" y="158" width="286.9" height="16" fill="var(--s2)" rx="2"><title>미국 DDP 양면 Mono PERC: 0.313$ 9/25 주 · 연초 대비 +20%</title></rect>
+<text class="svg-text" x="522.9" y="169.5">0.313$ · 9/25 주 · 연초 대비 +20%</text>
+<text class="svg-lab" x="222" y="193.5" text-anchor="end">미국산 모듈 (Infolink)</text>
+<rect x="230" y="182" width="284.2" height="16" fill="var(--s2)" rx="2"><title>미국산 모듈 (Infolink): 0.310$ NH 9/21 그림1</title></rect>
+<text class="svg-text" x="520.2" y="193.5">0.310$ · NH 9/21 그림1</text>
+<text class="svg-lab" x="222" y="217.5" text-anchor="end">Anza 12/4 이후 납품 오퍼 중간값</text>
+<rect x="230" y="206" width="348.3" height="16" fill="var(--s1)" rx="2"><title>Anza 12/4 이후 납품 오퍼 중간값: 0.380$ 오퍼가 · +40.7%</title></rect>
+<text class="svg-text" x="584.3" y="217.5">0.380$ · 오퍼가 · +40.7%</text>
+<text class="svg-lab" x="222" y="241.5" text-anchor="end">MIP 0.38 + 15% 관세 (KB 수렴 가정)</text>
+<rect x="230" y="230" width="400.6" height="16" fill="var(--s3)" rx="2"><title>MIP 0.38 + 15% 관세 (KB 수렴 가정): 0.437$ KB 8/31</title></rect>
+<text class="svg-text" x="636.6" y="241.5">0.437$ · KB 8/31</text>
+<line x1="578.3" y1="6" x2="578.3" y2="258" stroke="var(--up)" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text class="svg-lab" x="578.3" y="272" text-anchor="middle" style="fill:var(--up)">모듈 MIP 0.38$/W</text>
+</svg></div>
+
+  <h3>Anza가 본 것: 오퍼가는 40% 올랐지만 체결가는 아직 아니다</h3>
+  <p>태양광·ESS 조달 플랫폼 Anza는 9/9 기준으로 플랫폼 공급업체의 55%가 Section 232를 반영한 가격을 제시했고 이들 제품이 플랫폼 모듈의 65%라고 밝혔다. 8/7 정책 발표 이전 수입 모듈의 중간가는 0.27$/W였고, 가격을 다시 책정한 공급업체가 개발사에 제시한 12/4 이후 납품분 오퍼 중간값은 0.38$/W로 40.7% 높다. 같은 제품·같은 계약 조건으로 직접 비교 가능한 견적은 약 15% 올랐다(PV Magazine 9/26 “Anza expects at least a 40% spike in U.S. solar module prices after Section 232”, 하나 9/28). 하나가 강조한 대로 <b>0.38은 개발사가 그 가격에 계약을 끝냈다는 뜻이 아니라 공급자의 오퍼가</b>다. 회사 IR도 9월 중순까지 “발표 후 아직 미국 모듈 가격 상승은 나타나지 않았다, 세부 지침 부재로 구매자 관망”이라고 했다(NH 9/21). 오퍼와 체결 사이의 간격이 4분기 실적(3Q 판가는 전분기와 유사, NH)과 2027년 추정치의 간격이다.</p>
+
+  <h3>미국 DDP 0.313$/W가 연초 대비 +20%인 이유는 232가 아니다</h3>
+  <p>하나(9/28)는 미국 DDP 양면 Mono PERC 0.313$/W의 연초 대비 상승을 ① 인도·인니·라오스산 모듈 AD/CVD 조사에 따른 공급 불확실성·부족 위험, ② 2026년 초 OBBBA의 PFE(금지 외국 법인) 조달 제한으로 세액공제 요건을 충족하는 제품에 붙은 프리미엄으로 설명한다. 즉 232 시행 전에 이미 “세액공제가 되는 모듈”과 “안 되는 모듈”의 가격이 갈라졌고, 그 위에 232가 얹힌다. 이 인도가격 상승이 한화솔루션 같은 미국 내 생산업체의 신규 가격 협상력을 높이는 요인이라는 것이 하나의 결론이다. 반대로 인도 모듈 14c, 중국 11c, 유럽의 중국산 12c(NH 그림1·하나 도표 17)는 미국 밖에서는 가격이 전혀 오르지 않았다는 증거다. <b>미국 프리미엄은 정책이 만든 것이고, 정책이 바뀌면 사라진다</b>는 점이 이 사다리의 약점이자 Q11의 첫 번째 리스크다.</p>
+
+  <h3>중국: 반내권은 폴리 가격을 두 주 띄웠고 셋째 주부터 되밀렸다</h3>
+  <ul class="tl">
+    <li><b class="d">7/31</b><span>시장감독관리총국, 옌청에서 태양광 업계 가격 준법 지도회의. “내권식 경쟁 → 품질 경쟁”, 원가 산정 모델 표준 보급, 원가 이하 판매 법 집행 예고(하나 TG 8/3)</span></li>
+    <li><b class="d">8/6</b><span>8대 폴리실리콘 업체 상하이에서 반내권 공동 제안서 서명: “원가 이하 판매 금지”(상해증권보, 하나 TG 8/7)</span></li>
+    <li><b class="d">8/13</b><span>중국 폴리 5.08$/kg(WoW +22%). 8사가 오퍼가를 40위안/kg으로 일제히 인상했으나 대형 구매자는 수용 거부, 실거래 제한적(하나 TG 8/13)</span></li>
+    <li><b class="d">8/20</b><span>+8.5% WoW(2주 +32%), 웨이퍼·셀 +21%. 수요 회복이 아니라 공급 조절. 급등이 오히려 신규 주문을 위축(하나 TG 8/20)</span></li>
+    <li><b class="d">8/27 → 9/3</b><span>5.27(−4.4%) → 5.07(−3.8%). 2선 업체·트레이더 할인 판매, 일부 폴리 업체 오퍼가 인하. 상반기 중국 설치 −66% YoY, 룽지·퉁웨이·TCL중환 상반기 적자 100억 위안(머니투데이 8/6)</span></li>
+    <li><b class="d">9/10 → 9/24</b><span>5.07 3주 보합. “주요 업체의 가격 방어가 하단을 지지”. 셀은 원산지 세탁(origin-washing)용 주문으로 가동률 유지(하나 9/14)</span></li>
+  </ul>
+  <p>중국 가격은 OCI·한화의 판가가 아니다. 그러나 두 경로로 닿는다. 하나는 <b>웨이퍼</b>다. 중국 웨이퍼가 0.115$/장(약 2c/W)인 한 미국 밖 셀 업체는 비중국 웨이퍼에 프리미엄을 낼 이유가 없고, OCI NST의 웨이퍼 판가는 “미국 셀 업체가 MIP 100$/kg짜리 수입 웨이퍼 대신 얼마를 내느냐”에서 결정된다. 다른 하나는 <b>원산지 세탁</b>이다. 중국산 셀이 서류를 바꿔 미국으로 들어가면 미국 셀·모듈 가격의 상승을 누르고(하나 8/20), 232의 사재기·허위 원산지 제재가 얼마나 집행되는지가 관건이다.</p>
+</section>
+
+<section class="q" id="q4">
+  <div class="qn">Q4 · US demand</div>
+  <h2>미국 수요: 2026년 신규 발전원의 51%가 태양광이고 세이프하버 파이프라인이 216~240GW인데, 10년물 5.2%와 “가격 상승분을 누가 내느냐”가 2027년 설치량의 상한을 정한다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 수요의 바닥은 두껍다. EIA는 2026년 계획된 유틸리티급 신규 설비 86GW 중 태양광 43.4GW(51%)를 집계했고(2/20), 2Q26 실제 설치는 11.4GWdc(+45% YoY, 유틸리티 9.6GW +61%)였다(SEIA/우드맥 9/10). 7/4 세이프하버 마감 전에 216~240GWdc가 착공 요건을 채워 2030년 말까지 ITC/PTC를 받는다. 그러나 천장도 보인다. ① 주택용은 2Q 995MW로 5년래 최저(2026년 −23%), ② 우드맥은 2026~31년을 “연 44GWdc 안팎”으로 보고 금리는 요인으로 꼽지도 않았는데, 미국 10년물은 232 서명일 4.69%에서 9/26 5.23%(2007년 이후 최고)로 올랐고 연준은 9/16 +25bp에 이어 10월 추가 인상 가능성이 66%다. ③ 모듈이 30 → 38~44c/W가 되면 PPA가 4~5$/MWh 오른다(Roth). <b>즉 232는 “미국 내 만드는 사람”의 마진을 올리지만 “미국 내 짓는 사람”의 수익성을 깎는다</b> — 하나가 8/10에 “프로젝트 수익성 악화를 감내하는 정책”이라 쓴 이유이고, Intertek CEA가 2027~30년 유틸리티급 취소를 예상하는 이유다.
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">2026 계획 신규 발전원 (EIA)</div><div class="v">43.4GW · 51%</div><div class="d">총 86GW 중 태양광 43.4(+60% YoY) · ESS 24 · 풍력 11.8 · 가스 6.3 (Form 860M, 2025-12 기준)</div></div>
+    <div class="kpi"><div class="l">2Q26 실제 설치 (SEIA/우드맥)</div><div class="v">11.4GWdc</div><div class="d">+45% YoY · 유틸리티 9.6(+61%) · 주택 0.995(−12%, 5년래 최저) · 1Q 7.8 → 1H 19.2GWdc</div></div>
+    <div class="kpi"><div class="l">2026~31 전망 (우드맥 9/10)</div><div class="v">연 ~44GWdc</div><div class="d">5년 전망 +1.2% 상향 · 유틸리티 217GWdc(+7.5) · 주택 2026 −23% · BNEF 주택 4.1GW(−15%)</div></div>
+    <div class="kpi"><div class="l">세이프하버 파이프라인</div><div class="v">216~240GWdc</div><div class="d">7/4 착공 요건 충족분 → 2030년 말까지 가동 시 ITC/PTC (4년 연속성). 이후 착공분은 2027-12-31 가동 요건</div></div>
+    <div class="kpi"><div class="l">EIA STEO (9/9)</div><div class="v">+30 / +41GW</div><div class="d">유틸리티 태양광 설비 151 → 181 → 222GW (2025 → 26 → 27) · 발전량 +21% / +18%</div></div>
+    <div class="kpi"><div class="l">미국 10년물 · 연준</div><div class="v">5.23% · 3.75~4.00%</div><div class="d">9/26 (8/6 4.69) · 9/16 +25bp 만장일치, 2023년 이후 첫 인상 · 16/18명 추가 인상 · 10월 인상 확률 66%</div></div>
+    <div class="kpi"><div class="l">First Solar 잔고</div><div class="v">45.1GW</div><div class="d">136억$, 2030년까지 · 41GW가 국산부품 조건 · 신규 수주 미국 1.9GW @0.36$/W, 인도 1.1GW @0.20 (7/30)</div></div>
+    <div class="kpi"><div class="l">수입 (S&P·pv magazine)</div><div class="v">셀 3.7GW · 모듈 32GW</div><div class="d">1Q26 셀 수입(−21% QoQ), 한국산 31.9% 1위 · 2025년 모듈 수입 32GW · 미국 재고 GW 추정치는 공표 없음</div></div>
+  </div>
+  <p class="src"><b>출처</b> EIA Today in Energy 2/20·STEO 9/9, SEIA/Wood Mackenzie US Solar Market Insight Q3 2026(9/10), BNEF(Bloomberg Law), First Solar 2Q26(7/30), S&P Global(6월), FRED DGS10·CNBC 9/26·Fed 9/16 성명·SEP, Trading Economics 9/28.</p>
+
+  <h3>수요를 지탱하는 세 개의 제도와 하나의 빈칸</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>제도</th><th>내용 (2026-09-28 기준)</th><th>2사에 주는 뜻</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">OBBBA 45Y/48E 종료 규칙</td><td>2026-07-04까지 착공했거나 2027-12-31까지 가동. 착공분은 4년 연속성 세이프하버(2026 착공 → 2030년 말). 2025-08-15 Notice 2025-42로 물리적 착공 기준만 인정(5% 규칙은 1.5MW 이하만)</td><td>2030년까지 유틸리티 파이프라인 확정 = 모듈 수요의 바닥. 그 뒤(2031~)는 “세액공제 절벽”</td></tr>
+      <tr><td class="hd">FEOC / PFE (금지 외국 법인)</td><td>Notice 2026-15(2/12)로 물질적 지원 비용 비율(MACR) 정의·3개 잠정 세이프하버. 시설 비중국 비율 40%(2026) → 45 → 50 → 55 → 60%(2030+), 45X 태양광 부품 50%(2026) → 60 → 70 → 80 → 85%. <b>제안 규정은 9/28 현재 미발표</b>(SEIA: “가이던스 미완, 추가 지연 가능”)</td><td>한화 카터스빌·달튼(비중국 셀)과 OCI NST 웨이퍼(Non-PFE)는 “요건 충족 공급망”으로 프리미엄. 미국 내 중국계 모듈 공장은 설치사·은행·보험사가 거래 중단(Reuters 5/8, 6곳 이상)</td></tr>
+      <tr><td class="hd">AD/CVD (인도·인니·라오스)</td><td>최종 판정 9/11: AD 인도 123.04%, 인니 94.36%, 라오스 65.43% · CVD 인도 126.09%, 인니 173.70/73.20%, 라오스 82.03/153.67%. ITC 최종 표결 <b>10/14</b>, 명령 11/2 예정. 청원인은 한화큐셀·First Solar·Mission Solar(OCI)</td><td>동남아 4국(2024) 이후 우회로 3국도 닫힘 → 미국 DDP 모듈이 연초 대비 +20%가 된 첫 번째 이유(하나 9/28). 한화·OCI가 청원인이라는 점이 정책 방향의 근거</td></tr>
+      <tr><td class="hd">주택용 (25D 종료 · TPO)</td><td>25D(구매형) 2025년 말 종료 → EnFin 믹스 대출 25%/TPO 75%에서 1Q26 TPO 96%. 48E(TPO) 크레딧은 7/4 이후 착공분은 2027년 말까지 가동 요건. 2Q 주택 설치 995MW 5년래 최저, 우드맥 2026 −23%</td><td>한화 주택용 매출 2.7조 가이던스의 기반이 TPO. 2027년 말 이후는 미정 — Q11 리스크</td></tr>
+    </tbody></table></div>
+
+  <h3>금리: 미국 태양광주가 9월에 판 것</h3>
+  <p>SEIA/우드맥은 전망 하향 요인으로 허가(초기 파이프라인의 30%)·FEOC 가이던스 미완·232·FCC 인버터 규제를 들었지 금리는 들지 않았다. 그런데 시장은 금리를 팔았다. 9/24 First Solar −10.3%(172.16$)의 이유가 “차입비용 상승에 따른 프로젝트 파이낸싱 우려”와 GLJ의 목표가 하향이었다(TipRanks·24/7 Wall St). 10년물은 8/6 4.69% → 9/16 5.01%(FOMC +25bp) → 9/24 5.18% → 9/26 5.23%로 올랐고 30년물은 5.49%(2004년 이후 최고)다. 연준 점도표 중앙값은 2026년 말 4.1%(6월 3.8%)로 올라갔고 16/18명이 추가 인상을 봤다. 태양광 프로젝트의 IRR은 차입비용에 직결되고, 232로 모듈이 +10c/W(Roth) 오르면 PPA가 4~5$/MWh 올라야 하는데 그 협상은 금리가 오르는 국면에서 더 어렵다. <b>이것이 OCI·한화의 미국 판가 상승이 “물량 감소”로 되돌아올 수 있는 경로</b>다. 다만 시차가 있다. 2030년까지의 세이프하버 물량은 이미 착공 요건을 채웠고, 2Q26 유틸리티 설치가 +61%였다는 것은 지금 지어지는 프로젝트가 2024~25년에 금융을 닫은 것들이라는 뜻이다. 가격 상승이 설치량을 깎는 시점은 2027년 하반기 이후, 2028년 착공분부터다.</p>
+
+  <h3>First Solar가 보여 주는 “가격 상승의 수요 반응”</h3>
+  <ul class="tight">
+    <li><b>신규 수주 단가 0.36$/W(미국 1.9GW)</b>는 현재 미국 DDP 수입 모듈 0.29~0.31$/W보다 높고 MIP 0.38보다 낮다. 웰스파고는 2028년 이후 First Solar 수주를 0.42$/W로 모델링한다(Yahoo). 즉 <b>미국 시장은 이미 “관세 후 가격”을 0.36~0.42$/W 사이에서 협상하고 있고</b>, OPIS의 1H27 DDP 선도 지표 0.345$/W가 그 아래쪽이다.</li>
+    <li><b>세이프하버 선수요는 없었다.</b> First Solar는 7/30 컨콜에서 개발사 대부분이 모듈이 아닌 변압기로 5% 요건을 채웠고 신규 수주 1.9GW의 대부분이 7/4 이후 체결됐다고 했다(하나 8/5). 수요가 앞당겨진 것이 아니라 2030년까지 “뒤로” 확정된 것이다.</li>
+    <li><b>Jefferies의 반론</b>: 개발사들이 공급을 미리 확보해 12/4 시행 후 First Solar의 물량이 오히려 줄 수 있고, 가격 효과는 5~10c/W로 “완만”하다(8월). 이 견해가 맞으면 한화의 4Q~1Q27 체결가도 38c보다 낮게 시작한다.</li>
+  </ul>
+  <div class="note">읽는 법: 2026~27년 설치량은 제도(세이프하버·AD/CVD·FEOC)가 정하고, 2028년 이후는 가격(모듈 c/W + 금리)이 정한다. 2사의 2027년 추정치가 보는 것은 앞쪽이고, 밸류에이션(PBR)이 보는 것은 뒤쪽이다. 10월 14일 ITC 표결, 10월 27~28일 FOMC, 그리고 FEOC 제안 규정 발표가 4분기의 세 관문이다.</div>
+</section>
+
+<section class="q" id="q5">
+  <div class="qn">Q5 · US capacity</div>
+  <h2>미국 공급망 CAPA: 모듈 66GW의 나라에 셀은 3~11GW, 웨이퍼는 7~10GW뿐이다 — 병목은 웨이퍼이고, 카터스빌 3.3GW와 코닝 2.5GW가 그 전부다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> SEIA 기준 미국 모듈 생산능력은 66GWdc(2Q26에 1GW 추가)인데 2Q26에 폴리·웨이퍼·셀은 한 뼘도 늘지 않았다. 셀은 2026년 초 3.2GW에서 카터스빌 램프로 10.6~11GW(Bernreuter·Anza), 잉곳·웨이퍼는 7GW 가동 + 3.3GW 건설(SEIA 6월) 또는 10.3GW(Bernreuter)다. 미국 조립 모듈에 들어가는 셀의 90% 이상이 수입이다. 232가 잉곳·웨이퍼 MIP를 100$/kg(약 12c/W)으로 가장 세게 잡은 것은 이 숫자 때문이고, Anza 대표의 말대로 “국내 웨이퍼 생산이 하룻밤 사이에 극적으로 더 가치 있어졌다.” <b>지금 미국에서 웨이퍼를 뽑는 곳은 한화 카터스빌(3.3GW, 셀 6/9 가동)과 코닝 미시간(약 2.5GW 추정)뿐</b>이고, NorSun 툴사 5GW는 1월에 취소됐다. Intertek CEA는 45X가 2030년부터 줄어드는 탓에 2029~30년 전에는 새 웨이퍼 공장이 성립하기 어렵다고 본다. 그래서 OCI의 “베트남 Non-PFE 웨이퍼 2.7 → 11.5GW”가 미국 셀 공장들의 유일한 비중국 대안이 된다.
+  </div>
+
+  <div class="fig"><p class="ft">미국 태양광 밸류체인별 생산능력 (2026년 6월, GWdc)</p><p class="fs">SEIA 집계(하나 Weekly 8/31 도표 41). *폴리실리콘은 반도체용 포함, NREL 2.0g/W 가정으로 GW 환산(25GW ≈ 5만톤). 셀 3.2GW 가동 vs 25.3GW 건설 중 — 가동 기준 병목은 셀, 건설분까지 보면 병목은 잉곳·웨이퍼(10.3GW).</p><div class="legend"><span><i style="background:var(--s1)"></i>가동 중</span><span><i style="background:var(--s3)"></i>건설 중</span><span><i style="background:var(--muted)"></i>발표</span></div><svg viewBox="0 0 700 280" role="img" aria-label="GW">
+<line class="svg-grid" x1="62" y1="234.0" x2="680" y2="234.0"/>
+<text class="svg-text" x="54" y="238.0" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="181.5" x2="680" y2="181.5"/>
+<text class="svg-text" x="54" y="185.5" text-anchor="end">25</text>
+<line class="svg-grid" x1="62" y1="129.0" x2="680" y2="129.0"/>
+<text class="svg-text" x="54" y="133.0" text-anchor="end">50</text>
+<line class="svg-grid" x1="62" y1="76.5" x2="680" y2="76.5"/>
+<text class="svg-text" x="54" y="80.5" text-anchor="end">75</text>
+<line class="svg-grid" x1="62" y1="24.0" x2="680" y2="24.0"/>
+<text class="svg-text" x="54" y="28.0" text-anchor="end">100</text>
+<line class="svg-axis" x1="62" y1="234.0" x2="680" y2="234.0"/>
+<text class="svg-text" x="123.8" y="252" text-anchor="middle">폴리실리콘*</text>
+<rect x="80.5" y="181.5" width="86.5" height="52.5" fill="var(--s1)"><title>가동 중 폴리실리콘*: 25</title></rect>
+<text class="svg-text" x="123.8" y="211.8" text-anchor="middle" style="fill:#fff;font-size:10.5px">25</text>
+<rect x="80.5" y="164.7" width="86.5" height="16.8" fill="var(--muted)"><title>발표 폴리실리콘*: 8</title></rect>
+<text class="svg-text" x="123.8" y="177.1" text-anchor="middle" style="fill:#fff;font-size:10.5px">8</text>
+<text class="svg-lab" x="123.8" y="159.7" text-anchor="middle" style="font-size:11px">33</text>
+<text class="svg-text" x="247.4" y="252" text-anchor="middle">잉곳</text>
+<rect x="204.1" y="219.3" width="86.5" height="14.7" fill="var(--s1)"><title>가동 중 잉곳: 7</title></rect>
+<text class="svg-text" x="247.4" y="230.6" text-anchor="middle" style="fill:#fff;font-size:10.5px">7</text>
+<rect x="204.1" y="212.4" width="86.5" height="6.9" fill="var(--s3)"><title>건설 중 잉곳: 3.3</title></rect>
+<text class="svg-lab" x="247.4" y="207.4" text-anchor="middle" style="font-size:11px">10.3</text>
+<text class="svg-text" x="371.0" y="252" text-anchor="middle">웨이퍼</text>
+<rect x="327.7" y="219.3" width="86.5" height="14.7" fill="var(--s1)"><title>가동 중 웨이퍼: 7</title></rect>
+<text class="svg-text" x="371.0" y="230.6" text-anchor="middle" style="fill:#fff;font-size:10.5px">7</text>
+<rect x="327.7" y="212.4" width="86.5" height="6.9" fill="var(--s3)"><title>건설 중 웨이퍼: 3.3</title></rect>
+<text class="svg-lab" x="371.0" y="207.4" text-anchor="middle" style="font-size:11px">10.3</text>
+<text class="svg-text" x="494.6" y="252" text-anchor="middle">셀</text>
+<rect x="451.3" y="227.3" width="86.5" height="6.7" fill="var(--s1)"><title>가동 중 셀: 3.2</title></rect>
+<rect x="451.3" y="174.2" width="86.5" height="53.1" fill="var(--s3)"><title>건설 중 셀: 25.3</title></rect>
+<text class="svg-text" x="494.6" y="204.7" text-anchor="middle" style="fill:#fff;font-size:10.5px">25.3</text>
+<rect x="451.3" y="164.7" width="86.5" height="9.5" fill="var(--muted)"><title>발표 셀: 4.5</title></rect>
+<text class="svg-lab" x="494.6" y="159.7" text-anchor="middle" style="font-size:11px">33</text>
+<text class="svg-text" x="618.2" y="252" text-anchor="middle">모듈</text>
+<rect x="574.9" y="87.2" width="86.5" height="146.8" fill="var(--s1)"><title>가동 중 모듈: 69.9</title></rect>
+<text class="svg-text" x="618.2" y="164.6" text-anchor="middle" style="fill:#fff;font-size:10.5px">69.9</text>
+<rect x="574.9" y="52.8" width="86.5" height="34.4" fill="var(--s3)"><title>건설 중 모듈: 16.4</title></rect>
+<text class="svg-text" x="618.2" y="74.0" text-anchor="middle" style="fill:#fff;font-size:10.5px">16.4</text>
+<rect x="574.9" y="29.0" width="86.5" height="23.7" fill="var(--muted)"><title>발표 모듈: 11.3</title></rect>
+<text class="svg-text" x="618.2" y="44.9" text-anchor="middle" style="fill:#fff;font-size:10.5px">11.3</text>
+<text class="svg-lab" x="618.2" y="24.0" text-anchor="middle" style="font-size:11px">97.6</text>
+</svg></div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>단계</th><th>가동 중 (2026-09)</th><th>건설·계획</th><th>주요 사업자</th><th>232 이후 변화 · 2사 연결</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">폴리실리콘</td><td>Hemlock(미시간) 3.0~3.5만톤 + Wacker(테네시) 2만톤+ ≈ 미국 3.3~5.5만톤(13~25GW 상당, 반도체용 포함)</td><td>Hemlock 반도체용 7.72억$ 증설(CHIPS 3.25억$, 2028 가동) · Highland Materials 1.6~2만톤(2028+, 시점 상충) · 8/6 이후 신규 태양광용 공장 발표 없음</td><td>Hemlock(Corning 80.5%), Wacker</td><td>Wacker CEO 9/17 “프레임워크는 실망스럽다, 미국산 사용을 유도하지 않는다 — 반도체용에 집중·풋프린트 최적화 검토”. 미국 안에서 태양광용 폴리 증설 의지가 없다 = 비중국 수입(OCI 말레이)이 계속 필요하다</td></tr>
+      <tr><td class="hd">잉곳·웨이퍼</td><td>SEIA 7GW(6월) · Bernreuter 10.3GW: 카터스빌 3.3GW(잉곳 2025-12, 웨이퍼 2Q26 풀생산), 코닝 미시간 ~2.5GW(하루 100만장 목표, 2Q 업그레이드 정지)</td><td>SEIA 건설 3.3GW · NorSun 툴사 5GW 취소(1월) · Heliene 셀 계획 동결</td><td>한화큐셀, 코닝(Hemlock·JA Solar 피닉스 인수), T1(코닝 공급)</td><td>MIP 100$/kg = 중국 FOB 웨이퍼 1.9c/W의 6배 수준. OCI NST(2.7GW, 미국 고객 LTA)와 코닝이 T1·Suniva·Heliene의 웨이퍼 공급원</td></tr>
+      <tr><td class="hd">셀</td><td>3.2GW(1~7월 집계) → 10.6~11GW(카터스빌 3.3GW 포함): Suniva 노크로스 1GW, ES Foundry, 카터스빌</td><td>Canadian Solar 인디애나 HJT 2.1GW(7월 준공) → 6.3GW(1H27) · T1 G2 2.1GW(1Q27) → 5GW · Suniva 로렌스 4.5GW(8.35억$ 조달 9/10, 2028 풀가동) · Boviet 3GW(2H26) · TOYO 1.5GW · OCI Mission Solar 2GW 계획은 진전 없음(부지에 Elite Solar 1,500만$ 개보수, 10월 착공)</td><td>한화큐셀, Suniva, Canadian Solar(CS PowerTech 75.1%), T1, Boviet</td><td>셀 MIP 0.22$/W + 15% = 25.3c/W(Anza). 셀 수입 의존 90%+ → 달튼 같은 “조립 공장”은 원가가 오르고, 카터스빌 같은 수직계열은 마진이 벌어진다(Q8)</td></tr>
+      <tr><td class="hd">모듈</td><td>SEIA 66GWdc(2Q +1GW) · 6월 69.9GW · Bernreuter 74.1GW(박막 16.5 포함) · 2025년 국내 생산 ≈ 설치의 70%, 수입 32GW</td><td>SEG 휴스턴 4GW 개소(8/7)+4.6GW(2027-05) · Canadian Solar 메스키트 5 → 10GW(2H26) · 유휴·감원: Silfab 사우스캐롤라이나 임시 휴업(8월), Heliene 감원, Meyer Burger 파산(2025)</td><td>First Solar ~14GW, 한화큐셀 8.6GW(달튼 5.1 + 카터스빌 3.5), T1 5GW, Illuminate 5GW, Canadian Solar 5GW …</td><td>중국계 약 24GW(40%, DOE 집계 · 하나 8/31 도표 51 — W3 재집계는 16~20GW)가 FEOC로 발이 묶여 “요건 충족 모듈”의 유효 공급은 명목보다 훨씬 적다. 모듈은 232 제조 인센티브에서 제외</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: SEIA/우드맥 Q3 2026 SMI(9/10, gcn 요약), SEIA 6월 집계(하나 8/31 도표 41), Bernreuter 8월, Anza 8/7·8/10, pv magazine USA 8/14, Canary Media 1/28, Canadian Solar 6-K 8/27, T1 8-K, Mercom 9/10(Suniva), Solar Power World 9/18(OCI·Elite Solar)·8월(Silfab), Wacker CMD 9/17(Reuters), Michigan Banner 8/7(Hemlock), Corning 2Q26(7/28), PV Tech(Intertek CEA). 셀 3.2 vs 10.6GW는 집계 시점·정의 차이(FC-7).</p>
+
+  <h3>테슬라·스페이스X: 100GW 구상의 현재 위치</h3>
+  <div class="grid2">
+    <div class="card"><h4>테슬라 Project Crystal Sun (텍사스 포트벤드)</h4><p>101.16억$(부동산 15억 + 장비 86억), 3,050에이커, 9,712명 고용, 잉곳·웨이퍼·셀·모듈 통합, 2029년 1분기 상업생산 목표. 8/11 JETI 세제 신청, 9/15 Lamar 교육구 이사회 7:0 승인(2029~38 학교세 감면), 카운티 협약은 별도. 테슬라는 “복수 부지 평가 중”. 명목 GW 미공개. 별도로 브룩셔 임차 공장(165만 sq ft, 2.5억$ CAPEX 신고).</p></div>
+    <div class="card"><h4>중국 장비라는 병목</h4><p>테슬라는 쑤저우 Maxwell 등과 29억$ 장비 협상(3/20 Reuters·CNBC). 중국 상무부는 4/15 HJT 장비 대미 수출 제한을 “검토”(4/16 “인지 못함”). 5/19 Electrek: 장비 선적 중이나 “중국 수출 승인 필요”. 8~9월 승인·거부 확정 보도 없음. 미국 301조 태양광 장비 면제는 11월까지(2차 출처). 2026-09-15 시행 중국 출입국령 841호는 태양광 기술자 출국 금지 근거를 만들었다.</p></div>
+    <div class="card"><h4>스페이스X 배스트롭 10GW · Gigasat</h4><p>2×5GW 셀 공장 허가(Bloomberg 5/21), 3월 말 착공, 4~5월 장비 반입. 6월 ‘Gigasat’ 1,100만 sq ft 캠퍼스 공개(잉곳·웨이퍼·셀 + AI 위성, 2027년 말 첫 위성). 7/30 Nikkei: 스페이스X, 공급사에 중국 국적자·중국산 장비 배제 요구. 하나 9/23의 “우주 태양광 = 국가안보” 논거의 실체다.</p></div>
+    <div class="card"><h4>OCI와의 연결: 확인된 것과 아닌 것</h4><p>확인된 것: 한화큐셀 LTA 12억$(2024.7~2034.6, 선수금 1.6억$), Trina 6.6억$, 2026년 미국 고객 신규 LTA(20kt, take-or-pay), 웨이퍼 LTA(2029 완판). 확인 안 된 것: SpaceX와의 다년 계약(4/14 매일경제TV “1조원·3~5년” → 미체결), 테슬라의 OCI 폴리 확보 제안(Digitimes 8/6), 머스크의 자체 폴리 40만톤 장비 계약(중국 언론, 출처 불명). 유진(8/12)은 웨이퍼 LTA 상대를 “글로벌 우주기업으로 추정”.</p></div>
+  </div>
+
+  <h3>왜 병목이 웨이퍼인가: 세 숫자</h3>
+  <ul class="tight">
+    <li><b>가격 격차 6배.</b> 중국 FOB M10 웨이퍼 0.149$/장 ≈ 1.9c/W(OPIS 9/15) vs MIP 100$/kg ≈ 12c/W(n-type, Bernreuter)·15.2c/W(p-type)·13.8c/W(관세 포함, Anza). 폴리(16.9 → 21$, +24%)나 모듈(0.31 → 0.38, +21%)보다 격차가 압도적이다. 미국 셀 업체가 “요건 충족 웨이퍼”를 사려면 이 값을 내야 한다.</li>
+    <li><b>미국 웨이퍼 원가 12~13c/W(Bernreuter).</b> MIP가 미국 생산원가와 거의 같게 설정됐다. 즉 MIP는 “미국 웨이퍼가 수입과 같은 값에 팔리게” 만든 것이지 폭리를 보장한 것이 아니다. 신규 웨이퍼 공장이 2029~30년 전에는 성립하기 어렵다는 Intertek의 판단과 맞물린다.</li>
+    <li><b>셀 건설 25.3GW vs 웨이퍼 건설 3.3GW(SEIA 6월).</b> 2027~28년에 미국 셀이 10 → 30GW로 늘면 웨이퍼 수요가 그만큼 는다. 카터스빌 3.3GW는 자가 소비, 코닝은 T1·Suniva·Heliene에 5년간 80% 이상 선약정(Corning 2Q26). 남는 비중국 공급원은 OCI NST뿐이다. 이것이 “OCI 웨이퍼 2028~29 완판”의 배경이고, 한화가 셀을 미국에서 만들수록 OCI의 고객이 늘어나는 구조다.</li>
+  </ul>
+</section>
+
+<section class="q" id="q6">
+  <div class="qn">Q6 · Global upstream</div>
+  <h2>글로벌 폴리·웨이퍼 수급: 중국은 가동률 34%·재고 54만톤의 시장이고, 비중국은 “미국 수요와 같은 크기”의 시장이다 — 그래서 21$는 정책이 아니라 수급으로도 설명된다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 중국 폴리는 1H26 생산 54.1만톤(−9%), 평균 가동률 33.8%, 재고 51~54만톤(반년치)이다(CNIA·EnergyTrend). 반내권으로 가격을 5.5$까지 띄웠지만 8사 자체가 4Q에 50만톤을 세우고 2026~27년 생산을 100~110만톤(−20%)으로 줄이겠다는 것이 9월 쓰촨 회의의 내용이다. 비중국은 정반대다. Intertek CEA 집계로 <b>가동 중인 비중국 폴리 능력은 약 9.2만톤</b>(OPIS: 월 8,000톤)인데, 미국 설치 50GW가 필요로 하는 폴리는 10~12.5만톤이다. 유럽·인도·한국·일본의 비중국 수요를 더하기 전에 이미 미국 하나로 꽉 찬다. 여기에 Wacker는 태양광용에서 발을 빼려 하고(9/17 CMD), REC Silicon은 문을 닫았으며(2024-12), Highland는 2028년 이후다. <b>비중국 폴리의 새 공급은 OCI 말레이 35 → 70kt(2029)와 오만 United Solar 10만톤(중국계 창업, FEOC 준수 “자체 주장”)뿐</b>이고, 후자가 미국 세관에서 어떻게 분류되느냐가 OCI 프리미엄의 최대 변수다.
+  </div>
+
+  <h3>세 개의 폴리실리콘 가격, 네 개의 집계 기관</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>시장 · 집계</th><th class="num">9월 가격 ($/kg)</th><th>추이 · 코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">중국 · PV Insight (하나 Weekly)</td><td class="num">5.07</td><td>8/27 5.27 → 9/3 5.07 → 3주 보합</td></tr>
+      <tr><td class="hd">중국 · OPIS Mono Premium</td><td class="num">5.56 (CNY 37.4, 9/1)</td><td>8/7 4.72(CNY 31.9) 대비 +17%. 생산자 오퍼 40위안+, 급한 구매자만 43위안 수용. 선물 37~38위안</td></tr>
+      <tr><td class="hd">중국 · Bernreuter (9/23)</td><td class="num">n-type 5.28 (CNY 40) · p-type 4.09 (CNY 31)</td><td>실리콘공업분회의 43,000위안/톤 집계는 “정치적”. 10월 선물 ~37위안. 경로: 1월 51,000 → 7월 말 32,000 → 9월 40,000~43,000위안/톤</td></tr>
+      <tr><td class="hd">비중국 · PV Insight (하나)</td><td class="num">16.92 (9/24)</td><td>8/13 16.83 → 8/27 16.85 → 9/3~9/21 16.83 → 9/24 16.92 (+0.5%)</td></tr>
+      <tr><td class="hd">비중국 · OPIS Global Polysilicon Marker</td><td class="num">19.23 (8/7·9/1 동일)</td><td>3월 18.94 → 4월 19.14 → 8~9월 19.23. “비중국 수요 매우 약함, 추적 가능한 중국산 ~7$에 잠식”</td></tr>
+      <tr><td class="hd">비중국 · Bernreuter / InfoLink</td><td class="num">18.50 / 18.5 (범위 11.0~26.7)</td><td>9/23</td></tr>
+      <tr><td class="hd">OCI 말레이 · 회사 공시 참고 시세</td><td class="num">17.50 (1H26 평균)</td><td>DART 반기보고서: Energy Trend 비중국 평균의 산술평균. 2025년 18.08, 2024년 19.97. 미래에셋 가정 4Q25 ASP 17$, 2026 평균 18.8$</td></tr>
+      <tr><td class="hd">미국산 · PV Insight (하나 9/24)</td><td class="num">20.45</td><td>WoW +1.5%. OPIS는 “미국 스팟 공표 없음”. SIA가 상무부에 제출한 미국산 태양광용 “공정가치” 24$ (2025-08)</td></tr>
+      <tr><td class="hd">정책 앵커</td><td class="num">MIP 21 · 301 포함 중국산 31.5</td><td>비중국 프리미엄(회사 IR 6월): “12$+α”</td></tr>
+    </tbody></table></div>
+  <p class="cap">비중국 가격이 16.9~19.2$로 갈리는 것은 바스켓(현물·계약, 지역, 등급) 차이다. 하나가 쓰는 PV Insight 16.9는 가장 낮은 축이라 “MIP까지 +24%”는 상단 추정이고, OPIS 19.2 기준이면 +9%다. OCI의 실현 판가는 LTA 포뮬러가 섞여 어느 쪽과도 다를 수 있다(FC-1).</p>
+
+  <h3>중국: 반내권의 실제 내용은 “가격 담합 금지, 생산 감축 허용”이다</h3>
+  <ul class="tl">
+    <li><b class="d">2025-12 → 2026-01</b><span>6대 업체가 30억 위안 자본금의 통합 플랫폼을 만들어 500억 위안으로 능력 1/3을 사서 세우려 했으나 1/8~9 시장감독관리총국이 중단시키고 “생산량·가격·쿼터 합의 금지”. 선물 −9%·−8%(51,300위안)</span></li>
+    <li><b class="d">7/27 → 7/31 → 8/6</b><span>CPIA 원가 산정 모델 표준 → 옌청 가격 준법 회의(27사) → 8사 “원가 이하 판매 금지” 선언(유효 능력 90%+). 숫자 하한은 없음. 선물 상한가(35,890위안)</span></li>
+    <li><b class="d">9월 초 (쓰촨)</b><span>쓰촨·윈난·칭하이 약 50만톤을 4Q에 “기술 개선” 명목으로 중단 서약. 2026·2027년 생산 목표 100~110만톤(2025년 대비 −20%). 10월부터 가동률 35% 가이드(실리콘공업분회). 퉁웨이의 칭하이 리하오 인수 반독점 승인(9/11)</span></li>
+    <li><b class="d">수급 숫자</b><span>1H26 생산 54.1만톤(−9.3%), 가동률 33.8%, 재고 51만톤(7/22 CNIA) → 54만톤+(9/10). 8월 생산 11.9만톤(+13% MoM), 9월 ~12.4만톤. 2026년 중국 생산 125만톤 vs 능력 350만톤. Daqo 2Q26 ASP 4.04 vs 현금원가 4.57 vs 총원가 5.95$/kg, 순손실 8,120만$. 퉁웨이 1H −51억, GCL −21억, 룽지 −37억 위안</span></li>
+  </ul>
+  <p>중국 가격이 OCI에 닿는 경로는 두 가지다. 첫째, “추적 가능한(traceable) 중국산 폴리 ~7$”가 232 체제 아래에서 비중국 폴리 수요를 잠식한다는 OPIS의 관찰(9/1). MIP 21$에 301 관세 50%가 중첩되면 31.5$가 되어 경쟁력이 없지만(하나), 301이 232와 어떻게 중첩되는지는 로펌 해석이 갈린다(W1: Troutman 중첩 vs Hunton 일부 비중첩) — 이것이 확정되기 전까지 비중국 프리미엄의 하단은 열려 있다. 둘째, 웨이퍼다. 중국 웨이퍼 재고 25GW·가동률 30~70%인 시장에서 FOB 0.149$/장이 유지되는 한, 미국 밖 셀 업체는 비중국 웨이퍼에 값을 치르지 않는다. OCI NST의 프리미엄은 미국 안에서만 성립한다.</p>
+
+  <h3>비중국 공급자 지도: 늘리는 곳은 OCI뿐이다</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>공급자</th><th class="num">능력 (톤/년)</th><th>상태 (2026-09)</th><th>2사에 주는 뜻</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">Wacker (독일 2곳 + 테네시)</td><td class="num">80,000 (테네시 20,000+)</td><td>2Q26 폴리 매출 2.26억€·EBITDA 1,100만€(5%). CEO 9/17: 232는 “실망”, 태양광용 고전, 반도체용 집중·풋프린트 최적화 검토, 찰스턴 결정 서두르지 않음. P/B 1.04, JPM·MS Underweight</td><td>가장 큰 비중국 경쟁자가 태양광용 증설 의지가 없다 → OCI의 LTA 협상력</td></tr>
+      <tr><td class="hd">Hemlock (미시간, Corning 80.5%)</td><td class="num">30,000~35,000</td><td>반도체용 7.72억$ 증설(2028). Corning 태양광 부문 2Q26 매출 4.38억$(+90%), 폴리·웨이퍼 능력 80%+를 5년 선약정(T1 등). 목표 매출 30억$+</td><td>미국산 폴리 20.45 → 21$의 주인. 태양광용 증설은 웨이퍼 쪽</td></tr>
+      <tr><td class="hd">OCI TerraSus (말레이 사말라주)</td><td class="num">35,000 → 40,000 (2027~28) → 70,000 (2029)</td><td>가동률 ~90%(4월). 신규 35kt는 준공 2028년 말·상업 1H29, 1.43조. 기존 35kt 완판(LTA 15kt + 미국 신규 20kt take-or-pay). OTSM 반도체용 8,000톤(1H27 준공·2029 판매)</td><td>비중국 태양광용 증설의 사실상 유일한 주자. 수력 PPA(저탄소) → 미국·유럽 요건</td></tr>
+      <tr><td class="hd">Tokuyama (일본)</td><td class="num">8,200 (반도체용)</td><td>말레이 태양광 공장은 2016~17년 OCI에 매각. OTSM 50% 파트너</td><td>—</td></tr>
+      <tr><td class="hd">REC Silicon (미국)</td><td class="num">0 (모지스레이크 16,000 폐쇄)</td><td>2024-12 한화 품질 테스트 실패로 중단, 2026-06 한화(Anchor AS 93%)가 상장폐지·비공개화. 실란만 가동</td><td>한화 카터스빌 폴리는 OCI 말레이 LTA(12억$/10년)로 대체 — 두 회사는 공급자·고객이다</td></tr>
+      <tr><td class="hd">United Solar (오만 소하르)</td><td class="num">100,000</td><td>2026-01~02 가동, 13.5억$. 중국계 창업, “FEOC 준수·추적 가능” 자체 주장, 232 환영 성명(8/13)</td><td><b>최대 변수</b>: 미국이 준수로 인정하면 비중국 공급이 두 배가 되어 21$ 수렴이 늦어진다</td></tr>
+      <tr><td class="hd">Highland Materials (테네시)</td><td class="num">16,000 → 20,000</td><td>48C 2.56억$. 2H26 착공·2027 말~2028 초 가동(PV Tech) vs “연대 말”(OPIS). 비지멘스 공법, 태양광 잉곳 적합성 의문</td><td>2028년 이후 변수</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: Wacker CMD 9/17(Reuters·WebWire)·2Q26, Michigan Banner 8/7, Corning 2Q26, OCI 2Q26 IR·Fact Book 8/27·UPI 8/27·The Elec 4/17, Tokuyama, PV Tech/Spokesman(REC), SolarQuarter 8/13(United Solar), PV Tech·OPIS(Highland), Intertek CEA(Solar Power World 8월), OPIS 8/7(월 8,000톤). 능력 숫자는 명판 기준이며 태양광·반도체 혼재.</p>
+
+  <h3>인도와 유럽: 웨이퍼의 다음 수요처와 “미국 밖 가격”의 증거</h3>
+  <p>인도는 1H26에 27GW를 설치했고(+49%, Mercom) 6/1부터 ALMM List-II(국산 셀 의무)가 시행돼 셀 30.3GW가 등재됐다. 잉곳·웨이퍼 List-III는 2028-06-01 시행이며 Waaree가 3월 나그푸르에 10GW 잉곳·웨이퍼 공장을 착공했고 폴리실리콘 PLI가 논의 중이다. 중국의 3월 수출 68GW 기록에서 인도향이 +6.6GW(+141%)로 가장 컸고 셀·웨이퍼 수출이 모듈을 앞질렀다 — 하나(8/31)가 “인도 성수기 진입에 따른 웨이퍼 수출 수요”로 읽은 그 흐름이다. 인도가 2028년까지 중국 웨이퍼를 사는 한 비중국 웨이퍼의 프리미엄은 미국 안에 갇히고, 2028년 List-III부터 두 번째 시장이 열린다. 유럽은 반대 방향의 증거다. 8월 TOPCon 0.122€/Wp(sun.store), 중국산 유럽향 FOB 0.119$/W — 미국 0.31$/W의 38%다. 같은 제품이 대륙에 따라 2.6배 차이 나는 것은 오직 정책 때문이고, 그 정책이 2사 이익의 원천이자 한계다.</p>
+</section>
+
+<section class="q" id="q7">
+  <div class="qn">Q7 · OCI Holdings</div>
+  <h2>OCI홀딩스: 시가총액이 사는 것은 매출의 11%인 폴리실리콘 사업이고, 그 사업은 아직 적자다 — 레버리지는 “가격 갭 × 판매량 × 웨이퍼”의 곱으로 온다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 1H26 연결 매출 1조 9,155억 중 태양광 폴리실리콘(OCI TerraSus, 말레이시아)은 2,170억(11%)이고 영업이익은 −273억이다(DART 반기보고서). 이익은 화학소재(OCI(주), +703억)·에너지솔루션(OCI Enterprises·OCI SE, +559억)·도시개발(DCRE, +366억)이 냈다. 그런데도 주가가 2025년 말 115,200원에서 5/27 388,000원까지 3.4배 오른 것은 <b>“비중국 폴리 16.9 → 21$ + 웨이퍼 3~4c → 10~12c/W + 물량 2배(LTA 완판)”</b>가 원가 상승 없이 이익으로 떨어진다는 계산 때문이다. 하나는 이 세 곱을 2026년 OP 3,950억 → 2027년 6,056억으로 적었고, 컨센서스는 3,468 → 5,565억이다(WiseReport 9/28). 관건은 3분기다. 하나의 3Q 폴리 OP 653억(OPM 27%)은 “비중국 폴리 20$/kg” 가정인데 실제 3분기 평균은 16.8$였다. <b>가격 갭이 늦게 닫히면 3Q는 하회하고, 12/4 이후 갭이 닫히면 2027년은 상향된다</b> — 주가는 후자를 먼저 사고 있다.
+  </div>
+
+  <h3>사업 지도: 다섯 부문과 1H26 숫자</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>보고부문 (주요 회사)</th><th>내용</th><th class="num">1H26 매출 (억)</th><th class="num">1H26 OP (억)</th><th class="num">2Q26 매출 / OP</th><th class="num">1H25 매출 / OP</th><th>232와의 연결</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">신재생에너지 (OCI TerraSus Sdn. Bhd., NST 65%)</td><td>말레이시아 태양광용 폴리실리콘 3.5만톤 · 베트남 Non-PFE 웨이퍼 2.7GW(6월 말 상업생산) · Slim Rod</td><td class="num">2,170</td><td class="num down">−273</td><td class="num">1,133 / −41</td><td class="num">1,553 / −594</td><td>직접. MIP 21$·100$/kg의 수혜 주체. 미국 고객 LTA 체결(DART)</td></tr>
+      <tr><td class="hd">에너지솔루션 (OCI Enterprises Inc., OCI SE)</td><td>미국 태양광 발전 개발·운영(텍사스 Mission Solar 부지 보유) · 군산 열병합(SMP 110.6원/kWh)</td><td class="num">3,237</td><td class="num up">+559</td><td class="num">1,910 / +556</td><td class="num">2,485 / +29</td><td>간접. 2Q에 발전자산 매각 이익(하나). Mission Solar 부지에 셀 공장 투자 검토(DART)</td></tr>
+      <tr><td class="hd">화학소재 (OCI(주))</td><td>TDI·가성소다·과산화수소(베이직), 핏치·카본블랙·벤젠(카본), 반도체용 폴리·인산·고순도 과산화수소(전자소재)</td><td class="num">10,869</td><td class="num up">+703</td><td class="num">5,569 / +435</td><td class="num">10,985 / −16</td><td>간접. 반도체용 폴리실리콘(군산 4,700톤)·인산·고순도 과산화수소 — “Upstream + 반도체” 서사. OCI스페셜티(7/16 OCI(주)로 이관, 352억)는 웨이퍼 재생 사업(FC-12)</td></tr>
+      <tr><td class="hd">도시개발 ((주)DCRE)</td><td>인천 용현·학익 개발</td><td class="num">3,000</td><td class="num up">+366</td><td class="num">1,675 / +195</td><td class="num">2,360 / +378</td><td>없음</td></tr>
+      <tr><td class="hd">기타 (지주)</td><td>배당·임대·브랜드</td><td class="num">536</td><td class="num up">+103</td><td class="num">360 / +136</td><td class="num">650 / +254</td><td>없음</td></tr>
+      <tr><td class="hd">합계 → 연결조정 → 연결</td><td></td><td class="num">19,812 → −656 → 19,155</td><td class="num">1,458 → −269 → 1,189</td><td class="num">10,647 / 1,281 → 1,081</td><td class="num">18,033 / 51 → −316</td><td></td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: DART 반기보고서(2026.06) “보고부문별 수익 및 성과”(연결조정 전 부문 OP). 2Q26 연결 OP 1,081억은 하나 7/23 리뷰(컨센 1,218억 대비 −11%)와 일치. 폴리실리콘 판매가는 1H26 평균 17.50$/kg(Energy Trend 비중국 평균, 2025년 18.08, 2024년 19.97).</p>
+
+  <div class="two"><div class="fig"><p class="ft">한화솔루션 부문 영업이익: 신재생 vs 기초소재 (억원, 연결조정 후)</p><p class="fs">DART 반기보고서 부문별 손익. 2H25 = FY25 − 1H25. 신재생은 1H25 2,924 → 2H25 −3,881 → 1H26 2,286으로 반기마다 부호가 바뀌었다.</p><svg viewBox="0 0 700 240" role="img" aria-label="억원">
+<line class="svg-grid" x1="62" y1="194.0" x2="680" y2="194.0"/>
+<text class="svg-text" x="54" y="198.0" text-anchor="end">-4,000</text>
+<line class="svg-grid" x1="62" y1="144.9" x2="680" y2="144.9"/>
+<text class="svg-text" x="54" y="148.9" text-anchor="end">-2,000</text>
+<line class="svg-grid" x1="62" y1="95.8" x2="680" y2="95.8"/>
+<text class="svg-text" x="54" y="99.8" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="46.7" x2="680" y2="46.7"/>
+<text class="svg-text" x="54" y="50.7" text-anchor="end">2,000</text>
+<line class="svg-axis" x1="62" y1="95.8" x2="680" y2="95.8"/>
+<text class="svg-text" x="165.0" y="212" text-anchor="middle">1H25</text>
+<rect x="92.9" y="24.0" width="70.1" height="71.8" fill="var(--s2)"><title>신재생에너지 1H25: 2,924</title></rect>
+<text class="svg-lab" x="128.0" y="20.0" text-anchor="middle" style="font-size:10.5px">2,924</text>
+<rect x="165.0" y="95.8" width="70.1" height="33.9" fill="var(--s1)"><title>기초소재(케미칼) 1H25: -1,380</title></rect>
+<text class="svg-lab" x="200.1" y="141.7" text-anchor="middle" style="font-size:10.5px">-1,380</text>
+<text class="svg-text" x="371.0" y="212" text-anchor="middle">2H25</text>
+<rect x="298.9" y="95.8" width="70.1" height="95.3" fill="var(--s2)"><title>신재생에너지 2H25: -3,881</title></rect>
+<text class="svg-lab" x="333.9" y="203.1" text-anchor="middle" style="font-size:10.5px">-3,881</text>
+<rect x="371.0" y="95.8" width="70.1" height="27.3" fill="var(--s1)"><title>기초소재(케미칼) 2H25: -1,111</title></rect>
+<text class="svg-lab" x="406.1" y="135.1" text-anchor="middle" style="font-size:10.5px">-1,111</text>
+<text class="svg-text" x="577.0" y="212" text-anchor="middle">1H26</text>
+<rect x="504.9" y="39.7" width="70.1" height="56.1" fill="var(--s2)"><title>신재생에너지 1H26: 2,286</title></rect>
+<text class="svg-lab" x="539.9" y="35.7" text-anchor="middle" style="font-size:10.5px">2,286</text>
+<rect x="577.0" y="66.0" width="70.1" height="29.8" fill="var(--s1)"><title>기초소재(케미칼) 1H26: 1,212</title></rect>
+<text class="svg-lab" x="612.0" y="62.0" text-anchor="middle" style="font-size:10.5px">1,212</text>
+</svg></div><div class="fig"><p class="ft">OCI홀딩스 보고부문 영업이익: 폴리실리콘은 아직 적자 (억원, 연결조정 전)</p><p class="fs">DART 반기보고서 보고부문별 수익 및 성과. 신재생(OCI TerraSus 폴리) 1H25 −594 → 1H26 −273(2Q26 −41). 이익은 화학소재·에너지솔루션·도시개발이 냈다.</p><svg viewBox="0 0 700 240" role="img" aria-label="억원">
+<line class="svg-grid" x1="62" y1="194.0" x2="680" y2="194.0"/>
+<text class="svg-text" x="54" y="198.0" text-anchor="end">-1,000</text>
+<line class="svg-grid" x1="62" y1="144.1" x2="680" y2="144.1"/>
+<text class="svg-text" x="54" y="148.1" text-anchor="end">-500</text>
+<line class="svg-grid" x1="62" y1="94.2" x2="680" y2="94.2"/>
+<text class="svg-text" x="54" y="98.2" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="44.3" x2="680" y2="44.3"/>
+<text class="svg-text" x="54" y="48.3" text-anchor="end">500</text>
+<line class="svg-axis" x1="62" y1="94.2" x2="680" y2="94.2"/>
+<text class="svg-text" x="216.5" y="212" text-anchor="middle">1H25</text>
+<rect x="108.4" y="94.2" width="52.1" height="59.3" fill="var(--s1)"><title>신재생(폴리실리콘) 1H25: -594</title></rect>
+<text class="svg-lab" x="134.4" y="165.5" text-anchor="middle" style="font-size:10.5px">-594</text>
+<rect x="162.4" y="91.3" width="52.1" height="2.9" fill="var(--s3)"><title>에너지솔루션 1H25: 29</title></rect>
+<text class="svg-lab" x="188.5" y="87.3" text-anchor="middle" style="font-size:10.5px">29</text>
+<rect x="216.5" y="94.2" width="52.1" height="1.6" fill="var(--s4)"><title>화학소재 1H25: -16</title></rect>
+<text class="svg-lab" x="242.5" y="107.8" text-anchor="middle" style="font-size:10.5px">-16</text>
+<rect x="270.6" y="56.4" width="52.1" height="37.7" fill="var(--muted)"><title>도시개발 1H25: 378</title></rect>
+<text class="svg-lab" x="296.6" y="52.4" text-anchor="middle" style="font-size:10.5px">378</text>
+<text class="svg-text" x="525.5" y="212" text-anchor="middle">1H26</text>
+<rect x="417.4" y="94.2" width="52.1" height="27.3" fill="var(--s1)"><title>신재생(폴리실리콘) 1H26: -273</title></rect>
+<text class="svg-lab" x="443.4" y="133.4" text-anchor="middle" style="font-size:10.5px">-273</text>
+<rect x="471.4" y="38.4" width="52.1" height="55.8" fill="var(--s3)"><title>에너지솔루션 1H26: 559</title></rect>
+<text class="svg-lab" x="497.5" y="34.4" text-anchor="middle" style="font-size:10.5px">559</text>
+<rect x="525.5" y="24.0" width="52.1" height="70.2" fill="var(--s4)"><title>화학소재 1H26: 703</title></rect>
+<text class="svg-lab" x="551.5" y="20.0" text-anchor="middle" style="font-size:10.5px">703</text>
+<rect x="579.6" y="57.6" width="52.1" height="36.5" fill="var(--muted)"><title>도시개발 1H26: 366</title></rect>
+<text class="svg-lab" x="605.6" y="53.6" text-anchor="middle" style="font-size:10.5px">366</text>
+</svg></div></div>
+
+  <h3>폴리실리콘 사업의 현재 위치: 가격은 17~18$, 생산은 90%인데 판매는 55%다</h3>
+  <p>회사는 폴리 판매량·판가를 공시하지 않는다. 삼성증권은 2Q26 판매량을 약 4,800톤(당초 예상 5,400톤 하회, +4% QoQ)으로 추정했고, 2Q 신재생 부문 매출 1,133억을 반기보고서의 참고 시세 17.50$/kg(Energy Trend 비중국 평균)과 2분기 평균 환율 약 1,500원으로 나누면 약 4,300톤이 나와 대체로 맞는다(FC-8). 분기 능력 8,750톤의 55%다. 반면 가동률은 4월 기준 약 90%였고(The Elec), 1Q는 15개월 주기 법정정비로 50%였다(회사 1Q IR). <b>만든 것보다 판 것이 적다 = 재고가 쌓였고, 하나(7/23)가 3Q에 가정한 “이연 판매 확대”는 그 재고를 파는 것</b>이다. 회사도 “Section 232 발표로 불확실성이 풀리면 신규 판매 확대”를 3Q 전망으로 적었다(2Q IR). 즉 OCI의 3Q는 가격보다 물량이 먼저 움직이는 분기이고, 4Q부터 12/4 시행이 가격을 움직인다. 반기보고서는 2026년 7월 주주총회에서 증설 규모를 5만 6,600톤(2024년 2월 결의)에서 7만톤으로 키운 이유를 “AI 전력 수요와 미국 공급망 규제 강화로 고객 기반이 미국으로 확대, 신규 미국 고객사와 장기공급계약 체결”이라고 적었다. 회사 IR(7/23)의 구체 수치는 이렇다. 기존 35kt 가운데 기존 LTA 15kt 외 잔여 20kt를 미국 신규 고객과 take-or-pay LTA로 묶어 기존 능력 전량 완판, 신규 35kt(준공 2028년 말·상업가동 2029년 상반기, 투자 1.43조 + 웨이퍼 5,000억 이상)도 미국 복수 업체와 협상 중, 선수금으로 투자금의 약 1/3 충당. 공개된 LTA는 한화솔루션 12억$/10년(2024.7~2034.6)/선수금 1.6억$, Trina 6.6억$/6.5년/1.1억$다(Fact Book 8/27). 삼성은 LTA 비중을 2026년 43% → 2029년 100%로 봤다.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th>변수</th><th class="num">현재</th><th class="num">하나 가정 / 목표</th><th class="num">1단위 효과 (연간, 추정)</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">비중국 폴리 가격</td><td class="num">16.92$/kg (PV Insight 9/24) · 19.23 (OPIS) · 공시 참고 시세 1H26 17.50</td><td class="num">3Q 20$ (7/23 가정) · MIP 21$</td><td class="num">1$/kg × 3.5만톤 × 1,360원 = <b>476억 매출·이익</b></td><td>하나 8/10: MIP까지 +5$ → 연 2.5천억(내부 소요분 제외 시 더 적음), “원가 변동 크지 않으므로 대부분 이익 귀속”</td></tr>
+      <tr><td class="hd">폴리 판매량</td><td class="num">2Q 약 4,800톤 (삼성 추정) · 가동률 ~90%, 1Q 정비 50%</td><td class="num">2027~28 3.5만톤 완판(LTA) · 2028 4만톤 · 2029 7만톤</td><td class="num">1천톤 × (17.5$ − 변동비) — 변동비 미공개</td><td>하나 7/23 “신규 고객사 LTA로 2027~28년 완판”, DART “증설 규모 확대”</td></tr>
+      <tr><td class="hd">웨이퍼 가격 (NST)</td><td class="num">중국 2c/W · 미국향 3~4c/W</td><td class="num">MIP 100$/kg = 10~12c/W → +7~8c/W</td><td class="num">1c/W × 2.7GW × 1,360원 = <b>367억 매출</b>(원가 불변)</td><td>하나 8/10: +7~8c → 2.7~3천억. Wells Fargo +8c. ES Foundry는 15c/W(PERC)로 환산</td></tr>
+      <tr><td class="hd">웨이퍼 물량</td><td class="num">2.7GW (2026-06 상업생산)</td><td class="num">3.75 (2027) · 7.5 (2028) · 11.5GW (2029), 2028~29 완판</td><td class="num">1GW × 10c/W = 1억$ ≈ 1,360억 매출</td><td>하나 7/23. 미국 셀 업체 웨이퍼 부족(가동 7GW·건설 3.3GW vs 셀 건설 25.3GW, Q5)</td></tr>
+      <tr><td class="hd">고정계약 예외</td><td class="num">8/6 이전 LTA의 포뮬러 가격</td><td class="num">예외 인정 시 MIP 이하 거래 지속</td><td class="num">노출 비중만큼 위 효과 상쇄</td><td>하나 8/10 리스크. 시행 지침 확인 필요(Q2)</td></tr>
+      <tr><td class="hd">환율</td><td class="num">1,361원 (9/28) · 2Q 평균 약 1,500</td><td class="num">—</td><td class="num">달러 매출 100%인 부문: 환율 −10% = 원화 매출 −10%</td><td>네이버 환율 API. 6월 1,532 → 9월 1,360(−11%)은 3Q 원화 실적의 역풍</td></tr>
+    </tbody></table></div>
+
+  <div class="note"><b>3Q26 점검(추정).</b> 하나의 3Q TRS 영업이익 653억·OPM 27%는 매출 약 2,400억(2Q의 2.1배)을 뜻하고, 그 매출은 “판매가 20$ × 물량 약 8천톤” 정도의 조합이다. 3분기 실제 비중국 폴리 평균은 16.8$였으므로 가격만 −3.2$ 낮다. 물량 가정이 맞더라도 가격 차이만으로 분기 영업이익은 약 350억(3.2$ × 8천톤 × 1,360원) 줄어든다. 즉 3Q 폴리 OP는 하나 가정의 절반 안팎이 될 수 있다. 회사가 “Non-PFE 웨이퍼 하반기 본격 판매”와 이연 물량을 얼마나 실었는지가 상쇄 변수다. 컨센서스(2026E OP 3,468억)는 이미 하나(3,950억)보다 낮다.</div>
+
+  <div class="two"><div class="fig"><p class="ft">OCI홀딩스 폴리실리콘 생산능력 로드맵 (말레이시아, 천톤/년)</p><p class="fs">35 → 2028 40(군산 0.5만톤 이설) → 2029 70(+3만톤, 1.4조원, 1/3 선수금). DART 반기보고서: 2024-02 주총 56,600톤 → 2026-07 주총 70,000톤으로 변경. 하나 7/23.</p><svg viewBox="0 0 700 230" role="img" aria-label="천톤">
+<line class="svg-grid" x1="62" y1="184.0" x2="680" y2="184.0"/>
+<text class="svg-text" x="54" y="188.0" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="144.0" x2="680" y2="144.0"/>
+<text class="svg-text" x="54" y="148.0" text-anchor="end">20</text>
+<line class="svg-grid" x1="62" y1="104.0" x2="680" y2="104.0"/>
+<text class="svg-text" x="54" y="108.0" text-anchor="end">40</text>
+<line class="svg-grid" x1="62" y1="64.0" x2="680" y2="64.0"/>
+<text class="svg-text" x="54" y="68.0" text-anchor="end">60</text>
+<line class="svg-grid" x1="62" y1="24.0" x2="680" y2="24.0"/>
+<text class="svg-text" x="54" y="28.0" text-anchor="end">80</text>
+<line class="svg-axis" x1="62" y1="184.0" x2="680" y2="184.0"/>
+<text class="svg-text" x="139.2" y="202" text-anchor="middle">2026</text>
+<rect x="85.2" y="114.0" width="106.1" height="70.0" fill="var(--s1)"><title>폴리실리콘 (천톤/년) 2026: 35</title></rect>
+<text class="svg-lab" x="138.2" y="110.0" text-anchor="middle" style="font-size:10.5px">35</text>
+<text class="svg-text" x="293.8" y="202" text-anchor="middle">2027</text>
+<rect x="239.7" y="114.0" width="106.1" height="70.0" fill="var(--s1)"><title>폴리실리콘 (천톤/년) 2027: 35</title></rect>
+<text class="svg-lab" x="292.8" y="110.0" text-anchor="middle" style="font-size:10.5px">35</text>
+<text class="svg-text" x="448.2" y="202" text-anchor="middle">2028</text>
+<rect x="394.2" y="104.0" width="106.1" height="80.0" fill="var(--s1)"><title>폴리실리콘 (천톤/년) 2028: 40</title></rect>
+<text class="svg-lab" x="447.2" y="100.0" text-anchor="middle" style="font-size:10.5px">40</text>
+<text class="svg-text" x="602.8" y="202" text-anchor="middle">2029</text>
+<rect x="548.7" y="44.0" width="106.1" height="140.0" fill="var(--s1)"><title>폴리실리콘 (천톤/년) 2029: 70</title></rect>
+<text class="svg-lab" x="601.8" y="40.0" text-anchor="middle" style="font-size:10.5px">70</text>
+</svg></div><div class="fig"><p class="ft">베트남 NST 웨이퍼 생산능력 (GW)</p><p class="fs">2.7(2026-06 상업생산) → 3.75(2027) → 7.5(2028) → 11.5(2029). 하나 7/23·8/10. 2028~29년 물량은 LTA로 완판(회사 2Q26 IR, 하나 인용).</p><svg viewBox="0 0 700 230" role="img" aria-label="GW">
+<line class="svg-grid" x1="62" y1="184.0" x2="680" y2="184.0"/>
+<text class="svg-text" x="54" y="188.0" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="114.4" x2="680" y2="114.4"/>
+<text class="svg-text" x="54" y="118.4" text-anchor="end">5</text>
+<line class="svg-grid" x1="62" y1="44.9" x2="680" y2="44.9"/>
+<text class="svg-text" x="54" y="48.9" text-anchor="end">10</text>
+<line class="svg-axis" x1="62" y1="184.0" x2="680" y2="184.0"/>
+<text class="svg-text" x="139.2" y="202" text-anchor="middle">2026</text>
+<rect x="85.2" y="146.4" width="106.1" height="37.6" fill="var(--s4)"><title>웨이퍼 NST (GW) 2026: 2.7</title></rect>
+<text class="svg-lab" x="138.2" y="142.4" text-anchor="middle" style="font-size:10.5px">2.7</text>
+<text class="svg-text" x="293.8" y="202" text-anchor="middle">2027</text>
+<rect x="239.7" y="131.8" width="106.1" height="52.2" fill="var(--s4)"><title>웨이퍼 NST (GW) 2027: 3.75</title></rect>
+<text class="svg-lab" x="292.8" y="127.8" text-anchor="middle" style="font-size:10.5px">3.75</text>
+<text class="svg-text" x="448.2" y="202" text-anchor="middle">2028</text>
+<rect x="394.2" y="79.7" width="106.1" height="104.3" fill="var(--s4)"><title>웨이퍼 NST (GW) 2028: 7.5</title></rect>
+<text class="svg-lab" x="447.2" y="75.7" text-anchor="middle" style="font-size:10.5px">7.5</text>
+<text class="svg-text" x="602.8" y="202" text-anchor="middle">2029</text>
+<rect x="548.7" y="24.0" width="106.1" height="160.0" fill="var(--s4)"><title>웨이퍼 NST (GW) 2029: 11.5</title></rect>
+<text class="svg-lab" x="601.8" y="20.0" text-anchor="middle" style="font-size:10.5px">11.5</text>
+</svg></div></div>
+
+  <h3>반도체와 미국: “폴리실리콘 회사”에서 “Upstream 회사”로 가는 세 갈래</h3>
+  <ul class="tight">
+    <li><b>반도체용 폴리실리콘.</b> OCI TerraSus는 2025년 7월 일본 Tokuyama와 50:50 합작법인 OTSM(OCI Tokuyama Semiconductor Materials)을 세워 수력 기반 연 8,000톤의 11-Nine급 초고순도 반도체용 폴리(반제품)를 만든다. 4.35억$, 2025-07 기공, 2027년 상반기 준공·시운전 → 고객 PCN 승인 → 2029년 판매, IFC 1.25억$ 대출(DART·Fact Book·뉴스핌 3/30). 국내 OCI(주)도 군산에서 반도체용 폴리 4,700톤·인산·고순도 과산화수소를 생산한다. 하나가 9/23에 “반도체 업스트림 구축과 국방자원의 핵심”이라고 쓴 근거가 이 라인이다. SIA에 따르면 반도체용은 글로벌 폴리 수요의 2.4%(3.35만톤)이고 Wacker·Hemlock이 3/4를 쥐고 있다 — OTSM은 2029년에야 그 시장에 들어간다.</li>
+    <li><b>미국 셀.</b> OCI Enterprises는 텍사스 Mission Solar Energy 공장 부지를 활용한 셀 생산설비 투자를 검토 중이다(DART 반기보고서). 2025년 3월 발표한 2GW 셀 공장(2.65억$)은 창고 개조 단계 이상 진전이 없고, 9/18 Solar Power World는 텍사스 TDLR 기록을 근거로 이 부지에 베트남 웨이퍼 파트너 Elite Solar용 1,500만$ 개보수(10월 착공~2027-06)를 보도했다(회사 미확인). 미국 셀 CAPA는 가동 3.2GW에 건설 25.3GW(Q5)로, 232의 온쇼어링 프로그램(2029-1-20까지 투자분 관세 상쇄)이 적용되는 영역이다. 확정 시 “말레이 폴리 → 베트남 웨이퍼 → 미국 셀”의 비중국 수직계열이 완성된다. 별도로 OCI Energy는 텍사스 중심 6.5GW 개발 파이프라인을 갖고 2Q에 La Salle 500MW 지분 50%를 팔아 에너지솔루션 부문 이익을 만들었고 3Q에 250MW 추가 매각을 진행 중이다.</li>
+    <li><b>테슬라·스페이스X.</b> 4/14 매일경제TV가 SpaceX와 “1조원·3~5년, TerraSus 연산의 절반” 규모 협상을 단독 보도했고 주가는 상한가를 갔지만(4/15), 9/28 현재 체결 공시는 없다. Digitimes(8/6)는 머스크가 OCI 말레이 폴리 능력의 상당 부분을 확보하는 계약을 제안했고 별도로 40만톤 폴리 설비 장비 계약을 마쳤다는 중국 언론 보도를 전했는데(하나 TG 8/6), 40만톤의 출처는 확인되지 않는다(FC-18). 하나(8/10)는 “한화솔루션·스페이스X·테슬라 등 미국 내 공급망을 구축한 업체들을 고객사로 보유할 가능성”으로만 썼고, 유진(8/12)은 웨이퍼 LTA 상대를 “글로벌 우주기업으로 추정”했다. 확인된 고객은 한화큐셀·Trina·미국 신규 고객(비공개)이다.</li>
+  </ul>
+
+  <h3>재무·주주환원·밸류에이션</h3>
+  <div class="kpis">
+    <div class="kpi"><div class="l">순차입금 (1H26 말)</div><div class="v">1.21조 / 0.93조</div><div class="d">DART: 차입금 2.10조 − 현금 0.89조 · 회사 IR: 단기금융 2,849억 포함 9,269억(18.6%) · 별도 지주 순현금 2,469억 · 부채비율 71.4%</div></div>
+    <div class="kpi"><div class="l">자본총계 / 지배지분</div><div class="v">4.97 / 4.09조</div><div class="d">BPS 210,598원(키움) · 발행주식 1,867만주</div></div>
+    <div class="kpi"><div class="l">주주환원 정책 2026~29</div><div class="v">TSR 50%+</div><div class="d">별도 순이익(일회성 제외) 기준 · 2029년까지 자사주 500억 소각 · 2024~25년 89.4만주(4.5%, 700억) 소각 완료 + 74,160주 2026년 소각 예정 · 2025 DPS 1,000원(2023 3,300원)</div></div>
+    <div class="kpi"><div class="l">주가 · 시총</div><div class="v">227,500원 · 4.25조</div><div class="d">9/28 10:46 (+10.4%) · 9/23 정규장 206,000 · 5/27 고점 388,000 · 9/22 저점 188,200</div></div>
+    <div class="kpi"><div class="l">PBR · PER (컨센)</div><div class="v">1.08배 · 23.2 / 12.8배</div><div class="d">PBR = 227,500 ÷ 210,598 · PER 2026E EPS 9,823 / 2027E 17,790 (WiseReport 9/28) · 3년 PBR 밴드 0.3~0.9배 상단 이탈</div></div>
+    <div class="kpi"><div class="l">영업이익 추정 (억)</div><div class="v">3,468 / 5,565</div><div class="d">컨센 2026E / 2027E (WiseReport 9/28) · 하나 3,950 / 6,056 (7/23) · 미래 5,030 / 6,460 · 신영 3,750 / 6,440 · 삼성 3,030 / 4,630 · 3Q26 컨센 1,064 · 2025 실적 −576</div></div>
+  </div>
+  <p>밸류에이션의 성격이 바뀌었다. 2025년 말 PBR 0.55배(115,200원)에서 지금 1.08배로, 2019~2025년의 “0.3~0.9배 박스”(WiseReport 3년 밴드) 위로 올라와 있다. PER로는 2027E 12.8배인데 이 EPS 17,790원은 2027E 영업이익 5,565억 위에 서 있고, 그 영업이익의 증분 대부분은 폴리 가격 갭(+4$ ≈ 1,900억)과 웨이퍼(+7c × 3.75GW ≈ 3,570억 매출)에서 나온다. <b>즉 지금 주가는 “12/4 이후 비중국 폴리 21$ 수렴 + 웨이퍼 프리미엄 실현”을 대부분 반영한 가격이고, 그 두 가정이 늦어지면 2025년형 박스로 되돌아갈 자리가 넓다</b>(과거 실측 낙폭: 2026년 5/27 → 9/22 −51%). 반대로 물량(LTA 완판·증설 7만톤)은 2028년 이후의 이야기라 2027년 EPS에는 일부만 들어 있다.</p>
+</section>
+
+<section class="q" id="q8">
+  <div class="qn">Q8 · Hanwha Solutions</div>
+  <h2>한화솔루션: 신재생은 반기마다 부호가 바뀌는 사업이고, 2027년 이익의 대부분은 AMPC다 — 판가 상승분이 셀 원가 상승을 얼마나 이기느냐가 232의 실제 크기다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 1H26 연결 영업이익 3,991억 중 신재생에너지가 2,286억(연결조정 후), 기초소재(케미칼)가 1,212억이다. 신재생은 1H25 +2,924 → 2H25 −3,881 → 1H26 +2,286억으로 반기마다 뒤집혔고, 2Q26 태양광 1,664억에는 관세 환급 약 900억이 들어 있다(하나 7/29). 미국 3공장 가운데 달튼(모듈 5.1GW)은 1H26 가동률 95%로 꽉 찼고, 카터스빌(모듈 3.0GW + 잉곳·웨이퍼·셀 3.3GW)은 74%, 한국 모듈은 32%다(DART). 232의 산수는 이렇다. 미국 모듈 30c → 38c면 9GW 기준 매출 +1조(하나), 판가 +13.7c·달튼 셀 원가 +3.3c면 마진 +10.4c/W(KB). 그러나 <b>2027년 영업이익 1.29조(하나) 안에 AMPC가 1.2조</b>다. 판가 상승은 보너스이고, 본체는 세액공제다. 그리고 유상증자 1.17조(주식수 +31%)와 순차입금 12.7조(반기말)는 그 보너스를 주주가 온전히 갖지 못하게 하는 두 개의 분모다.
+  </div>
+
+  <h3>부문 손익: 신재생이 이익의 57%, 자산의 84%</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>부문 (억원, 연결조정 후 OP)</th><th class="num">1H26 매출</th><th class="num">1H26 OP</th><th class="num">1H25 매출 / OP</th><th class="num">FY25 매출 / OP</th><th class="num">FY24 OP</th><th class="num">부문 자산 (1H26)</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">신재생에너지 (큐셀: 셀·모듈, 개발·EPC, 주택용 TPO)</td><td class="num">55,750</td><td class="num up">2,286</td><td class="num">38,508 / 2,924</td><td class="num">82,683 / −957</td><td class="num down">−2,575</td><td class="num">297,352 (84%)</td></tr>
+      <tr><td class="hd">기초소재 (케미칼: PE·PVC·CA·TDI)</td><td class="num">31,118</td><td class="num up">1,212</td><td class="num">24,306 / −1,380</td><td class="num">48,884 / −2,491</td><td class="num down">−1,213</td><td class="num">71,446</td></tr>
+      <tr><td class="hd">가공소재 (첨단소재)</td><td class="num">7,462</td><td class="num">410</td><td class="num">6,755 / 80</td><td class="num">12,834 / 62</td><td class="num">235</td><td class="num">23,596</td></tr>
+      <tr><td class="hd">기타 (이센셜·도시개발, 현금·차입금 귀속)</td><td class="num">5,737</td><td class="num">83</td><td class="num">2,757 / −300</td><td class="num">7,747 / −262</td><td class="num">551</td><td class="num">74,596</td></tr>
+      <tr><td class="hd">합계 (연결)</td><td class="num">84,646</td><td class="num up">3,991</td><td class="num">62,117 / 1,324</td><td class="num">133,331 / −3,648</td><td class="num down">−3,002</td><td class="num">353,703</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: DART 반기보고서(2026.06) “연결회사의 부문별손익 내역”·“부문별 자산 및 부채”. 2H25 신재생 OP −3,881억 = FY25 −957 − 1H25 2,924. 분기 연결 OP: 1Q26 926 · 2Q26 3,065(컨센 1,697 대비 +81%, 하나 7/29).</p>
+
+  <div class="two"><div class="fig"><p class="ft">OCI홀딩스 분기 연결 영업이익 (억원, 1Q23~2Q26)</p><p class="fs">DART fnlttSinglAcntAll 연결(CFS). 4분기는 연간 − 3분기 누적. 2023년 5월 인적분할(OCI(주) 신설) 전후 연결 범위가 다르다.</p><svg viewBox="0 0 700 250" role="img" aria-label="억원">
+<line class="svg-grid" x1="62" y1="180.0" x2="680" y2="180.0"/>
+<text class="svg-text" x="54" y="184.0" text-anchor="end">-2,000</text>
+<line class="svg-grid" x1="62" y1="141.3" x2="680" y2="141.3"/>
+<text class="svg-text" x="54" y="145.3" text-anchor="end">-1,000</text>
+<line class="svg-grid" x1="62" y1="102.7" x2="680" y2="102.7"/>
+<text class="svg-text" x="54" y="106.7" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="64.0" x2="680" y2="64.0"/>
+<text class="svg-text" x="54" y="68.0" text-anchor="end">1,000</text>
+<line class="svg-grid" x1="62" y1="25.3" x2="680" y2="25.3"/>
+<text class="svg-text" x="54" y="29.3" text-anchor="end">2,000</text>
+<line class="svg-axis" x1="62" y1="102.7" x2="680" y2="102.7"/>
+<text class="svg-text" transform="translate(84.1,194) rotate(-35)" text-anchor="end">1Q23</text>
+<rect x="68.6" y="24.0" width="28.9" height="78.7" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 1Q23: 2,034</title></rect>
+<text class="svg-lab" x="83.1" y="20.0" text-anchor="middle" style="font-size:10.5px">2,034</text>
+<text class="svg-text" transform="translate(128.2,194) rotate(-35)" text-anchor="end">2Q23</text>
+<rect x="112.8" y="51.6" width="28.9" height="51.0" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 2Q23: 1,319</title></rect>
+<text class="svg-lab" x="127.2" y="47.6" text-anchor="middle" style="font-size:10.5px">1,319</text>
+<text class="svg-text" transform="translate(172.4,194) rotate(-35)" text-anchor="end">3Q23</text>
+<rect x="156.9" y="52.1" width="28.9" height="50.6" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 3Q23: 1,308</title></rect>
+<text class="svg-lab" x="171.4" y="48.1" text-anchor="middle" style="font-size:10.5px">1,308</text>
+<text class="svg-text" transform="translate(216.5,194) rotate(-35)" text-anchor="end">4Q23</text>
+<rect x="201.1" y="77.5" width="28.9" height="25.2" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 4Q23: 651</title></rect>
+<text class="svg-lab" x="215.5" y="73.5" text-anchor="middle" style="font-size:10.5px">651</text>
+<text class="svg-text" transform="translate(260.6,194) rotate(-35)" text-anchor="end">1Q24</text>
+<rect x="245.2" y="64.3" width="28.9" height="38.4" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 1Q24: 993</title></rect>
+<text class="svg-lab" x="259.6" y="60.3" text-anchor="middle" style="font-size:10.5px">993</text>
+<text class="svg-text" transform="translate(304.8,194) rotate(-35)" text-anchor="end">2Q24</text>
+<rect x="289.3" y="68.0" width="28.9" height="34.6" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 2Q24: 896</title></rect>
+<text class="svg-lab" x="303.8" y="64.0" text-anchor="middle" style="font-size:10.5px">896</text>
+<text class="svg-text" transform="translate(348.9,194) rotate(-35)" text-anchor="end">3Q24</text>
+<rect x="333.5" y="94.7" width="28.9" height="7.9" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 3Q24: 205</title></rect>
+<text class="svg-lab" x="347.9" y="90.7" text-anchor="middle" style="font-size:10.5px">205</text>
+<text class="svg-text" transform="translate(393.1,194) rotate(-35)" text-anchor="end">4Q24</text>
+<rect x="377.6" y="102.7" width="28.9" height="41.7" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 4Q24: -1,078</title></rect>
+<text class="svg-lab" x="392.1" y="156.3" text-anchor="middle" style="font-size:10.5px">-1,078</text>
+<text class="svg-text" transform="translate(437.2,194) rotate(-35)" text-anchor="end">1Q25</text>
+<rect x="421.8" y="83.8" width="28.9" height="18.8" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 1Q25: 487</title></rect>
+<text class="svg-lab" x="436.2" y="79.8" text-anchor="middle" style="font-size:10.5px">487</text>
+<text class="svg-text" transform="translate(481.4,194) rotate(-35)" text-anchor="end">2Q25</text>
+<rect x="465.9" y="102.7" width="28.9" height="31.1" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 2Q25: -803</title></rect>
+<text class="svg-lab" x="480.4" y="145.7" text-anchor="middle" style="font-size:10.5px">-803</text>
+<text class="svg-text" transform="translate(525.5,194) rotate(-35)" text-anchor="end">3Q25</text>
+<rect x="510.1" y="102.7" width="28.9" height="20.6" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 3Q25: -533</title></rect>
+<text class="svg-lab" x="524.5" y="135.3" text-anchor="middle" style="font-size:10.5px">-533</text>
+<text class="svg-text" transform="translate(569.6,194) rotate(-35)" text-anchor="end">4Q25</text>
+<rect x="554.2" y="92.1" width="28.9" height="10.6" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 4Q25: 273</title></rect>
+<text class="svg-lab" x="568.6" y="88.1" text-anchor="middle" style="font-size:10.5px">273</text>
+<text class="svg-text" transform="translate(613.8,194) rotate(-35)" text-anchor="end">1Q26</text>
+<rect x="598.3" y="98.4" width="28.9" height="4.2" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 1Q26: 109</title></rect>
+<text class="svg-lab" x="612.8" y="94.4" text-anchor="middle" style="font-size:10.5px">109</text>
+<text class="svg-text" transform="translate(657.9,194) rotate(-35)" text-anchor="end">2Q26</text>
+<rect x="642.5" y="60.9" width="28.9" height="41.8" fill="var(--s1)"><title>OCI홀딩스 연결 영업이익 2Q26: 1,081</title></rect>
+<text class="svg-lab" x="656.9" y="56.9" text-anchor="middle" style="font-size:10.5px">1,081</text>
+</svg></div><div class="fig"><p class="ft">한화솔루션 분기 연결 영업이익 (억원, 1Q23~2Q26)</p><p class="fs">DART 연결(CFS). 4Q25 −4,897억은 신재생 부문 적자(2H25 신재생 −3,881억, 연결조정 후)와 케미칼 적자가 겹친 분기. 2Q26 3,065억에는 관세 환급 약 900억이 들어 있다(하나 7/29).</p><svg viewBox="0 0 700 250" role="img" aria-label="억원">
+<line class="svg-grid" x1="62" y1="180.0" x2="680" y2="180.0"/>
+<text class="svg-text" x="54" y="184.0" text-anchor="end">-6,000</text>
+<line class="svg-grid" x1="62" y1="148.8" x2="680" y2="148.8"/>
+<text class="svg-text" x="54" y="152.8" text-anchor="end">-4,000</text>
+<line class="svg-grid" x1="62" y1="117.6" x2="680" y2="117.6"/>
+<text class="svg-text" x="54" y="121.6" text-anchor="end">-2,000</text>
+<line class="svg-grid" x1="62" y1="86.4" x2="680" y2="86.4"/>
+<text class="svg-text" x="54" y="90.4" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="55.2" x2="680" y2="55.2"/>
+<text class="svg-text" x="54" y="59.2" text-anchor="end">2,000</text>
+<line class="svg-grid" x1="62" y1="24.0" x2="680" y2="24.0"/>
+<text class="svg-text" x="54" y="28.0" text-anchor="end">4,000</text>
+<line class="svg-axis" x1="62" y1="86.4" x2="680" y2="86.4"/>
+<text class="svg-text" transform="translate(84.1,194) rotate(-35)" text-anchor="end">1Q23</text>
+<rect x="68.6" y="44.1" width="28.9" height="42.3" fill="var(--s2)"><title>한화솔루션 연결 영업이익 1Q23: 2,714</title></rect>
+<text class="svg-lab" x="83.1" y="40.1" text-anchor="middle" style="font-size:10.5px">2,714</text>
+<text class="svg-text" transform="translate(128.2,194) rotate(-35)" text-anchor="end">2Q23</text>
+<rect x="112.8" y="56.1" width="28.9" height="30.3" fill="var(--s2)"><title>한화솔루션 연결 영업이익 2Q23: 1,941</title></rect>
+<text class="svg-lab" x="127.2" y="52.1" text-anchor="middle" style="font-size:10.5px">1,941</text>
+<text class="svg-text" transform="translate(172.4,194) rotate(-35)" text-anchor="end">3Q23</text>
+<rect x="156.9" y="71.1" width="28.9" height="15.3" fill="var(--s2)"><title>한화솔루션 연결 영업이익 3Q23: 983</title></rect>
+<text class="svg-lab" x="171.4" y="67.1" text-anchor="middle" style="font-size:10.5px">983</text>
+<text class="svg-text" transform="translate(216.5,194) rotate(-35)" text-anchor="end">4Q23</text>
+<rect x="201.1" y="80.1" width="28.9" height="6.3" fill="var(--s2)"><title>한화솔루션 연결 영업이익 4Q23: 407</title></rect>
+<text class="svg-lab" x="215.5" y="76.1" text-anchor="middle" style="font-size:10.5px">407</text>
+<text class="svg-text" transform="translate(260.6,194) rotate(-35)" text-anchor="end">1Q24</text>
+<rect x="245.2" y="86.4" width="28.9" height="33.8" fill="var(--s2)"><title>한화솔루션 연결 영업이익 1Q24: -2,166</title></rect>
+<text class="svg-lab" x="259.6" y="132.2" text-anchor="middle" style="font-size:10.5px">-2,166</text>
+<text class="svg-text" transform="translate(304.8,194) rotate(-35)" text-anchor="end">2Q24</text>
+<rect x="289.3" y="86.4" width="28.9" height="16.8" fill="var(--s2)"><title>한화솔루션 연결 영업이익 2Q24: -1,078</title></rect>
+<text class="svg-lab" x="303.8" y="115.2" text-anchor="middle" style="font-size:10.5px">-1,078</text>
+<text class="svg-text" transform="translate(348.9,194) rotate(-35)" text-anchor="end">3Q24</text>
+<rect x="333.5" y="86.4" width="28.9" height="12.6" fill="var(--s2)"><title>한화솔루션 연결 영업이익 3Q24: -810</title></rect>
+<text class="svg-lab" x="347.9" y="111.0" text-anchor="middle" style="font-size:10.5px">-810</text>
+<text class="svg-text" transform="translate(393.1,194) rotate(-35)" text-anchor="end">4Q24</text>
+<rect x="377.6" y="70.3" width="28.9" height="16.1" fill="var(--s2)"><title>한화솔루션 연결 영업이익 4Q24: 1,029</title></rect>
+<text class="svg-lab" x="392.1" y="66.3" text-anchor="middle" style="font-size:10.5px">1,029</text>
+<text class="svg-text" transform="translate(437.2,194) rotate(-35)" text-anchor="end">1Q25</text>
+<rect x="421.8" y="81.7" width="28.9" height="4.7" fill="var(--s2)"><title>한화솔루션 연결 영업이익 1Q25: 303</title></rect>
+<text class="svg-lab" x="436.2" y="77.7" text-anchor="middle" style="font-size:10.5px">303</text>
+<text class="svg-text" transform="translate(481.4,194) rotate(-35)" text-anchor="end">2Q25</text>
+<rect x="465.9" y="70.5" width="28.9" height="15.9" fill="var(--s2)"><title>한화솔루션 연결 영업이익 2Q25: 1,021</title></rect>
+<text class="svg-lab" x="480.4" y="66.5" text-anchor="middle" style="font-size:10.5px">1,021</text>
+<text class="svg-text" transform="translate(525.5,194) rotate(-35)" text-anchor="end">3Q25</text>
+<rect x="510.1" y="86.4" width="28.9" height="1.2" fill="var(--s2)"><title>한화솔루션 연결 영업이익 3Q25: -74</title></rect>
+<text class="svg-lab" x="524.5" y="99.6" text-anchor="middle" style="font-size:10.5px">-74</text>
+<text class="svg-text" transform="translate(569.6,194) rotate(-35)" text-anchor="end">4Q25</text>
+<rect x="554.2" y="86.4" width="28.9" height="76.4" fill="var(--s2)"><title>한화솔루션 연결 영업이익 4Q25: -4,897</title></rect>
+<text class="svg-lab" x="568.6" y="174.8" text-anchor="middle" style="font-size:10.5px">-4,897</text>
+<text class="svg-text" transform="translate(613.8,194) rotate(-35)" text-anchor="end">1Q26</text>
+<rect x="598.3" y="72.0" width="28.9" height="14.4" fill="var(--s2)"><title>한화솔루션 연결 영업이익 1Q26: 926</title></rect>
+<text class="svg-lab" x="612.8" y="68.0" text-anchor="middle" style="font-size:10.5px">926</text>
+<text class="svg-text" transform="translate(657.9,194) rotate(-35)" text-anchor="end">2Q26</text>
+<rect x="642.5" y="38.6" width="28.9" height="47.8" fill="var(--s2)"><title>한화솔루션 연결 영업이익 2Q26: 3,065</title></rect>
+<text class="svg-lab" x="656.9" y="34.6" text-anchor="middle" style="font-size:10.5px">3,065</text>
+</svg></div></div>
+
+  <h3>미국 3공장과 한국·말레이: 어디가 꽉 찼고 어디가 비었나</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>공장</th><th>제품</th><th class="num">생산능력 (GW/년)</th><th class="num">1H26 생산 (GW)</th><th class="num">가동률 (연환산)</th><th>232·AMPC 관점</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">달튼 (Hanwha Q CELLS USA, 조지아)</td><td>모듈</td><td class="num">5.10</td><td class="num">2.41</td><td class="num">95%</td><td>셀을 한국·말레이에서 수입 → 셀 MIP 0.22$/W + 15%가 원가에 붙는다(KB +3.3c/W). 판가 상승분의 상당 부분이 셀 원가 상승에 상쇄될 수 있다(하나 8/10). AMPC는 모듈분 7c/W만</td></tr>
+      <tr><td class="hd">카터스빌 (Hanwha Q Cells Georgia)</td><td>모듈</td><td class="num">2.99</td><td class="num">1.11</td><td class="num">74%</td><td>잉곳·웨이퍼·셀·모듈 수직계열 → DCA(국산 부품 보너스) 모듈 생산, AMPC 4단계 수취. 폴리는 외부 구매 — REC Silicon(모지스레이크) 품질 실패 뒤 OCI 말레이 LTA 12억$/10년(3 → 4c/W, KB). DOE LPO 보증 14.5억$, 직접고용 3,800명</td></tr>
+      <tr><td class="hd">카터스빌 잉곳·웨이퍼·셀</td><td>잉곳·웨이퍼·셀</td><td class="num">3.3 각</td><td class="num">잉곳 2025-12 · 웨이퍼 2Q26 풀생산 · 셀 6/9 가동(7월 양산)</td><td class="num">회사 “6개월 내 완전 가동” · NH 3Q 말~4Q 초</td><td>2025년 시운전 결함으로 가동이 2026년으로 밀렸던 라인(하나 25/1/5). 이 라인이 “판가 프리미엄 + AMPC 증가(2026 9.5천억 → 2027 1.2조)”의 실체</td></tr>
+      <tr><td class="hd">한국 (진천·음성)</td><td>셀</td><td class="num">5.33</td><td class="num">2.32</td><td class="num">87%</td><td>달튼향 셀 공급. 232 후 셀 MIP 0.22$/W가 “한국 공장 판가”가 되어 이전가격이 오른다(KB: 14 → 22c, 관세 3.3c만 순부담)</td></tr>
+      <tr><td class="hd">한국</td><td>모듈</td><td class="num">2.51</td><td class="num">0.40</td><td class="num">32%</td><td>미국 수출 경쟁력 상실로 유휴. KB Bull case는 2027년 2.3GW 캡티브(자체 EPC·TPO) 수출 재개를 가정</td></tr>
+      <tr><td class="hd">말레이시아 (사이버자야)</td><td>셀</td><td class="num">1.98</td><td class="num">0.84</td><td class="num">85%</td><td>달튼향 셀. 동남아 4개국 AD/CVD 대상국이나 자사 캡티브</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: DART 반기보고서 “생산능력, 생산실적 및 가동률”(MW → GW, 1H26 실적 2배 연환산은 본 노트의 계산). 카터스빌 3.3GW 잉곳·웨이퍼·셀은 하나 8/31 도표 42·NH 9/21 표1(회사 자료). 회사 공시 평균 판매가: 셀 199원/W(2Q26, 2025년 179), 모듈 253원/W(2025년 253, 2024년 273) — 전 지역 평균이라 미국 판가(약 30c/W)보다 낮다.</p>
+
+  <div class="fig"><p class="ft">한화솔루션 셀·모듈 생산능력과 1H26 생산 실적 (GW)</p><p class="fs">DART 반기보고서 2026.06 생산능력·생산실적(MW, 1H26 실적을 2배 연환산). 카터스빌 잉곳·웨이퍼·셀 3.3GW는 하나 8/31 도표 42·NH 9/21 표1(셀은 7월 양산, 3Q 말~4Q 초 풀가동 예정). 한국 모듈 가동률 32%(1H26 401MW) vs 달튼 95%.</p><div class="legend"><span><i style="background:var(--s2)"></i>생산능력</span><span><i style="background:var(--s3)"></i>1H26 생산 연환산</span></div><svg viewBox="0 0 700 270" role="img" aria-label="GW">
+<line class="svg-grid" x1="62" y1="200.0" x2="680" y2="200.0"/>
+<text class="svg-text" x="54" y="204.0" text-anchor="end">0</text>
+<line class="svg-grid" x1="62" y1="141.3" x2="680" y2="141.3"/>
+<text class="svg-text" x="54" y="145.3" text-anchor="end">2</text>
+<line class="svg-grid" x1="62" y1="82.7" x2="680" y2="82.7"/>
+<text class="svg-text" x="54" y="86.7" text-anchor="end">4</text>
+<line class="svg-grid" x1="62" y1="24.0" x2="680" y2="24.0"/>
+<text class="svg-text" x="54" y="28.0" text-anchor="end">6</text>
+<line class="svg-axis" x1="62" y1="200.0" x2="680" y2="200.0"/>
+<text class="svg-text" transform="translate(113.5,214) rotate(-35)" text-anchor="end">달튼 모듈</text>
+<rect x="77.5" y="50.4" width="34.0" height="149.6" fill="var(--s2)"><title>생산능력 (GW/년) 달튼 모듈: 5.1</title></rect>
+<text class="svg-lab" x="94.5" y="46.4" text-anchor="middle" style="font-size:10.5px">5.1</text>
+<rect x="113.5" y="58.6" width="34.0" height="141.4" fill="var(--s3)"><title>1H26 생산 연환산 (GW) 달튼 모듈: 4.8</title></rect>
+<text class="svg-lab" x="130.5" y="54.6" text-anchor="middle" style="font-size:10.5px">4.8</text>
+<text class="svg-text" transform="translate(216.5,214) rotate(-35)" text-anchor="end">카터스빌 모듈</text>
+<rect x="180.4" y="112.3" width="34.0" height="87.7" fill="var(--s2)"><title>생산능력 (GW/년) 카터스빌 모듈: 3.0</title></rect>
+<text class="svg-lab" x="197.5" y="108.3" text-anchor="middle" style="font-size:10.5px">3.0</text>
+<rect x="216.5" y="134.9" width="34.0" height="65.1" fill="var(--s3)"><title>1H26 생산 연환산 (GW) 카터스빌 모듈: 2.2</title></rect>
+<text class="svg-lab" x="233.5" y="130.9" text-anchor="middle" style="font-size:10.5px">2.2</text>
+<text class="svg-text" transform="translate(319.5,214) rotate(-35)" text-anchor="end">카터스빌 잉곳·웨이퍼·셀</text>
+<rect x="283.4" y="103.2" width="34.0" height="96.8" fill="var(--s2)"><title>생산능력 (GW/년) 카터스빌 잉곳·웨이퍼·셀: 3.3</title></rect>
+<text class="svg-lab" x="300.5" y="99.2" text-anchor="middle" style="font-size:10.5px">3.3</text>
+<text class="svg-text" transform="translate(422.5,214) rotate(-35)" text-anchor="end">한국 모듈</text>
+<rect x="386.4" y="126.4" width="34.0" height="73.6" fill="var(--s2)"><title>생산능력 (GW/년) 한국 모듈: 2.5</title></rect>
+<text class="svg-lab" x="403.5" y="122.4" text-anchor="middle" style="font-size:10.5px">2.5</text>
+<rect x="422.5" y="176.5" width="34.0" height="23.5" fill="var(--s3)"><title>1H26 생산 연환산 (GW) 한국 모듈: 0.8</title></rect>
+<text class="svg-lab" x="439.5" y="172.5" text-anchor="middle" style="font-size:10.5px">0.8</text>
+<text class="svg-text" transform="translate(525.5,214) rotate(-35)" text-anchor="end">한국 셀</text>
+<rect x="489.4" y="43.7" width="34.0" height="156.3" fill="var(--s2)"><title>생산능력 (GW/년) 한국 셀: 5.3</title></rect>
+<text class="svg-lab" x="506.5" y="39.7" text-anchor="middle" style="font-size:10.5px">5.3</text>
+<rect x="525.5" y="63.9" width="34.0" height="136.1" fill="var(--s3)"><title>1H26 생산 연환산 (GW) 한국 셀: 4.6</title></rect>
+<text class="svg-lab" x="542.5" y="59.9" text-anchor="middle" style="font-size:10.5px">4.6</text>
+<text class="svg-text" transform="translate(628.5,214) rotate(-35)" text-anchor="end">말레이 셀</text>
+<rect x="592.5" y="141.9" width="34.0" height="58.1" fill="var(--s2)"><title>생산능력 (GW/년) 말레이 셀: 2.0</title></rect>
+<text class="svg-lab" x="609.5" y="137.9" text-anchor="middle" style="font-size:10.5px">2.0</text>
+<rect x="628.5" y="150.7" width="34.0" height="49.3" fill="var(--s3)"><title>1H26 생산 연환산 (GW) 말레이 셀: 1.7</title></rect>
+<text class="svg-lab" x="645.5" y="146.7" text-anchor="middle" style="font-size:10.5px">1.7</text>
+</svg></div>
+
+  <h3>판가 3층 구조: 기본 판가 + DCA 프리미엄 + AMPC</h3>
+  <div class="grid2">
+    <div class="card"><h4>① 기본 판가: 20센트 중후반 → 38~44센트</h4><p>회사는 현재 미국 유틸리티·커머셜 모듈 가격을 20센트 중후반으로 설명하고 시행 후 38센트 상회를 기대한다(NH 9/21). 하나·KB는 미국 판가 기준을 30c/W로 잡았다. 9GW 출하에 +8c/W면 매출 +1조(하나), KB Bull case는 판가 +39%·물량 +25%로 2027년 모듈 매출 6.38조(+69%), 영업이익 +1.61조를 계산하되 Base에는 +3,705억만 반영했다.</p></div>
+    <div class="card"><h4>② DCA 프리미엄: 카터스빌이 만드는 “국산 부품” 모듈</h4><p>OBBBA 이후 ITC(48E)의 국산부품 보너스(+10%p)를 받으려면 모듈의 국산 비율 요건을 채워야 하고, 미국산 웨이퍼·셀을 쓴 카터스빌 모듈이 그 요건을 만족한다. 개발사는 보너스 가치의 일부를 프리미엄으로 낸다. 하나(7/29)는 “카터스빌 셀 가동으로 DCA 만족 모듈 생산 → 판가 프리미엄 추가 확대”, NH는 “Blended ASP 상승”으로 썼다.</p></div>
+    <div class="card"><h4>③ AMPC: 2026년 9.5천억 → 2027년 1.2조 (하나 · 회사 8.79억$)</h4><p>45X 세액공제는 모듈 7c/W, 셀 4c/W, 웨이퍼 12$/m², 폴리 3$/kg이 단계별로 붙는다 — 증권가 환산으로 수직계열 모듈 0.15$/W vs 모듈 단독 0.07$/W. 카터스빌 셀·웨이퍼가 돌면 모듈분 위에 셀·웨이퍼분이 더해진다. 2Q26 AMPC 2,140억(회사), 회사 가이드 3Q 2,300억·4Q 3,100억(풀램프 시 “현재보다 1,000억 추가”). 회사 기대치로 보도된 연간 경로는 2026 6.75억$ → 2027 8.79억$(≈1.2조) → 2028 9.29억$ → 2029 11억$. 회사는 AMPC를 Carlyle(1억$)·ProEnergy(7,340만$)·SEI(5,000만$)·ETI(6,801만$) 등에 유동화 매각하고 있다(DART 반기보고서 채무보증 내역, 2025-12~2026-05 체결; 상반기 3,400억).</p></div>
+    <div class="card"><h4>④ 남는 문제: 원가 전가와 FEOC</h4><p>달튼 5.1GW는 셀 외부구매라 셀 MIP 상승분이 원가로 들어온다(KB: 관세 3.3c/W만 순부담, 나머지 8c는 한국 공장 마진으로 이전). 카터스빌은 폴리 원가 +1c/W(KB). 2026년부터 FEOC 물질적 지원을 받으면 45X를 못 받는데, 한화는 비중국 공급망이라 오히려 경쟁사(미국 내 중국계 24GW)가 탈락한다(하나 25/1/5·7/29).</p></div>
+  </div>
+
+  <h3>3Q26 프리뷰: 세 곳의 숫자가 거의 같다 — 관세 환급이 빠지고 물량이 두 배</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th class="num">2Q26 실적</th><th class="num">3Q26E 하나 (7/29)</th><th class="num">3Q26E NH (9/21)</th><th class="num">컨센 (NH 표)</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">연결 영업이익 (억)</td><td class="num">3,065</td><td class="num">2,126</td><td class="num">2,061</td><td class="num">2,090</td></tr>
+      <tr><td class="hd">신재생(태양광) OP</td><td class="num">1,664 (관세 환급 약 900 포함 · 실질 약 760)</td><td class="num">1,707</td><td class="num">1,635</td><td class="num">—</td></tr>
+      <tr><td class="hd">모듈 출하 (GW)</td><td class="num">1.3 (QoQ −30%, 일시적)</td><td class="num">2.4</td><td class="num">2.5</td><td class="num">—</td></tr>
+      <tr><td class="hd">판가</td><td class="num">QoQ +5%</td><td class="num">DCA 모듈로 추가 상승</td><td class="num">전분기와 유사</td><td class="num">—</td></tr>
+      <tr><td class="hd">AMPC (억)</td><td class="num">2,140 (회사)</td><td class="num">2,390</td><td class="num">2,297</td><td class="num">회사 가이드 3Q 2,300 · 4Q 3,100 (풀램프 시)</td></tr>
+      <tr><td class="hd">케미칼 OP</td><td class="num">개선</td><td class="num">종전으로 큰 폭 조정</td><td class="num">−92 (유가 상승 전가 실패)</td><td class="num">—</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: 하나 7/29, NH 9/21(3Q 프리뷰 표: 매출 4.66조·OP 2,061억·OPM 4.4%, 컨센 OP 2,090억), 회사 2Q26 실적. 3Q는 “관세 환급 소멸을 물량·AMPC가 메우는 분기”라 판가 논쟁은 4Q 이후로 넘어간다.</p>
+
+  <h3>유상증자·차입·자산 매각: 이익보다 먼저 봐야 할 분모</h3>
+  <div class="kpis">
+    <div class="kpi"><div class="l">유상증자</div><div class="v">1.171조</div><div class="d">5,300만주 × 22,100원 · 시설자금 9,077억 + 채무상환 2,636억 · 납입 7/30 · 상장 8/11 · 주식수 171.9 → 224.9백만주(+30.8%) (DART 7/20 정정)</div></div>
+    <div class="kpi"><div class="l">차입금 · 순차입금 (1H26 말)</div><div class="v">15.41 · 12.72조</div><div class="d">유동 8.39조 + 비유동 7.03조 − 현금 2.69조 · 전기말 14.98조 · 유증 납입(7/30) 전 기준 (DART)</div></div>
+    <div class="kpi"><div class="l">부채비율</div><div class="v">184%</div><div class="d">부채 22.90조 ÷ 자본 12.47조 (1H26) · NH 2026E 195%</div></div>
+    <div class="kpi"><div class="l">커버넌트</div><div class="v">Waiver</div><div class="d">Q ENERGY Solutions SE K-SURE ECA 대출 EUR 172백만: Net Debt/EBITDA 5배 초과로 유동부채 분류, 대주 Waiver 수령 (DART)</div></div>
+    <div class="kpi"><div class="l">자산 매각 · 자구</div><div class="v">1조원+</div><div class="d">한화호텔앤드리조트 254.6만주 PRS 2,998억(9/14, 잔여 29%) · 미국 벤처펀드 1,255억(7/16) · RCPS 3,000억(6월) · AMPC 유동화 3,400억 · 목표: 연말 부채비율 150% 미만·순차입 9조원대 (IB토마토 9/11)</div></div>
+    <div class="kpi"><div class="l">케미칼 구조조정 (여수 1호)</div><div class="v">PE·석유수지 → 여천NCC</div><div class="d">7/20 산업부 승인: 여수 PE·석유수지 현물출자 + 롯데 여수 NCC 흡수합병 → 3사 통합법인, 139만톤 가동 중지, 한화 2,725억 증자. 9월 물적분할·연내 합병. 메리츠 표기 “PO 출자”는 미확인(FC-15)</div></div>
+  </div>
+  <p>유상증자의 시설자금 9,077억은 탠덤 파일럿 963억과 탠덤 GW급 양산라인·TOPCon 셀 라인 8,114억(2026~28, 탠덤 상업화 2029 목표)이다(투자설명서, 미래에셋 3/27). 즉 <b>증자 대금의 8할이 “셀”</b>이고, 2029-1-20까지의 온쇼어링 프로그램(Q2 ③)을 감안하면 달튼의 셀 수직계열화(하나 8/10 “이후 셀 공장 수직계열화 가능”)가 그 투자처다. 재무의 의미는 둘이다. 첫째, <b>이익이 늘어도 이자(차입 15조)와 주식수(+31%)가 먼저 나눠 갖는다</b> — KB가 2026~28년 EPS를 25% 올리면서 목표주가를 낮춘 이유다. 둘째, 커버넌트 Waiver·PRS 매각·유증이 한 해에 겹친 회사에게 232의 판가 상승은 “성장 옵션”이기 전에 “재무 완충”이다. 그래서 메리츠(9/15)는 “추가 재평가의 핵심 변수는 현금흐름 기반 순차입금 감소 속도”라고 썼다.</p>
+
+  <h3>밸류에이션</h3>
+  <div class="kpis">
+    <div class="kpi"><div class="l">주가 · 시총</div><div class="v">32,250원 · 7.25조</div><div class="d">9/28 10:46 (+10.4%) · 9/23 정규장 29,200 · 2/19 고점 55,177 · 7/29 저점 22,850 · 유증 발행가 22,100</div></div>
+    <div class="kpi"><div class="l">PBR · PER (컨센)</div><div class="v">0.67배 · 15.5 / 11.1배</div><div class="d">BPS 47,898원(키움) · EPS 2026E 2,079 / 2027E 2,899 (WiseReport 9/28) · 3년 PBR 밴드 0.3~1.2배의 중하단</div></div>
+    <div class="kpi"><div class="l">영업이익 추정 (억)</div><div class="v">8,898 / 12,985</div><div class="d">컨센 2026E / 2027E · 하나 9,365 / 12,900 · KB 9,740 / 19,000 · NH 8,830 / 13,450 · 2025 실적 −3,648</div></div>
+    <div class="kpi"><div class="l">AMPC 의존도 (2027E)</div><div class="v">약 93%</div><div class="d">AMPC 1.2조(하나) ÷ 연결 OP 1.29조(하나). KB Bull case에서도 232 추가분 1.61조 vs AMPC +0.27조</div></div>
+  </div>
+  <p>컨센서스 2027E 영업이익 1.30조는 하나(1.29조)·NH(1.35조)와 같고 KB(1.90조)만 높다. KB의 차이는 232 Bull case의 일부(+3,705억)를 Base에 넣었기 때문이다. 즉 <b>시장은 아직 232의 판가 효과를 2027년 숫자에 거의 넣지 않았다</b> — 이것이 한화의 “남은 상승 여지”이자, 판가가 안 오르면 잃을 것이 적은 이유다. 반대로 PBR 0.67배는 ROE 5~6%(NH 2027F 5.7%)의 값이다. 순차입금 12.7조인 회사에서 영업이익 +1조는 순이익 +7천억·ROE +6%p 정도이고, 그 경우에도 PBR 1배 회복이 상단이다. OCI가 “가격 갭의 레버리지”라면 한화는 “물량·보조금의 안정성에 판가 옵션을 얹은” 종목이다.</p>
+</section>
+
+<section class="q" id="q9">
+  <div class="qn">Q9 · Scorecard</div>
+  <h2>2사 매력도: 가격 갭의 레버리지는 OCI홀딩스, 물량·보조금의 바닥은 한화솔루션 — 12/4 전까지는 OCI가, 시행 후 체결가가 확인되면 한화가 따라온다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 같은 정책을 두고 두 회사가 돈을 버는 방식이 다르다. OCI는 <b>원가가 안 변하는 사업(폴리·웨이퍼)에서 판가만 오르는 구조</b>라 이익 레버리지가 크지만, 그 사업이 매출의 11%이고 아직 적자이며 3Q 눈높이가 높다. 한화는 <b>판가 상승분의 일부를 셀 원가로 돌려주는 구조</b>라 레버리지는 작지만, 달튼 95% 가동·카터스빌 램프·AMPC 1.2조라는 바닥이 있고 컨센서스가 232 효과를 거의 안 넣었다. 밸류는 OCI PBR 1.08배(밴드 상단 이탈)·PER 27E 12.8배 vs 한화 PBR 0.67배·PER 27E 11.1배. 하나의 롱온리 비중(9/28)은 OCI 30%·한화 20%다. 노트의 서열도 같다 — 단, OCI는 “3Q 실적(11월)에서 20$ 가정이 깨질 때”가, 한화는 “유증 물량 소화와 4Q 체결가 확인”이 각각의 진입 검증 지점이다.
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>OCI홀딩스</th><th>한화솔루션</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">주가 · 시총 (9/28 10:46)</td><td>227,500원 (+10.4%) · 4.25조</td><td>32,250원 (+10.4%) · 7.25조</td></tr>
+      <tr><td class="hd">태양광 노출 (1H26)</td><td>폴리 매출 2,170억 = 연결 매출의 11% · 부문 OP −273억. 화학소재·에너지·도시개발이 이익의 전부</td><td>신재생 매출 5.58조 = 66% · OP 2,286억 = 57% · 부문 자산 84%</td></tr>
+      <tr><td class="hd">232 수혜 경로</td><td>비중국 폴리 MIP 21$(갭 +24%) · 웨이퍼 MIP 100$/kg(+7~8c/W) · 미국 셀 검토 · 반도체 폴리(OTSM)</td><td>미국 모듈 MIP 0.38$/W(갭 +21%) · DCA 프리미엄 · AMPC 확대(카터스빌 셀·웨이퍼) · 한국 셀 이전가격 상승</td></tr>
+      <tr><td class="hd">이익 레버리지</td><td><b>큼</b>: 원가 불변. 폴리 1$/kg = 476억, 웨이퍼 1c/W = 367억(2.7GW) — 매출이 곧 이익(추정)</td><td><b>중간</b>: 판가 +13.7c 중 달튼 셀 원가 +3.3c, 카터스빌 폴리 +1c·미국 제조비 +5c(KB) → 마진 +7.7~10.4c/W</td></tr>
+      <tr><td class="hd">물량 가시성</td><td>2027~28 폴리 완판, 2028~29 웨이퍼 완판(LTA) · 2Q 판매량은 능력의 약 절반(추정) · 증설은 2028~29</td><td>2026 출하 9GW 가이던스 · 달튼 95% · 카터스빌 74% → 풀가동 4Q · 2030 13.5GW 목표(KB)</td></tr>
+      <tr><td class="hd">3Q26 리스크</td><td>하나 TRS OP 653억은 폴리 20$ 가정 vs 실제 16.8$ → 약 −350억 (추정). 컨센 2026E 3,468 vs 하나 3,950</td><td>관세 환급 900억 소멸 → 물량 2배·AMPC로 상쇄. 하나 2,126 · NH 2,061 · 컨센 2,090으로 눈높이 수렴</td></tr>
+      <tr><td class="hd">정책 리스크 노출</td><td>고정계약 예외(LTA 포뮬러가 MIP 이하) · 미중 협상에서 폴리 완화 · 테슬라 자체 폴리 40만톤설</td><td>FEOC·AMPC 개정 · TPO ITC 2027년 말 종료 · AD/CVD 판정 · 미국 금리 → 설치 둔화</td></tr>
+      <tr><td class="hd">재무</td><td>순차입금 1.21조 · 부채비율 71% · 자본조달비율 24% · 증설 1.4조의 1/3 선수금</td><td>순차입금 12.72조(유증 전) · 부채비율 184% · 커버넌트 Waiver · 자산 매각 2,998억·1,255억 · 유증 1.17조</td></tr>
+      <tr><td class="hd">주주환원</td><td>2026~29 TSR 50%+ (별도 순이익 기준) · 자사주 500억 소각 · 2024~25 4.5% 소각 완료</td><td>2024~2026 무배당 · 2026-01 자사주 처분 · 유증으로 주식수 +31%</td></tr>
+      <tr><td class="hd">밸류에이션</td><td>PBR 1.08배(3년 밴드 0.3~0.9 상단 이탈) · PER 26E 23.2 / 27E 12.8배 · 하나 OP 컨센 대비 +14% / +9%</td><td>PBR 0.67배(밴드 0.3~1.2 중하단) · PER 26E 15.5 / 27E 11.1배 · 하나 OP 컨센과 동일, KB만 +46%(27E)</td></tr>
+      <tr><td class="hd">주가 국면</td><td>2025 말 → 5/27 +237% → 9/22 −51% → 9/28 +21%. YTD +97%</td><td>2025 말 → 2/19 +118% → 7/29 −59% → 9/28 +41%. YTD +28%</td></tr>
+      <tr><td class="hd">하나 롱온리 비중 (9/28)</td><td>30% (최대)</td><td>20%</td></tr>
+      <tr><td class="hd">다음 검증 지점</td><td>10월 초 상무부·CBP 시행 지침(고정계약 범위) → 11월 중순 3Q 실적(폴리 판매량·판가·NST 첫 매출) → 12/4 시행 → 1월 비중국 폴리 주간가</td><td>10월 말 3Q 실적(출하 2.4~2.5GW·AMPC·카터스빌 풀가동) → 12/4 → 1Q27 Anza 체결가·DCA 모듈 판가 → 2027년 AMPC 1.2조 경로</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: DART 반기보고서(양사), 키움 9/28, WiseReport 컨센 9/28, 하나 7/23·7/29·8/10·9/23·9/28, KB 8/31, NH 9/21, 메리츠 9/15. “추정”은 본 노트의 계산.</p>
+
+  <h3>스코어카드 (5점 만점 · 상대 평가)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>기준</th><th>OCI홀딩스</th><th>한화솔루션</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">232 가격 효과의 크기</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★☆☆</span></td><td>폴리·웨이퍼는 원가 불변, 모듈은 셀 원가 상승 상쇄</td></tr>
+      <tr><td class="hd">효과의 확실성 (예외·전가 리스크)</td><td><span class="stars">★★★☆☆</span></td><td><span class="stars">★★★★☆</span></td><td>OCI는 고정계약 예외·포뮬러 LTA, 한화는 MIP가 곧 수입 경쟁가</td></tr>
+      <tr><td class="hd">물량·가동의 바닥</td><td><span class="stars">★★☆☆☆</span></td><td><span class="stars">★★★★☆</span></td><td>OCI 2Q 판매량 능력의 절반(추정), 한화 달튼 95%</td></tr>
+      <tr><td class="hd">보조금 독립성</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★☆☆☆☆</span></td><td>한화 2027E OP의 약 93%가 AMPC</td></tr>
+      <tr><td class="hd">재무·희석</td><td><span class="stars">★★★★☆</span></td><td><span class="stars">★★☆☆☆</span></td><td>순차입 1.2조 vs 12.7조, 유증 +31%</td></tr>
+      <tr><td class="hd">밸류 여유</td><td><span class="stars">★★☆☆☆</span></td><td><span class="stars">★★★★☆</span></td><td>PBR 밴드 상단 이탈 vs 중하단</td></tr>
+      <tr><td class="hd">컨센서스 상향 여지</td><td><span class="stars">★★★☆☆</span></td><td><span class="stars">★★★★☆</span></td><td>OCI는 하나가 이미 컨센 위, 한화는 컨센이 232 미반영</td></tr>
+      <tr><td class="hd">3Q 실적 리스크 (낮을수록 별 많음)</td><td><span class="stars">★★☆☆☆</span></td><td><span class="stars">★★★★☆</span></td><td>20$ 가정 vs 눈높이 수렴</td></tr>
+    </tbody></table></div>
+  <p>합계가 아니라 조합으로 읽어야 한다. OCI는 “정책이 설계대로 작동하면 가장 많이 버는 회사”이고, 한화는 “정책이 절반만 작동해도 살아남는 회사”다. 하나가 롱온리에서 OCI 30%·한화 20%를 준 것은 전자의 기대값을 산 것이고, 컨센서스가 한화의 2027년에 232를 안 넣은 것은 후자의 옵션을 아직 값 매기지 않은 것이다. <b>순서는 OCI(가격 확인 전 기대) → 한화(가격 확인 후 실적)</b>가 자연스럽고, 두 종목의 공통 반증은 하나 — 12/4 이후에도 미국 체결가가 오르지 않는 것 — 이다(Q11).</p>
+</section>
+
+<section class="q" id="q10">
+  <div class="qn">Q10 · Peers</div>
+  <h2>미국·글로벌 피어와의 격차: First Solar는 232 이후 −29%, 중국 5사는 상반기 100억 위안 적자, Wacker는 태양광에서 발을 뺀다 — 한국 2사만 “232를 이익으로 받는 상장사”다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 232의 수혜를 순수하게 받는 상장 종목이 의외로 적다. First Solar는 박막(CdTe)이라 232 대상이 아니고 간접 수혜인데, 6/3 사상 최고 318$에서 9/25 178$로 −44%(서명일 8/6 대비 −27%) 밀렸다 — 금리·프로젝트 파이낸싱과 “개발사가 미리 사 둬서 시행 후 물량이 준다”는 Jefferies 논리다. Wacker(P/B 1.04)는 CEO가 232를 “실망”이라 부르며 태양광용 축소를 시사했고, Daqo(P/B 0.18)·퉁웨이·GCL·룽지·진코는 상반기 합산 100억 위안 넘게 잃었다. Canadian Solar(P/B 0.27, 순차입 58.5억$)와 T1(3.78$)은 미국 공장 램프 중이지만 재무가 얇다. <b>“비중국 폴리·웨이퍼를 이미 돌리고 있고 이익으로 연결할 수 있는 상장사”는 OCI홀딩스와 코닝(Hemlock) 둘이고, “미국 안 수직계열 모듈”은 한화큐셀과 First Solar 둘</b>이다. 그래서 한국 2사의 PBR(1.08·0.67)은 First Solar(1.85)와 중국(0.2~0.5) 사이 어딘가에 놓여야 하고, 지금은 그 사이의 아래쪽이다.
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>종목 (거래소)</th><th class="num">주가 9/25</th><th class="num">1주</th><th class="num">1개월</th><th class="num">3개월</th><th class="num">YTD</th><th class="num">52주 고 / 저</th><th>밸류 · 2Q26 · 232 포지션</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">OCI홀딩스 (KRX)</td><td class="num">206,000원 (9/23) · 227,500 (9/28 장중)</td><td class="num up">+1.5%</td><td class="num down">−25%</td><td class="num">—</td><td class="num up">+79% (9/23)</td><td class="num">388,000 / 84,800</td><td>PBR 1.08 · PER 27E 12.8 · 폴리 35kt 완판·웨이퍼 2.7GW · MIP 직접 수혜</td></tr>
+      <tr><td class="hd">한화솔루션 (KRX)</td><td class="num">29,200원 (9/23) · 32,250 (9/28 장중)</td><td class="num up">+2.6%</td><td class="num down">−13%</td><td class="num">—</td><td class="num up">+16% (9/23)</td><td class="num">55,177 / 22,850</td><td>PBR 0.67 · PER 27E 11.1 · 미국 모듈 8.6GW + 카터스빌 수직계열 · MIP·AMPC·DCA</td></tr>
+      <tr><td class="hd">First Solar (NASDAQ)</td><td class="num">177.71$</td><td class="num down">−9.3%</td><td class="num down">−13.7%</td><td class="num down">−25.7%</td><td class="num down">−35.2%</td><td class="num">318.25 / 172.16</td><td>P/B 1.85 · PER 11.0 / fwd 8.4 · 2Q 매출 10.6억$, EPS 3.92, 잔고 45.1GW · CdTe = 232 비대상, 간접 수혜. 9/24 −10.3%(금리·GLJ 하향)</td></tr>
+      <tr><td class="hd">Canadian Solar (NASDAQ)</td><td class="num">10.80$</td><td class="num down">−5.3%</td><td class="num down">−22.1%</td><td class="num down">−29.8%</td><td class="num down">−57.5%</td><td class="num">33.58 / 10.80</td><td>P/B 0.27 · 순차입 58.5억$ · 2Q 순손실 −7,700만$ · 인디애나 HJT 셀 2.1 → 6.3GW, 메스키트 모듈 5 → 10GW · FEOC 구조조정(CS PowerTech 75.1%)</td></tr>
+      <tr><td class="hd">T1 Energy (NYSE)</td><td class="num">3.78$</td><td class="num down">−9.4%</td><td class="num down">−16.2%</td><td class="num down">−54.0%</td><td class="num down">−51.8%</td><td class="num">12.04 / 2.18</td><td>2Q 매출 2.5억$, 조정 EBITDA 1,070만$ · G1 모듈(구 Trina) + G2 셀 2.1GW(1Q27) · 코닝 웨이퍼 공급</td></tr>
+      <tr><td class="hd">Wacker Chemie (XETRA)</td><td class="num">87.45€</td><td class="num up">+1.8%</td><td class="num down">−3.1%</td><td class="num down">−3.8%</td><td class="num up">+22.4%</td><td class="num">105.6 / 63.7</td><td>P/B 1.04 · fwd PER 43 · 폴리 2Q EBITDA 1,100만€ · CEO “232 실망, 반도체용 집중” · JPM·MS Underweight 60~61€</td></tr>
+      <tr><td class="hd">Corning (NYSE)</td><td class="num">156.74$</td><td class="num up">+4.4%</td><td class="num up">+2.6%</td><td class="num down">−29.1%</td><td class="num up">+72.9%</td><td class="num">255.69 / 78.03</td><td>Hemlock 80.5% · 태양광 부문 2Q 4.38억$(+90%), 순손실 −700만$ · 미국 웨이퍼 ~2.5GW · 5년 80% 선약정</td></tr>
+      <tr><td class="hd">Daqo (NYSE)</td><td class="num">11.47$</td><td class="num down">−5.0%</td><td class="num down">−15.2%</td><td class="num down">−10.7%</td><td class="num down">−61.3%</td><td class="num">35.69 / 11.26</td><td>P/B 0.18 · 순현금 17.3억$ &gt; 시총 7.8억$ · 2Q ASP 4.04 vs 현금원가 4.57$/kg · FY26 생산 16~18만톤(능력 30.5만톤)</td></tr>
+      <tr><td class="hd">JinkoSolar (NYSE)</td><td class="num">9.67$</td><td class="num down">−6.9%</td><td class="num down">−29.2%</td><td class="num down">−40.6%</td><td class="num down">−65.4%</td><td class="num">30.58 / 9.67</td><td>2Q 순손실 −6.97억 위안 · 미국 잭슨빌 2GW(지분 75% 매각)</td></tr>
+      <tr><td class="hd">LONGi · Tongwei · GCL (상해·홍콩)</td><td class="num">11.09 · 11.20 CNY · 0.73 HKD</td><td class="num down">−1.2 · −1.3 · −3.3%</td><td class="num down">−8.7 · −5.9 · −8.2%</td><td class="num">−15.5 · −7.5 · +5.1%</td><td class="num down">−40.0 · −46.9 · −34.7%</td><td class="num">—</td><td>1H26 순손실 룽지 −36.8억 · 퉁웨이 −51.2억 · GCL −20.8억 위안 · 4Q 50만톤 중단 서약</td></tr>
+      <tr><td class="hd">TAN ETF · 미국 10Y</td><td class="num">44.06$ · 5.18%</td><td class="num down">−3.5%</td><td class="num down">−9.7%</td><td class="num down">−22.5%</td><td class="num down">−14.6%</td><td class="num">73.93 / 43.42 · 3.95~5.18%</td><td>글로벌 태양광 ETF 3개월 −22% vs 10년물 +80bp — 9월 태양광 약세의 공통 변수</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: Yahoo Finance(9/25 종가, 중국·홍콩은 9/28), 키움(한국, 9/23 정규장·9/28 10:46), stockanalysis.com(P/B·PER, 9/25~28), First Solar 8-K 7/30, Canadian Solar 6-K 8/27, T1 8-K, Wacker CMD 9/17, Corning 2Q26, Daqo 6-K 8/20, EnergyTrend·PV Tech(중국 1H). 한국 2사의 1개월은 8/25 대비, YTD는 2025-12-30 대비.</p>
+
+  <h3>왜 First Solar는 232 확정 후 내렸나 — 한국 2사가 배울 세 가지</h3>
+  <ul class="tight">
+    <li><b>수혜가 간접이면 금리가 이긴다.</b> First Solar의 HTS 코드는 232 대상이 아니다. 회사는 8/6 “환영” 성명을 냈지만 자기 판가는 이미 잔고(45.1GW, 41GW 국산부품 조건)에 묶여 있고, 신규 수주 0.36$/W는 232 이전에 잡힌 값이다. 232가 올리는 것은 경쟁자의 가격이지 First Solar의 계약가가 아니다. 반면 금리는 45GW 잔고의 고객(개발사) 전부를 때린다. OCI·한화는 판가가 직접 오르는 쪽이라 이 점에서 First Solar와 다르지만, 고객이 같다는 점에서 같다.</li>
+    <li><b>“이미 사 뒀다”의 함정.</b> Jefferies(8월)는 개발사들이 12/4 전에 공급을 확보해 시행 후 물량이 줄 수 있다고 봤고, Anza는 12/4 이전 통관분이 0.24~0.25$/W에 아직 나와 있다고 했다. 상무부의 사재기 규칙(9/24, 신규 수입업자 주당 모듈 55장·셀 2,000장 상한)은 이 창을 좁히지만 기존 수입업자의 “역사적 평균” 수준 수입은 막지 않는다. 즉 4Q26~1Q27의 미국 체결가는 재고 소진 속도의 함수이고, 한화의 4Q 판가가 곧바로 38c가 되지 않을 수 있는 이유다.</li>
+    <li><b>밸류 격차의 방향.</b> KB(8/31) 피어표에서 First Solar P/B 2.0·PER 11.9(26E), 룽지 1.8, Canadian Solar 0.3, 한화 0.8이었다. 한 달 뒤 First Solar 1.85·Canadian Solar 0.27·한화 0.67(현재가)·OCI 1.08이다. First Solar가 내려온 만큼 “미국 프리미엄”의 천장이 낮아졌고, 한화의 0.67은 Canadian Solar(순차입 58.5억$, 적자)보다 2.5배 높다. <b>OCI의 1.08은 Wacker(1.04)와 같고 Daqo(0.18)의 6배</b>다 — 시장은 이미 OCI를 “중국 폴리 회사”가 아니라 “비중국 소재 회사”로 값 매기고 있다.</li>
+  </ul>
+
+  <h3>애널리스트 시각의 분포 (미국 모듈 c/W 기준)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>기관</th><th class="num">시행 후 미국 모듈</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">Anza (8/10 · 9/22)</td><td class="num">수입 38 · 수입셀 조립 43 · 국산셀+수입웨이퍼 56~62</td><td>경로별 최소가. 오퍼 중간값 이미 38</td></tr>
+      <tr><td class="hd">KB (8/31)</td><td class="num">43.7</td><td>MIP 38 + 15% 수렴</td></tr>
+      <tr><td class="hd">BMO</td><td class="num">43~44</td><td>First Solar Outperform 263$</td></tr>
+      <tr><td class="hd">Roth (8/7·8/17)</td><td class="num">40 (수입셀) · 48 (수입 웨이퍼+셀)</td><td>+0.10$/W → PPA +4~5$/MWh</td></tr>
+      <tr><td class="hd">Intertek CEA (8/14)</td><td class="num">35 (국산) · 30~33 (비관세 셀 통합)</td><td>2027~30 유틸리티 취소 예상</td></tr>
+      <tr><td class="hd">OPIS 선도 (9/22)</td><td class="num">34.5 (1H27 인도 지표)</td><td>7월 29 → 9월 34.5. <b>시장이 실제로 거래하는 유일한 “시행 후” 값</b></td></tr>
+      <tr><td class="hd">Jefferies (8월)</td><td class="num">+5~10c (“완만”)</td><td>선확보로 물량 감소, First Solar Hold 207$</td></tr>
+      <tr><td class="hd">회사 (한화, NH 9/21)</td><td class="num">38 상회</td><td>현재 20센트 중후반</td></tr>
+    </tbody></table></div>
+  <p>범위는 30~62c/W이고 중앙은 38~44다. 노트가 시뮬레이터의 기준 시나리오를 “MIP 38(+8c)”으로 두고 KB의 43.7을 별도 버튼으로 남긴 이유다. OPIS 선도 34.5는 “2027년 상반기까지는 38 아래”라는 시장의 현재 판단이며, 한화 2027년 추정치의 하방 기준선으로 쓸 수 있다.</p>
+</section>
+
+<section class="q" id="q11">
+  <div class="qn">Q11 · Risks</div>
+  <h2>리스크·반증 조건: 두 종목의 공통 반증은 하나다 — 12/4 이후에도 미국 체결가가 오르지 않는 것. 나머지는 각자의 분모(고정계약·차입금)다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 노트의 판정(“MIP까지의 가격 갭 × 물량 × 원가 전가력”)이 틀리는 경우는 셋이다. ① 가격 갭이 안 닫힌다 — 고정계약 예외·추적 가능 중국산 7$·오만 10만톤·시행 지침이 갭을 열어 둔다. ② 물량이 안 따라온다 — 금리 5.2%와 모듈 +10c가 2028년 착공을 줄이고, 개발사의 선확보 재고가 4Q~1Q27 체결을 미룬다. ③ 정책이 바뀐다 — 미중 후속 협상, 중간선거(11/3) 뒤 의회, MIP 조정권(상무부), FEOC 규정. 여기에 OCI 고유(3Q 눈높이·LTA 포뮬러·테슬라 자체 폴리)와 한화 고유(유증 소화·순차입 12.7조·커버넌트·케미칼·TPO 2027)가 얹힌다. 각 리스크마다 “무엇을 보면 틀렸음을 아는가”를 적었다.
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>리스크</th><th>메커니즘</th><th>영향 (OCI / 한화)</th><th>반증·확인 지표 (언제)</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">1</td><td class="hd">미국 체결가가 38c에 못 미침</td><td>오퍼(0.38)와 체결의 간극. 개발사 선확보 재고(0.24~0.25$/W 통관분), OPIS 1H27 선도 0.345, Jefferies “+5~10c”</td><td>중 / <b>대</b>. 한화 2027 판가 +8c 가정의 절반이면 매출 +5천억, 마진 효과 그 이하</td><td>Anza 월간 체결가·OPIS DDP 선도(매주), 한화 4Q 실적 판가 코멘트(2027-01 말), 1Q27 DCA 모듈 계약 단가</td></tr>
+      <tr><td class="hd">2</td><td class="hd">비중국 폴리가 21$에 못 미침</td><td>고정계약 예외(8/6 이전 LTA 포뮬러), OPIS “추적 가능 중국산 ~7$” 잠식, 301 중첩 미확정, 오만 United Solar 10만톤의 FEOC 인정</td><td><b>대</b> / 소. OCI 폴리 1$ = 476억(스팟 100% 기준)</td><td>PV Insight·OPIS 비중국 주간가(1월까지 19 → 20$ 이상 여부), 상무부 시행 지침의 예외 범위(12/4 전), CBP 오만산 처리 사례</td></tr>
+      <tr><td class="hd">3</td><td class="hd">OCI 3Q26 기대 미달</td><td>하나 TRS OP 653억은 폴리 20$ 가정(실제 16.8$). 삼성 3Q 700억·컨센 1,064억(연결)은 이미 낮음. 1Q 정비·2Q 관망으로 판매량 4,800톤/분기</td><td><b>대</b> / —. 주가 PBR 1.08은 2027 갭 실현을 선반영</td><td>11월 중순 3Q 실적: TRS 판매량(1만톤 이상?)·OP 부호, NST 첫 매출, LTA 선수금 유입. 회장 “3Q &gt; 2Q”(연결) 충족 여부</td></tr>
+      <tr><td class="hd">4</td><td class="hd">금리·PPA → 2028 착공 감소</td><td>10Y 5.23%, 연준 추가 인상. 모듈 +10c = PPA +4~5$/MWh(Roth). Intertek: 2027~30 유틸리티 취소</td><td>중 / 중 (시차 2027 하반기 이후)</td><td>SEIA 4Q 보고서(2026-12)의 2027~28 유틸리티 파이프라인, First Solar 3Q 수주 단가·취소, 10/27~28 FOMC</td></tr>
+      <tr><td class="hd">5</td><td class="hd">정책 되돌림</td><td>미중 후속(휴전 2027-01-10까지, 비전략 품목 300억$), 상무부 MIP 조정권(포고문 1(b)), 11/3 중간선거 후 의회, 백악관이 “전기요금” 명분으로 완화</td><td>대 / 대 (미국 프리미엄 전체)</td><td>미중 무역위원회 품목 리스트에 태양광 포함 여부, 상무부 MIP 조정 고시, SEIA·SEMA 로비 동향</td></tr>
+      <tr><td class="hd">6</td><td class="hd">FEOC 규정 지연·완화</td><td>제안 규정 미발표(9/28). 완화되면 중국계 24GW(또는 16~20GW)가 시장에 복귀 → 요건 충족 프리미엄 소멸</td><td>중 / <b>대</b></td><td>재무부 제안 규정 발표일·MACR 표, Illuminate·Canadian Solar 45X 수취 여부</td></tr>
+      <tr><td class="hd">7</td><td class="hd">한화 재무 분모</td><td>순차입 12.7조(유증 전)·부채비율 184%·Q ENERGY 커버넌트 Waiver·연말 150% 목표. 이자 부담이 232 이익을 먼저 가져감. 유증 물량(5,300만주, 22,100원) 소화</td><td>— / <b>대</b></td><td>3Q 순차입금(10월 말), 연말 부채비율 150% 달성, 추가 자산 매각·RCPS, 주가 22,100 지지 여부</td></tr>
+      <tr><td class="hd">8</td><td class="hd">달튼 셀 원가 전가 실패</td><td>셀 MIP 0.22 + 15% = 25.3c가 원가로. 판가 +8c 중 셀 원가 +3.3c(KB) 이상이면 마진 개선이 절반 이하. 카터스빌 셀 램프 지연(3Q 말~4Q 초 풀가동)</td><td>— / 중</td><td>3Q 신재생 OPM(2Q 6.7% 대비), 카터스빌 풀램프 확인(회사 “6개월 내”), 4Q AMPC 3,100억 도달</td></tr>
+      <tr><td class="hd">9</td><td class="hd">AMPC 의존과 2030 감축</td><td>한화 2027 OP의 약 93%가 AMPC. 45X는 2030 75%·2031 50%·2032 25%로 감축(KB 표14). TPO ITC 2027년 말 가동 요건</td><td>— / 대 (2028 이후 밸류)</td><td>AMPC 유동화 계약 규모·할인율, 2028년 회사 가이던스(9.29억$), 주택용 2027 이후 계획</td></tr>
+      <tr><td class="hd">10</td><td class="hd">테슬라·머스크 변수</td><td>SpaceX 계약 미체결(4월 협상), 자체 폴리 40만톤설(출처 불명), Crystal Sun 2029. 고객이 되면 최대 호재, 자체 생산이면 장기 경쟁자</td><td>양방향 / 소</td><td>OCI 신규 LTA 공시(고객명), 테슬라 폴리 조달처 공개, Maxwell 장비 수출 승인</td></tr>
+      <tr><td class="hd">11</td><td class="hd">한화 케미칼·기타</td><td>3Q 케미칼 적자 전환(NH −92억, 유가 전가 실패), 여천NCC 통합법인(PE·석유수지 현물출자) 손상, 첨단소재</td><td>— / 중</td><td>3Q 케미칼 OP, 연내 흡수합병 일정, 통합법인 손상차손</td></tr>
+      <tr><td class="hd">12</td><td class="hd">환율</td><td>원/달러 1,532(6월) → 1,361(9/28). 두 회사 모두 달러 매출. 3Q 원화 실적의 역풍</td><td>중 / 중</td><td>분기 평균 환율(3Q 약 1,418 vs 2Q 약 1,510), 회사의 환헤지 공시</td></tr>
+    </tbody></table></div>
+  <p class="cap">영향 등급은 본 노트의 판단. 지표의 시점은 공개 일정 기준(FOMC 10/27~28, ITC 10/14, AD/CVD 명령 11/2, 중간선거 11/3, 232 시행 12/4, 미중 휴전 2027-01-10).</p>
+
+  <h3>과거 실측 낙폭: 이 두 종목은 얼마나 빠져 봤나</h3>
+  <ul class="tight">
+    <li><b>OCI홀딩스</b>: 2026-05-27 388,000원 → 9/22 188,200원, <b>−51%</b>(4개월). 5/15 미중 화해 무드에 하루 20%대 급락, 9/1~9/3 3일 −18%. 52주 저점 84,800원(2025-10-01)은 현재가의 37%다.</li>
+    <li><b>한화솔루션</b>: 2026-02-19 55,177원 → 7/29 22,850원, <b>−59%</b>(5개월, 유증 발표 3/26 포함). 8/13 36,550 → 9/22 27,600 −24%. 유증 발행가 22,100원이 시장이 인정한 “바닥”이었다.</li>
+    <li>두 종목 모두 <b>정책 헤드라인 하루에 ±10~20%</b>가 정상 변동성이다. 12/4 전후, 미중 후속 협상, FEOC 규정 발표일에는 같은 크기의 움직임을 전제해야 한다.</li>
+  </ul>
+</section>
+
+<section class="q" id="fact">
+  <div class="qn">FC · Fact check</div>
+  <h2>팩트체크: 핵심 수치의 출처 등급과 불일치</h2>
+  <p class="cap">등급 A = 1차 출처(공시·정부 문서·회사 발표·거래소 시세), B = 신뢰할 수 있는 2차(리서치·주요 언론·가격 평가기관), C = 추정·단일 출처·미확인. 불일치는 그대로 적었다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>수치</th><th>노트가 쓴 값</th><th>출처 · 등급</th><th>불일치 · 주의</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">FC-1</td><td>비중국 폴리 가격</td><td>16.92$/kg (9/24)</td><td>PV Insight(하나 TG·Weekly) · B</td><td>OPIS GPM 19.23(9/1) · Bernreuter 18.50 · InfoLink 18.5(9/23). 바스켓 차이. “MIP까지 +24%”는 PV Insight 기준 상단, OPIS 기준 +9%. OCI 공시 참고 시세 1H26 17.50(Energy Trend)</td></tr>
+      <tr><td class="hd">FC-2</td><td>미국산 폴리 20.45$/kg</td><td>20.45 (9/24)</td><td>PV Insight(하나) · B</td><td>OPIS “미국 스팟 공표 없음”. SIA 공정가치 24$(2025-08). 단일 평가기관 값</td></tr>
+      <tr><td class="hd">FC-3</td><td>웨이퍼 MIP 100$/kg의 c/W 환산</td><td>10~12c/W</td><td>하나 8/10 · B</td><td>Bernreuter 12(n-type)/15.2(p-type) · Anza 13.8(관세 포함) · ES Foundry 15(PERC)+15%=17. 원단위 차이. “Wells Fargo +8c/W”는 원문 미발견(C)</td></tr>
+      <tr><td class="hd">FC-4</td><td>중국산의 232 관세</td><td>15% 추가 적용</td><td>포고문 5·8·10조(W1 확인) · A</td><td>하나 TG 8/7 요약은 “중국은 별도 232 고율 관세 없음(301·AD/CVD 유지)”. 포고문상 중국은 “기타국”으로 15% 가산. 301과의 중첩은 로펌 해석 상충(C)</td></tr>
+      <tr><td class="hd">FC-5</td><td>고정계약 예외</td><td>MIP 차액 관세만 면제, 15%는 적용</td><td>포고문 2(a)·Foley·Hunton · A/B</td><td>기간 제한 없음. “8/6 이후 계약 수정 시 예외 상실”은 미확인(C). 포뮬러 가격 LTA의 처리는 상무부 지침 미발표</td></tr>
+      <tr><td class="hd">FC-6</td><td>Anza 모듈 가격</td><td>0.27 → 0.38$/W(+40.7%), 동일조건 +15%</td><td>Anza PR 9/22·PV Magazine 9/25~26 · B</td><td>오퍼가(체결가 아님). 12/4 이전 통관분 0.24~0.25. OPIS 1H27 선도 0.345, 미국 DDP 0.290, 미국 조립(수입셀) 0.321(OPIS)/0.310(InfoLink), SEIA 2Q 유틸리티 0.33</td></tr>
+      <tr><td class="hd">FC-7</td><td>미국 모듈·셀 CAPA</td><td>모듈 66GWdc, 셀 3.2 → 10.6~11GW</td><td>SEIA/우드맥 9/10, Bernreuter, Anza · B</td><td>모듈 65.5(2025 말)/66(SEIA 2Q)/69.9(6월)/74.1(Bernreuter, 박막 포함). 셀 3.2(1~7월 집계) vs 10.6(카터스빌 포함). 중국계 24.3GW/40%(DOE, 하나 도표 51) — W3 재집계 16~20GW, 1차 문서 미확인(C)</td></tr>
+      <tr><td class="hd">FC-8</td><td>OCI 2Q26 폴리 판매량</td><td>약 4,800톤</td><td>삼성증권 추정 7/24 · C</td><td>회사 미공시. 본 노트의 매출 역산(1,133억 ÷ 17.5$ ÷ 1,500원 ≈ 4,300톤)과 대체로 일치. 1Q는 15개월 주기 정비로 가동률 50%(회사)</td></tr>
+      <tr><td class="hd">FC-9</td><td>OCI 3Q26 폴리 OP</td><td>하나 653억(20$ 가정) vs 노트 “절반 안팎” 추정</td><td>하나 7/23 · B / 노트 · C</td><td>삼성 3Q 연결 700억, 컨센 1,064억(FnGuide 9/23), 회장 “3Q &gt; 2Q”. 3Q 실제 비중국 폴리 평균 16.8(PV Insight)</td></tr>
+      <tr><td class="hd">FC-10</td><td>OCI 순차입금</td><td>1.21조 (현금만 차감)</td><td>DART 반기보고서 자본위험관리 · A</td><td>회사 IR은 단기금융자산 2,849억 포함해 9,269억(18.6%). 별도 지주는 순현금 2,469억</td></tr>
+      <tr><td class="hd">FC-11</td><td>OCI 증설 계획</td><td>35 → 40(2027~28) → 70kt(2029), 1.43조</td><td>DART 반기(2026-07 주총 70kt)·회사 IR 7/23 · A</td><td>2024-02 결의 56,600톤 → 변경. 2024년 공시 0.87조/2.16만톤 대체. 웨이퍼 투자 5,000억+ 별도</td></tr>
+      <tr><td class="hd">FC-12</td><td>OCI스페셜티</td><td>웨이퍼 재생(패키징용) 사업</td><td>OCI Fact Book 8/27 · A</td><td>노트 초안이 “반도체 폴리”로 오독 → 수정. 반도체용 폴리는 OTSM(8,000톤, 1H27 준공, 2029 판매)과 OCI(주) 군산 4,700톤</td></tr>
+      <tr><td class="hd">FC-13</td><td>한화 3Q26 가이던스</td><td>출하 2.4~2.5GW, AMPC 2,300억(4Q 3,100억)</td><td>2Q 컨콜 보도(블로터·이코리아·아주) · B</td><td>매체별 2.4 vs 2.5GW, AMPC 2,300 vs 2,390억 상이. 하나 2,390·NH 2,297</td></tr>
+      <tr><td class="hd">FC-14</td><td>한화 AMPC 2027</td><td>1.2조 (하나)</td><td>하나 7/29 · B</td><td>회사 기대치로 보도된 2027년 8.79억$(허핑턴포스트 6/10, 원출처 미확인) ≈ 1.2조(1,360원) — 일치. 2026 6.75억$, 2028 9.29억$, 2029 11억$</td></tr>
+      <tr><td class="hd">FC-15</td><td>한화 케미칼 구조조정 출자 대상</td><td>여수 PE·석유수지 → 여천NCC 현물출자</td><td>산업부 승인 7/20 보도 · B</td><td>메리츠 9/15 표기 “케미칼부문 PO 사업 출자”는 승인 자료에서 확인되지 않음(C). 노트는 PE·석유수지로 기재</td></tr>
+      <tr><td class="hd">FC-16</td><td>한화 부채비율</td><td>184% (1H26)</td><td>DART(부채 22.90조 ÷ 자본 12.47조) · A</td><td>IB토마토 183.7% 일치. 일부 요약의 156.8%는 근거 불명. 순차입 12.7조는 유증 납입(7/30) 전 기준</td></tr>
+      <tr><td class="hd">FC-17</td><td>카터스빌 잉곳·웨이퍼 가동</td><td>잉곳 2025-12, 웨이퍼 2Q26 풀생산, 셀 6/9 가동(7월 양산)</td><td>회사 6/9 발표·국내 보도 · A/B</td><td>영문 보도자료는 잉곳·웨이퍼 “3Q26까지 3.3GW” 표현. 9월 시점 풀램프업 공식 업데이트 없음</td></tr>
+      <tr><td class="hd">FC-18</td><td>테슬라·SpaceX와 OCI</td><td>협상 보도만, 계약 미확인</td><td>매일경제TV 4/14, Digitimes 8/6 · C</td><td>“머스크 폴리 40만톤 장비 계약”(중국 언론 인용)은 출처 미발견. 9월 테슬라-OCI 보도 없음</td></tr>
+      <tr><td class="hd">FC-19</td><td>미국 2026 설치 전망</td><td>우드맥 “연 ~44GWdc”, BNEF 총량 미확인</td><td>SEIA/우드맥 9/10 · B</td><td>하나(25/1/5)의 “우드맥 44 vs BNEF 61”은 2025년 말 빈티지. BNEF 2026 미국 총량은 W1이 1차 출처를 찾지 못함(주택용 4.1GW만)</td></tr>
+      <tr><td class="hd">FC-20</td><td>First Solar 주가</td><td>318.25(6/3 최고) → 177.71(9/25)</td><td>Yahoo·stockanalysis · A</td><td>하나 6/1 “18년래 최고 임박”은 당시 사실. 9/24 −10.3%(금리·GLJ 목표가 315 → 250)</td></tr>
+      <tr><td class="hd">FC-21</td><td>미국 10년물</td><td>5.18% (9/24) · 5.23% (9/26)</td><td>FRED DGS10 · CNBC/Fortune · A/B</td><td>FRED 9/25~26 미게시 시점. Yahoo ^TNX 9/25 5.184</td></tr>
+      <tr><td class="hd">FC-22</td><td>한국 2사 주가</td><td>9/23 정규장 206,000 / 29,200 · 9/28 10:46 227,500 / 32,250</td><td>키움 ka10001(기준가·현재가) · A</td><td>일봉 종가(9/23 206,500 / 29,400)는 20시 애프터마켓 체결가. 9/28은 장중가로 종가와 다름</td></tr>
+      <tr><td class="hd">FC-23</td><td>한화 신재생 부문 OP</td><td>1H26 2,286억(연결조정 후)</td><td>DART 반기 · A</td><td>연결조정 전 2,333억. 2Q26 태양광 1,664억(회사)은 부문 정의가 달라 반기 합계와 단순 비교 불가(1Q 622 + 2Q 1,664 = 2,286 일치)</td></tr>
+      <tr><td class="hd">FC-24</td><td>OCI 폴리 부문 OP</td><td>1H26 −273억, 2Q −41억</td><td>DART 보고부문 · A</td><td>회사 IR TerraSus 2Q −35억(자회사 기준). 부문(신재생)에는 Slim Rod 등 포함</td></tr>
+    </tbody></table></div>
+</section>
+
+<section class="q" id="src">
+  <div class="qn">-- · Sources</div>
+  <h2>출처 · 미반영 자료</h2>
+  <h3>하나증권 윤재성 위원 (1차 뼈대)</h3>
+  <ul class="tight">
+    <li>태양광 산업 Update “태양광은 미국의 국가안보 전략자산이다”(2026-09-23, 윤재성·김형준) — Top Picks OCI홀딩스·한화솔루션, “12/4 시행 전이 절호의 매수 기회”</li>
+    <li>에너지/화학 Weekly Monitor 9/28 “미국 태양광 가격 상승 중”, 9/21 “카타르의 이탈과 LNG 시장의 변화”, 9/14 “홍해 리스크 재부각과 급등하는 두바이유”, 9/7 “미국 디젤 사상 최대 vs 10월 사우디 OSP −2$”, 8/31 “베네수엘라의 OPEC 탈퇴 가능성과 정유업” — 태양광 면(PV Insight 가격), 추천종목 리뷰, 발췌(8/10 Section 232 해석편, 6/1 First Solar, 25/1/5 한국 태양광 회복 점검)</li>
+    <li>Section 232 점검 “우호적인 정책 방향성”(8/5), Weekly 8/10 “Section 232, 반도체까지 엮인 Upstream 구축이 핵심”, OCI홀딩스 “2027~29년 물량 완판. 대세 상승 사이클 진입”(7/23), 한화솔루션 “태양광 실적 회복 사이클 진입”(7/29), 2Q26 Preview(7/19)</li>
+    <li>텔레그램 @energy_youn 8/25~9/28 97건 중 태양광 12건: 8/25 ES Foundry MIP 환산, 8/27·9/3·9/24 폴리 가격, 9/28 강세 배경. 7/15~8/24 25건(7/31 반내권 회의, 8/6 8사 선언, 8/6 Digitimes 머스크, 8/7 포고문 요약, 8/11 Crystal Sun, 8/13·8/20 가격)</li>
+    <li>이 기간 발간됐으나 태양광과 무관해 미반영: SK이노베이션 Update(8/27), 에너지 In-depth “올겨울 패딩 대신 LNG”(9/21)</li>
+  </ul>
+  <h3>타사 리포트</h3>
+  <ul class="tight">
+    <li>KB증권 한화솔루션 “2026~30년 성장: BTM, Section232, 신규 발전소”(8/31, 전우제·송윤주) — TP 6.7 → 5.0만, Bull case 2027 OP +1.61조, 표11~14</li>
+    <li>메리츠증권 한화솔루션 “개선될 미국 태양광 사업 및 재무 Risk 완화”(9/15, 노우호) — 에너지 인플레이션 최선호, 순차입금 감소 속도</li>
+    <li>NH투자증권 한화솔루션 “Corp Day 후기: 두 가지 실적개선 요인”(9/21, 최영광·류승원) — 3Q 프리뷰 2,061억, 표1·그림1(PV Infolink)</li>
+    <li>삼성증권 OCI홀딩스 2Q26 review(7/24), 미래에셋 OCI홀딩스(3/20)·한화솔루션(3/27), 신영·유진·교보(언론 인용)</li>
+  </ul>
+  <h3>공시·시세·컨센서스</h3>
+  <ul class="tight">
+    <li>DART: OCI홀딩스 반기보고서(2026.06, 20260813000901) · 자기주식취득 신탁계약 해지(8/10) · OCI스페셜티 지분 취득(7/16) · 한화솔루션 반기보고서(2026.06, 20260814003076) · 유상증자 결정 정정(7/20) · 타법인주식 처분(한화호텔앤드리조트, 9/8·9/16). OpenDART fnlttSinglAcntAll 연결 분기 재무(2023~2026)</li>
+    <li>OCI홀딩스 2Q26 IR(7/23)·IR Fact Book Q2 2026(8/27), 한화솔루션 2Q26 컨콜 보도(7/29), Qcells 카터스빌 셀 가동 발표(6/9)</li>
+    <li>키움 REST ka10001·ka10081(9/28 10:46 현재가·기준가·일봉), WiseReport cF1001·cF5002 컨센서스·PBR 밴드(9/28), 네이버 환율 API(하나은행 매매기준율), Yahoo Finance(FSLR·TAN·CSIQ·TE·WCH.DE·DQ·JKS·GLW·601012·600438·3800·^TNX·^KS11)</li>
+  </ul>
+  <h3>정책·시장 1차 출처</h3>
+  <ul class="tight">
+    <li>백악관 포고문 11052 “Adjusting Imports of Polysilicon and Its Derivatives”(2026-08-06, FR 8/11) · 상무부 사재기 제한 임시 최종규칙(91 FR 60505, 9/24) · CBP CSMS #69498185 · Foley(8/13)·Hunton(8/11)·Wiley(8/7)·EY 해설</li>
+    <li>Anza 보도자료(9/22)·블로그(8/10), PV Magazine USA 9/25·Global 9/26, OPIS(PV Magazine 9/25·9/4·8/7), InfoLink 주간 현물(9/23), Bernreuter 가격 페이지(9/23)·8월 논평, 실리콘공업분회(Eastmoney 9/28), CNIA(7/22), SMM·EnergyTrend</li>
+    <li>EIA Today in Energy(2/20)·STEO(9/9), SEIA/Wood Mackenzie US Solar Market Insight Q3 2026(9/10), BNEF(Bloomberg Law), First Solar 8-K(7/30), S&P Global(6월), trade.gov AD/CVD 최종 판정(9/11)·USITC 일정, IRS Notice 2026-15·Tax Law Center 요약, Reuters 5/8(FEOC 공장), 백악관 미중 정상회담 팩트시트(9/25), Fed 성명·SEP(9/16), FRED DGS10, CNBC·Fortune 9/26</li>
+    <li>Wacker CMD(9/17, Reuters·WebWire)·2Q26, Corning 2Q26(7/28), Michigan Banner 8/7(Hemlock), Canadian Solar 6-K(8/27), T1 8-K, Daqo 6-K(8/20), Mercom 9/10(Suniva), Solar Power World 9/18(OCI·Elite Solar)·9/23(사재기 규칙)·8월(Silfab), Canary Media 1/28, PV Tech(Intertek CEA·인도), Electrek 8/11·5/19(테슬라), pv magazine USA 9/18(Crystal Sun), Bloomberg 5/21(SpaceX), Nikkei 7/30, SIA 의견서(2025-08-06)</li>
+    <li>국내 언론: 한국경제 9/23·9/28, 아주경제 9/23·9/28, 파이낸셜뉴스 9/22·9/28, 머니투데이 7/23·7/29·9/28, 블로터 7/23·7/29, 이투데이 7/23~24, 딜사이트 3/5(OCI LTA), IB토마토 9/11(한화 재무), 서울경제 7/16·8/12, Korea Times 8/7, UPI 8/11·8/27</li>
+  </ul>
+  <h3>미반영 · 접근 불가 · 미확인</h3>
+  <p>상무부·CBP의 MIP 산정 기준(DDP·FOB, 포뮬러 가격) 지침은 아직 없다. SEIA Q3 보고서 원문·Wood Mackenzie 232 보고서·Digitimes 8/6 원문·Bloomberg 원문 일부는 유료·차단이라 2차 보도로 대체했다. 한화솔루션 2Q26 공식 IR 자료는 보도 인용이며, 2026년 모듈 9GW 가이던스의 2Q 수정 여부는 확인하지 못했다. BNEF의 2026 미국 총설치 전망, 미국 모듈 재고(GW), First Solar의 232 이후 수주 단가, 카터스빌 셀 9월 가동률, OCI 2Q 폴리 ASP는 공표되지 않았다. 웹 조사 에이전트 3개의 검색 예산이 말미에 소진되어 일부 항목은 직접 페치·미러로 보완했고, 그 목록은 research/W1~W3 파일 끝에 있다. 9/28 주가는 10:46 장중이다.</p>
+  <p class="cap">작성: 2026-09-28 (v1). 이 노트는 리서치 보조 자료이며 투자 권유가 아니다. 목표주가·시나리오 주가는 산출하지 않았다.</p>
+</section>
+
+<section class="q" id="appx">
+  <div class="qn">Appendix · Earnings simulator</div>
+  <h2>어닝 시뮬레이터: 가격 갭 → 부문 이익 → 연결 이익 → EPS·ROE·PER·PBR (OCI홀딩스 · 한화솔루션)</h2>
+  <div class="answer">
+    <b>사용법</b> 기준 영업이익(컨센서스 2027E, 하나 2027E, 2026E 중 택1)에 가격·물량·환율 변수의 <b>변화분(Δ)</b>을 얹으면 영업이익·순이익·EPS·ROE와 현재가 기준 PER/PBR이 다시 계산된다. 목표주가는 계산하지 않는다. 아래 1단위 감도표가 “비중국 폴리 1$/kg”·“미국 모듈 1c/W”가 각각 얼마인지에 대한 답이다. 연간 평균 기준이며 고정계약 예외는 “스팟 노출 비중” 슬라이더로, 한화의 셀 원가 전가는 “달튼 비중 × 셀 원가 Δ”로 근사했다. 계산식은 표 아래에 있다.
+  </div>
+  <div class="tabs" id="simTabs"><button type="button" data-co="oci" class="on">OCI홀딩스</button><button type="button" data-co="hws">한화솔루션</button></div>
+  <div id="simHost"></div>
+  <div class="formula" id="simFormula"></div>
+</section>
+
+</main>
+</div>
+<footer class="tail">
+  <div class="t">About this note</div>
+  <p class="sub">v1(2026-09-28). 하나증권 윤재성 위원의 8/27~9/28 발간물 8건(Weekly Monitor 5편, 태양광 산업 Update 9/23, LNG In-depth 9/21, SK이노베이션 Update 8/27)과 텔레그램 채널(8/25~9/28, 97건 중 태양광 12건), 그 뼈대가 된 7/23 OCI홀딩스·7/29 한화솔루션·8/5 Section 232 점검·8/10 해석편을 1차 자료로 삼았다. 여기에 DART 반기보고서(2026.06)와 주요 공시, 키움 REST 시세, WiseReport 컨센서스, KB(8/31)·메리츠(9/15)·NH(9/21)의 한화솔루션 노트, 백악관 포고문·PV Magazine·SEIA·EIA 등 1차 출처를 교차했다. 모든 숫자에 출처와 시점을 달았고, 본 노트의 계산은 “추정”으로 표시했다. 이 노트는 리서치 보조 자료이며 투자 권유가 아니다. 정유 3사 노트는 <a href="정유3사_키팩터노트_v2_260928.html">여기</a>.</p>
+  <div class="srcstrip">
+    <span class="chip k">하나 태양광 산업 Update 9/23</span><span class="chip k">하나 Weekly 8/31·9/7·9/14·9/21·9/28</span><span class="chip k">하나 OCI홀딩스 7/23 · 한화솔루션 7/29</span><span class="chip k">하나 Section 232 점검 8/5 · 해석편 8/10</span><span class="chip">TG 하나 윤재성 8/25~9/28</span><span class="chip">KB 한화솔루션 8/31</span><span class="chip">메리츠 한화솔루션 9/15</span><span class="chip">NH 한화솔루션 Corp Day 9/21</span><span class="chip">DART 반기보고서 · 주요사항보고서</span><span class="chip">키움 ka10001/ka10081 9/28</span><span class="chip">WiseReport 컨센 9/28</span><span class="chip">Yahoo Finance 9/25 · 네이버 환율 9/28</span><span class="chip">백악관 포고문 2026-08-06</span><span class="chip">PV Magazine (Anza) 9/26</span>
+  </div>
+</footer>
+
+</div>
+<script>
+(function(){
+  function fmtN(x,d){ if(!isFinite(x)) return '—'; d=d||0; return x.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+  function fmtKr(x){ if(!isFinite(x)) return '—'; var s=x<0?'−':''; x=Math.abs(x); return x>=10000? s+(x/10000).toFixed(2)+'조원' : s+fmtN(x,0)+'억원'; }
+  function sgn(x,d,u){ if(!isFinite(x)) return '—'; var s=(x>0?'+':(x<0?'−':'')); return s+fmtN(Math.abs(x),d)+(u||''); }
+  function cls(x){return x>0?'pos':(x<0?'neg':'');}
+  function kpi(l,v,d){ return '<div class="kpi"><div class="l">'+l+'</div><div class="v">'+v+'</div><div class="d">'+(d||'')+'</div></div>'; }
+
+  var CO = {
+    oci: {
+      name:'OCI홀딩스',
+      bases:{ c27:{label:'컨센 2027E (OP 5,565억 · WiseReport 9/28)', bOP:5565, bNonOp:-700, bEq:40926, bFX:1360, bSh:18.67, tax:24, minor:12},
+              h27:{label:'하나 2027E (OP 6,056억 · 7/23)', bOP:6056, bNonOp:-700, bEq:40926, bFX:1360, bSh:18.67, tax:24, minor:12},
+              c26:{label:'컨센 2026E (OP 3,468억)', bOP:3468, bNonOp:-700, bEq:40926, bFX:1360, bSh:18.67, tax:24, minor:12} },
+      vars:[
+        {g:'가격 변수 (Δ = 기준 가정 대비)'},
+        {id:'dPoly',l:'비중국 폴리 판가 Δ',s:'$/kg · 16.9 → MIP 21 = +4.1',min:-5,max:8,st:0.1,d:0},
+        {id:'dWafer',l:'웨이퍼 판가 Δ',s:'c/W · 3~4 → 10~12 = +7~8',min:-2,max:10,st:0.5,d:0},
+        {id:'dFX',l:'원/달러 Δ',s:'원 · +는 원화 약세',min:-150,max:150,st:5,d:0},
+        {g:'물량·구조'},
+        {id:'polyVol',l:'폴리 판매량',s:'천톤/년 (능력 35, 2Q 연환산 약 17 추정)',min:10,max:70,st:1,d:35},
+        {id:'spot',l:'스팟(MIP 연동) 노출 비중',s:'% · 고정계약 예외분 제외',min:0,max:100,st:5,d:70},
+        {id:'waferVol',l:'웨이퍼 판매량',s:'GW/년 (2.7 → 2027 3.75)',min:0,max:12,st:0.25,d:3.75},
+        {id:'usdRev',l:'달러 매출 (환율 감도용)',s:'백만$/년 · 폴리+웨이퍼 (추정)',min:0,max:2000,st:50,d:900},
+        {g:'재무·밸류'},
+        {id:'tax',l:'법인세율',s:'%',min:10,max:35,st:0.5,d:24},
+        {id:'minor',l:'비지배지분 귀속률',s:'% of 순이익',min:0,max:40,st:1,d:12},
+        {id:'price',l:'현재 주가',s:'원 (9/28 10:46 227,500 · 9/23 206,000)',min:80000,max:500000,st:500,d:227500}
+      ],
+      scn:{ zero:{}, mip:{dPoly:4.1,dWafer:7.5}, half:{dPoly:2,dWafer:3.5}, fixed:{dPoly:4.1,dWafer:7.5,spot:40}, bear:{dPoly:-1,dWafer:0,polyVol:25,dFX:-50} },
+      scnLabels:{zero:'기본 (Δ=0)', mip:'MIP 수렴: 폴리 +4.1·웨이퍼 +7.5', half:'절반 수렴: +2·+3.5', fixed:'MIP 수렴 + 고정계약 예외 60%', bear:'지연: 폴리 −1·판매량 25kt·원화 강세 50원'},
+      calc:function(p){
+        var fx=p.bFX+p.dFX; var wf=[];
+        var poly=p.dPoly*p.polyVol*1e6*(p.spot/100)*fx/1e8;
+        var wafer=p.dWafer*0.01*p.waferVol*1e9*(p.spot/100)*fx/1e8;
+        var fxe=p.usdRev*1e6*p.dFX/1e8;
+        wf.push(['폴리 Δ'+sgn(p.dPoly,1,'$')+' × '+p.polyVol+'천톤 × 스팟 '+p.spot+'%',poly,'원가 불변 가정']);
+        wf.push(['웨이퍼 Δ'+sgn(p.dWafer,1,'c')+' × '+p.waferVol+'GW × 스팟 '+p.spot+'%',wafer,'원가 불변 가정']);
+        wf.push(['환율 Δ'+sgn(p.dFX,0,'원')+' × 달러매출 '+p.usdRev+'백만$',fxe,'달러 매출분만']);
+        return wf;
+      },
+      formula:'<b>계산식(OCI).</b> <code>Δ폴리OP = Δ판가($/kg) × 판매량(톤) × 스팟비중 × 환율</code> · <code>Δ웨이퍼OP = Δ판가(c/W) × 판매량(W) × 스팟비중 × 환율</code> · <code>환율효과 = 달러매출 × Δ환율</code> · <code>순이익 = (OP + 영업외) × (1 − 세율) × (1 − 비지배귀속률)</code> · <code>ROE = 순이익 ÷ 기초 지배지분</code> · <code>PER = 주가 ÷ EPS</code> · <code>PBR = 주가 ÷ (BPS + EPS)</code>. 기본값 근거: 판매량 35천톤(능력 기준, 2Q 연환산은 약 17천톤으로 추정), 웨이퍼 3.75GW(2027 계획), 스팟 노출 70%(고정계약 예외 범위 미확정 → 가정), 영업외 −700억(순차입 1.2조 이자·기타, 가정), 비지배 12%(비지배지분 8,801억/자본 4.97조 = 18%의 이익 귀속을 보수적으로 축소), 지배지분 4.09조(1H26). 하나(8/10)의 “+5$ → 2.5천억, +7~8c → 2.7~3천억”은 스팟 100%·환율 약 1,430원 기준이다.'
+    },
+    hws: {
+      name:'한화솔루션',
+      bases:{ c27:{label:'컨센 2027E (OP 1조 2,985억 · WiseReport 9/28)', bOP:12985, bNonOp:-5500, bEq:108800, bFX:1360, bSh:224.9, tax:25, minor:8},
+              h27:{label:'하나 2027E (OP 1조 2,900억 · 7/29)', bOP:12900, bNonOp:-5500, bEq:108800, bFX:1360, bSh:224.9, tax:25, minor:8},
+              k27:{label:'KB 2027E (OP 1조 9,000억 · Base에 232 +3,705억)', bOP:19000, bNonOp:-5500, bEq:108800, bFX:1360, bSh:224.9, tax:25, minor:8},
+              c26:{label:'컨센 2026E (OP 8,898억)', bOP:8898, bNonOp:-5500, bEq:108800, bFX:1360, bSh:224.9, tax:25, minor:8} },
+      vars:[
+        {g:'가격 변수 (Δ = 기준 가정 대비)'},
+        {id:'dASP',l:'미국 모듈 판가 Δ',s:'c/W · 30 → MIP 38 = +8 · KB 43.7 = +13.7',min:-5,max:16,st:0.5,d:0},
+        {id:'dCell',l:'외부 조달 셀 원가 Δ',s:'c/W · 달튼 적용 · KB +3.3(관세분)',min:0,max:10,st:0.1,d:0},
+        {id:'dOther',l:'카터스빌 원가 Δ (폴리·미국 제조비)',s:'c/W · KB +6 (폴리 +1·제조 +5)',min:0,max:8,st:0.5,d:0},
+        {id:'dAMPC',l:'AMPC Δ',s:'억원 · 기준 2027E 1.2조(하나)',min:-4000,max:4000,st:100,d:0},
+        {id:'dFX',l:'원/달러 Δ',s:'원 · +는 원화 약세',min:-150,max:150,st:5,d:0},
+        {g:'물량·구조'},
+        {id:'ship',l:'미국 모듈 판매량',s:'GW/년 (2026 가이던스 9 · KB 2027 10.9)',min:4,max:14,st:0.5,d:9},
+        {id:'dalton',l:'달튼(셀 외부구매) 비중',s:'% of 판매량',min:0,max:100,st:5,d:55},
+        {id:'usdRev',l:'달러 매출 (환율 감도용)',s:'백만$/년 · 미국 모듈 (추정)',min:0,max:6000,st:100,d:2700},
+        {g:'재무·밸류'},
+        {id:'tax',l:'법인세율',s:'%',min:10,max:35,st:0.5,d:25},
+        {id:'minor',l:'비지배지분 귀속률',s:'% of 순이익',min:0,max:40,st:1,d:8},
+        {id:'price',l:'현재 주가',s:'원 (9/28 10:46 32,250 · 9/23 29,200)',min:15000,max:70000,st:100,d:32250}
+      ],
+      scn:{ zero:{}, mip:{dASP:8,dCell:3.3,dOther:1}, kb:{dASP:13.7,dCell:3.3,dOther:6}, half:{dASP:4,dCell:1.5,dOther:0.5}, bear:{dASP:0,dAMPC:-2000,dFX:-50,ship:8} },
+      scnLabels:{zero:'기본 (Δ=0)', mip:'MIP 38c: 판가 +8·셀 +3.3·카터스빌 +1', kb:'KB 최상: 판가 +13.7·셀 +3.3·카터스빌 +6', half:'절반: +4·+1.5·+0.5', bear:'지연: 판가 0·AMPC −2천억·원화 강세·8GW'},
+      calc:function(p){
+        var fx=p.bFX+p.dFX; var wf=[];
+        var W=p.ship*1e9;
+        var asp=p.dASP*0.01*W*fx/1e8;
+        var cell=-p.dCell*0.01*W*(p.dalton/100)*fx/1e8;
+        var oth=-p.dOther*0.01*W*(1-p.dalton/100)*fx/1e8;
+        var ampc=p.dAMPC;
+        var fxe=p.usdRev*1e6*p.dFX/1e8;
+        wf.push(['판가 Δ'+sgn(p.dASP,1,'c')+' × '+p.ship+'GW',asp,'미국 모듈 전량']);
+        wf.push(['셀 원가 Δ'+sgn(p.dCell,1,'c')+' × 달튼 '+p.dalton+'%',cell,'외부 조달 셀']);
+        wf.push(['카터스빌 원가 Δ'+sgn(p.dOther,1,'c')+' × '+(100-p.dalton)+'%',oth,'폴리·제조비']);
+        wf.push(['AMPC Δ',ampc,'세액공제 (영업이익 인식)']);
+        wf.push(['환율 Δ'+sgn(p.dFX,0,'원')+' × 달러매출 '+p.usdRev+'백만$',fxe,'달러 매출분만']);
+        return wf;
+      },
+      formula:'<b>계산식(한화).</b> <code>Δ판가OP = Δ판가(c/W) × 판매량(W) × 환율</code> · <code>Δ셀원가 = −Δ셀원가 × 판매량 × 달튼비중 × 환율</code> · <code>Δ카터스빌원가 = −Δ원가 × 판매량 × (1 − 달튼비중) × 환율</code> · <code>ΔAMPC</code> 직접 가감 · <code>순이익 = (OP + 영업외) × (1 − 세율) × (1 − 비지배귀속률)</code> · <code>ROE = 순이익 ÷ 기초 지배지분</code>. 기본값 근거: 판매량 9GW(2026 가이던스, 하나), 달튼 비중 55%(5.1 ÷ (5.1+3.0+한국 0.4) 근사), 영업외 −5,500억(차입금 15.4조 × 약 3.6%, 가정), 지배지분 10.88조(1H26 9.71조 + 유증 1.17조), 주식수 224.9백만주, 비지배 8%. KB(8/31)의 마진 개선폭 달튼 +10.4c·카터스빌 +7.7c·한국 +16c는 판가 43.7c 수렴 가정이다.'
+    }
+  };
+
+  var host=document.getElementById('simHost'); if(!host) return;
+  var cur='oci';
+
+  function render(co){
+    var c=CO[co]; var baseKeys=Object.keys(c.bases);
+    var html='<div class="sim"><div class="panel"><h4>① 기준 실적 (억원)</h4><div class="presets">'+
+      baseKeys.map(function(k,i){return '<button type="button" data-base="'+k+'" class="'+(i===0?'on':'')+'">'+c.bases[k].label.split(' (')[0]+'</button>';}).join('')+'</div>'+
+      '<div class="row"><label>기준 영업이익<small id="baseLabel"></small></label><input type="number" id="bOP" step="100"></div>'+
+      '<div class="row"><label>기준 영업외손익<small>이자·지분법·기타 (가정)</small></label><input type="number" id="bNonOp" step="100"></div>'+
+      '<div class="row"><label>기초 지배지분<small>억원</small></label><input type="number" id="bEq" step="100"></div>'+
+      '<div class="row"><label>기준 환율<small>원/달러</small></label><input type="number" id="bFX" step="10"></div>'+
+      '<div class="row"><label>주식수<small>백만주</small></label><input type="number" id="bSh" step="0.01"></div>'+
+      '<h4 style="margin-top:14px">② 변수 (Δ = 기준 가정 대비 변화)</h4><div class="presets">'+
+      Object.keys(c.scn).map(function(k,i){return '<button type="button" data-scn="'+k+'" class="'+(i===0?'on':'')+'">'+c.scnLabels[k]+'</button>';}).join('')+'</div><div id="simVars"></div></div>'+
+      '<div class="panel out"><h4>③ 실적 · 재무지표</h4><div class="kpis" id="kpiFin"></div><h4>④ 밸류에이션</h4><div class="kpis" id="kpiVal"></div>'+
+      '<div class="tbl"><table id="tblWf"><thead><tr><th>영업이익 변화 분해 (억원)</th><th class="num">ΔOP</th><th>메모</th></tr></thead><tbody></tbody></table></div></div></div>'+
+      '<h3>1단위 감도표: 변수 하나만 움직였을 때 (현재 입력 기준, 연간)</h3><div class="tbl"><table id="tblSens"><thead><tr><th>변수 (1단위)</th><th class="num">Δ영업이익 (억원)</th><th class="num">Δ순이익 (억원)</th><th class="num">ΔEPS (원)</th><th class="num">ΔROE (%p)</th><th class="num">PER@현재가 변화</th></tr></thead><tbody></tbody></table></div>';
+    host.innerHTML=html;
+    var vh=document.getElementById('simVars'); var vhtml='';
+    c.vars.forEach(function(v){ if(v.g){vhtml+='<div class="grp">'+v.g+'</div>';return;}
+      vhtml+='<div class="row"><label for="v_'+v.id+'">'+v.l+'<small>'+v.s+'</small></label><input type="number" id="v_'+v.id+'" step="'+v.st+'" min="'+v.min+'" max="'+v.max+'" value="'+v.d+'"><input type="range" id="r_'+v.id+'" step="'+v.st+'" min="'+v.min+'" max="'+v.max+'" value="'+v.d+'" aria-label="'+v.l+'"></div>'; });
+    vh.innerHTML=vhtml;
+    document.getElementById('simFormula').innerHTML=c.formula;
+    host.querySelectorAll('[data-base]').forEach(function(b){b.addEventListener('click',function(){setBase(co,b.getAttribute('data-base'));});});
+    host.querySelectorAll('[data-scn]').forEach(function(b){b.addEventListener('click',function(){setScn(co,b.getAttribute('data-scn'));});});
+    host.querySelectorAll('input').forEach(function(inp){ inp.addEventListener('input',function(){ var id=inp.id; if(id.indexOf('v_')===0){var r=document.getElementById('r_'+id.slice(2)); if(r) r.value=inp.value;} if(id.indexOf('r_')===0){var n=document.getElementById('v_'+id.slice(2)); if(n) n.value=inp.value;} update(co); }); });
+    setBase(co, baseKeys[0]);
+  }
+  function setVar(id,val){ var n=document.getElementById('v_'+id), r=document.getElementById('r_'+id); if(n) n.value=val; if(r) r.value=val; }
+  function setBase(co,k){ var b=CO[co].bases[k]; ['bOP','bNonOp','bEq','bFX','bSh'].forEach(function(id){document.getElementById(id).value=b[id];}); setVar('tax',b.tax); setVar('minor',b.minor); document.getElementById('baseLabel').textContent=b.label;
+    host.querySelectorAll('[data-base]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-base')===k);}); update(co); }
+  function setScn(co,k){ var c=CO[co]; c.vars.forEach(function(v){ if(v.id && !(v.id in {tax:1,minor:1,price:1,usdRev:1})) setVar(v.id,v.d); }); var s=c.scn[k]; Object.keys(s).forEach(function(id){setVar(id,s[id]);}); host.querySelectorAll('[data-scn]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-scn')===k);}); update(co); }
+  function read(co){ var p={}; ['bOP','bNonOp','bEq','bFX','bSh'].forEach(function(id){p[id]=parseFloat(document.getElementById(id).value)||0;}); CO[co].vars.forEach(function(v){ if(v.id){ var x=parseFloat(document.getElementById('v_'+v.id).value); p[v.id]=isNaN(x)?v.d:x; } }); if(p.bFX<=0) p.bFX=1360; if(p.bSh<=0) p.bSh=1; return p; }
+  function model(co,p){ var wf=CO[co].calc(p); var dOP=wf.reduce(function(a,w){return a+w[1];},0); var OP=p.bOP+dOP; var PBT=OP+p.bNonOp; var NP=PBT*(1-p.tax/100)*(1-p.minor/100); var sh=p.bSh*1e6; var EPS=NP*1e8/sh; var BPS0=p.bEq*1e8/sh; var BPS=BPS0+EPS; var ROE=NP/p.bEq; var PER=EPS>0?p.price/EPS:NaN; var PBR=p.price/BPS; var mcap=p.price*sh/1e8; return {wf:wf,dOP:dOP,OP:OP,PBT:PBT,NP:NP,EPS:EPS,BPS:BPS,BPS0:BPS0,ROE:ROE,PER:PER,PBR:PBR,mcap:mcap}; }
+  function update(co){ var p=read(co), o=model(co,p); var base=model(co,Object.assign({},p,zeroDeltas(co)));
+    var fin=''; fin+=kpi('영업이익',fmtKr(o.OP)+'<span class="d2 '+cls(o.dOP)+'">'+sgn(o.dOP,0,'억')+'</span>','기준 '+fmtKr(p.bOP)+' · 기준 대비 '+sgn(o.dOP/p.bOP*100,1,'%'));
+    fin+=kpi('지배 순이익',fmtKr(o.NP)+'<span class="d2 '+cls(o.NP-base.NP)+'">'+sgn(o.NP-base.NP,0,'억')+'</span>','세전 '+fmtKr(o.PBT)+' · 세율 '+p.tax+'% · 비지배 '+p.minor+'%');
+    fin+=kpi('EPS',fmtN(o.EPS,0)+'원','주식수 '+p.bSh+'백만주');
+    fin+=kpi('ROE (기초 지배지분)',(o.ROE*100).toFixed(1)+'%<span class="d2 '+cls(o.ROE-base.ROE)+'">'+sgn((o.ROE-base.ROE)*100,1,'%p')+'</span>','지배지분 '+fmtKr(p.bEq));
+    document.getElementById('kpiFin').innerHTML=fin;
+    var val=''; val+=kpi('PER @현재가',isFinite(o.PER)?o.PER.toFixed(1)+'배':'—','주가 '+fmtN(p.price,0)+'원 · 시총 '+fmtKr(o.mcap));
+    val+=kpi('PBR @현재가 (기말 BPS)',o.PBR.toFixed(2)+'배<span class="d2 '+cls(base.PBR-o.PBR)+'">'+sgn(o.PBR-base.PBR,2,'x')+'</span>','기초 BPS '+fmtN(o.BPS0,0)+' + EPS');
+    val+=kpi('시총 ÷ 영업이익',(o.mcap/o.OP).toFixed(1)+'배','EV 개념이 아닌 단순 배수');
+    val+=kpi('이익 변화의 몫',isFinite(o.dOP)?sgn(o.dOP/o.mcap*100,1,'% of 시총'):'—','ΔOP ÷ 시가총액');
+    document.getElementById('kpiVal').innerHTML=val;
+    var tb=document.querySelector('#tblWf tbody'); tb.innerHTML=o.wf.map(function(w){return '<tr><td>'+w[0]+'</td><td class="num '+cls(w[1])+'">'+sgn(w[1],0)+'</td><td>'+w[2]+'</td></tr>';}).join('')+'<tr><td class="hd">합계 ΔOP</td><td class="num '+cls(o.dOP)+'"><b>'+sgn(o.dOP,0)+'</b></td><td></td></tr>';
+    // sensitivity
+    var units={oci:[['dPoly',1,'비중국 폴리 +1$/kg'],['dWafer',1,'웨이퍼 +1c/W'],['polyVol',5,'폴리 판매량 +5천톤 (Δ판가 적용분)'],['dFX',10,'원/달러 +10원']],
+               hws:[['dASP',1,'미국 모듈 판가 +1c/W'],['dCell',1,'외부 셀 원가 +1c/W'],['dAMPC',1000,'AMPC +1,000억'],['ship',1,'판매량 +1GW (Δ판가 적용분)'],['dFX',10,'원/달러 +10원']]}[co];
+    var rows=units.map(function(u){ var q=Object.assign({},p); q[u[0]]=p[u[0]]+u[1]; var m=model(co,q); return '<tr><td>'+u[2]+'</td><td class="num '+cls(m.dOP-o.dOP)+'">'+sgn(m.dOP-o.dOP,0)+'</td><td class="num">'+sgn(m.NP-o.NP,0)+'</td><td class="num">'+sgn(m.EPS-o.EPS,0)+'</td><td class="num">'+sgn((m.ROE-o.ROE)*100,2)+'</td><td class="num">'+(isFinite(o.PER)&&isFinite(m.PER)?o.PER.toFixed(1)+' → '+m.PER.toFixed(1):'—')+'</td></tr>'; });
+    document.querySelector('#tblSens tbody').innerHTML=rows.join('');
+  }
+  function zeroDeltas(co){ var z={}; CO[co].vars.forEach(function(v){ if(v.id && v.id.indexOf('d')===0) z[v.id]=0; }); return z; }
+  document.querySelectorAll('#simTabs button').forEach(function(b){ b.addEventListener('click',function(){ cur=b.getAttribute('data-co'); document.querySelectorAll('#simTabs button').forEach(function(x){x.classList.toggle('on',x===b);}); render(cur); }); });
+  render(cur);
+})();
+
+</script>
+</body>
+</html>
