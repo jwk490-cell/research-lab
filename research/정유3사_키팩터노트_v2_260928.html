@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ko" data-rl="note">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>정유 3사 키팩터 노트 (S-Oil·SK이노베이션·GS) · 심층리서치 · 2026-09-20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4; --ink:#16202B; --muted:#5B6B7A; --line:#D6DEE4; --line-strong:#B9C5CF;
+  --accent:#1F5F8B; --accent-ink:#FFFFFF; --accent-soft:#E3EEF6;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#4a3aa7;
+  --up:#B8322F; --down:#2B5FA8; --warn-bg:#FFF4E0; --warn-ink:#7A4B00; --good-bg:#E6F4EC; --good-ink:#1E5A34;
+  --chart-grid:#E3E8EC; --chart-text:#5B6B7A;
+  --shadow:0 1px 2px rgba(22,32,43,.06), 0 8px 24px rgba(22,32,43,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E141A; --surface:#161E26; --surface-2:#1D2731; --ink:#E8EDF2; --muted:#9AA8B5; --line:#2A3641; --line-strong:#3A4855;
+    --accent:#5FA3D6; --accent-ink:#0E141A; --accent-soft:#1B2C3A;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+    --up:#E5736F; --down:#7AA7E0; --warn-bg:#3A2A10; --warn-ink:#F2C98A; --good-bg:#153224; --good-ink:#9BDDB5;
+    --chart-grid:#26313B; --chart-text:#9AA8B5;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1D2731; --ink:#E8EDF2; --muted:#9AA8B5; --line:#2A3641; --line-strong:#3A4855;
+  --accent:#5FA3D6; --accent-ink:#0E141A; --accent-soft:#1B2C3A;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#9085e9;
+  --up:#E5736F; --down:#7AA7E0; --warn-bg:#3A2A10; --warn-ink:#F2C98A; --good-bg:#153224; --good-ink:#9BDDB5;
+  --chart-grid:#26313B; --chart-text:#9AA8B5;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 24px 80px}
+header.hero{padding:44px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Noto Serif KR",serif;font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.25;margin:10px 0 8px;text-wrap:balance;letter-spacing:-.01em}
+.sub{font-size:16px;color:var(--muted);max-width:62ch;margin:0}
+.srcstrip{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+footer.tail{margin-top:44px;padding:20px 0 0;border-top:1px solid var(--line)}
+footer.tail .t{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+footer.tail .sub{font-size:14px;max-width:none}
+footer.tail .srcstrip{margin-top:12px}
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;background:var(--surface);color:var(--muted);white-space:nowrap}
+.chip.k{border-color:var(--accent);color:var(--accent)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;padding-top:28px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:13px}
+nav.toc .t{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+nav.toc a{display:block;color:var(--ink);text-decoration:none;padding:5px 8px;border-left:2px solid var(--line);line-height:1.35}
+nav.toc a:hover,nav.toc a:focus{border-left-color:var(--accent);color:var(--accent);outline:none}
+nav.toc a .n{font-family:"IBM Plex Mono",monospace;color:var(--muted);margin-right:6px;font-size:11px}
+main{min-width:0;max-width:1040px}
+section.q{padding:34px 0 10px;border-top:1px solid var(--line)}
+section.q:first-of-type{border-top:0;padding-top:8px}
+.qn{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+h2{font-family:"Noto Serif KR",serif;font-weight:700;font-size:clamp(21px,2.2vw,26px);line-height:1.35;margin:6px 0 14px;text-wrap:balance;letter-spacing:-.01em}
+h3{font-size:16px;font-weight:700;margin:26px 0 8px;letter-spacing:-.005em}
+p{max-width:72ch;margin:0 0 12px}
+.answer{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;margin:0 0 18px;max-width:none}
+.answer b{color:var(--accent)}
+.answer ul{margin:6px 0 0 0;padding-left:18px}
+.answer li{margin:3px 0}
+ul.tight{margin:0 0 12px;padding-left:20px;max-width:78ch}
+ul.tight li{margin:4px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:8px 0 16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;box-shadow:var(--shadow)}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:700}
+.card p{font-size:14px;margin:0 0 6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 20px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.kpi .l{font-size:12px;color:var(--muted);line-height:1.3}
+.kpi .v{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:500;line-height:1.2;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12px;color:var(--muted);margin-top:2px}
+.up{color:var(--up)} .down{color:var(--down)}
+.tbl{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:var(--surface-2);font-weight:700;font-size:12.5px;color:var(--ink);white-space:nowrap}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.hd{font-weight:700;white-space:nowrap}
+.cap{font-size:12px;color:var(--muted);margin:-8px 0 16px;max-width:none}
+.note{background:var(--warn-bg);color:var(--warn-ink);border-radius:6px;padding:10px 14px;font-size:13.5px;margin:8px 0 16px;max-width:none}
+.good{background:var(--good-bg);color:var(--good-ink);border-radius:6px;padding:10px 14px;font-size:13.5px;margin:8px 0 16px;max-width:none}
+.tag{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:3px;margin:1px 2px 1px 0;border:1px solid var(--line-strong);color:var(--ink);white-space:nowrap}
+.tag.crude{border-color:var(--s1);color:var(--s1)} .tag.diesel{border-color:var(--s2);color:var(--s2)} .tag.gas{border-color:var(--s3);color:var(--s3)} .tag.lng{border-color:var(--s4);color:var(--s4)} .tag.pol{background:var(--surface-2)}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 14px 8px;margin:10px 0 18px;box-shadow:var(--shadow)}
+.fig .ft{font-size:13.5px;font-weight:700;margin:0 0 2px}
+.fig .fs{font-size:12px;color:var(--muted);margin:0 0 8px}
+.fig svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin:4px 0 6px}
+.legend span i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.stars{font-family:"IBM Plex Mono",monospace;letter-spacing:1px;white-space:nowrap}
+.src{font-size:12px;color:var(--muted);margin:2px 0 8px;max-width:none}
+.src b{color:var(--muted);font-weight:500}
+.ol{padding-left:22px;max-width:78ch;margin:0 0 12px}
+.ol li{margin:5px 0}
+.svg-text{fill:var(--chart-text);font-family:"IBM Plex Mono",monospace;font-size:11px}
+.svg-lab{fill:var(--ink);font-family:"Noto Sans KR",sans-serif;font-size:11.5px}
+.svg-grid{stroke:var(--chart-grid);stroke-width:1}
+.svg-axis{stroke:var(--line-strong);stroke-width:1}
+@media (max-width:1100px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;flex-wrap:wrap;gap:4px}nav.toc .t{width:100%}nav.toc a{border-left:0;border:1px solid var(--line);border-radius:4px;padding:4px 9px}}
+@media (max-width:640px){.wrap{padding:0 14px 60px}}
+</style><link rel="stylesheet" href="theme.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">2026-09-20 · 호르무즈·홍해 2차 공급충격 국면 · S-Oil / SK이노베이션 / GS</div>
+  <h1>한국 정유주 Update</h1>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <div class="t">Contents</div>
+  <a href="#s0"><span class="n">00</span>한 장 요약 · 팩터 보드</a>
+  <a href="#q1"><span class="n">Q1</span>글로벌 정제 CAPA, 전쟁 전 vs 현재</a>
+  <a href="#q2"><span class="n">Q2</span>사우디 OSP: 왜 −2$이고 언제까지</a>
+  <a href="#q3"><span class="n">Q3</span>3사 원유 조달 지리 · 수출 비중 · 고객</a>
+  <a href="#q4"><span class="n">Q4</span>윤활기유: 그룹 · CAPA · 마진</a>
+  <a href="#q5"><span class="n">Q5</span>공급차질 타임라인 (제품별)</a>
+  <a href="#q6"><span class="n">Q6</span>S-Oil 순수성 · SKI 저평가 여부</a>
+  <a href="#q7"><span class="n">Q7</span>3사 매력도 스코어카드</a>
+  <a href="#q8"><span class="n">Q8</span>미국 정유사와의 공통점·차이</a>
+  <a href="#q9"><span class="n">Q9</span>내수 최고가격제의 영향</a>
+  <a href="#fact"><span class="n">FC</span>팩트체크 · 출처 등급</a>
+  <a href="#src"><span class="n">--</span>출처 · 미반영 자료</a>
+  <a href="#appx"><span class="n">AP</span>S-Oil 어닝 시뮬레이터</a>
+</nav>
+
+<main>
+<section class="q" id="s0">
+  <div class="qn">00 · Summary</div>
+  <h2>한 장 요약: 정유주는 “유가”가 아니라 “제품 크랙 − 두바이 프리미엄 − 운임 + OSP”에 연동된다</h2>
+  <div class="answer">
+    <b>결론 7줄</b>
+    <ul>
+      <li><b>가장 큰 팩터는 디젤·등유 크랙</b>이다. 8월 복합정제마진 34.0$는 과거 평균의 4.8배, 디젤 마진은 4.3배였다(신한). 러시아·중동 정제설비 약 10%가 빠졌고 2027년에도 복구가 어렵다(iM·IEA).</li>
+      <li><b>9월 조정의 원인은 유가 상승이 아니라 두바이 프리미엄</b>이다. 9/14 주간 두바이 +21% vs WTI +9%. 한국 정유사는 두바이 연동 원유를 사고 제품은 글로벌 가격을 받으므로 스팟 마진이 33.6→26.4$로 급락했다(하나). 미국 정유사는 WTI 연동이라 같은 주에 마진이 오히려 벌어졌다.</li>
+      <li><b>OSP −2$(8~10월 3개월 연속)는 사우디의 점유율 방어</b>다. 얀부 우회로의 물류 열위, 벤치마크(Oman/Murban) 왜곡, UAE 탈퇴·미국·베네수엘라 경쟁이 만든 구조다. 투입은 9~11월이라 <b>4분기 원가 효과는 S-Oil이 가장 크다</b>.</li>
+      <li><b>글로벌 정제 CAPA는 명목 104.9mb/d, 유효 95.3mb/d(2026E)</b>. 2027년 순증설 +1.1mb/d로는 빈자리를 못 메운다(유안타). 미국 가동률 98%, 미국 중간유분 재고는 44년래 최저.</li>
+      <li><b>윤활기유가 두 번째 엔진</b>이다. 3Q26 윤활기유 마진은 2025년의 4배(169 vs 44 $/bbl, 유안타). S-Oil·SK엔무브가 글로벌 Group III의 약 40%를 쥐고 있다.</li>
+      <li><b>LNG는 SK이노베이션만의 세 번째 엔진</b>이다. 카타르 LNG 수출 카고가 3~8월 −96%, 라스라판 17%가 파손돼(복구 3~5년) JKM이 28$/mmbtu인데, SK E&amp;S는 미국 Freeport·호주 바로사에서 호르무즈를 거치지 않는 LNG를 6.5$ 안팎에 조달한다. 2026년 E&amp;S 영업이익 2.0조(2022년 1.7조 상회), 전사 11.9조 전망(하나 9/21).</li>
+      <li><b>밸류에이션 격차의 본질은 원료 벤치마크·내수 가격통제·지배구조·수급</b>이다. 미국 3사 PBR 2.4~3.9배 vs S-Oil 1.4배·SKI 0.8배(하나). 한국은 “횡재”로, 미국은 “구조적 희소성”으로 값을 매기고 있다.</li>
+    </ul>
+  </div>
+
+  <h3>현재 수준 (9/17~18 기준)</h3>
+  <div class="kpis">
+    <div class="kpi"><div class="l">Dubai 현물</div><div class="v">118.4</div><div class="d">$/bbl · 9/18 (고점 9/16 128.0) · 8월 평균 88.4</div></div>
+    <div class="kpi"><div class="l">WTI / ICE Brent</div><div class="v">100.3 / 105.8</div><div class="d">$/bbl · 9/18 · Dated Brent 133 (9/15)</div></div>
+    <div class="kpi"><div class="l">복합정제마진 (주간)</div><div class="v">30.9</div><div class="d">$/bbl · 9/21 주 (+4.5) · 9/14 26.4 · 8월 평균 34.0</div></div>
+    <div class="kpi"><div class="l">Arab Light OSP (아시아)</div><div class="v">−2.0</div><div class="d">$/bbl · 10월분 동결 · 5월 +19.5 고점</div></div>
+    <div class="kpi"><div class="l">디젤 / 등유 크랙 (스팟)</div><div class="v">64.7 / 60.2</div><div class="d">$/bbl · 9/16 · 휘발유 23.7 · 납사 −21</div></div>
+    <div class="kpi"><div class="l">VLCC 운임 걸프→중국</div><div class="v">103.5만$</div><div class="d">/일 · 9/14 사상 첫 100만 돌파 · 약 20$/bbl</div></div>
+    <div class="kpi"><div class="l">미국 디젤 소매</div><div class="v">6.2$</div><div class="d">/gal 사상 최고 (9/13) · 디젤 크랙 100$ 초과</div></div>
+    <div class="kpi"><div class="l">한국 최고가격제</div><div class="v">1,784 / 1,773</div><div class="d">원/L 휘발유/경유 · 10차 (9/19~) · 손실보전 집행 0원</div></div>
+  </div>
+  <p class="src"><b>출처</b> 삼성 조현렬 TG Daily(9/14~17), 하나 Weekly 9/14, 미래에셋 TG 9/15~16, 하나 윤재성 TG 9/13~15, 신한 9/16, 머니투데이 9/17~18.</p>
+
+  <h3>팩터 보드: 무엇이, 어느 방향으로, 얼마나</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>변수</th><th>주가 방향</th><th>시차</th><th>민감도 · 근거</th><th>지금 상태</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">① 제품 크랙 (디젤·등유)</td><td>＋ 최대</td><td>즉시~1개월</td><td>S-Oil 정유 OP 1Q26 1.04조(마진 8.3$) → 3Q26F 1.12조(20$). 디젤 마진 계절성: 34주차 저점 → 46주차 고점(하나). 유럽 디젤 재고 4년래 최저, 미국 중간유분 44년래 최저</td><td>디젤 60~65$, 9~11월 성수기 진입</td></tr>
+      <tr><td class="hd">② Dubai − WTI/Brent 스프레드</td><td>−</td><td>즉시</td><td>두바이 급등 주간(9/14) S-Oil −4.6%. 3월 평균 Dubai 117 vs WTI/Brent 89(KB). 3/2부터 벤치마크에 Oman/Murban만 남아 프리미엄이 왜곡</td><td>Oman−Brent +24$ (9/16), 극단</td></tr>
+      <tr><td class="hd">③ 사우디 OSP</td><td>＋ (마이너스일수록)</td><td>1~2개월 (선적→투입)</td><td>OSP 1$/bbl = S-Oil 연 약 2,000억원 원가(사우디 도입 약 60만b/d × 365일 × 1,400원, 추정). 8~10월 OSP → 9~11월 투입(하나)</td><td>−2.0 3개월 연속, 4Q 투입</td></tr>
+      <tr><td class="hd">④ 재고평가</td><td>± 두바이 방향</td><td>당분기</td><td>SKI 2026 재고효과 +1.16조(유안타: 재고평가前 8.90조 vs 보고 10.06조). 3Q 약 0, 4Q −0.75조 가정. S-Oil 재고 약 3천만bbl → 10$당 ±4천억(추정)</td><td>9월 급등 → 3Q 소폭 +, 4Q는 유가 방향 의존</td></tr>
+      <tr><td class="hd">⑤ 내수 최고가격제</td><td>−</td><td>당분기 (보전은 12월)</td><td>내수 비중 SK 49% · S-Oil 46% · GS 29%(2025 정유부문). 3/13~6/30 손실 정산이 12월초 예정, 예비비 4.2조(머니투데이)</td><td>10차 동결, 두바이 급등으로 내수 역마진 확대</td></tr>
+      <tr><td class="hd">⑥ 운임·보험</td><td>−</td><td>즉시</td><td>걸프→중국 약 20$/bbl, 오만→중국 11.5$/bbl(하나). OSP −2$를 상쇄하고도 남음</td><td>사상 최고</td></tr>
+      <tr><td class="hd">⑦ 환율</td><td>＋ (원화 약세)</td><td>즉시</td><td>이익의 대부분이 달러 마진. 3Q26 가정 1,420원(유안타). 하나: “환율 하락은 단기 실적 부담”</td><td>원화 강세 방향</td></tr>
+      <tr><td class="hd">⑧ 금리</td><td>− (멀티플)</td><td>—</td><td>9월 Fed 25bp 인상 기정사실화(iM). 고배당·가치주 할인율 상승</td><td>인상 국면</td></tr>
+      <tr><td class="hd">⑨ 지정학 헤드라인</td><td>양방향</td><td>즉시</td><td>6/17 재개방 합의 → 유가 급락했지만 정제마진은 반등(KB 그림 3). 재개방은 정유주에 “유가↓ + 마진↑”로 오히려 우호적일 수 있음</td><td>홍해 재봉쇄 · 동서송유관 5~6주 중단</td></tr>
+    </tbody></table></div>
+
+  <h3>최근 3주 실증: 유가가 올라도 두바이가 더 오르면 빠진다</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>주간</th><th class="num">WTI</th><th class="num">Dubai</th><th class="num">복합정제마진</th><th>이벤트</th><th class="num">S-Oil</th><th class="num">SK이노</th></tr></thead>
+    <tbody>
+      <tr><td>8/31</td><td class="num down">−4%</td><td class="num down">−5%</td><td class="num">33.9 (−5.4)</td><td>9월 OSP −2.0 · 베네수엘라 OPEC 탈퇴설 · SKIET 합병 발표 직후</td><td class="num up">+5.7%</td><td class="num down">−6.3%</td></tr>
+      <tr><td>9/7</td><td class="num up">+10%</td><td class="num up">+9%</td><td class="num">33.6 (−0.3)</td><td>10월 OSP −2.0 동결 · 미국 디젤 사상 최고 · 후티 사우디 공격</td><td class="num up">+5.4%</td><td class="num up">+18.3%</td></tr>
+      <tr><td>9/14</td><td class="num up">+9.4%</td><td class="num up">+21.3%</td><td class="num">26.4 (−7.2)</td><td>동서송유관 피격 · 바브엘만데브 장악 · VLCC 운임 급등 · Oman 132$</td><td class="num down">−4.6%</td><td class="num up">+4.7%</td></tr>
+      <tr><td>9/21</td><td class="num up">+0.2%</td><td class="num down">−4.3%</td><td class="num">30.9 (+4.5)</td><td>두바이 하락·마진 반등 · 아람코 유럽 공급 중단 통보 · 미 경유 수출금지 법안 · KRX 에너지화학 −5.7%</td><td class="num down">−0.3%</td><td class="num down">−4.7%</td></tr>
+    </tbody></table></div>
+  <p class="cap">하나증권 Weekly 추천종목 수익률 모니터(8/31·9/7·9/14·9/21). SKI는 조달 다변화와 E&amp;S(SMP 상승) 덕분에 두바이 급등 주간에도 플러스였고, 사우디 의존도 90%인 S-Oil은 마이너스였다. 9/21 주에는 두바이가 빠지고 마진이 반등하자 S-Oil이 업종(−5.7%) 대비 방어됐다.</p>
+</section>
+
+<section class="q" id="q1">
+  <div class="qn">Q1 · Global refining capacity</div>
+  <h2>글로벌 정제 CAPA: 전쟁 전 명목 104.4mb/d → 지금 유효 95.3mb/d, 한국은 3.3mb/d로 증설 없음</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 명목 CDU 용량은 거의 그대로(2025 104.4 → 2026 104.9mb/d)지만, 러시아·중동 설비 타격과 아시아 가동률 조정으로 <b>약 9.6mb/d(−9~10%)가 유효 용량에서 빠졌다</b>. 8월 글로벌 정제량은 81.4mb/d로 전년비 −4.2mb/d(IEA). 2027년 순증설은 +1.1mb/d에 불과하고 러시아 회복은 2027년에도 어렵다.
+  </div>
+
+  <div class="fig">
+    <p class="ft">글로벌 상압정제(CDU) 명목 용량 · 유효 용량 · 정제량, 2024~2030 (만b/d)</p>
+    <p class="fs">유안타증권 9/15 표4. 유효 용량 = 명목 − 지정학 변수(2026 −960, 2027 +560). 유효 가동률 2025 83.9% → 2026 90.6% → 2027 87.0%.</p>
+    <div class="legend"><span><i style="background:var(--s1)"></i>명목 용량</span><span><i style="background:var(--s2)"></i>유효 용량 (2026~27)</span><span><i style="background:var(--s3)"></i>글로벌 정제량</span></div>
+    <svg viewBox="0 0 700 290" role="img" aria-label="글로벌 정제 용량과 정제량 추이">
+      <line class="svg-grid" x1="70" y1="30" x2="650" y2="30"/><line class="svg-grid" x1="70" y1="96.7" x2="650" y2="96.7"/><line class="svg-grid" x1="70" y1="163.3" x2="650" y2="163.3"/><line class="svg-axis" x1="70" y1="230" x2="650" y2="230"/>
+      <text class="svg-text" x="62" y="34" text-anchor="end">11,000</text><text class="svg-text" x="62" y="100.7" text-anchor="end">10,000</text><text class="svg-text" x="62" y="167.3" text-anchor="end">9,000</text><text class="svg-text" x="62" y="234" text-anchor="end">8,000</text>
+      <polyline fill="none" stroke="var(--s1)" stroke-width="2" points="70,66.7 166.7,67.3 263.3,64.3 360,56.8 456.7,49.7 553.3,49.0 650,47.1"/>
+      <polyline fill="none" stroke="var(--s2)" stroke-width="2" stroke-dasharray="6 4" points="166.7,67.3 263.3,128.3 360,83.5 456.7,49.7"/>
+      <polyline fill="none" stroke="var(--s3)" stroke-width="2" points="70,186.5 166.7,179.3 263.3,187.9 360,172.0 456.7,165.8 553.3,161.7 650,157.6"/>
+      <g fill="var(--s1)"><circle cx="70" cy="66.7" r="4"><title>2024 명목 10,449</title></circle><circle cx="166.7" cy="67.3" r="4"><title>2025 명목 10,441</title></circle><circle cx="263.3" cy="64.3" r="4"><title>2026 명목 10,486</title></circle><circle cx="360" cy="56.8" r="4"><title>2027 명목 10,598</title></circle><circle cx="456.7" cy="49.7" r="4"><title>2028 명목 10,704</title></circle><circle cx="553.3" cy="49.0" r="4"><title>2029 명목 10,715</title></circle><circle cx="650" cy="47.1" r="4"><title>2030 명목 10,744</title></circle></g>
+      <g fill="var(--s2)"><circle cx="263.3" cy="128.3" r="5"><title>2026 유효 9,526 (−960)</title></circle><circle cx="360" cy="83.5" r="5"><title>2027 유효 10,198 (+560)</title></circle></g>
+      <g fill="var(--s3)"><circle cx="70" cy="186.5" r="4"><title>2024 정제량 8,652</title></circle><circle cx="166.7" cy="179.3" r="4"><title>2025 정제량 8,760</title></circle><circle cx="263.3" cy="187.9" r="4"><title>2026 정제량 8,631</title></circle><circle cx="360" cy="172.0" r="4"><title>2027 정제량 8,870</title></circle><circle cx="456.7" cy="165.8" r="4"><title>2028 정제량 8,963</title></circle><circle cx="553.3" cy="161.7" r="4"><title>2029 정제량 9,024</title></circle><circle cx="650" cy="157.6" r="4"><title>2030 정제량 9,086</title></circle></g>
+      <text class="svg-lab" x="263.3" y="148" text-anchor="middle">유효 9,526 (−9.6%)</text>
+      <text class="svg-lab" x="263.3" y="52" text-anchor="middle">명목 10,486</text>
+      <text class="svg-lab" x="263.3" y="207" text-anchor="middle">정제량 8,631</text>
+      <text class="svg-lab" x="360" y="76" text-anchor="middle">10,198</text>
+      <text class="svg-text" x="70" y="252" text-anchor="middle">2024</text><text class="svg-text" x="166.7" y="252" text-anchor="middle">2025</text><text class="svg-text" x="263.3" y="252" text-anchor="middle">2026E</text><text class="svg-text" x="360" y="252" text-anchor="middle">2027E</text><text class="svg-text" x="456.7" y="252" text-anchor="middle">2028E</text><text class="svg-text" x="553.3" y="252" text-anchor="middle">2029E</text><text class="svg-text" x="650" y="252" text-anchor="middle">2030E</text>
+      <text class="svg-text" x="70" y="276">단위: 만b/d · 유안타증권</text>
+    </svg>
+  </div>
+
+  <h3>전쟁 전 vs 현재: 빠진 용량의 분해</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th class="num">규모</th><th>내용</th><th>출처</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">중동 정유설비 타격</td><td class="num">2.8~3.3mb/d (3.3%)</td><td>Ras Tanura 55만(2/28·3/2·3/4 피격, 3/13 재가동), SAMREF 얀부(3/19 드론), Jazan 40만(7/27 후티, 디젤 20만b/d 수출 상실), 걸프 정제유 수출 −3.7mb/d(2월 대비 60% 감소)</td><td>iM · 유안타 · KB(argus) · IEA</td></tr>
+      <tr><td class="hd">러시아 정유설비</td><td class="num">2.8~4.6mb/d (2.9%)</td><td>Capa 6.66mb/d 중 4.6mb/d 차질, 가동률 30~40%(Kpler). Yaroslavl 30만(6/28·7/6·8/6·9/17), Bashneft-Novoil, Kapotnya, Orsk 12만(복구 6개월). 디젤 수출금지 9/30 → 연말 연장 전망, 2027년에도 정상화 어려움(IEA 9월)</td><td>KB · iM · 하나 9/14 · 247WallSt</td></tr>
+      <tr><td class="hd">아시아 가동률 조정</td><td class="num">약 3.6%</td><td>중동산 원유 부족·프리미엄으로 아시아 정유사 가동률 하향. 9/16 아시아 정유업체 추가 가동률 인하 검토(중국 국영 디젤 재고 15개월 최저)</td><td>iM · 하나 TG 9/16</td></tr>
+      <tr><td class="hd">합계</td><td class="num">약 9~10mb/d</td><td>글로벌 용량의 약 10%(iM), 오프라인 9mb/d(미국 애널리스트), 3~7월 글로벌 정유 생산 −6~7mb/d(argus). 유안타는 원유 4~6% + 중동 석화 2~3% + 러시아 3~4% = “수급 14% 차질”</td><td>iM · KB · 유안타</td></tr>
+      <tr><td class="hd">대체 공급 여력</td><td class="num">거의 없음</td><td>미국 가동률 98%(2018년 이후 최대, 역사적 고점 100.5%), 중국 정제유 수출 재제한 검토, 인도 관세. 재고: 미국 중간유분 44년래 최저, OECD 상업재고 2014년 4월 이후 최저, 누적 인출 5.07억bbl(2월 이후)</td><td>하나 9/7 · 신한 · IEA</td></tr>
+    </tbody></table></div>
+
+  <h3>2025~2028 증설·폐쇄 (유안타 표4 발췌, 만b/d)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>연도</th><th>증설</th><th>폐쇄</th><th class="num">글로벌 순증</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">2025</td><td>중국 Zhenhai 25.8·CNOOC Daxie 12·Huajin 30(→2027 연기), 인도 Chennai 16.9, 이라크 Basra 6.5</td><td>미국 LyondellBasell Houston −26.4(1Q), PSX California −13.9(4Q), 일본 Idemitsu Yamaguchi −12(1Q), 이탈리아 Eni Livorno −12, 중국 Dalian −8</td><td class="num">−7.8</td></tr>
+      <tr><td class="hd">2026</td><td>인도 HPCL Rajasthan 18·Numaligarh 10, 태국 Thai Oil 12.5, 인도네시아 Balikpapan 10, 이라크 Maysan 7, 러시아 Novoshakhtinsk 5</td><td>미국 Valero California −17(4월), 독일 Shell Rheinland −14.7·Gelsenkirchen −8, 영국 Grangemouth −13.1, 중국 Dalian −41(3Q)·Dalian2 −12, 이란 Abadan −23.5</td><td class="num">+45.1</td></tr>
+      <tr><td class="hd">2027</td><td>중국 Nanshan Yulong 40·Huajin Aramco 30·Qilu 7, 인도 IOC Panipat 20·Barauni 13.1, 한국 S-Oil 6.0(샤힌 연계), 이라크 Diwaniya 7, 이란 Siraf 6·Persian Gulf Star 12</td><td>중국 Changling −23, 이란 Abadan −23.5</td><td class="num">+111.9</td></tr>
+      <tr><td class="hd">2028</td><td>나이지리아 Dangote 2 75, 중국 Gulei(Aramco/Sinopec) 32, 인도 Chennai 10·IOC Koyali 8.1, 알제리 Hassi Messaoud 10</td><td>바레인 Sitra −11.3</td><td class="num">+105.5</td></tr>
+    </tbody></table></div>
+  <p class="cap">증설의 대부분이 중국·인도·중동·아프리카이고, 미국·유럽·일본은 폐쇄 일변도다. 이 비대칭이 Q8의 “미국 정유사 희소성 프리미엄”의 근거가 된다.</p>
+
+  <h3>연도별 수급 내러티브: 2026년 순증설·수요, 2027~30년 매년 얼마나 늘어나나</h3>
+  <div class="tbl"><table style="min-width:1320px">
+    <thead><tr><th>연도</th><th class="num">명목 순증설</th><th class="num">지정학 조정</th><th class="num">유효 CAPA</th><th>글로벌 석유 수요</th><th class="num">정제량 (증감)</th><th class="num">유효 가동률</th><th>무엇이 결정하나</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">2025 (전쟁 전)</td><td class="num">−7.8만</td><td class="num">—</td><td class="num">10,441만</td><td>OPEC 106.6mb/d (+1.1)</td><td class="num">8,760만 (+108)</td><td class="num">83.9%</td><td>미국·유럽·일본 폐쇄가 중국·인도 증설을 상쇄. 2024~25년은 “증설 급감” 구간(유안타 그림2)</td></tr>
+      <tr><td class="hd">2026E</td><td class="num">+45.1만</td><td class="num">−960만</td><td class="num">9,526만 (−8.8%)</td><td>IEA 9월: −2.5mb/d(약 101mb/d), 공급 −5.7mb/d(100.7) → 재고 인출 2.8mb/d. OPEC 전쟁 전 전망은 107.8</td><td class="num">8,631만 (−129) · IEA 81.5mb/d (−2.6)</td><td class="num">90.6%</td><td><b>전쟁</b>: 러시아 4.6mb/d·중동 2.8~3.3mb/d 이탈. <b>수출제한</b>: 중국(3~7월 중단, 9월 재제한 검토)·러시아(휘발유 4월~2027.1, 디젤 7월~연말)·인도 관세·태국 → 교역 가능 제품은 유효 CAPA보다 더 적음. <b>정기보수</b>: 9~10월 집중(하나)이라 4Q 초 공급이 한 번 더 줄고 디젤 성수기와 겹침. 미국 98% 가동으로 증산 여력 소진</td></tr>
+      <tr><td class="hd">2027E</td><td class="num">+111.9만</td><td class="num">+560만 (부분 복구)</td><td class="num">10,198만 (2025 대비 −2.3%)</td><td>IEA: +2.6mb/d 회복, 생산 +8mb/d 반등(걸프 복구는 2027년으로 이연). OPEC 110.0</td><td class="num">8,870만 (+239)</td><td class="num">87.0%</td><td>중국 Yulong 40·Huajin 30, 인도 Panipat 20이 들어오지만 러시아는 2027년에도 정상화 어려움(IEA·하나). 복구 초기 증산분은 재고 재축적(아람코 최대 18개월)에 흡수 → 마진 정상화가 공급 회복보다 느림(신한). 유안타: 초호황은 2027년 상반기까지</td></tr>
+      <tr><td class="hd">2028E</td><td class="num">+105.5만</td><td class="num">잔여 복구</td><td class="num">10,704만</td><td>정상 성장 복귀 가정(+0.9~1.0mb/d)</td><td class="num">8,963만 (+93)</td><td class="num">83.7%</td><td>나이지리아 Dangote 2 75·중국 Gulei 32가 수요 증가를 앞서기 시작 → 가동률이 2025년 수준으로 회귀. 사이클 정상화의 해</td></tr>
+      <tr><td class="hd">2029E</td><td class="num">+11.5만</td><td class="num">—</td><td class="num">10,715만</td><td>+0.6mb/d 내외</td><td class="num">9,024만 (+61)</td><td class="num">84.2%</td><td>멕시코 Olmeca 34 vs 폐쇄. 증설 공백기 재진입</td></tr>
+      <tr><td class="hd">2030E</td><td class="num">+28.5만</td><td class="num">—</td><td class="num">10,744만</td><td>+0.6mb/d 내외</td><td class="num">9,086만 (+62)</td><td class="num">84.6%</td><td>중국 CNOOC·이라크 소규모. 2029~30년 증설 급감이 다음 업사이클의 씨앗</td></tr>
+    </tbody></table></div>
+  <p class="cap">단위 만b/d. 명목 순증설·지정학 조정·유효 CAPA·정제량·가동률은 유안타 9/15 표4(황규원), 수요는 IEA OMR 9월·KB 9/17 그림39(OPEC 전망). 2028~30년 수요 증가폭은 IEA 2027년 이후 추세(연 +0.6~1.0mb/d)를 적용한 합리적 가정이며, 유안타 표의 정제량 증감과 정합적이다.</p>
+  <p>읽는 법은 단순하다. <b>2026년은 명목으로 +45만b/d가 늘었는데 유효로는 −960만b/d가 빠진 해</b>이고, 수요도 −2.5mb/d 줄었지만 공급이 −5.7mb/d 더 줄어 재고가 5억bbl 인출됐다. 2027년은 명목 +112만·복구 +560만이 더해져도 유효 CAPA가 2025년보다 2.3% 작고, 수요는 +2.6mb/d 되돌아오니 가동률 87%로 여전히 타이트하다. 2028년에 가서야 증설(+106만)이 수요 증가(+93만)를 넘어서며 가동률이 83~84%로 정상화된다. 즉 <b>정제마진의 시계는 “2027년 상반기까지 초호황, 2028년 정상화”</b>이고, 이 시계를 앞당기는 유일한 변수는 러시아·걸프 설비의 복구 속도다.</p>
+
+  <h3>그래서 부족한 CAPA의 수요가 한국으로 구조적으로 오는가</h3>
+  <div class="good"><b>답: 2026~27년은 “가격과 물량 모두” 온다. 2028년 이후는 “물량 점유는 남고 가격은 정상화”된다.</b> 빠진 공급(걸프 제품 수출 −3.7mb/d, 러시아 디젤 −1mb/d)은 한국의 총 제품 수출(약 1.35mb/d)보다 훨씬 크다. 한국이 물량으로 메울 수 있는 건 일부이고, 나머지는 가격(크랙)이 조정한다. 그래서 한국 정유사의 수혜는 <b>물량 +7~29%, 가격은 수 배</b>의 형태로 나타난다.</div>
+  <div class="tbl"><table>
+    <thead><tr><th>빠진 공급 (구조적일수록 ★)</th><th class="num">규모</th><th>한국으로 오는 경로 · 증거</th><th>지속성</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">걸프 정제유 수출 감소</td><td class="num">−3.7mb/d (2월 대비 60%)</td><td>호르무즈 경유 디젤 90만b/d(글로벌 교역 10%)가 끊기자 호주·동남아·동아프리카가 한국·싱가포르·인도로 전환. 한국 1H26 수출 2.45억bbl(+7.3%), 3Q 수출량 +29% YoY(KB), 3월 역대 2위 수출</td><td>★★☆ 2027년 걸프 복구 시 되돌아오지만 Jazan·Ras Tanura 손상과 홍해 리스크로 “호르무즈 프리미엄”은 잔존</td></tr>
+      <tr><td class="hd">러시아 디젤·휘발유 수출 금지</td><td class="num">−1.0mb/d (평시 디젤 수출량)</td><td>러시아가 수입국으로 전환: 한국이 울산에서 러시아향 디젤·항공유 선적(하나 8/18). 유럽은 러시아 대체를 위해 한국산 디젤 수입(9월 67만bbl, 4~5주 항해)</td><td>★★★ IEA: 2027년에도 정상화 어려움. 제재·부품 조달·2차 장치 누적 피해</td></tr>
+      <tr><td class="hd">중국 수출쿼터 축소</td><td class="num">2026 1차 19.0백만t (2025 연 40.2)</td><td>중국이 3~7월 수출 중단 후 선별 허용, 9월 재제한 검토. 한국의 아시아 내 경쟁자가 줄어 싱가포르·호주·베트남·필리핀 시장에서 한국산 점유 확대</td><td>★★☆ 정책 변수. 다만 중국은 내수 우선 기조가 2027년 Yulong 가동 전까지 유지될 가능성</td></tr>
+      <tr><td class="hd">선진국 정제설비 폐쇄</td><td class="num">2025~26 −1.2mb/d (미·유럽·일본)</td><td>일본 Idemitsu Yamaguchi(12만) 폐쇄, 유럽 Shell Rheinland·Grangemouth 등 폐쇄로 일본·유럽의 수입 의존 확대. 호주는 자체 정제소 2곳뿐이라 한국이 3년 연속 최대 수출국(18.6%)</td><td>★★★ 구조적. 되돌릴 수 없는 폐쇄</td></tr>
+      <tr><td class="hd">각국 수출제한</td><td class="num">미국·한국 제외 대부분</td><td>KB 표1: 정제유 수출을 유지한 대형 수출국은 사실상 미국과 한국. 한국은 3월 나프타만 제한. 그 결과 한국이 “마지막 공급자” 프리미엄을 받는다. 9/17 미 하원(Burchett)이 2027년 1월까지 경유 수출 한시 금지 법안을 발의(하나 9/21)</td><td>★★☆ 전쟁 종료 시 완화. 단, 미국이 중간선거 앞 수출 금지로 가면 한국 프리미엄은 오히려 커짐</td></tr>
+    </tbody></table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>한국이 채울 수 있는 양</th><th class="num">수치</th><th>의미</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">정제능력</td><td class="num">약 330만 b/d</td><td>2026~30년 CDU 증설 없음. 물량 대응은 가동률로만 가능</td></tr>
+      <tr><td class="hd">가동률 여력</td><td class="num">2024~25년 80%대 초반 → 90%대</td><td>정제마진 부진기에 낮췄던 가동률을 올리면 +5~10% 물량. 3Q 수출 +29%가 그 증거. 상한은 정기보수(9~10월)</td></tr>
+      <tr><td class="hd">제품 수출량</td><td class="num">1H26 2.45억bbl ≈ 1.35mb/d</td><td>걸프 −3.7 + 러시아 −1.0 = −4.7mb/d의 약 30%에 불과. 물량으로 못 메우는 부분은 크랙이 벌어져 조정 → “가격 수혜”</td></tr>
+      <tr><td class="hd">수율 구조</td><td class="num">경유 40% · 항공유 18% (수출 기준)</td><td>가장 부족한 중간유분 비중이 높음. 고도화 설비(HD현대 42%·S-Oil 39%)가 중질유를 디젤로 전환</td></tr>
+      <tr><td class="hd">지리</td><td class="num">호주 4~5일, 싱가포르 7일, 유럽 4~5주</td><td>걸프산이 호르무즈·홍해에 막힌 동안 동아시아·호주 시장에서 한국이 거리 우위. 유럽향은 차익거래가 열릴 때만</td></tr>
+    </tbody></table></div>
+  <p>구조적이냐 순환적이냐를 가르는 기준은 <b>“2027년 걸프·러시아가 돌아와도 남는 것”</b>이다. 남는 것은 (1) 선진국 폐쇄로 커진 일본·호주·유럽의 수입 의존, (2) 러시아 설비의 장기 손상과 제재, (3) 중국의 내수 우선 수출정책, (4) 호르무즈 리스크 프리미엄이다. 사라지는 것은 걸프 물량 3.7mb/d의 대부분과 각국 수출제한이다. 따라서 <b>2026~27년의 초과이익은 순환적이지만, 한국이 “아시아·호주의 한계 공급자”로 얻은 점유율은 2028년 중국 Yulong·인도 증설이 들어올 때까지 구조적으로 유지</b>된다. 유안타가 정제마진 초호황을 2027년 상반기까지로 보는 것과 같은 시계다.</p>
+
+  <h3>한국: 4사 정제능력 3.2~3.3mb/d, 글로벌의 약 3.1%</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>회사</th><th class="num">정제능력 (BPSD)</th><th>부지</th><th class="num">고도화율</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">SK이노베이션 (SK에너지+SK인천)</td><td class="num">121.5만</td><td>울산 84만 · 인천 27.5만</td><td class="num">25%</td><td>국내 최대 원유 핸들링. 인천은 컨덴세이트 비중 높음</td></tr>
+      <tr><td class="hd">GS칼텍스</td><td class="num">80.0만</td><td>여수</td><td class="num">34%</td><td>셰브론 50% JV. 수출 비중 71%</td></tr>
+      <tr><td class="hd">S-Oil</td><td class="num">66.9만</td><td>온산</td><td class="num">39%</td><td>아람코 63.4%. 샤힌 4Q26 시운전 · 2027초 상업가동</td></tr>
+      <tr><td class="hd">HD현대오일뱅크</td><td class="num">52.0만</td><td>대산</td><td class="num">42%</td><td>규모 최소, 고도화율 최고</td></tr>
+      <tr><td class="hd">합계</td><td class="num">약 320~330만</td><td></td><td class="num"></td><td>2026~2030 CDU 순증설 없음. 유안타 표의 “S-Oil +6.0(2027)”은 샤힌 연계분</td></tr>
+    </tbody></table></div>
+  <p class="cap">정제능력·고도화율: 한국신용평가 2026년 3월 보고서(허핑턴포스트 인용). 정제량 기준 글로벌 비중 = 330만 ÷ 10,486만 ≈ 3.1%.</p>
+  <p>핵심은 <b>“명목 CAPA는 그대로인데 유효 CAPA가 10% 빠졌다”</b>는 점이다. 그래서 유가가 오르든 내리든 제품이 부족하다. 신한의 지적처럼 아람코가 재고 재축적에 최대 18개월을 언급했고, 설비가 복구돼도 초기 증산분은 재고 보충에 먼저 흡수되므로 <b>마진 정상화는 공급 회복보다 느리다</b>. 반면 2027~28년 중국·인도·나이지리아 증설(+2.2mb/d)이 들어오는 시점이 사이클의 시계다.</p>
+</section>
+
+<section class="q" id="q2">
+  <div class="qn">Q2 · Saudi OSP</div>
+  <h2>OSP: 사상 최고 +19.5$(5월)에서 −2.0$(8~10월)로, “인도 리스크 할인”이 고착될 조건</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 마이너스 OSP는 사우디가 <b>물류 열위(얀부 우회)·벤치마크 왜곡(Oman/Murban)·경쟁자 증가(UAE 탈퇴, 미국·베네수엘라·러시아)</b> 속에서 점유율을 지키려는 가격이다. <b>호르무즈가 부분 통항에 머무는 한 마이너스는 유지</b>되기 쉽고, 완전 재개방 시 플러스로 복귀한다. 다만 지금은 운임(20$/bbl)이 할인(2$)을 압도해 “OSP 수혜”는 4분기 투입분에서 확인될 문제다.
+  </div>
+
+  <div class="fig">
+    <p class="ft">Arab Light 아시아향 OSP (Oman/Dubai 평균 대비, $/bbl), 2026년 5~10월 선적분</p>
+    <p class="fs">5월 +19.5(사상 최고) → 6월 +15.5 → 7월 +9.5(−6, 2022년 이후 최대 인하) → 8월 −1.5(−11, 2003년 이후 최대 인하·2020년 6월 이후 첫 마이너스) → 9월 −2.0(6년 최저) → 10월 −2.0(9/3 발표, 동결)</p>
+    <svg viewBox="0 0 640 270" role="img" aria-label="아람코 OSP 월별 추이">
+      <line class="svg-grid" x1="60" y1="30" x2="620" y2="30"/><line class="svg-grid" x1="60" y1="68" x2="620" y2="68"/><line class="svg-grid" x1="60" y1="106" x2="620" y2="106"/><line class="svg-grid" x1="60" y1="144" x2="620" y2="144"/><line class="svg-axis" x1="60" y1="182" x2="620" y2="182"/><line class="svg-grid" x1="60" y1="220" x2="620" y2="220"/>
+      <text class="svg-text" x="52" y="34" text-anchor="end">+20</text><text class="svg-text" x="52" y="72" text-anchor="end">+15</text><text class="svg-text" x="52" y="110" text-anchor="end">+10</text><text class="svg-text" x="52" y="148" text-anchor="end">+5</text><text class="svg-text" x="52" y="186" text-anchor="end">0</text><text class="svg-text" x="52" y="224" text-anchor="end">−5</text>
+      <rect x="80" y="33.8" width="60" height="148.2" rx="3" fill="var(--s2)"><title>5월 +19.5</title></rect>
+      <rect x="170" y="64.2" width="60" height="117.8" rx="3" fill="var(--s2)"><title>6월 +15.5 (−4.0)</title></rect>
+      <rect x="260" y="109.8" width="60" height="72.2" rx="3" fill="var(--s2)"><title>7월 +9.5 (−6.0)</title></rect>
+      <rect x="350" y="182" width="60" height="11.4" rx="3" fill="var(--s1)"><title>8월 −1.5 (−11.0)</title></rect>
+      <rect x="440" y="182" width="60" height="15.2" rx="3" fill="var(--s1)"><title>9월 −2.0 (−0.5)</title></rect>
+      <rect x="530" y="182" width="60" height="15.2" rx="3" fill="var(--s1)"><title>10월 −2.0 (동결)</title></rect>
+      <text class="svg-lab" x="110" y="27" text-anchor="middle">+19.5</text><text class="svg-lab" x="200" y="58" text-anchor="middle">+15.5</text><text class="svg-lab" x="290" y="103" text-anchor="middle">+9.5</text><text class="svg-lab" x="380" y="208" text-anchor="middle">−1.5</text><text class="svg-lab" x="470" y="212" text-anchor="middle">−2.0</text><text class="svg-lab" x="560" y="212" text-anchor="middle">−2.0</text>
+      <text class="svg-text" x="110" y="245" text-anchor="middle">5월</text><text class="svg-text" x="200" y="245" text-anchor="middle">6월</text><text class="svg-text" x="290" y="245" text-anchor="middle">7월</text><text class="svg-text" x="380" y="245" text-anchor="middle">8월</text><text class="svg-text" x="470" y="245" text-anchor="middle">9월</text><text class="svg-text" x="560" y="245" text-anchor="middle">10월</text>
+      <text class="svg-text" x="60" y="264">주황 = 프리미엄(정유사 원가 부담) · 파랑 = 디스카운트 · 3~4월분은 급등(정확값 미확인)</text>
+    </svg>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>유종 (9월 선적, 아시아)</th><th class="num">9월</th><th class="num">8월</th><th class="num">MoM</th><th>유안타 가중 OSP (초경질 15%·경질 25%·중질 60%)</th><th class="num">$/bbl</th></tr></thead>
+    <tbody>
+      <tr><td>Arab Super Light</td><td class="num">−0.35</td><td class="num">+0.15</td><td class="num">−0.50</td><td>1Q26</td><td class="num">+0.3</td></tr>
+      <tr><td>Arab Extra Light</td><td class="num">−1.50</td><td class="num">−1.00</td><td class="num">−0.50</td><td>2Q26</td><td class="num">+6.1</td></tr>
+      <tr><td>Arab Light</td><td class="num">−2.00</td><td class="num">−1.50</td><td class="num">−0.50</td><td>3Q26E (5~7월 선적분 투입)</td><td class="num">+7.1</td></tr>
+      <tr><td>Arab Medium</td><td class="num">−2.00</td><td class="num">−3.25</td><td class="num">+1.25</td><td>4Q26E (8~10월 선적분 투입)</td><td class="num">−1.2</td></tr>
+      <tr><td>Arab Heavy</td><td class="num">−3.35</td><td class="num">−4.60</td><td class="num">+1.25</td><td>2027E</td><td class="num">−1.0</td></tr>
+    </tbody></table></div>
+  <p class="cap">BOE Report 8/6(9월 OSP), 유안타 9/15 표2. 중질유 할인이 먼저 깊어졌다가 되돌아온 점에 주의: 고도화 설비(중질유 투입) 비중이 높은 S-Oil·HD현대에 8월분이 특히 유리했다.</p>
+
+  <h3>−2$가 실현될 수 있었던 배경 다섯 가지</h3>
+  <ol class="ol">
+    <li><b>벤치마크 왜곡.</b> 3/2부터 Dubai 벤치마크는 실물 인도가 가능한 Oman·Murban만 포함한다(Dubai Fateh·Upper Zakum·Al Shaheen 제외). 호르무즈 리스크가 벤치마크에 “인도 가능 프리미엄”으로 박혀 9/16 Oman 132$(Brent +24$)까지 갔다. 아람코가 얀부 우회로로 파는 원유는 이 벤치마크보다 싸게 내놓지 않으면 팔리지 않는다(하나 9/14).</li>
+    <li><b>물류 열위.</b> 얀부 → SUMED·수에즈 또는 희망봉 우회는 항해일수·운임을 키운다. 3월 초 얀부 파이프라인이 포화됐고, 4월에는 Arab Light 인도원가가 러시아 ESPO 대비 5.5$ 비싸 스위칭 임계(5~7$)를 넘었다. Sinopec 노미네이션이 3월부터 줄었다.</li>
+    <li><b>구매자 다변화.</b> 한국 상반기 원유 수입에서 중동 62.3%(전년 68.7%), 미국 20.5%(첫 20%대), 아프리카 5.6%. 8월에는 중동 59.7%·북미 25.6%까지 내려갔다. 중국은 러시아·이라크를 선호. 사우디 8월 선적 3.5mb/d(13년래 최저), 8월 생산 5.97mb/d(목표 10.42).</li>
+    <li><b>OPEC 균열.</b> UAE가 5/1 OPEC·OPEC+를 탈퇴(3.5mb/d 쿼터 갈등)하고 아시아 수출을 늘렸고, 이라크 탈퇴 위협, 미국이 8/29 베네수엘라 650억bbl에 25년 실질 지배권을 확보하며 베네수엘라 OPEC 탈퇴가 논의된다. 하나는 “OSP 마이너스 고착 가능성”의 근거로 이 균열을 든다.</li>
+    <li><b>가격 정책의 시차.</b> OSP는 전월 현물 프리미엄을 따라간다. 7월 Dubai cash 프리미엄 1.26$(6월 2.39$), Oman 0.91$로 줄자 9월 OSP를 −2로 내렸다. 사우디 재정상 “팔 수 있는 물량은 반드시 팔아야” 하므로 프리미엄이 빠지는 국면에선 공격적으로 내린다.</li>
+  </ol>
+
+  <h3>마이너스가 유지되기 위한 조건 vs 반전 조건</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>시나리오</th><th>전제</th><th>OSP 경로 (4Q26~1Q27)</th><th>한국 정유사 함의</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">Base · 부분 통항 지속</td><td>호르무즈 통항 전쟁 전의 50~60%, 동서송유관 10월 중 부분 재가동, 얀부 우회 지속, 아시아 다변화 지속</td><td>−1 ~ −3$ 유지. 아람코가 오만 STS 현물(2,000만bbl, 9/16)로 벤치마크 대비 할인 판매 병행</td><td>4Q 투입 원가 개선(가중 OSP −1.2). 다만 운임 15~20$/bbl이 상쇄. S-Oil 수혜 최대</td></tr>
+      <tr><td class="hd">Deeper · 홍해까지 장기 봉쇄</td><td>바브엘만데브 후티 통제 장기화, 동서송유관 8주 이상 중단, 사우디 생산 7mb/d 이하</td><td>−3$ 이하로 확대 가능하나 물량 자체가 부족해 “할인의 실익”은 작음. 두바이 급등으로 정제마진 착시 하락</td><td>S-Oil 조달 리스크(비축유 스왑·수에즈 우회 운임 지원 검토). 다변화된 SKI·GS 상대 우위</td></tr>
+      <tr><td class="hd">Reversal · 완전 재개방</td><td>이란 협상 타결, 호르무즈·홍해 정상화, VLCC 운임 급락</td><td>Oman/Murban 프리미엄 소멸 → 벤치마크 정상화 → 사우디 물류 우위 회복 → +1 ~ +3$ 복귀(2022년 하반기 패턴)</td><td>원가 우위는 사라지지만 두바이 하락으로 정제마진 상승(6월 사례). 재고평가 손실 1분기. 순효과는 중립~긍정</td></tr>
+    </tbody></table></div>
+  <p>구조적으로는 <b>“아시아 정유사가 2027년 term 계약을 Dubai/Oman 연동 대신 Brent 연동으로 바꿔달라”</b>고 요구하기 시작한 것(하나 9/14)이 가장 큰 변화다. 벤치마크가 바뀌면 OSP라는 숫자의 의미도 바뀐다. 당장의 트레이딩 관점에서는 OSP보다 <b>Dubai−Brent 스프레드와 VLCC 운임</b>이 한국 정유사 원가를 더 크게 흔든다.</p>
+  <div class="note">주의: OSP −2$의 “원가 절감”은 사우디산 비중이 높을수록 크지만(S-Oil 90%+), GS칼텍스는 미국산 Mars 200만bbl을 10월 Dubai +13~14$, 7월에는 +18$ 프리미엄에 샀다. 월 처리량의 8%에 불과하지만 OSP 인하 효과를 온전히 누리기는 어렵다(하나 8/18).</div>
+</section>
+
+<section class="q" id="q3">
+  <div class="qn">Q3 · Crude sourcing &amp; customers</div>
+  <h2>원유는 어디서 오고 제품은 어디로 가나: S-Oil은 사우디 90%+, SK·GS는 “중동 55~60% + 미주 25%”</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 한국 전체로는 2026년 상반기 중동 62.3%(사우디 30.5%)·미국 20.5%·아프리카 5.6%, 8월엔 중동 59.7%·북미 25.6%까지 내려왔다. <b>S-Oil은 아람코 장기계약으로 사우디산 90% 이상</b>이라 OSP 수혜와 함께 얀부 경유분의 시차·운임 리스크를 안고(물량 취소는 없음, 아래 팩트체크), <b>SK는 조달처가 가장 넓고(미국·호주 바로사·중동), GS는 셰브론 네트워크로 미국·베네수엘라산을 늘렸다</b>. 수출 비중은 GS 71% &gt; HD현대 67% &gt; S-Oil 54% &gt; SK 51%. 고객은 호주·싱가포르·일본·중국·미국이 60%, 2026년엔 유럽·러시아향 디젤이 새로 열렸다.
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>S-Oil</th><th>SK이노베이션 (SK에너지·SK인천)</th><th>GS칼텍스 (GS 50%)</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">정제능력</td><td>66.9만 b/d (온산)</td><td>121.5만 b/d (울산 84 + 인천 27.5)</td><td>80만 b/d (여수)</td></tr>
+      <tr><td class="hd">중동 조달처 (평시 유종)</td><td><b>사우디 90% 이상</b> — Arab Light/Medium/Heavy. 2012년 20년 장기계약, 2022년 약 35조 규모 장기계약(뉴데일리·이투데이)</td><td>사우디·쿠웨이트·UAE(Murban·Upper Zakum)·이라크(Basrah)·카타르 컨덴세이트 등 분산. 중동 비중 회사 미공개, 업계 평균에서 S-Oil을 빼면 <b>약 55~60%(추정)</b></td><td>사우디·UAE·쿠웨이트·이라크 등 분산. 중동 비중 <b>약 55~60%(추정)</b>, 셰브론 JV 특성상 미주 비중이 높은 편</td></tr>
+      <tr><td class="hd">비중동 조달</td><td>사실상 없음. 아람코 주주구조상 단기 대체 조달이 어려움(뉴데일리 9/17)</td><td>미국(2017년부터 WTI 도입), 호주 바로사 초경질유 3Q26부터(지분 37.5%, 연 110만bbl 확보), 남미·카자흐 등. SK트레이딩인터내셔널(싱가포르)이 현물 조달. “최대 원유 핸들링·조달처 다변화”(iM)</td><td>미국산 최초 도입(2016). 2026: 미국산 200만bbl(10월초 도착, Dubai +18$), Mars 200만bbl(11월 도착, Dubai +13~14$), 베네수엘라 11만bbl(6월, 20년 만). 미국산 카고는 월 처리량의 8%</td></tr>
+      <tr><td class="hd">지금의 물리적 경로</td><td>평시 100% 걸프 선적(라스타누라·주아이마 → 호르무즈, 약 3,370해리·10일). 2026년 3월 이후 아람코가 아시아 장기계약 물량 일부를 <b>얀부(홍해)</b>에서 선적해 지브롤터·희망봉 우회(13,140해리, +약 1개월)로 공급 → S-Oil은 “얀부항을 떠난 물량도 정상 도입 중”이라고 확인(9/17). 9/10 피격 후 <b>아람코가 호르무즈 경유 선적을 9월 상반월 200만b/d 이상으로 확대하고 오만 소하르 STS·추가 선적 제시</b>. 선적 취소 통보 없음. 장기화 시 수에즈 우회·비축유 스왑 검토(회사), 9~10월 도입 90% 이상 확보(산업부 9/14). 아래 팩트체크 참조</td><td>걸프(호르무즈 부분 통항) + UAE 푸자이라(호르무즈 밖, Habshan 송유관 1.8mb/d) + 미주·호주. 조달 안정성 최고</td><td>걸프 + 미국 걸프코스트(VLCC 45~50일) + 베네수엘라. 운임은 미국→중국 15$/bbl(하나)</td></tr>
+      <tr><td class="hd">수출 비중 (2025, 정유부문 매출)</td><td>54% (내수 46%)</td><td>51% (내수 49%, 국내 1위)</td><td>71% (4사 최고)</td></tr>
+      <tr><td class="hd">주요 고객·시장</td><td>호주·일본·싱가포르·중국 수출, 국내 주유소·항공(대한항공)·발전. 윤활기유 수출 76%(과거 공시). 샤힌 PE는 사빅에 5년 5.5조 공급계약(2/9)</td><td>SK트레이딩인터내셔널 통해 호주·동남아·일본·미국 서부(항공유). 내수 최대 → 최고가격제 손실보전(12월)의 최대 수혜. E&amp;S는 발전(SMP)·도시가스</td><td>호주(Ampol·Viva 등)·싱가포르·일본·미국 서부, 셰브론 트레이딩 네트워크. 유럽향 디젤 차익거래(9월 한국산 67만bbl 유럽행, 4~5주 항해)</td></tr>
+      <tr><td class="hd">2026년 특이점</td><td>1H26 최대실적 실패(중동산 비중 높아 3~4월 프리미엄 원유)·3Q 반전 기대(KB). 얀부 경유분 시차·운임과 두바이 프리미엄 = 9월 주가 할인 요인</td><td>3Q 수출량 +29% YoY(KB). 미국·호주 초경질유로 납사·휘발유 수율 ↑</td><td>3Q 수출량 +29% YoY(KB). 2Q 윤활유 역대 최고. 미국산 프리미엄 구매로 OSP 효과 일부 상쇄</td></tr>
+    </tbody></table></div>
+  <p class="cap">사우디 비중 추정 방법: 국내 사우디 비중 30.5%(1H26) 중 S-Oil 몫 ≈ 66.9만/330만 × 90% ≈ 18%p → 나머지 3사 평균 사우디 비중 ≈ 12.5%p ÷ 80% ≈ 15%. 중동 전체 62.3%에서 같은 방식으로 빼면 3사 평균 중동 비중 ≈ 55%.</p>
+
+  <h3>팩트체크 · 사우디 동서송유관 피격은 한국 정유사 조달과 무관한가?</h3>
+  <div class="note"><b>판정: 평시 구조로는 무관하지만, 2026년 3월 이후에는 관련이 있다. 다만 영향은 “물량 차질”이 아니라 “S-Oil의 도입 시차·운임과 3사 공통의 원가(벤치마크 프리미엄)”로 나타난다.</b></div>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th>확인된 사실</th><th>출처</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">평시 구조 (지적이 맞는 부분)</td><td>동서송유관(Petroline)은 아브카이크(동부)에서 홍해 얀부까지 1,200km, 명목 700만b/d. 얀부 정유소(SAMREF·Yasref)와 홍해·지중해·유럽·미국향 수출용이다. 한국행 사우디 원유는 걸프 라스타누라(2025년 평균 540만b/d 선적)·주아이마에서 VLCC로 실어 호르무즈를 지나 약 3,370해리·10일에 온다. 이 구조에서 동서송유관은 한국 조달과 무관하다.</td><td>Al Jazeera 9/17 · Global Energy Monitor · EIA</td></tr>
+      <tr><td class="hd">2026년 실제 (지적과 다른 부분)</td><td>호르무즈 봉쇄(3/2) 이후 아람코는 동서송유관 처리량을 1Q26 사상 최대 700만b/d로 올리고 얀부 수출을 약 500만b/d(+제품 70~90만b/d)까지 늘렸다. 아시아행 물량도 얀부에서 선적해 지브롤터·희망봉을 도는 13,140해리·약 1개월 추가 항로로 보냈고, 산업부는 동서송유관을 “최근 6개월간 호르무즈 봉쇄를 보완한 주요 수송로”로 규정했다. S-Oil은 9/17 “이미 선적을 마치고 운항 중인 선박에는 차질이 없고, 얀부항을 떠난 물량도 정상적으로 들어오고 있다”고 밝혔다. 즉 한국행 사우디 원유의 일부가 얀부 경유로 들어오고 있었다.</td><td>Argus · 아주경제·청년일보 9/14(산업부) · 뉴데일리 9/17(S-Oil) · 하나 8/18(SUMED→지중해→희망봉 도표)</td></tr>
+      <tr><td class="hd">피격 이후 대체 경로</td><td>9/10 펌프장 3곳 손상, 복구 3~5주(AP)~6~8주(미래에셋), 재가동 초기 40~60%(250~300만b/d). 아람코는 호르무즈 경유 선적을 9월 상반월 200만b/d 이상(8월 대비 +100만)으로 늘리고, 아시아 정유사에 오만 소하르 STS 환적과 추가 선적(현물 2,000만bbl, 9~10월 인도)을 제시했다. S-Oil은 아람코로부터 선적 취소 통보를 받은 바 없다.</td><td>Al Jazeera 9/17 · 미래에셋 TG 9/16~17 · 윤재성 TG 9/16 · 뉴데일리 9/17</td></tr>
+      <tr><td class="hd">한국 수급 (정부)</td><td>9/14 산업부 긴급점검회의(문신학 차관): 7~8월 도입 원유 전년 대비 100% 이상, 9~10월 90% 이상 확보 → “단기 수급 영향 제한적”. 비축유 스왑 재시행(8/24), 수에즈 등 우회항로 전환 지원, 다변화 운임차액 지원 확대. 한국은 사우디 원유 수출의 14%(중국 22·일본 13·인도 10%)를 받는 2위 고객이다.</td><td>아주경제·파이낸셜뉴스·한국경제TV 9/14 · Al Jazeera</td></tr>
+      <tr><td class="hd">S-Oil</td><td><b>직접 노출.</b> 사우디산 90% 이상·아람코 장기계약이라 얀부 경유분의 항로 전환(호르무즈 재경유 또는 소하르 STS)에 따른 도입 시차와 운임이 발생한다(신한: “우회로 중단은 도입 지연 요인”). 물량 취소는 없고 정부 확보율 90% 이상이므로 가동률 차질 가능성은 낮다. 실질 영향은 운임(VLCC 걸프→중국 약 20$/bbl)과 두바이/오만 프리미엄이 OSP −2$를 상쇄하는 원가 쪽이 크다.</td><td>뉴데일리 9/17 · 신한 9/16 · 하나 9/14</td></tr>
+      <tr><td class="hd">SK이노베이션 · GS칼텍스</td><td><b>물리적 노출 미미, 원가 노출만.</b> 사우디 비중이 낮고(추정 약 15%) 미국·호주 바로사(SK)·미국·베네수엘라(GS) 등으로 다변화돼 얀부 경로 의존이 거의 없다. 영향은 두바이 벤치마크 급등(9/16 Oman 132$, Brent +24$)과 운임을 통한 원가 상승, 그리고 사우디 총수출 감소(1~2월 750만 → 9월 상반월 210만b/d)가 만드는 시장 전체의 타이트함이다. GS는 오히려 미국산을 두바이 대비 +13~18$ 프리미엄에 사 온 원가 부담이 더 크다.</td><td>Al Jazeera 9/17 · 하나 8/18·9/14 · 본 노트 추정</td></tr>
+      <tr><td class="hd">주가 함의</td><td>9/14 주 S-Oil −4.6%(SKI +4.7%)는 “물량 차질” 우려와 두바이 프리미엄 급등이 겹친 결과이고, 정부 확보율·아람코 대체 선적·회사 확인이 나온 9/21 주에는 S-Oil −0.3%로 업종(−5.7%) 대비 방어됐다. 동서송유관 헤드라인은 S-Oil에 “조달 리스크”보다 “원가·시차” 이슈로 읽는 것이 맞다.</td><td>하나 Weekly 9/14·9/21</td></tr>
+    </tbody></table></div>
+  <p class="cap">8월 사우디 원유 수출은 출처에 따라 230만b/d(Al Jazeera)~350만b/d(하나, Kpler 선적 기준)로 차이가 있다. 얀부 경유 한국행 물량의 정확한 비중은 공개 자료가 없어 확인하지 못했다.</p>
+
+  <h3>한국 원유 수입선 변화 (전쟁 전 → 현재)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>지역</th><th class="num">1H25</th><th class="num">1H26</th><th class="num">2026년 8월</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">중동</td><td class="num">68.7%</td><td class="num">62.3%</td><td class="num">59.7%</td><td>2016년 86% → 2025년 69.6%. 사우디 단독 1H26 30.5%(2025년 32~34%)</td></tr>
+      <tr><td class="hd">미주 (미국)</td><td class="num">23.4% (16.5%)</td><td class="num">26.5% (20.5%)</td><td class="num">25.6%</td><td>미국산 반기 기준 첫 20% 돌파. 멕시코·브라질·에콰도르·가이아나·베네수엘라 도입</td></tr>
+      <tr><td class="hd">아프리카</td><td class="num">2.0%</td><td class="num">5.6%</td><td class="num">6.9%</td><td>서아프리카 경질유</td></tr>
+      <tr><td class="hd">아시아·유럽</td><td class="num">—</td><td class="num">—</td><td class="num">6.9% · 1.0%</td><td>호주 바로사, 노르웨이산(한화토탈 70만bbl)</td></tr>
+      <tr><td class="hd">상반기 수입량</td><td class="num">약 5.0억bbl</td><td class="num">4.6억bbl (−8%)</td><td class="num"></td><td>중동산 수송단가 1.87$/bbl vs 비중동 2.99$/bbl(평시)</td></tr>
+    </tbody></table></div>
+  <p class="cap">MBC·서울신문·파이낸셜뉴스·데일리안(2026.8), 한국석유공사. 탈중동이 어려운 이유: 고도화 설비가 중동산 중질·고유황유에 최적화돼 있고, 경질유 투입을 늘리면 나프타·휘발유는 늘고 경유·항공유 수율은 줄어든다.</p>
+
+  <h3>고객: 석유제품 수출 상대국과 제품 구성</h3>
+  <div class="grid2">
+    <div class="card"><h4>수출 상대국 (1H26, 4사 합계 2.45억bbl, +7.3% YoY)</h4><p>호주 18.6% · 싱가포르 13.0% · 일본 11.5% · 중국 9.0% · 미국 8.7%. 호주는 3년 연속 1위(경유·휘발유 고부가 제품). 2024년에는 호주 18.0 · 일본 12.9 · 싱가포르 12.5 · 미국 8.8 · 중국 8.7.</p><p>2026년 신규: <b>유럽향 디젤</b>(9월 67만bbl), <b>러시아향 디젤·항공유</b>(울산 선적, 러시아 정유설비 타격으로 수입국 전환), 미국 서부 항공유.</p></div>
+    <div class="card"><h4>제품 구성 (1H26 수출량)</h4><p>경유 40% · 휘발유 23% · 항공유 18% · 나프타 8%. 2025년 경유 수출은 사상 최대(2.0억bbl 이상). 수입 원유의 52.5%를 정제해 수출(2024, 역대 최고 비중).</p><p>미국·한국을 제외한 대부분의 국가가 정제유 수출을 제한한 상태(KB 표1)라 한국 정유사는 “수출을 유지한 몇 안 되는 공급자”라는 지위를 갖는다.</p></div>
+  </div>
+  <p class="src"><b>출처</b> 대한석유협회·KITA·이데일리(2026.7), 하나 Weekly 9/7(유럽향 디젤), 하나 8/18(러시아향), KB 9/17 표1.</p>
+</section>
+
+<section class="q" id="q4">
+  <div class="qn">Q4 · Lube base oil</div>
+  <h2>윤활기유: 세 회사 모두 Group III를 만들고, 3Q26 마진은 2025년의 4배</h2>
+  <div class="answer">
+    <b>한 줄 답</b> SK엔무브(YUBASE) 8.0만b/d로 Group III 세계 1위(점유율 약 40%), S-Oil 4.3~4.5만b/d로 단일공장 세계 2위(Group I·II·III), GS칼텍스 2.6만b/d(Kixx LUBO, Group II+/III). 윤활기유 가격은 2025년 120$/bbl → 3Q26E 285$/bbl, 마진은 44 → 169$/bbl(유안타). <b>시가총액 대비 2026F 윤활 영업이익은 S-Oil 약 9.6%, SKI 약 10~14%(증권사별 2.2~3.15조), GS 약 6~7%(귀속분, 추정)</b>로 S-Oil·SKI가 비슷하고 GS가 낮다. 카타르 Pearl GTL Train 2가 피격돼 2027년 3월까지 재가동이 어렵다는 점(하나 9/21)이 Group III 강세의 물리적 근거다.
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>SK엔무브 (SK이노베이션 연결)</th><th>S-Oil</th><th>GS칼텍스</th><th>참고: HD현대쉘베이스오일</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">제품 그룹</td><td><b>Group III</b> 중심 (YUBASE 4/6/8, YUBASE+), 일부 Group II</td><td><b>Group I·II·III 모두</b> 생산 (Aramco ULTRA-S, S-OIL 7 브랜드). Group III가 주력</td><td>Group II+ · III (Kixx LUBO), Group I 일부</td><td>Group II (Shell 50% JV)</td></tr>
+      <tr><td class="hd">생산능력</td><td><b>8.03만 b/d</b> (2026 보도) · 과거 7.08만 b/d (연 350만t). 울산 + 두마이(페르타미나 JV) + 카르타헤나(렙솔 JV, ILBOC) + 톈진</td><td><b>4.27~4.47만 b/d</b> (제2 윤활기유 공장 4.47만). 단일 공장 세계 2위</td><td><b>2.6만 b/d</b> (여수)</td><td>1.3만 b/d 실제 가동(연 65만t, 설계 2.0만 b/d)</td></tr>
+      <tr><td class="hd">시장 지위</td><td>Group III 글로벌 점유율 약 40%, 1위. 50개국 수출. 8/20 미국 대형 정유사와 공급 확대 계약</td><td>S-Oil+SK엔무브 = 글로벌 Group III 약 40%(데이터뉴스 기준 합산). 수출 76%</td><td>국내 완제 윤활유 M/S 1위(17%)</td><td>중국·아시아 수출</td></tr>
+      <tr><td class="hd">2Q26 실적</td><td>OP 6,920억 (OPM 34.9%, iM) · 유안타 6,919억</td><td>OP 4,774억 (OPM 36.7%), 역대 최고</td><td>OP 3,577억 (역대 최고, +213% YoY) → GS 귀속 50%</td><td>—</td></tr>
+      <tr><td class="hd">2026F 윤활 OP</td><td>2.18조(유안타) · 2.34조(iM) · <b>3.15조(하나 9/21, OPM 38.4%)</b>. 3Q26F 9,200억(iM, OPM 39.2%) ~ 1.24조(하나, OPM 48.2%)</td><td>1.67조(신한) · OPM 34.2%. 3Q26F 5,745억(38.3%), 4Q26F 4,511억</td><td>연 1.2~1.4조 추정(2Q 연율화) → GS 귀속 0.6~0.7조</td><td>—</td></tr>
+      <tr><td class="hd">시총 대비 윤활 OP (2026F)</td><td>약 10~14% (2.3~3.15조 / 23.0조)</td><td>약 9.6% (1.67조 / 17.4조)</td><td>약 6~7% (0.7조 / 10.7조, 추정)</td><td>—</td></tr>
+      <tr><td class="hd">2027F</td><td>1.19조(유안타), 마진 77$/bbl 가정</td><td>0.92조(신한), OPM 26.5%</td><td>—</td><td>—</td></tr>
+    </tbody></table></div>
+  <p class="cap">생산능력: 데일리한국·데이터뉴스·에너지경제(SK엔무브 8.03만/7.08만, S-Oil 4.27만·4.47만, GS칼텍스 2.6만). 실적: iM 9/16, 유안타 9/15, 신한 9/16, 딜사이트 8/11.</p>
+
+  <div class="fig">
+    <p class="ft">윤활기유 가격과 마진 ($/bbl, 유안타 추정)</p>
+    <p class="fs">마진 = 윤활기유 − 0.5×B/C − 0.5×등유. 2022년(러-우) 가격 166·마진 59 → 2025년 120·44 → 3Q26E 285·169. 2027E 160·77.</p>
+    <div class="legend"><span><i style="background:var(--s1)"></i>윤활기유 가격</span><span><i style="background:var(--s2)"></i>윤활기유 마진</span></div>
+    <svg viewBox="0 0 640 250" role="img" aria-label="윤활기유 가격과 마진">
+      <line class="svg-grid" x1="60" y1="30" x2="620" y2="30"/><line class="svg-grid" x1="60" y1="90" x2="620" y2="90"/><line class="svg-grid" x1="60" y1="150" x2="620" y2="150"/><line class="svg-axis" x1="60" y1="210" x2="620" y2="210"/>
+      <text class="svg-text" x="52" y="34" text-anchor="end">300</text><text class="svg-text" x="52" y="94" text-anchor="end">200</text><text class="svg-text" x="52" y="154" text-anchor="end">100</text><text class="svg-text" x="52" y="214" text-anchor="end">0</text>
+      <rect x="70" y="138" width="40" height="72" rx="3" fill="var(--s1)"><title>2025 가격 120</title></rect><rect x="114" y="183.6" width="40" height="26.4" rx="3" fill="var(--s2)"><title>2025 마진 44</title></rect>
+      <rect x="182" y="137.4" width="40" height="72.6" rx="3" fill="var(--s1)"><title>1Q26 가격 121</title></rect><rect x="226" y="197.4" width="40" height="12.6" rx="3" fill="var(--s2)"><title>1Q26 마진 21</title></rect>
+      <rect x="294" y="79.8" width="40" height="130.2" rx="3" fill="var(--s1)"><title>2Q26 가격 217</title></rect><rect x="338" y="157.2" width="40" height="52.8" rx="3" fill="var(--s2)"><title>2Q26 마진 88</title></rect>
+      <rect x="406" y="39" width="40" height="171" rx="3" fill="var(--s1)"><title>3Q26E 가격 285</title></rect><rect x="450" y="108.6" width="40" height="101.4" rx="3" fill="var(--s2)"><title>3Q26E 마진 169</title></rect>
+      <rect x="518" y="64.8" width="40" height="145.2" rx="3" fill="var(--s1)"><title>4Q26E 가격 242</title></rect><rect x="562" y="129.6" width="40" height="80.4" rx="3" fill="var(--s2)"><title>4Q26E 마진 134</title></rect>
+      <text class="svg-lab" x="90" y="132" text-anchor="middle">120</text><text class="svg-lab" x="134" y="178" text-anchor="middle">44</text>
+      <text class="svg-lab" x="202" y="131" text-anchor="middle">121</text><text class="svg-lab" x="246" y="192" text-anchor="middle">21</text>
+      <text class="svg-lab" x="314" y="74" text-anchor="middle">217</text><text class="svg-lab" x="358" y="151" text-anchor="middle">88</text>
+      <text class="svg-lab" x="426" y="33" text-anchor="middle">285</text><text class="svg-lab" x="470" y="103" text-anchor="middle">169</text>
+      <text class="svg-lab" x="538" y="59" text-anchor="middle">242</text><text class="svg-lab" x="582" y="124" text-anchor="middle">134</text>
+      <text class="svg-text" x="112" y="232" text-anchor="middle">2025</text><text class="svg-text" x="224" y="232" text-anchor="middle">1Q26</text><text class="svg-text" x="336" y="232" text-anchor="middle">2Q26</text><text class="svg-text" x="448" y="232" text-anchor="middle">3Q26E</text><text class="svg-text" x="560" y="232" text-anchor="middle">4Q26E</text>
+    </svg>
+  </div>
+
+  <h3>왜 윤활기유가 이렇게 뛰었나</h3>
+  <ul class="tight">
+    <li><b>중동 Group III 공급의 이탈.</b> 카타르 Pearl GTL(Shell·QatarEnergy) Train 2가 이란의 직접 공격을 받아 <b>2027년 3월까지 재가동이 어렵다</b>(하나 9/21). 유안타는 이를 근거로 SK 윤활 EV/EBITDA를 11.5→12.5배로 상향했다. 중동 정유 가동차질로 Group II·III 기유 수출도 줄었다. 유럽·미국은 Group III를 중동·한국 수입에 의존해 왔다.</li>
+    <li><b>러시아 Group I 이탈.</b> 러시아 정유설비 타격과 수출 제한으로 유럽 Group I·II 공급이 줄어 대체 수요가 Group III로 넘어왔다.</li>
+    <li><b>정유사의 우선순위.</b> 정유사들이 잔사유를 윤활기유·디젤 쪽으로 돌리고(하나 9/14: 정유사들이 휘발유 블렌딩·PX 생산을 우선하며 BTX 타이트), 윤활기유는 재고가 얇은 시장이라 가격 탄력이 크다. KB: 3Q26 윤활기유 수출단가 급등, Group III &gt; Group II 스프레드 확대. 시사저널e: 윤활기유 가격 2.5배.</li>
+    <li><b>지속성.</b> S-Oil은 “우호적 업황이 최소 연말까지”(8/3), SK엔무브는 미국 정유사와 공급 확대(8/20). 유안타는 2027년 마진 77$/bbl(2025년 대비 +75%)을 가정해 정상화 후에도 높은 수준을 본다. 한국쉘석유(완제 윤활유 블렌딩)도 수혜(KB).</li>
+  </ul>
+  <div class="tbl"><table>
+    <thead><tr><th>API 그룹</th><th>정의</th><th>용도</th><th>한국 3사</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">Group I</td><td>용제정제, 황 &gt;0.03%, 점도지수 80~120</td><td>산업유·선박유·범용</td><td>S-Oil 일부, GS 일부</td></tr>
+      <tr><td class="hd">Group II</td><td>수첨정제, 황 &lt;0.03%, 포화분 &gt;90%, VI 80~120</td><td>승용·상용 엔진오일 범용</td><td>S-Oil, GS(II+), HD현대쉘</td></tr>
+      <tr><td class="hd">Group III</td><td>고심도 수첨분해·이성화, VI ≥120</td><td>저점도 고급 엔진오일(0W-20 등), 합성유 베이스</td><td><b>SK엔무브(주력) · S-Oil(주력) · GS(일부)</b></td></tr>
+      <tr><td class="hd">Group IV·V</td><td>PAO·에스테르 등 합성</td><td>특수 합성유</td><td>해당 없음</td></tr>
+    </tbody></table></div>
+</section>
+
+<section class="q" id="q5">
+  <div class="qn">Q5 · Supply disruption timeline</div>
+  <h2>글로벌 원유·제품 공급차질 타임라인 (2026.2 ~ 9): 전쟁·봉쇄·설비 타격·수출제한을 제품별로</h2>
+  <div class="answer">
+    <b>읽는 법</b> 유형은 <span class="tag pol">전쟁·봉쇄</span> <span class="tag pol">설비 타격</span> <span class="tag pol">수출제한·정책</span> <span class="tag pol">가격·시장</span>으로, 영향 제품은 <span class="tag crude">원유</span> <span class="tag diesel">경유·등유</span> <span class="tag gas">휘발유·납사</span> <span class="tag lng">LNG·가스</span> <span class="tag">항공유</span> <span class="tag">윤활기유</span> <span class="tag">석화</span>로 표시했다. 1차 충격(3~5월)은 원유·LNG, 2차 충격(7~9월)은 경유·정제설비, 9월은 다시 원유(동서송유관·홍해)로 무게가 옮겨갔다.
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>날짜</th><th>이벤트</th><th>유형</th><th>영향 제품</th><th>규모 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">02-28</td><td>미·이스라엘 이란 공습 개시(Epic Fury), 하메네이 사망. 이란 미사일 보복. 사우디 Ras Tanura 정유공장 1차 피격</td><td>전쟁</td><td><span class="tag crude">원유</span><span class="tag diesel">경유</span></td><td>Ras Tanura 55만b/d · Wikipedia</td></tr>
+      <tr><td class="hd">03-02</td><td>IRGC 호르무즈 봉쇄 공식 선언. 카타르에너지 LNG 불가항력 선언·액화 중단. Dubai 벤치마크가 Oman/Murban만 포함하도록 변경</td><td>봉쇄</td><td><span class="tag crude">원유</span><span class="tag lng">LNG</span></td><td>해협 통과 20mb/d, 글로벌 해상 원유의 25%, LNG 20% · 하나</td></tr>
+      <tr><td class="hd">03-02~04</td><td>Ras Tanura 2·3차 피격 → 가동중단(3/13 재가동)</td><td>설비</td><td><span class="tag diesel">경유</span><span class="tag gas">휘발유</span></td><td>사우디 최대 정유소 · Wikipedia</td></tr>
+      <tr><td class="hd">03-05</td><td>중국, 정제유 수출 신규계약 중단(항공유·홍콩·마카오 예외). 선박 P&amp;I 보험 철회, 보험료 4~6배</td><td>수출제한</td><td><span class="tag diesel">경유</span><span class="tag gas">휘발유</span><span class="tag">항공유</span></td><td>KB 표1 · Wikipedia</td></tr>
+      <tr><td class="hd">03-08</td><td>Brent 100$ 돌파(4년 만). 3월 고점 118~126$. 3월 평균 Dubai 117 vs WTI/Brent 89</td><td>가격</td><td><span class="tag crude">원유</span></td><td>KB</td></tr>
+      <tr><td class="hd">03-12</td><td>사우디, 동서송유관(700만b/d 명목)으로 얀부 우회 수출 시작. UAE 송유관 180만b/d, 트럭·철도 루트 가동</td><td>우회</td><td><span class="tag crude">원유</span><span class="tag">석화</span></td><td>실제 수송 400~500만b/d · KB·하나</td></tr>
+      <tr><td class="hd">03-13</td><td>한국 1차 석유 최고가격제(휘발유 1,724·경유 1,713원/L). 3월 나프타 수출 제한. 공공기관 차량 2부제(4월)</td><td>정책</td><td><span class="tag gas">휘발유·납사</span><span class="tag diesel">경유</span></td><td>머니투데이 · KB 표1</td></tr>
+      <tr><td class="hd">03-16</td><td>일본 비축유 8,000만bbl 방출. IEA 4억bbl 공동 방출 지시</td><td>정책</td><td><span class="tag crude">원유</span></td><td>Wikipedia</td></tr>
+      <tr><td class="hd">03-18</td><td>이란, 카타르 라스라판 LNG 단지 타격 → 카타르 LNG 용량 −17%, 복구 3~5년. 아시아 LNG 현물 +140%</td><td>설비</td><td><span class="tag lng">LNG</span><span class="tag diesel">경유(대체수요)</span></td><td>Wikipedia · 하나 9/7(장기계약 불가항력, 9~10월 인도 취소)</td></tr>
+      <tr><td class="hd">03-19</td><td>SAMREF(얀부, 사우디·엑슨 JV) 드론 낙하</td><td>설비</td><td><span class="tag diesel">경유</span></td><td>Wikipedia</td></tr>
+      <tr><td class="hd">03-24~27</td><td>필리핀 국가 에너지 비상사태·주4일제. 인도 경유·항공유 수출관세(₹21.5/29.5). 태국 수출제한. 유럽·동남아 재택·주4일제 확산</td><td>수출제한</td><td><span class="tag diesel">경유</span><span class="tag">항공유</span></td><td>KB 표1 · Wikipedia</td></tr>
+      <tr><td class="hd">04-01</td><td>러시아 휘발유 수출 금지</td><td>수출제한</td><td><span class="tag gas">휘발유</span></td><td>KB 그림 5</td></tr>
+      <tr><td class="hd">03~08월 누적</td><td>카타르 LNG 수출 카고 509개 → 18개(YoY −96%). 아시아향 3,600만t → 445만t(−88%), 유럽향 0. 한국의 카타르 LNG 비중 15.6% → 5.8%, 미국산 9.3% → 15.1%(1~8월), 7~8월 미국산 20% 이상</td><td>봉쇄</td><td><span class="tag lng">LNG</span></td><td>하나 9/21(Reuters·Kpler)</td></tr>
+      <tr><td class="hd">04-08 / 04-13</td><td>미·이란 임시 휴전 → 이슬라마바드 회담 결렬, 미 해군 이란 항구 봉쇄</td><td>전쟁</td><td><span class="tag crude">원유</span></td><td>Wikipedia</td></tr>
+      <tr><td class="hd">04-25 / 06-17</td><td>EU REPowerEU: 러시아 LNG 단기계약 수입 중단(4/25), 러시아 PNG 단기계약 금지(6/17). 장기계약 잔여분은 LNG 2027-01-01, PNG 2027-09-30부터 금지</td><td>수출제한(수입 금지)</td><td><span class="tag lng">LNG·가스</span></td><td>하나 In-depth 9/21</td></tr>
+      <tr><td class="hd">04-28 → 05-01</td><td>UAE, OPEC·OPEC+ 탈퇴 발표·발효(59년 만). 아시아향 수출 확대</td><td>OPEC</td><td><span class="tag crude">원유</span></td><td>CNBC·Enerdata · 하나(OSP 마이너스 배경)</td></tr>
+      <tr><td class="hd">05-04~06</td><td>미 해군 호위작전(Project Freedom) 개시·중단. 5월 OSP +19.5$ 사상 최고</td><td>전쟁·가격</td><td><span class="tag crude">원유</span></td><td>Wikipedia · Discovery Alert</td></tr>
+      <tr><td class="hd">06-16</td><td>모스크바 Kapotnya(MNPZ) 정유소 2차례 피격</td><td>설비</td><td><span class="tag gas">휘발유</span><span class="tag diesel">경유</span></td><td>KB 그림 5</td></tr>
+      <tr><td class="hd">06-17 → 06-19</td><td>트럼프·페제시키안 이슬라마바드 각서(60일 무관세 재개방) → 유가 급락(Brent 7/1 약 70$)·정제마진은 반등. 6/19 이란 재봉쇄</td><td>휴전·봉쇄</td><td><span class="tag crude">원유</span></td><td>KB 그림 3 · Wikipedia</td></tr>
+      <tr><td class="hd">06-28 / 07-06</td><td>슬라뱐스크·야로슬라블(Slavneft-YANOS, 30만b/d) 피격·재피격</td><td>설비</td><td><span class="tag diesel">경유</span></td><td>KB 그림 5</td></tr>
+      <tr><td class="hd">07-08</td><td>휴전 붕괴(이란, 상선 다수 공격). 미국 테헤란 공습(7/8~24). 러시아 비생산업체 경유 수출 전면 금지</td><td>전쟁·수출제한</td><td><span class="tag crude">원유</span><span class="tag diesel">경유</span></td><td>KB 표1·그림 5</td></tr>
+      <tr><td class="hd">07-25 / 07-30</td><td>IRGC 유조선 3척 공격. 러시아 휘발유 금지 2026년 말, 항공유 11월 말, 휘발유 2027년 1월 말까지 연장</td><td>수출제한</td><td><span class="tag gas">휘발유</span><span class="tag">항공유</span></td><td>KB 그림 5</td></tr>
+      <tr><td class="hd">07-27</td><td>후티, 사우디 Jazan 정유소(40만b/d) 공격 → 가동중단, 8/13 재공격, 재가동 불투명. 디젤 20만b/d 수출 상실</td><td>설비</td><td><span class="tag diesel">경유</span></td><td>하나 8/18</td></tr>
+      <tr><td class="hd">08-04 / 08-06</td><td>후티 소형선박 침몰. Bashneft-Novoil·Slavneft-Yanos 동시 피격, Orsk 12만b/d(복구 6개월)·오렌부르크 연료 배급제</td><td>설비</td><td><span class="tag diesel">경유</span><span class="tag gas">휘발유</span></td><td>KB · 하나 8/18</td></tr>
+      <tr><td class="hd">08-05</td><td>아람코 8월 OSP −1.5$(−11$, 2003년 이후 최대 인하, 2020년 6월 이후 첫 마이너스)</td><td>가격</td><td><span class="tag crude">원유</span></td><td>EnergyNow</td></tr>
+      <tr><td class="hd">08-13</td><td>MPC·VLO·PSX 역사적 신고가. 미국 정제 가동률 98%</td><td>시장</td><td><span class="tag diesel">경유</span><span class="tag gas">휘발유</span></td><td>하나 8/18</td></tr>
+      <tr><td class="hd">08-22</td><td>한국 9차 최고가격제(휘발유 1,784·경유 1,773원/L). 7~9차 동일 수준</td><td>정책</td><td><span class="tag gas">휘발유</span><span class="tag diesel">경유</span></td><td>머니투데이</td></tr>
+      <tr><td class="hd">08-29</td><td>미국, 베네수엘라 원유 650억bbl 25년 실질 지배권 확보(NABEP 35%·생산 20% 우선구매). 베네수엘라 OPEC 탈퇴 검토</td><td>OPEC</td><td><span class="tag crude">원유(초중질)</span></td><td>하나 8/31</td></tr>
+      <tr><td class="hd">08월</td><td>IEA: 걸프 생산 10mb/d 이상 셧인, 사우디 생산 5.97mb/d(목표 10.42), 걸프 수출 13mb/d(전쟁 전의 50%), 걸프 디젤 수출 39만b/d(전쟁 전의 25%), 글로벌 정제량 81.4mb/d(−4.2 YoY)</td><td>시장</td><td><span class="tag crude">원유</span><span class="tag diesel">경유</span></td><td>IEA OMR 9월</td></tr>
+      <tr><td class="hd">09-02 / 09-03</td><td>미국 디젤 크랙 장중 108$/bbl 사상 최고, 소매 5.8$/gal. 아람코 10월 OSP −2.0$ 동결(3개월 연속)</td><td>가격</td><td><span class="tag diesel">경유</span><span class="tag crude">원유</span></td><td>하나 9/7</td></tr>
+      <tr><td class="hd">09-07~08</td><td>후티, 사우디 남부 에너지 시설 대규모 공격. 홍해 일부 봉쇄</td><td>전쟁</td><td><span class="tag crude">원유</span></td><td>하나 9/14 · KB</td></tr>
+      <tr><td class="hd">09-10</td><td>후티, 모카항·두밥·페림섬 장악(바브엘만데브 사실상 통제). 이라크발 드론으로 <b>동서송유관 화재·가동중단</b>(펌프장 3곳 손상, 복구 3~8주, 재가동 초기 40~60%). 얀부 저장 3,500만bbl(5~7일분). 한국: 9/14 산업부 긴급점검 “7~8월 도입 전년 대비 100%+, 9~10월 90%+ 확보, 단기 영향 제한적”; S-Oil “얀부 출발 물량 정상 도입, 선적 취소 없음”(9/17). 상세는 Q3 팩트체크</td><td>봉쇄·설비</td><td><span class="tag crude">원유</span></td><td>400~500만b/d, 글로벌 4~5% · 하나·유진·KB·윤재성 TG</td></tr>
+      <tr><td class="hd">09-11~16</td><td>Dubai 123.7 → 128.0(9/16), 9/1 대비 +28$. Oman 선물 132$(Brent +24$). 정제마진 주간 26.4(−7.2). 러시아 원유 수출 5mb/d(상반기 −70만), ESPO 프리미엄 20$ 초과, 호르무즈 원유 통과 4mb/d</td><td>가격</td><td><span class="tag crude">원유</span></td><td>삼성 TG · KB · 유진 · 윤재성 TG</td></tr>
+      <tr><td class="hd">09-12</td><td>QatarEnergy, Cheniere·Venture Global·Woodside와 미국 LNG 200~300만t 다년 구매 협의(2031년까지 거론) — 장기공급 의무 이행용. 이탈리아 Edison향 불가항력 11월 초까지 연장, 9~11월 카고 5개 추가 취소. NFE 증설(3,200만t) 최소 1년 지연</td><td>설비·계약</td><td><span class="tag lng">LNG</span></td><td>하나 9/21(Reuters)</td></tr>
+      <tr><td class="hd">09-13</td><td>미국 디젤 소매 6.2$/gal 사상 최고. 미국 SPR 1982년 이후 최저(1.72억bbl 인출 계획). 트럼프, 우크라이나에 러시아 정유설비 공격 중단 요구</td><td>가격·정책</td><td><span class="tag diesel">경유</span><span class="tag crude">원유</span></td><td>윤재성 TG · Wikipedia</td></tr>
+      <tr><td class="hd">09-14~15</td><td>VLCC 걸프→중국 103.5만$/일(사상 첫 100만 돌파), 오만→중국 64.4만$/일. 사우디 유럽향 카고 취소(Orlen 사우디 비중 40%). ULSD 5.262$/gal 사상 최고</td><td>물류</td><td><span class="tag crude">원유</span><span class="tag diesel">경유</span></td><td>윤재성 TG · 미래에셋 TG</td></tr>
+      <tr><td class="hd">09-16</td><td>아람코, 오만만 STS로 아시아 정유사에 현물 2,000만bbl 판매(9~10월 인도). 동서송유관 부분 재가동 전망. 미국 원유·정제유 수출금지론 부상(중간선거). 중국 8월 정제처리량 +11.2% MoM, 정제유 수출 재제한 검토</td><td>정책·시장</td><td><span class="tag crude">원유</span><span class="tag diesel">경유</span></td><td>윤재성 TG · 미래에셋 TG · KB</td></tr>
+      <tr><td class="hd">09-15</td><td>파나마 운하 일일 통항 32척으로 감축(가뭄·엘니뇨, 2027년 초 27척 가능). 미국→아시아 LNG는 희망봉 우회(34일 vs 운하 20일). SK가스, 9/1 VLGC 통항 슬롯 경매에 530만$ 지불(전쟁 전 중간가 5.5만$)</td><td>물류</td><td><span class="tag lng">LNG</span><span class="tag">LPG</span></td><td>하나 In-depth 9/21(ACP)</td></tr>
+      <tr><td class="hd">09-17~19</td><td>야로슬라블 재피격. 아시아 정유사 가동률 인하 검토(중국 국영 디젤 재고 15개월 최저). <b>미 하원 Burchett, 2027년 1월까지 경유 수출 한시 금지 법안 발의(9/17)</b>. 9/18 아람코, 동서송유관 중단으로 유럽 정유사 2곳 이상에 다음 달 원유 공급 없음 통보. 한국 10차 최고가격제 동결(9/19~, 4주). 골드만: 정유사 디젤 전환으로 휘발유 타이트</td><td>설비·정책</td><td><span class="tag diesel">경유</span><span class="tag gas">휘발유</span><span class="tag crude">원유</span></td><td>미래에셋 TG · 윤재성 TG · 하나 9/21 · 머니투데이</td></tr>
+      <tr><td class="hd">예정</td><td>9/30 러시아 디젤 수출금지 만료 → 연말 연장 전망(IEA). 10월 중 동서송유관 부분 재가동. 12월 초 최고가격제 손실보전 첫 정산(예비비 4.2조). 러시아 정제설비 2027년에도 정상화 어려움(IEA)</td><td>전망</td><td><span class="tag diesel">경유</span><span class="tag crude">원유</span></td><td>하나 9/14 · 머니투데이 9/16</td></tr>
+    </tbody></table></div>
+
+  <h3>제품별로 본 “막힌 곳”</h3>
+  <div class="grid2">
+    <div class="card"><h4><span class="tag crude">원유</span> 호르무즈 → 얀부 → 오만 STS</h4><p>걸프 생산 10mb/d+ 셧인(IEA). 호르무즈 통과는 전쟁 전의 절반 회복 후 9월 다시 4mb/d로. 동서송유관 중단으로 얀부 선적 100만b/d 이하(유진). 사우디 8월 선적 3.5mb/d(13년래 최저). 대체: 미국 수출 12.9mb/d, 캐나다 TMX 89만b/d, 베네수엘라, 가이아나.</p></div>
+    <div class="card"><h4><span class="tag diesel">경유·등유</span> 가장 심한 부족</h4><p>호르무즈 경유 디젤 90만b/d(글로벌 교역 10%) 차질 + 러시아 수출금지(평시 100만b/d 수출국이 수입국으로) + Jazan 20만b/d. 걸프+러시아 디젤 수출 2월 대비 −1.6mb/d. 미국 중간유분 재고 44년래 최저, 유럽 디젤 수입 1월 197만 → 7월 156만b/d.</p></div>
+    <div class="card"><h4><span class="tag gas">휘발유·납사</span> 상대적으로 덜 타이트</h4><p>휘발유 마진은 과거 평균의 2.1배(디젤 4.3배). 러시아 휘발유 금지(2027.1까지). 정유사가 디젤 수율을 높이며 휘발유 공급이 줄어 골드만은 2027년 중반 유럽 휘발유 상승에 베팅. 납사는 −20$ 역마진(스팟 기준 착시, KB).</p></div>
+    <div class="card"><h4><span class="tag lng">LNG·가스</span> 카타르의 이탈, 겨울 리스크</h4><p>중동 LNG의 88%가 호르무즈 안쪽(카타르 7,700만t = 글로벌 18%). 라스라판 Train 4·6 파손 1,280만t(−17%, 복구 3~5년), NFE 증설 1년+ 지연 → IEA 2026~30 누적 공급손실 140bcm(신규 공급의 15%). 3~8월 카타르 수출 카고 −96%. JKM 11월물 28$/mmbtu(유가 환산 160$/bbl), TTF 83유로/MWh. EU 저장률 65~69%(GIE 집계 이후 최저), 독일 56%. 가스 부족은 난방·발전용 디젤 수요로 전이. 하방 리스크는 슈퍼 엘니뇨(2022~23년 따뜻한 겨울 전례).</p></div>
+    <div class="card"><h4><span class="tag">항공유</span> 러시아 금지 · 항공사 위기</h4><p>북미 항공유 +95%. 러시아 항공유 수출 11월 말까지 금지. American Airlines 4Q 연료비 +10억$, United 12월 감편. 한국 정유사 미국 서부·러시아향 항공유 수출.</p></div>
+    <div class="card"><h4><span class="tag">윤활기유</span> · <span class="tag">석화</span> 중동 설비 파손</h4><p>카타르 Pearl GTL Group III, 중동 석화 2~3%(유안타). 한국 Group III 수출 단가 급등. 석화는 나프타 급등이 제품가를 앞서 3~5월 반짝 흑자 후 6~9월 재고조정(KB).</p></div>
+  </div>
+</section>
+
+<section class="q" id="q6">
+  <div class="qn">Q6 · Purity &amp; valuation</div>
+  <h2>S-Oil은 가장 순수한 정유주가 맞고, SK이노베이션은 “정유·윤활만 보면 저평가, 연결로 보면 할인이 구조적”</h2>
+  <div class="answer">
+    <b>한 줄 답</b> S-Oil 2026F 영업이익의 68%가 정유, 32%가 윤활이고 화학은 0이다. 배터리·발전·지주 희석이 없어 정제마진·OSP·윤활 시황이 주가에 그대로 전달된다. SKI는 PBR 0.88배(9/18)·2026F PER 5.9~10배로 절대 수준은 싸지만, <b>SK온 지원 이력·SKIET 합병 희석(2.6%)·RCPS 상환·무배당·순차입금 20조</b>가 할인의 이유다. 정유·윤활 사업만 떼어 보면 저평가, 연결 실체로 보면 “할인이 정당한 저평가”다. 리레이팅은 이벤트(도시가스 매각·배당 재개·SK온 ESS 전환)로만 온다.
+  </div>
+
+  <h3>S-Oil: 순수성의 근거</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>구분 (신한 2026F)</th><th class="num">매출</th><th class="num">비중</th><th class="num">영업이익</th><th class="num">비중</th><th class="num">OPM</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">정유</td><td class="num">34.4조</td><td class="num">79%</td><td class="num">3.57조</td><td class="num">68%</td><td class="num">10.4%</td><td>3Q26F 1.12조(OPM 12.3%). 2027F 2.82조</td></tr>
+      <tr><td class="hd">윤활</td><td class="num">4.9조</td><td class="num">11%</td><td class="num">1.67조</td><td class="num">32%</td><td class="num">34.2%</td><td>3Q26F 0.57조(38.3%). 2027F 0.92조</td></tr>
+      <tr><td class="hd">화학</td><td class="num">4.3조</td><td class="num">10%</td><td class="num">−0.01조</td><td class="num">0%</td><td class="num">−0.2%</td><td>샤힌 가동 시 2027F 매출 7.2조·OP 0.05조</td></tr>
+      <tr><td class="hd">합계</td><td class="num">43.6조</td><td class="num"></td><td class="num">5.23조</td><td class="num"></td><td class="num">12.0%</td><td>순이익 3.78조, ROE 36.4%, EPS 32,222원</td></tr>
+    </tbody></table></div>
+  <ul class="tight">
+    <li><b>지배구조.</b> 아람코(AOC) 63.4%, 국민연금 10.0%, 유동비율 36.6%, 외국인 79.3%(아람코 포함). 아람코가 원유 공급자이자 대주주라 OSP·물량 가시성이 높고, PE 5.5조 사빅 공급계약처럼 판로도 그룹 안에 있다.</li>
+    <li><b>재무·환원.</b> 순차입금 6.06조(2025) → 5.15조(2026F) → 2.35조(2027F) → 순현금(2028F). CapEx 2.1조(2026) → 0.5조(2027). DPS 6,800원(2026F, 수익률 4.6%) → 9,000원(2027F, 6.1%). 배당성향 가이드라인 20% 이상, 8월 중간배당 800원(2년 만).</li>
+    <li><b>가격.</b> 149,500원(9/18), 시총 17.4조. 2026F PBR 1.47배(BPS 101,875), 12MF PBR 약 1.3배(BPS 114,938), PER 4.6배, EV/EBITDA 3.7배. 52주 고점 대비 −10~15%(신한 165,900 · Yahoo 177,100).</li>
+  </ul>
+
+  <h3>PBR을 어떻게 정당화하나: ROE가 답이다</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>지속가능 ROE 가정</th><th class="num">이론 PBR (r 10%, g 3%)</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">12%</td><td class="num">1.3배</td><td>현재 주가가 암묵적으로 가정하는 수준. 2026년을 일회성 횡재로 보는 시장 가격</td></tr>
+      <tr><td class="hd">15%</td><td class="num">1.7배</td><td>과거 업사이클 평균 PBR(신한). 2027F ROE 25.6%·2028F 19.8%를 절반만 믿어도 도달</td></tr>
+      <tr><td class="hd">17~18%</td><td class="num">2.0~2.1배</td><td>Bull 케이스. 신한 목표 PBR 1.9배(업사이클 평균 +10%)와 유사. 윤활 정상화 후에도 정유 마진 15$대 유지 + 배당성향 40% 필요</td></tr>
+      <tr><td class="hd">20%+</td><td class="num">2.4배+</td><td>2010~11년(3.6배)·2015~16년(2.4배)은 “아시아 수요 성장 + 증설 부재”라는 성장 스토리가 있었던 시기. 지금은 2028년 증설이 보이므로 여기까지는 어렵다</td></tr>
+    </tbody></table></div>
+  <p class="cap">PBR = (ROE − g) / (r − g)의 단순 고든 모형. 자기자본비용 10%, 영구성장률 3% 가정. 신한: 12MF BPS 114,938원 × 1.9배 = 220,000원. 하나: 목표 220,000원(8/4). Yahoo P/B 1.73배는 2Q26 장부가 기준.</p>
+  <p>요컨대 <b>Base 1.5배는 “2027년 이익이 2026년의 70%로 줄어도 ROE 25%”라는 신한 숫자를 시장이 반만 믿는 가격</b>이고, Bull 2.0배는 정제 CAPA 부족이 2028년까지 간다는 것(Q1)과 배당성향 상향이 확인될 때 열린다. 리레이팅의 트리거는 (1) 12월 손실보전 정산으로 내수 리스크 해소, (2) 4Q OSP 투입 원가 효과가 실적으로 확인, (3) 샤힌 상업가동과 CapEx 종료 후 배당 상향 공시다.</p>
+
+  <h3>SK이노베이션: 어디가 싸고, 왜 싼가</h3>
+  <div class="grid2">
+    <div class="card"><h4>싸다는 근거</h4><p>136,600원(9/18), 시총 23.0조. PBR 0.88배(MRQ), 2026F PBR 0.8~0.98배·PER 5.9~10.2배·EV/EBITDA 3.1~5.0배(iM·메리츠·유안타). 2026F 영업이익 컨센서스 8.8~9.0조, 메리츠 7.97조, 유안타 10.06조, iM 10.4조, <b>하나 11.88조(9/21, 사상 최대·E&amp;S 2.0조·윤활 3.15조 반영)</b>. 3Q26F 하나 3.09조(컨센 1.88조 대비 +65%). 상반기 영업이익 5.65조로 4사 중 최대. 정유·윤활만 2026F OP 6.6~8.9조. 하나 기준 2026~27년 ROE 20%, PBR 0.88배, PER 4.8배, DPS 2,000 → 4,000(2027F) → 6,000원(2028F).</p><p>유안타 SOTP: 사업가치 53.3조 + 투자자산 3.8조 − 순차입금 23.2조 − 탄소부채 0.65조 = 33.9조 → 20만원. 사업가치는 “평균 EBITDA × 배율”이라 이미 피크를 배제한 보수적 수치다.</p></div>
+    <div class="card"><h4>할인의 이유</h4><p>① SK온: 2026F OP −964억(유안타)~+112억(iM). 캐파 192→135GW 다운사이징, RCPS 3.8조 상환. ② SKIET 흡수합병(8월 발표): 발행주식 2.6% 희석, 자금 2,000~3,000억 소요. iM: “반복적 적자 자회사 지원은 중장기 멀티플 할인 요인”. ③ 도시가스(SK시티가스) KKR 매각으로 RCPS 3.2조 현물상환 → EBITDA −3,000억. ④ 2027년 울산 NCC 66만t 박스업(장부 1조). ⑤ 배당: 메리츠 0원, iM·유안타 2,000원(수익률 1.4~1.8%). ⑥ 순차입금 20~24조, 이자비용 연 1.4~1.5조. ⑦ 비지배지분 12.5~17조가 순이익을 희석.</p></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>SKI 2026F</th><th class="num">메리츠 9/15</th><th class="num">iM 9/16</th><th class="num">유안타 9/15</th><th class="num">하나 9/21</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">영업이익</td><td class="num">7.97조</td><td class="num">10.44조</td><td class="num">10.06조</td><td class="num">11.88조</td><td>컨센서스 8.8~9.0조. 하나: 석유 5.77조·윤활 3.15조·E&amp;S 2.03조·화학 0.01조·배터리 −0.09조·소재 −0.28조</td></tr>
+      <tr><td class="hd">지배순이익</td><td class="num">2.39조</td><td class="num">4.18조</td><td class="num">3.60조</td><td class="num">4.91조</td><td>영업외 −1.9~−4.6조(이자·기타·일회성)</td></tr>
+      <tr><td class="hd">BPS</td><td class="num">147,318</td><td class="num">166,782</td><td class="num">168,203</td><td class="num">158,477</td><td>SKIET 합병 후 발행주식 173.5백만주 기준(유안타)</td></tr>
+      <tr><td class="hd">PBR / PER</td><td class="num">0.98 / 10.2</td><td class="num">0.9 / 5.9</td><td class="num">0.8 / 6.4</td><td class="num">0.88 / 4.8</td><td>목표주가 180,000 / 190,000 / 200,000 / 200,000</td></tr>
+      <tr><td class="hd">순차입금</td><td class="num">—</td><td class="num">순부채비율 38.9%</td><td class="num">20.5조</td><td class="num">25.0조 (순부채비율 61%)</td><td>2024년 29~31조 → 2027E 18.6~18.7조. 2026~27 잉여현금 6.5조(유안타)·14조(하나)</td></tr>
+      <tr><td class="hd">2027F 영업이익</td><td class="num">3.62조</td><td class="num">4.55조</td><td class="num">5.11조</td><td class="num">8.62조</td><td>2026 대비 −27~−55%. 이익 절벽 인식이 PER 확장을 막음. 하나만 E&amp;S·윤활 지속을 반영</td></tr>
+      <tr><td class="hd">DPS</td><td class="num">0</td><td class="num">2,000</td><td class="num">2,000</td><td class="num">2,000 → 4,000(2027F)</td><td>무배당 리스크 vs 재개 기대</td></tr>
+    </tbody></table></div>
+
+  <h3>LNG: 시장이 아직 값을 덜 매긴 세 번째 엔진 (하나 9/21 인뎁스)</h3>
+  <div class="grid2">
+    <div class="card"><h4>호르무즈를 거치지 않는 LNG 밸류체인</h4><p>SK E&amp;S는 국내 최대 LNG 생산-트레이딩-발전 수직계열 업체다. ① 미국 Freeport LNG 액화 톨링 220만t/년(2020~2040), 미국 Woodford 셰일가스전 49.9%(2014), 호주 Barossa-Caldita 가스전 37.5%(2021, Darwin LNG 350만t 중 130만t 20년 도입, 3Q26 첫 초경질유 도입). ② 싱가포르 트레이딩 법인 PRISM(100%)이 Freeport·Tangguh·Petronas·Shell 물량과 자체 LNG선 4척으로 한·중·유럽향 카고를 최적화(2024년 530만t). ③ 보령·광양 터미널 → 광양·파주·여주 4GW 발전 + 하남·위례 1GW 열병합.</p></div>
+    <div class="card"><h4>숫자</h4><p>미국 LNG 원가 약 6.5$/mmbtu(HH 2.9 + 액화) vs 아시아·유럽 LNG 25~28$(JKM 11월물 28$ = 유가 환산 160$/bbl). 바로사 Cash Cost 2$/mmbtu(Santos). 연료비 단가 180원/kWh까지 SMP 상승 가능(1,350원·Brent 100·JKM 25 가정) → 직도입 발전사는 급전 우선순위·마진 극대화. 하나: E&amp;S 3Q26F OP 0.81조(QoQ +663%), 2026F 2.03조(2022년 1.7조 상회), 2027F 1.69조. 카타르 LNG 카고 −96%, 한국 카타르 비중 15.6% → 5.8%, 미국산 7~8월 20% 이상.</p><p><b>리스크:</b> SMP 상한제·민간 LNG 재고 확충 명령 등 규제 현실화, 슈퍼 엘니뇨 따뜻한 겨울, 파나마 운하 정상화. 그리고 이 옵션은 2027년에도 유효하지만(E&amp;S 1.69조), 정유·윤활 정상화와 함께 축소된다.</p></div>
+  </div>
+  <p><b>판정.</b> 정유·윤활 사업의 이익 대비로는 명백히 싸다(정유·윤활 OP 6.6~8.9조에 시총 23조). 여기에 E&amp;S 2.0조(하나)가 “호르무즈를 거치지 않는 LNG”라는 S-Oil·GS에는 없는 옵션으로 얹힌다. 그러나 SKI를 사는 것은 SK온과 그룹 자본배분을 함께 사는 것이고, 2026년 8월의 SKIET 합병이 그 리스크를 다시 확인시켰다. 따라서 “저평가”보다는 <b>“할인이 정당한 저평가”</b>가 정확하고, 할인 축소는 (1) 4Q 도시가스 매각 완료·RCPS 해소, (2) SK온 ESS 수주(네오볼타 9GWh, 약 1.5조)로 가동률 반등, (3) 순차입금 6조 축소 확인, (4) 배당 재개라는 이벤트에 달려 있다. 유안타 PBR 밴드 기준 정유 초강세 + 재무 완화 = 1.2배(2026년 9월 0.91배)가 상단이다.</p>
+</section>
+
+<section class="q" id="q7">
+  <div class="qn">Q7 · Scorecard</div>
+  <h2>3사 매력도: 정제 레버리지는 SKI, 원가·윤활·환원은 S-Oil, 이익 대비 가격은 GS</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 지금(9월 2차 충격) 국면에서는 조달이 다변화된 <b>SKI·GS가 단기 상대 우위</b>, 4분기(OSP 투입·윤활 성수기·손실보전 정산)로 갈수록 <b>S-Oil의 반전</b>이 가시화된다. 밸류는 GS(PER 4.6배, 시총 대비 반기이익 29%) &gt; SKI(PBR 0.88) &gt; S-Oil(PBR 1.5) 순으로 싸지만, GS는 GS칼텍스 이익의 50%만 잡히고 발전·석화·건설이 희석한다. 바벨(S-Oil 순수성·배당 + SKI 레버리지·저PBR)이 합리적이며, GS는 지주 할인 축소 이벤트가 없는 한 “싸지만 느린” 선택지다.
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>S-Oil</th><th>SK이노베이션</th><th>GS (GS칼텍스 50% 귀속)</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">주가 · 시총 (9/18)</td><td>149,500원 · 17.4조</td><td>136,600원 · 23.0조</td><td>113,900원 · 10.7조 (94.7백만주)</td></tr>
+      <tr><td class="hd">정제능력 · 시총 1조당</td><td>66.9만 b/d · 3.8만</td><td>121.5만 b/d · 5.3만</td><td>귀속 40만 b/d · 3.7만</td></tr>
+      <tr><td class="hd">고도화율</td><td>39%</td><td>25% (SK에너지)</td><td>34%</td></tr>
+      <tr><td class="hd">1H26 정유사업 OP (fnnews)</td><td>1.57조</td><td>2.94조</td><td>GS칼텍스 3.73조 → 귀속 1.86조</td></tr>
+      <tr><td class="hd">1H26 윤활 OP</td><td>0.64조</td><td>0.88조</td><td>GS칼텍스 0.43조 → 귀속 0.22조</td></tr>
+      <tr><td class="hd">2026F 영업이익 (연결)</td><td>5.23조 (신한)</td><td>8.0~10.4조 (컨센 8.8조)</td><td>GS 연결 1H 2.98조(2Q 1.72조). GS칼텍스 DB증권 6.6조</td></tr>
+      <tr><td class="hd">시총 대비 반기이익 (KB 그림9)</td><td>14%</td><td>24%</td><td>29% (HD현대 41%)</td></tr>
+      <tr><td class="hd">윤활 CAPA · 2026F 윤활 OP</td><td>4.5만 b/d · 1.67조 (시총 9.6%)</td><td>8.0만 b/d · 2.2~2.3조 (시총 10%)</td><td>2.6만 b/d · 귀속 0.6~0.7조 (시총 6~7%, 추정)</td></tr>
+      <tr><td class="hd">재고자산(2025말) · 10$/bbl 민감도</td><td>4.16조 (약 3천만bbl) · ±4천억 (추정)</td><td>9.56조 (약 6.5천만bbl) · ±9천억. 2026 재고효과 +1.16조(유안타)</td><td>GS칼텍스 약 4~5조(추정) · 귀속 ±2~2.5천억</td></tr>
+      <tr><td class="hd">원유 조달 · 홍해 리스크</td><td>사우디 90%+ · 얀부 경유분 시차·운임 노출(물량 취소 없음), OSP 수혜 최대</td><td>다변화 최대(미국·호주·중동) · 리스크 최소</td><td>미국·베네수엘라 확대, 프리미엄 구매 · 리스크 낮음</td></tr>
+      <tr><td class="hd">수출 · 내수 비중</td><td>54 / 46</td><td>51 / 49 (내수 1위)</td><td>71 / 29</td></tr>
+      <tr><td class="hd">최고가격제 노출 · 12월 보전 수혜</td><td>중 · 중</td><td>최대 · 최대</td><td>낮음 · 낮음 (귀속 50%)</td></tr>
+      <tr><td class="hd">밸류에이션 (2026F)</td><td>PBR 1.5 · PER 4.6 · EV/EBITDA 3.7 · 배당 4.6%</td><td>PBR 0.8~1.0 · PER 5.9~10 · EV/EBITDA 3.1~5.0 · 배당 0~1.8%</td><td>PER 4.6(TTM)·5.7(fwd) · 배당 2.6%(3,000원) · 지주할인 40% 적용 관행</td></tr>
+      <tr><td class="hd">재무</td><td>순차입금 5.2조 → 2028F 순현금. 부채비율 158%</td><td>순차입금 20.5조, 부채비율 154~198%</td><td>GS칼텍스 MFC 투자 종료로 현금 축적. GS EPS 2Q 영업적자 73억</td></tr>
+      <tr><td class="hd">자회사·기타 변수</td><td>샤힌(4Q 시운전·2027초 가동, CapEx 종료) · 아람코 PE 5.5조 계약</td><td>SK온(ESS 전환·RCPS 3.8조) · E&amp;S(SMP↑ 2026F 0.9조) · SKIET 합병(2.6% 희석) · 도시가스 매각 · NCC 박스업</td><td>GS에너지(E&amp;P 유가 수혜) · GS EPS(SMP↓ 적자) · GS리테일 · GS건설 · GS글로벌 · AIDC 신사업</td></tr>
+      <tr><td class="hd">3Q26 방향</td><td>반전: 신한 1.69조(정유 1.12·윤활 0.57). 재고 소폭 +, OSP 투입 시작</td><td>iM 2.90조 · 유안타 2.44조 · 하나 3.09조(컨센 1.71~1.88조 대비 +43~65%). 하나: 윤활 1.24조·E&amp;S 0.81조 사상 최대</td><td>회사: “재고효과 소멸·유가 변동성” 보수적 가이던스</td></tr>
+      <tr><td class="hd">LNG·발전 옵션 (호르무즈 무관 조달)</td><td>온산공장 산업용 LNG 직도입만. 발전 사업 없음</td><td>SK E&amp;S: Freeport 220만t·바로사 130만t·PRISM 트레이딩 530만t·발전 5GW. 2026F OP 2.0조(하나)</td><td>GS에너지 보령 LNG터미널·직도입, GS EPS 당진#4·GS파워(2Q SMP↓로 부진, 하반기 SMP↑ 수혜). GS칼텍스 여수 산업용 직도입</td></tr>
+      <tr><td class="hd">주주환원</td><td>배당성향 20%+ 가이던스, 중간배당 재개, 2027F DPS 9,000</td><td>배터리 CapEx 1.3조(−63%)로 축소, 부채 상환 우선</td><td>DPS 3,000원 유지, 신사업 투자 병행</td></tr>
+    </tbody></table></div>
+  <p class="cap">출처: 신한 9/16, iM 9/16, 유안타 9/15, 메리츠 9/15, KB 9/17, 파이낸셜뉴스 9/7, 시사저널e 9/1, StockAnalysis·Yahoo 9/18, 한국신용평가(고도화율). “추정”은 본 노트의 계산.</p>
+
+  <h3>LNG 업황과 3사 포지셔닝: 카타르가 빠진 시장에서 누가 무엇을 갖고 있나</h3>
+  <div class="answer">
+    <b>한 줄 답</b> LNG는 2026년 겨울 “원유보다 더 부족한” 에너지다. 카타르(글로벌 LNG의 18%)가 3~8월 수출 카고를 96% 잃었고, 라스라판 17%는 3~5년, 증설(NFE)은 1년 이상 늦어져 2030년까지 누적 공급손실 140bcm(신규 공급의 15%)이다. 아시아·유럽은 미국산 LNG(HH 2.9$ → 아시아 도착 9~10$)를 두고 경쟁 중이고 JKM·TTF는 28$/mmbtu다. 이 구조에서 <b>SK이노베이션(E&amp;S)은 가스전-액화-트레이딩-발전을 다 가진 유일한 정유사</b>이고, GS는 터미널·발전으로 부분 수혜, S-Oil은 수혜가 없다(연료비는 오히려 비용). 정유 마진이 두바이 급등에 눌릴 때 LNG가 반대로 벌어주는 “헷지” 구조가 SKI의 상대 매력이다(메리츠의 “에너지 인플레이션 헷징” 논리와 같다).
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>LNG 업황 지표 (하나 9/21)</th><th class="num">수치</th><th>의미</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">카타르 수출 카고 (3~8월)</td><td class="num">509 → 18개 (−96%)</td><td>아시아향 3,600만t → 445만t(−88%), 유럽향 0. 호르무즈 안쪽 중동 LNG 88%가 갇힘</td></tr>
+      <tr><td class="hd">라스라판 파손 · 증설 지연</td><td class="num">−1,280만t (17%), NFE +1년</td><td>복구 3~5년. 당초 7,700만 → 1억4,200만t(+85%) 확장 계획 차질. IEA 2026~30 누적 손실 140bcm</td></tr>
+      <tr><td class="hd">가격</td><td class="num">JKM 28$ · TTF 28$ · HH 2.9$</td><td>JKM은 유가 환산 160$/bbl(유가 대비 +50%). 미국산 직도입 11.4$(≈66$/bbl). 스프레드 = 트레이딩 차익의 원천</td></tr>
+      <tr><td class="hd">한국 수입 구성 (1~8월 2,932만t)</td><td class="num">호주 28.3 · 말레이 17.0 · 미국 15.1%</td><td>카타르 15.6% → 5.8%, 미국 9.3% → 15.1%(7~8월 20% 이상). 가스공사 장기계약 카타르 610만t 공백을 현물로 대체 → 평균요금제 원가 상승</td></tr>
+      <tr><td class="hd">직도입 구조 (2025)</td><td class="num">전체 4,672만t 중 직도입 26.6%</td><td>직도입 1,244만t = 발전용 59% + 산업용 41%. 발전용 직도입의 86%가 민간발전. 직도입 발전사는 평균요금제 대비 원가 우위 → 급전 순위 상승</td></tr>
+      <tr><td class="hd">SMP</td><td class="num">180원/kWh까지 상승 가능</td><td>환율 1,350·Brent 100·JKM 25 가정 시 가스공사 연료비 단가. 직도입 발전사 마진 극대화 국면</td></tr>
+      <tr><td class="hd">유럽 재고 · 겨울 리스크</td><td class="num">EU 65~69%, 독일 56%</td><td>GIE 집계 이후 최저. 하방 리스크: 슈퍼 엘니뇨(따뜻한 겨울, 2022~23년 전례), 파나마 운하 정상화, 국내 규제(SMP 상한제·재고 확충 명령)</td></tr>
+    </tbody></table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>LNG 수혜 구조</th><th>S-Oil</th><th>SK이노베이션 (SK E&amp;S)</th><th>GS (GS에너지·GS EPS·GS파워)</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">업스트림 (가스전)</td><td>없음</td><td>미국 Woodford 셰일 49.9%(2014), 호주 Barossa-Caldita 37.5%(2021). 원가가 JKM을 따르지 않는 저원가 가스(바로사 Cash Cost 2$/mmbtu)</td><td>없음 (GS에너지는 원유 E&amp;P 지분)</td></tr>
+      <tr><td class="hd">액화 · 조달</td><td>없음</td><td>Freeport LNG 톨링 220만t/년(2020~2040), Darwin LNG 130만t/년 20년. 미국산 원가 약 6.5$/mmbtu → 아시아 25~28$ 시장에 배치. 호르무즈 무관</td><td>포트폴리오 업체 장기계약 도입(벤치마크 유가·HH 혼합). 자체 액화 없음</td></tr>
+      <tr><td class="hd">트레이딩 · 터미널</td><td>없음</td><td>PRISM(싱가포르, 100%): 2024년 530만t 처리, 자체 LNG선 4척, 한·중·유럽향 카고 최적화. 보령(GS에너지와 JV)·광양 터미널</td><td>보령 LNG터미널(SK E&amp;S JV) 지분으로 직도입·보세 트레이딩 가능. 규모는 SK 대비 작음</td></tr>
+      <tr><td class="hd">발전 (SMP 수혜)</td><td>없음</td><td>광양·파주·여주 LNG 복합 4GW + 하남·위례 열병합 1GW. 직도입 원가로 급전 우선 → 가동률·마진 동반 상승</td><td>GS EPS 당진 복합(#4 직도입), GS파워 안양 열병합. 2Q26 GS EPS 영업적자 73억(SMP·가동률 하락) → 하반기 SMP↑로 반전 기대</td></tr>
+      <tr><td class="hd">산업용 직도입 (원가)</td><td>온산공장 산업용 직도입 (연료·수소 원료). LNG 강세 = 비용</td><td>SK에너지 울산·SK인천 산업용 직도입 → 정유 연료비 방어</td><td>GS칼텍스 여수 산업용 직도입 → 연료비 방어</td></tr>
+      <tr><td class="hd">2026F 이익 기여</td><td>0 (간접: 가스 부족 → 디젤 수요 → 정유 마진)</td><td>E&amp;S OP 2.03조(하나, 3Q26F 0.81조 QoQ +663%) · 0.9~0.95조(iM·유안타). 전사 OP의 9~17%, 시총의 4~9%</td><td>GS EPS·GS파워·GS에너지 LNG 합산 수백억~1,000억대(추정). GS 연결 OP의 2~3%, 시총의 1% 안팎</td></tr>
+      <tr><td class="hd">헷지 성격</td><td>없음. 두바이 급등 = 순수 마진 압박</td><td>두바이·호르무즈 프리미엄이 정유를 누를 때 LNG·SMP가 반대로 벌어줌 → 이익의 변동성 완화</td><td>부분적. 발전 비중 작고 SMP 하락기(2Q)에 손실</td></tr>
+      <tr><td class="hd">리스크</td><td>—</td><td>SMP 상한제·민간 LNG 재고 확충 명령(하나), 도시가스(SK시티가스) KKR 매각으로 EBITDA −3,000억, 따뜻한 겨울(엘니뇨)</td><td>SMP 규제, 2Q 같은 가동률 부진</td></tr>
+    </tbody></table></div>
+  <p class="cap">SK E&amp;S 구조·수치: 하나 In-depth 9/21(회사 자료). 직도입 사업자 현황: 한국가스공사(하나 도표77). GS 이익 기여는 본 노트 추정(GS EPS 2Q 실적·GS 연결 공시 기준). S-Oil은 하나 도표77의 산업용 직도입자로만 등재.</p>
+  <p><b>SKI의 상대 매력을 한 문장으로 쓰면</b>, “정유·윤활이 S-Oil과 같은 방향으로 벌고, LNG가 S-Oil이 못 버는 방향으로 더 번다”이다. 하나가 9/21 인뎁스에서 2026F 영업이익을 8.45조 → 11.88조로 41% 올린 근거의 절반이 E&amp;S(0.7 → 2.0조)와 윤활(3.15조)이고, 3Q26F 3.09조는 컨센서스보다 65% 높다. 반면 시장은 E&amp;S를 2022년(1.7조) 수준의 일회성으로 보고 PBR 0.88배에 두고 있다. 겨울 LNG 부족이 현실화되면 E&amp;S 실적이 3Q·4Q에 연속 확인되므로, <b>10~11월은 SKI의 “세 번째 엔진”이 숫자로 검증되는 구간</b>이다. 다만 도시가스 매각(EBITDA −3,000억)과 규제 확산(SMP 상한제)이 그 옵션의 상단을 자른다는 점, 그리고 S-Oil에는 이 엔진이 없는 대신 LNG 부족이 디젤 크랙을 밀어올리는 간접 수혜가 있다는 점을 함께 봐야 한다.</p>
+
+  <h3>스코어카드 (5점 만점)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>축</th><th>S-Oil</th><th>SK이노베이션</th><th>GS</th><th>판단 근거</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">정제마진 레버리지 (시총당 CAPA)</td><td class="stars">★★★☆☆</td><td class="stars">★★★★★</td><td class="stars">★★★★☆</td><td>SKI 5.3만b/d/조 &gt; S-Oil 3.8 ≈ GS 3.7. 다만 SKI는 고도화율 25%로 단위 마진은 낮음</td></tr>
+      <tr><td class="hd">원가 (OSP) 수혜</td><td class="stars">★★★★★</td><td class="stars">★★★☆☆</td><td class="stars">★★☆☆☆</td><td>사우디 비중 90% vs 약 15%. GS는 미국산 프리미엄 구매</td></tr>
+      <tr><td class="hd">조달 안정성 (홍해·호르무즈)</td><td class="stars">★★☆☆☆</td><td class="stars">★★★★☆</td><td class="stars">★★★★☆</td><td>S-Oil은 얀부 경유분의 시차·운임 노출(선적 취소는 없음, 소하르 STS·비축유 스왑 대안). SK·GS는 물리적 노출 미미, 원가 노출만(Q3 팩트체크)</td></tr>
+      <tr><td class="hd">윤활기유 (시총 대비)</td><td class="stars">★★★★☆</td><td class="stars">★★★★☆</td><td class="stars">★★☆☆☆</td><td>S-Oil 9.6% ≈ SKI 10% &gt; GS 6~7%</td></tr>
+      <tr><td class="hd">재고평가 레버리지</td><td class="stars">★★★☆☆</td><td class="stars">★★★★☆</td><td class="stars">★★★☆☆</td><td>SKI 재고 9.6조로 최대. 유가 하락 시 역방향 손실도 최대</td></tr>
+      <tr><td class="hd">밸류에이션 여력</td><td class="stars">★★★☆☆</td><td class="stars">★★★★☆</td><td class="stars">★★★★☆</td><td>PBR 1.5 vs 0.88 vs (PER 4.6·지주할인)</td></tr>
+      <tr><td class="hd">주주환원·재무</td><td class="stars">★★★★☆</td><td class="stars">★★☆☆☆</td><td class="stars">★★★☆☆</td><td>배당수익률 4.6% vs 1.4~1.8% vs 2.6%. SKI는 부채 상환 우선</td></tr>
+      <tr><td class="hd">순수성 (팩터 설명력)</td><td class="stars">★★★★★</td><td class="stars">★★☆☆☆</td><td class="stars">★★☆☆☆</td><td>S-Oil은 정유·윤활 100%. SKI는 배터리·E&amp;S, GS는 지주·리테일·건설</td></tr>
+      <tr><td class="hd">내수 가격통제 노출 (낮을수록 ★)</td><td class="stars">★★★☆☆</td><td class="stars">★★☆☆☆</td><td class="stars">★★★★☆</td><td>내수 46% / 49% / 29%. 단, 12월 보전 정산의 수혜는 반대 순서</td></tr>
+      <tr><td class="hd">LNG·발전 옵션 (카타르 이탈 수혜)</td><td class="stars">★☆☆☆☆</td><td class="stars">★★★★★</td><td class="stars">★★★☆☆</td><td>SKI E&amp;S 2026F 2.0조(시총의 9%). GS는 GS에너지·GS EPS로 부분 수혜. S-Oil 해당 없음</td></tr>
+    </tbody></table></div>
+  <div class="good"><b>정리.</b> ① 9~10월(두바이 급등·홍해 리스크·정제마진 착시 하락)에는 SKI·GS가 덜 흔들린다. ② 11~12월(OSP −2$ 투입, 디젤 성수기, 윤활 3Q 피크 실적, 손실보전 정산)에는 S-Oil의 이익 반전과 배당 가시성이 부각된다. ③ 겨울 LNG 부족(카타르 카고 −96%, JKM 28$)은 SKI E&amp;S에만 열린 세 번째 엔진이라, 하나가 9/21 Top Pick 순서를 SKI → S-Oil로 바꾼 이유다. ④ GS는 KB 기준 시총 대비 반기이익 29%로 가장 싸지만, 지주 구조상 GS칼텍스 호황이 주가에 50%×(1−할인 40%)만 전달된다. 재평가 촉매는 GS칼텍스 배당 상향 또는 지주 할인 축소 정책이다.</div>
+</section>
+
+<section class="q" id="q8">
+  <div class="qn">Q8 · US refiners vs Korea</div>
+  <h2>미국 정유사와의 공통점·차이: 같은 크랙을 먹지만, 원료 벤치마크·가격통제·지배구조·수급이 밸류 격차를 만든다</h2>
+  <div class="answer">
+    <b>한 줄 답</b> MPC·VLO·PSX는 YTD +75~157%, 8월부터 연일 신고가, PBR 2.4~3.9배다. S-Oil·SKI는 2020년 저점 대비 +204%/+139%로 올랐지만 9월 고점 대비 10~15% 조정, PBR 1.4/0.8배다. 공통점은 “러시아·중동 설비 이탈로 인한 제품 부족”이고, 차이는 <b>① 원료가 WTI(호르무즈 무관)냐 Dubai(호르무즈 프리미엄 내장)냐, ② 내수 가격통제 유무, ③ 자사주 매입 10~20% vs 배당 2~5%, ④ 순수 정유 vs 배터리·지주 희석, ⑤ S&amp;P500 모멘텀 vs KOSPI 반도체 편중</b>이다. 9월 2차 충격이 “두바이 급등형”이라 격차가 더 벌어졌다.
+  </div>
+
+  <h3>공통점: 같은 파도를 탄다</h3>
+  <ul class="tight">
+    <li><b>글로벌 제품 부족과 재고 최저.</b> 미국 중간유분 재고 1982년 이후 최저(8월), 8월 말 재고는 1951년 이후 최저, 유럽 디젤 재고 4년래 최저, OECD 상업재고 2014년 이후 최저. 미국 디젤 크랙 100$/bbl 초과(2022년 최고치 상회), 아시아 디젤 크랙 50~65$.</li>
+    <li><b>대체 불가능한 설비 이탈.</b> 러시아 2.8~4.6mb/d + 중동 2.8~3.3mb/d + 아시아 가동률 조정 = 약 9~10mb/d. PSX CEO(8월): “2022년보다 정상화가 훨씬 오래 걸릴 것”. 업계는 “2026년 너머까지” 지속을 예상(OilPrice 8월).</li>
+    <li><b>고도화 설비와 중질유 스프레드.</b> 양국 모두 잔사유를 디젤·윤활로 전환하는 고도화 설비 비중이 높아, 중질유(캐나다 WCS·베네수엘라 Merey·Arab Heavy) 할인이 커질수록 마진이 벌어진다.</li>
+    <li><b>수출 여력.</b> 미국·한국은 정제유 수출을 제한하지 않은 사실상 유이한 대형 수출국(KB). 미국 정제유 수출 160만b/d 초과(9/16), 한국 3Q 수출 +29%.</li>
+    <li><b>2027년 이익 절벽 인식.</b> MPC 2027 EPS 33.95(2026 53.08, −36%), VLO 31.21(43.83, −29%). S-Oil 2027F OP −27%, SKI −50~55%. 양쪽 다 “피크 멀티플” 논쟁이 있다(24/7 Wall St 9/17: fwd P/E 13~14배가 value trap일 수 있다).</li>
+  </ul>
+
+  <h3>차이점: 왜 미국은 신고가이고 한국은 아닌가</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>축</th><th>미국 독립 정유사 (MPC·VLO·PSX)</th><th>한국 정유사 (S-Oil·SKI·GS)</th><th>2026년 9월의 결과</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">① 원료 벤치마크</td><td>WTI·ASCI·캐나다 WCS·베네수엘라 Merey. 호르무즈와 무관한 내륙·파이프라인 원유. 미국이 원유 수출을 금지하면 WTI가 급락해 원료가 더 싸짐(KB: 미국 가스시장과 같은 구조)</td><td>Dubai/Oman 연동 + OSP. 3/2부터 벤치마크에 Oman/Murban만 남아 “인도 가능 프리미엄”을 원가에 안음. 여기에 VLCC 운임 15~20$/bbl, 보험료</td><td>9/14 주: Dubai +21% vs WTI +9%. 한국 스팟 정제마진 33.6 → 26.4$ 급락, 미국은 Brent 연동 제품가 − WTI 연동 원가로 마진 확대. Oman−Brent +24$(9/16)</td></tr>
+      <tr><td class="hd">② 내수 가격통제</td><td>없음. 휘발유 5~6$/gal, 디젤 6.2$/gal 시장가 그대로 전가</td><td>석유 최고가격제 10차(휘발유 1,784·경유 1,773원/L). 내수 비중 SK 49%·S-Oil 46%. 손실보전 집행 0원(9/17), 첫 정산 12월. 횡재세 법안(초과이익 법인세 +20%) 발의</td><td>한국 정유사 실적의 내수 부분은 “정부 정산 채권”으로 바뀌어 불확실성 할인</td></tr>
+      <tr><td class="hd">③ 주주환원</td><td>2Q 3사 환원 63억$(VLO 26억, MPC 28억 + 잔여 자사주 61억$). 3Q~2027년 말 시총의 약 20% 매입 전망. 이익 → 주당가치 직결</td><td>S-Oil 배당성향 20%+ (2026F DPS 6,800, 수익률 4.6%), SKI 0~2,000원, GS 3,000원. 자사주 매입 없음</td><td>미국은 EPS 성장에 주식수 감소가 더해져 멀티플 유지; 한국은 이익이 부채 상환·CapEx·자회사로 흐름</td></tr>
+      <tr><td class="hd">④ 사업 순수성·지배구조</td><td>정유 + 미드스트림(MPLX)·화학(CPChem). 배터리·발전 없음. 분산 소유, 행동주의 노출</td><td>SKI: SK온 지원·SKIET 합병·RCPS. GS: 지주 할인 40%, 리테일·건설. S-Oil: 아람코 63.4%로 유동주식 36.6%</td><td>S-Oil이 유일한 순수주지만 유통물량이 작고, 나머지는 컨글로머릿 할인</td></tr>
+      <tr><td class="hd">⑤ 구조적 희소성 스토리</td><td>미국 정제능력 축소(LyondellBasell Houston 26.4만, PSX LA 13.9만, Valero Benicia 17만 등 2025~26 −57만b/d) + 가동률 98% → “증설 불가·폐쇄만 있는 산업”</td><td>아시아는 2027~28년 중국 Yulong·Huajin·Gulei, 인도 증설 +2mb/d대 → 사이클 종료 시계가 보임</td><td>미국은 “희소성 프리미엄”, 한국은 “횡재 할인”</td></tr>
+      <tr><td class="hd">⑥ 시장 수급</td><td>S&amp;P500 에너지 모멘텀, 6주 연속 상승(9월 Benzinga), 패시브·퀀트 자금. 애널리스트 목표가(MPC 370·VLO 355)를 주가가 이미 상회</td><td>KOSPI 6,684(9/14) 반도체 주도. 정유는 지수 비중 미미, 외국인 SKI 15.8%. 하나 Long-Only 비중 9/14 주 정유 50%→20%로 축소·현금 50%</td><td>모멘텀 자금은 미국으로, 한국은 국내 기관의 비중 조절 대상</td></tr>
+      <tr><td class="hd">⑦ 환율·금리</td><td>달러 이익, 달러 배당</td><td>달러 마진을 원화로 환산. 원화 강세 시 이익 축소(하나). 9월 Fed 인상은 양쪽 공통</td><td>—</td></tr>
+      <tr><td class="hd">⑧ 이익의 지속성 인식</td><td>fwd P/E 13~14배(2027 기준). 시장은 2027년에도 EPS 31~34$로 2019년의 3~4배를 인정</td><td>2026F PER 4.6배(S-Oil)·6배(SKI). 2027F PER 5.3·8~15배. 시장은 2027년 이익을 반만 인정</td><td>PBR: MPC 3.9·VLO 3.1·PSX 2.4 vs S-Oil 1.4·SKI 0.8</td></tr>
+    </tbody></table></div>
+
+  <div class="note"><b>9/17~18의 새 변수.</b> 미 하원(Burchett, 공화)이 2027년 1월까지 경유 수출을 한시 금지하는 법안을 발의했고, 아람코는 동서송유관 중단으로 유럽 정유사 2곳 이상에 다음 달 원유 공급이 없다고 통보했다(하나 9/21). 미국 수출 금지가 현실화되면 미국 내 디젤은 과잉으로 돌아서 <b>미국 정유사 마진은 오히려 눌리고</b>, 미국 밖 디젤 크랙은 더 벌어져 <b>한국 정유사의 “마지막 수출자” 프리미엄이 커진다</b>. KB는 미국 원유 수출 금지 시 WTI 급락(미국 정유사 원가 하락)까지 함께 봤다. 즉 정책 리스크는 양방향이고, 한국에는 제품 수출 금지가 호재·원유 수출 금지가 악재다.</div>
+
+  <div class="fig">
+    <p class="ft">2026F PBR 비교: 미국 독립 정유사 vs 아시아 정유사 (배)</p>
+    <p class="fs">하나증권 Weekly 8/31·9/7·9/14 도표(Bloomberg). 2020년 코로나 저점 대비 주가 상승률: MPC +2,044% · VLO +951% · PSX +453% · ENEOS +300% · HPCL +259% · Reliance +230% · Thai Oil +208% · Idemitsu +205% · S-Oil +204% · PTTGC +164% · PetroChina +161% · BPCL +140% · SKI +139%</p>
+    <div class="legend"><span><i style="background:var(--s4)"></i>미국</span><span><i style="background:var(--s1)"></i>한국</span><span><i style="background:var(--s3)"></i>기타 아시아</span></div>
+    <svg viewBox="0 0 680 400" role="img" aria-label="2026F PBR 비교">
+      <line class="svg-grid" x1="270" y1="12" x2="270" y2="384"/><line class="svg-grid" x1="380" y1="12" x2="380" y2="384"/><line class="svg-grid" x1="490" y1="12" x2="490" y2="384"/><line class="svg-grid" x1="600" y1="12" x2="600" y2="384"/><line class="svg-axis" x1="160" y1="12" x2="160" y2="384"/>
+      <text class="svg-text" x="270" y="396" text-anchor="middle">1.0x</text><text class="svg-text" x="380" y="396" text-anchor="middle">2.0x</text><text class="svg-text" x="490" y="396" text-anchor="middle">3.0x</text><text class="svg-text" x="600" y="396" text-anchor="middle">4.0x</text>
+      <text class="svg-lab" x="150" y="33" text-anchor="end">Marathon Petroleum</text><rect x="160" y="20" width="429" height="18" rx="3" fill="var(--s4)"><title>MPC 3.9x</title></rect><text class="svg-lab" x="595" y="33">3.9</text>
+      <text class="svg-lab" x="150" y="61" text-anchor="end">Valero Energy</text><rect x="160" y="48" width="341" height="18" rx="3" fill="var(--s4)"><title>VLO 3.1x</title></rect><text class="svg-lab" x="507" y="61">3.1</text>
+      <text class="svg-lab" x="150" y="89" text-anchor="end">Phillips 66</text><rect x="160" y="76" width="264" height="18" rx="3" fill="var(--s4)"><title>PSX 2.4x</title></rect><text class="svg-lab" x="430" y="89">2.4</text>
+      <text class="svg-lab" x="150" y="117" text-anchor="end">Reliance Industries</text><rect x="160" y="104" width="198" height="18" rx="3" fill="var(--s3)"><title>Reliance 1.8x</title></rect><text class="svg-lab" x="364" y="117">1.8</text>
+      <text class="svg-lab" x="150" y="145" text-anchor="end">S-Oil</text><rect x="160" y="132" width="154" height="18" rx="3" fill="var(--s1)"><title>S-Oil 1.4x</title></rect><text class="svg-lab" x="320" y="145">1.4</text>
+      <text class="svg-lab" x="150" y="173" text-anchor="end">BPCL</text><rect x="160" y="160" width="143" height="18" rx="3" fill="var(--s3)"><title>BPCL 1.3x</title></rect><text class="svg-lab" x="309" y="173">1.3</text>
+      <text class="svg-lab" x="150" y="201" text-anchor="end">HPCL</text><rect x="160" y="188" width="143" height="18" rx="3" fill="var(--s3)"><title>HPCL 1.3x</title></rect><text class="svg-lab" x="309" y="201">1.3</text>
+      <text class="svg-lab" x="150" y="229" text-anchor="end">PetroChina</text><rect x="160" y="216" width="132" height="18" rx="3" fill="var(--s3)"><title>PetroChina 1.2x</title></rect><text class="svg-lab" x="298" y="229">1.2</text>
+      <text class="svg-lab" x="150" y="257" text-anchor="end">ENEOS</text><rect x="160" y="244" width="110" height="18" rx="3" fill="var(--s3)"><title>ENEOS 1.0x</title></rect><text class="svg-lab" x="276" y="257">1.0</text>
+      <text class="svg-lab" x="150" y="285" text-anchor="end">Idemitsu Kosan</text><rect x="160" y="272" width="99" height="18" rx="3" fill="var(--s3)"><title>Idemitsu 0.9x</title></rect><text class="svg-lab" x="265" y="285">0.9</text>
+      <text class="svg-lab" x="150" y="313" text-anchor="end">SK이노베이션</text><rect x="160" y="300" width="88" height="18" rx="3" fill="var(--s1)"><title>SKI 0.8x</title></rect><text class="svg-lab" x="254" y="313">0.8</text>
+      <text class="svg-lab" x="150" y="341" text-anchor="end">Thai Oil</text><rect x="160" y="328" width="77" height="18" rx="3" fill="var(--s3)"><title>Thai Oil 0.7x</title></rect><text class="svg-lab" x="243" y="341">0.7</text>
+      <text class="svg-lab" x="150" y="369" text-anchor="end">PTT Global Chemical</text><rect x="160" y="356" width="66" height="18" rx="3" fill="var(--s3)"><title>PTTGC 0.6x</title></rect><text class="svg-lab" x="232" y="369">0.6</text>
+    </svg>
+  </div>
+
+  <h3>미국 3사 스냅숏 (9/17)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>회사</th><th class="num">주가 ($)</th><th class="num">YTD</th><th class="num">fwd P/E</th><th class="num">2026E EPS</th><th class="num">2027E EPS</th><th class="num">목표가</th><th>환원 · 특징</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">Marathon Petroleum</td><td class="num">413</td><td class="num up">+157%</td><td class="num">13x</td><td class="num">53.08 (종전 29.78)</td><td class="num">33.95</td><td class="num">370</td><td>2Q 환원 28억$ + 잔여 승인 61억$. MPLX 미드스트림. 미국 최대 정제능력(약 3.0mb/d)</td></tr>
+      <tr><td class="hd">Valero Energy</td><td class="num">405</td><td class="num up">+152%</td><td class="num">14x</td><td class="num">43.83 (종전 29.33)</td><td class="num">31.21</td><td class="num">355</td><td>2Q 환원 26억$. 걸프코스트 수출 강점, 재생디젤. Benicia 폐쇄(4월)</td></tr>
+      <tr><td class="hd">Phillips 66</td><td class="num">273</td><td class="num up">+75%</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>미드스트림·CPChem 화학 비중. LA 정유소 폐쇄(4Q25), Rodeo 바이오 전환. CEO: “2022년보다 정상화 오래 걸릴 것”</td></tr>
+    </tbody></table></div>
+  <p class="cap">24/7 Wall St 9/17, OilPrice 8월, Benzinga 9월, 하나 8/18. 2Q 3사 합산 환원 63억$(2년래 최대). 애널리스트 컨센서스는 Hold가 다수이며 주가가 목표가를 상회 — “역사적으로 이런 랠리는 곧 끝났다”(CNBC 8/17)는 경고도 있다.</p>
+
+  <h3>격차의 근본: 업황 차이인가, 수급 차이인가</h3>
+  <div class="grid2">
+    <div class="card"><h4>업황 차이 (약 60%)</h4><p>같은 디젤 부족을 먹지만 원료가 다르다. 미국 정유사의 마진은 “Brent 연동 제품 − WTI 연동 원가”라 Dubai−Brent, Brent−WTI 스프레드가 벌어질수록 커진다. 한국은 “제품 − Dubai(프리미엄) − 운임 + OSP”라 9월처럼 두바이가 앞서 오르면 스팟 마진이 착시 하락한다(KB는 선물+OSP 기준 마진은 여전히 역대 업사이클 상단이라고 반박). 여기에 내수 가격통제와 정산 지연이 실적의 30~50%를 “채권”으로 바꿔놓았다.</p></div>
+    <div class="card"><h4>수급·구조 차이 (약 40%)</h4><p>미국은 자사주 매입 20%가 EPS를 밀어올리고 S&amp;P500 모멘텀이 따라붙는다. 한국은 배당 2~5%, 컨글로머릿 할인, 반도체 편중 지수에서 비중 조절 대상이다. S-Oil은 유동주식 36.6%로 대형 자금이 들어오기 어렵고, SKI는 8월 합병 이벤트로 신뢰를 잃었다. 하나는 “OSP 하향 안정화로 원가 우위가 확인되고, 이익 레벨업과 주주환원이 확인되면 아시아 업체의 할인은 축소”될 것이라 본다.</p></div>
+  </div>
+  <p><b>리레이팅 조건 체크리스트.</b> (1) Dubai−Brent 스프레드 정상화(홍해·동서송유관 복구) → 한국 스팟 마진 회복, (2) 12월 손실보전 정산 집행과 횡재세 법안의 향방, (3) OSP −2$ 투입분이 4Q 실적에서 확인, (4) S-Oil 배당성향 30%+·SKI 배당 재개·GS 지주할인 축소, (5) 러시아 디젤 수출금지 연말 연장 확정. 이 중 (1)·(2)가 미국과의 격차를 만든 “업황”이고, (4)가 “수급”이다. 둘 다 4분기에 답이 나온다.</p>
+</section>
+
+<section class="q" id="q9">
+  <div class="qn">Q9 · Domestic price cap</div>
+  <h2>내수 최고가격제: 실적의 30~50%를 “정부 채권”으로 바꾼 제도, 12월 정산이 4분기 최대 변수</h2>
+  <div class="answer">
+    <b>한 줄 답</b> 3/13부터 10차례(현재 10차, 9/19~10/16) 시행된 석유 최고가격제는 정유사 공급가 상한을 정하고 손실을 사후 정산한다. 업계 추산 누적 손실 5조(6/18), 정부 예비비 4.2조, 보전 기준은 “원가+적정마진”(MOPS 기준이 아님), <b>집행액은 9/17 현재 0원</b>이고 첫 정산(3/13~6/30분)은 12월 초다. 영향은 세 층이다. ① 내수 비중이 큰 SK(49%)·S-Oil(46%)의 분기 실적이 눌리고, ② 정산 시 4분기에 회사당 수천억~1조의 일회성 이익이 생기며, ③ MOPS 대비 기회손실과 횡재세 법안은 영구 손실 위험으로 남는다. 두바이가 120$대에 머무는 한 11차 연장이 유력하고, 7월 이후분 정산은 2027년으로 넘어간다.
+  </div>
+
+  <h3>제도의 구조와 경과</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>차수 · 기간</th><th class="num">휘발유 (원/L)</th><th class="num">경유</th><th class="num">등유</th><th>당시 Dubai</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">1차 · 3/13~3/26</td><td class="num">1,724</td><td class="num">1,713</td><td class="num">1,320</td><td>3월 평균 117$</td><td>호르무즈 봉쇄 직후. 나프타 수출 제한 병행</td></tr>
+      <tr><td class="hd">2~6차 · 3/27~6/26</td><td class="num">1,934</td><td class="num">1,923</td><td class="num">1,530</td><td>90~120$</td><td>상한을 210원 인상. 업계 손실 주당 5,000억 추산(5월)</td></tr>
+      <tr><td class="hd">7~9차 · 6/27~9/18</td><td class="num">1,784</td><td class="num">1,773</td><td class="num">1,380</td><td>70~100$ → 9월 124$</td><td>6/17 재개방 합의로 상한 150원 인하. 9월 두바이 급등으로 역마진 재확대</td></tr>
+      <tr><td class="hd">10차 · 9/19~10/16</td><td class="num">1,784</td><td class="num">1,773</td><td class="num">1,380</td><td>124$ (9/17)</td><td>3연속 동결. 정산은 아직 0원</td></tr>
+    </tbody></table></div>
+  <ul class="tight">
+    <li><b>보전 기준.</b> 6/18 정부가 “원가+적정마진”으로 확정. 업계는 싱가포르 국제가(MOPS)와 상한의 차액을 요구했으나, 실제 투입원가에 일정 마진만 인정. 그래서 <b>업계 추산 5조 &gt; 정부 예비비 4.2조 &gt; 실제 정산액(3~4조 미만 전망)</b>의 순서가 된다(연합 6/18).</li>
+    <li><b>절차.</b> 6월 말 손실자료 제출 → 회계법인 검증 → 최고액 정산위원회 심의 → 12월 초 정산. 판관비 포함 여부 등 쟁점 100개, 3개 제품 원가 분리, 내수·수출 구분, 회사별 회계 차이가 지연 사유(머니투데이 9/16). 예비비는 연내 집행이 의무라 12월 정산은 유력하다.</li>
+    <li><b>7월 이후분.</b> 정산 대상은 3/13~6/30. 7~12월 손실은 별도 재원(2027년 예산)이 필요해 시차와 규모 불확실성이 크다.</li>
+    <li><b>횡재세.</b> 3/11 민주당 장철민 의원 등 11인이 정유사 초과이익에 법인세 20%를 추가 부과하는 법인세법 개정안 발의. 산업부 장관은 “논의에 적극 참여”(3/9). 최고가격제와 병행되면 이중 부담이라는 업계 반발(이데일리).</li>
+    <li><b>판매망.</b> 8월 정유사-주유소 계약 기준 명시(정유사 제품 60% 이상 구매 시 나머지 40% 타사 조달 허용). 브랜드 락인이 약해져 내수 마진 구조는 장기적으로 더 얇아진다.</li>
+    <li><b>규제 확산 리스크.</b> 하나(9/21)는 SMP 상한제, 민간 LNG 재고 확충 명령 등이 현실화되면 민간 발전(SK E&amp;S·GS EPS)의 수익성도 둔화될 수 있다고 본다. 최고가격제가 “정유 → 전력·가스”로 번지는 시나리오는 SKI의 E&amp;S 옵션을 깎는다.</li>
+  </ul>
+
+  <h3>손실의 크기: 리터당 갭 × 내수 물량</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>가정: 시장가 − 상한 (원/L)</th><th class="num">업계 월 손실 (MOPS 기준)</th><th class="num">SK에너지 (28%)</th><th class="num">S-Oil (24%)</th><th class="num">HD현대 (23%)</th><th class="num">GS칼텍스 (23%) → GS 귀속 50%</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">300</td><td class="num">1.0조</td><td class="num">2,800억</td><td class="num">2,400억</td><td class="num">2,300억</td><td class="num">2,300억 → 1,150억</td></tr>
+      <tr><td class="hd">500 (3~6월 업계 추산 수준)</td><td class="num">1.7조</td><td class="num">4,700억</td><td class="num">4,000억</td><td class="num">3,800억</td><td class="num">3,800억 → 1,900억</td></tr>
+      <tr><td class="hd">800 (9월 두바이 124$ · 경유 190$ 국면, 추정)</td><td class="num">2.7조</td><td class="num">7,500억</td><td class="num">6,400억</td><td class="num">6,100억</td><td class="num">6,100억 → 3,050억</td></tr>
+    </tbody></table></div>
+  <p class="cap">계산: 국내 휘발유·경유·등유 소비 약 70만b/d(2024년 휘발유 약 8,800만·경유 약 1.6억·등유 약 1,300만bbl, 석유공사 통계 기준 근사) ≈ 1.1억L/일 × 갭 × 30일. 내수 점유율은 2022년 1~3Q 석유공사 집계(SK 28.4·S-Oil 23.6·HD현대 23.1·GS 22.7)를 사용. 업계가 밝힌 “주당 5,000억”(5월)은 갭 약 640원/L에 해당. 경유 갭 추정: 싱가포르 경유 190$/bbl ≈ 1,670원/L 제품가 + 세금·마진 후 시장가 약 2,300~2,400원 vs 상한 1,773원.</p>
+
+  <h3>주가에 어떻게 작용하나</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>층위</th><th>메커니즘</th><th>시점</th><th>S-Oil</th><th>SK이노베이션</th><th>GS</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">① 분기 실적 압박</td><td>내수 판매분은 상한가로 인식, 보전은 미확정이라 수익 미인식. S-Oil 정유 OP 1Q 1.04조 → 2Q 0.53조(마진은 8.3 → 25.2$로 올랐는데 이익은 반토막)가 그 흔적. 회사 관계자: “내수 물량 우선 확보로 수출 운용도 제약”</td><td>진행 중 (3Q·4Q)</td><td>내수 46%. 중간 노출</td><td>내수 49%, 국내 1위. 최대 노출</td><td>GS칼텍스 내수 29%. 최소 노출</td></tr>
+      <tr><td class="hd">② 정산 일회성 이익</td><td>12월 초 3/13~6/30분 정산. 정산액 시나리오 3.0 / 3.5 / 4.2조를 내수 점유율로 배분</td><td>4Q26 (연내)</td><td>0.7 / 0.8 / 1.0조 → 2026F OP의 14~19%</td><td>0.85 / 1.0 / 1.2조 → 2026F OP의 10~12%</td><td>0.7 / 0.8 / 1.0조 × 50% → GS 연결 OP(1H 2.98조)의 12~17%</td></tr>
+      <tr><td class="hd">③ 영구 손실 리스크</td><td>MOPS 대비 기회손실(업계 5조)과 정산액(3~4조 미만)의 차이는 회수 불가. 횡재세(초과이익 법인세 +20%) 입법 시 2026년 이익에 소급 적용 여부가 관건. 7월 이후분은 2027년 예산</td><td>2027년</td><td>순수 정유주라 횡재세 민감도 최대</td><td>연결 이익 다각화로 상대적으로 희석</td><td>지주 단계 희석</td></tr>
+      <tr><td class="hd">④ 수요·물량 효과</td><td>상한제로 국내 수요 파괴가 없어 내수 물량은 유지 → 수출 가능 물량은 줄지만 정산이 되면 볼륨 손실은 없음. 문제는 정산 시차(운전자본 부담)</td><td>상시</td><td>—</td><td>내수 1위라 운전자본 부담 최대(순차입금 20조)</td><td>—</td></tr>
+      <tr><td class="hd">⑤ 밸류에이션</td><td>미국 정유사에는 없는 제도. 한국 정유사 이익의 30~50%가 “정부 정산 채권”이라는 점이 PBR 할인의 한 축(Q8). 정산 집행이 확인되면 할인 축소</td><td>12월 이후</td><td>리레이팅 촉매</td><td>리레이팅 촉매</td><td>중립</td></tr>
+    </tbody></table></div>
+  <p class="cap">정산 배분은 내수 점유율 비례 가정(실제는 회사별 원가·판관비 인정 범위에 따라 달라짐). 2026F OP: S-Oil 5.23조(신한), SKI 8.8~10.4조.</p>
+
+  <h3>시나리오: 두바이 수준별 최고가격제의 향방</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>시나리오</th><th>Dubai</th><th>제도</th><th>정유사 실적 영향</th><th>주가 함의</th></tr></thead>
+    <tbody>
+      <tr><td class="hd">A · 홍해 리스크 지속</td><td>110~130$</td><td>11차 이상 연장, 상한 동결 또는 소폭 인상. 경유 갭 600~800원/L</td><td>내수 역마진 월 2~2.7조(업계 기준). 3Q·4Q 정유 OP가 수출 크랙 대비 눌림. 12월 정산은 3/13~6/30분만</td><td>S-Oil·SKI 실적 “질” 할인 지속. GS 상대 우위. 정산 뉴스가 단기 촉매</td></tr>
+      <tr><td class="hd">B · 부분 정상화</td><td>90~110$</td><td>상한 인하 또는 갭 축소. 연말 종료 논의</td><td>역마진 축소, 정산 집행으로 4Q 일회성 +. 2027년 7월 이후분 정산 협상</td><td>내수 리스크 해소 → PBR 할인 축소. S-Oil 리레이팅 트리거</td></tr>
+      <tr><td class="hd">C · 완전 재개방</td><td>70~90$</td><td>제도 종료. 횡재세 논의는 오히려 가속(2026년 이익 확정 후)</td><td>내수 정상 마진 회복. 재고평가 손실 1분기. 횡재세 입법 시 2026년 이익의 일부 환수</td><td>제도 종료는 호재, 횡재세는 악재. 순수 정유주(S-Oil)가 양쪽 모두에 가장 민감</td></tr>
+    </tbody></table></div>
+  <p>결론적으로 최고가격제는 <b>“이익을 없애는 제도”가 아니라 “이익의 시점과 확실성을 바꾸는 제도”</b>다. 다만 보전 기준이 MOPS가 아닌 원가+적정마진이라 수출 크랙 대비 기회손실의 일부는 영구히 사라지고, 그 크기는 두바이가 높을수록 커진다. 투자 관점에서는 (1) 12월 정산 규모와 회사별 배분, (2) 11차 연장 여부와 상한 조정, (3) 횡재세 법안의 상임위 진행이 4분기 체크포인트이며, 내수 비중이 낮은 GS가 제도 리스크에서 가장 자유롭고, 내수 1위 SKI가 정산의 최대 수혜자다.</p>
+</section>
+
+<section class="q" id="fact">
+  <div class="qn">Fact check</div>
+  <h2>팩트체크: 핵심 수치의 출처 등급과 불일치</h2>
+  <p>출처 등급: <span class="tag good">1차</span> 기관·회사 공시·통계(IEA, 석유공사, 회사 실적), <span class="tag">증권사</span> 애널리스트 추정·집계, <span class="tag">언론</span> 국내외 보도, <span class="tag">2차</span> 위키·텔레그램 요약, <span class="tag pol">추정</span> 본 노트의 계산. 불일치가 있는 항목은 양쪽 값을 모두 적었다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>주장</th><th>출처</th><th>등급</th><th>확인 결과 · 불일치</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>글로벌 CDU 명목 104.9mb/d, 유효 95.3mb/d(2026E), 2027~30 순증설</td><td>유안타 9/15 표4</td><td><span class="tag">증권사</span></td><td>단일 출처의 추정. IEA 8월 정제량 81.4mb/d(−4.2 YoY)와 방향 일치</td></tr>
+      <tr><td>2</td><td>8월 글로벌 정제량 81.4mb/d, 2026 −2.6mb/d, 걸프 셧인 10mb/d+, 사우디 8월 생산 5.97mb/d</td><td>IEA OMR 2026년 9월</td><td><span class="tag good">1차</span></td><td>확인. OilPrice 8월 보도도 동일 수치</td></tr>
+      <tr><td>3</td><td>러시아 정제 차질 4.6mb/d(가동률 30~40%) / 2.8mb/d</td><td>KB(Kpler) / 24/7 Wall St</td><td><span class="tag">증권사</span></td><td>불일치: Kpler 4.6 vs 미국 언론 2.8. 본문은 범위(2.8~4.6)로 표기</td></tr>
+      <tr><td>4</td><td>글로벌 정제설비 약 10% 이탈(중동 3.3+러시아 2.9+아시아 3.6%)</td><td>iM 9/16</td><td><span class="tag">증권사</span></td><td>미국 애널리스트 9mb/d(약 8.6%)와 유사</td></tr>
+      <tr><td>5</td><td>한국 4사 정제능력(SK 121.5·GS 80·S-Oil 66.9·HD 52만)·고도화율(42/39/34/25%)</td><td>한국신용평가 2026.3(허핑턴포스트 인용)</td><td><span class="tag">언론</span></td><td>불일치: 유안타는 SKI 111.5만(인천 컨덴세이트 처리 포함 여부 차이로 추정). HD현대는 통상 69만(컨덴세이트 포함)으로도 보도됨</td></tr>
+      <tr><td>6</td><td>OSP 5월 +19.5 / 6월 +15.5 / 7월 +9.5 / 8월 −1.5 / 9월 −2.0 / 10월 −2.0</td><td>Reuters(BOE Report·Business Recorder), EnergyNow, Discovery Alert, Energies Media</td><td><span class="tag">언론</span></td><td>복수 출처 일치. 하나·신한도 동일. 1~4월 월별 값은 미확인(신한 “5월 +19.5”만 확인)</td></tr>
+      <tr><td>7</td><td>UAE OPEC·OPEC+ 탈퇴 4/28 발표·5/1 발효</td><td>CNBC, Enerdata, Al Jazeera</td><td><span class="tag">언론</span></td><td>확인</td></tr>
+      <tr><td>8</td><td>미국, 베네수엘라 650억bbl 실질 지배권(8/29)</td><td>하나 8/31(Bloomberg 인용)</td><td><span class="tag">증권사</span></td><td>아시아투데이 8/30 보도로 교차 확인</td></tr>
+      <tr><td>9</td><td>한국 원유 수입 비중: 1H26 중동 62.3%·미국 20.5%·사우디 30.5%, 8월 중동 59.7%</td><td>한국석유공사 통계(MBC·서울신문·데일리안 인용)</td><td><span class="tag good">1차</span></td><td>확인</td></tr>
+      <tr><td>10</td><td>S-Oil 사우디산 90% 이상, 아람코 63.41%</td><td>뉴데일리 9/17, 이투데이</td><td><span class="tag">언론</span></td><td>사업보고서상 아람코 장기공급계약과 부합. 정확한 %는 회사 미공시</td></tr>
+      <tr><td>11</td><td>SK·GS 사우디 비중 약 15%, 중동 55~60%</td><td>본 노트 계산</td><td><span class="tag pol">추정</span></td><td>국내 총량에서 S-Oil 몫을 뺀 역산. 회사별 공시 없음</td></tr>
+      <tr><td>12</td><td>GS칼텍스 미국산 Mars 200만bbl(Dubai +13~14$), 7월 +18$, 베네수엘라 11만bbl</td><td>하나 8/18(Reuters), 데일리안</td><td><span class="tag">증권사</span></td><td>확인. SK 바로사 초경질유는 서울신문 7/28</td></tr>
+      <tr><td>13</td><td>수출 비중 GS 71 · HD 67 · S-Oil 54 · SK 51%(2025)</td><td>중앙이코노미뉴스</td><td><span class="tag">언론</span></td><td>단일 언론 출처. 사업보고서 지역별 매출로 재검증 권장</td></tr>
+      <tr><td>14</td><td>수출 상대국 호주 18.6 · 싱가포르 13.0 · 일본 11.5 · 중국 9.0 · 미국 8.7%(1H26), 제품 경유 40%</td><td>대한석유협회·KITA</td><td><span class="tag good">1차</span></td><td>확인</td></tr>
+      <tr><td>15</td><td>윤활기유 CAPA: SK엔무브 8.03만 / S-Oil 4.27~4.47만 / GS 2.6만 b/d</td><td>데일리한국(2026)·에너지경제·S-Oil 홈페이지</td><td><span class="tag">언론</span></td><td>불일치: SK엔무브 7.08만(과거) vs 8.03만(최근), S-Oil 4.27만(과거) vs 4.47만(제2공장 기준). HD현대쉘은 설계 2만 → 실제 1.3만 b/d(연 65만t)로 본문 수정</td></tr>
+      <tr><td>16</td><td>윤활기유 가격·마진 시계열(2025 120/44 → 3Q26E 285/169)</td><td>유안타 9/15 표2</td><td><span class="tag">증권사</span></td><td>추정치. 방향은 KB 그림12·15·16, 시사저널e(“2.5배”)와 일치</td></tr>
+      <tr><td>17</td><td>GS칼텍스 2Q26 OP 2.55조(정유 2.20·윤활 0.36조), GS 연결 1.72조</td><td>딜사이트·뉴스핌 8/11(회사 발표)</td><td><span class="tag good">1차</span></td><td>확인</td></tr>
+      <tr><td>18</td><td>정유 4사 1H26 정유부문 OP(GS 3.73·SK 2.94·HD 2.19·S-Oil 1.57조), 윤활(0.88/0.64/0.43/0.20)</td><td>파이낸셜뉴스 9/7</td><td><span class="tag">언론</span></td><td>신한 S-Oil 1H 정유 1.57조(1.04+0.53)와 일치</td></tr>
+      <tr><td>19</td><td>공급차질 타임라인(전쟁 2/28, 봉쇄 3/2, 라스라판 3/18, 휴전 4/8, 재개방 6/17, 붕괴 7/8, 동서송유관 9/10 등)</td><td>Wikipedia(2026 Hormuz crisis·fuel crisis·Aramco attack), KB 그림5, 하나 9/14</td><td><span class="tag">2차</span></td><td>핵심 날짜는 증권사 자료(KB·하나·유진)와 일치. 세부 인명·선박 사고는 위키 단독</td></tr>
+      <tr><td>20</td><td>미국 정유사: MPC 413$/+157%, VLO 405$/+152%, fwd P/E 13~14, 2027 EPS 34/31, 2Q 환원 28억/26억$</td><td>24/7 Wall St 9/17, OilPrice 8월</td><td><span class="tag">언론</span></td><td>확인. PBR 3.9/3.1/2.4는 하나(Bloomberg) 8~9월 기준</td></tr>
+      <tr><td>21</td><td>주가·시총(9/18): S-Oil 149,500·17.4조, SKI 136,600·23.0조, GS 113,900·10.7조</td><td>Yahoo Finance, StockAnalysis</td><td><span class="tag">언론</span></td><td>GS는 StockAnalysis 단일 출처(네이버 금융 접근 차단). 국내 시세로 재확인 권장. 52주 고가 S-Oil: 신한 165,900 vs Yahoo 177,100 불일치</td></tr>
+      <tr><td>22</td><td>최고가격제 차수·상한·예비비 4.2조·집행 0원·12월 정산·원가+적정마진</td><td>머니투데이 9/16~18, 비즈워치 5/6, 연합(네이트) 6/18</td><td><span class="tag">언론</span></td><td>복수 출처 일치</td></tr>
+      <tr><td>23</td><td>업계 누적 손실 5조(6/18), 3조 초과·주당 5,000억(5월)</td><td>연합·비즈워치</td><td><span class="tag">언론</span></td><td>업계 자체 추산(MOPS 기준). 정부 추산 4.2조</td></tr>
+      <tr><td>24</td><td>횡재세: 초과이익 법인세 +20% 법안 발의(3/11), 장관 “적극 참여”(3/9)</td><td>연합(네이트)·이데일리·한국세정신문</td><td><span class="tag">언론</span></td><td>발의 단계. 상임위 진행 상황은 미확인</td></tr>
+      <tr><td>25</td><td>내수 점유율 SK 28.4·S-Oil 23.6·HD 23.1·GS 22.7%</td><td>석유공사(전기신문 인용, 2022년 1~3Q)</td><td><span class="tag">언론</span></td><td>최신(2025) 공개치 미확보. Q9 배분 가정에만 사용</td></tr>
+      <tr><td>26</td><td>재고 민감도(S-Oil 10$당 ±4천억), OSP 1$당 S-Oil 2,000억, GS 윤활 연 1.2~1.4조, 시장가−상한 갭</td><td>본 노트 계산</td><td><span class="tag pol">추정</span></td><td>SKI 재고효과는 유안타 표2(재고평가前 OP)로 대체 가능. 나머지는 가정 명시</td></tr>
+      <tr><td>27</td><td>VLCC 운임 103.5만$/일, 오만 132$, 아람코 오만 STS 2,000만bbl, 사우디 유럽 카고 취소</td><td>하나 윤재성 TG 9/13~16(Reuters·Bloomberg 인용)</td><td><span class="tag">2차</span></td><td>미래에셋 TG 9/15(중동-아시아 운임 105만$/일)와 일치</td></tr>
+      <tr><td>28</td><td>Dubai 123.7~128, 디젤 크랙 64.7, 스팟 정제마진 4.5~10$(9/14~17)</td><td>삼성 조현렬 TG Daily</td><td><span class="tag">2차</span></td><td>KB(9/16 Dubai 128), 신한(9/11 123.7)과 일치. 스팟 마진 급락은 KB의 “착시” 설명 참조</td></tr>
+      <tr><td>29</td><td>KOSPI 6,684(9/14), Fed 9월 25bp 인상 기정사실화</td><td>메리츠 9/15, iM 9/16</td><td><span class="tag">증권사</span></td><td>확인</td></tr>
+      <tr><td>30</td><td>중국 석유제품 수출쿼터 2026년 1차 19.0백만t(2025 연 40.2)</td><td>하나 Weekly 도표(Bloomberg)</td><td><span class="tag">증권사</span></td><td>차트 판독값. 2차 배정 여부 미확인</td></tr>
+      <tr><td>31</td><td>카타르 LNG 수출 카고 3~8월 509 → 18개(−96%), 아시아향 −88%, 유럽 0. 라스라판 Train 4·6 1,280만t(17%) 파손·복구 3~5년, Pearl GTL Train 2 2027년 3월까지 정지, NFE 1년+ 지연, IEA 누적 손실 140bcm</td><td>하나 Weekly·In-depth 9/21(Reuters·IEA·QatarEnergy)</td><td><span class="tag">증권사</span></td><td>Wikipedia(라스라판 3/18 타격, −17%, 3~5년)와 일치. 140bcm(윤재성) vs 120bcm(IEA Gas Market Report Q2 인용) 불일치 표기</td></tr>
+      <tr><td>32</td><td>SK E&amp;S: Freeport 220만t 톨링(2020~40), Woodford 49.9%, 바로사 37.5%(130만t 20년), PRISM 트레이딩 530만t(2024), 발전 4GW+1GW. 2026F E&amp;S OP 2.03조, 전사 11.88조, 3Q26F 3.09조</td><td>하나 In-depth 9/21(회사 자료·하나 추정)</td><td><span class="tag">증권사</span></td><td>구조는 회사 공시와 일치. 이익은 하나 단독 추정(타사 E&amp;S 0.9~0.95조와 큰 차이)</td></tr>
+      <tr><td>33</td><td>한국 LNG 수입 1~8월 2,932만t: 호주 28.3%·말레이 17.0%·미국 15.1%, 카타르 15.6% → 5.8%. 2025년 직도입 26.6%. JKM 11월물 28$/mmbtu, 미국산 직도입 11.4$</td><td>하나 In-depth 9/21(Kpler·민간LNG산업협회·무역협회)</td><td><span class="tag">증권사</span></td><td>통계 인용. 확인</td></tr>
+      <tr><td>34</td><td>미 하원 경유 수출 한시 금지 법안(9/17), 아람코 유럽 정유사 공급 중단 통보(9/18), 파나마 운하 32척/일(9/15)</td><td>하나 Weekly·In-depth 9/21(Reuters·ACP)</td><td><span class="tag">증권사</span></td><td>발의 단계. 입법 가능성 미확인</td></tr>
+      <tr><td>35</td><td>동서송유관 피격과 한국 조달: 평시 한국행은 걸프 선적(무관) / 2026년엔 아시아행 일부가 얀부 경유(희망봉 우회 13,140해리) / S-Oil “얀부 출발 물량 정상 도입·선적 취소 없음” / 산업부 9~10월 90%+ 확보 / 아람코 호르무즈 선적 200만b/d+·소하르 STS</td><td>Al Jazeera 9/17 · Argus · 아주경제·청년일보·파이낸셜뉴스 9/14 · 뉴데일리 9/17 · 신한 9/16 · 하나 8/18·9/14</td><td><span class="tag">언론</span></td><td>초안의 “S-Oil 얀부 우회 리스크 최대” 표현을 “시차·운임 노출”로 수정. 얀부 경유 한국행 물량 비중은 미공개. 8월 사우디 수출 230만(Al Jazeera) vs 350만b/d(하나) 불일치 병기</td></tr>
+    </tbody></table></div>
+</section>
+
+<section class="q" id="src">
+  <div class="qn">Sources</div>
+  <h2>출처 · 미반영 자료</h2>
+  <h3>증권사 리포트 (첨부 PDF)</h3>
+  <ul class="tight">
+    <li>신한투자증권, S-Oil “유가가 다시 뛰어도, 설비는 늘지 않는다” (2026-09-16, 이진명·김명주)</li>
+    <li>KB증권, 정유/화학 Monthly 9월 “3~4월로 돌아간 시황. 답지보고 푸는 시험” (2026-09-17, 전우제·송윤주)</li>
+    <li>하나증권, 에너지/화학 Weekly Monitor 8/31 “베네수엘라의 OPEC 탈퇴 가능성과 정유업”, 9/7 “미국 디젤 사상 최대 vs. 10월 사우디 OSP −2$”, 9/14 “홍해 리스크 재부각과 급등하는 두바이유” (윤재성·김형준)</li>
+    <li>유진투자증권, 에너지 Weekly “사우디 동서 파이프라인 파손과 영향” (2026-09-15, 황성현)</li>
+    <li>iM증권, SK이노베이션 “우린 어쩌면 여전히 26년 이익 체력을 상당히 과소평가하고 있을지도” (2026-09-16, 전유진)</li>
+    <li>메리츠증권, SK이노베이션 “에너지 인플레이션을 헷징 가능한 기업” (2026-09-15, 노우호)</li>
+    <li>유안타증권, SK이노베이션 “영업이익 10조원에 비해 싼 주가!” (2026-09-15, 황규원)</li>
+    <li>하나증권, 에너지/화학 Weekly Monitor 9/21 “카타르의 이탈과 LNG 시장의 변화” (윤재성·김형준)</li>
+    <li>하나증권, 에너지 산업 In-depth “올겨울 패딩 대신 LNG” (2026-09-21, 윤재성·유재선·김시현) — SK이노베이션·SK가스·포스코인터내셔널·한국가스공사·Venture Global·Cheniere</li>
+  </ul>
+  <h3>텔레그램 채널</h3>
+  <ul class="tight">
+    <li><a href="https://t.me/samsungchem">삼성증권 조현렬 정유/화학 Newsfeed</a> — 9/11 Weekly, 9/14~17 Daily 정유·화학, 유럽 NDR 후기</li>
+    <li><a href="https://t.me/miraeoillee">미래에셋 에너지/정유화학</a> — 9/14~17 원유 시장 요약</li>
+    <li><a href="https://t.me/energy_youn">하나증권 윤재성</a> — 9/13~17 동서송유관·VLCC·아람코 STS·항공사 연료비</li>
+  </ul>
+  <h3>기관·통계·언론</h3>
+  <ul class="tight">
+    <li><a href="https://www.iea.org/reports/oil-market-report-september-2026">IEA Oil Market Report, September 2026</a></li>
+    <li><a href="https://boereport.com/2026/08/06/saudi-arabia-cuts-september-arab-light-price-to-asia-to-six-year-low/">Reuters via BOE Report: 9월 Arab Light OSP</a> · <a href="https://energynow.com/2026/07/saudi-arabia-cuts-august-arab-light-asia-osp-biggest-drop-in-over-two-decades/">EnergyNow: 8월 OSP</a> · <a href="https://discoveryalert.com/saudi-arabia-arab-light-june-osp-asia-opec-2026/">Discovery Alert: 6월 OSP</a> · <a href="https://energiesmedia.com/saudi-aramco-arab-light-price-september/">Energies Media: 10월 OSP 동결</a></li>
+    <li><a href="https://www.cnbc.com/2026/04/28/uae-opec-oil-iran.html">CNBC: UAE OPEC 탈퇴</a> · <a href="https://www.enerdata.net/publications/daily-energy-news/uae-announces-exit-opec-effective-1-may-2026-after-59-years.html">Enerdata</a></li>
+    <li><a href="https://imnews.imbc.com/news/2026/econo/article/6845227_36932.html">MBC: 상반기 미국산 원유 20%대</a> · <a href="https://www.seoul.co.kr/news/economy/2026/08/17/20260817500105">서울신문</a> · <a href="https://www.dailian.co.kr/news/view/1671775/">데일리안: 8월 수입선·탈중동</a></li>
+    <li><a href="https://biz.newdaily.co.kr/site/data/html/2026/09/17/2026091700107.html">뉴데일리 9/17: 사우디 원유 90% 의존 에쓰오일</a> · <a href="https://www.seoul.co.kr/news/economy/industry/2026/07/28/20260728031002">서울신문 7/28: SK 바로사 초경질유</a></li>
+    <li><a href="https://www.ajunews.com/view/20260914102904642">아주경제 9/14: 산업부 긴급점검, 9~10월 물량 90% 이상 확보</a> · <a href="https://www.youthdaily.co.kr/news/article.html?no=227047">청년일보 9/14</a> · <a href="https://www.fnnews.com/news/202609141848352373">파이낸셜뉴스 9/14</a> · <a href="https://www.aljazeera.com/news/2026/9/17/from-yanbu-to-sohar-tracking-saudi-arabias-alternative-oil-routes">Al Jazeera 9/17: From Yanbu to Sohar</a> · <a href="https://www.argusmedia.com/en/news-and-insights/latest-market-news/2798868-yanbu-gives-aramco-limited-option-for-rerouting-crude">Argus: Yanbu gives Aramco limited option</a> · <a href="https://www.gem.wiki/East-West_Crude_Oil_Pipeline">Global Energy Monitor: East-West Crude Oil Pipeline</a></li>
+    <li><a href="https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01994246635678456">이데일리: 상반기 석유제품 수출·최대 수출국 호주</a> · <a href="https://www.petroleum.or.kr/">대한석유협회</a></li>
+    <li><a href="https://dealsite.co.kr/articles/166997">딜사이트: GS 2Q26 실적</a> · <a href="https://www.newspim.com/news/view/20260811000938">뉴스핌</a> · <a href="https://www.fnnews.com/news/202609071615464839">파이낸셜뉴스 9/7: 정유4사 하반기</a> · <a href="https://www.sisajournal-e.com/news/articleView.html?idxno=423445">시사저널e 9/1: 자본배분</a></li>
+    <li><a href="https://daily.hankooki.com/news/articleView.html?idxno=960331">데일리한국: 윤활유 사업</a> · <a href="https://www.ekn.kr/web/view.php?key=219594">에너지경제: 4사 윤활기유</a> · <a href="https://www.s-oil.com/energy/LubeBaseOil.aspx">S-OIL 윤활기유</a> · <a href="https://www.shell.co.kr/ko_kr/media/news-and-media-releases/2014/production-of-full-scale-lubricant-oil.html">Shell Korea: 현대쉘베이스오일</a></li>
+    <li><a href="https://www.huffingtonpost.kr/article/260601">허핑턴포스트: 4사 정제능력·고도화율(한신평)</a></li>
+    <li><a href="https://www.mt.co.kr/industry/2026/09/16/2026091615041534142">머니투데이 9/16: 손실보전 연말로</a> · <a href="https://www.mt.co.kr/industry/2026/09/17/2026091620041251558">9/17: 손실보전 0원</a> · <a href="https://www.mt.co.kr/economy/2026/09/18/2026091816121493397">9/18: 10차 동결</a> · <a href="https://news.bizwatch.co.kr/article/industry/2026/05/06/0023">비즈워치 5/6</a> · <a href="https://m.news.nate.com/view/20260618n30144">연합 6/18: 손실 5조·원가+적정마진</a></li>
+    <li><a href="https://news.nate.com/view/20260311n35062">연합 3/11: 횡재세법 발의</a> · <a href="https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02961846638890888">이데일리: 횡재세 논의</a></li>
+    <li><a href="https://247wallst.com/investing/2026/09/17/think-its-too-late-to-buy-marathon-and-valero-heres-why-analysts-say-wait-instead/">24/7 Wall St 9/17: MPC·VLO 밸류</a> · <a href="https://oilprice.com/Energy/Crude-Oil/Global-Fuel-Squeeze-Triggers-US-Refiners-Stocks-Rally.html">OilPrice: 미국 정유주 랠리</a> · <a href="https://www.cnbc.com/2026/08/17/refiner-stocks-are-on-a-nearly-unprecedented-run-history-says-it-could-end-soon.html">CNBC 8/17</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis">Wikipedia: 2026 Strait of Hormuz crisis</a> · <a href="https://en.wikipedia.org/wiki/2026_Iran_war_fuel_crisis">2026 Iran war fuel crisis</a> · <a href="https://en.wikipedia.org/wiki/2026_Aramco_refinery_attack">2026 Aramco refinery attack</a></li>
+    <li><a href="https://finance.yahoo.com/quote/010950.KS/">Yahoo Finance S-Oil</a> · <a href="https://finance.yahoo.com/quote/096770.KS/">SK이노베이션</a> · <a href="https://stockanalysis.com/quote/krx/078930/">StockAnalysis GS</a></li>
+  </ul>
+  <div class="note"><b>미반영·접근 불가.</b> 네이버 블로그(richwisdom_/224383160374)는 안전 정책상 브라우저·페치 모두 차단되어 읽지 못했다. CNBC 8/17 기사와 MacroMicro OSP 시계열은 403으로 본문 확인 불가(제목·요약만 활용). 네이버 금융 시세는 차단되어 Yahoo·StockAnalysis로 대체했다. 2026년 1~4월 아람코 OSP 월별 값은 확인하지 못해 차트에서 제외했다.</div>
+  <p class="src">작성: 2026-09-20. 이 노트는 리서치 보조 자료이며 투자 권유가 아니다.</p>
+</section>
+
+<section class="q" id="appx">
+  <div class="qn">Appendix · Earnings simulator</div>
+  <h2>S-Oil 어닝 시뮬레이터: 변수 → 실적 → 재무지표 → 밸류에이션</h2>
+  <div class="answer">
+    <b>사용법</b> 기준 실적(신한 2026F 또는 2027F, 혹은 직접 입력)에 시황·물량·정책 변수의 <b>변화분(Δ)</b>을 얹으면 영업이익·순이익·EPS·BPS·ROE와 현재가 기준 PER/PBR, ROE로 역산한 적정 PBR·적정주가가 즉시 다시 계산된다. 아래 “1단위 감도표”가 “OSP 1$ 변하면 영업이익 얼마, ROE 몇 %p, PBR 얼마”에 대한 답이다. 모든 계산은 연간 평균 기준이고 OSP 투입 시차(1~2개월)·재고 래깅은 무시한다. 계산식은 표 아래에 적었다.
+  </div>
+
+  <style>
+    .sim{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:18px;margin:8px 0 18px}
+    @media (max-width:900px){.sim{grid-template-columns:minmax(0,1fr)}}
+    .sim .panel{min-width:0}
+    .sim .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;box-shadow:var(--shadow)}
+    .sim h4{margin:0 0 8px;font-size:13px;font-family:"IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .sim .grp{margin:10px 0 4px;font-size:12.5px;font-weight:700;color:var(--accent);border-top:1px dashed var(--line);padding-top:8px}
+    .sim .row{display:grid;grid-template-columns:1fr 92px;gap:8px;align-items:center;margin:4px 0}
+    .sim .row label{font-size:12.5px;line-height:1.3}
+    .sim .row label small{display:block;color:var(--muted);font-size:11px}
+    .sim .row input[type=number]{width:100%;font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:4px 6px;border:1px solid var(--line-strong);border-radius:4px;background:var(--surface-2);color:var(--ink)}
+    .sim .row input[type=range]{width:100%;grid-column:1 / span 2;margin:0 0 2px;accent-color:var(--accent)}
+    .sim .presets{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+    .sim button{font:inherit;font-size:12px;padding:4px 9px;border:1px solid var(--line-strong);border-radius:4px;background:var(--surface-2);color:var(--ink);cursor:pointer}
+    .sim button.on,.sim button:hover{border-color:var(--accent);color:var(--accent)}
+    .sim .out .kpis{margin:0 0 12px}
+    .sim .kpi .v{font-size:19px}
+    .sim .kpi .v .d2{font-size:12px;color:var(--muted);font-family:"IBM Plex Mono",monospace;margin-left:4px}
+    .sim table{font-size:12.5px}
+    .sim td.num,.sim th.num{font-family:"IBM Plex Mono",monospace}
+    .sim .pos{color:var(--up)} .sim .neg{color:var(--down)}
+    .sim .formula{font-size:12px;color:var(--muted);line-height:1.6;margin:6px 0 0}
+    .sim .formula code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;background:var(--surface-2);padding:0 4px;border-radius:3px}
+  </style>
+
+  <div class="sim">
+    <div class="panel" id="simIn">
+      <h4>① 기준 실적 (억원)</h4>
+      <div class="presets">
+        <button type="button" data-base="s26" class="on">신한 2026F</button>
+        <button type="button" data-base="s27">신한 2027F</button>
+        <button type="button" data-base="cons">컨센서스형 (4.4조)</button>
+      </div>
+      <div class="row"><label>기준 영업이익<small>정유+윤활+화학, 재고효과 포함</small></label><input type="number" id="bOP" step="100"></div>
+      <div class="row"><label>기준 영업외손익<small>금융·기타. 2026F −2,679 / 2027F +4,732</small></label><input type="number" id="bNonOp" step="100"></div>
+      <div class="row"><label>기초 자본총계<small>전년 말. 2025 88,874 / 2026F 118,791</small></label><input type="number" id="bEq" step="100"></div>
+      <div class="row"><label>기준 순차입금 (기말)<small>2026F 51,538 / 2027F 23,491</small></label><input type="number" id="bND" step="100"></div>
+      <div class="row"><label>기준 환율<small>원/달러 연평균</small></label><input type="number" id="bFX" step="10"></div>
+      <div class="row"><label>주식수 (EPS·BPS 기준)<small>백만주, 보통주 112.6 + 우선주 4.0 = 116.6 (신한 기준)</small></label><input type="number" id="bSh" step="0.1"></div>
+
+      <h4 style="margin-top:14px">② 변수 (Δ = 기준 가정 대비 변화)</h4>
+      <div class="presets">
+        <button type="button" data-scn="zero" class="on">기본 (Δ=0)</button>
+        <button type="button" data-scn="q4">4Q 기대: OSP −1·정산 0.8조·두바이 −10</button>
+        <button type="button" data-scn="bear">홍해 장기화: 마진 −5·두바이 +15·역마진 300원×3M</button>
+        <button type="button" data-scn="bull">재개방: 마진 +3·두바이 −25·OSP +2</button>
+      </div>
+      <div id="simVars"></div>
+    </div>
+
+    <div class="panel out" id="simOut">
+      <h4>③ 실적 · 재무지표</h4>
+      <div class="kpis" id="kpiFin"></div>
+      <h4>④ 밸류에이션</h4>
+      <div class="kpis" id="kpiVal"></div>
+      <div class="tbl"><table id="tblWf"><thead><tr><th>영업이익 변화 분해 (억원)</th><th class="num">ΔOP</th><th>메모</th></tr></thead><tbody></tbody></table></div>
+      <div class="tbl"><table id="tblPbr"><thead><tr><th>PBR 배수</th><th class="num">1.0x</th><th class="num">1.3x</th><th class="num">1.5x</th><th class="num">1.7x</th><th class="num">1.9x</th><th class="num">2.2x</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+
+  <h3>1단위 감도표: 변수 하나만 움직였을 때 (현재 입력 기준, 연간)</h3>
+  <div class="tbl"><table id="tblSens">
+    <thead><tr><th>변수 (1단위)</th><th class="num">Δ영업이익 (억원)</th><th class="num">Δ순이익 (억원)</th><th class="num">ΔEPS (원)</th><th class="num">ΔROE (%p)</th><th class="num">ΔBPS (원)</th><th class="num">PBR@현재가 → 변화</th><th class="num">적정주가 (ROE 기반) 변화</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="cap" id="sensNote"></p>
+
+  <div class="formula">
+    <b>계산식.</b>
+    <code>Δ정유OP = Δ정제마진 × 처리량 × 365 × 환율</code> ·
+    <code>ΔOSP효과 = −ΔOSP × 사우디비중 × 처리량 × 365 × 환율</code> ·
+    <code>Δ윤활OP = Δ윤활마진 × 윤활판매량 × 환율</code> ·
+    <code>재고평가 = ΔDubai × 재고bbl × 환율</code> (일회성) ·
+    <code>환율효과 = 기준OP × Δ환율 ÷ 기준환율</code> (영업이익을 달러 마진으로 가정) + <code>영업외 −달러순부채 × Δ환율</code> ·
+    <code>내수역마진 = −갭(원/L) × 내수판매량(L/일) × 30 × 개월</code> ·
+    <code>순이익 = (OP + 영업외) × (1 − 세율)</code> ·
+    <code>기말자본 = 기초자본 + 순이익 − 배당</code> ·
+    <code>ROE = 순이익 ÷ 평균자본</code> ·
+    <code>적정 PBR = (ROE × 반영률 − g) ÷ (r − g)</code> ·
+    <code>적정주가 = 적정 PBR × BPS</code>.
+    기본값 근거: 처리량 640kb/d(CDU 669kb/d × 약 96%), 사우디 비중 90%(뉴데일리), 윤활 판매량 16백만bbl(≈44kb/d), 재고 30백만bbl(2026F 재고자산 5.5조 ÷ 약 18만원/bbl), 달러 순부채 22억$(2024년 환율 +180원에 외화환산손실 3,967억 역산), 내수 판매량 165kb/d(국내 휘·경·등유 약 70만b/d × 점유율 23.6%), 세율 23.8%·배당성향 21.1%(신한 2026F), 주식수 116.6백만주(보통주 112.6 + 우선주 4.0, 신한의 EPS·BPS 분모와 동일. 시총은 보통주 기준), 현재가 149,500원(9/18). “컨센서스형” 기준은 2026F 영업이익 4.4조·순이익 3.2조 가정의 예시다.
+  </div>
+
+  <script>
+  (function(){
+    // ---------- pure model ----------
+    function calc(p){
+      var fx = p.bFX + p.dFX;
+      var annBbl = p.thr*1000*365;                              // bbl/yr
+      var wf = [];
+      var refining = p.dMargin*annBbl*fx/1e8;                   // 억원
+      var osp = -p.dOSP*(p.saudi/100)*annBbl*fx/1e8;
+      var lube = p.dLube*p.lubeVol*1e6*fx/1e8;
+      var invEff = p.dDubai*p.inv*1e6*fx/1e8;                   // one-off
+      var fxOp = p.bOP*p.dFX/p.bFX;
+      var capL = p.domVol*1000*159;                             // L/day
+      var cap = -p.capGap*capL*30*p.capMonths/1e8;
+      var settle = p.settle;                                    // one-off
+      wf.push(['정제마진 Δ'+fmt1(p.dMargin)+'$', refining, '처리량 '+p.thr+'kb/d']);
+      wf.push(['OSP Δ'+fmt1(p.dOSP)+'$ (사우디 '+p.saudi+'%)', osp, '+OSP = 원가 상승']);
+      wf.push(['윤활기유 마진 Δ'+fmt1(p.dLube)+'$', lube, p.lubeVol+'백만bbl/년']);
+      wf.push(['Dubai Δ'+fmt1(p.dDubai)+'$ 재고평가 (일회성)', invEff, '재고 '+p.inv+'백만bbl']);
+      wf.push(['환율 Δ'+fmt1(p.dFX)+'원 (영업)', fxOp, '기준OP 달러 마진 가정']);
+      wf.push(['내수 역마진 '+p.capGap+'원/L × '+p.capMonths+'개월', cap, '내수 '+p.domVol+'kb/d']);
+      wf.push(['손실보전 정산 (일회성)', settle, '12월 정산 가정']);
+      var dOP = refining+osp+lube+invEff+fxOp+cap+settle;
+      var OP = p.bOP + dOP;
+      var nonOp = p.bNonOp - p.usdDebt*1e9*p.dFX/1e8;           // 억원
+      var PBT = OP + nonOp;
+      var t = p.tax/100;
+      var NP = PBT*(1-t);
+      var sh = p.bSh*1e6;
+      var EPS = NP*1e8/sh;
+      var DPS = Math.max(0, EPS*p.payout/100);
+      var div = DPS*sh/1e8;                                     // 억원
+      var eqEnd = p.bEq + NP - div;
+      var BPS = eqEnd*1e8/sh;
+      var avgEq = (p.bEq+eqEnd)/2;
+      var ROE = NP/avgEq;
+      var oneOff = (invEff+settle)*(1-t);
+      var NPx = NP - oneOff;
+      var ROEx = NPx/avgEq;
+      // base NP for net debt delta
+      var NP0 = (p.bOP+p.bNonOp)*(1-t);
+      var EPS0 = NP0*1e8/sh; var div0 = Math.max(0,EPS0*p.payout/100)*sh/1e8;
+      var ND = p.bND - ((NP-NP0)-(div-div0));
+      var PER = EPS>0 ? p.price/EPS : NaN;
+      var PBR = p.price/BPS;
+      var yld = DPS/p.price;
+      var roeS = ROEx*p.roeF/100;
+      var r = p.r/100, g = p.g/100;
+      var fairPBR = Math.max(0,(roeS-g)/(r-g));
+      var fairPx = fairPBR*BPS;
+      var tPx = p.tPBR*BPS;
+      var mcap = p.price*112.6e6/1e8;   // 보통주 시총
+      return {wf:wf,dOP:dOP,OP:OP,nonOp:nonOp,PBT:PBT,NP:NP,EPS:EPS,DPS:DPS,BPS:BPS,eqEnd:eqEnd,ROE:ROE,ROEx:ROEx,NPx:NPx,ND:ND,PER:PER,PBR:PBR,yld:yld,roeS:roeS,fairPBR:fairPBR,fairPx:fairPx,tPx:tPx,mcap:mcap,NP0:NP0};
+    }
+    function fmt1(x){return (x>0?'+':'')+(Math.round(x*100)/100);}
+    function fmtN(x,d){ if(!isFinite(x)) return '—'; d=d||0; return x.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+    function fmtKr(x){ if(!isFinite(x)) return '—'; var s=x<0?'−':''; x=Math.abs(x); return x>=10000? s+(x/10000).toFixed(2)+'조원' : s+fmtN(x,0)+'억원'; }
+    function sgn(x,d,unit){ if(!isFinite(x)) return '—'; var s=(x>0?'+':(x<0?'−':'')); return s+fmtN(Math.abs(x),d)+(unit||''); }
+    function cls(x){return x>0?'pos':(x<0?'neg':'');}
+
+    // ---------- inputs ----------
+    var BASES = {
+      s26:{bOP:52327,bNonOp:-2679,bEq:88874,bND:51538,bFX:1400,bSh:116.6,tax:23.8,payout:21.1,label:'신한 2026F (OP 5.23조·NP 3.78조·BPS 101,875)'},
+      s27:{bOP:37995,bNonOp:4732,bEq:118791,bND:23491,bFX:1350,bSh:116.6,tax:22.0,payout:31.8,label:'신한 2027F (OP 3.80조·NP 3.33조·BPS 121,469)'},
+      cons:{bOP:44000,bNonOp:-2000,bEq:88874,bND:52000,bFX:1400,bSh:116.6,tax:23.8,payout:21.1,label:'컨센서스형 2026F 예시 (OP 4.4조·NP 약 3.2조)'}
+    };
+    var VARS = [
+      {g:'시황 변수'},
+      {id:'dMargin',l:'복합정제마진 Δ',s:'연평균, $/bbl',min:-15,max:15,st:0.5,d:0},
+      {id:'dOSP',l:'사우디 OSP Δ',s:'$/bbl, +는 원가 상승',min:-5,max:10,st:0.25,d:0},
+      {id:'dLube',l:'윤활기유 마진 Δ',s:'$/bbl',min:-120,max:120,st:5,d:0},
+      {id:'dDubai',l:'Dubai Δ → 재고평가',s:'$/bbl, 일회성',min:-40,max:40,st:1,d:0},
+      {id:'dFX',l:'원/달러 Δ',s:'원, +는 원화 약세',min:-150,max:150,st:5,d:0},
+      {g:'물량·구조'},
+      {id:'thr',l:'원유 처리량',s:'kb/d (CDU 669)',min:500,max:669,st:5,d:640},
+      {id:'saudi',l:'사우디산 비중',s:'%',min:0,max:100,st:5,d:90},
+      {id:'lubeVol',l:'윤활기유 판매량',s:'백만bbl/년',min:8,max:18,st:0.5,d:16},
+      {id:'inv',l:'재고 (원유+제품)',s:'백만bbl',min:15,max:45,st:1,d:30},
+      {id:'usdDebt',l:'달러 순부채',s:'십억$ (환산손익)',min:0,max:5,st:0.1,d:2.2},
+      {g:'정책 (최고가격제)'},
+      {id:'capGap',l:'미보전 내수 역마진',s:'원/L',min:0,max:1000,st:50,d:0},
+      {id:'capMonths',l:'적용 개월',s:'개월',min:0,max:12,st:1,d:0},
+      {id:'domVol',l:'내수 판매량 (휘·경·등유)',s:'kb/d',min:100,max:250,st:5,d:165},
+      {id:'settle',l:'손실보전 정산',s:'억원, 일회성',min:0,max:15000,st:500,d:0},
+      {g:'재무·밸류'},
+      {id:'tax',l:'법인세율',s:'%',min:15,max:30,st:0.5,d:23.8},
+      {id:'payout',l:'배당성향',s:'%',min:0,max:60,st:1,d:21.1},
+      {id:'price',l:'현재 주가',s:'원 (9/18 149,500)',min:80000,max:300000,st:500,d:149500},
+      {id:'r',l:'자기자본비용 r',s:'%',min:6,max:15,st:0.5,d:10},
+      {id:'g',l:'영구성장률 g',s:'%',min:0,max:5,st:0.5,d:3},
+      {id:'roeF',l:'지속가능 ROE 반영률',s:'% (일회성 제외 ROE 중 정상으로 볼 비율)',min:20,max:100,st:5,d:50},
+      {id:'tPBR',l:'목표 PBR',s:'배 (신한 1.9)',min:0.8,max:3,st:0.1,d:1.9}
+    ];
+    var SCN = {
+      zero:{},
+      q4:{dOSP:-1,dDubai:-10,settle:8000},
+      bear:{dMargin:-5,dDubai:15,capGap:300,capMonths:3,dFX:-30},
+      bull:{dMargin:3,dDubai:-25,dOSP:2,settle:8000,capGap:0,capMonths:0}
+    };
+    var host = document.getElementById('simVars');
+    var html='';
+    VARS.forEach(function(v){
+      if(v.g){ html+='<div class="grp">'+v.g+'</div>'; return; }
+      html+='<div class="row"><label for="v_'+v.id+'">'+v.l+'<small>'+v.s+'</small></label>'+
+            '<input type="number" id="v_'+v.id+'" step="'+v.st+'" min="'+v.min+'" max="'+v.max+'" value="'+v.d+'">'+
+            '<input type="range" id="r_'+v.id+'" step="'+v.st+'" min="'+v.min+'" max="'+v.max+'" value="'+v.d+'" aria-label="'+v.l+'"></div>';
+    });
+    host.innerHTML = html;
+
+    function setBase(k){
+      var b=BASES[k]; ['bOP','bNonOp','bEq','bND','bFX','bSh'].forEach(function(id){document.getElementById(id).value=b[id];});
+      setVar('tax',b.tax); setVar('payout',b.payout);
+      document.querySelectorAll('[data-base]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-base')===k);});
+      document.getElementById('sensNote').setAttribute('data-base',b.label);
+      update();
+    }
+    function setVar(id,val){ var n=document.getElementById('v_'+id), r=document.getElementById('r_'+id); if(n){n.value=val;} if(r){r.value=val;} }
+    function setScn(k){
+      VARS.forEach(function(v){ if(v.id && !(v.id in {tax:1,payout:1,price:1,r:1,g:1,roeF:1,tPBR:1,thr:1,saudi:1,lubeVol:1,inv:1,usdDebt:1,domVol:1})) setVar(v.id, v.d); });
+      var s=SCN[k]; Object.keys(s).forEach(function(id){setVar(id,s[id]);});
+      document.querySelectorAll('[data-scn]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-scn')===k);});
+      update();
+    }
+    function read(){
+      var p={};
+      ['bOP','bNonOp','bEq','bND','bFX','bSh'].forEach(function(id){p[id]=parseFloat(document.getElementById(id).value)||0;});
+      VARS.forEach(function(v){ if(v.id){ p[v.id]=parseFloat(document.getElementById('v_'+v.id).value); if(isNaN(p[v.id])) p[v.id]=v.d; } });
+      if(p.bFX<=0) p.bFX=1400; if(p.bSh<=0) p.bSh=116.6;
+      return p;
+    }
+    function kpi(l,v,d){ return '<div class="kpi"><div class="l">'+l+'</div><div class="v">'+v+'</div><div class="d">'+(d||'')+'</div></div>'; }
+    function update(){
+      var p=read(), o=calc(p);
+      var base=calc(Object.assign({},p,{dMargin:0,dOSP:0,dLube:0,dDubai:0,dFX:0,capGap:0,capMonths:0,settle:0}));
+      var fin='';
+      fin+=kpi('영업이익', fmtKr(o.OP)+'<span class="d2 '+cls(o.dOP)+'">'+sgn(o.dOP,0,'억')+'</span>', '기준 '+fmtKr(p.bOP)+' · 기준 대비 '+sgn(o.dOP/p.bOP*100,1,'%'));
+      fin+=kpi('순이익', fmtKr(o.NP)+'<span class="d2 '+cls(o.NP-o.NP0)+'">'+sgn(o.NP-o.NP0,0,'억')+'</span>', '세전 '+fmtKr(o.PBT)+' · 세율 '+p.tax+'% · 일회성 제외 '+fmtKr(o.NPx));
+      fin+=kpi('EPS', fmtN(o.EPS,0)+'원', 'DPS '+fmtN(o.DPS,0)+'원 (성향 '+p.payout+'%)');
+      fin+=kpi('BPS (기말)', fmtN(o.BPS,0)+'원', '기말자본 '+fmtKr(o.eqEnd));
+      fin+=kpi('ROE (평균자본)', (o.ROE*100).toFixed(1)+'%<span class="d2 '+cls(o.ROE-base.ROE)+'">'+sgn((o.ROE-base.ROE)*100,1,'%p')+'</span>', '일회성 제외 '+(o.ROEx*100).toFixed(1)+'%');
+      fin+=kpi('순차입금 / 비율', fmtKr(o.ND), (o.ND/o.eqEnd*100).toFixed(0)+'% of 기말자본');
+      document.getElementById('kpiFin').innerHTML=fin;
+      var val='';
+      val+=kpi('PER @현재가', isFinite(o.PER)?o.PER.toFixed(1)+'배':'—', '주가 '+fmtN(p.price,0)+'원 · 보통주 시총 '+fmtKr(o.mcap));
+      val+=kpi('PBR @현재가', o.PBR.toFixed(2)+'배<span class="d2 '+cls(base.PBR-o.PBR)+'">'+sgn(o.PBR-base.PBR,2,'x')+'</span>', '현재가 ÷ 기말 BPS');
+      val+=kpi('배당수익률', (o.yld*100).toFixed(1)+'%', 'DPS '+fmtN(o.DPS,0)+'원');
+      val+=kpi('적정 PBR (ROE 기반)', o.fairPBR.toFixed(2)+'배', '지속 ROE '+(o.roeS*100).toFixed(1)+'% = '+(o.ROEx*100).toFixed(1)+'% × '+p.roeF+'% · r '+p.r+'% g '+p.g+'%');
+      val+=kpi('적정주가 (ROE 기반)', fmtN(Math.round(o.fairPx/100)*100,0)+'원<span class="d2 '+cls(o.fairPx-p.price)+'">'+sgn((o.fairPx/p.price-1)*100,0,'%')+'</span>', '적정 PBR × BPS');
+      val+=kpi('목표 PBR '+p.tPBR+'배 주가', fmtN(Math.round(o.tPx/100)*100,0)+'원<span class="d2 '+cls(o.tPx-p.price)+'">'+sgn((o.tPx/p.price-1)*100,0,'%')+'</span>', '목표 PBR × BPS');
+      document.getElementById('kpiVal').innerHTML=val;
+      var tb=document.querySelector('#tblWf tbody'), h='';
+      o.wf.forEach(function(w){ h+='<tr><td>'+w[0]+'</td><td class="num '+cls(w[1])+'">'+sgn(w[1],0)+'</td><td>'+w[2]+'</td></tr>'; });
+      h+='<tr><td class="hd">합계 ΔOP → 영업이익</td><td class="num '+cls(o.dOP)+'"><b>'+sgn(o.dOP,0)+'</b></td><td>'+fmtKr(p.bOP)+' → <b>'+fmtKr(o.OP)+'</b> · 영업외 '+fmtKr(o.nonOp)+'</td></tr>';
+      tb.innerHTML=h;
+      var pb=document.querySelector('#tblPbr tbody'); var ms=[1.0,1.3,1.5,1.7,1.9,2.2]; var r1='<tr><td class="hd">주가 (× BPS '+fmtN(o.BPS,0)+')</td>', r2='<tr><td class="hd">현재가 대비</td>';
+      ms.forEach(function(m){ var px=m*o.BPS; var up=(px/p.price-1)*100; r1+='<td class="num">'+fmtN(Math.round(px/100)*100,0)+'</td>'; r2+='<td class="num '+cls(up)+'">'+sgn(up,0,'%')+'</td>'; });
+      pb.innerHTML=r1+'</tr>'+r2+'</tr>';
+      // sensitivity (one variable at a time, from current inputs)
+      var S=[['복합정제마진 +1 $/bbl','dMargin',1],['사우디 OSP +1 $/bbl','dOSP',1],['윤활기유 마진 +10 $/bbl','dLube',10],['Dubai +10 $/bbl (재고, 일회성)','dDubai',10],['원/달러 +10원','dFX',10],['내수 역마진 +100원/L × 1개월','cap',100],['손실보전 정산 +1,000억 (일회성)','settle',1000]];
+      var st=document.querySelector('#tblSens tbody'), sh='';
+      S.forEach(function(s){
+        var q=Object.assign({},p);
+        if(s[1]==='cap'){ q.capGap=p.capGap+100; q.capMonths=Math.max(1,p.capMonths); if(p.capMonths===0){ q.capGap=100; q.capMonths=1; } }
+        else q[s[1]]=p[s[1]]+s[2];
+        var a=calc(q);
+        sh+='<tr><td>'+s[0]+'</td><td class="num '+cls(a.dOP-o.dOP)+'">'+sgn(a.dOP-o.dOP,0)+'</td><td class="num '+cls(a.NP-o.NP)+'">'+sgn(a.NP-o.NP,0)+'</td><td class="num">'+sgn(a.EPS-o.EPS,0)+'</td><td class="num">'+sgn((a.ROE-o.ROE)*100,2)+'</td><td class="num">'+sgn(a.BPS-o.BPS,0)+'</td><td class="num">'+o.PBR.toFixed(2)+' → '+a.PBR.toFixed(2)+'</td><td class="num">'+sgn(a.fairPx-o.fairPx,0,'원')+' ('+sgn((a.fairPx/o.fairPx-1)*100,1,'%')+')</td></tr>';
+      });
+      st.innerHTML=sh;
+      var lbl=document.getElementById('sensNote');
+      lbl.textContent='기준: '+(lbl.getAttribute('data-base')||'')+' · 현재가 '+fmtN(p.price,0)+'원 · 환율 '+fmtN(p.bFX+p.dFX,0)+'원. ΔROE는 평균자본 기준 %p, PBR 변화는 BPS 변화(이익 유보)에 따른 것, 적정주가 변화는 지속 ROE 변화가 Gordon 식을 거친 결과다. 일회성(재고평가·정산)은 EPS·BPS·현재가 PBR에는 반영되지만 적정 PBR 계산에서는 제외된다.';
+    }
+    document.getElementById('simIn').addEventListener('input',function(e){
+      var t=e.target; if(!t||!t.id) return;
+      if(t.id.indexOf('r_')===0){ var n=document.getElementById('v_'+t.id.slice(2)); if(n) n.value=t.value; }
+      else if(t.id.indexOf('v_')===0){ var r=document.getElementById('r_'+t.id.slice(2)); if(r) r.value=t.value; }
+      document.querySelectorAll('[data-scn]').forEach(function(x){x.classList.remove('on');});
+      update();
+    });
+    document.querySelectorAll('[data-base]').forEach(function(b){ b.addEventListener('click',function(){ setBase(b.getAttribute('data-base')); }); });
+    document.querySelectorAll('[data-scn]').forEach(function(b){ b.addEventListener('click',function(){ setScn(b.getAttribute('data-scn')); }); });
+    setBase('s26');
+    window.__soilCalc = calc;
+  })();
+  </script>
+
+  <h3>읽는 법: 지금 기준으로 “OSP 1$”와 “정제마진 1$”는 무엇을 뜻하나</h3>
+  <ul class="tight">
+    <li><b>정제마진 1$/bbl ≈ 영업이익 약 3,270억원</b>(640kb/d × 365 × 1,400원). 순이익 약 2,490억, EPS 약 2,100원, ROE 약 2.0%p. 8월 34.0$ → 9/14 26.4$의 −7.6$ 조정이 연간으로 이어지면 영업이익 −2.5조에 해당한다는 뜻이며, 분기로는 그 4분의 1이다.</li>
+    <li><b>OSP 1$/bbl ≈ 영업이익 약 2,940억원</b>(사우디 90%), 순이익 약 2,240억, EPS 약 1,900원, ROE 약 1.9%p. 5월 +19.5 → 10월 −2.0의 −21.5$는 연율로 6.3조 규모의 원가 변화이고, 8~10월 선적분(−1.5/−2/−2)이 9~11월에 투입되면 4분기 한 분기에만 2분기(가중 +6.1) 대비 약 5,000~6,000억의 원가 개선이 된다.</li>
+    <li><b>윤활기유 마진 10$/bbl ≈ 224억원</b>. 2025 → 3Q26E의 +125$가 연간 2,800억이지만, 신한의 2026F 윤활 영업이익 증가(+1.09조)는 물량·믹스·Group III 프리미엄이 겹친 결과라 이 단순 감도보다 크다.</li>
+    <li><b>Dubai 10$ ≈ 재고평가 4,200억</b>(일회성). 9월 급등(+30$)이 분기 말까지 유지되면 3Q에 최대 1조 안팎의 재고이익, 반대로 4Q에 되돌리면 같은 규모의 손실이다. 적정 PBR 계산에서는 빼야 한다.</li>
+    <li><b>환율 10원 ≈ 영업 +374억, 영업외 −220억</b>(달러 순부채 22억$). 원화 강세는 영업이익을 줄이지만 환산이익으로 일부 상쇄된다.</li>
+    <li><b>내수 역마진 100원/L × 1개월 ≈ −786억</b>. 두바이 120$대에서 갭이 600~800원이면 월 5,000~6,000억이 “정부 정산 채권”으로 바뀐다. 정산 1,000억은 순이익 +762억, EPS +677원이다.</li>
+    <li><b>밸류에이션 연결.</b> 신한 2026F 기준(현재가 149,500원) PBR 1.47배·PER 4.6배·ROE 36%. 일회성 제외 ROE의 50%를 지속 ROE로 보면 적정 PBR 2.2배·적정주가 약 22만원(신한 목표가와 일치)이고, 반영률을 40%로 낮추면 1.65배·약 17만원, 2027F 기준으로 바꾸면 ROE 25.6%·반영률 50%에서 1.4배·약 17만원이 된다. 즉 <b>지금 주가는 “2026년 ROE의 약 35~40%만 지속된다”는 가정과 같다</b>.</li>
+  </ul>
+</section>
+
+<footer class="tail">
+  <div class="t">About this note</div>
+  <p class="sub">11개 증권사 리포트(8/31~9/21)와 텔레그램·공개 데이터를 합쳐, 정제 CAPA·OSP·원유 조달·윤활기유·공급차질 타임라인·밸류에이션·미국 정유사 비교·내수 최고가격제를 한 장에 정리했다. 모든 숫자에 출처를 달았고, 추정치는 “추정”으로 표시했다.</p>
+  <div class="srcstrip">
+    <span class="chip k">신한 S-Oil 9/16</span><span class="chip k">KB Monthly 9/17</span><span class="chip k">하나 Weekly 8/31·9/7·9/14</span><span class="chip k">유진 9/15</span><span class="chip k">iM SKI 9/16</span><span class="chip k">메리츠 SKI 9/15</span><span class="chip k">유안타 SKI 9/15</span><span class="chip k">하나 Weekly 9/21 (카타르 LNG)</span><span class="chip k">하나 In-depth 9/21 (올겨울 LNG)</span><span class="chip">TG 삼성 조현렬</span><span class="chip">TG 미래에셋</span><span class="chip">TG 하나 윤재성</span><span class="chip">IEA OMR 9월</span><span class="chip">Yahoo·StockAnalysis 9/18 종가</span>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+</body>
+</html>
