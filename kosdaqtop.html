@@ -37,7 +37,6 @@ th.stk,td.stk{position:sticky;left:0;z-index:2;background:var(--card);min-width:
 tbody tr.row{cursor:pointer}
 tbody tr.row:hover td{background:#1c2129}
 tbody tr.row.sel td{background:#13233a}
-tbody tr.row.nc td{opacity:.62}
 tbody tr.idx td{background:#0f1a2a;color:var(--sub);font-style:italic}
 tbody tr.idx td.stk{color:var(--txt);font-style:normal}
 tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:default;position:static}
@@ -84,7 +83,6 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 
 <div class="bar">
   <span class="lb">순위 변동 기준</span><div class="filt" id="rb"></div>
-  <label class="ck"><input type="checkbox" id="onlyc" checked> 컨센서스 보유 종목만 (26E·27E 영업이익)</label>
   <label class="ck"><input type="checkbox" id="rel"> 수익률을 코스닥 지수 대비 초과수익으로</label>
   <input type="text" id="q" placeholder="종목명·코드 검색">
   <span class="cnt" id="cnt"></span>
@@ -122,8 +120,8 @@ const retCell=(r,k)=>{const v=rv(r,k);if(v==null)return '–';const beat=!$('rel
   return `<span class="${v>0?'g':v<0?'r':''} ${beat?'beat':''}">${v>0?'+':''}${v.toFixed(1)}%</span>`;};
 
 function filtered(){
-  const q=$('q').value.trim().toLowerCase(), oc=$('onlyc').checked;
-  return D.rows.filter(r=>r.rank<=topN&&(!oc||r.cons)&&(!q||r.name.toLowerCase().includes(q)||r.code.includes(q)));
+  const q=$('q').value.trim().toLowerCase();
+  return D.rows.filter(r=>r.rank<=topN&&(!q||r.name.toLowerCase().includes(q)||r.code.includes(q)));   // 컨센 없어도 시총 50위까지 전부
 }
 // 열 정의: [키, 라벨, 값함수, 그룹시작?]
 const COLS=[
@@ -276,12 +274,12 @@ fetch('data/kosdaqtop.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).the
   D=d;
   $('hd').innerHTML=`기준일 <b>${d.asof}</b> · 빌드 ${d.built} · 코스닥 보통주 <b>${d.n_kosdaq.toLocaleString()}</b>종목 중 시총 상위 <b>50</b> · 26E·27E 영업이익 컨센 보유 <b>${d.rows.filter(r=>r.rank<=50&&r.cons).length}</b> (28E까지 ${d.rows.filter(r=>r.rank<=50&&r.full).length}) · 단위 억원 · 수익률은 수정주가 일봉 기준`;
   renderFilters(); chips(); changes(); render();
-  $('q').oninput=render; $('onlyc').onchange=render; $('rel').onchange=render;
+  $('q').oninput=render; $('rel').onchange=render;
   const _rf=renderFilters; renderFilters=function(){_rf();chips();changes();};
   $('note').innerHTML=`<h3>방법론</h3><ul>
   <li><b>유니버스</b> 코스닥 보통주(스팩·우선주·거래정지 제외) 시가총액 상위 50 고정. 순위는 빌드 시점 시총 기준. 50위 밖으로 밀린 종목의 현재 순위를 보여주기 위해 ${d.top}위까지만 뒤에서 수집한다.</li>
   <li><b>순위 변동</b> 매 빌드(평일 20:15)의 시총 순위를 일별로 누적해 전일·1주(5거래일)·1개월(20거래일) 전 순위와 비교. ▲=상승, ▼=하락, NEW=기준일에 수집 범위(상위 ${d.top}) 밖이던 종목. 진입·이탈은 50위 경계 기준. 첫 가동일(${fd(d.hist&&d.hist.dates.find(x=>!d.hist.est[x])||d.asof)}) 이전 구간은 <b>종가 × 현재 상장주식수로 역산한 추정 순위</b>(수집 집합 안에서만 매긴 근사치, 상장주식수 변동 미반영)이며 '(추정)'으로 표기. 이후는 실측이 쌓인다.</li>
-  <li><b>영업이익</b> 증권사 컨센서스 연간 표의 영업이익(발표기준). 2025A는 확정 실적, 2026E·2027E·2028E는 추정 평균. 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작을수록 의심). 「컨센 보유만」 해제 시 컨센 없는 종목도 흐리게 표시.</li>
+  <li><b>영업이익</b> 증권사 컨센서스 연간 표의 영업이익(발표기준). 2025A는 확정 실적, 2026E·2027E·2028E는 추정 평균. 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작을수록 의심). <b>컨센이 없는 종목도 시총 순위대로 50위까지 모두 표시</b>하며 컨센 열은 –, 「컨센 없음」 태그를 단다. 컨센 열로 정렬하면 이 종목들은 맨 아래로 간다.</li>
   <li><b>증가율</b> = 다음 해 ÷ 전 해 − 1. 기준연도가 적자면 비율이 무의미하므로 흑전·적전·적지·적확으로 표기. CAGR은 2025A→2028E 3년 연복리(양수 쌍만).</li>
   <li><b>수익률</b> 수정주가 일봉 기준 — 1M·3M·6M·1Y·2Y는 달력 기준 같은 날짜(휴장이면 직전 거래일) 종가 대비, YTD는 전년 말 종가 대비. 굵은 글씨 = 같은 기간 코스닥 지수를 이김. 「지수 대비」 체크 시 초과수익(%p)으로 전환. 2026-09-14부터 일봉 종가는 KRX 애프터마켓(20:00) 마지막 체결가.</li>
   <li><b>PER</b> = 현재가 ÷ 해당 연도 EPS(EPS 양수일 때만). <b>PBR</b> 직전 결산 BPS와 26E BPS 두 기준. 현재가·시총은 네이버 기준(장중이면 장중가).</li>
