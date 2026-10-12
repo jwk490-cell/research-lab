@@ -83,7 +83,6 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 <div class="chips" id="chips"></div>
 
 <div class="bar">
-  <span class="lb">시총 상위</span><div class="filt" id="tf"></div>
   <span class="lb">순위 변동 기준</span><div class="filt" id="rb"></div>
   <label class="ck"><input type="checkbox" id="onlyc" checked> 컨센서스 보유 종목만 (26E·27E 영업이익)</label>
   <label class="ck"><input type="checkbox" id="rel"> 수익률을 코스닥 지수 대비 초과수익으로</label>
@@ -101,7 +100,7 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 </div>
 <script>
 const $=id=>document.getElementById(id);
-let D=null, topN=75, sortK='mcap', sortD=-1, sel=null, rbase=1;
+let D=null, topN=50, sortK='mcap', sortD=-1, sel=null, rbase=1;   // 표시는 시총 상위 50 고정 (수집은 이탈 추적용 버퍼 포함)
 const RB=[[1,'전일'],[5,'1주 (5거래일)'],[20,'1개월 (20거래일)']];
 // 순위 변동: 이력(hist.rank[date][code])에서 기준일 순위를 찾아 Δ = 기준일 순위 − 현재 순위 (양수 = 상승)
 function baseDate(){const ds=D.hist&&D.hist.dates||[];return ds.length>rbase?ds[ds.length-1-rbase]:null;}
@@ -221,8 +220,6 @@ function detail(r){
 function renderFilters(){
   const mkb=(id,items,cur,set)=>{$(id).innerHTML=items.map(([k,l])=>`<button class="${String(cur)===String(k)?'on':''}" data-k="${k}">${l}</button>`).join('');
     $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.k);renderFilters();render();});};
-  const tops=[50,75,100,150].filter(n=>n<=D.top);
-  mkb('tf',tops.map(n=>[n,`${n}`]),topN,v=>topN=+v);
   mkb('rb',RB.map(([k,l])=>[k,l]),rbase,v=>rbase=+v);
   mkb('sf',[['mcap','시총'],['rkd','순위 변동'],['ytd','YTD'],['r1y','1Y'],['r1m','1M'],['g2','OP 26E→27E'],['g3','OP 27E→28E'],['cagr','OP CAGR'],['per26','PER 26E'],['per27','PER 27E'],['pbr_t','PBR']],sortK,v=>{sortK=v;sortD=ASC.has(v)?1:-1;});
 }
@@ -238,7 +235,7 @@ function changes(){
   const it=(r,d)=>`<span class="it"><b>${r.name}</b> <span class="${d>0?'up':'dn'}">${d>0?'▲':'▼'}${Math.abs(d)}</span> <span class="f">(${prevRank(r.code)}→${r.rank})</span></span>`;
   box.innerHTML=`<div><span class="k">순위 변동 · 상위 ${topN} · ${RB.find(x=>x[0]===rbase)[1]} ${fd(bd)} → ${fd(D.asof)}${D.hist.est[bd]?' <span class="y">(기준일 순위는 종가×상장주식수 역산 추정)</span>':''}</span></div>
   <div><span class="k">진입 ${ins.length}</span>${ins.length?ins.map(r=>`<span class="it"><b>${r.name}</b> <span class="new">${prev[r.code]==null?'NEW':prev[r.code]+'→'+r.rank}</span></span>`).join(''):'<span class="f">없음</span>'}</div>
-  <div><span class="k">이탈 ${outs.length}</span>${outs.length?outs.map(([c,p])=>`<span class="it"><b>${byCode[c]?byCode[c].name:names[c]||c}</b> <span class="dn">${p}→${byCode[c]?byCode[c].rank:'150밖'}</span></span>`).join(''):'<span class="f">없음</span>'}</div>
+  <div><span class="k">이탈 ${outs.length}</span>${outs.length?outs.map(([c,p])=>`<span class="it"><b>${byCode[c]?byCode[c].name:names[c]||c}</b> <span class="dn">${p}→${byCode[c]?byCode[c].rank:D.top+'위 밖'}</span></span>`).join(''):'<span class="f">없음</span>'}</div>
   <div><span class="k">상승</span>${up.length?up.map(([r,d])=>it(r,d)).join(''):'<span class="f">없음</span>'}</div>
   <div><span class="k">하락</span>${dn.length?dn.map(([r,d])=>it(r,d)).join(''):'<span class="f">없음</span>'}</div>`;
 }
@@ -277,13 +274,13 @@ function chips(){
 }
 fetch('data/kosdaqtop.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{
   D=d;
-  $('hd').innerHTML=`기준일 <b>${d.asof}</b> · 빌드 ${d.built} · 코스닥 보통주 <b>${d.n_kosdaq.toLocaleString()}</b>종목 중 시총 상위 <b>${d.top}</b> 수집 · 26E·27E 영업이익 컨센 보유 <b>${d.n_cons}</b> (28E까지 ${d.n_full}) · 단위 억원 · 수익률은 수정주가 일봉 기준`;
+  $('hd').innerHTML=`기준일 <b>${d.asof}</b> · 빌드 ${d.built} · 코스닥 보통주 <b>${d.n_kosdaq.toLocaleString()}</b>종목 중 시총 상위 <b>50</b> · 26E·27E 영업이익 컨센 보유 <b>${d.rows.filter(r=>r.rank<=50&&r.cons).length}</b> (28E까지 ${d.rows.filter(r=>r.rank<=50&&r.full).length}) · 단위 억원 · 수익률은 수정주가 일봉 기준`;
   renderFilters(); chips(); changes(); render();
   $('q').oninput=render; $('onlyc').onchange=render; $('rel').onchange=render;
   const _rf=renderFilters; renderFilters=function(){_rf();chips();changes();};
   $('note').innerHTML=`<h3>방법론</h3><ul>
-  <li><b>유니버스</b> 코스닥 보통주(스팩·우선주·거래정지 제외)를 시가총액 순으로 상위 ${d.top}까지 수집. 기본 표시는 상위 75, 버튼으로 50/100/150 전환. 순위는 빌드 시점 시총 기준.</li>
-  <li><b>순위 변동</b> 매 빌드(평일 20:15)의 시총 순위를 일별로 누적해 전일·1주(5거래일)·1개월(20거래일) 전 순위와 비교. ▲=상승, ▼=하락, NEW=기준일에 수집 범위(상위 150) 밖이던 종목. 진입·이탈은 선택한 상위 N 경계 기준. 첫 가동일(${fd(d.hist&&d.hist.dates.find(x=>!d.hist.est[x])||d.asof)}) 이전 구간은 <b>종가 × 현재 상장주식수로 역산한 추정 순위</b>(수집 집합 안에서만 매긴 근사치, 상장주식수 변동 미반영)이며 '(추정)'으로 표기. 이후는 실측이 쌓인다.</li>
+  <li><b>유니버스</b> 코스닥 보통주(스팩·우선주·거래정지 제외) 시가총액 상위 50 고정. 순위는 빌드 시점 시총 기준. 50위 밖으로 밀린 종목의 현재 순위를 보여주기 위해 ${d.top}위까지만 뒤에서 수집한다.</li>
+  <li><b>순위 변동</b> 매 빌드(평일 20:15)의 시총 순위를 일별로 누적해 전일·1주(5거래일)·1개월(20거래일) 전 순위와 비교. ▲=상승, ▼=하락, NEW=기준일에 수집 범위(상위 ${d.top}) 밖이던 종목. 진입·이탈은 50위 경계 기준. 첫 가동일(${fd(d.hist&&d.hist.dates.find(x=>!d.hist.est[x])||d.asof)}) 이전 구간은 <b>종가 × 현재 상장주식수로 역산한 추정 순위</b>(수집 집합 안에서만 매긴 근사치, 상장주식수 변동 미반영)이며 '(추정)'으로 표기. 이후는 실측이 쌓인다.</li>
   <li><b>영업이익</b> 증권사 컨센서스 연간 표의 영업이익(발표기준). 2025A는 확정 실적, 2026E·2027E·2028E는 추정 평균. 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작을수록 의심). 「컨센 보유만」 해제 시 컨센 없는 종목도 흐리게 표시.</li>
   <li><b>증가율</b> = 다음 해 ÷ 전 해 − 1. 기준연도가 적자면 비율이 무의미하므로 흑전·적전·적지·적확으로 표기. CAGR은 2025A→2028E 3년 연복리(양수 쌍만).</li>
   <li><b>수익률</b> 수정주가 일봉 기준 — 1M·3M·6M·1Y·2Y는 달력 기준 같은 날짜(휴장이면 직전 거래일) 종가 대비, YTD는 전년 말 종가 대비. 굵은 글씨 = 같은 기간 코스닥 지수를 이김. 「지수 대비」 체크 시 초과수익(%p)으로 전환. 2026-09-14부터 일봉 종가는 KRX 애프터마켓(20:00) 마지막 체결가.</li>
