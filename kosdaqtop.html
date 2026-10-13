@@ -1,6 +1,6 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>코스닥 시총 상위 × 영업이익 컨센서스</title>
+<title>시총 상위 × 영업이익 컨센서스</title>
 <style>
 :root{--bg:#0d1117;--card:#161b22;--line:#21262d;--txt:#e6edf3;--sub:#8b949e;--faint:#6e7681;
 --red:#f85149;--org:#ffa657;--grn:#3fb950;--blu:#58a6ff;--pur:#bc8cff;--yel:#d29922;--teal:#39d3bb}
@@ -42,6 +42,7 @@ tbody tr.idx td.stk{color:var(--txt);font-style:normal}
 tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:default;position:static}
 .det{position:sticky;left:14px;max-width:calc(100vw - 72px)}
 .up{color:var(--grn)}.dn{color:var(--red)}.new{color:var(--org);font-weight:600;font-size:11px}
+.est{opacity:.5}
 .chg{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12.5px;color:var(--sub);line-height:1.8}
 .chg b{color:var(--txt)}
 .chg .k{color:var(--faint);font-size:11px;margin-right:6px}
@@ -77,13 +78,14 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 .empty{padding:26px;text-align:center;color:var(--faint)}
 .cnt{font-size:11.5px;color:var(--faint);margin-left:auto}
 </style></head><body><div class="wrap">
-<h1>코스닥 시총 상위 × 연간 영업이익 컨센서스</h1>
+<h1 id="h1">시총 상위 × 연간 영업이익 컨센서스</h1>
 <div class="sub" id="hd">불러오는 중…</div>
 <div class="chips" id="chips"></div>
 
 <div class="bar">
+  <span class="lb">표시</span><div class="filt" id="tn"></div>
   <span class="lb">순위 변동 기준</span><div class="filt" id="rb"></div>
-  <label class="ck"><input type="checkbox" id="rel"> 수익률을 코스닥 지수 대비 초과수익으로</label>
+  <label class="ck"><input type="checkbox" id="rel"> 수익률을 <span id="ixl">지수</span> 대비 초과수익으로</label>
   <input type="text" id="q" placeholder="종목명·코드 검색">
   <span class="cnt" id="cnt"></span>
 </div>
@@ -98,20 +100,28 @@ tr.det td{background:#0f1319;padding:12px 14px 14px;white-space:normal;cursor:de
 </div>
 <script>
 const $=id=>document.getElementById(id);
-let D=null, topN=50, sortK='mcap', sortD=-1, sel=null, rbase=1;   // 표시는 시총 상위 50 고정 (수집은 이탈 추적용 버퍼 포함)
+// 시장: ?m=kospi → 코스피, 그 외 코스닥 (허브 탭 kospitop / kosdaqtop 이 같은 페이지를 쓴다)
+const MK=new URLSearchParams(location.search).get('m')==='kospi'
+  ?{nm:'코스피',ix:'코스피 지수',src:'data/kospitop.json'}:{nm:'코스닥',ix:'코스닥 지수',src:'data/kosdaqtop.json'};
+document.title=`${MK.nm} 시총 상위 × 영업이익 컨센서스`;
+$('h1').textContent=`${MK.nm} 시총 상위 × 연간 영업이익 컨센서스`; $('ixl').textContent=MK.ix;
+const TOPS=[50,100,150];
+let D=null, topN=50, sortK='mcap', sortD=-1, sel=null, rbase=1;   // 표시 기본 상위 50 · 100 · 150 전환 (수집은 이탈 추적용 버퍼 포함)
 const RB=[[1,'전일'],[5,'1주 (5거래일)'],[20,'1개월 (20거래일)']];
 // 순위 변동: 이력(hist.rank[date][code])에서 기준일 순위를 찾아 Δ = 기준일 순위 − 현재 순위 (양수 = 상승)
 function baseDate(){const ds=D.hist&&D.hist.dates||[];return ds.length>rbase?ds[ds.length-1-rbase]:null;}
 function prevRank(code){const bd=baseDate();if(!bd)return undefined;return D.hist.rank[bd][code];}
 function rkDelta(r){const p=prevRank(r.code);if(p===undefined)return null;return p-r.rank;}
+// 기준일이 수집 범위 확대 전 실측일이면 fill 아래 순위는 종가×상장주식수 역산 추정 → 흐리게
+function baseFill(){const bd=baseDate();return bd&&D.hist.fill?D.hist.fill[bd]||null:null;}
 function rkCell(r){const bd=baseDate();if(!bd)return '<span class="f">–</span>';const p=prevRank(r.code);
-  if(p==null)return '<span class="new">NEW</span>';const d=p-r.rank;
-  return d>0?`<span class="up">▲${d}</span>`:d<0?`<span class="dn">▼${-d}</span>`:'<span class="f">=</span>';}
+  if(p==null)return '<span class="new">NEW</span>';const d=p-r.rank, fl=baseFill(), e=fl&&p>fl?' est':'', t=e?` title="기준일 ${p}위는 역산 추정"`:'';
+  return d>0?`<span class="up${e}"${t}>▲${d}</span>`:d<0?`<span class="dn${e}"${t}>▼${-d}</span>`:`<span class="f${e}"${t}>=</span>`;}
 const fd=d=>d?`${d.slice(4,6)}/${d.slice(6)}`:'';
 const fmt=n=>n==null?'–':Math.round(n).toLocaleString();
 const f1=n=>n==null?'–':n.toFixed(1);
 const f2=n=>n==null?'–':n.toFixed(2);
-const uk=n=>n==null?'–':n>=10000?(n/10000).toFixed(1)+'조':fmt(n)+'억';
+const uk=n=>n==null?'–':n>=1e6?fmt(n/1e4)+'조':n>=10000?(n/10000).toFixed(1)+'조':fmt(n)+'억';
 const money=v=>v==null?'–':`<span class="${v<0?'r':''}">${fmt(v)}</span>`;
 const pct=(g,fl)=>g==null?(fl?`<span class="fl">${fl}</span>`:'–'):`<span class="${g>0?'g':g<0?'r':''}">${g>0?'+':''}${g.toFixed(1)}%</span>`;
 const RET=[['r1m','1M'],['r3m','3M'],['r6m','6M'],['ytd','YTD'],['r1y','1Y'],['r2y','2Y']];
@@ -121,7 +131,7 @@ const retCell=(r,k)=>{const v=rv(r,k);if(v==null)return '–';const beat=!$('rel
 
 function filtered(){
   const q=$('q').value.trim().toLowerCase();
-  return D.rows.filter(r=>r.rank<=topN&&(!q||r.name.toLowerCase().includes(q)||r.code.includes(q)));   // 컨센 없어도 시총 50위까지 전부
+  return D.rows.filter(r=>r.rank<=topN&&(!q||r.name.toLowerCase().includes(q)||r.code.includes(q)));   // 컨센 없어도 시총 상위 N위까지 전부
 }
 // 열 정의: [키, 라벨, 값함수, 그룹시작?]
 const COLS=[
@@ -145,20 +155,20 @@ function render(){
   const thead=$('tb').querySelector('thead');
   const bd=baseDate();
   thead.innerHTML=`<tr><th class="grp stk l" rowspan="2" data-k="name">종목 <small>시총 순위 · 클릭 정렬</small></th><th class="grp" colspan="3"></th>
-    <th class="grp gb" colspan="6">주가 수익률${rel?' · 코스닥 지수 대비 초과':''}</th><th class="grp gb" colspan="4">영업이익 (억원)</th>
+    <th class="grp gb" colspan="6">주가 수익률${rel?` · ${MK.ix} 대비 초과`:''}</th><th class="grp gb" colspan="4">영업이익 (억원)</th>
     <th class="grp gb" colspan="4">영업이익 증가율</th><th class="grp gb" colspan="5">밸류에이션 (현재가 기준)</th></tr>
     <tr>${COLS.map(([k,l,_,gb])=>`<th class="${gb?'gb':''} ${sortK===k?'s':''}" data-k="${k}">${l}${sortK===k?(sortD>0?' ▲':' ▼'):''}</th>`).join('')}</tr>`;
-  const rbl=document.getElementById('rbl'); if(rbl)rbl.textContent=bd?`${RB.find(x=>x[0]===rbase)[1].split(' ')[0]} ${fd(bd)} 대비${D.hist.est[bd]?' (추정)':''}`:'이력 없음';
+  const rbl=document.getElementById('rbl'); if(rbl)rbl.textContent=bd?`${RB.find(x=>x[0]===rbase)[1].split(' ')[0]} ${fd(bd)} 대비${D.hist.est[bd]?' (추정)':baseFill()&&topN>baseFill()?` (${baseFill()+1}위~ 추정)`:''}`:'이력 없음';
   thead.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;
     if(sortK===k)sortD=-sortD;else{sortK=k;sortD=ASC.has(k)?1:-1;}renderFilters();render();});
   const tb=$('tb').querySelector('tbody');
   const idx=D.index||{};
-  const idxRow=`<tr class="idx"><td class="stk l"><span class="rk">–</span><span class="nm">코스닥 지수</span><span class="cd">${idx.px!=null?idx.px.toFixed(2):''}</span></td><td></td><td></td><td></td>
+  const idxRow=`<tr class="idx"><td class="stk l"><span class="rk">–</span><span class="nm">${MK.ix}</span><span class="cd">${idx.px!=null?idx.px.toFixed(2):''}</span></td><td></td><td></td><td></td>
     ${RET.map(([k],i)=>`<td class="${i===0?'gb':''}">${rel?'0.0%':idx[k]==null?'–':`<span class="${idx[k]>0?'g':idx[k]<0?'r':''}">${idx[k]>0?'+':''}${idx[k].toFixed(1)}%</span>`}</td>`).join('')}
     <td class="gb" colspan="4" style="text-align:left;color:var(--faint)">기준일 ${D.asof} · 지수는 비교용</td><td class="gb" colspan="4"></td><td class="gb" colspan="5"></td></tr>`;
   if(!rows.length){tb.innerHTML=idxRow+`<tr><td colspan="${COLS.length+1}" class="empty">조건에 맞는 종목이 없습니다</td></tr>`;return;}
   tb.innerHTML=idxRow+rows.map(r=>`<tr class="row ${sel===r.code?'sel':''} ${r.cons?'':'nc'}" data-c="${r.code}">
-    <td class="stk l"><span class="rk">${r.rank}</span><span class="nm">${r.name}</span><span class="cd">${r.code}</span>${r.fy&&r.fy!==12?`<span class="tag F">${r.fy}월 결산</span>`:''}${r.cons?'':'<span class="tag N">컨센 없음</span>'}${r.cons&&!r.full?'<span class="tag N">28E 없음</span>':''}</td>
+    <td class="stk l"><span class="rk">${r.rank}</span><span class="nm">${r.name}</span><span class="cd">${r.code}</span>${r.fy&&r.fy!==12?`<span class="tag F">${r.fy}월 결산</span>`:''}${r.cons?'':`<span class="tag N">${r.np&&r.np[2]!=null?'OP 컨센 없음':'컨센 없음'}</span>`}${r.cons&&!r.full?'<span class="tag N">28E 없음</span>':''}</td>
     <td>${rkCell(r)}</td><td>${uk(r.mcap)}</td><td>${fmt(r.price)}</td>
     ${RET.map(([k],i)=>`<td class="${i===0?'gb':''}">${retCell(r,k)}</td>`).join('')}
     <td class="gb">${money(r.op[1])}</td><td>${money(r.op[2])}</td><td>${money(r.op[3])}</td><td>${money(r.op[4])}</td>
@@ -202,11 +212,11 @@ function detail(r){
   <h4 style="margin-top:8px">주가 · 밸류에이션 (현재가 ${fmt(r.price)}원 · ${r.pdate||''})</h4>
   <table><thead><tr><th class="l"></th>${RET.map(([k,l])=>`<th>${l}</th>`).join('')}</tr></thead><tbody>
   <tr><th class="l">${r.name}</th>${RET.map(([k])=>`<td>${r[k]==null?'–':`<span class="${r[k]>0?'g':r[k]<0?'r':''}">${r[k]>0?'+':''}${r[k].toFixed(1)}%</span>`}</td>`).join('')}</tr>
-  <tr><th class="l">코스닥 지수</th>${RET.map(([k])=>`<td class="f">${idx[k]==null?'–':(idx[k]>0?'+':'')+idx[k].toFixed(1)+'%'}</td>`).join('')}</tr>
+  <tr><th class="l">${MK.ix}</th>${RET.map(([k])=>`<td class="f">${idx[k]==null?'–':(idx[k]>0?'+':'')+idx[k].toFixed(1)+'%'}</td>`).join('')}</tr>
   <tr><th class="l">초과수익</th>${RET.map(([k])=>{const v=r[k]!=null&&idx[k]!=null?r[k]-idx[k]:null;return `<td>${v==null?'–':`<span class="${v>0?'g':v<0?'r':''}">${v>0?'+':''}${v.toFixed(1)}%p</span>`}</td>`}).join('')}</tr>
   </tbody></table>
   <table style="margin-top:10px"><tbody>
-  <tr><th class="l">시가총액</th><td>${uk(r.mcap)}</td><th class="l">코스닥 시총 순위</th><td>${r.rank}위</td></tr>
+  <tr><th class="l">시가총액</th><td>${uk(r.mcap)}</td><th class="l">${MK.nm} 시총 순위</th><td>${r.rank}위</td></tr>
   <tr><th class="l">PBR 직전결산</th><td>${f2(r.pbr_t)}배 <span class="f">(BPS ${r.bps_year||''} ${r.bps_t!=null?fmt(r.bps_t)+'원':''})</span></td><th class="l">PBR 26E / 27E</th><td>${f2(r.pbr26)} / ${f2(r.pbr27)}배</td></tr>
   <tr><th class="l">PER 25A / 26E / 27E / 28E</th><td colspan="3">${f1(r.per['25'])} / ${f1(r.per['26'])} / ${f1(r.per['27'])} / ${f1(r.per['28'])}배</td></tr>
   <tr><th class="l">OP 증가율</th><td colspan="3">24→25 ${r.g_op[0]==null?(r.f_op[0]||'–'):(r.g_op[0]>0?'+':'')+r.g_op[0].toFixed(1)+'%'} · 25→26E ${r.g_op[1]==null?(r.f_op[1]||'–'):(r.g_op[1]>0?'+':'')+r.g_op[1].toFixed(1)+'%'} · 26E→27E ${r.g_op[2]==null?(r.f_op[2]||'–'):(r.g_op[2]>0?'+':'')+r.g_op[2].toFixed(1)+'%'} · 27E→28E ${r.g_op[3]==null?(r.f_op[3]||'–'):(r.g_op[3]>0?'+':'')+r.g_op[3].toFixed(1)+'%'} · 3년 CAGR ${r.cagr==null?'–':r.cagr.toFixed(1)+'%'}</td></tr>
@@ -218,6 +228,7 @@ function detail(r){
 function renderFilters(){
   const mkb=(id,items,cur,set)=>{$(id).innerHTML=items.map(([k,l])=>`<button class="${String(cur)===String(k)?'on':''}" data-k="${k}">${l}</button>`).join('');
     $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.k);renderFilters();render();});};
+  mkb('tn',TOPS.map(n=>[n,`상위 ${n}`]),topN,v=>{topN=+v;if(sel&&!D.rows.some(r=>r.code===sel&&r.rank<=topN))sel=null;});
   mkb('rb',RB.map(([k,l])=>[k,l]),rbase,v=>rbase=+v);
   mkb('sf',[['mcap','시총'],['rkd','순위 변동'],['ytd','YTD'],['r1y','1Y'],['r1m','1M'],['g2','OP 26E→27E'],['g3','OP 27E→28E'],['cagr','OP CAGR'],['per26','PER 26E'],['per27','PER 27E'],['pbr_t','PBR']],sortK,v=>{sortK=v;sortD=ASC.has(v)?1:-1;});
 }
@@ -231,7 +242,7 @@ function changes(){
   const mv=cur.map(r=>[r,rkDelta(r)]).filter(x=>x[1]!=null&&x[1]!==0);
   const up=mv.filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,6), dn=mv.filter(x=>x[1]<0).sort((a,b)=>a[1]-b[1]).slice(0,6);
   const it=(r,d)=>`<span class="it"><b>${r.name}</b> <span class="${d>0?'up':'dn'}">${d>0?'▲':'▼'}${Math.abs(d)}</span> <span class="f">(${prevRank(r.code)}→${r.rank})</span></span>`;
-  box.innerHTML=`<div><span class="k">순위 변동 · 상위 ${topN} · ${RB.find(x=>x[0]===rbase)[1]} ${fd(bd)} → ${fd(D.asof)}${D.hist.est[bd]?' <span class="y">(기준일 순위는 종가×상장주식수 역산 추정)</span>':''}</span></div>
+  box.innerHTML=`<div><span class="k">순위 변동 · 상위 ${topN} · ${RB.find(x=>x[0]===rbase)[1]} ${fd(bd)} → ${fd(D.asof)}${D.hist.est[bd]?' <span class="y">(기준일 순위는 종가×상장주식수 역산 추정)</span>':baseFill()&&topN>baseFill()?` <span class="y">(기준일 ${baseFill()+1}위 이하는 역산 추정 — 그날은 ${baseFill()}위까지만 실측 기록)</span>`:''}</span></div>
   <div><span class="k">진입 ${ins.length}</span>${ins.length?ins.map(r=>`<span class="it"><b>${r.name}</b> <span class="new">${prev[r.code]==null?'NEW':prev[r.code]+'→'+r.rank}</span></span>`).join(''):'<span class="f">없음</span>'}</div>
   <div><span class="k">이탈 ${outs.length}</span>${outs.length?outs.map(([c,p])=>`<span class="it"><b>${byCode[c]?byCode[c].name:names[c]||c}</b> <span class="dn">${p}→${byCode[c]?byCode[c].rank:D.top+'위 밖'}</span></span>`).join(''):'<span class="f">없음</span>'}</div>
   <div><span class="k">상승</span>${up.length?up.map(([r,d])=>it(r,d)).join(''):'<span class="f">없음</span>'}</div>
@@ -239,7 +250,7 @@ function changes(){
 }
 function rankChart(r){
   const ds=D.hist&&D.hist.dates||[]; if(ds.length<2)return '';
-  const pts=ds.map((d,i)=>[i,D.hist.rank[d][r.code],D.hist.est[d]]);
+  const fl=D.hist.fill||{}, pts=ds.map((d,i)=>{const v=D.hist.rank[d][r.code];return [i,v,D.hist.est[d]||(fl[d]&&v>fl[d])];});
   const W=520,H=110,m={l:28,r:10,t:12,b:16}; const vals=pts.filter(p=>p[1]!=null).map(p=>p[1]); if(!vals.length)return '';
   const lo=Math.max(1,Math.min(...vals)-2), hi=Math.max(...vals)+2;
   const x=i=>m.l+i/(ds.length-1)*(W-m.l-m.r), y=v=>m.t+(v-lo)/(hi-lo)*(H-m.t-m.b);
@@ -267,21 +278,22 @@ function chips(){
     [`${uk(s26)}`,`합산 영업이익 26E (${f.length}종목)`,`25A ${uk(s25)} → 27E ${uk(s27)} → 28E ${uk(s28)}`],
     [`${gp(s25,s26)} · ${gp(s26,s27)} · ${gp(s27,s28)}`,'합산 OP 증가율 25→26E · 26→27E · 27→28E','28E까지 컨센 있는 종목 합산'],
     [`${f1(med(c.map(r=>r.per['26'])))} / ${f1(med(c.map(r=>r.per['27'])))}배`,'PER 26E / 27E 중간값','PER은 EPS 양수 종목만'],
-    [`${(()=>{const m=med(top.map(r=>r.ytd));return m==null?'–':(m>0?'+':'')+m.toFixed(1)+'%'})()}`,`YTD 수익률 중간값 (상위 ${topN})`,`코스닥 지수 YTD ${D.index&&D.index.ytd!=null?(D.index.ytd>0?'+':'')+D.index.ytd.toFixed(1)+'%':'–'}`],
+    [`${(()=>{const m=med(top.map(r=>r.ytd));return m==null?'–':(m>0?'+':'')+m.toFixed(1)+'%'})()}`,`YTD 수익률 중간값 (상위 ${topN})`,`${MK.ix} YTD ${D.index&&D.index.ytd!=null?(D.index.ytd>0?'+':'')+D.index.ytd.toFixed(1)+'%':'–'}`],
   ].map(([n,l,s])=>`<div class="chip"><b>${n}</b><span>${l}</span><small>${s}</small></div>`).join('');
 }
-fetch('data/kosdaqtop.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{
+function head(){const d=D, top=d.rows.filter(r=>r.rank<=topN);
+  $('hd').innerHTML=`기준일 <b>${d.asof}</b> · 빌드 ${d.built} · ${MK.nm} 보통주 <b>${(d.n_univ||d.n_kosdaq).toLocaleString()}</b>종목 중 시총 상위 <b>${topN}</b> · 26E·27E 영업이익 컨센 보유 <b>${top.filter(r=>r.cons).length}</b> (28E까지 ${top.filter(r=>r.full).length}) · 단위 억원 · 수익률은 수정주가 일봉 기준`;}
+fetch(MK.src+'?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{
   D=d;
-  $('hd').innerHTML=`기준일 <b>${d.asof}</b> · 빌드 ${d.built} · 코스닥 보통주 <b>${d.n_kosdaq.toLocaleString()}</b>종목 중 시총 상위 <b>50</b> · 26E·27E 영업이익 컨센 보유 <b>${d.rows.filter(r=>r.rank<=50&&r.cons).length}</b> (28E까지 ${d.rows.filter(r=>r.rank<=50&&r.full).length}) · 단위 억원 · 수익률은 수정주가 일봉 기준`;
-  renderFilters(); chips(); changes(); render();
+  renderFilters(); head(); chips(); changes(); render();
   $('q').oninput=render; $('rel').onchange=render;
-  const _rf=renderFilters; renderFilters=function(){_rf();chips();changes();};
+  const _rf=renderFilters; renderFilters=function(){_rf();head();chips();changes();};
   $('note').innerHTML=`<h3>방법론</h3><ul>
-  <li><b>유니버스</b> 코스닥 보통주(스팩·우선주·거래정지 제외) 시가총액 상위 50 고정. 순위는 빌드 시점 시총 기준. 50위 밖으로 밀린 종목의 현재 순위를 보여주기 위해 ${d.top}위까지만 뒤에서 수집한다.</li>
-  <li><b>순위 변동</b> 매 빌드(평일 20:15)의 시총 순위를 일별로 누적해 전일·1주(5거래일)·1개월(20거래일) 전 순위와 비교. ▲=상승, ▼=하락, NEW=기준일에 수집 범위(상위 ${d.top}) 밖이던 종목. 진입·이탈은 50위 경계 기준. 첫 가동일(${fd(d.hist&&d.hist.dates.find(x=>!d.hist.est[x])||d.asof)}) 이전 구간은 <b>종가 × 현재 상장주식수로 역산한 추정 순위</b>(수집 집합 안에서만 매긴 근사치, 상장주식수 변동 미반영)이며 '(추정)'으로 표기. 이후는 실측이 쌓인다.</li>
-  <li><b>영업이익</b> 증권사 컨센서스 연간 표의 영업이익(발표기준). 2025A는 확정 실적, 2026E·2027E·2028E는 추정 평균. 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작을수록 의심). <b>컨센이 없는 종목도 시총 순위대로 50위까지 모두 표시</b>하며 컨센 열은 –, 「컨센 없음」 태그를 단다. 컨센 열로 정렬하면 이 종목들은 맨 아래로 간다.</li>
+  <li><b>유니버스</b> ${MK.nm} 보통주(스팩·우선주·리츠·거래정지 제외) 시가총액 상위 <b>50(기본)·100·150</b> — 상단 「표시」 버튼으로 전환. 순위는 빌드 시점 시총 기준. 표시 범위 밖으로 밀린 종목의 현재 순위를 보여주기 위해 ${d.top}위까지 수집한다.</li>
+  <li><b>순위 변동</b> 매 빌드(평일 20:15)의 시총 순위를 일별로 누적해 전일·1주(5거래일)·1개월(20거래일) 전 순위와 비교. ▲=상승, ▼=하락, NEW=기준일에 수집 범위(상위 ${d.top}) 밖이던 종목. 진입·이탈은 선택한 상위 N 경계 기준. 첫 가동일(${fd(d.hist&&d.hist.dates.find(x=>!d.hist.est[x])||d.asof)}) 이전 구간은 <b>종가 × 현재 상장주식수로 역산한 추정 순위</b>(수집 집합 안에서만 매긴 근사치, 상장주식수 변동 미반영)이며 '(추정)'으로 표기. 이후는 실측이 쌓인다.${d.hist&&d.hist.fill&&Object.keys(d.hist.fill).length?` 수집 범위를 넓히기 전 실측일(${Object.entries(d.hist.fill).map(([k,v])=>`${fd(k)} ${v}위까지`).join(', ')})의 그 아래 순위도 같은 방식으로 역산해 채웠고, 이 날을 기준으로 한 Δ는 <span class="est">흐리게</span> 표시한다.`:''}</li>
+  <li><b>영업이익</b> 증권사 컨센서스 연간 표의 영업이익(발표기준). 2025A는 확정 실적, 2026E·2027E·2028E는 추정 평균. 추정 기관 수는 표기되지 않으므로 <b>1개 증권사 추정만으로 잡힌 종목</b>도 포함될 수 있다(시총 작을수록 의심). <b>컨센이 없는 종목도 시총 순위대로 모두 표시</b>하며 컨센 열은 –, 「컨센 없음」 태그를 단다. 보험사 등 일부 금융주는 영업이익 추정 없이 순이익·EPS 컨센만 있어 「OP 컨센 없음」으로 표시(PER은 계산됨). 컨센 열로 정렬하면 이 종목들은 맨 아래로 간다.</li>
   <li><b>증가율</b> = 다음 해 ÷ 전 해 − 1. 기준연도가 적자면 비율이 무의미하므로 흑전·적전·적지·적확으로 표기. CAGR은 2025A→2028E 3년 연복리(양수 쌍만).</li>
-  <li><b>수익률</b> 수정주가 일봉 기준 — 1M·3M·6M·1Y·2Y는 달력 기준 같은 날짜(휴장이면 직전 거래일) 종가 대비, YTD는 전년 말 종가 대비. 굵은 글씨 = 같은 기간 코스닥 지수를 이김. 「지수 대비」 체크 시 초과수익(%p)으로 전환. 2026-09-14부터 일봉 종가는 KRX 애프터마켓(20:00) 마지막 체결가.</li>
+  <li><b>수익률</b> 수정주가 일봉 기준 — 1M·3M·6M·1Y·2Y는 달력 기준 같은 날짜(휴장이면 직전 거래일) 종가 대비, YTD는 전년 말 종가 대비. 굵은 글씨 = 같은 기간 ${MK.ix}를 이김. 「지수 대비」 체크 시 초과수익(%p)으로 전환. 2026-09-14부터 일봉 종가는 KRX 애프터마켓(20:00) 마지막 체결가.</li>
   <li><b>PER</b> = 현재가 ÷ 해당 연도 EPS(EPS 양수일 때만). <b>PBR</b> 직전 결산 BPS와 26E BPS 두 기준. 현재가·시총은 네이버 기준(장중이면 장중가).</li>
   <li><b>3월 결산</b> 종목은 연도 숫자로 매핑(2026E = FY2026.03). 태그로 표시.</li>
   <li><b>갱신</b> 평일 20:15 자동(애프터마켓 종료 후 당일 종가 확정, 이 시점 순위가 그날의 기록) + 수동 갱신 버튼(낮에 누르면 장중 시총으로 그날 기록이 잠시 덮이고 20:15에 다시 확정). 컨센서스는 실적 시즌 직후 가장 크게 움직인다.</li></ul>`;
