@@ -1,13 +1,13 @@
 {
- "build_id": "59c14619c8f1",
- "data_as_of": "20261014",
- "created_at": "2026-10-14T21:50:14+09:00",
+ "build_id": "daac253e92ac",
+ "data_as_of": "20261015",
+ "created_at": "2026-10-15T21:20:19+09:00",
  "method_version": "native-v1",
  "coverage": {
-  "stocks": 2534,
+  "stocks": 2535,
   "sectors": 38,
-  "dates": 329,
-  "approx_cap_stocks": 2474,
+  "dates": 330,
+  "approx_cap_stocks": 2473,
   "inflect_up": 80,
   "inflect_down": 80
  }
