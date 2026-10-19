@@ -641,6 +641,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="rrgsec">수급 로테이션 맵 (업종)</button>
     <button class="navitem" data-tab="rrgstk">수급 로테이션 맵 (종목)</button>
     <button class="navitem" data-tab="leaders">주도 섹터 · 주도주</button>
+    <button class="navitem" data-tab="brregime">업종 Breadth 레짐 <small>NEW</small></button>
     <button class="navitem" data-tab="meridian">롱숏 챌린지</button>
     <button class="archhead" id="archHead" type="button" style="display:none"><span class="arr">▸</span> 보관 <span id="archCnt"></span></button>
     <div class="archlist" id="archList"></div>
@@ -981,6 +982,9 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-leaders">
       <iframe data-src="leaders.html" title="주도 섹터 · 주도주"></iframe>
+    </section>
+    <section class="panel embed" id="tab-brregime">
+      <iframe data-src="brregime.html" title="업종 Breadth 레짐"></iframe>
     </section>
 
     <section class="panel embed" id="tab-meridian">
@@ -3211,7 +3215,7 @@ function openTab(tab){
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
   const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,kospitop:1,kosdaqtop:1,etccorp:1,
-               rrgsec:1,rrgstk:1,leaders:1,meridian:1};
+               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?(f.dataset.src.includes('?')?'&':'?')+'v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
@@ -3458,7 +3462,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
   supply:{m:'a',eta:'~7분'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
-  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'}, kospitop:{m:'a',eta:'~1분'}, kosdaqtop:{m:'a',eta:'~1분'}, etccorp:{m:'a',eta:'~1분'},
+  rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'}, kospitop:{m:'a',eta:'~1분'}, kosdaqtop:{m:'a',eta:'~1분'}, brregime:{m:'a',eta:'~1분'}, etccorp:{m:'a',eta:'~1분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
   export:{m:'a',eta:'~1분'}, corpexport:{m:'a',eta:'~3분'},
