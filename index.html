@@ -630,6 +630,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="thememap">관련주 신경망 맵</button>
     <button class="navitem" data-tab="reportscreen">리포트 스크리닝 <small>장중</small></button>
     <button class="navitem" data-tab="deepresearch">심층 리서치</button>
+    <button class="navitem" data-tab="mktsize">시장 규모 브리핑 <small>NEW</small></button>
     <button class="navitem" data-tab="leadflow">변동성 로테이션</button>
     <button class="navitem" data-tab="rstime">RS 타임머신</button>
     <button class="navitem" data-tab="backlog">수주잔고 <small>DART</small></button>
@@ -744,6 +745,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="thememap"><h3>관련주 신경망 맵 <span class="tag">인터랙티브</span></h3><p>고잉 채널 관련주 정리 249장 → 테마 131개 × 종목 1,305개 커넥톰 — 줌·검색·시간선</p></button>
           <button class="card" data-go="reportscreen"><h3>리포트 스크리닝 <span class="tag">장중</span></h3><p>당일 발간 리포트 추정치 vs 컨센 자동 대조 — OP 상향·컨센 상회 스크리닝 일별 누적</p></button>
           <button class="card" data-go="deepresearch"><h3>심층 리서치 <span class="tag">리포트</span></h3><p>종목·산업 심층 리서치 아카이브</p></button>
+          <button class="card" data-go="mktsize"><h3>시장 규모 브리핑 <span class="tag">수시 추가</span></h3><p>메모리·스마트폰·태양광·정유·원전·가스터빈·결제·휴머노이드 시장 규모와 개별 종목 체크 — 주제별 출처 표기</p></button>
           <button class="card" data-go="backlog"><h3>수주잔고 <span class="tag">DART</span></h3><p>분기별 수주잔고 추이 — OpenDART 정기보고서 자동 추출 · QoQ·YoY·연속증가·매출 커버리지</p></button>
         </div>
       </section>
@@ -998,6 +1000,10 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div class="tglist" id="tgList"></div>
         <div class="tgfeed" id="tgFeed"></div>
       </div>
+    </section>
+
+    <section class="panel embed" id="tab-mktsize">
+      <iframe data-src="mktsize.html" title="시장 규모 브리핑"></iframe>
     </section>
 
     <section class="panel embed" id="tab-thememap">
@@ -3215,7 +3221,7 @@ function openTab(tab){
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
   const FRESH={oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,kospitop:1,kosdaqtop:1,etccorp:1,
-               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1};
+               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1,mktsize:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?(f.dataset.src.includes('?')?'&':'?')+'v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
@@ -3470,6 +3476,7 @@ const RR_TABS={
   credit:{m:'a',eta:'~3분'},
   telegram:{m:'a',eta:'~2분'}, taerin:{m:'a',eta:'~2분'}, thememap:{m:'a',eta:'~3분'},
   deepresearch:{m:'x',note:'수동 발행 탭입니다'},
+  mktsize:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   reportscreen:{m:'x',note:'장중 자동 갱신 — 수동 갱신 불필요'},
   leadflow:{m:'a',eta:'~5분'}, rstime:{m:'a',eta:'~10분'},
   backlog:{m:'a',eta:'수십 분 (전수 재추출)'}, util:{m:'a',eta:'~5분'}, screening:{m:'a',eta:'~1분'},
