@@ -1,0 +1,294 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유동성 3층 트래커</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#21262d;--txt:#e6edf3;--sub:#8b949e;--faint:#6e7681;
+--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--mute:#5d6673;
+--good:#0ca30c;--warn:#fab219;--crit:#d03b3b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;padding:18px 20px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:19px;margin-bottom:2px}
+.sub{color:var(--sub);font-size:12px;margin-bottom:10px}
+.sub b{color:var(--txt);font-weight:600}
+.live{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0 14px}
+.lq{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 11px;min-width:0}
+.lq .l{font-size:11px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lq .v{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
+.lq .c{font-size:11.5px;font-variant-numeric:tabular-nums}
+.lq .t{font-size:10px;color:var(--faint)}
+.up{color:#f85149}.dn{color:#58a6ff}.fl{color:var(--sub)}
+.sec{font-size:15px;font-weight:800;margin:22px 0 4px;display:flex;align-items:baseline;gap:8px}
+.sec small{font-size:12px;color:var(--sub);font-weight:400}
+.sigs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sig{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--mute);border-radius:10px;padding:11px 13px;min-width:0}
+.sig.go{border-top-color:var(--good)}.sig.warn{border-top-color:var(--warn)}.sig.stop{border-top-color:var(--crit)}
+.sig .h{font-size:12px;color:var(--sub);font-weight:600}
+.sig .v{font-size:21px;font-weight:800;margin:3px 0 0;font-variant-numeric:tabular-nums}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;margin:2px 0 4px}
+.badge i{font-style:normal;width:16px;height:16px;border-radius:50%;display:inline-grid;place-items:center;font-size:10px;color:#0d1117}
+.go .badge i{background:var(--good)}.warn .badge i{background:var(--warn)}.stop .badge i{background:var(--crit)}.idle .badge i{background:var(--mute)}
+.sig .d{font-size:11.5px;color:var(--faint);line-height:1.5}
+.sig ul{list-style:none;font-size:11.5px;color:var(--sub);margin-top:2px}
+.sig li{display:flex;gap:6px;justify-content:space-between}
+.sig li span:last-child{font-variant-numeric:tabular-nums;color:var(--txt);white-space:nowrap}
+.sig li.on span:first-child::before{content:"● ";color:var(--good)}
+.sig li.off span:first-child::before{content:"○ ";color:var(--mute)}
+.liveadd{font-size:11.5px;color:var(--s2);margin-top:3px}
+.brief{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--s4);border-radius:10px;padding:11px 15px;margin:12px 0 4px;font-size:13px;color:#d5dce4}
+.bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:4;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line);margin-top:14px}
+.bar button{background:#1c2330;border:1px solid var(--line);color:var(--sub);border-radius:7px;padding:4px 11px;font-size:12px;cursor:pointer}
+.bar button.on{background:#13233a;border-color:var(--s1);color:var(--txt);font-weight:700}
+.bar .sp{flex:1}
+.bar .st{font-size:11px;color:var(--faint)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:8px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px;min-width:0}
+.panel.wide{grid-column:1/-1}
+.panel h3{font-size:13.5px;margin-bottom:2px}
+.panel .q{font-size:11.5px;color:var(--faint);margin-bottom:6px}
+.lg{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--sub);margin-bottom:4px}
+.lg span{display:inline-flex;align-items:center;gap:5px}
+.lg i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.lg i.dash{background:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px)!important;height:2px}
+.cv{position:relative;height:230px}
+.panel.wide .cv{height:260px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#1c2330;color:var(--sub);font-weight:600;padding:5px 7px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td{padding:5px 7px;border-top:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.n{color:var(--faint);font-size:11px;text-align:left;white-space:normal}
+tr.lh td{background:#11161d;color:var(--sub);font-weight:700;text-align:left;font-size:11.5px}
+.tblw{overflow-x:auto}
+.mix{display:flex;height:16px;border-radius:4px;overflow:hidden;gap:2px;margin:6px 0 4px}
+.mix div{min-width:0}
+.foot{color:var(--faint);font-size:11.5px;margin-top:20px;line-height:1.75}
+.foot b{color:var(--sub)}
+.how{font-size:12.5px;color:#c9d1d9;line-height:1.7}
+.how p{margin:4px 0}
+.how b{color:var(--txt)}
+@media(max-width:980px){.live{grid-template-columns:repeat(3,minmax(0,1fr))}.sigs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){body{padding:14px 16px 50px}.grid{grid-template-columns:minmax(0,1fr)}.live{grid-template-columns:repeat(2,minmax(0,1fr))}.sigs{grid-template-columns:minmax(0,1fr)}.cv{height:210px}}
+</style></head><body><div class="wrap">
+<h1>유동성 3층 트래커</h1>
+<div class="sub">가격(금리) → 양(돈의 총량) → 전달(자산시장 유입) · 일간 데이터 <b id="upd">-</b> · 장중 시세 <b id="lupd">-</b> <span id="lst"></span></div>
+
+<div class="live" id="live"></div>
+
+<div class="sec">전환 신호 <small>인상 초반 관망기 → 크게 거는 국면으로 넘어가는 순서: ① → ② → ③</small></div>
+<div class="sigs" id="sigs"></div>
+<div class="brief" id="brief"></div>
+
+<div class="bar" id="bar">
+ <span class="st">기간</span>
+ <button data-r="6">6개월</button><button data-r="12">1년</button><button data-r="36" class="on">3년</button><button data-r="0">전체(2018~)</button>
+ <span class="sp"></span><span class="st">드래그 없이 hover로 값 확인 · 장중 5분마다 자동 갱신</span>
+</div>
+
+<div class="sec">1층 · 가격 <small>기준금리 자체보다 시장이 반영한 경로</small></div>
+<div class="grid">
+ <div class="panel"><h3>정책금리 vs 2년물</h3><div class="q">2년물이 목표밴드 아래로 내려가면 시장이 인하를 선반영</div><div class="lg" id="lg-c1"></div><div class="cv"><canvas id="c1"></canvas></div></div>
+ <div class="panel"><h3>2년물 − 실효연방기금금리 (bp)</h3><div class="q">0선 아래 = 인하 선반영 (2019년 초·2023년 말 사례)</div><div class="cv"><canvas id="c2"></canvas></div></div>
+ <div class="panel"><h3>연방기금선물 내재 FOMC 경로 (%)</h3><div class="q">회의별 결정 후 내재 금리 — 1주·1개월 전과 비교, 장중 갱신</div><div class="lg" id="lg-c3"></div><div class="cv"><canvas id="c3"></canvas></div></div>
+ <div class="panel"><h3>10년물: 명목 · 실질(TIPS) · 기대인플레(BEI)</h3><div class="q">멀티플·AI 캐펙스에는 명목보다 실질금리가 직접 작용</div><div class="lg" id="lg-c4"></div><div class="cv"><canvas id="c4"></canvas></div></div>
+</div>
+
+<div class="sec">2층 · 양 <small>돈이 얼마나 풀리고 있나</small></div>
+<div class="grid">
+ <div class="panel wide"><h3>순유동성 vs 위험자산 (구간 시작 = 100)</h3><div class="q">순유동성 = 연준 총자산 − TGA − 역레포 · 2020년 이후 나스닥·비트코인과 동행</div><div class="lg" id="lg-c5"></div><div class="cv"><canvas id="c5"></canvas></div></div>
+ <div class="panel"><h3>순유동성 ($B)</h3><div class="q">연준 주간치 forward-fill, TGA 당일 종가</div><div class="cv"><canvas id="c5b"></canvas></div></div>
+ <div class="panel"><h3>QT 속도 — 연준 총자산 13주 변화 (월환산 $B)</h3><div class="q">0 이상 = QT 정지 / 대차대조표 확대</div><div class="cv"><canvas id="c6"></canvas></div></div>
+ <div class="panel"><h3>TGA · 역레포 ($B)</h3><div class="q">TGA 축소·역레포 소진은 지준 공급, 재건은 흡수</div><div class="lg" id="lg-c7"></div><div class="cv"><canvas id="c7"></canvas></div></div>
+ <div class="panel"><h3>지급준비금 ($B)</h3><div class="q">지준 부족 → Fed가 QT를 멈추는 사실상의 트리거</div><div class="cv"><canvas id="c8"></canvas></div></div>
+ <div class="panel"><h3>SOFR − IORB (bp)</h3><div class="q">양(+)으로 벌어지면 레포 스트레스 (2019-09 레포 발작 전례)</div><div class="cv"><canvas id="c9"></canvas></div></div>
+ <div class="panel"><h3>SRF(상설레포) 사용 ($B)</h3><div class="q">사용이 늘면 지준이 부족하다는 신호</div><div class="cv"><canvas id="c10"></canvas></div></div>
+ <div class="panel"><h3>글로벌 M2 vs 광의 달러지수 (YoY %)</h3><div class="q">M2 = 美·유로·日·中 달러 환산 합산 · 달러 약세 = 글로벌 완화</div><div class="lg" id="lg-c11"></div><div class="cv"><canvas id="c11"></canvas></div></div>
+ <div class="panel"><h3>글로벌 M2 구성 <small id="gm2d" style="color:var(--faint);font-weight:400"></small></h3><div class="q">달러 환산 잔액 ($T) — 환율 변동이 합계를 크게 흔든다</div><div class="mix" id="mix"></div><div class="lg" id="lg-mix"></div><div class="cv" style="height:170px"><canvas id="c11b"></canvas></div></div>
+</div>
+
+<div class="sec">3층 · 전달 <small>돈이 실제로 자산시장·실물로 들어오고 있나</small></div>
+<div class="grid">
+ <div class="panel"><h3>시카고연준 금융여건지수 NFCI · ANFCI</h3><div class="q">0 아래 = 평균보다 완화적 · 상승 = 긴축이 쌓이는 중</div><div class="lg" id="lg-c12"></div><div class="cv"><canvas id="c12"></canvas></div></div>
+ <div class="panel"><h3>신용스프레드 HY · IG OAS (bp)</h3><div class="q">유동성이 마르면 주식보다 먼저 벌어진다</div><div class="lg" id="lg-c13"></div><div class="cv"><canvas id="c13"></canvas></div></div>
+ <div class="panel"><h3>SLOOS — C&I 대출태도 순강화 비율 (%p)</h3><div class="q">양(+) = 대출 기준을 조이는 은행이 많음 (분기)</div><div class="cv"><canvas id="c14"></canvas></div></div>
+ <div class="panel"><h3>상업은행 대출 증가율 (YoY %)</h3><div class="q">중앙은행 유동성이 실물로 가는 파이프</div><div class="cv"><canvas id="c15"></canvas></div></div>
+</div>
+
+<div class="sec">한국 <small>글로벌 유동성이 코스피로 들어오는지 / 빠지는지</small></div>
+<div class="grid">
+ <div class="panel"><h3>외국인 코스피 누적 순매수 (조원, 구간 시작 = 0)</h3><div class="q">확정치 기준 (21:15 수집) — 잠정치 미사용</div><div class="cv"><canvas id="k1"></canvas></div></div>
+ <div class="panel"><h3>코스피</h3><div class="q">같은 구간 지수 흐름</div><div class="cv"><canvas id="k2"></canvas></div></div>
+ <div class="panel"><h3>원/달러</h3><div class="q">원화 약세 = 외국인 유동성 이탈 압력</div><div class="cv"><canvas id="k3"></canvas></div></div>
+ <div class="panel"><h3>투자자예탁금 · 신용융자 잔고 (조원)</h3><div class="q">금융투자협회 · 결제일 기준</div><div class="lg" id="lg-k4"></div><div class="cv"><canvas id="k4"></canvas></div></div>
+</div>
+
+<div class="sec">지표 일람 <small>최신값과 1주·1개월·3개월 변화</small></div>
+<div class="panel tblw"><table id="tbl"></table></div>
+
+<div class="sec">읽는 법</div>
+<div class="panel how">
+<p><b>왜 3층인가.</b> "유동성의 방향"을 기준금리 사이클로만 보면 늦다. 금리는 돈의 <b>가격</b>이고, 연준 대차대조표·TGA·역레포는 돈의 <b>양</b>이며, 금융여건·신용스프레드·은행 대출은 그 돈이 실제로 자산시장에 <b>전달</b>되는지를 보여준다.</p>
+<p><b>1층 가격.</b> 실제 인하보다 시장 반영 경로가 먼저 움직인다. 연방기금선물 내재 경로와 2년물−EFFR 스프레드가 핵심이고, 2년물이 기준금리 아래로 꺾이는 순간이 가장 단순한 전환 신호다. 실질금리는 멀티플에 직접 작용한다.</p>
+<p><b>2층 양.</b> 순유동성(연준 자산 − TGA − 역레포)은 시장에 실제로 남는 지준이다. 국채 발행 구조(단기물 비중)와 TGA가 쟁점일 때는 연준보다 재무부(QRA)가 더 중요할 수 있다. SOFR−IORB가 벌어지거나 SRF 사용이 늘면 지준 부족 → QT 정지의 사실상 트리거다. 한국 같은 시장에는 연준 자산보다 달러 환산 글로벌 M2와 달러인덱스가 더 잘 맞을 때가 많다.</p>
+<p><b>3층 전달.</b> NFCI는 금리·신용·주가·달러를 한 숫자로 묶은 긴축 누적 지표다. HY 스프레드는 유동성이 마를 때 주식보다 먼저 벌어지고, 정점을 지나면 바닥 신호가 된다(2022년 3분기 사례). SLOOS와 대출 증가율은 실물 파이프다.</p>
+<p><b>전환 순서.</b> 인상 초반 관망기라면 ① 2년물이 기준금리 아래로 → ② HY 스프레드 정점 → ③ 레포 스트레스·TGA 축소로 QT 정지 또는 단기물 발행 확대. 유가가 100달러 위에서 기대인플레로 번지면 ①이 늦어진다.</p>
+<p style="color:var(--faint)">신호 판정은 기계적 규칙이며 투자 권유가 아니다. 드러켄밀러의 지표 사용에 관한 서술은 인터뷰 기반 정리로, 원문 확인이 필요하다.</p>
+</div>
+
+<div class="foot">
+<b>소스</b> · FRED(EFFR·목표밴드·IORB·SOFR·DGS2/10·DFII10·T10YIE·WALCL·WRESBAL·RRPONTSYD·RPONTSYD·M2SL·DTWEXBGS·환율·NFCI·ANFCI·ICE BofA HY/IG OAS·DRTSCILM·TOTLL·DEXKOUS·IRSTCI01KRM156N), 재무부 DTS(TGA), ECB(유로 M2), 일본은행(M2 평잔), 중국 M2(인민은행 공표치), CBOT 연방기금선물·장중 시세(Yahoo Finance), 키움 REST(코스피 외국인 확정치), 금융투자협회(예탁금·신용융자).<br>
+<b>방법론</b> · FOMC 내재 경로는 월평균 내재금리(100 − 선물가)로 회의별 사후 금리를 순차 역산(결정일 이후 잔여일 7일 미만이면 무회의 익월 계약 사용). 2년물 스프레드 = DGS2 − EFFR. QT 속도 = WALCL 13주 변화 ÷ 3. 글로벌 M2 = 각국 M2 × 해당월 평균 환율. HY 정점 통과 = 1년 고점이 20거래일 이상 지났고 5년 중앙값 +75bp 이상이었으며 고점 대비 max(50bp, 15%) 이상 축소. 변화량은 달력일 기준.<br>
+<b>갱신</b> · 일간 데이터 화~토 07:25 · 평일 22:30(KST), 장중 시세 30분 간격. HY/IG OAS는 FRED 제공 범위상 최근 3년만.
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const C={s1:'#3987e5',s2:'#d95926',s3:'#199e70',s4:'#c98500',s5:'#d55181',mute:'#5d6673',grid:'#21262d',tick:'#8b949e'};
+let D=null,L=null,RANGE=36;const charts={};
+const ms=d=>{d=+d;return Date.UTC(Math.floor(d/1e4),Math.floor(d/100)%100-1,d%100)};
+const fmtD=t=>{const x=new Date(t);return String(x.getUTCFullYear()).slice(2)+'.'+String(x.getUTCMonth()+1).padStart(2,'0')};
+const fmtDay=t=>{const x=new Date(t);return x.getUTCFullYear()+'-'+String(x.getUTCMonth()+1).padStart(2,'0')+'-'+String(x.getUTCDate()).padStart(2,'0')};
+const nf=(v,d=2)=>v==null||isNaN(v)?'-':v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const pd=s=>s?s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6):'-';
+function cutoff(){if(!RANGE)return 0;const t=new Date();t.setMonth(t.getMonth()-RANGE);return +(t.getFullYear()+String(t.getMonth()+1).padStart(2,'0')+String(t.getDate()).padStart(2,'0'))}
+
+// 여러 시계열을 공통 날짜축에 정렬(각 시리즈 마지막 날짜 이후는 비움, 저빈도는 forward-fill)
+function align(list,r0){
+  const set=new Set();list.forEach(a=>a.forEach(p=>{if(p[0]>=r0)set.add(p[0])}));
+  const xs=[...set].sort((a,b)=>a-b);
+  const ys=list.map(a=>{let i=0,last=null;const end=a.length?a[a.length-1][0]:0,out=[];
+    while(i<a.length&&a[i][0]<xs[0]){last=a[i][1];i++}
+    for(const x of xs){while(i<a.length&&a[i][0]<=x){last=a[i][1];i++}out.push(x>end?null:last)}return out});
+  return {xs,ys};
+}
+function legend(id,items){const el=document.getElementById('lg-'+id);if(!el)return;
+  el.innerHTML=items.map(s=>`<span style="color:${s.color}"><i class="${s.dash?'dash':''}" style="background:${s.color}"></i><span style="color:var(--sub)">${s.name}</span></span>`).join('')}
+function mk(id,cfg){if(charts[id])charts[id].destroy();charts[id]=new Chart(document.getElementById(id),cfg)}
+function base(unit,dec,opts={}){return{
+  responsive:true,maintainAspectRatio:false,animation:false,normalized:true,
+  interaction:{mode:'index',intersect:false},
+  plugins:{legend:{display:false},tooltip:{backgroundColor:'#1c2330f0',borderColor:'#3a4150',borderWidth:1,titleColor:'#8b949e',bodyColor:'#e6edf3',
+    padding:8,boxWidth:8,boxHeight:8,usePointStyle:true,
+    callbacks:{title:it=>opts.cat?it[0].label:fmtDay(it[0].parsed.x),label:it=>it.raw==null||it.parsed.y==null?null:` ${it.dataset.label}  ${nf(it.parsed.y,dec)}${unit}`},
+    filter:it=>it.parsed.y!=null&&!it.dataset.noTip}},
+  scales:{x:opts.cat?{grid:{display:false},ticks:{color:C.tick,font:{size:10.5}}}:
+      {type:'linear',grid:{color:C.grid,drawTicks:false},border:{display:false},ticks:{color:C.tick,font:{size:10.5},maxTicksLimit:7,callback:v=>fmtD(v)}},
+    y:{grid:{color:C.grid,drawTicks:false},border:{display:false},ticks:{color:C.tick,font:{size:10.5},maxTicksLimit:6,callback:v=>nf(v,opts.tdec??(Math.abs(v)<10&&dec>0?1:0))}}}
+}}
+// series: [{name,data:[[d,v]],color,step,dash,fill,type:'bar',noTip}]
+function tchart(id,series,unit='',dec=2,opts={}){
+  const r0=opts.r0??cutoff();const {xs,ys}=align(series.map(s=>s.data),r0);
+  const tx=xs.map(ms);
+  const ds=series.map((s,i)=>({label:s.name,type:s.type||'line',data:tx.map((x,j)=>({x,y:ys[i][j]})),
+    borderColor:s.color,backgroundColor:s.fillc||s.color,borderWidth:s.type==='bar'?0:(s.w||2),pointRadius:0,pointHitRadius:6,
+    stepped:s.step?'before':false,borderDash:s.dash?[5,4]:[],fill:s.fill??false,spanGaps:true,noTip:s.noTip,
+    barPercentage:1,categoryPercentage:1,order:s.order??i}));
+  if(opts.zero)ds.push({label:'0',data:tx.length?[{x:tx[0],y:0},{x:tx[tx.length-1],y:0}]:[],borderColor:'#6e7681',borderWidth:1,pointRadius:0,noTip:true,order:99});
+  legend(id,series.filter(s=>!s.noLegend));
+  const o=base(unit,dec,opts);if(tx.length){o.scales.x.min=tx[0];o.scales.x.max=tx[tx.length-1]}
+  mk(id,{type:'line',data:{datasets:ds},options:o});
+}
+const S=k=>D.s[k]||[];
+
+function renderLive(){
+  const el=document.getElementById('live');if(!L){el.innerHTML='';return}
+  document.getElementById('lupd').textContent=L.updated+' KST';
+  el.innerHTML=L.quotes.map(q=>{const c=q.prev?(q.last-q.prev):null,p=q.prev?c/q.prev*100:null;
+    const yld=q.unit==='%';const cls=c==null||Math.abs(c)<1e-9?'fl':(c>0?'up':'dn');
+    const dec=yld?3:(q.last>1000?1:2);
+    const ct=c==null?'-':(yld?`${c>=0?'+':''}${(c*100).toFixed(1)}bp`:`${c>=0?'+':''}${nf(c,dec)} (${p>=0?'+':''}${p.toFixed(2)}%)`);
+    return `<div class="lq"><div class="l">${q.label}</div><div class="v">${nf(q.last,dec)}${yld?'%':''}</div><div class="c ${cls}">${ct}</div><div class="t">${q.t}</div></div>`}).join('');
+  renderSignals();if(D)c3();
+}
+const ICON={go:'✔',warn:'!',stop:'✖',idle:'–'},STL={go:'점등',warn:'경계',stop:'미점등',idle:'대상 아님'};
+function renderSignals(){
+  if(!D)return;
+  const lq=L&&L.quotes.find(q=>q.sym==='2YY=F');
+  document.getElementById('sigs').innerHTML=D.signals.map(s=>{
+    let extra='';
+    if(s.id==='s1'&&lq){const sp=(lq.last-D.kpi.effr)*100;extra=`<div class="liveadd">장중 2Y ${lq.last.toFixed(2)}% → 스프레드 ${sp>=0?'+':''}${sp.toFixed(0)}bp (${lq.t})</div>`}
+    if(s.id==='oil'&&L){const o=L.quotes.find(q=>q.sym==='CL=F');if(o)extra=`<div class="liveadd">장중 WTI $${o.last.toFixed(2)} (${o.t})</div>`}
+    return `<div class="sig ${s.state}"><div class="h">${s.title}</div><div class="v">${s.value}</div>
+    <div class="badge"><i>${ICON[s.state]}</i>${STL[s.state]} · <span style="font-weight:600;color:var(--sub)">${s.verdict}</span></div>
+    ${s.detail?`<div class="d">${s.detail}</div>`:''}
+    ${s.sub?`<ul>${s.sub.map(x=>`<li class="${x.on?'on':'off'}"><span>${x.k}</span><span>${x.v}</span></li>`).join('')}</ul>`:''}${extra}</div>`}).join('');
+  const lit=D.signals.filter(s=>['s1','s2','s3'].includes(s.id)&&s.state==='go').length;
+  const k=D.kpi;
+  document.getElementById('brief').innerHTML=`전환 신호 <b>${lit}/3</b> 점등. 2년물−EFFR <b>${(k.spread2y*100).toFixed(0)}bp</b>`+
+    (k.path12!=null?`, 선물은 향후 1년 <b>${(k.path12*100>=0?'+':'')+(k.path12*100).toFixed(0)}bp</b> 반영`:'')+
+    ` · 순유동성 <b>$${nf(k.net/1000,2)}T</b>(4주 ${k.net_4w>=0?'+':''}${nf(k.net_4w,0)}B) · QT 속도 월 ${k.qt_pace>=0?'+':''}${nf(k.qt_pace,0)}B · HY <b>${(k.hy*100).toFixed(0)}bp</b> · NFCI ${nf(k.nfci,2)}.`;
+}
+function c3(){
+  const z=D.zq;if(!z){return}
+  const sn=z.snaps,now=(sn.now||{}).path||[];
+  const lab=now.map(p=>p.date.slice(2).replace(/-/g,'.'));
+  const pick=pp=>now.map(p=>{const m=(pp||[]).find(x=>x.date===p.date);return m?+m.post.toFixed(3):null});
+  const sets=[];
+  if(sn.m1)sets.push({name:`1개월 전 (${pd(sn.m1.asof).slice(5)})`,v:pick(sn.m1.path),color:C.mute,dash:true});
+  if(sn.w1)sets.push({name:`1주 전 (${pd(sn.w1.asof).slice(5)})`,v:pick(sn.w1.path),color:C.s3});
+  sets.push({name:`종가 (${pd(z.asof).slice(5)})`,v:pick(now),color:C.s1});
+  if(L&&L.path)sets.push({name:'장중',v:pick(L.path),color:C.s2});
+  sets.push({name:`현재 EFFR ${D.kpi.effr.toFixed(2)}%`,v:now.map(()=>D.kpi.effr),color:'#8b949e',dash:true,flat:true});
+  legend('c3',sets);
+  mk('c3',{type:'line',data:{labels:lab,datasets:sets.map(s=>({label:s.name,data:s.v,borderColor:s.color,backgroundColor:s.color,
+    borderWidth:s.flat?1:2,borderDash:s.dash?[5,4]:[],pointRadius:s.flat?0:3.5,pointHoverRadius:5,pointBorderColor:'#161b22',pointBorderWidth:1}))},
+    options:base('%',3,{cat:true,tdec:2})});
+}
+function renderCharts(){
+  const r0=cutoff();
+  tchart('c1',[{name:'목표밴드 상단',data:S('tgtu'),color:'#30363d',step:true,fill:'+1',fillc:'rgba(139,148,158,.12)',w:1,noLegend:false},
+    {name:'목표밴드 하단',data:S('tgtl'),color:'#30363d',step:true,w:1,noLegend:true},
+    {name:'EFFR',data:S('effr'),color:C.s1,step:true},{name:'2년물',data:S('dgs2'),color:C.s2}],'%',2);
+  tchart('c2',[{name:'2Y−EFFR',data:S('sp2'),color:C.s2}],'bp',0,{zero:true});
+  c3();
+  tchart('c4',[{name:'10년 명목',data:S('dgs10'),color:C.s1},{name:'10년 실질(TIPS)',data:S('dfii10'),color:C.s2},{name:'10년 BEI',data:S('t10yie'),color:C.s3}],'%',2);
+  // 지수화 비교
+  {const keys=[['net','순유동성',C.s1],['ndx','나스닥100',C.s2],['btc','비트코인',C.s4],['kospi','코스피',C.s3]];
+   const {xs,ys}=align(keys.map(k=>S(k[0])),r0);
+   const idx=ys.map(a=>{const b=a.find(v=>v!=null);return a.map(v=>v==null||!b?null:v/b*100)});
+   const ser=keys.map((k,i)=>({name:k[1],data:xs.map((x,j)=>[x,idx[i][j]]).filter(p=>p[1]!=null),color:k[2],w:k[0]==='net'?2.5:1.6}));
+   tchart('c5',ser,'',1);}
+  tchart('c5b',[{name:'순유동성',data:S('net'),color:C.s1}],'B',0);
+  tchart('c6',[{name:'QT 속도',data:S('qtp'),color:C.s1,type:'bar',fillc:'rgba(57,135,229,.75)'}],'B/월',0,{zero:true});
+  tchart('c7',[{name:'TGA',data:S('tga'),color:C.s1},{name:'역레포',data:S('rrp'),color:C.s2}],'B',0);
+  tchart('c8',[{name:'지준금',data:S('res'),color:C.s1,step:true}],'B',0);
+  tchart('c9',[{name:'SOFR−IORB',data:S('sofr_iorb'),color:C.s2,w:1.5}],'bp',0,{zero:true});
+  tchart('c10',[{name:'SRF 사용',data:S('srf'),color:C.s2,w:1.5}],'B',2);
+  {const dx=S('dxyb'),mm={};dx.forEach(p=>{mm[Math.floor(p[0]/100)]=p[1]});
+   const yy=Object.keys(mm).map(Number).sort().filter(m=>mm[m-100]).map(m=>[m*100+1,(mm[m]/mm[m-100]-1)*100]);
+   tchart('c11',[{name:'글로벌 M2 YoY',data:S('gm2_yoy'),color:C.s1,step:true},{name:'광의 달러 YoY',data:yy,color:C.s2,step:true}],'%',1,{zero:true});}
+  tchart('c11b',[{name:'글로벌 M2',data:S('gm2'),color:C.s1,step:true}],'T',1);
+  tchart('c12',[{name:'NFCI',data:S('nfci'),color:C.s1,step:true},{name:'ANFCI(경기조정)',data:S('anfci'),color:C.s2,step:true}],'',3,{zero:true});
+  tchart('c13',[{name:'HY OAS',data:S('hy'),color:C.s2},{name:'IG OAS',data:S('ig'),color:C.s1}],'bp',0);
+  tchart('c14',[{name:'C&I 순강화',data:S('sloos'),color:C.s2,type:'bar',fillc:'rgba(217,89,38,.75)'}],'%p',1,{zero:true,r0:RANGE&&RANGE<60?cutoff():0});
+  tchart('c15',[{name:'대출 YoY',data:S('loan_yoy'),color:C.s1}],'%',2,{zero:true});
+  // 한국
+  {const kr=S('kr').filter(r=>r[0]>=r0);let c=0;const cum=kr.map(r=>{c+=(r[1]||0);return [r[0],c/1e4]});
+   tchart('k1',[{name:'외국인 누적',data:cum,color:C.s1,fill:'origin',fillc:'rgba(57,135,229,.10)'}],'조',2,{zero:true});
+   tchart('k2',[{name:'코스피',data:S('kospi'),color:C.s3}],'',0);}
+  tchart('k3',[{name:'원/달러',data:S('usdkrw'),color:C.s4}],'원',1);
+  tchart('k4',[{name:'투자자예탁금',data:S('dep'),color:C.s1},{name:'신용융자',data:S('cr'),color:C.s2}],'조',1);
+}
+function renderStatic(){
+  document.getElementById('upd').textContent=D.updated+' KST';
+  const g=D.gm2_parts;if(g){const tot=g.us+g.ez+g.jp+g.cn,P=[['美',g.us,C.s1],['유로',g.ez,C.s2],['日',g.jp,C.s3],['中',g.cn,C.s4]];
+    document.getElementById('mix').innerHTML=P.map(p=>`<div style="flex:${p[1]};background:${p[2]}" title="${p[0]} $${p[1].toFixed(1)}T"></div>`).join('');
+    document.getElementById('lg-mix').innerHTML=P.map(p=>`<span><i style="background:${p[2]}"></i>${p[0]} $${p[1].toFixed(1)}T (${(p[1]/tot*100).toFixed(0)}%)</span>`).join('');
+    const gm=S('gm2');document.getElementById('gm2d').textContent=gm.length?'· '+pd(String(gm[gm.length-1][0])).slice(0,7):''}
+  const LN={1:'1층 · 가격',2:'2층 · 양',3:'3층 · 전달',4:'한국'};let last=0,h='<tr><th>지표</th><th>최신</th><th>1주</th><th>1개월</th><th>3개월</th><th>기준일</th><th style="text-align:left">메모</th></tr>';
+  for(const r of D.table){if(r.layer!==last){h+=`<tr class="lh"><td colspan="7">${LN[r.layer]}</td></tr>`;last=r.layer}
+    const u=r.unit==='%'||r.unit==='bp'||r.unit==='%p'||r.unit===''?r.unit:' '+r.unit;
+    const cc=v=>v==null?'<span style="color:var(--faint)">-</span>':`${v>=0?'+':''}${nf(v,r.dec)}`;
+    h+=`<tr><td>${r.name}</td><td><b>${nf(r.v,r.dec)}</b>${u}</td><td>${cc(r.c1w)}</td><td>${cc(r.c1m)}</td><td>${cc(r.c3m)}</td><td style="color:var(--faint)">${pd(r.d)}</td><td class="n">${r.note||''}</td></tr>`}
+  document.getElementById('tbl').innerHTML=h;
+}
+async function getJ(u){const r=await fetch(u+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return r.json()}
+async function loadFull(){try{D=await getJ('data/liq3.json');renderStatic();renderSignals();renderCharts()}catch(e){document.getElementById('upd').textContent='불러오기 실패'}}
+async function loadLive(){try{L=await getJ('data/liq3_live.json');renderLive();document.getElementById('lst').textContent=''}catch(e){document.getElementById('lst').textContent='(장중 시세 불러오기 실패)'}}
+document.querySelectorAll('#bar button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#bar button').forEach(x=>x.classList.toggle('on',x===b));RANGE=+b.dataset.r;
+  try{localStorage.setItem('liq3-range',RANGE)}catch(e){}if(D)renderCharts()}));
+try{const r=localStorage.getItem('liq3-range');if(r!=null){RANGE=+r;document.querySelectorAll('#bar button').forEach(x=>x.classList.toggle('on',+x.dataset.r===RANGE))}}catch(e){}
+Chart.defaults.font.family='-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif';
+loadFull().then(loadLive);
+setInterval(loadLive,5*60*1000);setInterval(loadFull,30*60*1000);
+</script></body></html>

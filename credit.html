@@ -16,10 +16,12 @@ font:inherit;font-size:13.5px;font-weight:700;padding:9px 14px 10px;cursor:point
 .frames iframe.on{display:block}
 </style><link rel="stylesheet" href="hub-theme.css"></head><body>
 <div class="tabs">
-  <button class="tab on" data-v="usliq">美 유동성</button>
+  <button class="tab on" data-v="liq3">유동성 3층</button>
+  <button class="tab" data-v="usliq">美 유동성</button>
   <button class="tab" data-v="cds">빅테크 CDS</button>
 </div>
 <div class="frames">
+  <iframe data-v="liq3" data-src="liq3.html" title="유동성 3층"></iframe>
   <iframe data-v="usliq" data-src="usliq.html" title="美 유동성"></iframe>
   <iframe data-v="cds" data-src="cds.html" title="빅테크 CDS"></iframe>
 </div>
@@ -35,6 +37,6 @@ function show(v){
   try{localStorage.setItem('credit-view',v)}catch(e){}
 }
 tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.v)));
-let v='usliq';try{const s=localStorage.getItem('credit-view');if(s&&frames.some(f=>f.dataset.v===s))v=s}catch(e){}
+let v='liq3';try{const s=localStorage.getItem('credit-view');if(s&&frames.some(f=>f.dataset.v===s))v=s}catch(e){}
 show(v);
 </script></body></html>
