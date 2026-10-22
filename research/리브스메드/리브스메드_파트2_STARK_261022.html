@@ -1,0 +1,444 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="segdive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리브스메드 파트 2 — STARK 해부 · 2026-10-22</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+table.txt td,table.txt th{text-align:left} table.txt td:first-child{white-space:nowrap}/* rl-mobile-table */@media (max-width:720px){main{padding-left:16px;padding-right:16px}main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main .gloss{grid-template-columns:1fr}main figure{overflow-x:auto}}</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>리브스메드 파트 2 — STARK 해부: 값이 정해지지 않은 로봇, 수술마다 쌓이는 기구 매출</h1>
+<div class="sub">파트제 커버리지 10편 중 파트 2 · 작성 2026-10-22 · 주가 41,950원(10-21 정규장 종가) · 시총 1조 595억 · 환율 USD1 = ₩1,327.5(10-21) · 회계연도 12월(2026 = 제16기) · 다음 실적 3Q26 분기보고서 2026-11-16(E) · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: DART 투자설명서(2025-12-12 정정)·2026 반기보고서·유형자산 양수 주요사항보고서(2026-05-12, 06-22 정정), 언론(머니투데이·한국경제·데일리팜·메디파나·더벨·뉴스웨이·녹색경제신문·Korea Biomedical Review), Federal Register(FDA 초안 가이던스), ISRG 3Q26 8-K·콜, 증권사(다올·삼성·한양), 주주 커뮤니티·개인 투자 블로그(등급 C)</div>
+<div class="hubnav">현행 판정은 <a href="리브스메드_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 segdive 가운데 수술로봇 STARK를 맡습니다.</div>
+
+<div class="gloss">
+<b>모듈형(카트 분리형) 로봇</b><span>로봇팔을 여러 개의 카트에 나눠 싣고 수술대 주변에 따로 배치하는 방식입니다. 다빈치처럼 한 카트에 팔 네 개를 단 방식은 일체형이라 부릅니다. STARK는 카트 하나에 팔 두 개, 카트 두 대로 모두 네 팔입니다.</span>
+<b>상부 진입(top-down)</b><span>로봇팔이 환자 위쪽에서 내려와 배에 꽂힌 투관침(트로카)에 결합하는 배치입니다. 다빈치와 같은 방식이라 복강경 포트 위치를 그대로 쓸 수 있다는 것이 회사 설명입니다.</span>
+<b>엔드툴</b><span>기구 맨 끝에서 조직을 잡고 자르고 봉합하는 부분입니다. 리브스메드의 상하좌우 90° 다관절이 바로 여기에 있고, 회사는 이것을 로봇 경쟁의 핵심성공요인으로 봅니다.</span>
+<b>개방형 콘솔</b><span>집도의가 머리를 넣어 들여다보는 폐쇄형 뷰어 대신 3D 화면을 보며 조종하는 조종석입니다. 수술팀과 대화하기 쉽다는 장점이 거론됩니다.</span>
+<b>품목허가 80영업일</b><span>식약처 품목허가 심사의 처리 기한입니다. 보완 요청이 나오면 그 기간만큼 시계가 멈추므로, 80영업일 계산은 보완이 없을 때의 단순 계산입니다.</span>
+<b>510(k)·De Novo</b><span>미국 FDA의 시판 전 경로입니다. 510(k)는 이미 허가된 기기와 실질적으로 같음을 보이는 길이고, De Novo는 비교할 기기가 없을 때 새 분류를 만드는 길입니다.</span>
+<b>우산–포괄 수술</b><span>2026-09-25 FDA 초안 가이던스의 틀입니다. 같은 분야에서 더 어렵고 위험한 수술(우산)의 자료로 덜 위험한 수술들(포괄)을 수술별 추가 자료 없이 뒷받침할 수 있게 합니다.</span>
+<b>구독형·PoC</b><span>구독형은 병원이 로봇을 사지 않고 월 사용료와 수술당 기구료를 내는 방식으로, 투자설명서의 가정입니다. PoC(개념검증)는 병원이 정식 계약 전에 장비를 평가용으로 써 보는 단계입니다.</span>
+</div>
+
+<p>이 파트는 커버리지의 사업부 딥다이브(segdive) 가운데 수술로봇 STARK를 맡습니다. 허브의 판정은 시가총액 1조 595억이 두 층, 곧 숫자로 확인되는 핸드헬드 기구 사업과 아직 매출이 0원인 STARK 옵션으로 이루어져 있다는 것이고, 이 파트는 그 위층을 뜯어 봅니다. 질문은 세 가지입니다. 무엇을 만들었고 그 가운데 회사 주장과 확인된 사실의 경계는 어디인가, 허가와 출시 시간표는 어떻게 바뀌어 왔고 지금 어디쯤인가, 그리고 공식 가격이 한 번도 발표되지 않은 이 로봇이 돈을 번다면 어떤 구조로 얼마를 버는가입니다. 마지막 질문에는 조정판을 붙였습니다. 상장 때 투자설명서에 실린 가정과 지금 보도로 확인되는 2027년의 모습이 얼마나 떨어져 있는지를 독자가 직접 움직여 볼 수 있게 했습니다.</p>
+
+<div class="judge"><b>이 파트의 판단.</b> 첫째, STARK의 차별점은 팔이 아니라 손끝(90° 엔드툴)이고, 사업 모델도 로봇이 아니라 기구로 돈을 버는 구조입니다. 상장 가정 기준 대당 연 매출 3.86억<span class="est">E</span> 가운데 90.7%가 수술 1회 기구 사용료입니다. 둘째, 국내 허가는 80영업일 단순 계산 12-03(E)에 걸려 있지만, 2027년은 판매의 해라기보다 PoC의 해로 읽습니다. 셋째, 미국·일본 동시 추진은 FDA 초안이 적응증 확장 비용을 줄인 데서 나온 셈법 변화이지, 첫 허가의 임상 요구를 없앤 것은 아닙니다.</div>
+
+<h2>1. 무엇을 만들었나 — 사양과 회사 주장의 경계</h2>
+
+<p>STARK의 하드웨어 구성부터 정리합니다. 한 카트에 로봇팔 두 개를 얹고 그 카트 두 대를 수술대 양쪽에 붙여 모두 네 개의 팔을 쓰는 모듈형 구조입니다(한국경제·머니투데이 2026-05-27, 머니투데이 2026-10-19). 팔은 다빈치처럼 위에서 내려와 투관침에 결합하는 상부 진입 방식을 유지했고, 집도의가 앉는 조종석은 머리를 넣는 폐쇄형 뷰어 대신 3D 화면을 보는 개방형 콘솔입니다. 시스템은 마스터 콘솔, 로봇 카트 2대, 비전 카트로 이루어지고, 카메라는 회사가 2025년 식약처 허가를 받은 3D 4K 카메라 LivsCam을 그대로 얹습니다. 반기보고서는 STARK를 '소형 모듈러 타입'으로 소개하면서 그 특징을 카메라부터 기구까지 자사 제품을 로봇에 연동하는 수직계열화로 적고 있습니다.</p>
+
+<p>2026-05-26 공개 행사에서 회사가 앞세운 것은 크기와 움직임입니다. 회사는 로봇용 기구 부피를 다빈치 대비 55% 줄였고, 카트 네 대짜리 시스템 대비 침상 주변 점유 공간을 절반으로 줄였으며, 표준 수술실 출입구를 그대로 통과한다고 설명합니다. 팔의 움직임은 'Sky 플랫폼'이라는 이름으로 묶었습니다. 팔마다 높이를 따로 올리는 Sky Rise, 원격 운동 중심을 유지한 채 각도를 바꾸는 Sky Tilt, 상부 관절을 360°(최대 720°) 돌려 포트를 다시 꽂지 않고 수술 방향을 바꾸는 Sky Spin, 결합 단계의 Sky Dive(기사에 따라 Dock으로 표기)입니다. 회사는 이로써 기존 로봇보다 자유도가 두 개 더 많다고 말합니다. 이 숫자들은 모두 회사 주장이고, 제3자 측정이나 비교 시험으로 확인된 적은 아직 없습니다.</p>
+
+<p>우리가 보기에 STARK의 진짜 차별점은 팔이 아니라 손끝입니다. 회사는 기존 로봇 기구 관절의 가동 범위를 60°에서 90°로 넓혔다고 설명하는데, 이 90° 다관절은 이미 핸드헬드 ArtiSential로 국내 261개 병원, 691명의 외과의가 쓰고 있는 기술입니다(한양증권 2026-09-18, 2Q26 기준). 로봇 기구는 8mm로 시작해 5mm로 내려갈 예정이고, 90° 관절을 가진 혈관봉합기와 스테이플러도 곧 로봇화한다는 것이 회사 계획입니다. 다른 로봇 회사들이 팔과 콘솔을 먼저 만들고 기구를 붙였다면, 리브스메드는 이미 팔리고 있는 엔드툴에 팔을 붙인 순서입니다. 반기보고서도 수술로봇의 핵심성공요인을 엔드툴로 적었습니다. 다만 투자설명서의 매출 추정은 혈관봉합기·스테이플러 같은 고급형 로봇 기구를 '보수적 관점에서' 빼고 계산했으므로, 이 부분은 상장 가정에도 들어 있지 않은 선택지로 남아 있습니다.</p>
+
+<h3>표 1. STARK 사양과 근거 등급</h3>
+<table class="txt"><tr><th>항목</th><th>회사 설명</th><th>확인 근거</th><th>등급</th></tr><tr><td>팔 구성</td><td>1카트 2암 × 카트 2대 = 4암, 소형 모듈형</td><td>한국경제·머니투데이 05-27, 머니투데이 10-19, 반기보고서 '소형 모듈러 타입'</td><td>B</td></tr><tr><td>진입·배치</td><td>상부 진입(top-down), 다빈치와 같은 트로카 배치</td><td>공개 행사 기사, 삼성증권 06-16</td><td>B</td></tr><tr><td>콘솔</td><td>개방형 콘솔(3D 화면)</td><td>투자설명서 회사 자체 비교표</td><td>A(회사 자료)</td></tr><tr><td>크기</td><td>로봇 기구 부피 다빈치 대비 −55%, 침상 점유 4카트 대비 −50%</td><td>회사 발표만 있음, 제3자 측정 없음</td><td>C</td></tr><tr><td>움직임</td><td>Sky Rise·Tilt·Spin·Dive, 상부 관절 360°(최대 720°) 회전</td><td>공개 행사 시연, SRS 2026 영상</td><td>B</td></tr><tr><td>엔드툴</td><td>90° 다관절, 8mm 출발·5mm 예정, 실러·스테이플러 로봇화 예정</td><td>공개 행사 녹취(개인 투자 블로그 전사)</td><td>B·C</td></tr><tr><td>카메라</td><td>LivsCam 3D 4K·ICG(2025 식약처 허가) 탑재</td><td>투자설명서·2026 반기보고서</td><td>A</td></tr><tr><td>원격수술</td><td>Sovato 연동, 2025-07 약 3,000km 돼지 모델 시연</td><td>Business Wire 2025-07-14</td><td>B</td></tr><tr><td>사람 대상 임상</td><td>2024-06-17 임상시험계획 승인(LVSTARK-1000)</td><td>투자설명서(결과 미공개)</td><td>A</td></tr></table>
+
+<p>의사들의 첫 반응은 대체로 호의적이었지만, 그 안에 유보도 같이 들어 있습니다. 존스홉킨스의 Ahmed Ghazi는 당일 처음 써 본 뒤 90°에 다시 90° 경첩이 더해진 손끝을 짚으며 판을 바꿀 장비라는 평을 내놓았고, 미국 로봇외과학회(SRS) 회장 Parra-Davila는 팔이 자기 축으로 360° 도는 움직임은 처음 본다고 했습니다. 이윤석 교수는 조작이 다빈치와 비슷해 러닝커브가 거의 없을 것이라고 했습니다. 반면 최규석 교수는 같은 날 처음 써 본 장비가 아직 final 버전은 아니라고 했고, 시연 중 팔끼리 충돌하는지 세밀히 확인하기는 어렵다고 덧붙였습니다. 약 네 번 써 보며 원격 돼지 수술 3건을 성공시킨 우양희 교수(City of Hope)도 초기 버전은 움직임이 부드럽지 않고 마감이 깔끔하지 않았다고 회고했습니다. 이 발언들은 공개 행사 현장 녹취를 개인 투자 블로그가 전사한 것(전사 오류 있음, 등급 C)과 당일 기사를 합친 것입니다.</p>
+
+<p>읽는 쪽이 조심할 점이 둘 있습니다. 첫째, 발언한 KOL은 대부분 회사의 협력자이고, 7월 SRS 2026의 리브스메드 세션은 회사가 주최한 런천 심포지엄이었습니다. 개인 KOL의 호평을 그 소속 병원의 채택으로 넓혀 읽으면 안 됩니다. 둘째, SRS 2026에는 로봇 실물이 반입되지 않았고 기구 50종만 전시됐으며, 회사 초대문에는 STARK가 미국에서 판매되지 않는다는 문구가 들어 있었습니다(다올 08-17, 회사 초대문). 해외 의사 대부분은 아직 영상과 짧은 시연으로만 STARK를 봤다는 뜻입니다.</p>
+
+<h3>표 2. 경쟁 로봇 대비 형태 비교</h3>
+<table class="txt"><tr><th>플랫폼(회사)</th><th>카트·팔 구성</th><th>콘솔</th><th>미국 FDA 상태(2026-10)</th><th>비고</th></tr><tr><td>STARK(리브스메드)</td><td>모듈형 2카트 × 2암, 상부 진입</td><td>개방형</td><td>없음 · 국내 품목허가 신청 2026-08-07</td><td>90° 엔드툴, 구독형 가정</td></tr><tr><td>da Vinci Xi·dV5(Intuitive)</td><td>일체형 카트 4암</td><td>폐쇄형</td><td>510(k) 다수</td><td>3Q26 설치 546대, 설치기반 12,094대</td></tr><tr><td>Hugo RAS(Medtronic)</td><td>모듈형</td><td>개방형</td><td>2025-12 비뇨 510(k), 일반외과·부인과 심사 중</td><td>Cornerstone에 약 $7억 투자(09-02)</td></tr><tr><td>Versius(CMR Surgical)</td><td>모듈형</td><td>개방형</td><td>2024-10 De Novo(담낭), 2025-12 Versius Plus 510(k)</td><td>Stryker 약 $4억 투자·인수 옵션(10-12)</td></tr><tr><td>Ottava(J&J)</td><td>수술대 일체형 4팔</td><td>미확인</td><td>2026-07-22 De Novo(상복부 10종)</td><td>공간 30~50% 절감(회사 주장)</td></tr><tr><td>Dexter(Distalmotion)</td><td>미확인</td><td>미확인</td><td>De Novo(탈장)·510(k)(담낭·부인과)</td><td>외래수술센터 집중, 타사 영상·에너지 장비 개방</td></tr><tr><td>MIRA(Virtual Incision)</td><td>소형 미니로봇</td><td>—</td><td>De Novo(대장절제), 2026-08 자궁절제 510(k)</td><td>저인프라 병원 지향</td></tr><tr><td>Toumai(MicroPort)</td><td>일체형</td><td>폐쇄형</td><td>판매허가 없음(원격수술 IDE만)</td><td>글로벌 수주 300대 돌파(2026-06)</td></tr><tr><td>hinotori(메디카로이드)</td><td>일체형</td><td>폐쇄형</td><td>없음 · 일본 2020-08 승인</td><td>일본 비뇨·소화기·부인과·흉부</td></tr><tr><td>Senhance(Asensus, Karl Storz 인수)</td><td>모듈형</td><td>개방형</td><td>—</td><td>2026-06 하드웨어 플랫폼 중단</td></tr></table>
+<div class="src" style="font-size:11.5px;color:#8a857c">자료: 카트·콘솔 유형은 투자설명서의 회사 자체 비교표(STARK·da Vinci·Hugo·Versius·Senhance·Toumai·hinotori), FDA 상태와 비고는 각 회사 발표·MedTech Dive·MassDevice 등(조사 노트 C, 2026-10 기준). '미확인'은 이번 조사에서 1차 자료를 찾지 못한 칸입니다.</div>
+
+<p>표에서 STARK의 자리는 분명합니다. 콘솔과 카트 구성만 보면 Hugo·Versius와 같은 '개방형 콘솔과 모듈형 카트' 진영이고, 다빈치·hinotori·Toumai의 일체형 진영과 반대편입니다. 그런데 이 진영의 성적표는 좋지 않습니다. Senhance는 인수자인 Karl Storz가 2026-06에 하드웨어 플랫폼을 접었고, Versius는 2024-10 담낭절제 하나로 미국 문을 연 뒤 2026-10에야 Stryker의 투자와 인수 옵션을 받았으며, Hugo는 미국에서 비뇨 적응증으로 시작해 일반외과 허가를 기다리고 있습니다. 인튜이티브의 최고경영자는 3Q26 콜에서 모듈형 시스템의 외래수술센터 진입을 묻는 질문에 카트형 구조가 최선이고 모듈형은 필요 없다고 답했습니다. STARK가 이 진영 안에서 다른 점은 카트 하나에 팔 두 개를 얹어 한 팔짜리 카트의 유연함과 네 팔짜리 카트의 안정감 사이를 노렸다는 것, 그리고 손끝의 90° 관절입니다. 두 가지 모두 시장에서 아직 검증되지 않았다는 점을 같이 적어 둡니다.</p>
+
+<h2>2. 개발·허가 연표 — 6년의 경로와 남은 30영업일</h2>
+
+<figure class=""><figcaption>장표 1. STARK 개발·허가 연표 — 공시로 확인되는 이정표는 두 줄뿐</figcaption><svg viewBox="0 0 880 460" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<circle cx="25" cy="16" r="5" fill="#1f3a5f"/>
+<text x="34.0" y="20.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">개발</text>
+<circle cx="82.56" cy="16" r="5" fill="#a44a3f"/>
+<text x="91.6" y="20.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">허가</text>
+<circle cx="140.12" cy="16" r="5" fill="#2b7a78"/>
+<text x="149.1" y="20.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">해외</text>
+<circle cx="197.68" cy="16" r="5" fill="#b07d2b"/>
+<text x="206.7" y="20.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">회사</text>
+<circle cx="255.24" cy="16" r="5" fill="#8a857c"/>
+<text x="264.2" y="20.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">제도</text>
+<circle cx="312.8" cy="16" r="5" fill="#fff" stroke="#8a857c" stroke-width="1.6"/>
+<text x="321.8" y="20.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">속이 빈 점 = 목표·추정(E)</text>
+<line x1="128" y1="40" x2="128" y2="427" stroke="#d8d4cc" stroke-width="2"/>
+<text x="114.0" y="50.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2020</text>
+<circle cx="128" cy="46" r="5" fill="#1f3a5f"/>
+<text x="142.0" y="50.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">정부 과제로 개발 착수(주주 커뮤니티 정리, C)</text>
+<text x="114.0" y="75.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2024-06-17</text>
+<circle cx="128" cy="71" r="5" fill="#a44a3f"/>
+<text x="142.0" y="75.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">식약처 임상시험계획 승인 · LVSTARK-1000 담낭절제 단일기관 탐색</text>
+<text x="114.0" y="100.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2025-07</text>
+<circle cx="128" cy="96" r="5" fill="#2b7a78"/>
+<text x="142.0" y="100.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">Sovato 원격수술 시연 · 산타바바라 콘솔–시카고 약 3,000km, 돼지</text>
+<text x="114.0" y="125.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2025-12-24</text>
+<circle cx="128" cy="121" r="5" fill="#b07d2b"/>
+<text x="142.0" y="125.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">코스닥 상장 · 투자설명서 가정: 4Q26 국내 출시, 36대</text>
+<text x="114.0" y="150.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-04-23</text>
+<circle cx="128" cy="146" r="5" fill="#2b7a78"/>
+<text x="142.0" y="150.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">KSERS 2026 · Yulun Wang 기조연설에서 원격수술 소개</text>
+<text x="114.0" y="175.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-05-26</text>
+<circle cx="128" cy="171" r="5" fill="#b07d2b"/>
+<text x="142.0" y="175.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">STARK 공개(외과의 약 120명) · 한국 연말–일본–미국 순서 언급</text>
+<text x="114.0" y="200.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-06-01</text>
+<circle cx="128" cy="196" r="5" fill="#8a857c"/>
+<text x="142.0" y="200.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">일본 진료보수 개정 시행 · 로봇 지원기기 가산 15,000점</text>
+<text x="114.0" y="225.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-07-22</text>
+<circle cx="128" cy="221" r="5" fill="#2b7a78"/>
+<text x="142.0" y="225.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">SRS 2026 런천 심포지엄 · 로봇 실물 미반입, 기구 50종 전시</text>
+<text x="114.0" y="250.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-08-07</text>
+<circle cx="128" cy="246" r="5" fill="#a44a3f"/>
+<text x="142.0" y="250.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">식약처 품목허가 신청(08-10 보도) · 반기보고서 '심사 진행 중'</text>
+<text x="114.0" y="275.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-09-25</text>
+<circle cx="128" cy="271" r="5" fill="#8a857c"/>
+<text x="142.0" y="275.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">FDA RASD 시판 전 제출 초안 가이던스 · 의견 마감 11-24</text>
+<text x="114.0" y="300.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-09-30</text>
+<circle cx="128" cy="296" r="5" fill="#b07d2b"/>
+<text x="142.0" y="300.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">뉴스웨이: 허가 후 2027 국내외 병원 PoC 확대</text>
+<text x="114.0" y="325.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-10-19</text>
+<circle cx="128" cy="321" r="5" fill="#2b7a78"/>
+<text x="142.0" y="325.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">미국·일본 동시 허가 추진 보도 · KBR: 2027년 양국 신청</text>
+<text x="114.0" y="350.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-12-03</text>
+<circle cx="128" cy="346" r="5" fill="#fff" stroke="#a44a3f" stroke-width="1.8"/>
+<text x="142.0" y="350.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">80영업일 단순 계산 시점(보완 요청 없을 때)</text>
+<text x="114.0" y="375.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2026-12-31</text>
+<circle cx="128" cy="371" r="5" fill="#fff" stroke="#a44a3f" stroke-width="1.8"/>
+<text x="142.0" y="375.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">회사 목표 '연내' · 다올 '12월 말'</text>
+<text x="114.0" y="400.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2027</text>
+<circle cx="128" cy="396" r="5" fill="#fff" stroke="#b07d2b" stroke-width="1.8"/>
+<text x="142.0" y="400.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">용인 AMF 가동 목표 · 국내외 PoC · 미국·일본 신청 목표</text>
+<text x="114.0" y="425.0" font-size="11" fill="#8a857c" text-anchor="end" font-weight="400">2028</text>
+<circle cx="128" cy="421" r="5" fill="#fff" stroke="#2b7a78" stroke-width="1.8"/>
+<text x="142.0" y="425.0" font-size="11.5" fill="#3a3630" text-anchor="start" font-weight="400">유럽(CE) 목표(데일리팜 10-18)</text>
+</svg><div class="src">자료: 투자설명서(2025-12-12 정정), 2026 반기보고서, Business Wire 2025-07-14, 머니투데이·Korea Biomedical Review 2026-10-19, 뉴스웨이 2026-09-30, Federal Register 2026-09-25, 데일리팜 2026-10-18, 주주 커뮤니티 정리(2020 착수, C). 12-03은 80영업일 단순 계산(E).</div></figure>
+<p class="reading"><b>관찰.</b> 국책과제 착수(2020)부터 품목허가 신청(2026-08-07)까지 약 6년, 임상시험계획 승인(2024-06-17)부터 신청까지 2년 2개월이 걸렸고, 신청 이후의 칸은 보도와 회사 목표, 우리의 계산으로만 채워져 있습니다. <b>원인.</b> 회사는 단계마다 목표를 발표했지만 공시로 확인되는 STARK 이정표는 투자설명서의 임상시험계획 승인과 반기보고서의 '품목허가 신청·심사 진행 중' 두 줄뿐이고, 신청일조차 공시가 아니라 보도로 확인됩니다. <b>함의.</b> 연표의 2026년 4분기 이후는 전부 목표이거나 추정이며, 12월 국내 허가 여부가 이 연표 전체에 대한 첫 실측 채점이 됩니다.</p>
+
+<p>개발 경로를 시간 순서로 다시 짚습니다. STARK가 2020년 정부 과제로 시작했다는 것은 주주 커뮤니티의 정리이고(등급 C), 공시로 확인되는 첫 이정표는 2024-06-17 식약처 임상시험계획 승인입니다. 승인된 임상은 복강경 담낭절제술을 대상으로 한 전향적·단일기관·단일군 탐색 임상(LVSTARK-1000)으로, 규모가 작은 초기 임상입니다. 그 결과는 학회 발표나 논문으로 공개된 적이 없고, 품목허가 신청 서류에 어떤 임상 자료가 들어갔는지도 알려지지 않았습니다. 2025-07에는 원격수술 회사 Sovato와 함께 미국 산타바바라의 콘솔에서 약 3,000km 떨어진 시카고의 STARK를 조종해 돼지 모델에서 담낭절제·위공장문합·간 부분절제를 시행했고(Business Wire 2025-07-14), 2026-05-26 국내 외과의 약 120명 앞에서 실물을 공개했습니다. 허가 신청은 2026-08-07이었고, 반기보고서는 신청일 없이 '품목허가 신청 및 심사 진행 중'으로만 적었습니다.</p>
+
+<p>국내 허가 시점은 산수로 먼저 좁힐 수 있습니다. 신청일을 첫째 날로 세고 광복절 대체공휴일, 추석 연휴, 개천절 대체공휴일, 한글날을 빼면 80영업일째는 2026-12-03입니다. 오늘(10-22)까지 50영업일이 지났고 30영업일이 남았습니다<span class="est">E</span>. 한양증권은 9-18 보고서에서 신청 후 30영업일 동안 보완 요청이 없었다고 적었습니다(주주 커뮤니티 전재, 등급 B). 다만 식약처가 보완을 요청하면 그 기간은 심사 기한에서 빠지므로, 80영업일은 보완이 없을 때의 단순 계산일 뿐입니다. 회사 목표는 '연내', 머니투데이는 '이르면 12월 초', 다올은 '12월 말'을 제시했습니다. 시간표가 이미 한 번 밀렸다는 점도 기록해 둡니다. 투자설명서 한 문서 안에서도 '2026년 3분기 허가 후 4분기 출시'와 '2026년 4분기 최종 허가 목표'가 함께 적혀 있었고, 신청 목표는 7월이었다가 실제로는 8월 7일이 됐습니다.</p>
+
+<p>허가가 곧 매출은 아니라는 점도 같은 자리에서 봐야 합니다. 국내 로봇보조수술은 2006년 이후 전부 비급여이고, 건강보험심사평가원이 2026년 4월 착수한 급여화 내부 연구는 11월경 완료 예정이라는 보도가 있을 뿐 정부 결정은 나오지 않았습니다(헬스조선 2026-07-09). 이정주 대표는 급여화 방향에 따라 회사 운명이 바뀔 수 있다고 말했습니다(데일리팜 2026-10-19). 급여화는 환자 부담을 낮춰 수요를 키우는 동시에 수가 통제로 가격을 누를 수 있는 양날이고, 중국 집중구매에서 다빈치 낙찰가가 39억에서 32억으로 18.6% 내려간 사례가 그 반대 면을 보여 줍니다(텐센트뉴스 2026-07-22, 주주 커뮤니티 전재). STARK가 허가를 받아도 병원은 비급여 수가 안에서 장비와 기구 비용을 회수해야 하므로, 아래 4절의 건당 비용 구조가 병원 채택의 첫 관문이 됩니다.</p>
+
+<h2>3. 순차에서 동시로 — 미국·일본 셈법이 바뀐 이유</h2>
+
+<figure class=""><figcaption>장표 2. 출시·신청 계획의 변천 — 순차에서 동시로</figcaption><svg viewBox="0 0 880 308" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<rect x="20" y="9" width="12" height="10" fill="#1f3a5f"/>
+<text x="36.0" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">한국</text>
+<rect x="75.56" y="9" width="12" height="10" fill="#b07d2b"/>
+<text x="91.6" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">일본</text>
+<rect x="131.12" y="9" width="12" height="10" fill="#a44a3f"/>
+<text x="147.1" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">미국</text>
+<rect x="186.68" y="9" width="12" height="10" fill="#fff" stroke="#8a857c" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="202.7" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">점선 테두리 = 허가 신청 목표(나머지는 출시·판매·허가 목표)</text>
+<line x1="346.9" y1="42" x2="346.9" y2="282" stroke="#d8d4cc" stroke-width="0.8"/>
+<line x1="568.7" y1="42" x2="568.7" y2="282" stroke="#d8d4cc" stroke-width="0.8"/>
+<line x1="790.5" y1="42" x2="790.5" y2="282" stroke="#d8d4cc" stroke-width="0.8"/>
+<text x="236.0" y="298.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2026.7월</text>
+<text x="346.9" y="298.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2027</text>
+<text x="457.8" y="298.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2027.7월</text>
+<text x="568.7" y="298.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2028</text>
+<text x="679.6" y="298.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2028.7월</text>
+<text x="790.5" y="298.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2029</text>
+<text x="226.0" y="73.5" font-size="11.5" fill="#3a3630" text-anchor="end" font-weight="400">투자설명서 가정(2025-12, A)</text>
+<rect x="291.5" y="50.0" width="55.5" height="10" fill="#1f3a5f" opacity="0.88"/>
+<text x="351.9" y="58.5" font-size="10" fill="#1f3a5f" text-anchor="start" font-weight="400">출시 4Q26</text>
+<rect x="568.7" y="63.0" width="221.8" height="10" fill="#b07d2b" opacity="0.88"/>
+<text x="795.5" y="71.5" font-size="10" fill="#b07d2b" text-anchor="start" font-weight="400">첫 매출 2028</text>
+<rect x="568.7" y="76.0" width="55.5" height="10" fill="#a44a3f" opacity="0.88"/>
+<text x="629.2" y="84.5" font-size="10" fill="#a44a3f" text-anchor="start" font-weight="400">출시 1Q28</text>
+<line x1="20" y1="98.0" x2="860" y2="98.0" stroke="#eee9df" stroke-width="0.8"/>
+<text x="226.0" y="130.5" font-size="11.5" fill="#3a3630" text-anchor="end" font-weight="400">공개 행사 대표 발언(2026-05-26, B)</text>
+<rect x="291.5" y="107.0" width="55.5" height="10" fill="#1f3a5f" opacity="0.88"/>
+<text x="351.9" y="115.5" font-size="10" fill="#1f3a5f" text-anchor="start" font-weight="400">한국 연말</text>
+<rect x="513.3" y="120.0" width="55.5" height="10" fill="#b07d2b" opacity="0.88"/>
+<text x="573.7" y="128.5" font-size="10" fill="#b07d2b" text-anchor="start" font-weight="400">1년 후</text>
+<rect x="735.1" y="133.0" width="55.5" height="10" fill="#a44a3f" opacity="0.88"/>
+<text x="795.5" y="141.5" font-size="10" fill="#a44a3f" text-anchor="start" font-weight="400">그 1년 후</text>
+<line x1="20" y1="155.0" x2="860" y2="155.0" stroke="#eee9df" stroke-width="0.8"/>
+<text x="226.0" y="187.5" font-size="11.5" fill="#3a3630" text-anchor="end" font-weight="400">9월 IR 참석자 전언(C)</text>
+<rect x="402.4" y="177.0" width="110.9" height="10" fill="#b07d2b" opacity="0.88"/>
+<text x="518.3" y="185.5" font-size="10" fill="#b07d2b" text-anchor="start" font-weight="400">27년 중반 판매</text>
+<line x1="20" y1="212.0" x2="860" y2="212.0" stroke="#eee9df" stroke-width="0.8"/>
+<text x="226.0" y="244.5" font-size="11.5" fill="#3a3630" text-anchor="end" font-weight="400">머니투데이·KBR(2026-10-19, B)</text>
+<rect x="291.5" y="221.0" width="55.5" height="10" fill="#1f3a5f" opacity="0.88"/>
+<text x="351.9" y="229.5" font-size="10" fill="#1f3a5f" text-anchor="start" font-weight="400">연내 허가</text>
+<rect x="346.9" y="234.0" width="221.8" height="10" fill="#fff" stroke="#b07d2b" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="573.7" y="242.5" font-size="10" fill="#b07d2b" text-anchor="start" font-weight="400">2027 신청</text>
+<rect x="346.9" y="247.0" width="221.8" height="10" fill="#fff" stroke="#a44a3f" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="573.7" y="255.5" font-size="10" fill="#a44a3f" text-anchor="start" font-weight="400">2027 신청</text>
+</svg><div class="src">자료: 투자설명서(미국 Stark 출시 2028년 1분기, 일본 Stark 매출 2028년부터), 공개 행사 녹취·한국경제 05-27, 주주 커뮤니티 IR 전언(9월, C), 머니투데이·KBR 2026-10-19. 연도만 알려진 목표는 그해 전체 폭으로 그렸습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 다섯 달 사이 해외 계획은 '한국 연말, 1년 후 일본, 그 1년 후 미국'에서 '미국·일본 동시, 2027년 신청'으로 바뀌었고, 출시 목표가 신청 목표로 바뀌면서 막대의 의미도 달라졌습니다. <b>원인.</b> 회사가 든 이유는 경쟁 심화와 FDA 초안 가이던스이며, 실제로 앞당겨진 것은 신청 시점이지 허가나 출시 시점이 아닙니다. <b>함의.</b> 동시 추진은 미국 일정을 앞당겼다기보다 일본과 미국을 같은 출발선에 세운 것이고, 상장 가정의 '미국 2028년 1분기 출시'를 지탱할 새 근거는 아직 없습니다.</p>
+
+<p>해외 순서는 다섯 달 사이 두 번 바뀌었습니다. 공개 행사에서 이정주 대표가 밝힌 순서는 '올해 말 한국, 1년 후 일본, 그 다음 1년 후 미국'이었고(현장 녹취, 기사는 일본 2027·미국 2028로 보도), 투자설명서의 매출 가정도 미국 STARK 출시를 2028년 1분기로 잡았습니다. 2026-10-19 머니투데이는 이 순차 계획이 미국·일본 동시 허가 추진으로 바뀌었다고 보도했고, 같은 날 Korea Biomedical Review는 두 나라 모두 2027년 허가 신청을 목표로 한다고 전했습니다. 회사가 든 이유는 두 가지입니다. 글로벌 경쟁이 빨라져 시장을 먼저 잡아야 한다는 것, 그리고 FDA의 로봇수술기 초안 가이던스가 임상 근거 부담을 덜어 준다는 것입니다. 신청 날짜, 510(k)와 De Novo 가운데 어느 경로인지, 미국에서 임상을 새로 할지는 기사에 없습니다.</p>
+
+<p>그래서 FDA 초안이 실제로 무엇을 바꿨는지가 이 판단의 핵심입니다. 2026-09-25 관보에 실린 '로봇보조 수술기기(RASD) 시판 전 제출' 초안 가이던스(의견 마감 11-24)의 중심은 우산–포괄 수술 틀입니다. 같은 전문 분야에서 더 복잡하고 위험한 수술의 생체 내 성능 자료가 있으면, 그보다 위험이 낮은 수술들은 수술별 추가 자료 없이 뒷받침할 수 있다는 것입니다. 경쟁사들이 담낭절제, 탈장, 부인과 식으로 적응증을 하나씩 늘려 온 비용과 시간을 줄여 주는 장치입니다. 그러나 같은 초안은 신규 RASD에 임상 자료가 '흔히 필요하다'고 적었고, RASD 임상시험을 일반적으로 중대위험 기기 시험으로 보아 약식 IDE를 허용하지 않으며, 사전 협의(Q-Sub)를 권고합니다. 원격 텔레수술 기능은 아예 대상에서 빠져 12월 초 별도 워크숍으로 넘어갔습니다. 우리는 이 초안을 첫 허가의 문턱을 낮춘 장치라기보다 허가 이후 적응증을 넓히는 비용을 낮춘 장치로 읽습니다. 아직 확정 전의 초안이라는 점도 함께 적어 둡니다.</p>
+
+<p>미국 경로의 선례는 두 갈래로 섞여 있습니다. CMR의 Versius(2024-10, 담낭절제), J&J의 Ottava(2026-07-22, 상복부 10종), Virtual Incision의 MIRA(대장절제)는 De Novo로 들어갔고, Medtronic Hugo(2025-12, 비뇨)와 Versius Plus(2025-12)는 510(k)로 허가를 받았습니다. 인도의 SSi Mantra는 2025-12 510(k)를 낸 뒤 적응증을 담낭절제 하나로 줄였고, FDA의 추가 자료 요청에 답하는 데만 열 달 가까이 썼습니다. 회사가 투자설명서에 제시한 인허가 소요 기간은 한국 9~15개월, 일본 16~31개월, 미국 17~32개월, 유럽 30~52개월입니다. 그 기간의 출발점이 신청일인지는 적혀 있지 않지만, 2027년 신청에 이 범위를 그대로 대면 미국 허가는 빨라야 2028년 중반, 늦으면 2029년 이후가 됩니다<span class="est">E</span>. 상장 가정의 '2028년 1분기 미국 출시'는 지금 시간표로는 맞추기 어렵다고 봅니다.</p>
+
+<p>일본 쪽 셈법은 수가가 바꿨습니다. 2026-06-01 시행된 일본 진료보수 개정은 로봇 수술의 급여 범위를 넓히고 '내시경수술용 지원기기 가산' 15,000점(15만 엔)을 새로 두었는데, 요건이 연간 로봇수술 200례 이상입니다(소라메드 보도자료 2026-06-23). 인튜이티브는 3Q26 콜에서 일본이 6월 수가 변경 이후 가속했다고 말했습니다. 시장이 커지는 쪽으로 제도가 움직였다는 뜻이지만, 200례 요건은 이미 로봇수술을 많이 하는 병원에 유리한 문턱이라 새로 들어오는 장비에 곧바로 열리는 문은 아닙니다(요건의 적용 단위는 원문 미확인). 수술로봇은 일본에서 고도관리의료기기(Class III) 승인 대상이고, 국산 hinotori가 2020-08 비뇨 승인 뒤 2022-10 소화기·부인과, 2024-04 흉부로 넓혀 간 선례가 있습니다. 회사는 2024년 일본 법인을 세웠고 ArtiSeal은 2025년 일본 보험에 등재됐습니다. 주주 커뮤니티는 PMDA 심사가 6~7개월이면 끝날 수 있다고 보지만(등급 C), 회사 스스로 제시한 일본 소요 기간은 16~31개월입니다.</p>
+
+<h2>4. 사업 모델 — 값이 없는 로봇, 값이 있는 기구</h2>
+
+<p>STARK의 공식 판매가는 발표된 적이 없습니다. 지금 숫자로 따질 수 있는 유일한 문서는 상장 당시 투자설명서에 주관사 추정의 가정으로 실린 구독형 모델입니다. 병원은 로봇을 사지 않고 월 시스템 사용료 300만원을 내며, 수술 한 번마다 기구 사용료 140만원(미국·독일 180만원)을 냅니다. 대리점 수수료가 없는 직접 판매를 가정했고, 추정 기간 동안 가격은 그대로 둡니다. 투자설명서는 이 모델이 회사 내부 전략에 따라 바뀔 수 있다는 단서를 달았습니다. 아래 표는 그 가정이 2026~2028년 매출로 어떻게 쌓이는지를 상세 추정표 그대로 옮긴 것입니다.</p>
+
+<h3>표 3. 상장 가정의 STARK 매출 구조(투자설명서 상세 추정표)</h3>
+<table class=""><tr><th>상장 가정(투자설명서)</th><th>2026E 국내</th><th>2027E 국내</th><th>2028E 국내</th><th>2028E 미국</th></tr><tr><td>신규 설치 대수</td><td>36대</td><td>103대</td><td>160대</td><td>72대</td></tr><tr><td>누적 대수</td><td>36대</td><td>139대</td><td>263대</td><td>72대</td></tr><tr><td>가동 대·월</td><td>108</td><td>1,025</td><td>2,636</td><td>468</td></tr><tr><td>대당 연 수술 건수</td><td>296건</td><td>250건</td><td>229건</td><td>259건</td></tr><tr><td>연간 수술 건수</td><td>2,664건</td><td>21,383건</td><td>50,289건</td><td>10,092건</td></tr><tr><td>월 시스템 사용료 / 건당 기구 사용료</td><td>300만 / 140만원</td><td>300만 / 140만원</td><td>300만 / 140만원</td><td>300만 / 180만원</td></tr><tr><td>시스템 사용료 매출</td><td>3.2억</td><td>30.8억</td><td>79.1억</td><td>14.0억</td></tr><tr><td>기구 사용료 매출</td><td>37.3억</td><td>299.4억</td><td>704.0억</td><td>181.7억</td></tr><tr><td><b>STARK 매출 합계</b></td><td><b>40.5억</b></td><td><b>330.1억</b></td><td><b>783.1억</b></td><td><b>195.7억</b></td></tr><tr><td>기구 사용료 비중</td><td>92.1%</td><td>90.7%</td><td>89.9%</td><td>92.8%</td></tr></table>
+
+<p>표에서 두 가지가 읽힙니다. 첫째, 이 사업 모델은 로봇 임대가 아니라 기구 판매입니다. 2027년 국내 STARK 매출 추정 330.1억 가운데 시스템 사용료는 30.8억이고 기구 사용료가 299.4억으로, 2027년 국내 STARK 매출의 90.7%가 수술 건수에서 나옵니다. 매출 크기를 정하는 변수는 설치 대수보다 대당 수술 건수입니다. 둘째, 그 건수 가정이 공격적입니다. 투자설명서는 대당 연 수술을 출시 첫해 296건, 이듬해 250건, 2028년 229건으로 잡았습니다. 같은 문서가 인용한 국내 복강경 로봇 1대당 연 수술은 2023년 345건, 미국은 2020년 252건에서 2024년 227건으로 줄었고, 인튜이티브의 2025년 전 세계 평균은 284건입니다(다올 10-07, ISRG 연차보고서 기반). 그런데 STARK의 1년차 목표 고객은 투자설명서 스스로 로봇수술이 활성화되지 않은 지역 거점, 국공립 병원, 훈련센터로 적었습니다. 로봇을 처음 들이는 병원이 첫해부터 미국 평균을 웃도는 건수를 채운다는 가정은 근거가 약하다고 봅니다.</p>
+
+<figure class=""><figcaption>장표 4. STARK 대당 연 매출 구성 — 로봇이 아니라 수술이 매출을 만든다(억원)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="730" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0.00</text>
+<line x1="62" y1="199.7" x2="730" y2="199.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="203.7" text-anchor="end" font-size="11" fill="#8a857c">1.00</text>
+<line x1="62" y1="163.3" x2="730" y2="163.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="167.3" text-anchor="end" font-size="11" fill="#8a857c">2.00</text>
+<line x1="62" y1="127.0" x2="730" y2="127.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="131.0" text-anchor="end" font-size="11" fill="#8a857c">3.00</text>
+<line x1="62" y1="90.7" x2="730" y2="90.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="94.7" text-anchor="end" font-size="11" fill="#8a857c">4.00</text>
+<line x1="62" y1="54.3" x2="730" y2="54.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="58.3" text-anchor="end" font-size="11" fill="#8a857c">5.00</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">6.00</text>
+<text x="128.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">국내 26 · 296건</text>
+<text x="262.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">국내 27 · 250건</text>
+<text x="396.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">국내 28 · 229건</text>
+<text x="529.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">미국 28 · 259건</text>
+<text x="663.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">조정판 · 150건</text>
+<rect x="88.7" y="222.9" width="80.2" height="13.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="88.7" y="72.4" width="80.2" height="150.6" fill="#b07d2b" opacity="0.9"/>
+<text x="128.8" y="68.4" text-anchor="middle" font-size="9.5" fill="#8a857c">4.50</text>
+<rect x="222.3" y="222.9" width="80.2" height="13.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="222.3" y="95.8" width="80.2" height="127.2" fill="#b07d2b" opacity="0.9"/>
+<text x="262.4" y="91.8" text-anchor="middle" font-size="9.5" fill="#8a857c">3.86</text>
+<rect x="355.9" y="222.9" width="80.2" height="13.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="355.9" y="106.4" width="80.2" height="116.5" fill="#b07d2b" opacity="0.9"/>
+<text x="396.0" y="102.4" text-anchor="middle" font-size="9.5" fill="#8a857c">3.57</text>
+<rect x="489.5" y="222.9" width="80.2" height="13.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="489.5" y="53.5" width="80.2" height="169.4" fill="#b07d2b" opacity="0.9"/>
+<text x="529.6" y="49.5" text-anchor="middle" font-size="9.5" fill="#8a857c">5.02</text>
+<rect x="623.1" y="222.9" width="80.2" height="13.1" fill="#1f3a5f" opacity="0.9"/>
+<rect x="623.1" y="146.6" width="80.2" height="76.3" fill="#b07d2b" opacity="0.9"/>
+<text x="663.2" y="142.6" text-anchor="middle" font-size="9.5" fill="#8a857c">2.46</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">시스템 사용료(월 300만원)</text>
+<rect x="736" y="34" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">기구 사용료(건당)</text>
+</svg><div class="src">자료: 투자설명서 가정(월 시스템 사용료 300만원, 수술 1회 기구 사용료 국내 140만원·미국 180만원, 대당 연 수술 2026 296·2027 250·2028 229건, 미국 259건). 조정판 열은 우리 기본값(연 150건, E). 대당 연 매출 = 300만원 × 12 + 건수 × 기구료.</div></figure>
+<p class="reading"><b>관찰.</b> 대당 연 매출은 건수 가정에 따라 국내 3.57억~4.50억, 미국 5.02억이며<span class="est">E</span>, 어느 막대에서나 시스템 사용료 0.36억은 아래쪽 얇은 띠에 그칩니다. <b>원인.</b> 월 300만원은 1년에 3,600만원이지만 수술 1회 기구료 140만원은 연 250건이면 3.5억이 되기 때문입니다. <b>함의.</b> STARK 매출은 설치 대수보다 대당 수술 건수에 더 민감하고, 병원 이용률이 낮으면 그 손해는 병원보다 리브스메드가 먼저 봅니다. 조정판 기본값(연 150건)에서 대당 연 매출은 2.46억<span class="est">E</span>으로 줄어듭니다.</p>
+
+<h3>표 4. STARK 가격 증거 계보</h3>
+<table class="txt"><tr><th>날짜</th><th>화자·출처</th><th>내용</th><th>무엇을 재나</th><th>등급</th></tr><tr><td>2025-12-05</td><td>IPO 간담회(한국경제)</td><td>월간 구독형, 가격은 다빈치의 수십 분의 일</td><td>장비 값</td><td>B</td></tr><tr><td>2025-12-12</td><td>투자설명서(주관사 추정 가정)</td><td>월 300만원 + 수술 1회 140만원(미국·독일 180만원), 직판, 가격 동결</td><td>과금 구조</td><td>A(가정)</td></tr><tr><td>2026-01-19</td><td>메디칼타임즈</td><td>설치비 없는 구독형 모델</td><td>과금 구조</td><td>B</td></tr><tr><td>2026-05-26</td><td>공개 행사 대표 발언(머니투데이 05-27)</td><td>다빈치5 한 대 가격으로 STARK 여러 대, 다빈치 건당 평균 약 4,000달러 비용도 낮춤</td><td>운영비</td><td>B</td></tr><tr><td>2026-06-16</td><td>삼성증권(파이낸스스코프)</td><td>목표 가격 다빈치의 약 1/10, 최종 가격 하반기 확정 예정</td><td>장비 값</td><td>B</td></tr><tr><td>2026-07-31</td><td>한국경제</td><td>다빈치 도입비 20억~40억 대비 본체 도입비 수억원대, '다빈치 절반가' 표현</td><td>장비 값</td><td>B</td></tr><tr><td>2026-10-15</td><td>IR 참석자 전언</td><td>다빈치 대비 4분의 1 수준 가격 가능</td><td>불명확</td><td>C</td></tr><tr><td>2026-09~10</td><td>주주 커뮤니티 추정</td><td>추정가 약 7~8억, 다빈치5 1대 운영 가격으로 4대</td><td>장비 값·운영비</td><td>C</td></tr><tr><td>시점 미상</td><td>개인 투자 블로그 인용(대표 과거 인터뷰, 매체 미기재)</td><td>대당 1~2억, 구독 월 300만원, 수술당 재료비 100~140만원</td><td>장비 값</td><td>C</td></tr><tr><td>2026-10-19</td><td>데일리팜</td><td>구독형은 구상일 뿐, 공급가격·계약조건 미확정</td><td>확정 여부</td><td>B</td></tr><tr><td>2026-10-20</td><td>더벨(전지환 CSO)</td><td>기구 원가절감 여력으로 혁신적인 가격정책, 출시는 내년</td><td>방향</td><td>B</td></tr></table>
+
+<p>가격에 관한 말은 많지만 같은 것을 재는 말은 드뭅니다. 표를 재는 대상별로 나누면 셋입니다. 장비 값(다빈치의 수십 분의 일, 약 10분의 1, 수억원대, 절반가, 7~8억, 1~2억), 운영비 전체(다빈치5 한 대 값으로 여러 대, 4분의 1, 건당 4,000달러 절감), 과금 구조(월 300만원과 건당 140만원, 설치비 없는 구독)입니다. 장비 값 표현만 놓고 봐도 '절반가'와 '수십 분의 일' 사이에는 수십 배 차이가 있고, 둘 다 회사 발언을 받은 언론 보도입니다. 가장 최근 보도는 오히려 확정에서 멀어졌습니다. 데일리팜(10-19)은 구독형이 아직 구상일 뿐 공급가격과 계약조건이 정해지지 않았다고 적었고, 더벨(10-20) 인터뷰에서 전지환 CSO는 기구 원가절감으로 생긴 여력으로 혁신적인 가격정책을 펴겠다며 출시는 내년으로 예상했습니다. 삼성증권이 6월에 전한 '최종 가격 하반기 확정'도 아직 실현되지 않았습니다.</p>
+
+<figure class=""><figcaption>장표 3. STARK 가격 표현을 장비 값으로 환산하면 — 0.4억에서 10.6억까지</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="384.4" y1="28" x2="384.4" y2="262" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="384.4" y="278.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">0.5억</text>
+<line x1="458.1" y1="28" x2="458.1" y2="262" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="458.1" y="278.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">1억</text>
+<line x1="531.9" y1="28" x2="531.9" y2="262" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="531.9" y="278.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">2억</text>
+<line x1="629.4" y1="28" x2="629.4" y2="262" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="629.4" y="278.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">5억</text>
+<line x1="703.1" y1="28" x2="703.1" y2="262" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="703.1" y="278.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">10억</text>
+<line x1="776.9" y1="28" x2="776.9" y2="262" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="776.9" y="278.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">20억</text>
+<line x1="783.3" y1="26" x2="783.3" y2="262" stroke="#a44a3f" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="777.3" y="22.0" font-size="10.5" fill="#a44a3f" text-anchor="end" font-weight="400">다빈치 평균 구매가 21.2억(ISRG 3Q26, A)</text>
+<text x="318.0" y="50.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">IPO 간담회 '다빈치의 수십 분의 일'(B)</text>
+<rect x="367.0" y="41" width="97.5" height="10" rx="5" fill="#3a6ea5" opacity="0.85"/>
+<text x="471.5" y="50.0" font-size="10.5" fill="#3a6ea5" text-anchor="start" font-weight="400">0.4~1.1억</text>
+<text x="318.0" y="77.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">블로그 인용 대표 과거 인터뷰 '대당 1~2억'(C)</text>
+<rect x="458.1" y="68" width="73.8" height="10" rx="5" fill="#8a857c" opacity="0.85"/>
+<text x="538.9" y="77.0" font-size="10.5" fill="#8a857c" text-anchor="start" font-weight="400">1.0~2.0억</text>
+<text x="318.0" y="104.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">삼성증권 '목표 다빈치의 약 1/10'(B)</text>
+<circle cx="538.3" cy="100" r="5" fill="#3a6ea5"/>
+<text x="547.3" y="104.0" font-size="10.5" fill="#3a6ea5" text-anchor="start" font-weight="400">2.1억</text>
+<text x="318.0" y="131.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">투자설명서 구독료 7년 합계(A 가정·E)</text>
+<circle cx="556.4" cy="127" r="5" fill="#1f3a5f"/>
+<text x="565.4" y="131.0" font-size="10.5" fill="#1f3a5f" text-anchor="start" font-weight="400">2.5억</text>
+<text x="318.0" y="158.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">한국경제 '본체 도입비 수억원대'(B)</text>
+<rect x="531.9" y="149" width="160.0" height="10" rx="5" fill="#3a6ea5" opacity="0.85"/>
+<text x="698.9" y="158.0" font-size="10.5" fill="#3a6ea5" text-anchor="start" font-weight="400">2.0~9.0억</text>
+<text x="318.0" y="185.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">IR 참석자 전언 '다빈치의 4분의 1'(C)</text>
+<circle cx="635.8" cy="181" r="5" fill="#8a857c"/>
+<text x="644.8" y="185.0" font-size="10.5" fill="#8a857c" text-anchor="start" font-weight="400">5.3억</text>
+<text x="318.0" y="212.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">주주 커뮤니티 추정 '7~8억'(C)</text>
+<rect x="665.2" y="203" width="14.2" height="10" rx="5" fill="#8a857c" opacity="0.85"/>
+<text x="686.4" y="212.0" font-size="10.5" fill="#8a857c" text-anchor="start" font-weight="400">7.0~8.0억</text>
+<text x="318.0" y="239.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">한국경제 '다빈치 절반가'(B)</text>
+<circle cx="709.5" cy="235" r="5" fill="#3a6ea5"/>
+<text x="718.5" y="239.0" font-size="10.5" fill="#3a6ea5" text-anchor="start" font-weight="400">10.6억</text>
+</svg><div class="src">자료: 표 4의 각 출처. 다빈치 대비 비율 표현은 ISRG 3Q26 콜의 평균 구매가 $1.6M(USD1 = ₩1,327.5 적용, 21.2억)으로 환산했고, '수십 분의 일'은 1/20~1/50로 해석했습니다(E). 구독료 7년 합계 = 월 300만원 × 84개월(E). 가로축은 로그 눈금.</div></figure>
+<p class="reading"><b>관찰.</b> 장비 값으로 바꾼 가격 표현들은 0.4억에서 10.6억까지 약 25배 범위에 흩어져 있고, 투자설명서 구독료를 7년 모은 2.52억<span class="est">E</span>은 그 가운데 아래쪽에 놓입니다. <b>원인.</b> 발언마다 비교 기준(다빈치 도입비 20억~40억 대 평균 구매가 21.2억), 재는 대상(장비 값 대 운영비), 화자(회사·증권사·IR 참석자·주주 커뮤니티)가 다르기 때문입니다. <b>함의.</b> 지금 확인되는 것은 '다빈치보다 한 자릿수 배 이상 싸다'는 방향뿐이고, 공식 가격표가 나오기 전까지 STARK 매출 추정의 단가는 투자설명서 가정 하나에 기댈 수밖에 없습니다.</p>
+
+<p>장비 값 대신 수술 1건당 병원 비용으로 비교하면 그림이 조금 선명해집니다. 인튜이티브 3Q26 실적에서 확인되는 값만 쓰면 다빈치 평균 구매가는 약 160만 달러(21.2억원), 수술 1건당 기구·소모품(I&A) 매출은 약 1,860달러(246.9만원)이고, 서비스 매출을 설치 기반으로 나누면 대당 연 2.1억원<span class="est">E</span>입니다. 장비를 7년에 나눠 상각하고 연 250건을 하면 다빈치의 건당 비용은 약 453만원<span class="est">E</span>입니다. 같은 250건에서 STARK 가정은 구독료를 건수로 나눈 14.4만원과 기구료 140만원을 더해 154.4만원<span class="est">E</span>, 다빈치의 34%<span class="est">E</span>입니다. 이정주 대표가 공개 행사에서 말한 다빈치 건당 평균 4,000달러(531만원)와 견주면 29%<span class="est">E</span>입니다. 주주 커뮤니티가 되풀이하는 '다빈치의 4분의 1'은 장비 값보다 이 건당 비용에 가까운 표현으로 읽힙니다. 인튜이티브가 2027년 상반기부터 기구 사용 횟수 연장과 물량 할인으로 수술당 기구 매출을 3~5% 낮추겠다고 했지만(3Q26 콜), 세 배 가까운 차이를 메우는 규모는 아닙니다.</p>
+
+<figure class=""><figcaption>장표 5. 수술 1건당 병원 비용 — 다빈치 대비 STARK 가정(만원)</figcaption><svg viewBox="0 0 880 244" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<rect x="20" y="9" width="12" height="10" fill="#1f3a5f"/>
+<text x="36.0" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">장비 상각·구독료</text>
+<rect x="142.0" y="9" width="12" height="10" fill="#2b7a78"/>
+<text x="158.0" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">유지보수·서비스</text>
+<rect x="257.73" y="9" width="12" height="10" fill="#b07d2b"/>
+<text x="273.7" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">기구·소모품</text>
+<rect x="351.9" y="9" width="12" height="10" fill="#8a857c"/>
+<text x="367.9" y="18.0" font-size="11" fill="#8a857c" text-anchor="start" font-weight="400">구분 없음</text>
+<line x1="300.0" y1="36" x2="300.0" y2="218" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="300.0" y="234.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">0만원</text>
+<line x1="425.0" y1="36" x2="425.0" y2="218" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="425.0" y="234.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">200만원</text>
+<line x1="550.0" y1="36" x2="550.0" y2="218" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="550.0" y="234.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">400만원</text>
+<line x1="675.0" y1="36" x2="675.0" y2="218" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="675.0" y="234.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">600만원</text>
+<line x1="800.0" y1="36" x2="800.0" y2="218" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="800.0" y="234.0" font-size="10" fill="#8a857c" text-anchor="middle" font-weight="400">800만원</text>
+<text x="288.0" y="57.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">다빈치 · IR 참석자 전언 기반(C·E)</text>
+<rect x="300.0" y="44" width="89.3" height="18" fill="#1f3a5f" opacity="0.9"/>
+<rect x="389.3" y="44" width="62.5" height="18" fill="#2b7a78" opacity="0.9"/>
+<rect x="451.8" y="44" width="312.5" height="18" fill="#b07d2b" opacity="0.9"/>
+<text x="770.3" y="57.0" font-size="11" fill="#3a3630" text-anchor="start" font-weight="600">743만원</text>
+<text x="288.0" y="91.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">다빈치 · 대표 언급 건당 4,000달러(B)</text>
+<rect x="300.0" y="78" width="331.9" height="18" fill="#8a857c" opacity="0.9"/>
+<text x="637.9" y="91.0" font-size="11" fill="#3a3630" text-anchor="start" font-weight="600">531만원</text>
+<text x="288.0" y="125.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">다빈치 · ISRG 3Q26 실측 합성(A 입력·E)</text>
+<rect x="300.0" y="112" width="75.9" height="18" fill="#1f3a5f" opacity="0.9"/>
+<rect x="375.9" y="112" width="52.9" height="18" fill="#2b7a78" opacity="0.9"/>
+<rect x="428.8" y="112" width="154.3" height="18" fill="#b07d2b" opacity="0.9"/>
+<text x="589.1" y="125.0" font-size="11" fill="#3a3630" text-anchor="start" font-weight="600">453만원</text>
+<text x="288.0" y="159.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">STARK · 투자설명서 가정, 연 250건(E)</text>
+<rect x="300.0" y="146" width="9.0" height="18" fill="#1f3a5f" opacity="0.9"/>
+<rect x="309.0" y="146" width="87.5" height="18" fill="#b07d2b" opacity="0.9"/>
+<text x="402.5" y="159.0" font-size="11" fill="#3a3630" text-anchor="start" font-weight="600">154만원</text>
+<text x="288.0" y="193.0" font-size="11" fill="#3a3630" text-anchor="end" font-weight="400">STARK · 조정판 기본값, 연 150건(E)</text>
+<rect x="300.0" y="180" width="15.0" height="18" fill="#1f3a5f" opacity="0.9"/>
+<rect x="315.0" y="180" width="87.5" height="18" fill="#b07d2b" opacity="0.9"/>
+<text x="408.5" y="193.0" font-size="11" fill="#3a3630" text-anchor="start" font-weight="600">164만원</text>
+</svg><div class="src">자료: ISRG 3Q26 8-K·콜(평균 구매가 $1.6M, 수술당 I&A 약 $1,860, 서비스 매출 $482.2M ÷ 설치기반 12,094대를 연율화), 공개 행사 대표 발언(머니투데이 05-27), IR 참석자 전언(로봇 20~30억·연 유지보수 2.5억·소모품 건당 약 500만원, C), 투자설명서 가정. 장비 7년 정액 상각·연 250건은 우리 가정(E), USD1 = ₩1,327.5.</div></figure>
+<p class="reading"><b>관찰.</b> 다빈치의 건당 비용은 근거에 따라 453만~743만원<span class="est">E</span>, STARK 가정은 154만~164만원<span class="est">E</span>입니다. <b>원인.</b> 다빈치는 장비 상각과 서비스라는 고정비가 건당 비용의 절반 가까이를 차지하지만, STARK 가정은 비용의 90% 이상이 수술할 때만 나가는 기구료라 건수가 줄어도 건당 비용이 거의 변하지 않습니다. <b>함의.</b> 수술이 적은 병원일수록 STARK의 상대 우위가 커지는 구조이지만, 같은 이유로 이용률 위험은 회사가 집니다. IR 참석자 전언(등급 C)은 인튜이티브 실측보다 다빈치 비용을 높게 잡고 있다는 점도 함께 봅니다.</p>
+
+<p>이 비교에는 반대편 사실도 있습니다. 인튜이티브는 3Q26에 운용리스로 291대를 설치했고, 그 가운데 160대가 사용량 연동 리스였습니다. 다빈치도 이미 장비를 사지 않고 쓰는 만큼 내는 방식을 넓히고 있다는 뜻이고, 구독형이라는 형식만으로는 차별점이 되기 어렵습니다. STARK의 가격 우위가 오래가려면 형식이 아니라 기구 원가가 낮아야 하는데, 회사가 내세우는 근거는 엔드툴과 카메라의 수직계열화입니다(더벨 10-20). 그 원가가 실제로 얼마인지는 아직 공시로 확인할 수 없고, 매출총이익률이 2026년 상반기 43.4%로 1년 전 61.3%에서 내려간 기구 사업의 현재 원가 구조는 이 주장에 유리한 증거가 아닙니다.</p>
+
+<h2>5. 생산과 개발비 — 용인 공장과 공모자금의 로봇 몫</h2>
+
+<p>로봇을 만들 공장은 용인에 있습니다. 회사는 2026-05-12 경기 용인시 기흥구의 옛 인성엔프라 용인공장 토지 58,783.6㎡(약 17,782평)와 건물 2동 16,020.13㎡(약 4,846평)를 312.4억에 사기로 했고, 2026-06-22에 잔금과 등기를 마쳤습니다(주요사항보고서·정정). 공시상 목적은 차세대 수술로봇 등의 글로벌 양산 거점인 'Advanced Manufacturing Facility'입니다. 투자설명서가 부지·건물 매입에 잡아 둔 예산 180억의 1.7배를 쓴 셈이고, 재원은 자기자금과 차입으로 적었습니다. 07-29에는 우리·하나은행과 시설자금 234억 대출 약정을 맺었습니다. 회사는 올해 정비를 마치고 2027년에 가동한다고 밝혔고(메디파나 10-19), 큰 동은 로봇 전용이고 다른 동에서 로봇 기구와 엔드툴을 만든다는 설명은 IR 참석자 전언입니다(등급 C).</p>
+
+<p>공장 시간표와 상장 가정은 서로 맞지 않습니다. 다올은 5월에 로봇 생산 설비투자 약 300억, 신공장 2027년 하반기 가동, 초기 연 수십 대 생산능력을 전했습니다(서울경제 영문 05-19). 상장 가정은 2026년 4분기 36대, 2027년 103대를 새로 설치하는데, 2027년 하반기에 가동하는 공장으로 그해 103대를 대려면 기존 성남 시설에서 상당한 물량을 먼저 만들어야 합니다. 지금 STARK를 어디서 몇 대까지 만들 수 있는지는 공시에 없습니다. 머니투데이(10-19)는 회사가 국내 허가 즉시 실사용과 판매가 가능하도록 생산을 준비하고 있다고만 전했습니다. 2027년 STARK 대수의 상한은 수요보다 생산이 먼저 정할 가능성이 있다고 봅니다.</p>
+
+<p>개발비 쪽에서는 STARK가 이미 손익을 누르고 있습니다. 공모자금 가운데 STARK 몫은 최적화 130억(총예산 230억)과 디지털 수술 플랫폼을 표방한 STARK 2.0 170억(총예산 200억)으로, R&D 공모자금 325.9억의 92%입니다. 경상연구개발비는 2024년 107.0억, 2025년 141.6억, 2026년 상반기 94.0억(2025년 상반기 62.0억 대비 +51.6%)으로 늘었고, 개발비 자산화는 0원이라 전액 비용입니다. 반기보고서 기준 연구소 인력 109명 가운데 51명이 로봇 R&D실입니다. 회사는 2025년 영업손실이 상장 추정보다 커진 주된 이유로 경상연구개발비가 예측보다 29.0% 늘어난 것을 들었고, 그 대상에 STARK 완성도 제고를 넣었습니다(2026 반기보고서). 2026-04에는 뇌혈관·신경 미세봉합 반자율 수술로봇 정부 과제(출연 47.5억, 2030-12까지)도 새로 맡았습니다.</p>
+
+<h2>6. 2027년의 실제 모습 — 판매보다 PoC의 해</h2>
+
+<p>그렇다면 2027년의 STARK는 어떤 모습일까요. 최근 보도들은 판매보다 평가를 가리킵니다. 뉴스웨이(09-30)는 연내 허가 후 2027년 국내외 병원을 대상으로 PoC를 넓힌다고 전했고, 녹색경제신문(10-17)은 허가 후 대형병원 중심으로 배치해 임상 데이터를 쌓는다는 계획을 실었습니다. 더벨(10-20) 인터뷰는 출시를 '내년'으로 적었고, 데일리팜(10-19)은 공급가격과 계약조건이 미정이라고 했습니다. 설치 대수 목표의 공식 수치는 없고, 삼성증권(06-16)이 전한 '출시 첫해 두 자릿수 설치'가 회사 목표를 인용한 유일한 숫자입니다. 다올은 2027년 매출 1,639억 가운데 STARK를 321억으로 잡아 상장 가정(국내 330.1억)과 비슷한 수준을 유지하고 있습니다(서울경제 10-07).</p>
+
+<p>우리 조정판의 기본값은 가정, 근거, 식, 교차검증의 순서로 정했습니다. 가정은 첫 유상 설치 2027년 2분기, 2027년 신규 20대, 2028년 신규 50대, 단가는 투자설명서 그대로(월 300만원, 건당 140만원), 대당 연 수술 150건, 2027년 설치분의 30%는 무상 PoC입니다<span class="est">E</span>. 근거는 12월 허가 뒤 병원 구매 절차와 생산 준비에 한 분기 이상이 걸린다는 점, '첫해 두 자릿수'와 '초기 연 수십 대 생산능력'이라는 두 보도, 로봇을 처음 들이는 병원의 첫해 건수를 다빈치 평균의 절반 정도로 보는 것이 보수적이라는 판단, 그리고 PoC 확대 보도입니다. 식은 투자설명서와 같습니다. 분기별 설치분에 그해 가동 개월(1분기 11, 2분기 8, 3분기 5, 4분기 2개월)을 곱해 가동 대·월을 만들고, 거기에 월 사용료와 월 기구 매출(연 건수를 12로 나눈 값에 건당 기구료를 곱한 것)을 곱합니다. 교차검증으로, 투자설명서의 가동 대·월(2026년 108, 2027년 1,025)과 건수를 이 식에 넣으면 40.5억과 330.1억이 그대로 재현됩니다. 2027년 신규 103대가 평균 5.8개월 가동한다는 것이 상장 가정에 숨은 설치 속도입니다.</p>
+
+<div class="panel"><b>조정판 — 2027·2028년 STARK 국내 매출이 무엇에 달려 있는지 보는 자입니다. 주가나 가치를 내지 않습니다.</b><div class="note" style="margin-bottom:8px">일곱 개를 움직이면 그 조합의 2027·2028년 국내 STARK 매출과 상장 가정(투자설명서) 대비 비율이 바로 바뀝니다. 미국·일본 매출은 넣지 않았습니다.</div><div style="margin:10px 0 2px">(가) 첫 유상 설치 분기 <b><span id="s_q0_v"></span></b><br><input type="range" id="s_q0" min="1" max="4" step="1" value="2"><div class="note">1=1Q27 · 2=2Q27 · 3=3Q27 · 4=4Q27. 기본값 2Q27 = 12월 허가 뒤 병원 구매 절차와 생산 준비에 한 분기 이상을 둔 우리 가정입니다. 2027년 설치분은 이 분기부터 4분기까지 고르게 나눕니다.</div></div><div style="margin:10px 0 2px">(나) 2027년 신규 설치 대수 <b><span id="s_n27_v"></span>대</b><br><input type="range" id="s_n27" min="0" max="140" step="1" value="20"><div class="note">기본값 20대 = 삼성증권(06-16)이 전한 '출시 첫해 두 자릿수 설치'와 다올(05-19)의 '초기 연 수십 대 생산능력'. 상장 가정은 103대입니다.</div></div><div style="margin:10px 0 2px">(다) 2028년 신규 설치 대수 <b><span id="s_n28_v"></span>대</b><br><input type="range" id="s_n28" min="0" max="200" step="1" value="50"><div class="note">기본값 50대<span class="est">E</span>. 상장 가정은 국내 160대(미국 72대 별도)입니다.</div></div><div style="margin:10px 0 2px">(라) 월 시스템 사용료(만원) <b><span id="s_sub_v"></span>만원</b><br><input type="range" id="s_sub" min="0" max="600" step="10" value="300"><div class="note">기본값 300만원 = 투자설명서 가정. 공식 가격은 발표된 적이 없습니다.</div></div><div style="margin:10px 0 2px">(마) 수술 1회 기구 사용료(만원) <b><span id="s_fee_v"></span>만원</b><br><input type="range" id="s_fee" min="50" max="250" step="5" value="140"><div class="note">기본값 140만원 = 투자설명서 국내 가정(미국·독일 180만원). 다빈치 3Q26 수술당 기구·소모품 매출은 약 247만원입니다.</div></div><div style="margin:10px 0 2px">(바) 대당 연 수술 건수 <b><span id="s_cases_v"></span>건</b><br><input type="range" id="s_cases" min="50" max="350" step="5" value="150"><div class="note">기본값 150건<span class="est">E</span> = 로봇을 처음 들이는 병원의 첫해를 다빈치 2025년 평균 284건의 절반 정도로 본 우리 가정. 상장 가정은 2027년 250건, 국내 로봇 평균은 2023년 345건입니다.</div></div><div style="margin:10px 0 2px">(사) 2027년 설치분 중 무상 PoC 비중(%) <b><span id="s_poc_v"></span>%</b><br><input type="range" id="s_poc" min="0" max="100" step="5" value="30"><div class="note">기본값 30%<span class="est">E</span>. PoC 장비는 2027년 매출이 0이고 2028년 1월부터 유상으로 바뀐다고 둡니다(뉴스웨이 09-30 'PoC 확대' 보도 반영).</div></div><div class="out">2027년 국내 STARK 매출 <span id="o_r27">—</span>억 · 상장 가정 330.1억의 <span id="o_p27">—</span>% · 가동 대·월 <span id="o_um27">—</span> · 연말 누적 <span id="o_cum27">—</span>대</div><div class="out">2028년 국내 STARK 매출 <span id="o_r28">—</span>억 · 상장 가정 783.1억의 <span id="o_p28">—</span>% · 가동 대·월 <span id="o_um28">—</span> · 연말 누적 <span id="o_cum28">—</span>대</div><div class="out" style="font-weight:400">이 조합의 대당 연 매출 <span id="o_uy">—</span>억 · 그 가운데 기구 사용료 비중 <span id="o_ins">—</span>% · 병원의 STARK 건당 비용 <span id="o_pc">—</span>만원</div><div class="note">식. 2027년 가동 대·월 = Σ(분기 설치 대수 × 그해 가동 개월; 1분기 11·2분기 8·3분기 5·4분기 2개월, 투자설명서와 같은 관례). 2028년 가동 대·월 = 2027년 말 누적 × 12 + 2028년 신규를 네 분기에 고르게 나눈 값의 가동 개월 합. 매출 = 가동 대·월 × (월 사용료 + 연 수술 건수 ÷ 12 × 건당 기구 사용료). 2027년만 PoC 비중만큼 매출을 0으로 둡니다. 교차검증: 투자설명서의 가동 대·월(2026년 108, 2027년 1,025)과 건수를 이 식에 넣으면 공시 금액 40.5억·330.1억이 0.1억 안에서 재현됩니다. 2026년 STARK 매출은 이 판에서 0으로 둡니다<span class="est">E</span>.</div>
+<script>
+(function(){
+var IPO27=330.10, IPO28=783.13, QM=[11,8,5,2];
+var ids=["s_q0","s_n27","s_n28","s_sub","s_fee","s_cases","s_poc"];
+function g(i){return +document.getElementById(i).value}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function S(i,t){document.getElementById(i).textContent=t}
+function f(){
+ var q0=g("s_q0"),n27=g("s_n27"),n28=g("s_n28"),sub=g("s_sub"),fee=g("s_fee"),cs=g("s_cases"),poc=g("s_poc");
+ S("s_q0_v",q0+"Q27");["s_n27","s_n28","s_sub","s_fee","s_cases","s_poc"].forEach(function(i){S(i+"_v",fm(g(i),0))});
+ var pum=sub/1e4+cs/12*fee/1e4, um27=0, nq=5-q0;
+ for(var q=q0;q<=4;q++){um27+=n27/nq*QM[q-1];}
+ var r27=um27*pum*(1-poc/100), um28=n27*12+n28/4*(11+8+5+2), r28=um28*pum;
+ S("o_r27",fm(r27,1));S("o_r28",fm(r28,1));S("o_p27",fm(r27/IPO27*100,1));S("o_p28",fm(r28/IPO28*100,1));
+ S("o_cum27",fm(n27,0));S("o_cum28",fm(n27+n28,0));S("o_uy",fm(pum*12,2));S("o_ins",fm((cs/12*fee/1e4)/pum*100,1));
+ S("o_um27",fm(um27,0));S("o_um28",fm(um28,0));S("o_pc",fm(sub*12/cs+fee,1));}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});f();})();
+</script></div>
+
+<figure class=""><figcaption>장표 6. STARK 누적 설치 대수 — 상장 가정 대 조정판 기본값</figcaption><svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="216.0" x2="730" y2="216.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="220.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="183.0" x2="730" y2="183.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="187.0" text-anchor="end" font-size="11" fill="#8a857c">50</text>
+<line x1="62" y1="150.0" x2="730" y2="150.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="154.0" text-anchor="end" font-size="11" fill="#8a857c">100</text>
+<line x1="62" y1="117.0" x2="730" y2="117.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="121.0" text-anchor="end" font-size="11" fill="#8a857c">150</text>
+<line x1="62" y1="84.0" x2="730" y2="84.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="88.0" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="51.0" x2="730" y2="51.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="55.0" text-anchor="end" font-size="11" fill="#8a857c">250</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">300</text>
+<text x="173.3" y="234" text-anchor="middle" font-size="10" fill="#8a857c">2026년 말</text>
+<text x="396.0" y="234" text-anchor="middle" font-size="10" fill="#8a857c">2027년 말</text>
+<text x="618.7" y="234" text-anchor="middle" font-size="10" fill="#8a857c">2028년 말</text>
+<rect x="95.4" y="192.2" width="76.9" height="23.8" fill="#8a857c" opacity="0.9"/>
+<text x="134.4" y="188.2" text-anchor="middle" font-size="9.5" fill="#8a857c">36</text>
+<rect x="173.3" y="216.0" width="76.9" height="0.0" fill="#1f3a5f" opacity="0.9"/>
+<text x="212.3" y="212.0" text-anchor="middle" font-size="9.5" fill="#1f3a5f">0</text>
+<rect x="318.1" y="124.3" width="76.9" height="91.7" fill="#8a857c" opacity="0.9"/>
+<text x="357.0" y="120.3" text-anchor="middle" font-size="9.5" fill="#8a857c">139</text>
+<rect x="396.0" y="202.8" width="76.9" height="13.2" fill="#1f3a5f" opacity="0.9"/>
+<text x="435.0" y="198.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">20</text>
+<rect x="540.7" y="42.4" width="76.9" height="173.6" fill="#8a857c" opacity="0.9"/>
+<text x="579.7" y="38.4" text-anchor="middle" font-size="9.5" fill="#8a857c">263</text>
+<rect x="618.7" y="169.8" width="76.9" height="46.2" fill="#1f3a5f" opacity="0.9"/>
+<text x="657.6" y="165.8" text-anchor="middle" font-size="9.5" fill="#1f3a5f">70</text>
+<rect x="736" y="18" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">상장 가정 누적 대수</text>
+<rect x="736" y="34" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">조정판 기본값 누적(E)</text>
+</svg><div class="src">자료: 투자설명서(2026E 36대·2027E 103대·2028E 160대 신규). 조정판 기본값은 첫 유상 설치 2Q27, 2027년 20대·2028년 50대 신규(우리 가정, E). 미국 대수 제외.</div></figure>
+<p class="reading"><b>관찰.</b> 상장 가정의 누적 설치는 2026년 말 36대, 2027년 말 139대, 2028년 말 263대이고, 조정판 기본값은 0대, 20대, 70대<span class="est">E</span>입니다. <b>원인.</b> 출시 시점이 2026년 4분기에서 2027년 2분기 이후로 밀렸고, 첫해 대수를 보도된 생산능력과 '첫해 두 자릿수' 목표에 맞췄기 때문입니다. <b>함의.</b> 2027년 STARK 매출은 대수와 시점 두 축에서 상장 가정과 한 자릿수 배 이상 벌어져 있으며, 2027년 STARK 매출을 크게 보는 추정은 생산능력의 근거를 함께 내놓아야 합니다.</p>
+
+<p>기본값에서 2027년 국내 STARK 매출은 14.3억<span class="est">E</span>, 2028년은 115.8억<span class="est">E</span>으로 상장 가정(330.1억, 783.1억)의 4.3%와 14.8%입니다. 단가보다 시점과 건수가 결과를 더 크게 움직입니다. 예컨대 건당 기구료를 140만원에서 100만원으로 낮추면 2028년 매출은 24.4% 줄지만, 대당 연 수술을 150건에서 250건으로 올리면 56.9% 늘어납니다<span class="est">E</span>. 거꾸로 상장 가정의 2027년 330.1억을 맞추려면 투자설명서의 단가와 건수(연 250건)로 가동 대·월 1,026이 필요하고, 이는 2027년 1분기에 93대를 한꺼번에 설치해야 나오는 값입니다<span class="est">E</span>. 허가가 12월에 나오더라도 이 숫자는 현실적인 범위 밖에 있다고 봅니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+
+<p><b>논쟁 3(STARK 시간표는 지켜지나)에 대한 이 파트의 답은 '국내 허가는 지켜질 수 있지만 매출 시간표는 이미 지켜지지 않았다'입니다.</b> 국내 품목허가는 신청 후 30영업일 동안 보완 요청이 없었다는 보도가 있고 80영업일 단순 계산이 2026-12-03이므로, 회사의 '연내' 목표는 보완 요청이 없다면 산수로는 닿는 거리입니다. 그러나 상장 가정의 2026년 4분기 36대, 40.5억은 허가가 12월에 나오는 순간 사실상 0이 되고, 2027년은 판매보다 PoC의 해라는 보도가 겹칩니다. 미국·일본은 동시 추진으로 순서가 바뀌었지만 신청은 2027년 목표이고 경로는 미정이어서, 상장 가정의 2028년 1분기 미국 출시도 앞당겨졌다기보다 불확실해졌다고 봅니다. 채점 KPI는 네 가지입니다. 국내 품목허가 2026-12-31 이전 획득, 2027년 상반기 첫 설치 병원 공개(유상과 PoC 구분), FDA 사전 협의나 IDE·PMDA 상담 착수의 공시·보도, 구독 단가의 공식 발표입니다. 반증 조건은 양쪽에 하나씩 둡니다. 식약처 보완 요청으로 허가가 2027년으로 넘어가면 국내 시간표를 한 단계 더 늦춰야 하고, 반대로 2027년 상반기 유상 설치가 20대를 넘으면 조정판 기본값이 지나치게 보수적이었다는 뜻입니다.</p>
+
+<p><b>논쟁 5(시총 1조가 매기는 것)에는 옵션의 내용물을 적습니다.</b> 시가총액이 STARK에 매기는 값은 로봇 판매 대금이 아니라 수술 건수에 붙는 기구 매출의 흐름입니다. 투자설명서 가정 기준 대당 연 매출은 3.86억<span class="est">E</span>이고 그 90.7%가 기구 사용료입니다. 따라서 옵션의 크기는 설치 대수와 대당 수술 건수, 건당 기구료의 곱으로 정해지고, 셋 가운데 공시나 계약으로 확인된 것은 아직 하나도 없습니다. 국내만 보면 상장 가정의 2028년 783.1억은 기구 사업 2025년 연간 매출 511.9억보다 큰 숫자인데, 우리 기본값은 그 15% 수준<span class="est">E</span>입니다. 결국 옵션 가치의 대부분은 아직 경로도 시점도 정해지지 않은 미국과 일본에 있고, 건당 병원 비용이 다빈치의 3분의 1 수준<span class="est">E</span>이라는 구조가 그 옵션의 근거입니다. 이 값을 시총과 맞대 보는 일은 파트 8 조정판이 맡습니다.</p>
+
+<h2>미결</h2>
+
+<p><b>A급(시간표와 매출의 크기를 바꾸는 것).</b> 첫째, 식약처 품목허가 결과와 보완 요청 여부입니다. 식약처 의료기기 허가 정보와 회사 발표로 12월 중 확인됩니다. 둘째, 임상 근거입니다. LVSTARK-1000의 대상자 수와 결과, 허가 신청에 들어간 임상 자료는 공개된 적이 없으며 허가 후 허가 정보나 학회 발표로 확인할 수 있습니다. 셋째, 공식 가격과 계약 구조입니다. 구독료, 건당 기구료, 최소 사용 약정, 유지보수 포함 여부는 첫 설치 병원 보도나 회사 발표에서 나옵니다. 넷째, 미국 경로입니다. 510(k)와 De Novo 가운데 어느 쪽인지, Q-Sub 착수 여부, 미국 내 임상 필요 여부는 FDA 데이터베이스와 회사 발표(2027년)로 확인해야 합니다.</p>
+
+<p><b>B급(상한과 비용을 바꾸는 것).</b> 첫째, STARK의 현재 생산능력과 용인 공장의 가동·제조 인증 시점입니다. 3Q26 분기보고서와 사업보고서의 생산설비 항목을 봐야 합니다. 둘째, 일본 PMDA 경로와 2026 수가 가산 요건의 적용 단위입니다. 후생노동성 고시 원문이 필요합니다. 셋째, 첫해 설치 대수의 공식 목표입니다. 지금은 삼성증권이 전한 '두 자릿수'뿐이며 회사 IR 자료로 확인해야 합니다. 넷째, 용인 매입가 312.4억 가운데 건물 장부 배분입니다. 반기말 토지 계정만 292.3억 늘어 건물분 배분이 공시되지 않았습니다.</p>
+
+<p><b>C급(참고).</b> 첫째, KOL 발언의 실사용 근거입니다. 공개 행사 녹취는 전사 오류가 있는 개인 투자 블로그 자료이므로 학회 발표 자료로 대조할 필요가 있습니다. 둘째, 주주 커뮤니티의 가격 수치(7~8억, 1~2억, 4분의 1)의 1차 출처입니다. 셋째, 2020년 정부 과제 착수 경위와 2025-12 식약처 로봇수술기 허가·심사 가이드라인의 임상 면제 조항 해석입니다. 식약처 공고 원문으로 확인할 수 있습니다.</p>
+
+<div class="foot">데이터 계보: DART 증권신고서·투자설명서(2025-12-12 정정, 국내·미국 Stark 상세 매출 추정표, 공모자금 사용계획, 인허가 소요 기간, 회사 자체 로봇 비교표), 2026 반기보고서(연구개발 조직·실적, 경상연구개발비, 예측 대비 실적), 주요사항보고서(유형자산 양수 2026-05-12, 06-22 정정), 데이터 패킷(주가·시총·상장 가정·용인·R&D, 2026-10-22 작성). 다빈치 수치는 ISRG 3Q26 8-K·10-Q·콜 전사(2026-10-20·21) 원문 대조분만 썼고, 건당 비용 합성(7년 상각·연 250건·서비스 매출 연율화)은 우리 계산입니다(E). FDA 초안은 Federal Register 2026-09-25(91 FR 60967). 언론 인용은 본문에 매체와 날짜를 적었습니다. 주주 커뮤니티·개인 투자 블로그의 주장과 IR 참석자 전언은 등급 C로 표시했고 이름을 쓰지 않았습니다. 증권사는 하우스명과 추정치만 인용했습니다. 이 문서는 정보 제공용이며 특정 증권의 매수·매도를 권유하지 않고, 주가나 가치를 제시하지 않습니다.</div>
+
+</main></body></html>

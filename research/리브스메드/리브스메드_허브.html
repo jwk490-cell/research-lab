@@ -1,0 +1,301 @@
+<!doctype html><html lang="ko" data-rl="hub"><head><meta charset="utf-8">
+<meta name="coverage" content="pmsummary,debatemap,appendix">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리브스메드 허브 — 판정과 파트 지도 · 2026-10-22</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<meta name="theme-color" content="#F2F4F6">
+<style>
+:root{--blue:#3182F6;--blue-50:#E8F3FF;--blue-100:#C9E2FF;--blue-700:#1B64DA;--ink:#191F28;--sub:#4E5968;--dim:#8B95A1;--line:#E5E8EB;--bg:#F2F4F6;--bg2:#F9FAFB;--white:#fff;--red:#F04452;--r:20px;--shadow:0 2px 10px rgba(25,31,40,.05)}
+html[data-theme=dark]{--blue:#4593FC;--blue-50:rgba(49,130,246,.16);--blue-100:rgba(49,130,246,.35);--blue-700:#7BB1FF;--ink:#E5E8EB;--sub:#B0B8C1;--dim:#8B95A1;--line:#2C2C35;--bg:#17171C;--bg2:#26262E;--white:#202027;--red:#FF6B6B;--shadow:0 2px 10px rgba(0,0,0,.25)}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;padding:0 0 96px;color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.72;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+b{font-weight:700}
+p{margin:0 0 1.05em}
+.est{font-size:.68em;vertical-align:super;color:var(--blue);font-weight:800;margin-left:1px}
+.hero{padding:44px 0 8px}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--blue);background:var(--blue-50);border-radius:999px;padding:4px 10px;margin-bottom:14px}
+.hero h1{font-size:34px;line-height:1.25;letter-spacing:-.02em;font-weight:800;margin:0 0 6px}
+.hero h1 small{font-size:16px;font-weight:600;color:var(--dim);margin-left:8px;letter-spacing:0}
+.hero .sub{font-size:14px;color:var(--sub);margin:0 0 18px;max-width:640px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--sub);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+.chip i{font-style:normal;color:var(--dim);font-weight:500}
+.chip.blue{color:var(--blue-700);background:var(--blue-50);border-color:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 12px}
+.stat{background:var(--white);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .l{font-size:12.5px;color:var(--dim);font-weight:600;margin-bottom:6px}
+.stat .v{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.stat .v.up{color:var(--red)} .stat .v.dn{color:var(--blue)}
+.stat .n{font-size:12px;color:var(--dim);margin-top:4px}
+.const{background:var(--white);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow);margin:0 0 14px}
+.const .t{font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.const .t .d{font-size:12px;color:var(--dim);font-weight:500}
+.const .row{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--bg);font-size:13.5px;line-height:1.65}
+.const .row:first-of-type{border-top:0}
+.const .k{font-weight:700;color:var(--ink)}
+.const .k small{display:block;font-weight:500;color:var(--dim);font-size:11.5px;line-height:1.4;margin-top:2px}
+.const .v{color:var(--sub)}
+.topnav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);margin:6px -20px 18px;padding:10px 20px}
+.topnav .in{max-width:880px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.topnav .in::-webkit-scrollbar{display:none}
+.topnav a{flex:none;font-size:13px;font-weight:600;color:var(--sub);background:var(--white);border-radius:999px;padding:7px 13px;box-shadow:var(--shadow)}
+.topnav a:hover{text-decoration:none;color:var(--ink)}
+.topnav a.on{color:var(--bg);background:var(--ink)}
+.sec{background:var(--white);border-radius:var(--r);padding:26px 26px 22px;box-shadow:var(--shadow);margin:0 0 14px;scroll-margin-top:64px}
+.sec h2{font-size:21px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin:0 0 10px}
+.sec h2 .h2sub{display:block;font-size:14px;font-weight:500;color:var(--dim);margin-top:4px;letter-spacing:0}
+.sec > p{color:var(--sub);font-size:14.5px}
+.sec > p b{color:var(--ink)}
+.callout{background:var(--blue-50);border-radius:14px;padding:16px 18px;margin:12px 0 16px;font-size:15px;line-height:1.7;color:var(--ink)}
+.src{color:var(--dim);font-size:12.5px;margin:10px 0 0}
+.cards{display:grid;gap:10px;margin:10px 0 4px}
+.card{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--white);font-size:14px;line-height:1.7;color:var(--sub)}
+.card .q{display:flex;gap:10px;align-items:flex-start;font-weight:700;color:var(--ink);font-size:15px;margin-bottom:8px;line-height:1.45}
+.card .q .num{flex:none;width:26px;height:26px;border-radius:9px;background:var(--blue-50);color:var(--blue-700);font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.card .score{margin-top:12px;background:var(--bg2);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.65;color:var(--sub)}
+.card .score::before{content:"채점";display:inline-block;font-size:11px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.tablewrap{overflow-x:auto;margin:12px 0 0;border-radius:14px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:11px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--bg)}
+th{font-weight:600;color:var(--dim);font-size:12.5px;white-space:nowrap;background:var(--bg2);border-top:0}
+tr:first-child td{border-top:0}
+td:first-child{white-space:nowrap;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:12px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.pill.gray{color:var(--sub);background:var(--bg)}
+.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;color:var(--sub);background:var(--bg)}
+.tag.now{color:var(--blue-700);background:var(--blue-50)}
+.partlist{display:flex;flex-direction:column;gap:10px;margin:14px 0 6px}
+.part{border:1px solid var(--line);border-radius:16px;background:var(--white);overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.part:hover{border-color:var(--blue-100)}
+.part[open]{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+.part summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;padding:14px 16px 14px 18px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+.part summary::-webkit-details-marker{display:none}
+.part summary:hover{background:var(--bg2)}
+.part .pn{font-size:12.5px;font-weight:800;color:var(--blue-700);background:var(--blue-50);border-radius:9px;padding:6px 10px;white-space:nowrap}
+.part .pt{min-width:0}
+.part .pt b{display:block;font-size:15px;font-weight:700;color:var(--ink)}
+.part .pd{display:block;color:var(--dim);font-size:13px;margin-top:2px;line-height:1.5}
+.part .ps{white-space:nowrap}
+.part .chev{width:22px;height:22px;border-radius:50%;background:var(--bg);display:inline-flex;align-items:center;justify-content:center;color:var(--dim);font-size:10px;transition:transform .18s}
+.part[open] .chev{transform:rotate(180deg);background:var(--blue-50);color:var(--blue-700)}
+.part .pbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:9px 18px;border-top:1px solid var(--line);background:var(--bg2);font-size:12.5px}
+.part .popen{font-weight:700}
+.part .pnote{color:var(--dim)}
+.part .pframe{border-top:1px solid var(--line);background:var(--bg)}
+.part iframe{display:block;width:100%;height:80vh;border:0;background:var(--bg)}
+.log{list-style:none;padding:0;margin:8px 0 0}
+.log li{position:relative;padding:0 0 4px 22px;font-size:14px;color:var(--sub);line-height:1.7}
+.log li::before{content:"";position:absolute;left:4px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+.log li b{color:var(--ink)}
+footer{color:var(--dim);font-size:12.5px;text-align:center;padding:14px 0 0;line-height:1.6}
+@media (max-width:720px){
+  body{overflow-x:hidden;word-break:normal;overflow-wrap:anywhere}
+  .stat .v{font-size:18px}.stat,.const .v,.card,.callout,.sec>p{min-width:0}
+  .hero .sub{font-size:13.5px}
+  .hero{padding-top:30px}.hero h1{font-size:28px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .sec{padding:20px 18px 16px;border-radius:16px}.sec h2{font-size:19px}
+  .const{padding:18px}.const .row{grid-template-columns:1fr;gap:4px;padding:9px 0}
+  .part summary{grid-template-columns:auto 1fr auto;gap:10px;padding:12px 14px}
+  .part .ps{display:none}
+}
+</style><script src="../theme.js"></script>
+</head><body>
+
+<div class="wrap">
+<header class="hero">
+<span class="eyebrow">Research Lab · 파트제 커버리지 허브</span>
+<h1>리브스메드 <small>491000 · KOSDAQ</small></h1>
+<p class="sub">판정의 정본입니다. 각 파트가 주제 하나를 끝까지 내려가고, 완성될 때마다 이 허브의 판정을 갱신합니다. 목표주가·시나리오 주가·매매 계획은 싣지 않습니다.</p>
+<div class="chips"><span class="chip blue">v1 · 2026-10-22</span><span class="chip"><i>근거</i> 파트 0~9 완주</span><span class="chip"><i>다음 갱신</i> 3Q26 분기보고서 2026-11-16<span class="est">E</span></span></div>
+<div class="stats">
+<div class="stat"><div class="l">주가</div><div class="v ">41,950원</div><div class="n">10-21 정규장 종가 · 공모가 55,000원 대비 <b>-23.7%</b></div></div>
+<div class="stat"><div class="l">시가총액</div><div class="v ">1조 595억원</div><div class="n">25,255,271주 · 공모가 시총(상장 직후 주식수) 1조 3,575억</div></div>
+<div class="stat"><div class="l">상장 이후 종가 범위</div><div class="v ">27,350원~91,300원</div><div class="n">저점 2026-09-16 · 고점 2026-03-06 (장중 고점 95,900원 02-24)</div></div>
+<div class="stat"><div class="l">연초 대비</div><div class="v down">-18.9%</div><div class="n">종가 고점 대비 -54.1% · 종가 저점 대비 +53.4%</div></div>
+</div>
+<div class="const"><div class="t">상수 블록 <span class="d">전 파트가 이 값을 인용합니다 · 2026-10-22 현행화</span></div>
+<div class="row"><div class="k">기준·환율</div><div class="v">USD1 = ₩1,327.5 · JPY100 = ₩839.39(2026-10-21) · 12월 결산(2026년 = 제16기) · <b>연결 기준</b>(미국·독일·일본 판매법인 포함, 별도는 밝혀 쓴다) · 주가는 정규장 종가(2026-09-14 이후 일봉 종가가 20시 애프터마켓 체결가로 바뀌어 교정) · 다음 실적 3Q26 분기보고서 2026-11-16<span class="est">E</span>(법정기한 11-14 토요일)</div></div>
+<div class="row"><div class="k">주식수<small>세 단계</small></div><div class="v">상장 직후 24,681,691주 · 2026-06-30 25,004,391주 · 2026-07-29 옵션 행사분 신주상장 후 <b>25,255,271주</b> · 미행사 주식매수선택권 663,332주(2.6%, 행사가 1,467~29,870원) · 종류주식·전환사채 없음</div></div>
+<div class="row"><div class="k">실적<small>연결·억원</small></div><div class="v">2023 매출 172.7 / 영업이익 -239.1 · 2024 271.2 / -265.0 · <b>2025 511.9 / -226.4</b>(매출 +88.7%) · <b>1H26 227.7 / -205.6</b>(1H25 211.4 / -120.9, 매출 +7.7%) · 분기 1Q26 102.6 / -83.7 · 2Q26 125.1 / -121.9 · 매출총이익률 1H25 61.3%에서 1H26 43.4%(재고자산평가손실 24.9억 포함) · 2Q25~4Q25·2Q26 분기값은 누계 차감 계산</div></div>
+<div class="row"><div class="k">매출 구성<small>1H26</small></div><div class="v">ArtiSential 209.7(92.1%) · ArtiSeal 18.0(7.9%) · 내수 211.6(92.9%) · 수출 16.1(2025 연간 55.1) · 판매경로 내수 대리점 78.4%·내수 직판 14.5%·수출 7.1% · 5% 이상 고객 2곳 79.4억(34.9%) · 미국(연결 지역) 1H25 17.1에서 1H26 <b>5.3</b> · ArtiSeal 분기 4Q25 15.5·1Q26 16.6·2Q26 1.4</div></div>
+<div class="row"><div class="k">국내 급여</div><div class="v">상한금액(2025-10-01 고시, 부가세 포함) ArtiSential Bipolar 807,980원 · ArtiSeal 727,180원 · ArtiSential 일반 692,250원 · 2024 평균 판가 389,469원(상한의 약 63%, 간납사·대리점 몫 차감) · 사용 의사 641명(2024)에서 691명(2Q26, 증권사 집계), 261개 병원</div></div>
+<div class="row"><div class="k">상장 추정<small>투자설명서</small></div><div class="v">2026E 매출 1,507.7 / 영업이익 +143.0(국내 890.4·해외 617.3) · 2027E 3,212.9 / +785.3 / 순이익 710.3 · 공모가 산식 = 2027E 순이익 710.34억 ÷ 1.25^2.25 × PER 45.5배(Medtronic 25.6·Stryker 47.5·Intuitive 63.5) ÷ 25,919,737주 = 75,474원, 27.1% 할인 후 55,000원 · <b>2025 영업이익 괴리 88%, 1H26 매출은 2026E의 15.1%</b></div></div>
+<div class="row"><div class="k">현금<small>억원</small></div><div class="v">유동성(현금·단기금융상품·단기 운용) 2025말 1,314.0에서 <b>2026-06-30 645.5</b>(6개월 -668.5: 영업현금흐름 -306.0, 유형자산 -334.5) · 2026-07-29 우리·하나은행 시설 234 + 운전 50 대출 약정 · 단기차입 30 · 연간 영업현금흐름 2024 -276.6 · 2025 -347.4 · 해외 3사 2025 순손실 -176.0(미국 -125.8, 자본 -240.9)</div></div>
+<div class="row"><div class="k">STARK</div><div class="v">2024-06-17 임상시험계획 승인(단일기관 탐색) · 2026-05-26 공개(2카트·4암) · <b>2026-08-07 식약처 품목허가 신청</b> · 회사 목표 연내, 80영업일 단순 계산 2026-12-03<span class="est">E</span> · 2026-10-19 미국·일본 동시 허가 추진 보도 · <b>공식 판매가 없음</b> · 상장 당시 가정: 구독 월 300만원 + 수술 1회 140만원, 2026E 36대·2027E 103대·2028E 160대, 미국 2028년 1분기</div></div>
+<div class="row"><div class="k">설비</div><div class="v">용인 기흥 토지 58,783.6㎡·건물 16,020.13㎡ <b>312.4억</b>(2026-05-12 계약, 06-22 등기, 'Advanced Manufacturing Facility') — 투자설명서 부지·건물 예산 180억의 1.7배 · 2027 가동 목표 · 성남 클린룸 ArtiSential 생산능력 2025 133,625개(가동률 99.6%)</div></div>
+<div class="row"><div class="k">지분·해제</div><div class="v">이정주 대표 9,708,000주(38.83%, 2028-12-26까지 보호예수) · 타임폴리오자산운용 9.3%(2026-01-02 보고) · 원익 PEF 5.87%(2018 PEF 취득원가 14,670원) · 스톤브릿지 계열 상장 직후 14.20%에서 축소 · <b>2026-12-24 해제 약 0.89~1.13백만주</b> · 상장 직전 라운드 단가 37,337원</div></div>
+<div class="row"><div class="k">밸류<small>10-21</small></div><div class="v">후행 12개월 매출(3Q25~2Q26) 528.2억 · 주가매출액배수 20.1배 · 주가순자산배수 6.4배(주당순자산 6,557원, 2026-06-30) · 영업적자로 이익 배수 없음 · Intuitive Surgical 선행 주가수익배수 약 35배·기업가치 대 매출 약 12배 · 증권사 투자의견 집계는 사실상 1곳</div></div>
+</div>
+</header>
+<nav class="topnav"><div class="in"><a href="#verdict">판정</a><a href="#debate">논쟁 지도</a><a href="#catalyst">촉매</a><a href="#parts">파트 지도</a><a href="#appendix">부록</a><a href="#log">갱신 로그</a></div></nav>
+<section class="sec" id="verdict">
+<h2>판정</h2>
+<div class="callout"><b>시가총액 1조 595억원은 두 층입니다. 아래층은 숫자로 확인되는 다관절 핸드헬드 기구 사업이고, 2026년 들어 성장이 한 자릿수로 꺾였습니다. 위층은 아직 매출이 0원인 수술로봇 STARK입니다. 상장 때 공모가를 받친 2027년 순이익 710억원 추정은 사실상 무효가 됐는데도 시총이 공모가 시총의 78% 언저리를 지키는 이유는 위층에 있습니다. 우리가 채점하는 것은 그 옵션의 만기 — 허가, 첫 설치, 미국 대형 병원 — 가 오기 전에 기구 사업이 현금을 얼마나 대 주느냐, 아니면 다시 자본시장에 손을 벌리느냐입니다.</b></div>
+<p>아래층부터 봅니다. 2025년 매출 511.9억원(+88.7%)은 국내에서 만들어졌습니다. 다관절 기구는 2019년부터 치료재료 상한금액(일반형 692,250원, Bipolar 807,980원)으로 급여 목록에 올라 있어 병원이 구매가를 보전받고, 2025년 3월 수가 인상과 2차 병원 확대, 정규 사용 의사 한 명당 사용량 증가가 겹쳤습니다. 그런데 2026년 상반기 매출은 227.7억원으로 전년 같은 기간보다 7.7% 늘었을 뿐입니다. 국내 ArtiSential만 보면 +6.9%이고, 이는 사용 의사 수 +11.5%와 의사 한 명당 매출 -4.1%<span class="est">E</span>의 곱입니다 — 상장 계획이 빗나간 곳은 사용량이 아니라 의사 수(2026E 1,204명 대 실측 691명)였습니다. 더 걸리는 것은 분기 숫자의 질입니다. 국내 매출의 84%가 대리점을 거치고, 최대 고객 한 곳의 매입이 1H25 4.6억원에서 1H26 56.7억원으로 뛰었는데 그중 적어도 47.8억원<span class="est">E</span>이 2분기에 몰려 2분기 매출의 38~45%<span class="est">E</span>를 차지했습니다. 이 고객을 빼면 1H26 국내 매출은 전년보다 13.8%<span class="est">E</span> 줄었습니다. 같은 기간 생산 수량이 판매 수량을 24~25%<span class="est">E</span> 웃돌아 재고 총액이 72.9억원 늘었고, 3개월 넘게 연체된 매출채권은 68.7억원에서 144.0억원(잔액의 40.2%)이 됐습니다. 매출총이익률은 61.3%에서 43.4%로 17.9%p 내려갔는데 그중 약 10.9%p는 재고자산평가손실 24.9억원(ArtiSeal 개선판 교체 관련, 일회성 성격), 나머지 약 6.9%p<span class="est">E</span>는 구조입니다. 그래서 우리는 2026년 기구 매출을 기본 526억원<span class="est">E</span>(범위 462~622억원<span class="est">E</span>) — 2025년과 비슷한 크기 — 로 보고, 하반기에만 469억원이 필요한 집계 컨센서스 697억원과는 거리를 둡니다.</p>
+<p>해외는 계획과 가장 멀리 떨어진 곳이고, 정확히는 미국 한 곳의 문제입니다. 상장 당시 주관사 추정은 2026년 해외 매출 617.3억원(미국 ArtiSential만 231억원)이었습니다. 실제 수출은 2025년 55.1억원에서 2026년 상반기 16.1억원으로 줄었는데, 전년 같은 기간 대비 감소 11.0억원 가운데 미국이 11.8억원이고 독일과 기타 지역은 오히려 늘었습니다. 1,800개 병원에 문을 여는 HealthTrust 구매조직 계약(2025-04~2028-03)은 구매 확약이 없고 60일 통보로 해지되는 진입권이었으며, 2025년 실측 기관당 사용량은 상장 계획의 절반 수준<span class="est">E</span>이었습니다. 해외 판매법인 세 곳은 2025년 매출 44.0억원에 순손실 176.0억원을 냈고 2026년 2분기 지분법손실(69.9억원)은 더 커졌습니다. 회사는 미국 영업을 개별 의사 단위에서 STARK를 앞세운 대형 병원 단위로 바꾸고 있다고 설명하고, 10곳 이상 대형 병원과 협상 중이라는 말은 아직 IR 참석자 전언(등급 C)입니다. 그러므로 해외 기구 매출의 회복도 결국 STARK의 시간표에 묶였다고 봅니다.</p>
+<p>위층의 시간표는 이렇습니다. STARK는 2026년 8월 7일 식약처에 품목허가를 신청했고 회사 목표는 연내 획득입니다. 법정 처리기간 80영업일을 단순히 세면 12월 3일 전후이고, 보완 요청이 나오면 밀립니다. 5월 공개 당시 대표가 말한 순서는 "올해 말 한국, 1년 뒤 일본, 그다음 1년 뒤 미국"이었는데, 10월 19일 보도로 미국·일본 동시 허가 추진으로 바뀌었습니다. 미국 식품의약국이 9월 25일 낸 로봇수술기 가이던스 초안(어려운 대표 술식의 자료로 같은 과의 쉬운 술식을 뒷받침)이 배경으로 꼽혔지만, 아직 초안이고 경로(510(k)인지 De Novo인지)와 임상 요구는 공개되지 않았습니다. 가격은 공식 발표된 적이 없습니다. 상장 때 가정은 구독 월 300만원에 수술 1회 기구료 140만원, 2026년 36대·2027년 103대였고, 지금 회사가 말하는 2027년은 "국내외 병원 개념검증 확대"입니다. 그 가정으로도 대당 연 매출 3.86억원<span class="est">E</span>의 90.7%는 장비 사용료가 아니라 수술마다 나가는 기구료입니다. 그러니 시장이 STARK에서 값 매기는 것은 로봇 판매가 아니라 수술 건수에 연동된 기구 매출이고, 설치 대수·대당 수술 건수·건당 기구료 셋 중 어느 것도 아직 공시나 계약으로 확인되지 않았습니다. 상장 계획의 4분기 2026년 36대는 사실상 0으로 가고, 2027년 매출이 상장 가정(국내 330.1억원)에 닿으려면 1분기에 약 93대<span class="est">E</span>가 한꺼번에 깔려야 합니다. 커뮤니티의 '다빈치 4분의 1'은 장비 가격이 아니라 수술 1건당 병원 비용(다빈치 약 453만원<span class="est">E</span> 대 STARK 가정 약 154만원<span class="est">E</span>, 약 3분의 1)으로 읽는 편이 맞습니다.</p>
+<p>현금이 이 두 층을 잇고, 우리가 가장 무겁게 보는 리스크도 여기 있습니다 — STARK가 늦어지는 것보다 STARK가 제때 와도 그 전에 현금이 바닥에 닿는 것입니다. 상장으로 들어온 순수입 1,324.7억원 가운데 2026년 6월 말 남은 유동성은 645.5억원입니다. 상반기에 영업으로 306억원(그중 운전자본 175.7억원), 용인 부지·건물(312.4억원, 계획 예산의 1.7배)로 334.5억원이 나갔고, 7월 말 은행 두 곳과 284억원 대출을 약정했습니다. 판관비 연환산 609~704억원은 상장 계획(2026E 835.1억원)의 범위 안에 있는데 매출은 계획의 3분의 1에 머물러, 영업 손익분기 매출은 연 1,120~1,294억원<span class="est">E</span>입니다. 1H26 소진 속도가 이어지면 대출을 다 써도 2027년 6월 말 무렵 유동성이 최소 운영선 200억원 아래로 내려가고<span class="est">E</span>, 2027년 말까지 약 458억원<span class="est">E</span>이 모자랍니다. 운전자본이 더 이상 현금을 빨아들이지 않으면 그 시점은 2028년으로 밀립니다<span class="est">E</span>. 그래서 3분기 분기보고서에서 매출보다 먼저 볼 것은 매출채권 연령과 재고입니다. 파트 5와 파트 7의 조정판이 그 분기를 가정별로 보여 줍니다.</p>
+<p>그래서 지금 가격이 매기는 것은 무엇인가. 후행 12개월 매출 528.2억원에 주가매출액배수 20.1배, 주가순자산배수 6.4배입니다. 기구 매출 530억원<span class="est">E</span>에 국내외 비교군 9곳의 주가매출액배수 중앙값 5.5배를 주고 순현금 615.5억원을 더하면 약 3,530억원<span class="est">E</span>이고, 남는 약 7,064억원<span class="est">E</span>(시총의 3분의 2)이 STARK에 걸린 값입니다. 잔여를 0으로 만들려면 기구 사업에 18.8배를 줘야 하는데, 이는 Intuitive Surgical의 후행 매출 배수(약 13배)보다 높습니다. 그 잔여를 상장 당시 구독 가정(대당 연 3.86억원<span class="est">E</span>)과 영업이익률 30%·주가수익배수 35배·할인율 25%로 번역하면 2029년 말 누적 약 456대<span class="est">E</span>가 필요하고, 시작이 1년 밀리면 약 570대<span class="est">E</span>입니다. 주관사가 쓴 2028년 국내 누적 263대와 국내 로봇수술 물량으로 본 국내 상한 약 340대<span class="est">E</span>를 모두 넘으므로, 지금 가격은 미국·일본 설치를 이미 값에 넣고 있습니다. 공모가 산식으로 바꿔 말하면 시장은 2027년 순이익 710억원을 버린 것이 아니라 2~4년 미뤄 받는 쪽에 걸었습니다. 2026년 9월과 10월에 대형 의료기기 회사들이 중국 Cornerstone Robotics(Medtronic, 약 7억달러)와 영국 CMR Surgical(Stryker, 약 4억달러와 인수 옵션)에 자본을 넣은 일은 소형 로봇 플랫폼에 값이 매겨지는 시장이 열려 있다는 증거이지만, 두 거래 모두 기업가치를 공개하지 않았으므로 이 회사의 값으로 옮겨 적을 수는 없습니다. 파트 8의 조정판은 이 역산을 가정별로 보여 줄 뿐 목표 가격을 내지 않습니다.</p>
+<p>주주 커뮤니티가 쌓아 온 강세 논리 15개를 1차 자료와 대조하면 확인됨 2개, 부분 확인 8개, 미확인 3개, 반대 증거 있음 2개입니다. 확인되는 것은 회사 밖의 환경입니다. Intuitive Surgical은 3분기에 반독점 집단소송을 4.5억달러로 합의했고, 2027년 상반기부터 기구 사용 횟수를 늘리고 물량별 가격을 적용해 수술당 기구 매출이 3~5% 줄어든다고 밝혔습니다. 미국 밖 양성 수술 증가율은 1분기 34%에서 3분기 41%로 올라갔고, 대형사들은 소형 로봇에 자본을 넣었습니다. 시장 1위가 단가를 내주고 물량을 택했다는 사실은 저가 대안의 수요를 증명합니다. 다만 그 인하 폭은 다빈치와 ArtiSential 사이의 수술 1건당 병원 비용 격차를 약 4.6%<span class="est">E</span>만 좁힐 뿐이고, 국내에서는 로봇수술 급여화가 ArtiSential의 '로봇의 5분의 1 비용' 위치와 STARK의 가격 상한을 함께 흔드는 변수입니다. 반면 '리브스메드가 그 환경에서 이긴다'는 고리 — 가격·원가·미국 병원 계약 — 는 아직 IR 참석자 전언 수준이고, "다빈치 4분의 1 가격"은 공식 자료에 없으며 "설치 200대는 Intuitive의 2%"라는 산식은 매출로 환산하면 0.5%<span class="est">E</span>에 그칩니다. "2분기 적자는 일회성"이라는 주장은 절반만 맞습니다 — 회사가 밝힌 일회성 40억원을 다 빼도 1H26 영업손실은 약 166억원<span class="est">E</span>으로 1H25(-120.9억원)보다 큽니다(파트 9).</p>
+</section>
+<section class="sec" id="debate">
+<h2>논쟁 지도<span class="h2sub">이 주가는 계기판 다섯 개로 채점됩니다</span></h2>
+<p>분기 매출과 매출총이익률, 수출과 해외 법인 손익, STARK 허가와 첫 설치, 유동성과 조달 공시, 그리고 시총이 요구하는 설치 대수. 관측처는 금융감독원 전자공시(분기·사업보고서, 주요사항보고서, 대량보유 상황보고서), 식약처 의료기기 허가 정보, 회사 기업설명회와 보도이며, 다음 게이트는 2026년 11월 16일 전후 3분기 분기보고서입니다.</p>
+<div class="cards">
+<div class="card"><div class="q"><span class="num">1</span>기구 사업은 정체인가 계단인가</div>
+<p>아직 판정을 보류하되 정체 쪽으로 기울어 있다고 봅니다. 2025년 +88.7%는 급여 수가 인상·2차 병원 확대·정규 사용자 사용량 증가가 한꺼번에 들어온 해였고, 2026년 상반기 +7.7%는 사용 의사 증가율(+11.5%, 2Q26)과 비슷한 속도로 돌아온 것입니다. 회사는 4분기를 반등 기점으로 제시합니다 — ArtiSential Pro(9~10월, 기존 급여코드)와 ArtiSeal 개선판 재출하. 다만 2분기 반등은 대리점 한 곳(2분기 매출의 38~45%<span class="est">E</span>)의 매입이었고 이 고객을 빼면 국내 매출은 13.8%<span class="est">E</span> 줄었습니다. 그러므로 한 분기 숫자로 계단을 확인하기는 어렵고, 3·4분기를 합쳐 고객 집중과 매출채권 연령을 함께 보아야 합니다. 우리 기본값은 2026년 기구 매출 526억원<span class="est">E</span>입니다.</p>
+<div class="score">채점: 3Q26 매출 140억 이상 · 2026 연간 매출 520억 이상(2025 511.9억 상회) · 매출총이익률 50% 회복 · ArtiSeal 분기 매출 10억 이상 재개 · 접는 조건: 2026 연간 매출이 2025를 밑돌면서 매출총이익률 45% 미만 지속 · 증거: 파트 1·파트 5</div></div>
+<div class="card"><div class="q"><span class="num">2</span>해외는 왜 줄었고 언제 돌아오는가</div>
+<p>기구 단독의 미국 영업은 실패했다고 읽고, 회복은 STARK 연계 전략의 결과로만 볼 수 있다고 봅니다. 상장 계획의 미국 판매 요양기관 수(2026E 273곳)와 판가(385달러)는 GPO 진입권을 실제 구매로 바꾸는 데 걸리는 병원별 가치분석위원회 심사와 의사 선호를 과소평가했습니다. 회사는 10곳 이상 대형 병원과 협상 중이고 4분기부터 성과를 보이겠다고 설명했다고 전해지지만(IR 참석자 전언, 등급 C), 병원명이나 금액이 공개된 계약은 아직 없습니다.</p>
+<div class="score">채점: 분기 수출 10억 이상 회복(3Q26·4Q26) · 미국 대형 병원 계약의 공시 또는 병원명이 확인되는 보도 · 해외 3사 연간 순손실이 2025년 -176억보다 축소 · 접는 조건: 2026 연간 수출이 40억 미만이고 해외 법인 대여 증액 · 증거: 파트 4</div></div>
+<div class="card"><div class="q"><span class="num">3</span>STARK 시간표는 지켜지는가</div>
+<p>국내 허가는 연내 가능성이 높지만 기정사실은 아니라고 봅니다. 신청 후 처리기간은 80영업일이고 회사·증권사 모두 12월을 말합니다. 진짜 물음은 허가 다음입니다. 상장 계획은 4분기 2026년 36대 설치였지만 지금 회사 설명은 2027년 개념검증 확대이고, 미국·일본은 경로와 임상 요구가 공개되지 않은 채 '동시 추진'이라는 방향만 나왔습니다. 경쟁 로봇들이 이미 미국 허가를 받고(Hugo·Ottava·Versius·Dexter·MIRA) 대기업 판매망에 붙는 속도와 견주면, 미국 시장 진입 시점이 이 회사 값의 가장 큰 변수입니다.</p>
+<div class="score">채점: 국내 품목허가 2026-12-31 이전 획득 · 2027년 상반기 첫 설치 병원 공개 · 미국 FDA 사전상담 또는 임상시험 승인·일본 PMDA 상담 착수의 공시·보도 · 구독 단가·계약 조건 공식화 · 접는 조건: 2027년 1분기까지 국내 허가 미획득 또는 보완 요청으로 재심사 · 증거: 파트 2·파트 3</div></div>
+<div class="card"><div class="q"><span class="num">4</span>현금과 희석 — 다시 손을 벌리는가</div>
+<p>2027년 안에 추가 조달이 필요할 가능성이 높다고 봅니다. 2026-06-30 유동성 645.5억원과 대출 약정 284억원을 합쳐도 930억원 남짓이고, 1H26 소진 속도라면 2027년 6월 말 무렵 최소 운영선 200억원 아래로 내려가며 2027년 말까지 약 458억원<span class="est">E</span>이 모자랍니다. 종가에서 15% 할인한 신주로 메우면 희석은 약 5%<span class="est">E</span>입니다. 용인 공장 정비·장비와 상장 때 계획한 2공장(900억원)은 그 밖입니다. 형태(전환사채·유상증자·전략적 투자)와 시점이 주주 가치에 주는 영향이 큽니다. 12월 24일에는 상장 1년 보호예수 물량 약 0.89~1.13백만주가 풀리고, 미행사 옵션은 663,332주입니다.</p>
+<div class="score">채점: 3Q26 말 유동성 450억 이상 · 분기 영업현금흐름 -150억보다 개선 · 추가 조달(전환사채·유상증자·제3자배정) 공시 여부와 시점 · 12-24 해제 전후 수급 · 접는 조건: 2026년 안에 할인 발행 유상증자 또는 리픽싱 조항 전환사채 · 증거: 파트 5·파트 7</div></div>
+<div class="card"><div class="q"><span class="num">5</span>시가총액 1조 595억원은 무엇을 값 매기는가</div>
+<p>3분의 2가 STARK 옵션이라고 봅니다. 기구 매출 530억원<span class="est">E</span>에 비교군 중앙값 5.5배를 주고 순현금을 더하면 약 3,530억원이고, 잔여 약 7,064억원<span class="est">E</span>은 STARK가 2029년 말까지 누적 약 456대<span class="est">E</span>(상장 당시 구독 가정 기준) 깔리는 경로를 전제합니다. 이는 국내 물량만으로 채울 수 없는 대수이므로 미국·일본 설치가 이미 값에 들어 있습니다. 공모가 산식에 지금의 숫자를 넣으면 2027년 순이익 710억원이라는 분자가 사라지므로, 지금 가격은 그 이익이 몇 년 늦게 오더라도 온다는 쪽에 걸려 있습니다.</p>
+<div class="score">채점 없음 — 파트 8 조정판(기구 매출·배수, STARK 시작 연도·연간 대수·단가, 할인율, 희석)으로 시총이 요구하는 조합을 읽습니다 · 관측: STARK 첫 해 설치 대수, 2027년 매출 구성, 추가 조달의 가격 · 증거: 파트 8·파트 6·파트 9</div></div>
+</div>
+</section>
+<section class="sec" id="catalyst">
+<h2>촉매 캘린더</h2>
+<div class="tablewrap"><table>
+<tr><th>시점</th><th>이벤트</th><th>논쟁</th><th>보는 것</th></tr>
+<tr><td>2026-10월~11월</td><td>ArtiSential Pro 국내 공급 확대 · ArtiSeal 개선판 출하 재개(회사 설명 10~11월)</td><td><span class="pill">1</span></td><td>출하 시점이 반복해서 밀렸던 제품이므로 실제 매출 반영 여부</td></tr>
+<tr><td>2026-11-16<span class="est">E</span></td><td>3Q26 분기보고서(법정기한 11-14 토요일)</td><td><span class="pill">1·2·4</span></td><td>분기 매출·매출총이익률·판관비 · 수출과 미국 매출 · 유동성과 영업현금흐름 · 재고와 평가충당금</td></tr>
+<tr><td>2026-11월<span class="est">E</span></td><td>건강보험심사평가원 로봇보조수술 급여 적용 연구 완료(보도 기준)</td><td><span class="pill">3·5</span></td><td>급여화 방향과 수가 수준 — 수요 확대와 가격 통제의 양면</td></tr>
+<tr><td>2026-11-24</td><td>미국 FDA 로봇수술기 가이던스 초안 의견 마감</td><td><span class="pill">3</span></td><td>확정본의 대표 술식 논리 유지 여부</td></tr>
+<tr><td>2026-12-03<span class="est">E</span></td><td>STARK 식약처 처리기간 80영업일(2026-08-07 신청 기준 단순 계산)</td><td><span class="pill">3</span></td><td>허가 또는 보완 요청 · 회사 목표 연내</td></tr>
+<tr><td>2026-12-24</td><td>상장 1년 보호예수 해제(약 0.89~1.13백만주)</td><td><span class="pill">4</span></td><td>해제 전후 거래대금·대량보유 변동</td></tr>
+<tr><td>2027-02<span class="est">E</span></td><td>매출액 또는 손익구조 30% 이상 변동 공시(전례 2026-02-27)</td><td><span class="pill">1·4</span></td><td>2026 연간 확정치</td></tr>
+<tr><td>2027-1H<span class="est">E</span></td><td>STARK 첫 설치 병원 · 구독 조건 공개 · 미국·일본 허가 절차 착수</td><td><span class="pill">3·5</span></td><td>설치 대수와 계약 형태(판매·구독)</td></tr>
+<tr><td>2027-1H</td><td>Intuitive Surgical 기구 수명 연장·물량 가격 시행(미국은 510(k) 필요)</td><td><span class="pill">3</span></td><td>저가 대안과의 가격 격차</td></tr>
+<tr><td>2027<span class="est">E</span></td><td>용인 Advanced Manufacturing Facility 가동</td><td><span class="pill">3·4</span></td><td>설비 투자 집행과 조달 방식</td></tr>
+<tr><td>2028-12-26</td><td>이정주 대표 9,708,000주 보호예수 만료</td><td><span class="pill">4</span></td><td>최대주주 지분 변동</td></tr>
+<tr><td>수시</td><td>추가 자금 조달 공시 · 미국 대형 병원 계약 · 특허 소송(아침해의료기) 결과</td><td><span class="pill">2·4·7</span></td><td>조달 가격과 형태 · 병원명·금액 · 손해배상 여부</td></tr>
+</table></div>
+<p class="src">자료: 금융감독원 전자공시(분기·반기·사업보고서, 투자설명서, 주요사항보고서, 대량보유 상황보고서)·식약처·미국 FDA·Intuitive Surgical 3Q26 실적 자료·보도·조사노트. 빈티지 2026-10-22</p>
+</section>
+<section class="sec" id="parts">
+<h2>파트 지도<span class="h2sub">깊이 우선, 시간에 걸쳐</span></h2>
+<p>이 커버리지는 파트제로 만들었습니다. 파트 한 편이 주제 하나를 끝까지 내려가고, 완성될 때마다 이 허브의 판정을 갱신합니다. 아래 목록에서 파트를 누르면 본문이 이 자리에 펼쳐지고, 새 창으로도 열 수 있습니다. 숫자의 정본은 위 상수 블록이고, 각 파트에는 작성 시점 스탬프가 남습니다.</p>
+<div class="partlist">
+<details class="part" data-file="리브스메드_파트0_회사진입_261022.html">
+<summary><span class="pn">파트 0</span><span class="pt"><b>회사 진입편</b><span class="pd">일자형 복강경 기구의 한계와 90° 다관절 기구가 메우는 자리, 로봇과 핸드헬드 사이의 위치. 제품 지도(ArtiSential·ArtiSeal·Pro·ArtiStapler·LivsCam·STARK)와 허가·매출 상태, 연혁, 이정주 대표 38.83%와 재무적 투자자 지도, 용어집</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트0_회사진입_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 0" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트1_기구사업_261022.html">
+<summary><span class="pn">파트 1</span><span class="pt"><b>기구 사업 해부</b><span class="pd">2025년 511.9억(+88.7%)을 만든 국내 급여 구조 — 상한금액과 평균 판가 389,469원 사이의 간납·대리점 몫, 사용 의사 641명에서 691명, 대리점 78.4%와 4Q25 쏠림, ArtiSeal 분기 15.5·16.6·1.4억의 굴곡과 재출시 지연, Pro 출시. 정체인지 계단인지</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트1_기구사업_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 1" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트2_STARK_261022.html">
+<summary><span class="pn">파트 2</span><span class="pt"><b>STARK 해부</b><span class="pd">2카트·4암 소형 모듈러 로봇. 2024-06 임상 승인부터 2026-08-07 품목허가 신청까지, 한국 연말·일본 1년 뒤·미국 그 1년 뒤에서 미국·일본 동시 추진으로 바뀐 셈법. 공식 가격이 없는 상태에서 가격 증거의 계보와 상장 당시 구독 가정(월 300만원 + 수술 1회 140만원)</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트2_STARK_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 2" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트3_산업경쟁_261022.html">
+<summary><span class="pn">파트 3</span><span class="pt"><b>산업과 경쟁</b><span class="pd">Intuitive Surgical 3Q26 — 설치 546대·다빈치 수술 +14%, 2027년 상반기 기구 수명 연장과 물량 가격(수술당 I&A -3~5%), 반독점 합의 4.5억달러. Hugo·Ottava·Versius·Cornerstone이 대기업 자본에 줄을 서는 시장, 핸드헬드 관절 기구 경쟁, FDA 가이던스 초안과 한·일 수가</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트3_산업경쟁_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 3" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트4_해외사업_261022.html">
+<summary><span class="pn">파트 4</span><span class="pt"><b>해외 사업</b><span class="pd">상장 계획은 2026년 해외 617.3억이었고 실제 1H26 수출은 16.1억, 미국은 17.1억에서 5.3억. HealthTrust 1,800개 병원 계약이 매출이 되지 않은 이유, 해외 3사 2025 순손실 176억, 개별 의사 영업에서 STARK 연계 대형 어카운트로의 전환</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트4_해외사업_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 4" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트5_재무해부_261022.html">
+<summary><span class="pn">파트 5</span><span class="pt"><b>재무 해부</b><span class="pd">6분기 연결 손익 지도. 매출총이익률 61%에서 43%로 — 재고자산평가손실 24.9억과 구조의 분리, 2Q26 판관비 175.9억, 연결과 별도의 차이(해외 법인), 운전자본, 그리고 유동성 1,314억에서 645.5억으로 간 6개월과 그 경로의 조정판</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트5_재무해부_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 5" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트6_주가수급_261022.html">
+<summary><span class="pn">파트 6</span><span class="pt"><b>IPO·지분·주가·수급</b><span class="pd">수요예측 231.87:1·일반 390:1의 공모가 55,000원이 주관사 추정의 붕괴와 함께 27,350원까지 간 길, 해제일과 겹친 고점, 개인 누적 +1,356억과 기관 -736억, 2026-12-24 해제 물량, 비교군 대비 상대 성과</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트6_주가수급_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 6" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트7_리스크_261022.html">
+<summary><span class="pn">파트 7</span><span class="pt"><b>리스크</b><span class="pd">허가 지연, 현금 소진과 희석, 대리점 노이즈와 기구 정체, 해외 실행, 다빈치 가격 인하와 대기업 자본의 경쟁, 급여화의 수가 통제, 해제 물량, 특허 소송과 정보 비대칭. 이미 일어난 리스크부터 정량</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트7_리스크_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 7" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트8_밸류모델_261022.html">
+<summary><span class="pn">파트 8</span><span class="pt"><b>밸류 모델</b><span class="pd">공모가 산식(2027E 순이익 710억 × PER 45.5배)을 지금 숫자로 다시 돌리면 무엇이 남는가. 시총을 기구 사업·순현금·STARK 잔여로 나누고, 그 잔여가 요구하는 누적 설치 대수를 조정판으로 꺼냅니다. 적정주가는 내지 않습니다</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트8_밸류모델_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 8" loading="lazy"></iframe></div>
+</details>
+<details class="part" data-file="리브스메드_파트9_강세논리점검_261022.html">
+<summary><span class="pn">파트 9</span><span class="pt"><b>강세 논리 점검</b><span class="pd">주주 커뮤니티와 개인 투자 블로그가 쌓아 온 강세 논리를 하나씩 1차 자료와 대조합니다. 다빈치 독점 균열, 양성 수술 물량, 90° 관절 해자, 다빈치 4분의 1 가격, 거래 앵커, 일회성 적자론 — 확인된 것과 아직인 것</span></span><span class="ps"><span class="tag now">완료 (2026-10-22)</span></span><span class="chev">▼</span></summary>
+<div class="pbar"><a class="popen" href="리브스메드_파트9_강세논리점검_261022.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a><span class="pnote">본문이 이 자리에 펼쳐집니다 · 조정판(슬라이더)도 그대로 동작합니다</span></div>
+<div class="pframe"><iframe title="리브스메드 파트 9" loading="lazy"></iframe></div>
+</details>
+</div>
+<p>다음 증축은 2026년 11월 16일 전후 3분기 분기보고서 뒤 실적 브리프(분기 매출·매출총이익률·수출·유동성)이고, STARK 국내 허가 뒤 허가 브리프, 12월 24일 보호예수 해제 뒤 수급 브리프입니다. 그때 상수 블록과 논쟁 카드의 채점 결과를 갱신합니다.</p>
+</section>
+<section class="sec" id="appendix">
+<h2>부록<span class="h2sub">데이터 계보와 미결 총람</span></h2>
+<p>이 커버리지의 숫자는 다섯 갈래에서 왔습니다. 첫째는 금융감독원 전자공시 원문입니다 — 투자설명서(2025-12-12 발행조건 확정 정정본)와 증권발행실적보고서, 2025년 사업보고서와 감사보고서, 2026년 1분기·반기 보고서, 연결감사보고서(2023·2024), 유형자산 양수 주요사항보고서(2026-05-12·정정 06-22), 매출액 또는 손익구조 30% 이상 변동(2026-02-27), 주식매수선택권 행사(2026-07-03), 정기주주총회 소집·결과, 대량보유 상황보고서, 기업설명회 개최 공시를 원문으로 내려받아 표를 직접 뜯었습니다. 둘째는 전자공시 재무제표 전용 자료로 연결·별도 손익·재무상태·현금흐름을 받았고, 회사가 상장 전 분기 단독 실적을 공시하지 않았기 때문에 2025년 2·3·4분기와 2026년 2분기는 누계 차감으로 복원했습니다. 셋째는 증권사 실시간 시세 자료로 상장 첫날인 2025년 12월 24일부터 2026년 10월 21일까지의 일봉과 투자주체별 순매수(금액), 국내 비교군 8개사의 일봉을 받았습니다. 2026년 9월 14일 이후 일봉 종가는 20시 애프터마켓 체결가로 정의가 바뀌었으므로, 리브스메드는 다음 거래일 기준가로 정규장 종가를 역산했고 비교군은 30분봉의 15시 30분 단일가로 교정했습니다. 넷째는 웹 조사 노트 두 편(산업·경쟁 — Intuitive Surgical 3Q26 수치는 미국 증권거래위원회 제출 실적 자료와 대조, 회사 뉴스·증권사 보고서)입니다. 다섯째는 주주 커뮤니티 자료입니다 — 리브스메드 주주 텔레그램 채널의 개설일(2026-04-20)부터 10월 22일까지 글 564개 전부와, 그 채널이 링크하거나 독자가 추천한 개인 투자 블로그 글 66편을 읽고 사실과 주장을 갈랐습니다. 이 다섯째 갈래에서 온 내용은 본문에서 채널·블로그 이름 없이 "주주 커뮤니티", "개인 투자 블로그"로만 지칭하고, 그 안의 사실은 원래의 1차 출처(기사·공시·학회·회사 자료)를 적었습니다.</p>
+<p><b>재무제표 기준.</b> 모든 손익·재무상태·현금흐름 수치는 연결 기준입니다(미국 LivsMed USA, 독일, 일본 판매법인 포함). 별도 기준 영업이익(2025년 -52.7억원)은 해외 법인 손실이 지분법손실로 영업 밖에 잡혀 연결(-226.4억원)과 크게 다르므로, 별도 숫자는 언제나 "별도"라고 밝혀 씁니다. 상장 당시 주관사 추정치는 투자설명서의 중립 시나리오이며 반기보고서의 상장기업 재무사항 비교표로 실적과 대조했습니다.</p>
+<p><b>미결 총람.</b> A급은 판정에 직접 닿는 것입니다. 첫째, STARK의 공식 가격·계약 형태(판매인지 구독인지)와 2027년 설치 계획 대수가 공개되지 않았습니다 — 회사는 "다빈치의 몇 분의 1"이라는 방향만 말했고, 구독형은 구상 단계라고 보도됐습니다. 둘째, 미국·일본 허가 경로(510(k)·De Novo, 임상 요구)와 신청 시점이 공개되지 않았습니다. 셋째, 2026년 상반기 매출총이익률 하락 가운데 재고자산평가손실 24.9억원을 뺀 나머지의 원인(가동률·원가·믹스)이 공시로 설명되지 않습니다. 넷째, 대리점 채널 재고 수준이 공개되지 않아 4분기 2025년의 쏠림이 병원 수요인지 대리점 적재인지 확정할 수 없습니다. 다섯째, 추가 자금 조달의 계획 여부와 형태입니다.</p>
+<p>B급은 채점의 정밀도를 높이는 것입니다. 국내 사용 의사·병원 수의 공식 집계(현재는 증권사 보고서 인용), 선별급여 여부와 환자 본인부담률의 고시 원문, 미국 대형 병원 협상의 상대와 단계, 2026-12-24 해제 물량의 정확한 합계(보호예수 표와 옵션 행사분의 중복 여부), 아침해의료기 특허 소송의 일정과 손해배상 청구액이 여기 들어갑니다. C급은 배경입니다 — 핸드헬드 다관절 기구 단독 시장 규모, Cornerstone·CMR 거래의 기업가치, 국내 다빈치 설치 대수의 공식 통계는 공개 출처로 확인되지 않았습니다.</p>
+<p><b>이 문서가 하지 않는 것.</b> 목표주가와 시나리오 주가, 확률가중 기댓값, 매매 밴드를 내지 않습니다. 증권사 목표주가 숫자도 옮기지 않습니다. 파트 8의 조정판은 지금 시총이 요구하는 조합을 역산하는 데서 멈춥니다. 하방의 자로는 공모가 55,000원, 상장 직전 투자 라운드 단가 37,337원, 상장 이후 종가 저점 27,350원(2026-09-16)과 종가 고점 91,300원(2026-03-06) 대비 실측 낙폭, 주가순자산배수만 씁니다.</p>
+
+</section>
+<section class="sec" id="log">
+<h2>갱신 로그</h2>
+<ul class="log">
+<li><b>v1 · 2026-10-22</b> — 파트제 허브 신설, 파트 0~9 같은 날 완주. 판정: 시가총액 1조 595억원(10-21 정규장 종가 41,950원)은 성장이 한 자릿수로 꺾인 국내 급여 기구 사업(1H26 매출 227.7억, +7.7%) 위에 매출 0원인 STARK 옵션을 얹은 값이다. 공모가 산식의 분자(2027E 순이익 710억)는 사실상 무효가 됐고, 해외 계획(2026E 617.3억)은 실제 1H26 수출 16.1억으로 멀어졌다. STARK는 2026-08-07 국내 품목허가 신청, 회사 목표 연내, 10-19 미국·일본 동시 추진 보도. 유동성 645.5억(6-30)과 대출 약정 284억 대비 연 영업현금 유출 500~600억<span class="est">E</span>이므로 2027년 안에 추가 조달 가능성이 높다. 주주 커뮤니티의 강세 논리는 Intuitive의 가격 인하·반독점 합의처럼 1차로 확인되는 것과 가격·밸류 환산처럼 근거가 없는 것을 갈라 파트 9에 정리했다. 다음 채점 게이트는 3Q26 분기보고서(2026-11-16<span class="est">E</span>).</li>
+</ul>
+</section>
+<footer>숫자의 정본은 상단 상수 블록 · 출처·빈티지·E(추정) 태그는 각 파트 본문에 · 이 페이지는 투자 권유가 아닙니다</footer>
+</div>
+<script>
+(function(){
+  // 허브가 %2F 인코딩 경로로 열려도 파트 파일을 같은 폴더에서 찾도록 절대 경로를 만든다
+  var path=location.pathname.replace(/%2F/gi,'/');
+  var dir=path.slice(0,path.lastIndexOf('/')+1);
+  function url(fn){return dir+encodeURIComponent(fn);}
+  function fit(ifr){
+    try{
+      var d=ifr.contentDocument; if(!d||!d.documentElement) return;
+      var m=d.querySelector('main'); var h=m?(m.offsetTop+m.offsetHeight+32):(d.body?d.body.scrollHeight:0);
+      var cur=parseInt(ifr.style.height)||0; if(h>200&&Math.abs(h-cur)>8) ifr.style.height=(h+24)+'px';
+    }catch(e){}
+  }
+  document.querySelectorAll('details.part').forEach(function(det){
+    var fn=det.getAttribute('data-file');
+    var ifr=det.querySelector('iframe');
+    var a=det.querySelector('a.popen'); if(a) a.href=url(fn);
+    det.addEventListener('toggle',function(){
+      if(!det.open||ifr.dataset.loaded) return;
+      ifr.dataset.loaded='1';
+      ifr.addEventListener('load',function(){
+        fit(ifr);
+        try{
+          var d=ifr.contentDocument;
+          // 파트 안의 허브 링크는 허브 페이지 자체(최상위)로 이동
+          d.querySelectorAll('a[href]').forEach(function(x){var hr=x.getAttribute('href');if(hr&&hr.charAt(0)!=='#'){x.target='_top';}});
+          if(window.ResizeObserver&&d.body){new ResizeObserver(function(){fit(ifr);}).observe(d.body);}
+          else{setInterval(function(){fit(ifr);},1500);}
+        }catch(e){}
+      });
+      ifr.src=url(fn);
+    });
+  });
+  // #part3 같은 해시로 열면 해당 파트를 자동 펼침
+  var links=[].slice.call(document.querySelectorAll('.topnav a'));var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function spy(){var y=window.scrollY+90,cur=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i;});links.forEach(function(a,i){a.classList.toggle('on',i===cur);});}
+  window.addEventListener('scroll',spy,{passive:true});spy();
+  var mh=/^#part(\d)$/.exec(location.hash);
+  if(mh){var t=document.querySelector('details.part[data-file*="파트'+mh[1]+'_"]'); if(t){t.open=true; t.scrollIntoView(); setTimeout(spy,400);}}
+})();
+</script>
+</body></html>

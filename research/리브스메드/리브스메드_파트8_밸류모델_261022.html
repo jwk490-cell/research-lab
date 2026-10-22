@@ -1,0 +1,425 @@
+<!doctype html><html lang="ko" data-rl="p"><head><meta charset="utf-8">
+<meta name="coverage" content="valuation,model">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리브스메드 파트 8 — 밸류 모델 · 2026-10-22</title>
+<style>
+body{margin:0;background:#faf8f4;color:#3a3630;font-family:'Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;line-height:1.78;word-break:keep-all}
+main{max-width:920px;margin:0 auto;padding:44px 28px 80px}
+h1{font-size:23px;margin:0 0 6px;line-height:1.35} .sub{color:#8a857c;font-size:13px;margin-bottom:10px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;line-height:1.6}
+h2{font-size:17.5px;margin:36px 0 8px;padding-top:16px;border-top:1px solid #e3ded4}
+h3{font-size:15px;margin:22px 0 6px}
+p{max-width:700px;font-size:15px;margin:0 0 1.25em}
+p.reading{font-size:14px;color:#4a463f;background:#f4f0e8;border-radius:6px;padding:10px 14px;max-width:700px}
+figure{margin:14px 0 6px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px}
+figcaption{font-size:13px;font-weight:600;margin-bottom:8px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+svg{width:100%;height:auto;display:block}
+.src{font-size:11.5px;color:#8a857c;margin-top:6px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif}
+table{border-collapse:collapse;font-size:13px;margin:10px 0 16px;font-family:Pretendard,'Apple SD Gothic Neo',-apple-system,sans-serif;background:#fff}
+td,th{border:1px solid #e0dbd0;padding:5px 10px;text-align:right;vertical-align:top} td:first-child,th:first-child{text-align:left} th{background:#f1ede4;font-weight:600;color:#5a5650}
+.gloss{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px;font-size:13.5px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;max-width:740px;line-height:1.55}
+.gloss b{font-size:13px}
+.judge{background:#f1ede4;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.ourview{background:#eef2f7;border-left:3px solid #1f3a5f;padding:12px 16px;max-width:672px;font-size:15px}
+.panel{background:#fff;border:1px solid #e7e2d8;border-radius:6px;padding:14px 16px;max-width:700px;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;font-size:14px;margin:12px 0 18px}
+.panel input[type=range]{width:100%}
+.panel .out{margin-top:8px;font-weight:700}
+.panel .note{color:#8a857c;font-size:12.5px;margin-top:6px}
+.est{font-size:.72em;vertical-align:super;color:#a44a3f;font-weight:700}
+.foot{font-size:12px;color:#8a857c;max-width:700px;margin-top:30px;border-top:1px solid #e3ded4;padding-top:12px}
+.segdive{border:1px solid #e0dbd0;border-radius:8px;padding:6px 18px 4px;margin:14px 0 20px;background:#fdfcf9}
+.leadchain{background:#fff8ea;border:1px solid #e8d9b5;border-radius:6px;padding:12px 16px;max-width:700px;font-size:14px}
+.hubnav{font-size:12.5px;color:#8a857c;font-family:Pretendard,sans-serif;margin-bottom:14px}
+.hubnav a{color:#1f3a5f}
+a{color:#1f3a5f}
+@media print{.panel input{display:none}}
+/* rl-mobile-table */@media (max-width:720px){main{padding-left:16px;padding-right:16px}main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}main .gloss{grid-template-columns:1fr}main figure{overflow-x:auto}}</style>
+<link rel="stylesheet" href="../theme.css">
+<script src="../theme.js"></script></head><body><main>
+
+<h1>리브스메드 파트 8 — 밸류 모델: 시총 1조 595억은 무엇을 참이라고 가정하는가</h1>
+<div class="sub">파트제 커버리지 10편(파트 0~9) 중 파트 8 · 작성 2026-10-22 · 주가 41,950원(10-21 정규장 종가) · 시총 1조 595억(발행주식 25,255,271주) · 환율 USD1 = ₩1,327.5(10-21) · 회계연도 12월(2026 = 제16기) · 재무제표는 연결이 기본 · 다음 실적 3Q26 분기보고서 2026-11-16<span class="est">E</span> · 숫자 정본: 허브 상수 블록(이 파트는 인용만 합니다) · 소스: 투자설명서(2025-12, 공모가 산정·주관사 추정)·2026 반기보고서·2025 사업보고서·주식매수선택권 행사 공시(2026-07-03)·네이버 컨센서스(10-21)·미국 피어 시세(야후 파이낸스 10-21)·국내 피어(네이버 10-22)·조사 노트 A(공시)·B(주주 커뮤니티)·C(산업·경쟁, 인튜이티브서지컬 원문 대조)</div>
+<div class="hubnav">리브스메드 파트제 커버리지 · <a href="리브스메드_허브.html">허브(판정·상수 블록·논쟁 지도)</a> · 현행 판정은 <a href="리브스메드_허브.html">허브</a>가 듭니다. 이 파트는 커버리지 층 valuation(밸류에이션)·model(조정 모델)을 맡습니다.</div>
+
+<p class="judge"><b>이 파트의 답(논쟁 5).</b> 시총 1조 595억에서 기구 사업에 피어 중앙값 P/S 5.5배를 주고 순현금 615.5억을 빼면 7,064억<span class="est">E</span>, 시총의 67%가 매출 0원인 STARK에 남습니다. 공모가 산식을 거꾸로 돌리면 지금 가격은 2027E 순이익 710.3억을 2027년에 받는다고 믿지 않고, 할인율 25%를 그대로 둘 때 같은 이익이 2031년 9월<span class="est">E</span> 무렵 도착한다고 보는 셈입니다. 그 잔여를 상장 당시의 구독 가정(월 300만원 + 수술당 140만원 × 연 250건)으로 번역하면 2029년 말 누적 약 456대<span class="est">E</span>가 필요하고, 이는 주관사 2028E 국내 누적 263대의 1.7배이자 2025년 국내 로봇수술 전체를 대당 250건으로 나눈 약 340대보다 많습니다. 시총은 국내 허가를 넘어 해외 설치까지 이미 값에 넣고 있습니다.</p>
+
+<p>이 파트는 커버리지의 밸류 층을 맡습니다. 파트 1이 기구 사업의 분기 궤적을, 파트 2가 STARK의 사양과 허가 경로를, 파트 3이 인튜이티브서지컬과 경쟁 로봇을, 파트 5가 손익과 현금흐름을, 파트 6이 공모 구조와 주가를 다뤘습니다. 여기서는 그 조각들을 하나의 자 위에 올려 "지금 시총이 성립하려면 무엇이 참이어야 하는가"만 묻습니다. 주가 값을 내는 파트가 아니며, 나오는 것은 요구 순이익·내재 할인율·잔여 금액·필요 설치 대수 같은 내재 가정뿐입니다. 판정은 허브가 듭니다.</p>
+
+<p>방법은 세 갈래입니다. 첫째, 공모가 산식(2027E 순이익 ÷ 1.25^2.25 × PER 45.5배)을 그대로 재현한 다음 지금 가격을 넣어 분자와 할인 기간을 역산합니다. 둘째, 시총을 기구 사업·순현금·잔여 세 층으로 나누고 잔여를 STARK 경제성(대당 매출·영업이익률·배수·시작 연도·할인율)으로 번역해 필요한 누적 설치 대수를 구합니다. 셋째, 피어 배수와 2026년 하반기 수술로봇 거래를 자로 대되, 어디까지 댈 수 있는지를 따로 적습니다. 자체 추정에는 전부 E 표시를 붙였고, 하방은 예측하지 않고 이미 일어난 가격(공모가 55,000원, 상장 직전 라운드 단가 37,337원, 상장 이후 종가 고점 91,300원과 저점 27,350원)으로만 말합니다.</p>
+<div class="gloss">
+<b>주가매출액배수(P/S)</b><span>시가총액을 매출로 나눈 값입니다. 이익이 없을 때 쓰는 자이며, 이 파트는 리브스메드 전체가 아니라 기구 사업 한 층에만 피어의 P/S를 댑니다. 리브스메드 전체는 후행 12개월 매출 528.2억 기준 20.1배입니다.</span>
+<b>순현금</b><span>현금성 자산·단기금융상품·당기손익 금융자산을 더한 유동성 645.5억(2026-06-30)에서 단기차입금 30.0억을 뺀 615.5억입니다. 리스부채 106.5억은 영업 성격으로 보고 빼지 않았습니다.</span>
+<b>잔여(옵션 내재값)</b><span>시총에서 기구 사업 가치와 순현금을 뺀 나머지입니다. 매출이 아직 없는 STARK에 시장이 매긴 몫으로 읽으며, 기구 사업에 어떤 배수를 주느냐에 따라 크기가 바뀝니다.</span>
+<b>현재가치 할인</b><span>미래의 이익이나 가치를 오늘 값으로 바꾸는 계산입니다. 공모가 산식은 2027E 순이익을 연 25%로 2.25년 할인했습니다. 이 파트는 반대로 오늘의 잔여를 미래 시점 값으로 키워 필요한 설치 대수를 구합니다.</span>
+<b>내재 할인율</b><span>어떤 미래 이익이 어떤 시점에 도착한다고 둘 때, 지금 시총과 같아지게 만드는 할인율입니다. 시장이 그 이익의 도착을 얼마나 의심하는지를 숫자로 보여 줍니다.</span>
+<b>구독형 과금</b><span>병원이 로봇을 사지 않고 월 사용료를 내며, 수술마다 기구 사용료를 따로 내는 방식입니다. 상장 당시 주관사 추정의 가정은 월 300만원과 수술 1회 140만원이었고, 회사가 공식 가격을 발표한 적은 없습니다.</span>
+<b>희석</b><span>신주가 늘어 기존 주주 몫이 줄어드는 것입니다. 잔여 주식매수선택권 663,332주(현재 주식수의 2.6%)와 앞으로의 추가 조달이 대상입니다.</span>
+<b>누계 차감</b><span>회사가 상장 전 분기 단독 실적을 공시하지 않아, 2Q25·3Q25·4Q25·2Q26 분기 값은 누계에서 앞 분기 누계를 빼 계산했습니다. 후행 12개월 매출 528.2억도 이렇게 만든 값의 합입니다.</span>
+</div>
+
+<h2>1. 현재 좌표</h2>
+
+<p>2026년 10월 21일 정규장 종가는 41,950원이고, 2026년 7월 29일 옵션 행사분 신주상장 이후 발행주식수는 25,255,271주입니다. 곱하면 10,594.6억, 반올림해 1조 595억이며 이것이 이 파트 모든 계산의 기준입니다. 주식수는 상장 직후 24,681,691주, 2026년 6월 30일 25,004,391주, 지금 25,255,271주로 세 번 바뀌었으므로 주당 지표에는 시점 주식수를 함께 적습니다. 공모가 55,000원에 상장 직후 주식수를 곱한 공모가 시총은 1조 3,575억였고, 지금은 그 78.0%입니다.</p>
+
+<p>분모 쪽은 세 가지입니다. 매출은 후행 12개월(3Q25~2Q26) 134.4 + 166.1 + 102.6 + 125.1 = 528.2억입니다. 이 가운데 3Q25·4Q25·2Q26은 누계 차감으로 계산한 값입니다. 시총을 이 매출로 나눈 P/S는 20.1배입니다. 자본은 2026년 6월 30일 연결 1,639.5억이고, 같은 날 주식수 25,004,391주로 나눈 BPS는 6,557원, 주가순자산배수는 6.40배입니다. 순이익은 2026년 상반기 -169.1억 적자여서 PER은 계산되지 않습니다.</p>
+
+<p>현금 쪽은 순현금 615.5억입니다. 2025년 말 유동성 1,314.0억이 6개월 만에 645.5억으로 줄었고(영업현금흐름 -306.0억, 유형자산 취득 -334.5억), 단기차입금 30.0억을 빼면 615.5억이 남습니다. 2026년 7월 29일 우리·하나은행과 맺은 시설 234억·운전 50억 대출 약정은 차입 시점에 현금과 부채가 같이 늘어 순현금을 바꾸지 않지만, 용인 공장 투자로 나가면 그만큼 순현금이 줄어듭니다. 조정판은 이 두 경우를 토글로 나눴습니다.</p>
+
+<h2>2. 공모가 산식 재현과 역산</h2>
+
+<p>투자설명서의 공모가 산정은 한 줄입니다. 주관사가 추정한 2027E 순이익 710.34억을 연 25%로 2.25년 할인해 현재가치 429.95억을 만들고, 메드트로닉 25.6배·스트라이커 47.5배·인튜이티브서지컬 63.5배의 평균 PER 45.5배를 곱해 평가액 19,562.8억을 얻은 뒤, 평가 주식수 25,919,737주로 나눠 주당 75,474원을 냈습니다. 여기서 27.1%를 할인한 값이 공모가 55,000원입니다. 우리 재현값은 투자설명서 숫자와 원 단위까지 같습니다.</p>
+
+<figure class=""><figcaption>장표 1. 공모가 산식의 단계 — 2027E 순이익 710.3억에서 현재 시총 1조 595억까지(억원)</figcaption><svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="248.0" x2="860" y2="248.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="252.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="192.5" x2="860" y2="192.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="196.5" text-anchor="end" font-size="11" fill="#8a857c">5,000</text>
+<line x1="62" y1="137.0" x2="860" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="81.5" x2="860" y2="81.5" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="85.5" text-anchor="end" font-size="11" fill="#8a857c">15,000</text>
+<line x1="62" y1="26.0" x2="860" y2="26.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="30.0" text-anchor="end" font-size="11" fill="#8a857c">20,000</text>
+<rect x="87.1" y="30.9" width="63.8" height="217.1" fill="#1f3a5f" opacity="0.9"/>
+<text x="119.0" y="25.9" text-anchor="middle" font-size="10.5" fill="#1f3a5f">19,563</text>
+<text x="119.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">산식 평가액</text>
+<text x="119.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">2027E NI 기준</text>
+<rect x="201.1" y="30.9" width="63.8" height="58.9" fill="#a44a3f" opacity="0.9"/>
+<line x1="150.9" y1="30.9" x2="201.1" y2="30.9" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="233.0" y="25.9" text-anchor="middle" font-size="10.5" fill="#a44a3f">−5,307</text>
+<text x="233.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">공모 할인</text>
+<text x="233.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">−27.1%</text>
+<rect x="315.1" y="89.8" width="63.8" height="158.2" fill="#1f3a5f" opacity="0.9"/>
+<line x1="264.9" y1="89.8" x2="315.1" y2="89.8" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="347.0" y="84.8" text-anchor="middle" font-size="10.5" fill="#1f3a5f">14,256</text>
+<text x="347.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">공모가 기준</text>
+<text x="347.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">55,000원</text>
+<rect x="429.1" y="89.8" width="63.8" height="37.5" fill="#a44a3f" opacity="0.9"/>
+<line x1="378.9" y1="89.8" x2="429.1" y2="89.8" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="461.0" y="84.8" text-anchor="middle" font-size="10.5" fill="#a44a3f">−3,383</text>
+<text x="461.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">주가 하락</text>
+<text x="461.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">55,000→41,950원</text>
+<rect x="543.1" y="127.3" width="63.8" height="120.7" fill="#1f3a5f" opacity="0.9"/>
+<line x1="492.9" y1="127.3" x2="543.1" y2="127.3" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="575.0" y="122.3" text-anchor="middle" font-size="10.5" fill="#1f3a5f">10,873</text>
+<text x="575.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">현재 주가</text>
+<text x="575.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">평가 주식수</text>
+<rect x="657.1" y="127.3" width="63.8" height="3.1" fill="#a44a3f" opacity="0.9"/>
+<line x1="606.9" y1="127.3" x2="657.1" y2="127.3" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="689.0" y="122.3" text-anchor="middle" font-size="10.5" fill="#a44a3f">−278</text>
+<text x="689.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">주식수 차이</text>
+<text x="689.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">−664,466주</text>
+<rect x="771.1" y="130.4" width="63.8" height="117.6" fill="#2b7a78" opacity="0.9"/>
+<line x1="720.9" y1="130.4" x2="771.1" y2="130.4" stroke="#8a857c" stroke-width="0.8" stroke-dasharray="3 2"/>
+<text x="803.0" y="125.4" text-anchor="middle" font-size="10.5" fill="#2b7a78">10,595</text>
+<text x="803.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">현재 시총</text>
+<text x="803.0" y="277" text-anchor="middle" font-size="10" fill="#8a857c">2026-10-21</text>
+</svg><div class="src">투자설명서 Ⅳ.1.라(공모가 산정): 2027E 순이익 710.34억 ÷ 1.25^2.25 × PER 45.5배 = 평가액 19,562.8억(평가 주식수 25,919,737주, 주당 75,474원). 현재 주가는 2026-10-21 정규장 종가 41,950원, 현재 주식수 25,255,271주(2026-07-29 신주상장 후). 평가 주식수와 현재 주식수의 차이 664,466주는 잔여 주식매수선택권 663,332주와 거의 같습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 주관사 산식이 만든 평가액은 1조 9,563억이었고, 공모 할인 27.1%를 거쳐 공모가 기준 1조 4,256억, 주가 하락을 거쳐 평가 주식수 기준 1조 873억, 주식수 차이를 빼면 현재 시총 1조 595억입니다. 산식 평가액 대비 현재 시총은 54.2% 수준입니다. <b>원인.</b> 가장 큰 계단은 공모 할인(5,307억)이고, 그다음이 상장 이후 주가 하락(3,383억)입니다. 평가 주식수 25,919,737주는 현재 주식수에 잔여 옵션 663,332주를 더한 값(25,918,603주)과 1,134주 차이에 불과해, 주관사가 완전 희석 기준으로 계산했다고 읽힙니다. <b>함의.</b> 시장은 산식의 분자(2027E 순이익 710.3억)를 그대로 믿지 않고 있지만, 산식을 버린 것도 아닙니다. 지금 가격을 같은 산식에 넣으면 분자가 얼마로 줄었는지, 혹은 같은 분자가 몇 년 늦어졌는지를 역산할 수 있고, 이 파트 2절이 그 작업입니다.</p>
+
+<p>이 산식에 지금 가격을 넣는 방법은 네 가지입니다. 산식의 평가 시점과 할인율·PER·할인율 27.1%를 모두 그대로 두면, 주가 41,950원이 요구하는 2027E 순이익은 541.8억<span class="est">E</span>입니다. 공모 할인을 걷어 내고 주가가 산식의 내재가치와 같다고 두면 394.8억<span class="est">E</span>으로 내려갑니다. 할인 기간을 오늘(2026-10-22)부터 2027년 말까지 남은 1.19년으로 다시 잡으면 311.7억<span class="est">E</span>입니다. 마지막으로 비교기업 세 곳의 후행 PER이 지금은 평균 35.2배(메드트로닉 22.9·스트라이커 30.8·인튜이티브서지컬 51.8배, 2026-10-21)로 내려와 있으므로 이를 넣으면 403.5억<span class="est">E</span>이 됩니다.</p>
+
+<table class=""><tr><th>단계</th><th>값</th><th>식·출처</th></tr><tr><td>2027E 순이익(주관사)</td><td>710.34억</td><td>투자설명서 Ⅳ.1.라</td></tr><tr><td>현가 할인 1.25^2.25</td><td>÷ 1.6521 = 429.95억</td><td>연 할인율 25%, 할인 기간 2.25년(투자설명서)</td></tr><tr><td>비교기업 평균 PER</td><td>× 45.5배</td><td>메드트로닉 25.6·스트라이커 47.5·인튜이티브서지컬 63.5(평가기준일 2025-10-31)</td></tr><tr><td>평가액</td><td>19,562.8억</td><td>÷ 평가 주식수 25,919,737주 = 주당 75,474원</td></tr><tr><td>공모가</td><td>55,000원</td><td>평가액 대비 27.1% 할인</td></tr><tr><td>현재 주가를 넣으면(할인 유지)</td><td>요구 2027E 순이익 541.8억<span class="est">E</span></td><td>710.34 × 41,950 ÷ 55,000</td></tr><tr><td>현재 주가를 넣으면(할인 제거)</td><td>요구 2027E 순이익 394.8억<span class="est">E</span></td><td>710.34 × 41,950 ÷ 75,474</td></tr><tr><td>오늘 시점으로 재할인</td><td>요구 2027E 순이익 311.7억<span class="est">E</span></td><td>평가 주식수 기준 시총 10,873.3억 × 1.25^1.19 ÷ 45.5</td></tr><tr><td>비교기업 PER을 지금 값으로</td><td>요구 2027E 순이익 403.5억<span class="est">E</span></td><td>같은 식, PER 35.2배(세 회사 후행 PER 2026-10-21 평균)</td></tr><tr><td>참고: 실적·컨센서스</td><td>1H26 순이익 -169.1억</td><td>2026E 영업이익 컨센서스 -331억(네이버 10-21)</td></tr></table>
+
+<p>네 값은 312억에서 542억 사이에 있습니다. 비교 대상은 실적과 컨센서스입니다. 2026년 상반기 순이익은 -169.1억이고, 네이버 컨센서스는 2026년 연간 영업이익을 -331억으로 봅니다. 2027년에 순이익이 300억~540억 흑자가 되려면 1년 사이 영업이익이 600억~900억가량 개선돼야 하고, 그 개선의 대부분은 아직 허가 전인 STARK와 회복 전인 해외 매출에서 나와야 합니다. 그래서 우리는 시장이 "분자를 줄였다"기보다 "분자의 도착을 미뤘다"고 읽는 쪽이 자연스럽다고 봅니다.</p>
+
+<p>그 읽기를 숫자로 바꾼 것이 아래 표입니다. 주관사의 2027E 순이익 710.3억이 언젠가 그대로 도착한다고 두고, 도착 연도에 따라 지금 시총(평가 주식수 기준 10,873.3억)과 같아지는 할인율을 구했습니다. 2027년 말 도착이면 내재 할인율은 150%<span class="est">E</span>로, 공모가 산식의 25%와는 거리가 멉니다. 2029년 말이면 41%<span class="est">E</span>, 2031년 말이면 23%<span class="est">E</span>로 내려옵니다. 할인율을 산식의 25%에 고정하면, 같은 이익이 2031년 9월<span class="est">E</span> 무렵 도착할 때 지금 시총과 같아집니다(공모 할인 27.1%까지 유지하면 2030년 4월<span class="est">E</span>). 지금 가격은 공모 때 숫자를 버린 가격이 아니라, 같은 숫자를 2~4년 미뤄 받는 가격으로 읽힙니다.</p>
+
+<table class=""><tr><th>710.3억이 도착하는 해(연말)</th><th>남은 기간</th><th>내재 할인율(PER 45.5배)</th><th>내재 할인율(PER 35.2배)</th><th>공모 할인 27.1% 유지 시</th></tr><tr><td>2027년</td><td>1.19년</td><td>149.6%<span class="est">E</span></td><td>101.0%<span class="est">E</span></td><td>91.4%<span class="est">E</span></td></tr><tr><td>2028년</td><td>2.19년</td><td>64.3%<span class="est">E</span></td><td>46.1%<span class="est">E</span></td><td>42.3%<span class="est">E</span></td></tr><tr><td>2029년</td><td>3.19년</td><td>40.7%<span class="est">E</span></td><td>29.8%<span class="est">E</span></td><td>27.4%<span class="est">E</span></td></tr><tr><td>2030년</td><td>4.19년</td><td>29.7%<span class="est">E</span></td><td>21.9%<span class="est">E</span></td><td>20.2%<span class="est">E</span></td></tr><tr><td>2031년</td><td>5.19년</td><td>23.4%<span class="est">E</span></td><td>17.4%<span class="est">E</span></td><td>16.1%<span class="est">E</span></td></tr></table>
+
+<figure class=""><figcaption>장표 2. 주관사 매출 추정과 실적·컨센서스 — 2026E는 공모 때 숫자의 절반 아래(억원, 연결)</figcaption><svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="246.0" x2="730" y2="246.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="250.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="189.0" x2="730" y2="189.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="193.0" text-anchor="end" font-size="11" fill="#8a857c">1,000.0</text>
+<line x1="62" y1="132.0" x2="730" y2="132.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="136.0" text-anchor="end" font-size="11" fill="#8a857c">2,000.0</text>
+<line x1="62" y1="75.0" x2="730" y2="75.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="79.0" text-anchor="end" font-size="11" fill="#8a857c">3,000.0</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">4,000.0</text>
+<text x="173.3" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2025</text>
+<text x="396.0" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2026</text>
+<text x="618.7" y="264" text-anchor="middle" font-size="10" fill="#8a857c">2027</text>
+<rect x="95.4" y="214.9" width="38.0" height="31.1" fill="#1f3a5f" opacity="0.9"/>
+<text x="114.9" y="210.9" text-anchor="middle" font-size="9.5" fill="#1f3a5f">546.1</text>
+<rect x="134.4" y="216.8" width="38.0" height="29.2" fill="#2b7a78" opacity="0.9"/>
+<text x="153.8" y="212.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">511.9</text>
+<rect x="318.1" y="160.1" width="38.0" height="85.9" fill="#1f3a5f" opacity="0.9"/>
+<text x="337.6" y="156.1" text-anchor="middle" font-size="9.5" fill="#1f3a5f">1,507.7</text>
+<rect x="396.0" y="206.3" width="38.0" height="39.7" fill="#b07d2b" opacity="0.9"/>
+<text x="415.5" y="202.3" text-anchor="middle" font-size="9.5" fill="#b07d2b">697.0</text>
+<rect x="435.0" y="220.0" width="38.0" height="26.0" fill="#8a857c" opacity="0.9"/>
+<text x="454.4" y="216.0" text-anchor="middle" font-size="9.5" fill="#8a857c">455.4</text>
+<rect x="540.7" y="62.9" width="38.0" height="183.1" fill="#1f3a5f" opacity="0.9"/>
+<text x="560.2" y="58.9" text-anchor="middle" font-size="9.5" fill="#1f3a5f">3,212.9</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">주관사 추정</text>
+<rect x="736" y="34" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">실적</text>
+<rect x="736" y="50" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">네이버 컨센</text>
+<rect x="736" y="66" width="10" height="10" fill="#8a857c"/>
+<text x="750" y="75" font-size="11" fill="#8a857c">1H26×2(E)</text>
+</svg><div class="src">주관사 추정은 투자설명서 Ⅳ.1.바(중립 시나리오), 2025 실적은 사업보고서 연결, 2026E 컨센서스는 네이버 2026-10-21 조회값(697억), 1H26×2는 반기 매출 227.7억의 단순 두 배로 우리가 환산한 값입니다(E). 2027E는 비교할 실적·컨센서스가 없습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 2025년은 주관사 추정 546.1억 대비 실적 511.9억으로 -6.3% 빗나가는 데 그쳤지만, 2026년은 추정 1,507.7억 대비 컨센서스 697억(46.2%), 상반기 연환산 455.4억(30.2%)입니다. 2026년 상반기 실적은 주관사 2026년 연간 추정 매출의 15.1%입니다. <b>원인.</b> 주관사 2026E에는 국내 ArtiSential 683.7억·국내 ArtiSeal 129.5억·미국 ArtiSential 231.0억·국내 Stark 40.5억이 들어 있었습니다. 상반기 국내 ArtiSeal은 14.5억, 수출 전체는 16.1억이었고 STARK는 아직 허가 전이라 0원입니다. 영업이익도 추정 +143.0억 대비 상반기 -205.6억, 컨센서스 연간 -331억입니다. <b>함의.</b> 공모가 산식의 분자인 2027E 순이익 710.3억은 2026E 매출 1,507.7억을 발판으로 2027E 매출 3,212.9억에 오르는 경로였습니다. 그 발판이 절반 아래로 내려앉았으므로 2027년에 같은 순이익이 나온다고 읽기는 어렵고, 시총이 분자를 몇 년 미뤄 받고 있는지가 남는 질문입니다.</p>
+
+<p>주관사 추정과 실적의 괴리는 공시로도 확인됩니다. 회사는 2026 반기보고서의 상장기업 재무사항 비교표에서 2025년 매출 예측 546.1억 대비 실적 511.9억(괴리 -6.26%), 영업이익 예측 -120.3억 대비 실적 -226.4억(괴리 88.24%)을 적었고, 주원인을 경상연구개발비가 예측보다 29.0% 늘어난 데서 찾았습니다. 지역으로 나누면 2025년 국내는 예측 452.1억 대비 실적 456.8억으로 달성했고, 해외는 예측 94.0억 대비 실적 55.1억(58.6%)이었습니다. 2026년의 괴리는 이보다 훨씬 큽니다. 컨센서스 697억이 맞으려면 2026년 하반기 매출이 469.3억이어야 하는데, 이는 2025년 하반기 300.5억보다 56% 많은 숫자입니다.</p>
+
+<h2>3. 시총 분해 — 기구 사업, 순현금, 잔여</h2>
+
+<p>두 번째 방법은 시총을 층으로 나누는 것입니다. 가정부터 적습니다. 기구 사업(ArtiSential·ArtiSeal과 후속 기구)의 가치는 2026년 기구 매출에 피어의 P/S를 곱한 값이고, STARK는 아직 매출이 없으므로 기구 매출이 곧 연결 매출입니다. 근거는 두 가지입니다. 기구 사업은 2025년 국내 급여 기구로 511.9억까지 올라왔지만 2026년 상반기 영업손실이 -205.6억이어서 이익 배수를 댈 수 없고, 피어 가운데 매출 대비 배수가 공개된 회사가 충분히 많습니다.</p>
+
+<p>기구 매출 기본값은 530억<span class="est">E</span>입니다. 식은 2026년 상반기 실측 227.7억 + 2025년 하반기 실측 300.5억으로, 하반기가 전년 하반기와 같다고 둔 값이며 우연히 후행 12개월 528.2억과 같습니다. 교차검증으로 두 끝을 같이 봅니다. 상반기 단순 연환산은 455.4억, 네이버 컨센서스는 697억입니다. 기본값은 두 끝 사이에서 실측만으로 만들 수 있는 값이라 골랐고, 3Q26 실적(2026-11-16<span class="est">E</span>)이 나오면 가장 먼저 바뀔 숫자입니다. 조정판은 450억~700억 범위를 열어 두었습니다.</p>
+
+<p>배수 기본값은 5.5배<span class="est">E</span>입니다. 미국 6곳(인튜이티브서지컬·메드트로닉·스트라이커·존슨앤드존슨·프로셉트·SS이노베이션스)과 국내 3곳(큐렉소·고영·클래시스)의 후행 12개월 P/S 중앙값을 반올림한 값입니다. 미래컴퍼니는 매출 대부분이 디스플레이 장비라서, 엔젤로보틱스는 2025년 매출 46억에 P/S가 63배라 분포를 왜곡해서 중앙값에서 뺐습니다. 이 배수는 후한 쪽입니다. 중앙값 근처의 회사들(스트라이커 4.4배·클래시스 5.5배)은 영업이익률 27%·51%를 내는데, 리브스메드 기구 사업은 아직 영업손실이고 매출총이익률도 2026년 상반기 43.4%에 머물러 있습니다.</p>
+
+<figure class=""><figcaption>장표 3. 시총 분해 — 기구 매출 530억(E)에 어떤 P/S를 주느냐에 따라 STARK 몫이 바뀝니다(억원)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="216.3" x2="730" y2="216.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.3" text-anchor="end" font-size="11" fill="#8a857c">2,000</text>
+<line x1="62" y1="176.7" x2="730" y2="176.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.7" text-anchor="end" font-size="11" fill="#8a857c">4,000</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">6,000</text>
+<line x1="62" y1="97.3" x2="730" y2="97.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.3" text-anchor="end" font-size="11" fill="#8a857c">8,000</text>
+<line x1="62" y1="57.7" x2="730" y2="57.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.7" text-anchor="end" font-size="11" fill="#8a857c">10,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">12,000</text>
+<text x="128.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">PRCT 3.1배</text>
+<text x="262.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">중앙값 5.5배</text>
+<text x="396.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">고영 9.0배</text>
+<text x="529.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">ISRG 13.1배</text>
+<text x="663.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">잔여 0 18.8배</text>
+<rect x="88.7" y="223.4" width="80.2" height="32.6" fill="#1f3a5f" opacity="0.9"/>
+<rect x="88.7" y="211.2" width="80.2" height="12.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="88.7" y="45.9" width="80.2" height="165.3" fill="#b07d2b" opacity="0.9"/>
+<text x="128.8" y="41.9" text-anchor="middle" font-size="9.5" fill="#8a857c">10,594</text>
+<rect x="222.3" y="198.2" width="80.2" height="57.8" fill="#1f3a5f" opacity="0.9"/>
+<rect x="222.3" y="186.0" width="80.2" height="12.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="222.3" y="45.9" width="80.2" height="140.1" fill="#b07d2b" opacity="0.9"/>
+<text x="262.4" y="41.9" text-anchor="middle" font-size="9.5" fill="#8a857c">10,594</text>
+<rect x="355.9" y="161.4" width="80.2" height="94.6" fill="#1f3a5f" opacity="0.9"/>
+<rect x="355.9" y="149.2" width="80.2" height="12.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="355.9" y="45.9" width="80.2" height="103.3" fill="#b07d2b" opacity="0.9"/>
+<text x="396.0" y="41.9" text-anchor="middle" font-size="9.5" fill="#8a857c">10,596</text>
+<rect x="489.5" y="118.3" width="80.2" height="137.7" fill="#1f3a5f" opacity="0.9"/>
+<rect x="489.5" y="106.1" width="80.2" height="12.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="489.5" y="45.9" width="80.2" height="60.2" fill="#b07d2b" opacity="0.9"/>
+<text x="529.6" y="41.9" text-anchor="middle" font-size="9.5" fill="#8a857c">10,594</text>
+<rect x="623.1" y="58.4" width="80.2" height="197.6" fill="#1f3a5f" opacity="0.9"/>
+<rect x="623.1" y="46.2" width="80.2" height="12.2" fill="#2b7a78" opacity="0.9"/>
+<rect x="623.1" y="45.9" width="80.2" height="0.3" fill="#b07d2b" opacity="0.9"/>
+<text x="663.2" y="41.9" text-anchor="middle" font-size="9.5" fill="#8a857c">10,596</text>
+<rect x="736" y="18" width="10" height="10" fill="#1f3a5f"/>
+<text x="750" y="27" font-size="11" fill="#8a857c">기구 사업 가치</text>
+<rect x="736" y="34" width="10" height="10" fill="#2b7a78"/>
+<text x="750" y="43" font-size="11" fill="#8a857c">순현금</text>
+<rect x="736" y="50" width="10" height="10" fill="#b07d2b"/>
+<text x="750" y="59" font-size="11" fill="#8a857c">잔여(STARK)</text>
+</svg><div class="src">기구 사업 가치 = 2026E 기구 매출 530억(E, 후행 12개월 실측 528.2억을 반올림) × P/S. 순현금 = 2026-06-30 유동성 645.5억 − 단기차입금 30.0억 = 615.5억(리스부채 106.5억은 빼지 않음). 잔여 = 시총 10,595억 − 두 항목. P/S는 프로셉트·피어 9곳 중앙값·고영·인튜이티브서지컬의 후행 12개월 값이며, 마지막 막대는 잔여가 0이 되는 P/S입니다.</div></figure>
+<p class="reading"><b>관찰.</b> 피어 중앙값 5.5배를 쓰면 기구 사업 2,915억(27.5%), 순현금 615.5억(5.8%), 잔여 7,064억(66.7%)입니다. 인튜이티브서지컬 배수 13.1배를 기구 사업에 줘도 잔여는 3,036억이 남고, 잔여가 0이 되려면 기구 매출에 18.8배를 줘야 합니다. <b>원인.</b> 기구 사업은 2026년 상반기 매출총이익률 43.4%로 피어(메드트로닉 65%·스트라이커 66%·인튜이티브서지컬 67%, 후행 12개월)보다 20%p 이상 낮고 영업손실 상태여서, 흑자 피어의 배수를 그대로 주는 것 자체가 후한 가정입니다. 그런데도 시총의 3분의 2 안팎이 기구와 현금으로 설명되지 않습니다. <b>함의.</b> 시총 1조 595억의 큰 몫은 아직 매출이 없는 STARK에 매겨져 있습니다. 기구 사업에 시장 최고 수준의 배수를 줘야 STARK 몫이 사라진다는 사실은, 이 주식이 기구 회사가 아니라 로봇 옵션으로 거래되고 있다는 뜻으로 읽습니다.</p>
+
+<p>결과는 기구 사업 2,915억<span class="est">E</span>, 순현금 615.5억, 잔여 7,064억<span class="est">E</span>입니다. 잔여를 0으로 만드는 기구 사업 P/S는 18.8배인데, 이는 피어 가운데 가장 높은 인튜이티브서지컬 13.1배보다도 높습니다. 다시 말해 어떤 합리적인 배수를 골라도 시총 가운데 수천억 원이 기구와 현금 바깥에 남습니다. 순현금 쪽 변수도 작지 않습니다. 대출 284억이 용인 공장에 쓰였다고 보면 잔여는 7,348억<span class="est">E</span>으로 늘고, 하반기 영업현금 유출까지 넣으면 더 늘어납니다. 현금이 줄수록 시장이 STARK에 매기는 몫이 커지는 구조입니다.</p>
+
+<p>같은 분해를 이미 일어난 가격에 대 보면 시장의 바닥이 어디였는지도 보입니다. 상장 이후 종가 저점은 2026-09-16의 27,350원이고, 현재 주식수로 환산한 그날 시총은 약 6,907억입니다. 6월 말 순현금과 기본값 기구 가치를 그대로 빼면 잔여는 약 3,377억<span class="est">E</span>이 남습니다. 2분기 실적 발표 뒤 가장 비관적이던 날에도 시장은 STARK에 3,000억대를 남겨 두었고, 지금은 그 두 배를 조금 넘게 매기고 있다는 뜻입니다. 이 차이는 그사이 새로 확인된 실적이 아니라 9월 메드트로닉·코너스톤 거래, 10월 스트라이커·CMR 거래, 10월 19일 미국·일본 동시 허가 추진 보도가 겹친 시기에 생겼습니다.</p>
+
+<h2>4. 잔여를 STARK 경제성으로 번역하기</h2>
+
+<p>잔여 7,064억<span class="est">E</span>은 금액일 뿐이라 그 자체로는 판단할 수 없습니다. 그래서 STARK의 사업 모델 언어로 바꿉니다. 가정은 상장 당시 주관사 추정에 들어 있던 구독형 과금입니다. 병원은 로봇을 사지 않고 월 300만원을 내고, 수술마다 기구 사용료 140만원을 냅니다(독일은 180만원). 대당 연 수술은 2026년 296건, 2027년 250건, 2028년 229건으로 가정돼 있었습니다. 이 숫자는 회사가 공식 발표한 가격이 아니라 주관사 추정의 가정이며, 주주 커뮤니티에 도는 "다빈치의 4분의 1", "대당 7~8억" 같은 표현은 등급 C의 전언·추정이라 이 파트의 기본값에 쓰지 않았습니다.</p>
+
+<p>대당 연 매출은 월 300만원 × 12 + 140만원 × 250건 = 3.86억<span class="est">E</span>입니다. 교차검증으로 주관사 2027E 국내 Stark 매출 330.1억을 이 값으로 나누면 평균 가동 약 86대가 나오는데, 2027년 초 36대에서 연말 139대로 늘어나는 경로의 평균에 가동률 70%를 곱한 값과 크게 다르지 않습니다. 주관사 추정이 같은 대당 경제성 위에 서 있다는 확인입니다. 여기에 영업이익률 30%<span class="est">E</span>, 세율 20%<span class="est">E</span>, PER 35배<span class="est">E</span>를 곱하면 대당 가치는 32.4억<span class="est">E</span>입니다. 영업이익률은 인튜이티브서지컬 후행 12개월 GAAP 19%(반독점 합의 비용 $4.5억 포함)와 3Q26 비GAAP 41.6% 사이, PER은 인튜이티브서지컬 선행 PER 34.6배에서 가져왔습니다.</p>
+
+<p>다음은 시간입니다. 잔여는 오늘의 값이고 STARK 설치 기반은 미래에 생기므로, 잔여를 할인율로 키워 미래 시점의 필요 가치로 바꿉니다. 기본값은 공모가 산식과 같은 할인율 25%, 시작 연도 2029년 말입니다. 옵션 663,332주 희석을 반영한 잔여 7,250억<span class="est">E</span>을 3.19년 동안 25%로 키우면 14,781억<span class="est">E</span>이 되고, 이를 대당 가치 32.4억<span class="est">E</span>으로 나눈 값이 필요 누적 설치 대수 약 456대<span class="est">E</span>입니다. 그때 STARK 연 매출은 약 1,760억<span class="est">E</span>으로, 주관사 2028E 국내 Stark 매출 783.1억의 두 배를 넘습니다.</p>
+
+<figure class=""><figcaption>장표 4. 잔여가 요구하는 STARK 누적 설치 대수 — 시작 연도가 1년 늦어질 때마다 할인율만큼 늘어납니다(대)</figcaption><svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="256.0" x2="730" y2="256.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="260.0" text-anchor="end" font-size="11" fill="#8a857c">0</text>
+<line x1="62" y1="216.3" x2="730" y2="216.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="220.3" text-anchor="end" font-size="11" fill="#8a857c">200</text>
+<line x1="62" y1="176.7" x2="730" y2="176.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="180.7" text-anchor="end" font-size="11" fill="#8a857c">400</text>
+<line x1="62" y1="137.0" x2="730" y2="137.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="141.0" text-anchor="end" font-size="11" fill="#8a857c">600</text>
+<line x1="62" y1="97.3" x2="730" y2="97.3" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="101.3" text-anchor="end" font-size="11" fill="#8a857c">800</text>
+<line x1="62" y1="57.7" x2="730" y2="57.7" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="61.7" text-anchor="end" font-size="11" fill="#8a857c">1,000</text>
+<line x1="62" y1="18.0" x2="730" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">1,200</text>
+<line x1="62" y1="203.8" x2="730" y2="203.8" stroke="#8a857c" stroke-width="0.9" stroke-dasharray="4 3"/>
+<text x="62.0" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2027</text>
+<text x="195.6" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2028</text>
+<text x="329.2" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2029</text>
+<text x="462.8" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2030</text>
+<text x="596.4" y="274" text-anchor="middle" font-size="10" fill="#8a857c">2031</text>
+<text x="730.0" y="274" text-anchor="end" font-size="10" fill="#8a857c">2032</text>
+<polyline points="62.0,203.6 195.6,195.7 329.2,186.8 462.8,176.3 596.4,164.4 730.0,150.7" fill="none" stroke="#1f3a5f" stroke-width="2"/>
+<circle cx="62.0" cy="203.6" r="2.4" fill="#1f3a5f"/>
+<circle cx="195.6" cy="195.7" r="2.4" fill="#1f3a5f"/>
+<circle cx="329.2" cy="186.8" r="2.4" fill="#1f3a5f"/>
+<circle cx="462.8" cy="176.3" r="2.4" fill="#1f3a5f"/>
+<circle cx="596.4" cy="164.4" r="2.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="150.7" r="2.4" fill="#1f3a5f"/>
+<polyline points="62.0,200.9 195.6,189.8 329.2,176.7 462.8,160.8 596.4,141.8 730.0,118.8" fill="none" stroke="#b07d2b" stroke-width="2"/>
+<circle cx="62.0" cy="200.9" r="2.4" fill="#b07d2b"/>
+<circle cx="195.6" cy="189.8" r="2.4" fill="#b07d2b"/>
+<circle cx="329.2" cy="176.7" r="2.4" fill="#b07d2b"/>
+<circle cx="462.8" cy="160.8" r="2.4" fill="#b07d2b"/>
+<circle cx="596.4" cy="141.8" r="2.4" fill="#b07d2b"/>
+<circle cx="730.0" cy="118.8" r="2.4" fill="#b07d2b"/>
+<polyline points="62.0,198.1 195.6,183.6 329.2,165.6 462.8,142.9 596.4,114.8 730.0,79.3" fill="none" stroke="#2b7a78" stroke-width="2"/>
+<circle cx="62.0" cy="198.1" r="2.4" fill="#2b7a78"/>
+<circle cx="195.6" cy="183.6" r="2.4" fill="#2b7a78"/>
+<circle cx="329.2" cy="165.6" r="2.4" fill="#2b7a78"/>
+<circle cx="462.8" cy="142.9" r="2.4" fill="#2b7a78"/>
+<circle cx="596.4" cy="114.8" r="2.4" fill="#2b7a78"/>
+<circle cx="730.0" cy="79.3" r="2.4" fill="#2b7a78"/>
+<polyline points="62.0,195.3 195.6,177.1 329.2,153.5 462.8,122.7 596.4,82.9 730.0,30.9" fill="none" stroke="#a44a3f" stroke-width="2"/>
+<circle cx="62.0" cy="195.3" r="2.4" fill="#a44a3f"/>
+<circle cx="195.6" cy="177.1" r="2.4" fill="#a44a3f"/>
+<circle cx="329.2" cy="153.5" r="2.4" fill="#a44a3f"/>
+<circle cx="462.8" cy="122.7" r="2.4" fill="#a44a3f"/>
+<circle cx="596.4" cy="82.9" r="2.4" fill="#a44a3f"/>
+<circle cx="730.0" cy="30.9" r="2.4" fill="#a44a3f"/>
+<text x="736" y="34.9" font-size="11" fill="#a44a3f">30% 1,135대</text>
+<text x="736" y="83.3" font-size="11" fill="#2b7a78">25% 891대</text>
+<text x="736" y="122.8" font-size="11" fill="#b07d2b">20% 692대</text>
+<text x="736" y="154.7" font-size="11" fill="#1f3a5f">15% 531대</text>
+</svg><div class="src">기본 조합: 기구 매출 530억 × P/S 5.5배, 순현금 615.5억, 옵션 663,332주 희석 반영, 대당 연 매출 3.86억(구독 월 300만원 × 12 + 수술당 140만원 × 연 250건, 상장 당시 주관사 추정의 가정), 영업이익률 30%·세율 20%·PER 35배(E). 선 이름은 할인율. 점선은 주관사 추정의 2028E 국내 누적 263대.</div></figure>
+<p class="reading"><b>관찰.</b> 기본값(할인율 25%, 시작 2029년)에서 잔여 7,250억(희석 반영)을 정당화하려면 2029년 말 STARK 누적 설치가 약 456대<span class="est">E</span>여야 합니다. 시작이 2027년이면 292대, 2032년이면 891대<span class="est">E</span>로 늘고, 할인율 15%에서는 같은 2029년에 349대<span class="est">E</span>입니다. <b>원인.</b> 잔여는 오늘의 값이므로 미래 시점의 설치 기반 가치로 바꾸려면 할인율로 키워야 합니다. 대당 가치는 연 매출 3.86억 × 영업이익률 30% × (1 − 세율 20%) × PER 35배 = 32.4억<span class="est">E</span>이고, 필요한 대수는 그 미래값을 대당 가치로 나눈 값입니다. <b>함의.</b> 주관사 추정의 2028E 국내 누적 263대는 어느 선보다도 아래에 있습니다. 2025년 국내 로봇수술 약 8.5만 건을 대당 250건으로 나누면 340대인데, 기본값이 요구하는 456대<span class="est">E</span>는 그보다 많아 국내만으로는 채우기 어렵습니다. 시총은 해외(미국·일본) 설치를 이미 값에 넣고 있다고 읽습니다.</p>
+
+<p>교차검증은 세 방향으로 합니다. 첫째, 국내 상한입니다. 2025년 국내 로봇수술은 약 8.5만 건(인튜이티브코리아, 머니투데이 2026-06-30)이고 대당 250건이면 약 340대가 국내 로봇수술 전체를 소화합니다. 주관사 추정은 국내 로봇 보급 대수가 2025E 257대에서 2028E 794대로 늘어난다고 봤는데, 기본값의 456대<span class="est">E</span>는 그 794대의 57%를 STARK가 차지한다는 뜻입니다. 둘째, 인튜이티브서지컬입니다. 3Q26 다빈치 설치 기반은 12,094대이고 시총 $1,512억을 설치 기반으로 나누면 대당 약 166억원입니다. STARK 대당 가치 32.4억<span class="est">E</span>은 그 20%에 불과하지만, 인튜이티브서지컬은 20년 넘게 쌓은 소모품·서비스 매출이 붙어 있어 단순 비교는 하한 확인 정도로만 씁니다. 셋째, 자본입니다. 구독형은 장비를 회사 재무상태표에 남기므로, 주관사 2027E 단위당 제조원가 2.63억으로 456대를 깔면 약 1,199억<span class="est">E</span>의 장비 원가를 회사가 먼저 떠안습니다.</p>
+
+<p>세 번째 교차검증은 논쟁 4와 바로 이어집니다. 2026년 6월 말 순현금 615.5억과 대출 약정 284억을 합쳐도 장비 원가 1,199억<span class="est">E</span>을 대기 어렵고, 기구 사업은 아직 영업현금 유출 중입니다. 따라서 필요 대수에 이르는 경로에는 추가 조달이 끼어 있을 가능성이 높고, 조달은 희석을 거쳐 필요 대수를 다시 키웁니다. 현재가로 1,000억을 조달하면 필요 대수는 498대<span class="est">E</span>, 20% 할인 발행이면 508대<span class="est">E</span>가 됩니다. 시총이 요구하는 설치 기반과, 그 설치 기반을 까는 데 드는 자본이 서로를 키우는 구조입니다.</p>
+
+<h2>5. 조정판</h2>
+
+<p>아래 조정판은 3절과 4절의 계산을 그대로 옮긴 것입니다. 기구 매출과 P/S, 순현금 토글, 희석, STARK의 수술당 사용료·연 수술 건수·영업이익률·PER·시작 연도·할인율을 움직이면 잔여와 필요 누적 설치 대수가 바로 바뀝니다. 결과는 내재 가정에서 멈추고 주가로 바꾸지 않습니다. 쓰는 법은 단순합니다. 자기가 믿는 STARK 경제성을 넣고, 나온 필요 대수가 회사 계획·국내 상한·해외 허가 일정과 맞는지를 보면 됩니다.</p>
+
+<div class="panel"><b>조정판 — 시총 1조 595억 안에서 STARK에 남는 몫과, 그 몫이 요구하는 설치 대수를 꺼내는 자입니다. 주가를 내지 않습니다.</b><div class="note" style="margin-bottom:8px">출력은 내재 가정(잔여 금액·필요 대수·그때의 STARK 매출)에서 멈춥니다. 주식수로 나눠 주당 값을 만들지 않습니다.</div><div class="note" style="margin-top:6px"><b>가. 기구 사업</b></div><div style="margin:10px 0 2px">2026E 기구 매출(억원) <b><span id="s_rev_v"></span>억</b><br><input type="range" id="s_rev" min="450" max="700" step="5" value="530"><div class="note">기본 530억 = 후행 12개월 실측 528.2억(2026년 하반기가 2025년 하반기 300.5억과 같다고 둔 값). 하단 450억 근처는 상반기 연환산 455.4억, 상단은 컨센서스 697억입니다.</div></div><div style="margin:10px 0 2px">기구 사업 P/S(배) <b><span id="s_ps_v"></span>배</b><br><input type="range" id="s_ps" min="1" max="20" step="0.1" value="5.5"><div class="note">기본 5.5배 = 피어 9곳(미국 6·국내 3) 후행 P/S 중앙값. 프로셉트 3.1·메드트로닉 3.2·고영 9.0·인튜이티브서지컬 13.1배.</div></div><div class="note" style="margin-top:10px"><b>나. 순현금</b></div><div style="margin:6px 0"><label><input type="checkbox" id="c_loan"> 대출 약정 284억을 순부채로 반영(용인 공장 투자에 쓰여 현금이 남지 않는다고 볼 때)</label></div><div style="margin:6px 0"><label><input type="checkbox" id="c_burn"> 2026년 하반기 영업현금 유출을 상반기와 같은 306.0억으로 반영</label></div><div class="note" style="margin-top:10px"><b>다. 희석</b></div><div style="margin:6px 0"><label><input type="checkbox" id="c_opt" checked> 잔여 주식매수선택권 663,332주 반영(전부 내가격)</label></div><div style="margin:10px 0 2px">시작 연도 전 추가 조달(억원, 현재가 발행 가정) <b><span id="s_raise_v"></span>억</b><br><input type="range" id="s_raise" min="0" max="3000" step="50" value="0"><div class="note">조달 자금은 STARK 시작 전 손실을 메우는 데 쓰인다고 보고 가치에 더하지 않습니다. 2026년 상반기 영업현금흐름은 -306.0억이었습니다.</div></div><div class="note" style="margin-top:10px"><b>라. STARK 경제성(구독 월 300만원은 고정)</b></div><div style="margin:10px 0 2px">수술당 기구 사용료(만원) <b><span id="s_cpc_v"></span>만원</b><br><input type="range" id="s_cpc" min="70" max="200" step="5" value="140"><div class="note">기본 140만원 = 상장 당시 주관사 추정의 가정(독일 180만원). 회사가 공식 발표한 가격은 없습니다.</div></div><div style="margin:10px 0 2px">대당 연 수술 건수(건) <b><span id="s_cases_v"></span>건</b><br><input type="range" id="s_cases" min="100" max="400" step="10" value="250"><div class="note">기본 250건 = 주관사 2027E 가정(2026 296건·2028 229건). 다올 리포트가 인튜이티브서지컬 연차보고서로 계산한 2025년 다빈치 대당 연간 시술은 284건입니다.</div></div><div style="margin:10px 0 2px">STARK 영업이익률(%) <b><span id="s_opm_v"></span>%</b><br><input type="range" id="s_opm" min="5" max="50" step="1" value="30"><div class="note">기본 30%(E). 인튜이티브서지컬 후행 12개월 GAAP 19%(반독점 합의 비용 포함), 3Q26 비GAAP 41.6%, 주관사 2028E 회사 전체 32.4% 사이에서 잡았습니다.</div></div><div style="margin:10px 0 2px">설치 기반에 매길 PER(배) <b><span id="s_per_v"></span>배</b><br><input type="range" id="s_per" min="10" max="60" step="1" value="35"><div class="note">기본 35배 = 인튜이티브서지컬 선행 PER 34.6배(야후 파이낸스)·35.6배(조사 노트 C, 10-21 종가). 세율 20%는 고정(E).</div></div><div style="margin:10px 0 2px">시작 연도(설치 기반이 값으로 매겨지는 해의 연말) <b><span id="s_year_v"></span>년</b><br><input type="range" id="s_year" min="2027" max="2033" step="1" value="2029"><div class="note">국내 허가는 회사 목표 연내, 80영업일 단순 계산 2026-12-03(E). 주관사 추정의 미국 출시 가정은 2028년 1분기였습니다.</div></div><div style="margin:10px 0 2px">할인율(%) <b><span id="s_r_v"></span>%</b><br><input type="range" id="s_r" min="10" max="35" step="1" value="25"><div class="note">기본 25% = 공모가 산식과 같은 값. 투자설명서는 2024~25 기술특례 상장의 연 할인율 범위를 15~35%로 적었습니다.</div></div><div class="out">기구 사업 가치 <span id="o_inst">—</span>억 · 순현금 <span id="o_nc">—</span>억 · 잔여(STARK) <span id="o_resid">—</span>억(시총의 <span id="o_rsh">—</span>%)</div><div class="out">희석 배수 <span id="o_dil">—</span> · 기존 주주 몫으로 환산한 잔여 <span id="o_req">—</span>억 · 시작 연도까지 <span id="o_t">—</span>년 · 그때 필요한 설치 기반 가치 <span id="o_fv">—</span>억</div><div class="out">대당 연 매출 <span id="o_urev">—</span>억 · 대당 가치 <span id="o_uval">—</span>억 · <span style="color:#a44a3f">필요 누적 설치 <span id="o_units">—</span>대</span></div><div class="out" style="font-weight:400">그때의 STARK 연 매출 <span id="o_srev">—</span>억 · 주관사 2028E 국내 누적 263대의 <span id="o_ipo">—</span>배 · 연 수술 건수는 2025년 국내 로봇수술 약 8.5만 건의 <span id="o_kr">—</span>% · 구독형이라 회사가 떠안는 장비 제조원가 약 <span id="o_cap">—</span>억(대당 2.63억, 주관사 2027E 단위당 제조원가) <span id="o_msg"></span></div><div class="note">식. 잔여 = 시총 10,595억 − 기구 매출 × P/S − 순현금. 희석 배수 = (현재 주식수 + 옵션 + 추가 조달 ÷ 현재가) ÷ 현재 주식수. 필요 설치 기반 가치 = 잔여 × 희석 배수 × (1 + 할인율)^기간. 대당 가치 = (월 300만원 × 12 + 수술당 사용료 × 연 수술 건수) × 영업이익률 × (1 − 세율 20%) × PER. 필요 대수 = 필요 설치 기반 가치 ÷ 대당 가치. 기구 사업 가치는 오늘 값으로 고정했고(시작 연도까지 기구 사업이 자라는 몫은 넣지 않음), 설치 기반 이후의 추가 성장은 PER 안에 들어 있다고 봅니다.</div>
+<script>
+(function(){
+var MCAP=10595,SH=25255271,OPT=663332,PX=41950,NC0=615.5,LOAN=284,BURN=306.0,SUB=300.0,TAX=0.20,UC=2.63,KR=85000,IPO28=263;
+function g(i){return +document.getElementById(i).value}
+function c(i){return document.getElementById(i).checked}
+function fm(x,d){return x.toLocaleString("ko-KR",{maximumFractionDigits:d,minimumFractionDigits:d})}
+function yrs(Y){return (Date.UTC(Y,11,31)-Date.UTC(2026,9,22))/86400000/365.25}
+var ids=["s_rev","s_ps","s_raise","s_cpc","s_cases","s_opm","s_per","s_year","s_r"],dd={s_rev:0,s_ps:1,s_raise:0,s_cpc:0,s_cases:0,s_opm:0,s_per:0,s_year:0,s_r:0};
+function S(i,t){document.getElementById(i).textContent=t}
+function f(){
+ ids.forEach(function(i){S(i+"_v",i=="s_year"?String(g(i)):fm(g(i),dd[i]))});
+ var inst=g("s_rev")*g("s_ps"), nc=NC0-(c("c_loan")?LOAN:0)-(c("c_burn")?BURN:0);
+ var resid=MCAP-inst-nc, newsh=g("s_raise")*1e8/PX, dil=(SH+(c("c_opt")?OPT:0)+newsh)/SH, req=resid*dil;
+ var urev=(SUB*12+g("s_cpc")*g("s_cases"))/1e4, uval=urev*g("s_opm")/100*(1-TAX)*g("s_per");
+ var t=yrs(g("s_year")), fv=req*Math.pow(1+g("s_r")/100,t), units=fv/uval;
+ S("o_inst",fm(inst,0));S("o_nc",fm(nc,1));S("o_resid",fm(resid,0));S("o_rsh",fm(resid/MCAP*100,1));
+ S("o_dil",fm(dil,3));S("o_req",fm(req,0));S("o_urev",fm(urev,2));S("o_uval",fm(uval,1));
+ S("o_t",fm(t,2));S("o_fv",fm(fv,0));
+ if(resid<=0){S("o_units","0");S("o_msg","이 조합에서는 기구 사업과 현금만으로 시총이 설명되어 STARK에 남는 값이 없습니다.");S("o_srev","0");S("o_ipo","0");S("o_kr","0");S("o_cap","0");return;}
+ S("o_units",fm(units,0));S("o_msg","");S("o_srev",fm(units*urev,0));S("o_ipo",fm(units/IPO28,1));
+ S("o_kr",fm(units*g("s_cases")/KR*100,0));S("o_cap",fm(units*UC,0));}
+ids.forEach(function(i){document.getElementById(i).addEventListener("input",f)});
+["c_loan","c_burn","c_opt"].forEach(function(i){document.getElementById(i).addEventListener("change",f)});f();})();
+</script></div>
+
+<p>민감도를 몇 개만 적어 둡니다. 수술당 사용료를 독일 가정 180만원으로 올리면 필요 대수는 362대<span class="est">E</span>, 100만원으로 낮추면 615대<span class="est">E</span>입니다. 기구 매출을 컨센서스 697억으로 올리면 397대<span class="est">E</span>, 상반기 연환산 455억으로 내리면 482대<span class="est">E</span>입니다. 시작 연도를 한 해 늦추면 570대<span class="est">E</span>로 할인율만큼(25%) 늘어나고, 할인율을 15%로 낮추면 349대<span class="est">E</span>로 줄어듭니다. 가장 큰 변수는 할인율과 시작 연도, 즉 STARK 일정에 대한 시장의 신뢰이고, 기구 사업 가정은 그보다 작게 움직입니다.</p>
+
+<p>조정판을 읽을 때 주의할 점이 두 가지 있습니다. 첫째, 이 모델은 STARK 매출을 대당 단가로만 계산하므로, STARK가 ArtiSeal·ArtiStapler 같은 기구 판매를 끌어올리는 효과는 기구 사업 층이 아니라 잔여 안에 섞여 들어갑니다. 회사는 미국 영업을 개별 의사 대상에서 STARK를 앞세운 대형 병원 어카운트로 바꾸겠다고 설명하고 있어(다올 2026-08-17 리포트), 그 연계 효과가 크다면 필요 대수는 낮아집니다. 둘째, 대당 연 수술 250건은 다빈치의 2025년 284건과 비슷한 수준이고, 주관사 추정은 여기에 구독료를 받는 대수 기준 가동률 70%를 따로 곱했습니다. 후발 플랫폼이 첫 몇 년 동안 다빈치만큼 가동되기 어렵다고 보면 건수를 낮추는 쪽이 보수적인 읽기이며, 150건이면 필요 대수는 715대<span class="est">E</span>로 늘어납니다.</p>
+
+<h2>6. 피어 배수</h2>
+
+<p>피어 표는 두 묶음입니다. 미국 묶음은 공모가 산정의 비교기업 세 곳(인튜이티브서지컬·메드트로닉·스트라이커)에 존슨앤드존슨, 그리고 적자 로봇 회사 둘(전립선 수술 로봇의 프로셉트, 인도 수술로봇 SS이노베이션스)을 더했습니다. 국내 묶음은 수술로봇 큐렉소·고영, 에너지 기반 의료기기 클래시스, 로봇 사업이 작은 미래컴퍼니, 재활 로봇 엔젤로보틱스입니다. 인튜이티브서지컬 수치는 조사 노트 C의 다른 집계(10-21 종가 기준 선행 PER 35.58배, EV/매출 12.48배)와도 대조했고, 우리 패킷 값(선행 PER 34.56배, EV/매출 12.32배)과의 차이는 1배 안쪽입니다.</p>
+
+<table class=""><tr><th>회사</th><th>시가총액</th><th>P/S(TTM)</th><th>EV/매출</th><th>후행 PER</th><th>선행 PER(국내는 26E P/S)</th><th>매출총이익률</th><th>영업이익률</th><th>출처</th></tr><tr><td>인튜이티브서지컬</td><td>$151.2B(₩200.8조)</td><td>13.1</td><td>12.3</td><td>51.8</td><td>34.6</td><td>67%</td><td>19%</td><td>야후 파이낸스 10-21</td></tr><tr><td>메드트로닉</td><td>$119.0B(₩158.0조)</td><td>3.2</td><td>3.7</td><td>22.9</td><td>14.5</td><td>65%</td><td>19%</td><td>야후 파이낸스 10-21</td></tr><tr><td>스트라이커</td><td>$114.2B(₩151.5조)</td><td>4.4</td><td>4.9</td><td>30.8</td><td>17.9</td><td>66%</td><td>27%</td><td>야후 파이낸스 10-21</td></tr><tr><td>존슨앤드존슨</td><td>$621.2B(₩824.7조)</td><td>6.3</td><td>6.5</td><td>39.4</td><td>22.2</td><td>68%</td><td>25%</td><td>야후 파이낸스 10-21</td></tr><tr><td>프로셉트</td><td>$1.0B(₩1.4조)</td><td>3.1</td><td>2.7</td><td>적자</td><td>적자</td><td>63%</td><td>-32%</td><td>야후 파이낸스 10-21</td></tr><tr><td>SS이노베이션스</td><td>$0.5B(₩0.6조)</td><td>9.2</td><td>9.3</td><td>적자</td><td>적자</td><td>48%</td><td>-16%</td><td>야후 파이낸스 10-21</td></tr><tr><td>큐렉소</td><td>3,074억</td><td>4.1</td><td>-</td><td>55.60배</td><td>3.8</td><td>-</td><td>3%(2025)</td><td>네이버 10-22</td></tr><tr><td>고영</td><td>2조 870억</td><td>9.0</td><td>-</td><td>44.03배</td><td>6.0</td><td>-</td><td>7%(2025)</td><td>네이버 10-22</td></tr><tr><td>클래시스</td><td>1조 8,494억</td><td>5.5</td><td>-</td><td>13.47배</td><td>4.3</td><td>-</td><td>51%(2025)</td><td>네이버 10-22</td></tr><tr><td>미래컴퍼니</td><td>881억</td><td>2.2</td><td>-</td><td>적자</td><td>-</td><td>-</td><td>-60%(2025)</td><td>네이버 10-22</td></tr><tr><td>엔젤로보틱스</td><td>2,903억</td><td>63.1</td><td>-</td><td>적자</td><td>-</td><td>-</td><td>-224%(2025)</td><td>네이버 10-22</td></tr><tr><td>리브스메드</td><td>1조 595억</td><td>20.1</td><td>18.9</td><td>적자</td><td>적자</td><td>43.4%(1H26)</td><td>-59%(TTM)</td><td>패킷·반기보고서</td></tr></table>
+
+<figure class=""><figcaption>장표 5. 후행 12개월 주가매출액배수(P/S) — 리브스메드 20.1배는 인튜이티브서지컬보다 높습니다(배)</figcaption><svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif">
+<line x1="62" y1="236.0" x2="860" y2="236.0" stroke="#d8d4cc" stroke-width="1.1"/>
+<text x="56" y="240.0" text-anchor="end" font-size="11" fill="#8a857c">0.0</text>
+<line x1="62" y1="192.4" x2="860" y2="192.4" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="196.4" text-anchor="end" font-size="11" fill="#8a857c">5.0</text>
+<line x1="62" y1="148.8" x2="860" y2="148.8" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="152.8" text-anchor="end" font-size="11" fill="#8a857c">10.0</text>
+<line x1="62" y1="105.2" x2="860" y2="105.2" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="109.2" text-anchor="end" font-size="11" fill="#8a857c">15.0</text>
+<line x1="62" y1="61.6" x2="860" y2="61.6" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="65.6" text-anchor="end" font-size="11" fill="#8a857c">20.0</text>
+<line x1="62" y1="18.0" x2="860" y2="18.0" stroke="#d8d4cc" stroke-width="0.7"/>
+<text x="56" y="22.0" text-anchor="end" font-size="11" fill="#8a857c">25.0</text>
+<text x="98.3" y="254" text-anchor="middle" font-size="10" fill="#8a857c">ISRG</text>
+<text x="170.8" y="254" text-anchor="middle" font-size="10" fill="#8a857c">MDT</text>
+<text x="243.4" y="254" text-anchor="middle" font-size="10" fill="#8a857c">SYK</text>
+<text x="315.9" y="254" text-anchor="middle" font-size="10" fill="#8a857c">JNJ</text>
+<text x="388.5" y="254" text-anchor="middle" font-size="10" fill="#8a857c">PRCT</text>
+<text x="461.0" y="254" text-anchor="middle" font-size="10" fill="#8a857c">SSII</text>
+<text x="533.5" y="254" text-anchor="middle" font-size="10" fill="#8a857c">큐렉소</text>
+<text x="606.1" y="254" text-anchor="middle" font-size="10" fill="#8a857c">고영</text>
+<text x="678.6" y="254" text-anchor="middle" font-size="10" fill="#8a857c">클래시스</text>
+<text x="751.2" y="254" text-anchor="middle" font-size="10" fill="#8a857c">미래컴퍼니</text>
+<text x="823.7" y="254" text-anchor="middle" font-size="10" fill="#8a857c">리브스메드</text>
+<rect x="72.9" y="121.8" width="49.8" height="114.2" fill="#2b7a78" opacity="0.9"/>
+<text x="98.3" y="117.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">13.1</text>
+<rect x="145.4" y="208.1" width="49.8" height="27.9" fill="#2b7a78" opacity="0.9"/>
+<text x="170.8" y="204.1" text-anchor="middle" font-size="9.5" fill="#2b7a78">3.2</text>
+<rect x="218.0" y="197.6" width="49.8" height="38.4" fill="#2b7a78" opacity="0.9"/>
+<text x="243.4" y="193.6" text-anchor="middle" font-size="9.5" fill="#2b7a78">4.4</text>
+<rect x="290.5" y="181.1" width="49.8" height="54.9" fill="#2b7a78" opacity="0.9"/>
+<text x="315.9" y="177.1" text-anchor="middle" font-size="9.5" fill="#2b7a78">6.3</text>
+<rect x="363.1" y="209.0" width="49.8" height="27.0" fill="#2b7a78" opacity="0.9"/>
+<text x="388.5" y="205.0" text-anchor="middle" font-size="9.5" fill="#2b7a78">3.1</text>
+<rect x="435.6" y="155.8" width="49.8" height="80.2" fill="#2b7a78" opacity="0.9"/>
+<text x="461.0" y="151.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">9.2</text>
+<rect x="508.2" y="200.2" width="49.8" height="35.8" fill="#2b7a78" opacity="0.9"/>
+<text x="533.5" y="196.2" text-anchor="middle" font-size="9.5" fill="#2b7a78">4.1</text>
+<rect x="580.7" y="157.5" width="49.8" height="78.5" fill="#2b7a78" opacity="0.9"/>
+<text x="606.1" y="153.5" text-anchor="middle" font-size="9.5" fill="#2b7a78">9.0</text>
+<rect x="653.2" y="188.0" width="49.8" height="48.0" fill="#2b7a78" opacity="0.9"/>
+<text x="678.6" y="184.0" text-anchor="middle" font-size="9.5" fill="#2b7a78">5.5</text>
+<rect x="725.8" y="216.8" width="49.8" height="19.2" fill="#2b7a78" opacity="0.9"/>
+<text x="751.2" y="212.8" text-anchor="middle" font-size="9.5" fill="#2b7a78">2.2</text>
+<rect x="798.3" y="60.7" width="49.8" height="175.3" fill="#a44a3f" opacity="0.9"/>
+<text x="823.7" y="56.7" text-anchor="middle" font-size="9.5" fill="#2b7a78">20.1</text>
+</svg><div class="src">미국 6곳은 미국 피어 시세(야후 파이낸스 기반, 2026-10-21 종가) priceToSalesTrailing12Months. 국내 4곳은 네이버 2026-10-22 조회 시총(장중) ÷ 2025 연결 매출. 리브스메드는 시총 10,595억 ÷ 후행 12개월 매출 528.2억(3Q25~2Q26). 엔젤로보틱스(63배, 2025 매출 46억)는 축척 때문에 막대에서 뺐습니다.</div></figure>
+<p class="reading"><b>관찰.</b> 리브스메드 P/S 20.1배는 피어 9곳 중앙값 5.5배의 3.7배이고, 매출총이익률 67%·영업이익률 19%를 내는 인튜이티브서지컬 13.1배보다도 높습니다. 적자 로봇 회사인 SS이노베이션스 9.2배·프로셉트 3.1배와 비교하면 2.2배에서 6.5배 수준입니다. <b>원인.</b> 분모인 매출 528.2억에 STARK가 하나도 들어 있지 않은데 분자는 STARK 기대를 품고 있기 때문입니다. 같은 이유로 주가순자산배수도 6.40배(2026-06-30 자본 1,639.5억, 같은 날 주식수 25,004,391주 기준 BPS 6,557원)로 높습니다. <b>함의.</b> 피어 배수는 리브스메드 전체에 대는 자가 아니라 기구 사업 한 층에 대는 자로만 씁니다. 전체 배수가 피어보다 높다는 사실은 결론이 아니라 3절의 잔여가 존재한다는 증거입니다.</p>
+
+<p>표에서 읽을 것은 두 가지입니다. 하나는 적자 로봇 회사의 배수입니다. 프로셉트는 매출총이익률 63%에 영업이익률 -32%로 P/S 3.1배, SS이노베이션스는 설치 138대(MedTech Dive 보도, 시점 불명확)·매출 증가율 39%로 9.2배입니다. 매출이 이미 있는 적자 로봇 회사도 시장은 3~9배를 줍니다. 다른 하나는 국내 묶음의 성장 기대입니다. 고영은 2026E 매출 기준으로 6.0배, 큐렉소는 3.8배로 후행보다 낮아지는데, 리브스메드는 컨센서스 2026E 매출 697억으로 바꿔도 15.2배입니다. 기구 사업만으로는 이 배수를 설명할 수 없다는 3절의 결론과 같은 방향입니다.</p>
+
+<h2>7. 거래 앵커의 범위</h2>
+
+<p>2026년 하반기에는 수술로봇 거래가 두 건 있었습니다. 메드트로닉은 9월 초 홍콩·중국계 코너스톤 로보틱스(Sentire)에 약 $7억을 투자하고 미국 외 일부 시장의 유통권을 받았습니다. 스트라이커는 10월 12일 영국 CMR 서지컬(Versius)에 약 $4억의 우선주를 투자하면서 100% 인수 독점 옵션과 미국 독점 판매권을 받았습니다. 두 거래 모두 지분율과 기업가치는 공시되지 않았습니다(조사 노트 C, 회사 보도자료·MedTech Dive·HLTH 대조). 주주 커뮤니티는 영국 언론이 보도한 "약 10% 지분"을 근거로 CMR 기업가치를 약 $40억으로 환산하고, 여기서 "카피캣도 5조 밸류"라는 논리를 끌어냅니다.</p>
+
+<table class=""><tr><th>거래</th><th>날짜</th><th>공개된 조건</th><th>공개되지 않은 것</th><th>리브스메드에 직접 대지 못하는 이유</th></tr><tr><td>메드트로닉 → 코너스톤 로보틱스(Sentire)</td><td>2026-09-01/02</td><td>약 $7억(₩9,292억) 전략 투자 + 미국 외 일부 시장 유통권</td><td>지분율·기업가치</td><td>유통권과 묶인 패키지라 지분 가격만 떼어 낼 수 없음. 대상은 CE마크(2026-05)·중국·싱가포르 허가를 받고 판매 중인 회사</td></tr><tr><td>스트라이커 → CMR 서지컬(Versius)</td><td>2026-10-12</td><td>약 $4억(₩5,310억) 우선주 + 100% 인수 독점 옵션 + 미국 독점 판매</td><td>지분율·기업가치·옵션 행사 조건</td><td>우선주는 청산 우선권 때문에 보통주보다 비싸게 매겨짐. 대상은 미국 De Novo(2024-10)·510(k)(2025-12)를 받은 회사</td></tr><tr><td>참고: CMR 2021 시리즈D</td><td>2021</td><td>$6억 조달, 기업가치 약 $30억</td><td>-</td><td>5년 전 비상장 라운드. 2025-06 최대 $40억 매각 추진 보도(FT)는 성사되지 않음</td></tr><tr><td>커뮤니티 환산 '카피캣도 5조'</td><td>2026-10</td><td>$4억 ÷ 약 10%(영국 언론 보도) = 약 $40억</td><td>회사 공시 근거 없음</td><td>등급 C. 지분율이 공시되지 않았고 유통권·인수 옵션 대가가 섞여 있으며, 매출 규모와 허가 단계가 다름</td></tr></table>
+
+<p>우리는 이 환산을 등급 C로만 다룹니다. 이유는 세 가지입니다. 첫째, 지분율이 공시되지 않았습니다. 10%는 언론 보도이고, 스트라이커도 CMR도 확인하지 않았습니다. 둘째, 거래가 패키지입니다. 스트라이커가 낸 $4억에는 지분 대가뿐 아니라 미국 독점 판매권과 100% 인수 독점 옵션의 대가가 섞여 있고, 우선주는 청산 우선권 때문에 보통주보다 높은 가격에 거래되는 것이 일반적입니다. 지분 가격만 떼어 내 보통주 기업가치로 나누면 값이 부풀려집니다. 셋째, 대상의 단계가 다릅니다. CMR은 미국 De Novo(2024-10)와 510(k)(2025-12)를 받았고 누적 수술이 4.5만 건을 넘었으며, 코너스톤은 CE마크와 중국·싱가포르 허가를 받고 판매 중입니다. STARK는 국내 품목허가를 신청한 단계이고 매출이 0원입니다.</p>
+
+<p>그래도 거래가 의미가 없지는 않습니다. 대형 의료기기 회사들이 자체 플랫폼 대신 외부 연성조직 로봇에 수억 달러를 쓰기 시작했다는 사실은, STARK 같은 후발 플랫폼에도 사업 매각이나 유통 제휴라는 출구가 존재한다는 증거입니다. 다만 그 출구의 가격은 공개되지 않았고, 허가와 상업 실적이 쌓인 뒤에야 열린다는 것이 두 사례의 공통점입니다. 그래서 이 파트는 거래를 잔여의 크기를 정당화하는 숫자로 쓰지 않고, 잔여가 기대는 시나리오의 존재 증명으로만 씁니다. 참고로 $40억을 그대로 원화로 바꾸면 약 5조 3,100억으로 지금 잔여 7,064억<span class="est">E</span>의 7.5배이지만, 이 비교는 위 세 가지 이유로 판단 근거가 되지 못합니다.</p>
+
+<h2>8. 반증 조건</h2>
+
+<p>이 파트의 읽기가 틀렸다고 판명되거나 지금 시총의 내재 가정이 깨지는 관측을 표로 둡니다. 전부 관측처와 시점이 정해져 있고, 각 관측이 조정판의 어느 입력을 움직이는지와 그때 필요 대수가 어떻게 바뀌는지를 적었습니다. 필요 대수가 늘어난다는 것은 시장이 같은 시총을 유지하려면 STARK에 더 많은 것을 기대해야 한다는 뜻이며, 반대로 기대가 그대로라면 시총이 내려가야 한다는 뜻입니다.</p>
+
+<table class=""><tr><th>관측</th><th>관측처·시점</th><th>깨지는 내재 가정</th></tr><tr><td>3Q26 매출 120억 미만(누계 차감 3개월)</td><td>2026-11-16(E) 분기보고서</td><td>기구 매출이 상반기 연환산 455억 쪽으로 내려가면 잔여 7,477억, 요구 대수 482대<span class="est">E</span>(기본 456대)</td></tr><tr><td>3Q26 매출총이익률 45% 미만</td><td>같은 보고서</td><td>흑자 피어 배수의 근거가 약해져 P/S를 프로셉트 수준 3.1배로 낮추면 요구 대수 538대<span class="est">E</span></td></tr><tr><td>STARK 국내 허가가 2027년으로 넘어감</td><td>식약처 품목허가·회사 공시</td><td>시작 연도 1년 지연 시 요구 대수 570대<span class="est">E</span>(+25%)</td></tr><tr><td>2027년 연간 설치 36대 미만</td><td>회사 IR·사업보고서</td><td>2029년까지 456대<span class="est">E</span>에 닿으려면 3년간 연평균 152대<span class="est">E</span>가 필요</td></tr><tr><td>3Q26 말 유동성 450억 미만 또는 추가 조달 공시</td><td>분기보고서·주요사항보고서</td><td>현재가로 1,000억 조달 시 요구 대수 498대<span class="est">E</span>, 20% 할인 발행이면 508대<span class="est">E</span></td></tr><tr><td>미국 허가 경로가 임상 동반 De Novo로 확정</td><td>FDA 공개 DB·회사 보도자료</td><td>해외 설치가 2029년 이후로 밀리면 국내 상한 약 340대<span class="est">E</span>로는 기본 조합이 성립하지 않음</td></tr></table>
+
+<p>가장 먼저 오는 관측은 3Q26 분기보고서(2026-11-16<span class="est">E</span>)입니다. 다올 3Q26 추정 매출은 149억, 네이버 컨센서스도 149억입니다. 120억 아래라면 기구 매출 기본값이 상반기 연환산 쪽으로 내려가야 하고, 매출총이익률이 45%를 넘지 못하면 흑자 피어 배수를 쓸 근거가 약해집니다. 두 번째는 STARK 국내 허가입니다. 80영업일 단순 계산은 2026-12-03<span class="est">E</span>이고 회사 목표는 연내입니다. 보완 요청으로 2027년으로 넘어가면 시작 연도가 밀리고, 필요 대수가 25% 늘어납니다. 세 번째는 첫 설치입니다. 주관사 추정의 2026E 36대는 4분기 출시를 전제로 했는데 그 전제는 이미 깨졌고, 2027년 첫 설치 병원과 대수가 공개되기 전까지 필요 대수의 경로는 검증할 방법이 없습니다.</p>
+
+<h2>논쟁에 주는 답</h2>
+
+<p><b>논쟁 5(시총 1조가 매기는 것)에 정면으로 답합니다.</b> 시총 1조 595억은 기구 사업 2,915억<span class="est">E</span>(피어 중앙값 P/S 5.5배), 순현금 615.5억, 잔여 7,064억<span class="est">E</span>으로 나뉩니다. 공모가 산식으로 보면 지금 가격은 2027E 순이익 710.3억을 2~4년 미뤄 받는 가격이고, 같은 이익이 2027년 말에 온다고 믿는다면 내재 할인율이 150%<span class="est">E</span>나 될 만큼 시장은 그 도착을 의심합니다. 잔여를 STARK 경제성으로 번역하면 2029년 말 누적 약 456대<span class="est">E</span>, 연 매출 약 1,760억<span class="est">E</span>이 필요합니다. 이 숫자는 주관사 2028E 국내 누적 263대의 1.7배이고 국내 로봇수술 전체를 소화하는 약 340대보다 많아서, 시총은 국내 허가만이 아니라 미국·일본 설치를 이미 값에 넣고 있습니다. 채점 KPI는 3Q26 매출 140억 이상과 2026년 연간 520억 이상(기구 층), 국내 허가 2026-12-31 이전(시작 연도), 2027년 설치 36대 이상(경로)입니다. 반증 조건은 3Q26 매출 120억 미만, 허가의 2027년 이월, 2027년 설치 36대 미만입니다.</p>
+
+<p><b>논쟁 3(STARK 시간표)에 밸류 쪽에서 덧붙입니다.</b> 이 시총에서 STARK 일정 1년의 값은 할인율과 같습니다. 기본값에서 시작 연도가 한 해 밀리면 필요 대수는 456대<span class="est">E</span>에서 570대<span class="est">E</span>로 늘어납니다. 국내 허가가 연내에 나오더라도 필요 대수가 국내 상한을 넘는 이상, 시총을 지지하는 것은 국내 허가가 아니라 미국·일본 허가 경로(FDA 510(k) 또는 De Novo, 임상 요구 여부)의 확정입니다. 채점 KPI는 FDA 사전상담·PMDA 상담 착수 공시나 보도이고, 반증 조건은 미국 경로가 임상 동반 De Novo로 확정돼 해외 설치가 2029년 이후로 밀리는 경우입니다.</p>
+
+<p><b>논쟁 4(현금과 희석)에 덧붙입니다.</b> 구독형은 장비 원가를 회사가 먼저 떠안는 모델이라, 시총이 요구하는 설치 기반을 깔려면 장비 원가만 약 1,199억<span class="est">E</span>이 듭니다. 순현금 615.5억과 대출 약정 284억으로는 부족하므로 추가 조달은 시나리오가 아니라 경로의 일부로 봐야 하고, 현재가로 1,000억을 조달하면 필요 대수는 498대<span class="est">E</span>로 늘어납니다. 채점 KPI는 3Q26 말 유동성 450억 이상과 분기 영업현금흐름 -150억보다 나은 숫자이고, 반증 조건은 그 아래의 유동성 또는 할인 발행 공시입니다.</p>
+
+<h2>미결</h2>
+
+<p><b>A급(잔여의 번역을 바꾸는 것).</b> 첫째, STARK 공식 가격과 과금 구조입니다. 이 파트는 상장 당시 주관사 추정의 가정(월 300만원 + 수술당 140만원)을 썼고, 회사가 허가 이후 공식 가격을 내면 대당 연 매출부터 다시 계산해야 합니다. 관측처는 허가 직후 회사 보도자료와 IR 자료입니다. 둘째, 3Q26 3개월 실적입니다(2026-11-16<span class="est">E</span> 분기보고서). 기구 매출 기본값과 피어 배수의 근거가 이 숫자에 달려 있습니다. 셋째, 미국 허가 경로입니다. 머니투데이 2026-10-19 보도는 미국·일본 동시 추진을 전했지만 510(k)인지 De Novo인지, 임상이 필요한지는 확인되지 않았고, 필요 대수가 국내 상한을 넘는 이상 이 경로가 시작 연도를 정합니다. 관측처는 FDA 공개 데이터베이스와 회사 공시입니다.</p>
+
+<p><b>B급(자를 바꾸는 것).</b> 첫째, CMR·코너스톤 거래의 지분율과 기업가치입니다. 스트라이커와 메드트로닉의 다음 정기보고서(10-Q·10-K) 투자자산 주석에서 장부가나 공정가치가 나올 수 있습니다. 둘째, STARK와 기구 사업의 비용 분리입니다. 회사는 부문 손익을 공시하지 않아 이 파트는 기구 사업에 흑자 피어 배수를 주는 후한 가정을 썼고, 연구개발비 가운데 STARK 몫이 공시되면 기구 사업 층을 다시 매길 수 있습니다. 셋째, 실제 단위당 제조원가와 가동률입니다. 주관사 가정(2027E 2.63억, 가동률 70%)이 장비 자본 계산의 바탕이며, 용인 공장 가동 이후 사업보고서에서 확인할 수 있습니다.</p>
+
+<p><b>C급(참고).</b> 첫째, 피어 배수의 시점 차이입니다. 미국은 2026-10-21 종가, 국내는 2026-10-22 장중 시총이라 하루 차이가 있습니다. 둘째, 세율 20%<span class="est">E</span>는 이월결손금을 고려하지 않은 단순 가정이라 초기 몇 년의 실제 세 부담은 더 낮을 수 있습니다. 셋째, 주주 커뮤니티와 일부 보도에 도는 가격 전언("다빈치의 4분의 1", "대당 7~8억", "다빈치의 10분의 1 목표")은 서로 맞지 않고 회사 공식 자료가 없어, 회사 공식 발표가 나오기 전까지 이 파트의 입력으로 쓰지 않습니다.</p>
+
+<div class="foot">데이터 계보: 투자설명서(2025-12, Ⅳ.1.라 공모가 산정·Ⅳ.1.바 주관사 추정·Stark 매출원가 추정), 2026 반기보고서(연결 재무상태·손익·현금흐름, 상장기업 재무사항 비교표), 2025 사업보고서, 주식매수선택권 행사 공시(2026-07-03), 키움 일봉(정규장 종가 교정, 2026-10-21), 네이버 컨센서스(2026-10-21)·국내 피어 시총(2026-10-22 장중), 미국 피어 시세(야후 파이낸스 기반, 2026-10-21 종가), 조사 노트 A(공시 원문)·B(주주 커뮤니티, 등급 표기)·C(산업·경쟁, 인튜이티브서지컬 3Q26 8-K·10-Q 대조, 거래 보도자료). 분기 값 가운데 2Q25·3Q25·4Q25·2Q26은 누계 차감 계산입니다. E 표기는 이 파트의 추정입니다. 이 파트는 주가 값을 매기지 않으며, 조정판을 포함한 모든 출력은 잔여 금액·내재 할인율·필요 설치 대수 같은 내재 가정에서 멈춥니다. 투자 권유가 아닙니다.</div>
+
+</main></body></html>
