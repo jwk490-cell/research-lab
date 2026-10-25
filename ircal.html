@@ -188,7 +188,7 @@ select{border:1px solid var(--line);background:var(--surface);border-radius:9px;
 <body>
 <div class="wrap">
   <div class="head">
-    <div><h1>IR·컨콜 캘린더</h1><div class="desc">국내외 실적발표·증권사 그룹컨콜·기관 IR — 모든 시간은 한국시간(KST)</div></div>
+    <div><h1>IR·컨콜 캘린더</h1><div class="desc">국내외 실적발표·증권사 그룹컨콜·기관 IR — 모든 시간은 한국시간(KST) · 원본: <a href="https://daeyoung-ir-calendar.coral-emu-4631.chatgpt.site/" target="_blank" rel="noreferrer">DY 마켓 캘린더</a></div></div>
     <span class="sp"></span>
     <button class="sync" id="syncBtn"><span class="dot" id="statusDot"></span><span id="syncTxt">동기화 대기</span></button>
   </div>
@@ -224,7 +224,7 @@ select{border:1px solid var(--line);background:var(--surface);border-radius:9px;
 
   <div id="errBox"></div>
   <div id="view"><div class="loading">일정을 불러오고 있습니다…</div></div>
-  <div class="foot"><span><i data-ic="info" data-s="13"></i>시간 미정 = 원문에 시간이 없는 일정 · ✓ = 공시 원문 확인 · 30분마다 동기화</span><button id="logBtn">출처 및 확인 이력 <i data-ic="arrowUR" data-s="13"></i></button></div>
+  <div class="foot"><span><i data-ic="info" data-s="13"></i>시간 미정 = 원문에 시간이 없는 일정 · ✓ = 공시 원문 확인 · 원본 <a href="https://daeyoung-ir-calendar.coral-emu-4631.chatgpt.site/" target="_blank" rel="noreferrer">DY 마켓 캘린더</a>에서 30분마다 동기화</span><button id="logBtn">출처 및 확인 이력 <i data-ic="arrowUR" data-s="13"></i></button></div>
 </div>
 <div id="modalRoot"></div>
 <div id="toastRoot"></div>
@@ -335,7 +335,7 @@ function renderModal(){
     const sch=S.data.schedule||{},runs=S.data.runs||[],ok=runs.find(r=>r.status==='success');
     h=`<div class="ov"><section class="modal" role="dialog" aria-modal="true" aria-label="확인 이력"><button class="x" aria-label="닫기" data-close="1">${ic('x',18)}</button>`+
       `<div class="eyebrow">SOURCE &amp; UPDATES</div><h2>일정 확인 이력</h2><p class="muted">${esc(sch.label||'')}${sch.label?' · ':''}공시 확인 후 반영 · Research Lab 30분 동기화</p>`+
-      `<div class="info">DART·KIND 공시와 기업 공식 IR을 확인합니다. 제공 자료는 별도로 표시하며, 확인이 제한된 경우 기존 일정을 유지합니다.</div>`+
+      `<div class="info">DART·KIND 공시와 기업 공식 IR을 확인합니다. 제공 자료는 별도로 표시하며, 확인이 제한된 경우 기존 일정을 유지합니다.<br>원본 출처: <a href="https://daeyoung-ir-calendar.coral-emu-4631.chatgpt.site/" target="_blank" rel="noreferrer">DY 마켓 캘린더</a> — 일정·확인 이력은 원본 데이터를 그대로 옮긴 것입니다.</div>`+
       `<p class="muted">마지막 전체 확인: ${ok?fmtAt(ok.at):'아직 없음'}${S.data.syncedAt?' · 마지막 변경 반영: '+fmtAt(S.data.syncedAt):''}</p>`+
       (runs.length?runs.map(r=>`<article class="run"><div><strong>${r.status==='success'?'확인 완료':r.status==='partial'?'일부 확인':'확인 실패'}</strong><time>${fmtAt(r.at)}</time></div><p>${esc(r.summary)}</p><small>추가 ${r.added??0} · 변경 ${r.updated??0}</small>${(r.sources||[]).map((s,i)=>`<a href="${esc(s)}" target="_blank" rel="noreferrer">출처 ${i+1} ↗</a>`).join('')}</article>`).join(''):'<div class="empty">확인 이력이 없습니다.</div>')+
       `</section></div>`;
