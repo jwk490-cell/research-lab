@@ -350,6 +350,10 @@ html.dark .ftab.val tbody tr.est .lb{color:#e0b062}
 .mwcal .calcell.has{background:var(--accent-soft);color:var(--accent);font-weight:800;cursor:pointer}
 .mwcal .calcell.has:hover{border-color:var(--accent-line)}
 .mwcal .calcell.today{box-shadow:inset 0 0 0 1.5px var(--accent-line)}
+.mwcal .calcell.sel{background:var(--accent);color:#fff}
+.khb>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--accent);list-style:none;padding:9px 14px;background:var(--surface);border-radius:12px;box-shadow:var(--shadow);display:inline-block}
+.khb>summary::-webkit-details-marker{display:none}
+.khb[open]>summary{color:var(--dim2)}
 /* 시황 팝업 */
 .mwmodal{position:fixed;inset:0;background:rgba(25,31,40,.48);display:none;align-items:flex-start;justify-content:center;z-index:300;padding:36px 14px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .mwmodal.on{display:flex}
@@ -2137,33 +2141,76 @@ function skRender(){
 }
 
 /* ══════════ 韓 신고가 60일·52주 (data/krhigh.json — 키움 ka10081 전수판정) ══════════ */
-let KH=null,khMkt='all',khSort='flu',khWin='d60';
+let KH=null,khMkt='all',khSort='flu',khWin='d60',KHIDX=null,khDate=null,khYm=null;
+const KHDAY={};
 async function khLoad(){
   const meta=document.getElementById('khMeta');
   if(!KH){
     try{KH=await getJson('data/krhigh.json');}
     catch(e){meta.textContent='데이터가 아직 없습니다 — 평일 21:35 빌드 후 이용 가능합니다.';return;}
+    try{KHIDX=await getJson('data/krhigh/index.json');}catch(e){KHIDX=null;}
   }
+  await khDay(khDate||KH.base_dt);
   khRender();
+}
+/* 일자 파일(data/krhigh/YYYYMMDD.json) — 명단 + 텔레그램 코멘트 */
+async function khDay(bd){
+  if(KHDAY[bd]!==undefined)return KHDAY[bd];
+  try{KHDAY[bd]=await getJson(`data/krhigh/${bd}.json`);}catch(e){KHDAY[bd]=null;}
+  return KHDAY[bd];
+}
+const khFmtD=bd=>`${bd.slice(0,4)}.${bd.slice(4,6)}.${bd.slice(6,8)}`;
+const khWd=bd=>['일','월','화','수','목','금','토'][new Date(+bd.slice(0,4),+bd.slice(4,6)-1,+bd.slice(6,8)).getDay()];
+async function khGo(bd){
+  khDate=bd===KH.base_dt?null:bd;khYm=bd.slice(0,6);
+  await khDay(bd);
+  khRender();
+  document.getElementById('tab-krhigh').scrollIntoView({block:'start',behavior:'smooth'});
 }
 function khRender(){
   const meta=document.getElementById('khMeta'),body=document.getElementById('khBody');
-  const has52=!!(KH.w52&&KH.w52.kospi),has20=!!(KH.d20&&KH.d20.kospi);
+  const bd=khDate||KH.base_dt,day=KHDAY[bd];
+  /* 최신일은 krhigh.json, 과거일은 일자 파일 — 같은 {kospi,kosdaq} 구조로 맞춤 */
+  const V=khDate&&day?{base_dt:bd,updated:day.updated,d60:day.d60,w52:day.w52,d20:day.d20}
+    :{base_dt:KH.base_dt,updated:KH.updated,d60:{kospi:KH.kospi,kosdaq:KH.kosdaq,criteria:KH.criteria},w52:KH.w52,d20:KH.d20};
+  const cm=(day&&day.comments)||{};
+  const has52=!!(V.w52&&V.w52.kospi),has20=!!(V.d20&&V.d20.kospi);
   if((khWin==='w52'&&!has52)||(khWin==='d20'&&!has20))khWin='d60';
-  const src=khWin==='w52'?KH.w52:khWin==='d20'?KH.d20:KH;
+  const src=V[khWin];
+  const crit=(khWin==='w52'?KH.w52:khWin==='d20'?KH.d20:KH).criteria||KH.criteria;
   const judge=khWin==='w52'?'당일 종가가 최근 250거래일(52주) 최고 종가와 일치'
     :`당일 장중 고가가 최근 ${khWin==='d20'?'20':'60'}거래일 최고 고가와 일치`;
   const all=[...src.kospi.map(r=>({...r,mkt:'코스피'})),...src.kosdaq.map(r=>({...r,mkt:'코스닥'}))];
   const show=(khMkt==='all'?all:all.filter(r=>r.mkt===khMkt))
     .sort((a,b)=>khSort==='flu'?b.flu-a.flu:b.val_eok-a.val_eok);
-  meta.innerHTML=`기준일 <b>${esc(KH.base_dt)}</b> · <b>${all.length}종목</b> (코스피 ${src.kospi.length} · 코스닥 ${src.kosdaq.length}) · ${esc(src.criteria||KH.criteria)} · ${KH.updated} 갱신`;
+  const dates=KHIDX?KHIDX.days.map(x=>x.d).sort():[];
+  const di=dates.indexOf(bd);
+  meta.innerHTML=`기준일 <b>${khFmtD(bd)}(${khWd(bd)})</b>${khDate?' <span style="color:var(--accent);font-weight:700">· 지난 신고가</span>':''} · <b>${all.length}종목</b> (코스피 ${src.kospi.length} · 코스닥 ${src.kosdaq.length}) · ${esc(crit)} · ${esc(V.updated||'')} 갱신`;
   const f0=v=>v==null?'—':v.toLocaleString('ko-KR');
+  /* 하단: 텔레그램 코멘트(60일·52주만, 20일은 코멘트 없음) */
+  let cmt='';
+  if(khWin!=='d20'){
+    const c=cm[khWin],lb=khWin==='w52'?'52주':'60일';
+    cmt+=`<div class="wrapdiv">텔레그램 코멘트 — ${lb} 신고가 (평일 21:10 신고가 봇 발송본)</div>`;
+    if(c&&c.a)cmt+=`<div class="wrapsec mwhigh" style="margin-top:8px"><div class="mwtxt">${mwFmt(c.a)}</div></div>`;
+    if(c&&c.b)cmt+=`<details class="khb" style="margin-top:10px"><summary>종목별 상세 펼치기</summary><div class="wrapsec" style="margin-top:8px;border-left:3px solid var(--faint)"><div class="mwtxt">${mwFmt(c.b)}</div></div></details>`;
+    if(!c)cmt+=`<div class="rcard" style="margin-top:8px;font-size:12.5px;color:var(--dim2)">이 날은 보관된 ${lb} 신고가 코멘트가 없습니다${khDate?'':' — 봇 발송(21:10) 후 다음 빌드에 반영됩니다'}.</div>`;
+  }
+  if(dates.length>1){
+    cmt+='<div class="wrapdiv">지난 신고가 — 달력의 날짜를 누르면 해당일 명단·코멘트로 바뀝니다</div>';
+    cmt+='<div class="mwcal" id="khCal" style="margin-top:8px"></div>';
+  }
   body.innerHTML=`
+  ${dates.length>1?`<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px">
+    <button class="calnav" id="khPrev"${di<=0?' disabled':''} title="이전 거래일">‹</button>
+    <b style="font-size:13.5px">${khFmtD(bd)} (${khWd(bd)})</b>
+    <button class="calnav" id="khNext"${di<0||di>=dates.length-1?' disabled':''} title="다음 거래일">›</button>
+    ${khDate?'<button class="rng" id="khLatest" style="margin-left:4px">최신으로</button>':''}</div>`:''}
   <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px">
     <div class="rngwrap" id="khWinBar">
-      <button class="rng${khWin==='d20'?' on':''}" data-w="d20"${has20?'':' disabled title="다음 빌드부터 제공"'}>20일 신고가</button>
+      <button class="rng${khWin==='d20'?' on':''}" data-w="d20"${has20?'':' disabled title="이 날짜엔 데이터 없음"'}>20일 신고가</button>
       <button class="rng${khWin==='d60'?' on':''}" data-w="d60">60일 신고가</button>
-      <button class="rng${khWin==='w52'?' on':''}" data-w="w52"${has52?'':' disabled title="구버전 데이터 — 다음 빌드부터 제공"'}>52주 신고가</button></div>
+      <button class="rng${khWin==='w52'?' on':''}" data-w="w52"${has52?'':' disabled title="이 날짜엔 데이터 없음"'}>52주 신고가</button></div>
     <div class="rngwrap" id="khMktBar">
       <button class="rng${khMkt==='all'?' on':''}" data-m="all">전체 ${all.length}</button>
       <button class="rng${khMkt==='코스피'?' on':''}" data-m="코스피">코스피 ${src.kospi.length}</button>
@@ -2177,12 +2224,40 @@ function khRender(){
       <td style="text-align:left;font-weight:700"><a href="#" data-qc="${r.code}" style="color:var(--text);text-decoration:none">${esc(r.name)}</a> <span style="font-weight:400;color:var(--dim2);font-size:11px">${r.code} · ${r.mkt}</span></td>
       <td>${f0(r.close)}</td><td>${qtChg(r.flu)}</td>
       <td>${f0(r.val_eok)}억</td><td>${r.mac_eok>=10000?(r.mac_eok/10000).toLocaleString('ko-KR',{maximumFractionDigits:1})+'조':f0(r.mac_eok)+'억'}</td></tr>`).join('')}</tbody></table></div>
-    <div style="font-size:11px;color:var(--dim2);margin-top:9px">신고가 판정 = ${judge}(키움 일봉 전수) · 종목명 클릭 시 종목 분석 탭으로 이동</div></div>`;
+    <div style="font-size:11px;color:var(--dim2);margin-top:9px">신고가 판정 = ${judge}(키움 일봉 전수) · 종가·시총은 기준일 값 · 종목명 클릭 시 종목 분석 탭으로 이동</div></div>
+  ${cmt}`;
   document.getElementById('khWinBar').onclick=e=>{const b=e.target.closest('[data-w]');if(b&&!b.disabled){khWin=b.dataset.w;khRender();}};
   document.getElementById('khMktBar').onclick=e=>{const b=e.target.closest('[data-m]');if(b){khMkt=b.dataset.m;khRender();}};
   document.getElementById('khSortBar').onclick=e=>{const b=e.target.closest('[data-s]');if(b){khSort=b.dataset.s;khRender();}};
+  const pv=document.getElementById('khPrev'),nx=document.getElementById('khNext'),lt=document.getElementById('khLatest');
+  if(pv)pv.onclick=()=>{if(di>0)khGo(dates[di-1]);};
+  if(nx)nx.onclick=()=>{if(di>=0&&di<dates.length-1)khGo(dates[di+1]);};
+  if(lt)lt.onclick=()=>khGo(KH.base_dt);
   body.querySelectorAll('[data-qc]').forEach(a=>a.addEventListener('click',e=>{
     e.preventDefault();qtSel=a.dataset.qc;openTab('quote');qtRender();}));
+  if(!khYm||khYm.length!==6)khYm=bd.slice(0,6);
+  khCal(dates,bd);
+}
+function khCal(dates,sel){
+  const el=document.getElementById('khCal');if(!el)return;
+  const set=new Set(dates),y=+khYm.slice(0,4),m=+khYm.slice(4,6);
+  const minYm=dates[0].slice(0,6),maxYm=dates[dates.length-1].slice(0,6);
+  const start=new Date(y,m-1,1).getDay(),nd=new Date(y,m,0).getDate();
+  const t=new Date(),tod=`${t.getFullYear()}${String(t.getMonth()+1).padStart(2,'0')}${String(t.getDate()).padStart(2,'0')}`;
+  let h=`<div class="calhead"><button class="calnav" data-cn="-1" ${khYm<=minYm?'disabled':''}>‹</button><b>${y}년 ${m}월</b><button class="calnav" data-cn="1" ${khYm>=maxYm?'disabled':''}>›</button></div><div class="calgrid">`;
+  ['일','월','화','수','목','금','토'].forEach((w,i)=>h+=`<div class="calwd${i===0?' sun':''}">${w}</div>`);
+  for(let i=0;i<start;i++)h+='<div class="calcell"></div>';
+  for(let d=1;d<=nd;d++){
+    const ds=khYm+String(d).padStart(2,'0'),has=set.has(ds);
+    h+=`<div class="calcell${has?' has':''}${ds===tod?' today':''}${ds===sel?' sel':''}"${has?` data-d="${ds}"`:''}>${d}</div>`;
+  }
+  el.innerHTML=h+'</div>';
+  el.querySelectorAll('.calnav').forEach(b=>b.addEventListener('click',()=>{
+    let yy=y,mm=m+ +b.dataset.cn;
+    if(mm===0){yy--;mm=12}else if(mm===13){yy++;mm=1}
+    khYm=`${yy}${String(mm).padStart(2,'0')}`;khCal(dates,sel);
+  }));
+  el.querySelectorAll('.calcell.has').forEach(b=>b.addEventListener('click',()=>{khYm=b.dataset.d.slice(0,6);khGo(b.dataset.d);}));
 }
 
 /* ══════════ 美 신고가 20일·60일·52주 (data/usnewhigh.json — TradingView 스캐너) ══════════ */
