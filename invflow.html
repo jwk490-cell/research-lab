@@ -12,6 +12,7 @@
   --accent:#3168f0; --accent-soft:rgba(49,104,240,.08); --accent-line:rgba(49,104,240,.28);
   --up:#f04452; --down:#3485fa;
   --up-bg:240,68,82; --dn-bg:52,133,250;
+  --s-prsn:#eb6834; --s-frgn:#4a3aa7; --s-orgn:#1baf7a;
   --shadow:0 1px 3px rgba(25,31,40,.04);
 }
 html.dark{
@@ -19,6 +20,7 @@ html.dark{
   --text:#e9ebee; --sub:#9aa2ad; --faint:#6d7480;
   --accent:#4d7df5; --accent-soft:rgba(77,125,245,.14); --accent-line:rgba(77,125,245,.4);
   --up:#ff5c6a; --down:#4c9bff;
+  --s-prsn:#d95926; --s-frgn:#9085e9; --s-orgn:#199e70;
   --shadow:0 1px 3px rgba(0,0,0,.3);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -101,9 +103,41 @@ td.na{color:var(--faint);font-size:11px}
 .tr tbody tr.row{cursor:pointer}
 .tr tbody tr.row:hover td{background:var(--surface2)}
 .tr td.ix{color:var(--faint);font-size:11.5px}
+/* 선물 포지션 */
+.pos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pc{background:var(--surface2);border-radius:12px;padding:12px 14px;min-width:0}
+.pc .nm{font-size:12px;font-weight:700;color:var(--sub);display:flex;justify-content:space-between;gap:6px}
+.pc .nm small{font-weight:500;color:var(--faint);font-size:11px}
+.pc .cum{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-top:4px;font-variant-numeric:tabular-nums}
+.pc .cum small{font-size:12px;font-weight:600;color:var(--sub);margin-left:4px}
+.pc .day{font-size:12.5px;margin-top:5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.pc .day b{font-weight:800}
+.pc .vd{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pc .rc{font-size:11px;color:var(--faint);margin-top:6px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.postxt{margin-top:12px;font-size:12.5px;line-height:1.75;color:var(--text);background:var(--surface2);border-radius:10px;padding:10px 12px;white-space:pre-wrap}
+/* 주간 차트 */
+.wk{position:relative}
+.wk svg{display:block;width:100%;overflow:visible}
+.wk .grid line{stroke:var(--line);stroke-width:1}
+.wk .zero{stroke:var(--faint);stroke-width:1}
+.wk .axis text{fill:var(--faint);font-size:11px}
+.wk .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.wk .dot{stroke:var(--surface);stroke-width:2}
+.wk .lbl{font-size:11.5px;font-weight:700;fill:var(--text)}
+.wk .xh{stroke:var(--faint);stroke-width:1;stroke-dasharray:3 3}
+.wk .tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.2);padding:8px 10px;font-size:12px;min-width:150px;display:none;z-index:5}
+.wk .tip .h{font-weight:800;margin-bottom:4px}
+.wk .tip .r{display:flex;align-items:center;gap:6px;justify-content:space-between;font-variant-numeric:tabular-nums}
+.wk .tip .r i{width:10px;height:3px;border-radius:2px;display:inline-block;margin-right:5px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--sub);margin:-2px 0 8px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.wknav{display:flex;align-items:center;gap:8px;margin-left:auto}
+.wknav b{font-size:12.5px;font-weight:700;min-width:150px;text-align:center}
+.wknav .nav{width:28px;height:28px;font-size:13px}
 .note{font-size:11.5px;color:var(--faint);line-height:1.7}
 .note b{color:var(--sub);font-weight:700}
 .err{color:var(--up);padding:30px 0;text-align:center}
+@media(max-width:760px){.pos{grid-template-columns:minmax(0,1fr)}.wknav{margin-left:0}}
 @media(max-width:640px){
   body{padding:14px 12px 56px}
   .card{padding:14px 12px}
@@ -133,6 +167,24 @@ td.na{color:var(--faint);font-size:11px}
   </section>
 
   <section class="card">
+    <h2>선물 포지션 <small id="posSub">직전 만기 다음 거래일부터 누적 · 계약</small></h2>
+    <div class="ctrl"><div class="seg" id="segPos"><span class="lb">주체</span><button data-i="frgn">외국인</button><button data-i="prsn">개인</button><button data-i="orgn">기관계</button><button data-i="scrt">금융투자</button></div></div>
+    <div class="pos" id="pos"></div>
+    <div class="postxt" id="postxt"></div>
+  </section>
+
+  <section class="card">
+    <h2>주간 수급 흐름 <small id="wkSub"></small></h2>
+    <div class="ctrl">
+      <div class="seg" id="segWkMode"><span class="lb">보기</span><button data-w="week">주중 누적 (월→금)</button><button data-w="day">일별</button><button data-w="trend">주간 합계 추이</button></div>
+      <div class="wknav" id="wkNav"><button class="nav" id="wkPrev" title="이전 주">‹</button><b id="wkLbl"></b><button class="nav" id="wkNext" title="다음 주">›</button></div>
+    </div>
+    <div class="ctrl"><div class="seg" id="segWkMkt"></div><div class="seg" id="segWkU"><span class="lb">단위</span><button data-u="a">금액(억원)</button><button data-u="q">계약</button></div></div>
+    <div class="legend" id="wkLegend"></div>
+    <div class="wk" id="wk"><svg id="wkSvg"></svg><div class="tip" id="wkTip"></div></div>
+  </section>
+
+  <section class="card">
     <h2>순매수 추이 <small id="trSub"></small></h2>
     <div class="ctrl">
       <div class="seg" id="segView"><span class="lb">보기</span><button data-v="mkt">시장별</button><button data-v="inv">투자자별</button></div>
@@ -148,7 +200,7 @@ td.na{color:var(--faint);font-size:11px}
 
   <div class="note">
     <b>기준</b> KRX 확정치, 장 마감 뒤 하루 전체를 합친 순매수(매수−매도)입니다. 매일 21시대에 갱신합니다. 코스피 현물은 키움 업종별 투자자(ka10051)와 억원 단위까지 일치함을 확인했습니다(KRX 정규시장, NXT 제외).<br>
-    <b>선물</b> 코스피200 선물(미니 제외). <b>옵션</b> 코스피200 콜·풋, 금액은 프리미엄 거래대금 기준입니다. 같은 날에도 행사가별로 값이 달라 계약 수와 금액의 부호가 엇갈릴 수 있습니다. <b>주식선물</b> 개별 주식선물 전체 합계.<br>
+    <b>선물</b> 코스피200 선물·미니 선물·코스닥150 선물. 선물 포지션의 누적은 직전 만기일 다음 거래일부터 합산합니다(코스피200·코스닥150은 3·6·9·12월, 미니는 매월 둘째 목요일 만기, 휴장이면 직전 거래일). <b>옵션</b> 코스피200 콜·풋, 금액은 프리미엄 거래대금 기준입니다. 같은 날에도 행사가별로 값이 달라 계약 수와 금액의 부호가 엇갈릴 수 있습니다. <b>주식선물</b> 개별 주식선물 전체 합계.<br>
     <b>사모</b> 파생상품(선물·옵션·주식선물)은 KRX 통계에 사모가 따로 집계되지 않아 '–'로 표시합니다. <b>기관계</b>에는 금융투자·투신·사모·연기금·보험·은행·기타금융이 포함됩니다. 색상은 빨강이 순매수, 파랑이 순매도입니다.
   </div>
 </div>
@@ -156,10 +208,12 @@ td.na{color:var(--faint);font-size:11px}
 <script>
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
 let D=null, cur=-1;
-const S={view:LS.get('invf-view','mkt'),mkt:LS.get('invf-mkt','fut'),inv:LS.get('invf-inv','frgn'),n:+LS.get('invf-n','20'),u:LS.get('invf-u','a'),x:LS.get('invf-x','0')==='1'};
+const S={pos:LS.get('invf-pos','frgn'),wk:LS.get('invf-wk','week'),wkm:LS.get('invf-wkm','ksp'),wku:LS.get('invf-wku','a'),view:LS.get('invf-view','mkt'),mkt:LS.get('invf-mkt','fut'),inv:LS.get('invf-inv','frgn'),n:+LS.get('invf-n','20'),u:LS.get('invf-u','a'),x:LS.get('invf-x','0')==='1'};
 const CORE=['prsn','frgn','orgn','fund','pe','ivtr','scrt'];       // 기본 표시
 const SUBS={fund:1,pe:1,ivtr:1,scrt:1,insu:1,bank:1};             // 기관 하위(들여쓰기)
-const DER={fut:1,call:1,put:1,sfut:1};
+const DER={fut:1,mini:1,kq150:1,call:1,put:1,sfut:1};
+const FUTS=[{k:'fut',n:'코스피선물',q:true},{k:'mini',n:'미니선물',q:false},{k:'kq150',n:'코스닥선물',q:true}];
+const WK3=[{k:'prsn',n:'개인',c:'--s-prsn'},{k:'frgn',n:'외국인',c:'--s-frgn'},{k:'orgn',n:'기관계',c:'--s-orgn'}];
 const WD=['일','월','화','수','목','금','토'];
 
 const $=id=>document.getElementById(id);
@@ -208,7 +262,154 @@ function render(){
   $('latest').style.display=cur===D.dates.length-1?'none':'';
   const ix=k=>{const [c,p]=D.idx[k][cur];return `${k==='ksp'?'코스피':'코스닥'}<b>${c.toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2})}</b><span class="${cls(p)}">${p>0?'+':''}${p.toFixed(2)}%</span>`;};
   $('idxs').innerHTML=`<span>${ix('ksp')}</span><span>${ix('ksq')}</span>`;
-  renderMx(); renderTr();
+  renderMx(); renderPos(); renderWk(); renderTr();
+}
+
+/* ── 만기 앵커: 둘째 목요일(휴장이면 그 이전 마지막 거래일) ── */
+function secondThu(y,m){const d=new Date(y,m-1,1);const off=(4-d.getDay()+7)%7;return new Date(y,m-1,1+off+7);}
+const ymd=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+function lastExpiryIdx(i,quarterly){ // dates[i]보다 앞선 가장 최근 만기 거래일 인덱스
+  const d=D.dates[i];let y=+d.slice(0,4),m=+d.slice(4,6);
+  for(let n=0;n<30;n++){
+    if(!quarterly||m%3===0){
+      const t=ymd(secondThu(y,m));
+      let j=nearestIdx(t); // t 이하 마지막 거래일 = 만기 거래일
+      if(D.dates[j]<=t&&j<i&&D.dates[j]>=D.dates[0]&&!(j===0&&D.dates[0]>t))return j;
+    }
+    m--;if(m<1){m=12;y--;}
+  }
+  return -1;
+}
+
+function renderPos(){
+  document.querySelectorAll('#segPos button').forEach(b=>b.classList.toggle('on',b.dataset.i===S.pos));
+  const ii=invIdx(S.pos), invN=D.investors[ii].n;
+  const out=[], txt=[];
+  FUTS.forEach(f=>{
+    const e=lastExpiryIdx(cur,f.q);
+    const q=D.q[f.k]; let cum=0;
+    for(let i=e+1;i<=cur;i++)cum+=q[i][ii];
+    const day=q[cur][ii], prev=cum-day;
+    let vd;
+    if(cum>0&&prev<=0)vd='누적순매수 전환';else if(cum<0&&prev>=0)vd='누적순매도 전환';
+    else if(cum>=0)vd=`상승포지션 ${day>0?'확대':'축소'}`;else vd=`하락포지션 ${day<0?'확대':'축소'}`;
+    if(day===0)vd='변화 없음';
+    const rec=[];for(let i=Math.max(e+1,cur-4);i<=cur;i++)rec.push(fmtQ(q[i][ii]));
+    const ed=e>=0?D.dates[e]:null;
+    out.push(`<div class="pc"><div class="nm">${f.n}<small>${ed?`${+ed.slice(4,6)}/${+ed.slice(6)} 만기 이후`:''}</small></div>
+      <div class="cum ${cls(cum)}">${Math.abs(cum).toLocaleString('ko-KR')}<small>계약 누적순${cum>=0?'매수':'매도'}</small></div>
+      <div class="day">당일 <b class="${cls(day)}">${fmtQ(day)}</b>계약 · ${fmtA(D.a[f.k][cur][ii])}억</div>
+      <span class="vd">${vd}</span>
+      <div class="rc" title="만기 이후 최근 5일">${rec.join(' → ')}</div></div>`);
+    txt.push({f,cum,day});
+  });
+  $('pos').innerHTML=out.join('');
+  const word=v=>`${Math.abs(v).toLocaleString('ko-KR')}계약 누적순${v>=0?'매수':'매도'}`;
+  const dword=(v,n)=>`${Math.abs(v).toLocaleString('ko-KR')}계약 ${n} ${v>=0?'매수':'매도'}`;
+  $('postxt').textContent=`[${invN}] `+txt.map(t=>`${t.f.n}: ${word(t.cum)}`).join(', ')+'\n'+
+    (d=>d.slice(0,-1).join(', ')+'와 '+d[d.length-1])(txt.map(t=>dword(t.day,t.f.n)));
+  $('posSub').textContent=`${invN} · 직전 만기 다음 거래일부터 누적 · 계약`;
+}
+
+/* ── 주간 차트 ── */
+function weekOf(i){ // 같은 ISO 주(월~금)의 인덱스 목록
+  const d=dobj(D.dates[i]);const mon=new Date(d);mon.setDate(d.getDate()-((d.getDay()+6)%7));
+  const s=ymd(mon), e=ymd(new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+4));
+  const idx=[];for(let j=0;j<D.dates.length;j++){if(D.dates[j]>=s&&D.dates[j]<=e)idx.push(j);}
+  return {mon,idx};
+}
+function renderWk(){
+  document.querySelectorAll('#segWkMode button').forEach(b=>b.classList.toggle('on',b.dataset.w===S.wk));
+  $('segWkMkt').innerHTML='<span class="lb">시장</span>'+D.markets.map(m=>`<button data-m="${m.k}" class="${m.k===S.wkm?'on':''}">${m.n}</button>`).join('');
+  const qOK=!!DER[S.wkm], u=qOK?S.wku:'a';
+  document.querySelectorAll('#segWkU button').forEach(b=>{b.classList.toggle('on',b.dataset.u===u);b.disabled=b.dataset.u==='q'&&!qOK;});
+  const src=(u==='q'?D.q:D.a)[S.wkm];
+  const conv=v=>u==='q'?v:v/100;  // 표시 단위: 억원 또는 계약
+  const unit=u==='q'?'계약':'억원';
+  const mName=D.markets.find(m=>m.k===S.wkm).n;
+  $('wkLegend').innerHTML=WK3.map(s=>`<span><i style="background:var(${s.c})"></i>${s.n}</span>`).join('');
+  let xs=[], series=[], title='';
+  if(S.wk==='trend'){
+    $('wkNav').style.visibility='hidden';
+    // 선택일까지 최근 26주 주간 합계
+    const weeks=[];let j=cur;
+    while(j>=0&&weeks.length<26){const w=weekOf(j);const idx=w.idx.filter(x=>x<=cur);weeks.unshift({mon:w.mon,idx});j=w.idx[0]-1;}
+    xs=weeks.map(w=>`${w.mon.getMonth()+1}/${w.mon.getDate()}`);
+    series=WK3.map(s=>{const ii=invIdx(s.k);return {...s,v:weeks.map(w=>conv(w.idx.reduce((a,x)=>a+src[x][ii],0)))};});
+    xs.full=weeks.map(w=>`${w.mon.getMonth()+1}/${w.mon.getDate()} 주 (${w.idx.length}일)`);
+    title=`${mName} · 최근 ${weeks.length}주 주간 합계 · ${unit}`;
+  }else{
+    $('wkNav').style.visibility='visible';
+    const w=weekOf(cur);
+    const fri=new Date(w.mon);fri.setDate(fri.getDate()+4);
+    $('wkLbl').textContent=`${w.mon.getMonth()+1}/${w.mon.getDate()}(월) ~ ${fri.getMonth()+1}/${fri.getDate()}(금)`;
+    $('wkPrev').disabled=w.idx[0]<=0; $('wkNext').disabled=w.idx[w.idx.length-1]>=D.dates.length-1;
+    xs=['월','화','수','목','금'];
+    const slot=new Array(5).fill(-1); w.idx.forEach(j=>slot[(dobj(D.dates[j]).getDay()+6)%7]=j);
+    xs.full=slot.map((j,k)=>{const d=new Date(w.mon);d.setDate(d.getDate()+k);return `${d.getMonth()+1}/${d.getDate()} (${xs[k]})${j<0?' 휴장':''}`;});
+    series=WK3.map(s=>{const ii=invIdx(s.k);let acc=0;
+      return {...s,v:slot.map(j=>{if(j<0)return null;const x=conv(src[j][ii]);acc+=x;return S.wk==='week'?acc:x;})};});
+    title=`${mName} · ${S.wk==='week'?'월요일부터 누적':'일별'} 순매수 · ${unit}`;
+  }
+  $('wkSub').textContent=title;
+  drawLines(xs,series,unit,S.wk==='day'?'bar':'line');
+}
+function niceTicks(lo,hi,n){
+  const span=hi-lo||1, step0=span/n, mag=Math.pow(10,Math.floor(Math.log10(step0)));
+  const step=[1,2,2.5,5,10].map(x=>x*mag).find(x=>span/x<=n)||10*mag;
+  const t=[];for(let v=Math.floor(lo/step)*step;v<=hi+1e-9;v+=step)t.push(+v.toFixed(6));return t;
+}
+const fmtN=v=>{const a=Math.abs(v);const s=a>=100||a===0?Math.round(a).toLocaleString('ko-KR'):a.toFixed(a<10?1:0);return (v>0?'+':v<0?'−':'')+s;};
+function drawLines(xs,series,unit,mode){
+  const box=$('wk'), svg=$('wkSvg'), tip=$('wkTip');
+  tip.style.display='none';
+  const W=box.clientWidth||600, H=270, L=58, R=mode==='line'&&xs.length<=5?64:16, T=12, B=26;
+  const vals=series.flatMap(s=>s.v).filter(v=>v!=null);
+  let lo=Math.min(0,...vals), hi=Math.max(0,...vals); if(lo===hi){hi+=1;}
+  const ticks=niceTicks(lo,hi,5); lo=Math.min(lo,ticks[0]); hi=Math.max(hi,ticks[ticks.length-1]);
+  const n=xs.length, pw=W-L-R, ph=H-T-B;
+  const X=i=>L+(n===1?pw/2:(mode==='bar'?(i+.5)*pw/n:i*pw/(n-1)));
+  const Y=v=>T+(hi-v)/(hi-lo)*ph;
+  let h=`<g class="grid">${ticks.map(t=>`<line x1="${L}" x2="${W-R}" y1="${Y(t)}" y2="${Y(t)}"/>`).join('')}</g>`;
+  h+=`<line class="zero" x1="${L}" x2="${W-R}" y1="${Y(0)}" y2="${Y(0)}"/>`;
+  h+=`<g class="axis">${ticks.map(t=>`<text x="${L-8}" y="${Y(t)+4}" text-anchor="end">${fmtN(t)}</text>`).join('')}`;
+  const every=Math.ceil(n/(W<500?6:13));
+  xs.forEach((x,i)=>{if(i%every===0||i===n-1)h+=`<text x="${X(i)}" y="${H-6}" text-anchor="middle">${x}</text>`;});
+  h+=`<text x="${L-8}" y="${T-2}" text-anchor="end" style="font-size:10px">${unit}</text></g>`;
+  if(mode==='bar'){
+    const gw=pw/n*.7, bw=Math.max(3,(gw-4)/series.length);
+    series.forEach((s,k)=>s.v.forEach((v,i)=>{if(v==null)return;
+      const x=X(i)-gw/2+k*(bw+2), y=Math.min(Y(v),Y(0)), hh=Math.max(1,Math.abs(Y(v)-Y(0)));
+      h+=`<rect x="${x}" y="${y}" width="${bw}" height="${hh}" rx="3" fill="var(${s.c})"/>`;}));
+  }else{
+    series.forEach(s=>{
+      // 휴장(null)은 건너뛰고 이어서 그린다
+      const pts=s.v.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
+      if(pts.length)h+=`<path class="ln" stroke="var(${s.c})" d="${pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join('')}"/>`;
+      if(n<=5)pts.forEach(p=>h+=`<circle class="dot" cx="${p[0]}" cy="${p[1]}" r="4.5" fill="var(${s.c})"/>`);
+    });
+    // 끝점 직접 라벨 (겹침 회피)
+    if(n<=5){
+      const ends=series.map(s=>{let i=s.v.length-1;while(i>=0&&s.v[i]==null)i--;return i<0?null:{s,i,y:Y(s.v[i])};}).filter(Boolean).sort((a,b)=>a.y-b.y);
+      for(let k=1;k<ends.length;k++)if(ends[k].y-ends[k-1].y<14)ends[k].y=ends[k-1].y+14;
+      ends.forEach(e=>h+=`<text class="lbl" x="${X(e.i)+9}" y="${e.y+4}">${e.s.n}</text>`);
+    }
+  }
+  h+=`<line class="xh" id="wkXh" y1="${T}" y2="${T+ph}" style="display:none"/>`;
+  h+=`<rect x="${L}" y="${T}" width="${pw}" height="${ph}" fill="transparent" id="wkHit"/>`;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('height',H); svg.innerHTML=h;
+  const hit=svg.querySelector('#wkHit'), xh=svg.querySelector('#wkXh');
+  hit.onmousemove=e=>{
+    const r=svg.getBoundingClientRect(), mx=(e.clientX-r.left)*W/r.width;
+    let i=mode==='bar'?Math.floor((mx-L)/pw*n):Math.round((mx-L)/pw*(n-1)); i=Math.max(0,Math.min(n-1,i));
+    if(series.every(s=>s.v[i]==null)){tip.style.display='none';xh.style.display='none';return;}
+    xh.setAttribute('x1',X(i));xh.setAttribute('x2',X(i));xh.style.display='';
+    tip.innerHTML=`<div class="h">${xs.full?xs.full[i]:xs[i]}</div>`+series.map(s=>`<div class="r"><span><i style="background:var(${s.c})"></i>${s.n}</span><b class="${cls(s.v[i]||0)}">${s.v[i]==null?'–':fmtN(s.v[i])}</b></div>`).join('');
+    tip.style.display='block';
+    const px=X(i)*r.width/W, tw=tip.offsetWidth;
+    tip.style.left=(px+12+tw>r.width?px-12-tw:px+12)+'px'; tip.style.top='10px';
+  };
+  hit.onmouseleave=()=>{tip.style.display='none';xh.style.display='none';};
 }
 
 function invList(){return D.investors.filter(i=>S.x||CORE.includes(i.k));}
@@ -341,6 +542,13 @@ function bind(){
     if(e.target.closest&&e.target.closest('input,textarea'))return;
     if(e.key==='ArrowLeft')setDate(cur-1); else if(e.key==='ArrowRight')setDate(cur+1); else if(e.key==='Escape')$('cal').hidden=true;
   });
+  $('segPos').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.pos=b.dataset.i;LS.set('invf-pos',S.pos);renderPos();};
+  $('segWkMode').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.wk=b.dataset.w;LS.set('invf-wk',S.wk);renderWk();};
+  $('segWkMkt').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.wkm=b.dataset.m;LS.set('invf-wkm',S.wkm);renderWk();};
+  $('segWkU').onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;S.wku=b.dataset.u;LS.set('invf-wku',S.wku);renderWk();};
+  $('wkPrev').onclick=()=>{const w=weekOf(cur);if(w.idx[0]>0)setDate(w.idx[0]-1);};
+  $('wkNext').onclick=()=>{const w=weekOf(cur);const nx=w.idx[w.idx.length-1]+1;if(nx<D.dates.length){setDate(weekOf(nx).idx.slice(-1)[0]);}};
+  let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(renderWk,150);});
   $('segView').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.view=b.dataset.v;LS.set('invf-view',S.view);renderTr();};
   $('segPick').onclick=e=>{const b=e.target.closest('button');if(!b)return;
     if(b.dataset.m){S.mkt=b.dataset.m;LS.set('invf-mkt',S.mkt);} if(b.dataset.i){S.inv=b.dataset.i;LS.set('invf-inv',S.inv);} renderTr();};
