@@ -1,14 +1,14 @@
 {
- "build_id": "53cdb5da2829",
- "created_at": "2026-10-31T07:10:43+09:00",
+ "build_id": "52f3079c7e8c",
+ "created_at": "2026-11-03T07:10:44+09:00",
  "method": "qflow-v2",
  "coverage": {
-  "companies": 2301,
-  "with_cost": 2044,
-  "with_sga": 2057,
-  "with_seg": 2226,
+  "companies": 2302,
+  "with_cost": 2045,
+  "with_sga": 2058,
+  "with_seg": 2227,
   "with_is": 2299,
-  "cost_obs": 32045,
+  "cost_obs": 32046,
   "is_obs": 38269
  }
 }
