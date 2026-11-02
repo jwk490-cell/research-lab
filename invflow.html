@@ -134,6 +134,8 @@ td.na{color:var(--faint);font-size:11px}
 .wknav{display:flex;align-items:center;gap:8px;margin-left:auto}
 .wknav b{font-size:12.5px;font-weight:700;min-width:150px;text-align:center}
 .wknav .nav{width:28px;height:28px;font-size:13px}
+.livetag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--up);border-radius:999px;padding:1px 8px;vertical-align:1px}
+.sub .livetag{font-weight:600}
 .note{font-size:11.5px;color:var(--faint);line-height:1.7}
 .note b{color:var(--sub);font-weight:700}
 .err{color:var(--up);padding:30px 0;text-align:center}
@@ -199,7 +201,7 @@ td.na{color:var(--faint);font-size:11px}
   </section>
 
   <div class="note">
-    <b>기준</b> KRX 확정치, 장 마감 뒤 하루 전체를 합친 순매수(매수−매도)입니다. 매일 21시대에 갱신합니다. 코스피 현물은 키움 업종별 투자자(ka10051)와 억원 단위까지 일치함을 확인했습니다(KRX 정규시장, NXT 제외).<br>
+    <b>기준</b> 하루 전체를 합친 순매수(매수−매도). 장중(09:00~15:55)에는 5분마다 그때까지의 누적을 '장중 잠정'으로 붙이고, 페이지는 1분마다 새 값을 확인합니다. 장 마감 후 KRX 확정치가 나오면 그날 값을 확정본으로 일괄 교체합니다. 코스피 현물은 키움 업종별 투자자(ka10051)와 억원 단위까지 일치함을 확인했습니다(KRX 정규시장, NXT 제외).<br>
     <b>선물</b> 코스피200 선물·미니 선물·코스닥150 선물. 선물 포지션의 누적은 직전 만기일 다음 거래일부터 합산합니다(코스피200·코스닥150은 3·6·9·12월, 미니는 매월 둘째 목요일 만기, 휴장이면 직전 거래일). <b>옵션</b> 코스피200 콜·풋, 금액은 프리미엄 거래대금 기준입니다. 같은 날에도 행사가별로 값이 달라 계약 수와 금액의 부호가 엇갈릴 수 있습니다. <b>주식선물</b> 개별 주식선물 전체 합계.<br>
     <b>사모</b> 파생상품(선물·옵션·주식선물)은 KRX 통계에 사모가 따로 집계되지 않아 '–'로 표시합니다. <b>기관계</b>에는 금융투자·투신·사모·연기금·보험·은행·기타금융이 포함됩니다. 색상은 빨강이 순매수, 파랑이 순매도입니다.
   </div>
@@ -237,16 +239,53 @@ function tint(v,max){ // 셀 배경 농도(열 최대 절댓값 대비)
   return `background:rgba(var(${v>0?'--up-bg':'--dn-bg'}),${a.toFixed(3)})`;
 }
 
-async function load(){
+/* 장중 잠정치: data/invflow_live.json(5분 갱신)을 본 데이터 뒤에 하루로 덧붙인다.
+   KRX 확정 후 본 데이터 asof가 오늘이 되면 live는 무시된다. */
+let LIVE=null, lastMain=0;
+async function getMain(){
+  const r=await fetch('data/invflow.json?v='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('데이터 조회 실패 ('+r.status+')');
+  lastMain=Date.now(); LIVE=null; return r.json();
+}
+async function getLive(){try{const r=await fetch('data/invflow_live.json?v='+Date.now(),{cache:'no-store'});return r.ok?await r.json():null;}catch(e){return null;}}
+function dropLive(){
+  if(!LIVE)return;
+  D.dates.pop(); D.markets.forEach(m=>{D.a[m.k].pop();if(D.q[m.k])D.q[m.k].pop();}); D.idx.ksp.pop(); D.idx.ksq.pop(); LIVE=null;
+}
+function applyLive(L){
+  dropLive();
+  if(!L||!L.date||L.date<=D.asof)return;
+  if(!D.markets.every(m=>L.a[m.k]&&(!D.q[m.k]||L.q[m.k])))return;
+  D.dates.push(L.date); D.markets.forEach(m=>{D.a[m.k].push(L.a[m.k]);if(D.q[m.k])D.q[m.k].push(L.q[m.k]);});
+  D.idx.ksp.push(L.idx.ksp); D.idx.ksq.push(L.idx.ksq);
+  LIVE={date:L.date,time:L.time};
+}
+function setMeta(){
+  $('meta').innerHTML=`KRX 확정치 · 당일 누적 순매수 · 단위 억원 · 데이터 <b>${ds2(D.dates[0])} ~ ${ds2(D.asof)}</b> (${(D.dates.length-(LIVE?1:0)).toLocaleString()}거래일) · 갱신 ${D.updated}`+
+    (LIVE?` · <span class="livetag">오늘 장중 잠정 ${LIVE.time} 기준 (5분 갱신, 마감 후 확정치로 교체)</span>`:'');
+}
+async function poll(){
+  if(document.visibilityState!=='visible')return;
+  const atLatest=cur===D.dates.length-1;
   try{
-    const r=await fetch('data/invflow.json?v='+Math.floor(Date.now()/6e5),{cache:'no-store'});
-    if(!r.ok)throw Error('데이터 조회 실패 ('+r.status+')');
-    D=await r.json();
-  }catch(e){$('mx').outerHTML=`<div class="err">${e.message}</div>`;return;}
+    if(Date.now()-lastMain>10*60e3){const nd=await getMain();D=nd;} // 확정본 반영 확인
+  }catch(e){}
+  const L=await getLive();
+  const prevKey=LIVE?LIVE.date+LIVE.time:'', before=D.dates.length;
+  applyLive(L);
+  const key=LIVE?LIVE.date+LIVE.time:'';
+  if(key===prevKey&&before===D.dates.length&&!(Date.now()-lastMain<5e3))return;
+  if(atLatest)cur=D.dates.length-1; cur=Math.min(cur,D.dates.length-1);
+  setMeta(); render();
+}
+async function load(){
+  try{ D=await getMain(); }catch(e){$('mx').outerHTML=`<div class="err">${e.message}</div>`;return;}
+  applyLive(await getLive());
   const h=(location.hash.match(/d=(\d{8})/)||[])[1];
   cur=h&&D.dates.includes(h)?D.dates.indexOf(h):D.dates.length-1;
-  $('meta').innerHTML=`KRX 확정치 · 당일 누적 순매수 · 단위 억원 · 데이터 <b>${ds2(D.dates[0])} ~ ${ds2(D.asof)}</b> (${D.dates.length.toLocaleString()}거래일) · 갱신 ${D.updated}`;
-  bind();render();
+  setMeta(); bind(); render();
+  setInterval(poll,60e3);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')poll();});
 }
 
 function setDate(i){
@@ -257,7 +296,7 @@ function setDate(i){
 
 function render(){
   const d=D.dates[cur];
-  $('dateLbl').textContent=dlabel(d);
+  $('dateLbl').innerHTML=dlabel(d)+(LIVE&&d===LIVE.date?` <span class="livetag">장중 잠정 ${LIVE.time}</span>`:'');
   $('prev').disabled=cur<=0; $('next').disabled=cur>=D.dates.length-1;
   $('latest').style.display=cur===D.dates.length-1?'none':'';
   const ix=k=>{const [c,p]=D.idx[k][cur];return `${k==='ksp'?'코스피':'코스닥'}<b>${c.toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2})}</b><span class="${cls(p)}">${p>0?'+':''}${p.toFixed(2)}%</span>`;};
