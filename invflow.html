@@ -1,0 +1,358 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>투자자별 일일 수급</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<script>
+(function(){var t="dark";try{t=localStorage.getItem("rl-theme")||"dark";}catch(e){}if(t==="dark")document.documentElement.classList.add("dark");})();
+</script>
+<style>
+:root{
+  --bg:#f2f4f6; --surface:#ffffff; --surface2:#f2f4f6; --line:#e7eaee; --line2:#eef0f3;
+  --text:#191f28; --sub:#4e5968; --faint:#8b95a1;
+  --accent:#3168f0; --accent-soft:rgba(49,104,240,.08); --accent-line:rgba(49,104,240,.28);
+  --up:#f04452; --down:#3485fa;
+  --up-bg:240,68,82; --dn-bg:52,133,250;
+  --shadow:0 1px 3px rgba(25,31,40,.04);
+}
+html.dark{
+  --bg:#101014; --surface:#1a1b20; --surface2:#232530; --line:#272930; --line2:#232530;
+  --text:#e9ebee; --sub:#9aa2ad; --faint:#6d7480;
+  --accent:#4d7df5; --accent-soft:rgba(77,125,245,.14); --accent-line:rgba(77,125,245,.4);
+  --up:#ff5c6a; --down:#4c9bff;
+  --shadow:0 1px 3px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif}
+body{background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding:20px 22px 64px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.num{font-variant-numeric:tabular-nums}
+h1{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--sub);font-size:12px;margin-top:3px}
+.sub b{color:var(--text);font-weight:700}
+.card{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:16px 18px}
+.card h2{font-size:14.5px;font-weight:800;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card h2 small{font-size:11.5px;font-weight:500;color:var(--faint)}
+
+/* 날짜 바 + 달력 팝오버 */
+.datebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:relative}
+.nav{border:1px solid var(--line);background:var(--surface);color:var(--sub);font:inherit;font-size:15px;font-weight:700;
+  width:34px;height:34px;border-radius:10px;cursor:pointer}
+.nav:hover:not(:disabled){background:var(--accent-soft);color:var(--accent)}
+.nav:disabled{opacity:.35;cursor:default}
+.datebtn{border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent);font:inherit;font-size:14px;font-weight:800;
+  height:34px;padding:0 14px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:7px}
+.datebtn svg{width:15px;height:15px}
+.pill{border:1px solid var(--line);background:var(--surface);color:var(--sub);font:inherit;font-size:12px;font-weight:600;height:34px;padding:0 12px;border-radius:10px;cursor:pointer}
+.pill:hover{color:var(--text)}
+.idxs{display:flex;gap:14px;margin-left:6px;font-size:12.5px;color:var(--sub);flex-wrap:wrap}
+.idxs b{color:var(--text);font-weight:700;margin:0 4px}
+.calpop{position:absolute;top:42px;left:0;z-index:20;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);padding:14px 16px;width:300px}
+.calpop[hidden]{display:none}
+.calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.calhead b{font-size:13.5px;font-weight:800}
+.calhead .nav{width:28px;height:28px;font-size:13px}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.calwd{font-size:10.5px;font-weight:700;color:var(--faint);text-align:center;padding:3px 0}
+.calwd.sun{color:var(--up)}
+.calcell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--faint);border-radius:9px;border:1px solid transparent;opacity:.5}
+.calcell.has{background:var(--accent-soft);color:var(--accent);font-weight:800;cursor:pointer;opacity:1}
+.calcell.has:hover{border-color:var(--accent-line)}
+.calcell.sel{background:var(--accent);color:#fff}
+.calfoot{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.calfoot button{flex:1;border:1px solid var(--line);background:var(--surface2);color:var(--sub);font:inherit;font-size:11.5px;font-weight:600;padding:5px 0;border-radius:8px;cursor:pointer}
+.calfoot button:hover{color:var(--accent)}
+
+/* 표 */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:12.5px}
+th{font-size:11px;font-weight:700;color:var(--faint);text-align:right;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:bottom;background:var(--surface)}
+th small{display:block;font-weight:500;font-size:10px}
+td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line2);font-variant-numeric:tabular-nums}
+th.l,td.l{text-align:left}
+tr:last-child td{border-bottom:0}
+th:first-child,td:first-child{position:sticky;left:0;z-index:1;background:var(--surface)}
+.p{color:var(--up)} .m{color:var(--down)} .z{color:var(--faint)}
+td .q{display:block;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:1px}
+td.na{color:var(--faint);font-size:11px}
+/* 당일 매트릭스 */
+.mx td{font-size:13.5px;font-weight:700;padding:9px 12px}
+.mx td:first-child{font-weight:700;color:var(--text)}
+.mx tr.sub td:first-child{padding-left:24px;font-weight:600;color:var(--sub)}
+.mx tr.sub td{font-size:12.5px;font-weight:600}
+.mx tr.grp td{border-top:1px solid var(--line)}
+.mx th.mk{color:var(--text);font-size:12px}
+.mx th.mk.der{color:var(--sub)}
+.mx col.sep{border-left:1px solid var(--line)}
+.mx td.sep,.mx th.sep{border-left:1px solid var(--line)}
+/* 추이 */
+.ctrl{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.seg{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.seg .lb{font-size:11px;color:var(--faint);margin-right:2px}
+.seg button{border:1px solid var(--line);background:var(--surface);color:var(--sub);font:inherit;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;cursor:pointer}
+.seg button.on{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+.seg button:disabled{opacity:.35;cursor:default}
+.tr td{padding:6px 10px}
+.tr td.dt{color:var(--sub);font-weight:600}
+.tr tr.sel td{box-shadow:inset 0 1px 0 var(--accent-line),inset 0 -1px 0 var(--accent-line)}
+.tr tr.sel td.dt{color:var(--accent);font-weight:800}
+.tr tr.sum td{font-weight:800;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tr tr.sum td:first-child{background:var(--surface2)}
+.tr tbody tr.row{cursor:pointer}
+.tr tbody tr.row:hover td{background:var(--surface2)}
+.tr td.ix{color:var(--faint);font-size:11.5px}
+.note{font-size:11.5px;color:var(--faint);line-height:1.7}
+.note b{color:var(--sub);font-weight:700}
+.err{color:var(--up);padding:30px 0;text-align:center}
+@media(max-width:640px){
+  body{padding:14px 12px 56px}
+  .card{padding:14px 12px}
+  .idxs{margin-left:0;width:100%}
+  .mx td{padding:8px 9px;font-size:12.5px}
+  th,td{padding:6px 7px}
+}
+</style></head><body>
+<div class="wrap">
+  <div>
+    <h1>투자자별 일일 수급</h1>
+    <div class="sub" id="meta">불러오는 중…</div>
+  </div>
+
+  <div class="datebar">
+    <button class="nav" id="prev" title="이전 거래일 (←)">‹</button>
+    <button class="datebtn" id="dateBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span id="dateLbl">-</span></button>
+    <button class="nav" id="next" title="다음 거래일 (→)">›</button>
+    <button class="pill" id="latest">최신</button>
+    <div class="idxs" id="idxs"></div>
+    <div class="calpop" id="cal" hidden></div>
+  </div>
+
+  <section class="card">
+    <h2>당일 누적 순매수 <small id="mxSub">억원 · 파생은 아래 작은 글씨가 계약 수</small></h2>
+    <div class="tw"><table class="mx" id="mx"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>순매수 추이 <small id="trSub"></small></h2>
+    <div class="ctrl">
+      <div class="seg" id="segView"><span class="lb">보기</span><button data-v="mkt">시장별</button><button data-v="inv">투자자별</button></div>
+      <div class="seg" id="segPick"></div>
+    </div>
+    <div class="ctrl">
+      <div class="seg" id="segN"><span class="lb">기간</span><button data-n="10">10일</button><button data-n="20">20일</button><button data-n="60">60일</button><button data-n="120">120일</button></div>
+      <div class="seg" id="segU"><span class="lb">단위</span><button data-u="a">금액(억원)</button><button data-u="q">계약</button></div>
+      <div class="seg" id="segX"><button data-x="1">기타 주체 보기</button></div>
+    </div>
+    <div class="tw"><table class="tr" id="tr"></table></div>
+  </section>
+
+  <div class="note">
+    <b>기준</b> KRX 확정치, 장 마감 뒤 하루 전체를 합친 순매수(매수−매도)입니다. 매일 21시대에 갱신합니다. 코스피 현물은 키움 업종별 투자자(ka10051)와 억원 단위까지 일치함을 확인했습니다(KRX 정규시장, NXT 제외).<br>
+    <b>선물</b> 코스피200 선물(미니 제외). <b>옵션</b> 코스피200 콜·풋, 금액은 프리미엄 거래대금 기준입니다. 같은 날에도 행사가별로 값이 달라 계약 수와 금액의 부호가 엇갈릴 수 있습니다. <b>주식선물</b> 개별 주식선물 전체 합계.<br>
+    <b>사모</b> 파생상품(선물·옵션·주식선물)은 KRX 통계에 사모가 따로 집계되지 않아 '–'로 표시합니다. <b>기관계</b>에는 금융투자·투신·사모·연기금·보험·은행·기타금융이 포함됩니다. 색상은 빨강이 순매수, 파랑이 순매도입니다.
+  </div>
+</div>
+
+<script>
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
+let D=null, cur=-1;
+const S={view:LS.get('invf-view','mkt'),mkt:LS.get('invf-mkt','fut'),inv:LS.get('invf-inv','frgn'),n:+LS.get('invf-n','20'),u:LS.get('invf-u','a'),x:LS.get('invf-x','0')==='1'};
+const CORE=['prsn','frgn','orgn','fund','pe','ivtr','scrt'];       // 기본 표시
+const SUBS={fund:1,pe:1,ivtr:1,scrt:1,insu:1,bank:1};             // 기관 하위(들여쓰기)
+const DER={fut:1,call:1,put:1,sfut:1};
+const WD=['일','월','화','수','목','금','토'];
+
+const $=id=>document.getElementById(id);
+const ds2=d=>`${d.slice(0,4)}-${d.slice(4,6)}-${d.slice(6)}`;
+const dobj=d=>new Date(+d.slice(0,4),+d.slice(4,6)-1,+d.slice(6));
+const dlabel=d=>`${ds2(d)} (${WD[dobj(d).getDay()]})`;
+const short=d=>`${+d.slice(4,6)}/${+d.slice(6)} ${WD[dobj(d).getDay()]}`;
+function fmtA(v){ // 백만원 → 억원
+  const x=v/100, ax=Math.abs(x);
+  if(v===0)return '0';
+  const s=ax<10?ax.toFixed(1):Math.round(ax).toLocaleString('ko-KR');
+  return (x>0?'+':'−')+s;
+}
+function fmtQ(v){return v===0?'0':(v>0?'+':'−')+Math.abs(v).toLocaleString('ko-KR');}
+const cls=v=>v>0?'p':v<0?'m':'z';
+const invIdx=k=>D.investors.findIndex(i=>i.k===k);
+const isEmpty=(mk,ii)=>(D.empty[mk]||[]).includes(ii);
+function tint(v,max){ // 셀 배경 농도(열 최대 절댓값 대비)
+  if(!max||!v)return '';
+  const a=Math.min(1,Math.abs(v)/max)*.22;
+  return `background:rgba(var(${v>0?'--up-bg':'--dn-bg'}),${a.toFixed(3)})`;
+}
+
+async function load(){
+  try{
+    const r=await fetch('data/invflow.json?v='+Math.floor(Date.now()/6e5),{cache:'no-store'});
+    if(!r.ok)throw Error('데이터 조회 실패 ('+r.status+')');
+    D=await r.json();
+  }catch(e){$('mx').outerHTML=`<div class="err">${e.message}</div>`;return;}
+  const h=(location.hash.match(/d=(\d{8})/)||[])[1];
+  cur=h&&D.dates.includes(h)?D.dates.indexOf(h):D.dates.length-1;
+  $('meta').innerHTML=`KRX 확정치 · 당일 누적 순매수 · 단위 억원 · 데이터 <b>${ds2(D.dates[0])} ~ ${ds2(D.asof)}</b> (${D.dates.length.toLocaleString()}거래일) · 갱신 ${D.updated}`;
+  bind();render();
+}
+
+function setDate(i){
+  cur=Math.max(0,Math.min(D.dates.length-1,i));
+  history.replaceState(null,'','#d='+D.dates[cur]);
+  render();
+}
+
+function render(){
+  const d=D.dates[cur];
+  $('dateLbl').textContent=dlabel(d);
+  $('prev').disabled=cur<=0; $('next').disabled=cur>=D.dates.length-1;
+  $('latest').style.display=cur===D.dates.length-1?'none':'';
+  const ix=k=>{const [c,p]=D.idx[k][cur];return `${k==='ksp'?'코스피':'코스닥'}<b>${c.toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:2})}</b><span class="${cls(p)}">${p>0?'+':''}${p.toFixed(2)}%</span>`;};
+  $('idxs').innerHTML=`<span>${ix('ksp')}</span><span>${ix('ksq')}</span>`;
+  renderMx(); renderTr();
+}
+
+function invList(){return D.investors.filter(i=>S.x||CORE.includes(i.k));}
+
+function renderMx(){
+  const mk=D.markets;
+  let h='<thead><tr><th class="l">투자자</th>';
+  mk.forEach((m,j)=>h+=`<th class="mk${DER[m.k]?' der':''}${j===2?' sep':''}">${m.n}</th>`);
+  h+='</tr></thead><tbody>';
+  const list=invList();
+  list.forEach((inv,r)=>{
+    const ii=invIdx(inv.k);
+    const sub=SUBS[inv.k], grp=!sub&&r>0;
+    h+=`<tr class="${sub?'sub':''}${grp?' grp':''}"><td class="l">${inv.n}</td>`;
+    mk.forEach((m,j)=>{
+      const sep=j===2?' sep':'';
+      if(isEmpty(m.k,ii)){h+=`<td class="na${sep}">–</td>`;return;}
+      const v=D.a[m.k][cur][ii];
+      const q=DER[m.k]?`<span class="q">${fmtQ(D.q[m.k][cur][ii])}계약</span>`:'';
+      h+=`<td class="${cls(v)}${sep}">${fmtA(v)}${q}</td>`;
+    });
+    h+='</tr>';
+  });
+  $('mx').innerHTML=h+'</tbody>';
+  $('segX').querySelector('button').textContent=S.x?'기타 주체 숨기기':'기타 주체 보기 (보험·은행·기타법인)';
+}
+
+function renderTr(){
+  // 컨트롤 상태
+  document.querySelectorAll('#segView button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.view));
+  document.querySelectorAll('#segN button').forEach(b=>b.classList.toggle('on',+b.dataset.n===S.n));
+  document.querySelectorAll('#segX button').forEach(b=>b.classList.toggle('on',S.x));
+  const pick=$('segPick');
+  if(S.view==='mkt'){
+    pick.innerHTML='<span class="lb">시장</span>'+D.markets.map(m=>`<button data-m="${m.k}" class="${m.k===S.mkt?'on':''}">${m.n}</button>`).join('');
+  }else{
+    pick.innerHTML='<span class="lb">투자자</span>'+D.investors.filter(i=>S.x||CORE.includes(i.k)||i.k===S.inv).map(i=>`<button data-i="${i.k}" class="${i.k===S.inv?'on':''}">${i.n}</button>`).join('');
+  }
+  // 계약 단위는 파생만 의미 있음
+  const qOK=S.view==='mkt'?!!DER[S.mkt]:true;
+  const u=qOK?S.u:'a';
+  document.querySelectorAll('#segU button').forEach(b=>{b.classList.toggle('on',b.dataset.u===u);b.disabled=b.dataset.u==='q'&&!qOK;});
+
+  // 열 정의: [{label, get(i)→값|null}]
+  let cols=[];
+  if(S.view==='mkt'){
+    const mk=S.mkt, src=u==='q'?D.q[mk]:D.a[mk];
+    invList().forEach(inv=>{const ii=invIdx(inv.k);
+      cols.push({label:inv.n,na:isEmpty(mk,ii),get:i=>src[i][ii]});});
+  }else{
+    const ii=invIdx(S.inv);
+    D.markets.forEach(m=>{
+      const isQ=u==='q'&&DER[m.k];
+      const src=isQ?D.q[m.k]:D.a[m.k];
+      cols.push({label:m.n,sm:isQ?'계약':(u==='q'?'억원':''),na:isEmpty(m.k,ii)||(u==='q'&&!DER[m.k]&&false),get:i=>src[i][ii],q:isQ});
+    });
+  }
+  const fmt=(c,v)=>(u==='q'&&(S.view==='mkt'||c.q))?fmtQ(v):fmtA(v);
+  const end=cur, start=Math.max(0,cur-S.n+1);
+  const rows=[];for(let i=end;i>=start;i--)rows.push(i);
+  const max=cols.map(c=>c.na?0:Math.max(...rows.map(i=>Math.abs(c.get(i)))));
+  const mkName=S.view==='mkt'?D.markets.find(m=>m.k===S.mkt).n:D.investors[invIdx(S.inv)].n;
+  $('trSub').textContent=`${mkName} · ${short(D.dates[start])} ~ ${short(D.dates[end])} (${rows.length}거래일) · ${u==='q'?'계약':'억원'}`;
+
+  let h='<thead><tr><th class="l">일자</th><th>코스피</th>';
+  cols.forEach(c=>h+=`<th>${c.label}${c.sm?`<small>${c.sm}</small>`:''}</th>`);
+  h+='</tr></thead><tbody>';
+  // 기간 합계
+  h+=`<tr class="sum"><td class="l">${rows.length}일 합계</td><td></td>`;
+  cols.forEach(c=>{if(c.na){h+='<td class="na">–</td>';return;}
+    const s=rows.reduce((a,i)=>a+c.get(i),0);h+=`<td class="${cls(s)}">${fmt(c,s)}</td>`;});
+  h+='</tr>';
+  rows.forEach(i=>{
+    const [ic,ip]=D.idx.ksp[i];
+    h+=`<tr class="row${i===cur?' sel':''}" data-i="${i}"><td class="l dt">${short(D.dates[i])}<span class="z" style="font-weight:500;margin-left:6px;font-size:11px">${D.dates[i].slice(2,4)}</span></td><td class="ix ${cls(ip)}">${ip>0?'+':''}${ip.toFixed(2)}%</td>`;
+    cols.forEach((c,j)=>{if(c.na){h+='<td class="na">–</td>';return;}
+      const v=c.get(i);h+=`<td class="${cls(v)}" style="${tint(v,max[j])}">${fmt(c,v)}</td>`;});
+    h+='</tr>';
+  });
+  $('tr').innerHTML=h+'</tbody>';
+}
+
+/* 달력 */
+let calYm=null;
+function calRender(){
+  const dates=D.dates, have=new Set(dates), sel=dates[cur];
+  const minYm=dates[0].slice(0,6), maxYm=dates[dates.length-1].slice(0,6);
+  const y=+calYm.slice(0,4), m=+calYm.slice(4,6);
+  const first=new Date(y,m-1,1).getDay(), days=new Date(y,m,0).getDate();
+  let h=`<div class="calhead"><button class="nav" data-cn="-12" ${calYm<=minYm?'disabled':''} title="1년 전">«</button><button class="nav" data-cn="-1" ${calYm<=minYm?'disabled':''}>‹</button><b>${y}년 ${m}월</b><button class="nav" data-cn="1" ${calYm>=maxYm?'disabled':''}>›</button><button class="nav" data-cn="12" ${calYm>=maxYm?'disabled':''} title="1년 후">»</button></div><div class="calgrid">`;
+  WD.forEach((w,i)=>h+=`<div class="calwd${i===0?' sun':''}">${w}</div>`);
+  for(let i=0;i<first;i++)h+='<div></div>';
+  for(let d=1;d<=days;d++){
+    const ds=`${calYm}${String(d).padStart(2,'0')}`;const has=have.has(ds);
+    h+=`<div class="calcell${has?' has':''}${ds===sel?' sel':''}"${has?` data-d="${ds}"`:''}>${d}</div>`;
+  }
+  h+='</div><div class="calfoot"><button data-j="latest">최신일</button><button data-j="w">1주 전</button><button data-j="m">1달 전</button></div>';
+  $('cal').innerHTML=h;
+}
+function calShift(n){
+  let y=+calYm.slice(0,4), m=+calYm.slice(4,6)+n;
+  while(m<1){m+=12;y--;} while(m>12){m-=12;y++;}
+  let ym=`${y}${String(m).padStart(2,'0')}`;
+  const minYm=D.dates[0].slice(0,6), maxYm=D.dates[D.dates.length-1].slice(0,6);
+  calYm=ym<minYm?minYm:ym>maxYm?maxYm:ym; calRender();
+}
+function nearestIdx(target){ // target 이하 가장 가까운 거래일
+  let i=D.dates.length-1; while(i>0&&D.dates[i]>target)i--; return i;
+}
+
+function bind(){
+  $('prev').onclick=()=>setDate(cur-1);
+  $('next').onclick=()=>setDate(cur+1);
+  $('latest').onclick=()=>setDate(D.dates.length-1);
+  $('dateBtn').onclick=e=>{e.stopPropagation();const c=$('cal');
+    if(c.hidden){calYm=D.dates[cur].slice(0,6);calRender();c.hidden=false;}else c.hidden=true;};
+  $('cal').onclick=e=>{
+    e.stopPropagation();
+    const n=e.target.closest('[data-cn]');if(n&&!n.disabled){calShift(+n.dataset.cn);return;}
+    const c=e.target.closest('[data-d]');if(c){$('cal').hidden=true;setDate(D.dates.indexOf(c.dataset.d));return;}
+    const j=e.target.closest('[data-j]');if(j){
+      const base=dobj(D.dates[cur]);
+      if(j.dataset.j==='latest')setDate(D.dates.length-1);
+      else{base.setDate(base.getDate()-(j.dataset.j==='w'?7:0));if(j.dataset.j==='m')base.setMonth(base.getMonth()-1);
+        const t=`${base.getFullYear()}${String(base.getMonth()+1).padStart(2,'0')}${String(base.getDate()).padStart(2,'0')}`;setDate(nearestIdx(t));}
+      $('cal').hidden=true;}
+  };
+  document.addEventListener('click',()=>{$('cal').hidden=true;});
+  document.addEventListener('keydown',e=>{
+    if(e.target.closest&&e.target.closest('input,textarea'))return;
+    if(e.key==='ArrowLeft')setDate(cur-1); else if(e.key==='ArrowRight')setDate(cur+1); else if(e.key==='Escape')$('cal').hidden=true;
+  });
+  $('segView').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.view=b.dataset.v;LS.set('invf-view',S.view);renderTr();};
+  $('segPick').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+    if(b.dataset.m){S.mkt=b.dataset.m;LS.set('invf-mkt',S.mkt);} if(b.dataset.i){S.inv=b.dataset.i;LS.set('invf-inv',S.inv);} renderTr();};
+  $('segN').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.n=+b.dataset.n;LS.set('invf-n',S.n);renderTr();};
+  $('segU').onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;S.u=b.dataset.u;LS.set('invf-u',S.u);renderTr();};
+  $('segX').onclick=()=>{S.x=!S.x;LS.set('invf-x',S.x?'1':'0');
+    if(!S.x&&!CORE.includes(S.inv)){S.inv='frgn';} render();};
+  $('tr').onclick=e=>{const r=e.target.closest('tr.row');if(r)setDate(+r.dataset.i);};
+  window.addEventListener('hashchange',()=>{const h=(location.hash.match(/d=(\d{8})/)||[])[1];if(h&&D.dates.includes(h)&&D.dates.indexOf(h)!==cur){cur=D.dates.indexOf(h);render();}});
+  // 허브에서 테마를 바꾸면 따라간다 (같은 출처 storage 이벤트)
+  window.addEventListener('storage',e=>{if(e.key==='rl-theme')document.documentElement.classList.toggle('dark',e.newValue!=='light');});
+}
+load();
+</script>
+</body></html>
