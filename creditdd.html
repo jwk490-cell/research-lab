@@ -1,0 +1,305 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>신용잔고 MDD</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<script>
+(function(){var t="dark";try{t=localStorage.getItem("rl-theme")||"dark";}catch(e){}if(t==="dark")document.documentElement.classList.add("dark");})();
+</script>
+<style>
+:root{
+  --bg:#f2f4f6; --surface:#ffffff; --surface2:#f2f4f6; --line:#e7eaee; --line2:#eef0f3;
+  --text:#191f28; --sub:#4e5968; --faint:#8b95a1;
+  --accent:#3168f0; --accent-soft:rgba(49,104,240,.08); --accent-line:rgba(49,104,240,.28);
+  --up:#f04452; --down:#3485fa; --gold:#c98a00; --gold-soft:rgba(201,138,0,.12);
+  --s-credit:#e8590c; --s-credit-fill:rgba(232,89,12,.11); --s-kospi:#3168f0; --s-kosdaq:#12a67a; --grid:#eef0f3;
+  --shadow:0 1px 3px rgba(25,31,40,.04);
+}
+html.dark{
+  --bg:#101014; --surface:#1a1b20; --surface2:#232530; --line:#272930; --line2:#232530;
+  --text:#e9ebee; --sub:#9aa2ad; --faint:#6d7480;
+  --accent:#4d7df5; --accent-soft:rgba(77,125,245,.14); --accent-line:rgba(77,125,245,.4);
+  --up:#ff5c6a; --down:#4c9bff; --gold:#f0b429; --gold-soft:rgba(240,180,41,.14);
+  --s-credit:#ff8a3d; --s-credit-fill:rgba(255,138,61,.12); --s-kospi:#6b93ff; --s-kosdaq:#34c79a; --grid:#24262d;
+  --shadow:0 1px 3px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif}
+body{background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding:20px 22px 64px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--sub);font-size:12px;margin-top:3px}
+.sub b{color:var(--text);font-weight:700}
+.card{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:16px 18px;min-width:0}
+.card h2{font-size:14.5px;font-weight:800;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card h2 small{font-size:11.5px;font-weight:500;color:var(--faint)}
+.ctrl{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.row .lab{font-size:11.5px;font-weight:700;color:var(--faint);width:44px;flex:none}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--surface);color:var(--sub);font:inherit;font-size:12.5px;font-weight:600;
+  height:32px;padding:0 12px;border-radius:9px;cursor:pointer}
+.seg button:hover{color:var(--text)}
+.seg button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent);font-weight:800}
+.chk{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--sub);cursor:pointer;user-select:none}
+.sw{display:inline-block;width:12px;height:3px;border-radius:2px;vertical-align:middle}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}
+.kpi{background:var(--surface2);border-radius:12px;padding:10px 12px;min-width:0}
+.kpi .k{font-size:11px;color:var(--faint);font-weight:700}
+.kpi .v{font-size:18px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:11px;font-weight:600;color:var(--sub);margin-left:4px}
+.kpi .s{font-size:11px;color:var(--sub);margin-top:1px;font-variant-numeric:tabular-nums}
+.kpi.hero{background:var(--s-credit-fill)}
+.kpi.hero .v{color:var(--s-credit);font-size:22px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--sub);margin:-4px 0 8px}
+.legend span{display:flex;align-items:center;gap:5px}
+.chart{position:relative;width:100%;touch-action:pan-y}
+svg{display:block;width:100%;height:auto}
+svg text{fill:var(--faint);font-size:10.5px;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:12.5px}
+th{font-size:11px;font-weight:700;color:var(--faint);text-align:right;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:bottom;background:var(--surface)}
+th small{display:block;font-weight:500;font-size:10px}
+td{padding:6px 9px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line2);font-variant-numeric:tabular-nums}
+th.l,td.l{text-align:left}
+th:first-child,td:first-child{position:sticky;left:0;z-index:1;background:var(--surface)}
+td .q{display:block;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:1px}
+tr.cur td{background:var(--s-credit-fill)}
+tr.cur td:first-child{background:linear-gradient(var(--s-credit-fill),var(--s-credit-fill)),var(--surface);box-shadow:inset 3px 0 0 var(--s-credit)}
+tr.sum td{font-weight:700;background:var(--surface2);color:var(--sub)}
+tr.sum td:first-child{background:var(--surface2)}
+.p{color:var(--up)} .m{color:var(--down)} .z{color:var(--faint)}
+.ing{color:var(--gold);font-weight:800}
+.hint{font-size:11.5px;color:var(--faint);margin:-6px 0 10px}
+.note{color:var(--faint);font-size:11.5px;line-height:1.7}
+.note b{color:var(--sub)}
+#tip{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:11.5px;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:50;display:none;white-space:nowrap;line-height:1.6}
+#tip b{font-weight:800}
+@media (min-width:561px) and (max-width:900px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi.hero{grid-row:span 2;display:flex;flex-direction:column;justify-content:center}}
+@media (min-width:901px){.kpis{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (max-width:560px){body{padding:14px 16px 48px}.card{padding:14px 12px}.kpi.hero{grid-column:1/-1}.row .lab{width:100%}.kpi .v{font-size:16px}.kpi.hero .v{font-size:19px}}
+</style></head><body>
+<div class="wrap">
+  <div>
+    <h1>신용잔고 MDD</h1>
+    <div class="sub" id="meta">불러오는 중…</div>
+  </div>
+
+  <div class="card"><div class="kpis" id="kpi"></div></div>
+
+  <div class="card ctrl">
+    <div class="row"><span class="lab">고점</span><div class="seg" id="segBasis"></div></div>
+    <div class="row"><span class="lab">기간</span><div class="seg" id="segRange"></div></div>
+    <div class="row"><span class="lab">비교</span>
+      <label class="chk"><input type="checkbox" id="cKospi" checked><span class="sw" style="background:var(--s-kospi)"></span> 코스피 MDD</label>
+      <label class="chk"><input type="checkbox" id="cKosdaq" checked><span class="sw" style="background:var(--s-kosdaq)"></span> 코스닥 MDD</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>전고점 대비 낙폭 추이 <small id="ddSub"></small></h2>
+    <div class="legend" id="ddLeg"></div>
+    <div class="chart" id="cDD"></div>
+  </div>
+
+  <div class="card">
+    <h2>신용잔고 레벨 <small>조원 · 점선 = 기준 고점</small></h2>
+    <div class="row" style="margin:-4px 0 8px"><span class="lab">우축</span><div class="seg" id="segIdx"></div></div>
+    <div class="chart" id="cLv"></div>
+  </div>
+
+  <div class="card">
+    <h2>신용잔고 하락 구간 <small id="epSub"></small></h2>
+    <div class="row" style="margin:-4px 0 10px"><span class="lab">임계</span><div class="seg" id="segThr"></div></div>
+    <div class="hint">고점 대비 임계 이상 빠진 구간을 최신순으로 나열합니다. 회복 = 기준 고점 재돌파. '진입 후' 수익률은 임계 첫 도달일 종가 기준입니다.</div>
+    <div class="tw"><table id="epTbl"></table></div>
+  </div>
+
+  <div class="card note" id="note"></div>
+</div>
+<div id="tip"></div>
+<script>
+const $=id=>document.getElementById(id);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let D=null, C={};
+const ST={basis:'ath',range:'5Y',thr:15,idx:'kosdaq'};
+const BASIS=[['ath','사상 최고'],['y1','최근 1년 고점']];
+const RANGES=[['1Y',250],['3Y',750],['5Y',1250],['10Y',2500],['ALL',0]];
+const THRS=[10,15,20,30];
+const fd=d=>{d=String(d);return d.slice(0,4)+'-'+d.slice(4,6)+'-'+d.slice(6);};
+const fds=d=>{d=String(d);return d.slice(2,4)+'.'+d.slice(4,6)+'.'+d.slice(6);};
+const jo=v=>v==null?'–':(v/1e4).toFixed(1);                // 억원 → 조원
+const pc=(v,n=1)=>v==null||!isFinite(v)?'–':(v>0?'+':'')+v.toFixed(n)+'%';
+const cls=v=>v==null?'z':v>0?'p':v<0?'m':'z';
+
+/* 고점·낙폭 — basis 'ath' 누적 최고, 'y1' 최근 250거래일 최고 (monotonic deque) */
+function dd(v,basis){
+  const n=v.length,out=new Array(n),pk=new Array(n),pi=new Array(n);
+  if(basis==='ath'){let m=-Infinity,mi=0;
+    for(let i=0;i<n;i++){if(v[i]!=null&&v[i]>=m){m=v[i];mi=i;}pk[i]=m;pi[i]=mi;out[i]=v[i]==null?null:(v[i]/m-1)*100;}
+  }else{const W=250,q=[];
+    for(let i=0;i<n;i++){
+      if(v[i]!=null){while(q.length&&v[q[q.length-1]]<=v[i])q.pop();q.push(i);}
+      while(q.length&&q[0]<=i-W)q.shift();
+      const j=q.length?q[0]:i;pk[i]=v[j];pi[i]=j;out[i]=v[i]==null?null:(v[i]/v[j]-1)*100;}
+  }
+  return {dd:out,pk,pi};
+}
+function calc(){
+  const k=ST.basis;
+  if(!C[k])C[k]={credit:dd(D.credit,k),kospi:dd(D.kospi,k),kosdaq:dd(D.kosdaq,k)};
+  return C[k];
+}
+function episodes(thr){
+  const c=calc().credit,v=D.credit,n=v.length,out=[];let ep=null;
+  for(let i=0;i<n;i++){
+    const x=c.dd[i];
+    if(!ep&&x<=-thr){ep={pk:c.pi[i],en:i,tr:i};}
+    if(ep){
+      if(x<c.dd[ep.tr])ep.tr=i;
+      if(x>=0){ep.rec=i;out.push(ep);ep=null;}
+    }
+  }
+  if(ep){ep.rec=null;out.push(ep);}
+  return out.reverse();
+}
+const ret=(s,a,b)=>s[a]&&s[b]?(s[b]/s[a]-1)*100:null;
+
+/* ── 컨트롤 ── */
+function seg(id,items,key,cb){
+  $(id).innerHTML=items.map(([v,l])=>`<button data-v="${v}" class="${String(ST[key])===String(v)?'on':''}">${l}</button>`).join('');
+  $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{ST[key]=isNaN(+b.dataset.v)?b.dataset.v:+b.dataset.v;
+    $(id).querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));cb();});
+}
+
+/* ── KPI ── */
+function drawKpi(){
+  const c=calc(),n=D.dates.length-1,v=D.credit,cr=c.credit;
+  const pkI=cr.pi[n],cur=v[n],bl=ST.basis==='ath'?'사상 최고':'최근 1년 고점';
+  const ch=k=>n-k>=0?(v[n]/v[n-k]-1)*100:null;
+  const dep=D.deposit[n];
+  $('kpi').innerHTML=`
+    <div class="kpi hero"><div class="k">현재 MDD · ${bl} 대비</div><div class="v">${pc(cr.dd[n],1)}</div><div class="s">고점 대비 −${jo(cr.pk[n]-cur)}조원</div></div>
+    <div class="kpi"><div class="k">신용잔고 (${fds(D.dates[n])})</div><div class="v">${jo(cur)}<small>조원</small></div><div class="s">1주 <span class="${cls(ch(5))}">${pc(ch(5))}</span> · 1개월 <span class="${cls(ch(20))}">${pc(ch(20))}</span></div></div>
+    <div class="kpi"><div class="k">기준 고점</div><div class="v">${jo(cr.pk[n])}<small>조원</small></div><div class="s">${fd(D.dates[pkI])} · ${n-pkI}거래일 경과</div></div>
+    <div class="kpi"><div class="k">같은 날 지수 MDD</div><div class="v" style="font-size:15px;margin-top:5px"><span style="color:var(--s-kospi)">코스피 ${pc(c.kospi.dd[n])}</span></div><div class="s"><span style="color:var(--s-kosdaq);font-weight:700">코스닥 ${pc(c.kosdaq.dd[n])}</span></div></div>
+    <div class="kpi"><div class="k">예탁금 대비 신용</div><div class="v">${dep?(cur/dep*100).toFixed(1):'–'}<small>%</small></div><div class="s">고객예탁금 ${jo(dep)}조원</div></div>`;
+}
+
+/* ── SVG 라인 차트 ── */
+function niceStep(span,t){const r=span/t,p=Math.pow(10,Math.floor(Math.log10(r))),m=r/p;return (m<1.5?1:m<3?2:m<7?5:10)*p;}
+function chart(el,o){
+  const W=Math.max(300,el.clientWidth),H=W<560?230:300,pl=44,pr=o.right?52:12,pt=10,pb=24;
+  const [i0,i1]=o.span,N=i1-i0+1,X=i=>pl+(i-i0)/Math.max(1,N-1)*(W-pl-pr);
+  const ax=(lo,hi,zero)=>{if(zero){hi=Math.max(hi,0);}const st=niceStep(hi-lo||1,5);lo=Math.floor(lo/st)*st;hi=Math.ceil(hi/st)*st;
+    return {lo,hi,st,Y:v=>pt+(hi-v)/(hi-lo||1)*(H-pt-pb)};};
+  const L=ax(o.lo,o.hi,o.zero),R=o.right?ax(o.right.lo,o.right.hi):null;
+  let g='';
+  for(let v=L.lo;v<=L.hi+1e-9;v+=L.st){const y=L.Y(v);g+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="var(--grid)"/><text x="${pl-6}" y="${y+3.5}" text-anchor="end">${o.yfmt(v)}</text>`;}
+  if(R)for(let v=R.lo;v<=R.hi+1e-9;v+=R.st){g+=`<text x="${W-pr+6}" y="${R.Y(v)+3.5}">${o.right.fmt(v)}</text>`;}
+  // x 눈금: 기간 길이에 따라 연/월
+  const ds=D.dates,yrs=N>700,step=N>3000?2:1;let last=null,lx=-99;
+  for(let i=i0;i<=i1;i++){const d=String(ds[i]),key=yrs?d.slice(0,4):d.slice(0,6);
+    if(key!==last){last=key;const yy=+d.slice(0,4),mm=+d.slice(4,6);
+      if(yrs?(yy%step===0):(N>260?mm%3===1:true)){const x=X(i);if(x-lx>38&&x>pl+4){lx=x;
+        g+=`<line x1="${x}" x2="${x}" y1="${pt}" y2="${H-pb}" stroke="var(--grid)" stroke-dasharray="2 3"/><text x="${x}" y="${H-7}" text-anchor="middle">${yrs?yy:(mm===1?`'${String(yy).slice(2)}.1`:mm+'월')}</text>`;}}}}
+  (o.hlines||[]).forEach(h=>{const y=L.Y(h.y);if(y<pt||y>H-pb)return;g+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="${h.c}" stroke-width="1" ${h.dash?'stroke-dasharray="4 4"':''}/>`+(h.t?`<text x="${W-pr-4}" y="${y-4}" text-anchor="end" style="fill:${h.c}">${h.t}</text>`:'');});
+  const path=(s,Y)=>{let p='',pen=false;for(let i=i0;i<=i1;i++){const v=s[i];if(v==null){pen=false;continue;}p+=(pen?'L':'M')+X(i).toFixed(1)+','+Y(v).toFixed(1);pen=true;}return p;};
+  o.series.forEach(s=>{const Y=s.right?R.Y:L.Y,p=path(s.v,Y);if(!p)return;
+    if(s.fill){const b=Y(Math.min(Math.max(s.base??0,L.lo),L.hi));g+=`<path d="${p}L${X(i1).toFixed(1)},${b}L${X(i0).toFixed(1)},${b}Z" fill="${s.fill}" stroke="none"/>`;}
+    g+=`<path d="${p}" fill="none" stroke="${s.c}" stroke-width="${s.w||1.4}" ${s.dash?'stroke-dasharray="4 3"':''} stroke-linejoin="round"/>`;});
+  g+=`<line id="${el.id}X" x1="0" x2="0" y1="${pt}" y2="${H-pb}" stroke="var(--faint)" stroke-width="1" style="display:none"/><g id="${el.id}D"></g>`;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}">${g}</svg>`;
+  const svg=el.querySelector('svg'),cx=$(el.id+'X'),dots=$(el.id+'D'),tip=$('tip');
+  const move=e=>{const r=svg.getBoundingClientRect(),px=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+    if(px<pl||px>W-pr){out();return;}
+    const i=Math.round(i0+(px-pl)/(W-pl-pr)*(N-1)),x=X(i);
+    cx.setAttribute('x1',x);cx.setAttribute('x2',x);cx.style.display='';
+    dots.innerHTML=o.series.filter(s=>!s.dash&&s.v[i]!=null).map(s=>`<circle cx="${x}" cy="${(s.right?R.Y:L.Y)(s.v[i])}" r="3.2" fill="${s.c}" stroke="var(--surface)" stroke-width="1.5"/>`).join('');
+    tip.innerHTML=o.tip(i);tip.style.display='block';
+    const cxp=e.touches?e.touches[0].clientX:e.clientX,cyp=e.touches?e.touches[0].clientY:e.clientY,tw=tip.offsetWidth;
+    tip.style.left=Math.max(6,Math.min(window.innerWidth-tw-6,cxp+(cxp>window.innerWidth/2?-tw-14:14)))+'px';tip.style.top=(cyp+14)+'px';};
+  const out=()=>{cx.style.display='none';dots.innerHTML='';tip.style.display='none';};
+  svg.onmousemove=move;svg.onmouseleave=out;svg.ontouchstart=move;svg.ontouchmove=move;svg.ontouchend=out;
+}
+function span(){const n=D.dates.length-1,r=RANGES.find(x=>x[0]===ST.range)[1];return [r?Math.max(0,n-r):0,n];}
+function mm(arrs,i0,i1){let lo=Infinity,hi=-Infinity;arrs.forEach(a=>{for(let i=i0;i<=i1;i++){const v=a[i];if(v!=null){if(v<lo)lo=v;if(v>hi)hi=v;}}});return [lo,hi];}
+
+function drawDD(){
+  const c=calc(),sp=span(),ser=[{v:c.credit.dd,c:css('--s-credit'),fill:css('--s-credit-fill'),w:1.6}];
+  const lg=[`<span><i class="sw" style="background:var(--s-credit)"></i>신용잔고</span>`];
+  if($('cKospi').checked){ser.push({v:c.kospi.dd,c:css('--s-kospi'),w:1.1});lg.push(`<span><i class="sw" style="background:var(--s-kospi)"></i>코스피</span>`);}
+  if($('cKosdaq').checked){ser.push({v:c.kosdaq.dd,c:css('--s-kosdaq'),w:1.1});lg.push(`<span><i class="sw" style="background:var(--s-kosdaq)"></i>코스닥</span>`);}
+  lg.push(`<span><i class="sw" style="background:var(--up)"></i>임계 −${ST.thr}%</span>`);
+  $('ddLeg').innerHTML=lg.join('');
+  const [lo]=mm(ser.map(s=>s.v),sp[0],sp[1]);
+  $('ddSub').textContent=`${ST.basis==='ath'?'사상 최고':'최근 1년(250거래일) 고점'} 기준 · ${fd(D.dates[sp[0]])} ~ ${fd(D.dates[sp[1]])}`;
+  chart($('cDD'),{span:sp,lo:Math.min(lo,-ST.thr),hi:0,zero:true,yfmt:v=>v.toFixed(0)+'%',series:ser,
+    hlines:[{y:-ST.thr,c:css('--up'),dash:1}],
+    tip:i=>`<b>${fd(D.dates[i])}</b><br><span style="color:var(--s-credit)">●</span> 신용잔고 ${jo(D.credit[i])}조 · <b>${pc(c.credit.dd[i])}</b>`
+      +($('cKospi').checked?`<br><span style="color:var(--s-kospi)">●</span> 코스피 ${pc(c.kospi.dd[i])}`:'')
+      +($('cKosdaq').checked?`<br><span style="color:var(--s-kosdaq)">●</span> 코스닥 ${pc(c.kosdaq.dd[i])}`:'')});
+}
+function drawLv(){
+  const c=calc(),sp=span(),cr=D.credit.map(v=>v/1e4),pk=c.credit.pk.map(v=>v/1e4);
+  const ser=[{v:pk,c:css('--faint'),w:1,dash:1},{v:cr,c:css('--s-credit'),w:1.7}];
+  const [lo,hi]=mm([cr,pk],sp[0],sp[1]);
+  let right=null;const ix=ST.idx!=='none'?D[ST.idx]:null;
+  if(ix){const [a,b]=mm([ix],sp[0],sp[1]);right={lo:a,hi:b,fmt:v=>Math.round(v).toLocaleString()};
+    ser.unshift({v:ix,c:css(ST.idx==='kospi'?'--s-kospi':'--s-kosdaq'),w:1,right:true});}
+  chart($('cLv'),{span:sp,lo:lo*0.95,hi:hi*1.02,yfmt:v=>v>=10?v.toFixed(0):v.toFixed(1),series:ser,right,
+    tip:i=>`<b>${fd(D.dates[i])}</b><br><span style="color:var(--s-credit)">●</span> 신용잔고 <b>${jo(D.credit[i])}조</b> (고점 ${jo(c.credit.pk[i])}조)`
+      +(ix?`<br><span style="color:var(${ST.idx==='kospi'?'--s-kospi':'--s-kosdaq'})">●</span> ${ST.idx==='kospi'?'코스피':'코스닥'} ${Math.round(ix[i]).toLocaleString()}`:'')});
+}
+
+function drawEp(){
+  const eps=episodes(ST.thr),ds=D.dates,v=D.credit,n=ds.length-1,K=D.kospi,Q=D.kosdaq,c=calc().credit;
+  $('epSub').textContent=`${ST.basis==='ath'?'사상 최고':'최근 1년 고점'} 대비 −${ST.thr}% 이상 · ${eps.length}회 (${fds(ds[0])}~)`;
+  const f=(i,k)=>i+k<=n?i+k:null;
+  let h=`<thead><tr><th class="l">기준 고점</th><th class="l">−${ST.thr}% 도달</th><th class="l">저점</th><th>최대 낙폭</th>
+    <th>코스피<small>고점→저점</small></th><th>코스닥<small>고점→저점</small></th>
+    <th>코스피<small>도달 후 60일</small></th><th>코스닥<small>도달 후 60일</small></th>
+    <th class="l">회복<small>고점 재돌파</small></th><th>하락 기간<small>거래일</small></th><th>회복 기간<small>저점→회복</small></th></tr></thead><tbody>`;
+  const fw={k:[],q:[],mdd:[],dn:[],up:[]};
+  eps.forEach(e=>{
+    const k60=f(e.en,60)!=null?ret(K,e.en,e.en+60):null,q60=f(e.en,60)!=null?ret(Q,e.en,e.en+60):null;
+    const mx=c.dd[e.tr];
+    if(k60!=null)fw.k.push(k60);if(q60!=null)fw.q.push(q60);
+    if(e.rec!=null){fw.mdd.push(mx);fw.dn.push(e.tr-e.pk);fw.up.push(e.rec-e.tr);}
+    h+=`<tr class="${e.rec==null?'cur':''}"><td class="l"><b>${fd(ds[e.pk])}</b><span class="q">${jo(v[e.pk])}조</span></td>
+      <td class="l">${fd(ds[e.en])}</td>
+      <td class="l">${fd(ds[e.tr])}${e.rec==null&&e.tr===n?' <span class="ing">↓</span>':''}<span class="q">${jo(v[e.tr])}조</span></td>
+      <td><b class="m">${pc(mx)}</b></td>
+      <td class="${cls(ret(K,e.pk,e.tr))}">${pc(ret(K,e.pk,e.tr))}</td><td class="${cls(ret(Q,e.pk,e.tr))}">${pc(ret(Q,e.pk,e.tr))}</td>
+      <td class="${cls(k60)}">${k60==null?'<span class="z">'+(n-e.en)+'일째</span>':pc(k60)}</td><td class="${cls(q60)}">${q60==null?'<span class="z">–</span>':pc(q60)}</td>
+      <td class="l">${e.rec==null?'<span class="ing">진행중</span>':fd(ds[e.rec])}</td>
+      <td>${e.tr-e.pk}</td><td>${e.rec==null?'<span class="z">–</span>':e.rec-e.tr}</td></tr>`;
+  });
+  const med=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
+  if(eps.length>1)h+=`<tr class="sum"><td class="l">중앙값</td><td class="l z">완료 ${fw.mdd.length}회</td><td></td><td>${pc(med(fw.mdd))}</td><td></td><td></td>
+    <td class="${cls(med(fw.k))}">${pc(med(fw.k))}</td><td class="${cls(med(fw.q))}">${pc(med(fw.q))}</td><td></td>
+    <td>${med(fw.dn)==null?'–':Math.round(med(fw.dn))}</td><td>${med(fw.up)==null?'–':Math.round(med(fw.up))}</td></tr>`;
+  $('epTbl').innerHTML=eps.length?h+'</tbody>':'<tr><td class="l z">해당 구간이 없습니다 — 임계를 낮춰 보세요.</td></tr>';
+}
+
+function drawCharts(){drawDD();drawLv();}
+function render(){drawKpi();drawCharts();drawEp();}
+
+seg('segBasis',BASIS,'basis',render);
+seg('segRange',RANGES.map(([k])=>[k,k==='ALL'?'전체':k]),'range',drawCharts);
+seg('segThr',THRS.map(t=>[t,'−'+t+'%']),'thr',()=>{drawDD();drawEp();});
+seg('segIdx',[['kospi','코스피'],['kosdaq','코스닥'],['none','없음']],'idx',drawLv);
+['cKospi','cKosdaq'].forEach(id=>$(id).onchange=drawDD);
+let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>D&&drawCharts(),120);}).observe(document.querySelector('.wrap'));
+
+fetch('data/creditdd.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{
+  D=d;
+  $('meta').innerHTML=`기준 <b>${fd(D.asof)}</b> · 갱신 ${D.updated} · 개인 신용거래융자 잔고(유가증권+코스닥) 전고점 대비 낙폭 · ${fd(D.dates[0])}~`;
+  $('note').innerHTML=`<b>계산 방식</b><br>
+    · <b>신용잔고</b> = 증권사 신용거래융자 잔고(유가증권+코스닥 합계, 금융투자협회 집계). 통상 1~2영업일 늦게 공시됩니다. <b>고객예탁금</b>은 같은 집계의 예탁금.<br>
+    · <b>MDD</b> = 잔고 ÷ 기준 고점 − 1. 기준 고점은 <b>사상 최고</b>(2002년 이후 누적 최고) 또는 <b>최근 1년 고점</b>(250거래일 이동 최고). 지수 MDD도 같은 기준·같은 날짜로 계산(종가).<br>
+    · <b>하락 구간</b> = 낙폭이 임계에 처음 닿은 날부터 기준 고점을 다시 넘을 때까지. 저점 = 구간 내 최대 낙폭일. 중앙값은 회복이 끝난 구간 기준(진입 후 60일 수익률은 60일이 지난 구간 전부).<br>
+    · 하루만 튀었다 돌아온 집계 오기 ${(D.fixed||[]).length}건은 전후 평균으로 보정했습니다${(D.fixed||[]).length?` (${D.fixed.map(x=>fds(x[0])).join(', ')})`:''}.`;
+  render();
+}).catch(e=>{$('meta').textContent='데이터를 불러오지 못했습니다: '+e;});
+</script>
+</body></html>
