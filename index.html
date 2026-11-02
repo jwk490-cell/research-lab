@@ -602,6 +602,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="invflow">투자자별 일일 수급 <small>장중</small></button>
     <button class="navitem" data-tab="streak">수급 연속 <small>새벽</small></button>
     <button class="navitem" data-tab="flowosc">수급 오실레이터 <small>MACD</small></button>
+    <button class="navitem" data-tab="binjip">업종 내 수급 빈집찾기 <small>NEW</small></button>
     <button class="navitem" data-tab="etccorp">기타법인 수급 <small>매일</small></button>
     <button class="navitem" data-tab="krhigh">韓 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="ushigh">美 신고가 (20·60일·52주)</button>
@@ -703,6 +704,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
         <div class="grid">
           <button class="card" data-go="supply"><h3>투자자별 수급/거래량 증감 <span class="tag">매일</span></h3><p>52주 신고가 · 거래량 급증 · 주체별 순매수/순매도</p></button>
           <button class="card" data-go="invflow"><h3>투자자별 일일 수급 <span class="tag">장중 5분 · 마감 후 확정</span></h3><p>개인·외국인·기관(연기금·사모·투신·금융투자) 당일 누적 순매수 — 코스피·코스닥 현물, 코스피200·미니·코스닥150 선물, 콜·풋옵션, 주식선물 · 만기 이후 선물 누적 포지션 · 주간(월→금) 선차트 · 달력으로 과거일 이동</p></button>
+          <button class="card" data-go="binjip"><h3>업종 내 수급 빈집찾기 <span class="tag">평일 21:25</span></h3><p>업종에 들어온 기관·연기금 순매수를 시총 비중대로 나눴을 때 덜 받은 종목 — KRX 업종별(코스피·코스닥) 주체·기간 선택, 미달 bp·60일 빈집도·전 업종 후보</p></button>
           <button class="card" data-go="streak"><h3>수급 연속 <span class="tag">평일 06:30</span></h3><p>사모·투신·외국인·프로그램 N거래일 연속 순매수 — 시총대비 누적 랭킹, 일자별 아카이브</p></button>
           <button class="card" data-go="etccorp"><h3>기타법인 수급 <span class="tag">평일 16:35 · 21:30</span></h3><p>기타법인(지주·계열사·대주주 법인)이 매일 기계적으로 사 모으는 종목 — 연속 매집일·누적·거래대금 비중·추정 취득 지분·5% 보고까지 잔여일, 자사주 교차·DART 지분공시 연결</p></button>
           <button class="card" data-go="krhigh"><h3>韓 신고가 (20·60일·52주) <span class="tag">평일 21:35</span></h3><p>20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 30억↑ — 키움 전수판정</p></button>
@@ -877,6 +879,10 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-flowosc">
       <iframe data-src="flowosc/index.html" title="수급 오실레이터"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-binjip">
+      <iframe data-src="binjip.html" title="업종 내 수급 빈집찾기"></iframe>
     </section>
 
     <section class="panel embed" id="tab-util">
@@ -3307,7 +3313,7 @@ function openTab(tab){
   panel.classList.add('on');
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
-  const FRESH={invflow:1,oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,kospitop:1,kosdaqtop:1,etccorp:1,
+  const FRESH={binjip:1,invflow:1,oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,kospitop:1,kosdaqtop:1,etccorp:1,
                rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1,mktsize:1,ircal:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?(f.dataset.src.includes('?')?'&':'?')+'v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
@@ -3555,7 +3561,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   ircal:{m:'x',note:'30분마다 자동 동기화됩니다 — 탭 안의 ↻ 버튼으로 최신 파일을 다시 읽습니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
-  supply:{m:'a',eta:'~7분'}, invflow:{m:'x',note:'장중 5분마다 잠정치, 장 마감 후 KRX 확정치로 자동 교체됩니다'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
+  supply:{m:'a',eta:'~7분'}, invflow:{m:'x',note:'장중 5분마다 잠정치, 장 마감 후 KRX 확정치로 자동 교체됩니다'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, binjip:{m:'x',note:'평일 21:25 확정치로 자동 갱신됩니다'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
   rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'}, kospitop:{m:'a',eta:'~1분'}, kosdaqtop:{m:'a',eta:'~1분'}, brregime:{m:'a',eta:'~3분'}, etccorp:{m:'a',eta:'~1분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},

@@ -1,0 +1,351 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>수급 빈집찾기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<script>
+(function(){var t="dark";try{t=localStorage.getItem("rl-theme")||"dark";}catch(e){}if(t==="dark")document.documentElement.classList.add("dark");})();
+</script>
+<style>
+:root{
+  --bg:#f2f4f6; --surface:#ffffff; --surface2:#f2f4f6; --line:#e7eaee; --line2:#eef0f3;
+  --text:#191f28; --sub:#4e5968; --faint:#8b95a1;
+  --accent:#3168f0; --accent-soft:rgba(49,104,240,.08); --accent-line:rgba(49,104,240,.28);
+  --up:#f04452; --down:#3485fa; --gold:#c98a00; --gold-soft:rgba(201,138,0,.12);
+  --shadow:0 1px 3px rgba(25,31,40,.04);
+}
+html.dark{
+  --bg:#101014; --surface:#1a1b20; --surface2:#232530; --line:#272930; --line2:#232530;
+  --text:#e9ebee; --sub:#9aa2ad; --faint:#6d7480;
+  --accent:#4d7df5; --accent-soft:rgba(77,125,245,.14); --accent-line:rgba(77,125,245,.4);
+  --up:#ff5c6a; --down:#4c9bff; --gold:#f0b429; --gold-soft:rgba(240,180,41,.14);
+  --shadow:0 1px 3px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif}
+body{background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding:20px 22px 64px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--sub);font-size:12px;margin-top:3px}
+.sub b{color:var(--text);font-weight:700}
+.card{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:16px 18px}
+.card h2{font-size:14.5px;font-weight:800;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card h2 small{font-size:11.5px;font-weight:500;color:var(--faint)}
+.ctrl{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.row .lab{font-size:11.5px;font-weight:700;color:var(--faint);width:44px;flex:none}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--surface);color:var(--sub);font:inherit;font-size:12.5px;font-weight:600;
+  height:32px;padding:0 12px;border-radius:9px;cursor:pointer}
+.seg button:hover{color:var(--text)}
+.seg button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent);font-weight:800}
+.chk{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--sub);cursor:pointer;user-select:none}
+select{border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-size:12.5px;height:32px;padding:0 8px;border-radius:9px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:12.5px}
+th{font-size:11px;font-weight:700;color:var(--faint);text-align:right;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:bottom;background:var(--surface);cursor:pointer;user-select:none}
+th small{display:block;font-weight:500;font-size:10px}
+th.sorted{color:var(--accent)}
+th.act{background:var(--accent-soft)}
+td{padding:6px 9px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line2);font-variant-numeric:tabular-nums}
+td.act{background:var(--accent-soft);font-weight:700}
+th.l,td.l{text-align:left}
+th:first-child,td:first-child{position:sticky;left:0;z-index:1;background:var(--surface)}
+tr.sec{cursor:pointer}
+tr.sec:hover td{background:var(--surface2)}
+tr.sec.sel td{background:var(--accent-soft)}
+tr.sec.sel td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+tr.grp td{font-size:10.5px;font-weight:800;color:var(--faint);background:var(--surface2);text-align:left;padding:4px 9px;cursor:default}
+.p{color:var(--up)} .m{color:var(--down)} .z{color:var(--faint)}
+td .q{display:block;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:1px}
+.tag{display:inline-block;font-size:10.5px;font-weight:800;padding:1px 6px;border-radius:6px;margin-left:5px;vertical-align:1px}
+.tag.empty{background:var(--accent-soft);color:var(--accent)}
+.tag.short{background:var(--line2);color:var(--sub)}
+.tag.full{background:rgba(240,68,82,.1);color:var(--up)}
+.star{color:var(--gold);font-weight:900;margin-right:3px}
+tr.cand td{background:var(--gold-soft)}
+tr.cand td:first-child{background:linear-gradient(var(--gold-soft),var(--gold-soft)),var(--surface)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:var(--surface2);border-radius:12px;padding:10px 12px}
+.kpi .k{font-size:11px;color:var(--faint);font-weight:700}
+.kpi .v{font-size:17px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:11px;font-weight:600;color:var(--sub);margin-left:4px}
+.charts{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;margin-bottom:14px}
+.chartbox{background:var(--surface2);border-radius:12px;padding:10px 12px}
+.chartbox .ct{font-size:11.5px;font-weight:700;color:var(--sub);margin-bottom:6px}
+.chartbox .ct small{color:var(--faint);font-weight:500}
+svg{display:block;width:100%;height:auto}
+svg text{fill:var(--faint);font-size:10px}
+.warn{background:rgba(240,68,82,.08);color:var(--up);border-radius:10px;padding:8px 12px;font-size:12px;font-weight:600;margin-bottom:12px}
+.note{color:var(--faint);font-size:11.5px;line-height:1.7}
+.note b{color:var(--sub)}
+.hint{font-size:11.5px;color:var(--faint);margin:-6px 0 10px}
+#tip{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:11.5px;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:50;display:none;white-space:nowrap}
+#tip b{font-weight:800}
+@media (max-width:820px){.charts{grid-template-columns:1fr}}
+@media (max-width:560px){body{padding:14px 16px 48px}.row .lab{width:100%}}
+</style></head><body>
+<div class="wrap">
+  <div>
+    <h1>업종 내 수급 빈집찾기</h1>
+    <div class="sub" id="meta">불러오는 중…</div>
+  </div>
+
+  <div class="card ctrl">
+    <div class="row"><span class="lab">시장</span><div class="seg" id="segMk"></div></div>
+    <div class="row"><span class="lab">주체</span><div class="seg" id="segAct"></div></div>
+    <div class="row"><span class="lab">기간</span><div class="seg" id="segWin"></div></div>
+    <div class="row"><span class="lab">필터</span>
+      <select id="fCap"><option value="0">시총 전체</option><option value="1000" selected>시총 1천억+</option><option value="3000">시총 3천억+</option><option value="10000">시총 1조+</option></select>
+      <select id="fVal"><option value="0">거래대금 전체</option><option value="5" selected>20일 평균 5억+</option><option value="10">10억+</option><option value="30">30억+</option></select>
+      <label class="chk"><input type="checkbox" id="fKnife" checked> 떨어지는 칼 제외 <span class="z">(20일 수익률이 업종보다 15%p 이상 부진)</span></label>
+      <label class="chk"><input type="checkbox" id="fCand"> <span class="star">★</span>후보만 보기</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>업종별 순매수 <small id="secSub"></small></h2>
+    <div class="hint">행을 누르면 아래에 업종 안 종목별 빈집 분석이 열립니다. 열 제목을 누르면 정렬됩니다.</div>
+    <div class="tw"><table id="secTbl"></table></div>
+  </div>
+
+  <div class="card" id="detail">
+    <h2 id="dTitle"></h2>
+    <div id="dWarn"></div>
+    <div class="kpis" id="dKpi"></div>
+    <div class="charts">
+      <div class="chartbox"><div class="ct" id="scTitle"></div><div id="scatter"></div></div>
+      <div class="chartbox"><div class="ct" id="hsTitle"></div><div id="hist"></div></div>
+    </div>
+    <div class="tw"><table id="stkTbl"></table></div>
+  </div>
+
+  <div class="card">
+    <h2>전 업종 빈집 후보 <small id="allSub"></small></h2>
+    <div class="hint">순매수가 들어온 업종만 대상으로, 업종 안에서 시총 비중보다 덜 받은 종목을 미달 bp 순으로 모았습니다. 규모 지수(대형·중형·소형)는 중복이라 제외합니다.</div>
+    <div class="tw"><table id="allTbl"></table></div>
+  </div>
+
+  <div class="card note">
+    <b>계산 방식</b><br>
+    · 업종 순매수 F × 종목 시총비중 w = <b>기대 유입</b>. 미달액 = 기대 유입 − 실제 순매수, <b>미달 bp</b> = 미달액 ÷ 종목 시총 × 10,000 (= 업종 bp − 종목 bp).<br>
+    · <b>수급비중</b> = 종목 순매수 ÷ 업종 순매수. 시총비중보다 낮으면 업종 돈을 덜 받은 것. 산점도에서 점선(업종 평균 bp) 아래가 빈집입니다.<br>
+    · <b>60일 빈집도</b> = 같은 주체의 60일 종목 bp − 업종 bp. 음수일수록 오래 비어 있던 집.<br>
+    · <span class="star">★</span><b>후보</b> = 업종 순유입 &amp; 미달 bp &gt; 0 &amp; 60일 빈집도 &lt; 0 (단기·장기 모두 덜 받음), 필터 통과분.<br>
+    · 태그: <span class="tag empty">빈집</span> 업종엔 들어오는데 이 종목은 순매도, <span class="tag short">부족</span> 사긴 했지만 시총비중 미만, <span class="tag full">충분</span> 시총비중 이상 받음.<br>
+    · 업종 = KRX 업종지수 구성종목(보통주). 수급 = KRX 확정치(NXT 제외, 21시 이후 갱신), 시총 = 상장주식수 × 종가. HTS 장중 잠정치와는 차이가 날 수 있습니다.
+  </div>
+</div>
+<div id="tip"></div>
+<script>
+const $=id=>document.getElementById(id);
+let D=null, ST={mk:'KOSPI', act:'pen', win:1, sec:null, secSort:null, stkSort:'gap', stkDir:-1};
+const WLAB=['1일','5일','20일','60일'];
+try{const s=JSON.parse(localStorage.getItem('binjip-st')||'{}');Object.assign(ST,{mk:s.mk||ST.mk,act:s.act||ST.act,win:s.win??ST.win});}catch(e){}
+function save(){try{localStorage.setItem('binjip-st',JSON.stringify({mk:ST.mk,act:ST.act,win:ST.win}));}catch(e){}}
+
+const fmt=(v,d=0)=>v==null||isNaN(v)?'–':v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const sgn=(v,d=0)=>v==null||isNaN(v)?'<span class="z">–</span>':`<span class="${v>0?'p':v<0?'m':'z'}">${v>0?'+':''}${fmt(v,d)}</span>`;
+const pct=(v,d=1)=>v==null||isNaN(v)?'–':fmt(v*100,d)+'%';
+const capTxt=c=>c>=10000?fmt(c/10000,1)+'조':fmt(c)+'억';
+const actLab=k=>D.actors.find(a=>a[0]===k)[1];
+
+function secStats(sec,act,wi){
+  let F=0;for(const c of sec.members)F+=D.stocks[c].f[act][wi];
+  let F60=0;for(const c of sec.members)F60+=D.stocks[c].f[act][3];
+  let rw=0,cw=0;for(const c of sec.members){const s=D.stocks[c];if(s.r20!=null){rw+=s.r20*s.cap;cw+=s.cap;}}
+  return {F,F60,cap:sec.cap,bp:F/sec.cap*1e4,bp60:F60/sec.cap*1e4,r20:cw?rw/cw:0};
+}
+function stockRows(sec){
+  const a=ST.act, wi=ST.win, ss=secStats(sec,a,wi);
+  return sec.members.map((c,rank)=>{
+    const s=D.stocks[c], act=s.f[a][wi], w=s.cap/sec.cap, E=ss.F*w, short=E-act;
+    const bp=act/s.cap*1e4, gap=ss.bp-bp, long=s.f[a][3]/s.cap*1e4-ss.bp60;
+    const share=ss.F!==0?act/ss.F:null;
+    let tag=null;
+    if(ss.F>0){tag=act<=0?'empty':(act<E?'short':'full');}
+    const pass=s.cap>=+$('fCap').value&&s.v20>=+$('fVal').value&&!($('fKnife').checked&&s.r20!=null&&s.r20-ss.r20<=-15);
+    const cand=ss.F>0&&gap>0&&long<0&&pass;
+    return {c,s,rank:rank+1,act,w,E,short,bp,gap,long,share,tag,pass,cand,sec};
+  });
+}
+
+function seg(id,items,cur,on){
+  $(id).innerHTML=items.map(([v,l])=>`<button data-v="${v}" class="${String(v)===String(cur)?'on':''}">${l}</button>`).join('');
+  $(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;on(b.dataset.v);};
+}
+function drawCtrl(){
+  seg('segMk',[['KOSPI','코스피'],['KOSDAQ','코스닥']],ST.mk,v=>{ST.mk=v;ST.sec=null;save();render();});
+  seg('segAct',D.actors.map(a=>[a[0],a[1]]),ST.act,v=>{ST.act=v;save();render();});
+  seg('segWin',WLAB.map((l,i)=>[i,l]),ST.win,v=>{ST.win=+v;save();render();});
+}
+
+/* ── 업종 표 ── */
+const SEC_COLS=['ind','frgn','orgn','fin','ins','inv','samo','pen'];
+function drawSecTbl(){
+  const wi=ST.win, a=ST.act;
+  const secs=D.sectors.filter(s=>s.market===ST.mk);
+  const rows=secs.map(sec=>{
+    const sums={};for(const k of SEC_COLS){let t=0;for(const c of sec.members)t+=D.stocks[c].f[k][wi];sums[k]=t;}
+    const ss=secStats(sec,a,wi);
+    // 시총 상위3 흡수율
+    const top=sec.members.slice(0,3);let ta=0,tw=0;for(const c of top){ta+=D.stocks[c].f[a][wi];tw+=D.stocks[c].cap/sec.cap;}
+    return {sec,sums,bp:ss.bp,F:ss.F,top3:ss.F>0?ta/ss.F:null,top3w:tw};
+  });
+  const key=ST.secSort||a;
+  const val=r=>key==='bp'?r.bp:key==='cap'?r.sec.cap:key==='top3'?(r.top3??-1e9):r.sums[key];
+  const sortRows=list=>list.sort((x,y)=>val(y)-val(x));
+  const ind=sortRows(rows.filter(r=>r.sec.kind==='ind')), size=rows.filter(r=>r.sec.kind==='size');
+  if(!ST.sec||!secs.find(s=>s.key===ST.sec))ST.sec=(ind.find(r=>r.F>0)||ind[0]).sec.key;
+  const thc=(k,l,sm)=>`<th data-k="${k}" class="${k===key?'sorted':''} ${k===a?'act':''}">${l}${k===key?' ▼':''}${sm?`<small>${sm}</small>`:''}</th>`;
+  let h=`<thead><tr><th class="l" data-k="name" style="cursor:default">업종</th>${thc('cap','시총')}${SEC_COLS.map(k=>thc(k,actLab(k))).join('')}${thc('bp',actLab(a)+' bp','시총 대비')}${thc('top3','상위3 흡수','수급 / 시총비중')}</tr></thead><tbody>`;
+  const tr=r=>`<tr class="sec ${r.sec.key===ST.sec?'sel':''}" data-key="${r.sec.key}"><td class="l"><b>${r.sec.name}</b> <span class="z" style="font-size:10.5px">${r.sec.members.length}</span></td>
+    <td>${capTxt(r.sec.cap)}</td>${SEC_COLS.map(k=>`<td class="${k===a?'act':''}">${sgn(r.sums[k])}</td>`).join('')}
+    <td>${sgn(r.bp,1)}</td><td>${r.top3==null?'<span class="z">–</span>':`${pct(r.top3,0)} <span class="z">/ ${pct(r.top3w,0)}</span>`}</td></tr>`;
+  if(size.length)h+=`<tr class="grp"><td colspan="12">규모별</td></tr>`+size.map(tr).join('');
+  h+=`<tr class="grp"><td colspan="12">업종별</td></tr>`+ind.map(tr).join('');
+  $('secTbl').innerHTML=h+'</tbody>';
+  $('secTbl').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{if(th.dataset.k==='name')return;ST.secSort=th.dataset.k;drawSecTbl();});
+  $('secTbl').querySelectorAll('tr.sec').forEach(tr=>tr.onclick=()=>{ST.sec=tr.dataset.key;drawSecTbl();drawDetail();
+    if(window.innerWidth<820)$('detail').scrollIntoView({behavior:'smooth'});});
+  $('secSub').textContent=`${WLAB[wi]} 누적 · 억원 · ${actLab(a)} 기준 정렬`;
+}
+
+/* ── 업종 상세 ── */
+function drawDetail(){
+  const sec=D.sectors.find(s=>s.key===ST.sec);if(!sec)return;
+  const a=ST.act, wi=ST.win, ss=secStats(sec,a,wi), rows=stockRows(sec);
+  $('dTitle').innerHTML=`${sec.name} <small>${sec.market==='KOSPI'?'코스피':'코스닥'} · ${sec.members.length}종목 · ${actLab(a)} ${WLAB[wi]}</small>`;
+  $('dWarn').innerHTML=ss.F>0?'':`<div class="warn">이 기간 ${sec.name} 업종은 ${actLab(a)} 순매도(${fmt(ss.F)}억)입니다. 시총 비례 유입 전제가 성립하지 않아 ★후보·태그를 표시하지 않습니다. 미달 bp는 '업종 평균보다 더 판 종목' 의미로만 보세요.</div>`;
+  const nEmpty=rows.filter(r=>r.tag==='empty').length, nCand=rows.filter(r=>r.cand).length;
+  const top=sec.members.slice(0,3), ta=top.reduce((t,c)=>t+D.stocks[c].f[a][wi],0), tw=top.reduce((t,c)=>t+D.stocks[c].cap,0)/sec.cap;
+  $('dKpi').innerHTML=[
+    ['업종 순매수',`${sgn(ss.F)}<small>억</small>`],
+    ['시총 대비',`${sgn(ss.bp,1)}<small>bp</small>`],
+    ['60일 누적',`${sgn(ss.F60)}<small>억 · ${fmt(ss.bp60,1)}bp</small>`],
+    ['상위3 흡수 / 비중',ss.F>0?`${pct(ta/ss.F,0)}<small>/ ${pct(tw,0)}</small>`:'<span class="z">–</span>'],
+    ['빈집 · ★후보',`${nEmpty}<small>종목</small> · <span style="color:var(--gold)">${nCand}</span><small>종목</small>`],
+  ].map(([k,v])=>`<div class="kpi"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  drawScatter(sec,rows,ss);drawHist(sec);drawStkTbl(rows);
+}
+
+function drawScatter(sec,rows,ss){
+  $('scTitle').innerHTML=`시총(로그) × 종목 순매수 bp <small>— 점선 = 업종 평균 ${fmt(ss.bp,1)}bp, 아래쪽이 빈집</small>`;
+  const W=640,H=300,pl=44,pr=12,pt=12,pb=26;
+  const pts=rows.filter(r=>r.pass||rows.length<=12);
+  if(!pts.length){$('scatter').innerHTML='<div class="z" style="padding:20px">필터 통과 종목 없음</div>';return;}
+  const xs=pts.map(r=>Math.log10(r.s.cap)), ys=pts.map(r=>r.bp).sort((x,y)=>x-y);
+  const q=p=>ys[Math.min(ys.length-1,Math.max(0,Math.round(p*(ys.length-1))))];
+  // 이상치는 가장자리에 붙여 그림(▲▼) — 축은 10~90% 분위 기준
+  let y0=Math.min(q(.1),ss.bp,0), y1=Math.max(q(.9),ss.bp,0);
+  const pad=(y1-y0)*.25||1;y0-=pad;y1+=pad;
+  const x0=Math.min(...xs)-.05, x1=Math.max(...xs)+.05;
+  const X=v=>pl+(v-x0)/(x1-x0)*(W-pl-pr), Y=v=>pt+(1-(Math.max(y0,Math.min(y1,v))-y0)/(y1-y0))*(H-pt-pb);
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  // y 눈금
+  const step=niceStep((y1-y0)/5);
+  for(let v=Math.ceil(y0/step)*step;v<=y1;v+=step){s+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="${Math.abs(v)<1e-9?1.2:.6}"/><text x="${pl-5}" y="${Y(v)+3}" text-anchor="end">${fmt(v,Math.abs(step)<1?1:0)}</text>`;}
+  // x 눈금 (시총)
+  [[2,'100억'],[3,'1천억'],[3.5,'3천억'],[4,'1조'],[4.5,'3조'],[5,'10조'],[5.5,'30조'],[6,'100조'],[6.5,'300조']].forEach(([v,l])=>{if(v>=x0&&v<=x1)s+=`<text x="${X(v)}" y="${H-8}" text-anchor="middle">${l}</text><line x1="${X(v)}" x2="${X(v)}" y1="${pt}" y2="${H-pb}" stroke="var(--line)" stroke-width=".5"/>`;});
+  // 업종 평균선 + 빈집 영역
+  s+=`<rect x="${pl}" y="${Y(ss.bp)}" width="${W-pl-pr}" height="${Math.max(0,H-pb-Y(ss.bp))}" fill="var(--accent-soft)" opacity="${ss.F>0?1:.3}"/>`;
+  s+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(ss.bp)}" y2="${Y(ss.bp)}" stroke="var(--accent)" stroke-dasharray="5 4" stroke-width="1.3"/>`;
+  const cands=pts.filter(r=>r.cand).sort((x,y)=>y.gap-x.gap).slice(0,8).map(r=>r.c);
+  pts.forEach(r=>{
+    const col=r.cand?'var(--gold)':r.bp<ss.bp?'var(--down)':'var(--up)';
+    const rad=3+Math.min(6,Math.sqrt(r.w*100)*1.6);
+    const cx=X(Math.log10(r.s.cap)), cy=Y(r.bp), out=r.bp>y1?-1:r.bp<y0?1:0;
+    if(out)s+=`<path d="M${cx-5},${cy+out*4} L${cx+5},${cy+out*4} L${cx},${cy-out*4} Z" fill="${col}" fill-opacity=".75" data-c="${r.c}"/>`;
+    else s+=`<circle cx="${cx}" cy="${cy}" r="${rad}" fill="${col}" fill-opacity="${r.cand?.9:.55}" stroke="${col}" stroke-width="${r.cand?1.5:0}" data-c="${r.c}"/>`;
+  });
+  // 라벨: 후보 상위 8 + 시총 상위 3, 세로 겹침 회피
+  const placed=[];
+  pts.filter(r=>cands.includes(r.c)||r.rank<=3).sort((x,y)=>Y(x.bp)-Y(y.bp)).forEach(r=>{
+    const cx=X(Math.log10(r.s.cap)), right=cx>W-110;
+    let ty=Y(r.bp)+3;
+    for(let k=0;k<12&&placed.some(p=>Math.abs(p.y-ty)<11&&Math.abs(p.x-cx)<90);k++)ty+=11;
+    placed.push({x:cx,y:ty});
+    s+=`<text x="${right?cx-8:cx+8}" y="${ty}" text-anchor="${right?'end':'start'}" style="fill:${r.cand?'var(--gold)':'var(--text)'};font-size:10.5px;font-weight:700">${r.s.n}</text>`;
+  });
+  $('scatter').innerHTML=s+'</svg>';
+  const byC=Object.fromEntries(pts.map(r=>[r.c,r]));
+  $('scatter').querySelectorAll('[data-c]').forEach(el=>{
+    el.onmousemove=e=>{const r=byC[el.dataset.c];tip(e,`<b>${r.s.n}</b> · 시총 ${capTxt(r.s.cap)} (비중 ${pct(r.w)})<br>순매수 ${sgn(r.act)}억 · ${fmt(r.bp,1)}bp<br>기대 ${fmt(r.E)}억 · 미달 ${sgn(r.short)}억 (${fmt(r.gap,1)}bp)`);};
+    el.onmouseleave=()=>$('tip').style.display='none';
+  });
+}
+function niceStep(r){const p=Math.pow(10,Math.floor(Math.log10(r||1)));const n=r/p;return (n<1.5?1:n<3?2:n<7?5:10)*p;}
+function tip(e,html){const t=$('tip');t.innerHTML=html;t.style.display='block';
+  const x=Math.min(e.clientX+14,window.innerWidth-t.offsetWidth-8);t.style.left=x+'px';t.style.top=(e.clientY+14)+'px';}
+
+function drawHist(sec){
+  const a=ST.act, h=sec.hist[a], n=h.length, wN=D.windows[ST.win];
+  $('hsTitle').innerHTML=`${actLab(a)} 일별 순매수 (최근 ${n}거래일, 억) <small>— 음영 = 선택 기간</small>`;
+  const W=480,H=300,pl=44,pr=8,pt=12,pb=26;
+  const mx=Math.max(1,...h.map(Math.abs));
+  const bw=(W-pl-pr)/n, Y=v=>pt+(1-(v+mx)/(2*mx))*(H-pt-pb);
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  s+=`<rect x="${pl+bw*(n-wN)}" y="${pt}" width="${bw*wN}" height="${H-pt-pb}" fill="var(--accent-soft)"/>`;
+  const step=niceStep(mx/2.5);
+  for(let v=-Math.floor(mx/step)*step;v<=mx;v+=step)s+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="${v===0?1.2:.5}"/><text x="${pl-5}" y="${Y(v)+3}" text-anchor="end">${fmt(v)}</text>`;
+  h.forEach((v,i)=>{const y=Y(Math.max(v,0)),hh=Math.abs(Y(v)-Y(0));
+    s+=`<rect x="${pl+i*bw+bw*.12}" y="${v>=0?Y(v):Y(0)}" width="${bw*.76}" height="${Math.max(.5,hh)}" fill="${v>=0?'var(--up)':'var(--down)'}" opacity=".8" data-i="${i}"/>`;});
+  const ds=D.hist_dates;[0,Math.floor(n/2),n-1].forEach(i=>{s+=`<text x="${pl+i*bw+bw/2}" y="${H-8}" text-anchor="${i===0?'start':i===n-1?'end':'middle'}">${ds[i].slice(4,6)}/${ds[i].slice(6)}</text>`;});
+  $('hist').innerHTML=s+'</svg>';
+  $('hist').querySelectorAll('rect[data-i]').forEach(el=>{
+    el.onmousemove=e=>{const i=+el.dataset.i;tip(e,`${ds[i].slice(0,4)}-${ds[i].slice(4,6)}-${ds[i].slice(6)} · ${actLab(a)} <b>${sgn(h[i])}억</b>`);};
+    el.onmouseleave=()=>$('tip').style.display='none';});
+}
+
+const STK_COLS=[
+  ['name','종목',null,'l'],['cap','시총','',''],['w','시총비중','',''],['act','순매수','억',''],['E','기대 유입','억',''],
+  ['short','미달액','억',''],['gap','미달 bp','클수록 빈집',''],['share','수급비중','vs 시총비중',''],['long','60일 빈집도','bp',''],
+  ['r5','5일',' %',''],['r20','20일',' %',''],['dd','60일高 대비','%',''],['v20','거래대금','20일평균 억',''],
+];
+function drawStkTbl(rows){
+  const k=ST.stkSort, dir=ST.stkDir;
+  const v=r=>k==='name'?r.s.n:k==='cap'?r.s.cap:['r5','r20','dd','v20'].includes(k)?(r.s[k]??-1e9):(r[k]??-1e9);
+  const list=rows.filter(r=>r.pass&&(!$('fCand').checked||r.cand)).sort((x,y)=>k==='name'?dir*String(v(x)).localeCompare(v(y)):dir*(v(x)-v(y)));
+  const hid=rows.length-list.length;
+  let h=`<thead><tr>${STK_COLS.map(([c,l,sm,cl])=>`<th data-k="${c}" class="${cl} ${c===k?'sorted':''}">${l}${c===k?(dir<0?' ▼':' ▲'):''}${sm?`<small>${sm}</small>`:''}</th>`).join('')}</tr></thead><tbody>`;
+  h+=list.map(r=>{
+    const tag=r.tag?`<span class="tag ${r.tag}">${{empty:'빈집',short:'부족',full:'충분'}[r.tag]}</span>`:'';
+    return `<tr class="${r.cand?'cand':''}"><td class="l">${r.cand?'<span class="star">★</span>':''}<b>${r.s.n}</b>${tag}<span class="q">${r.c} · 시총 ${r.rank}위</span></td>
+    <td>${capTxt(r.s.cap)}</td><td>${pct(r.w)}</td><td>${sgn(r.act)}</td><td>${fmt(r.E)}</td><td>${sgn(r.short)}</td>
+    <td><b>${sgn(r.gap,1)}</b></td><td>${r.share==null?'–':pct(r.share)}<span class="q">${pct(r.w)}</span></td><td>${sgn(r.long,1)}</td>
+    <td>${sgn(r.s.r5,1)}</td><td>${sgn(r.s.r20,1)}</td><td>${sgn(r.s.dd,1)}</td><td>${fmt(r.s.v20)}</td></tr>`;}).join('');
+  if(hid)h+=`<tr><td class="l z" colspan="13" style="font-size:11px">필터로 ${hid}종목 숨김 — 업종 합계·시총비중 계산에는 포함</td></tr>`;
+  $('stkTbl').innerHTML=h+'</tbody>';
+  $('stkTbl').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const c=th.dataset.k;if(ST.stkSort===c)ST.stkDir*=-1;else{ST.stkSort=c;ST.stkDir=c==='name'?1:-1;}drawDetail();});
+}
+
+/* ── 전 업종 후보 ── */
+function drawAll(){
+  const a=ST.act, wi=ST.win;
+  let all=[];
+  D.sectors.filter(s=>s.market===ST.mk&&s.kind==='ind').forEach(sec=>{
+    const ss=secStats(sec,a,wi);if(ss.F<=0)return;
+    stockRows(sec).forEach(r=>{if(r.cand)all.push(Object.assign(r,{secBp:ss.bp}));});
+  });
+  all.sort((x,y)=>y.gap-x.gap);all=all.slice(0,40);
+  $('allSub').textContent=`${actLab(a)} ${WLAB[wi]} · ★후보 ${all.length}종목 (상위 40)`;
+  if(!all.length){$('allTbl').innerHTML='<tr><td class="l z">조건을 만족하는 후보가 없습니다 — 주체·기간·필터를 바꿔 보세요.</td></tr>';return;}
+  let h=`<thead><tr><th class="l">종목</th><th class="l">업종</th><th>업종 bp</th><th>시총</th><th>시총비중</th><th>순매수<small>억</small></th><th>미달액<small>억</small></th><th>미달 bp</th><th>60일 빈집도</th><th>20일<small>%</small></th><th>거래대금<small>억</small></th></tr></thead><tbody>`;
+  h+=all.map(r=>`<tr class="sec" data-key="${r.sec.key}"><td class="l"><span class="star">★</span><b>${r.s.n}</b>${r.tag?`<span class="tag ${r.tag}">${{empty:'빈집',short:'부족',full:'충분'}[r.tag]}</span>`:''}<span class="q">${r.c}</span></td>
+    <td class="l">${r.sec.name}</td><td>${sgn(r.secBp,1)}</td><td>${capTxt(r.s.cap)}</td><td>${pct(r.w)}</td><td>${sgn(r.act)}</td><td>${sgn(r.short)}</td>
+    <td><b>${sgn(r.gap,1)}</b></td><td>${sgn(r.long,1)}</td><td>${sgn(r.s.r20,1)}</td><td>${fmt(r.s.v20)}</td></tr>`).join('');
+  $('allTbl').innerHTML=h+'</tbody>';
+  $('allTbl').querySelectorAll('tr.sec').forEach(tr=>tr.onclick=()=>{ST.sec=tr.dataset.key;drawSecTbl();drawDetail();$('detail').scrollIntoView({behavior:'smooth'});});
+}
+
+function render(){drawCtrl();drawSecTbl();drawDetail();drawAll();}
+['fCap','fVal','fKnife','fCand'].forEach(id=>$(id).onchange=()=>{drawDetail();drawAll();});
+
+fetch('data/binjip.json?v='+Math.floor(Date.now()/6e5)).then(r=>r.json()).then(d=>{
+  D=d;
+  if(!D.actors.find(a=>a[0]===ST.act))ST.act='pen';
+  const a=D.asof;
+  $('meta').innerHTML=`기준 <b>${a.slice(0,4)}-${a.slice(4,6)}-${a.slice(6)}</b> 확정치 · 업종 구성 ${D.members_date||'–'} · 갱신 ${D.built} · 업종에 들어온 돈을 시총 비중대로 나눴을 때 덜 받은 종목 = 빈집`;
+  render();
+}).catch(e=>{$('meta').textContent='데이터를 불러오지 못했습니다: '+e;});
+</script>
+</body></html>
