@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<script>
+/* 리서치랩 테마 연동: 상위 사이트의 rl-theme(기본 다크)를 따르고, 토글하면 storage 이벤트로 즉시 반영 */
+(function(){var qt=(location.search.match(/[?&]theme=(dark|light)/)||[])[1];function ap(){var t='dark';try{t=localStorage.getItem('rl-theme')||'dark';}catch(e){}if(qt)t=qt;document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}
+ap();window.addEventListener('storage',function(e){if(e.key==='rl-theme'){ap();if(window.redraw)redraw();}});})();
+/* 화면 폭 맞춤: 배율 1에서 배치를 계산한 뒤 캔버스만 축소 (최소 0.55, 그보다 좁으면 가로 스크롤) */
+window.preZoom=function(){var c=document.getElementById('canvas');if(c)c.style.zoom=1;};
+window.fitZoom=function(){var c=document.getElementById('canvas');if(!c)return;var a=document.documentElement.clientWidth-24;c.style.zoom=Math.max(.55,Math.min(1,a/1640));};
+window.addEventListener('resize',function(){window.fitZoom();});
+</script>
+<title>화학 밸류체인 지도</title>
+<style>
+:root{--page:#f9f9f7;--surface:#fcfcfb;--card:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;
+--ring:rgba(11,11,11,.10);--cn:#e34948;--kr:#4a3aa7;--o1:#a9a8a1;--o2:#c3c2b7;--o3:#d6d5ce;--etc:#e9e8e2;--up:#c0362c;--dn:#1c5cab}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#0d0d0d;--surface:#1a1a19;--card:#20201f;--ink:#fff;--ink2:#c3c2b7;
+--muted:#898781;--grid:#2c2c2a;--axis:#383835;--ring:rgba(255,255,255,.10);--cn:#e66767;--kr:#9085e9;--o1:#6b6a65;--o2:#55544f;--o3:#454540;--etc:#363632;--up:#ff7b72;--dn:#6da7ec}}
+:root[data-theme="dark"]{--page:#0d0d0d;--surface:#1a1a19;--card:#20201f;--ink:#fff;--ink2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;
+--ring:rgba(255,255,255,.10);--cn:#e66767;--kr:#9085e9;--o1:#6b6a65;--o2:#55544f;--o3:#454540;--etc:#363632;--up:#ff7b72;--dn:#6da7ec}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Segoe UI",sans-serif}
+.wrap{overflow-x:auto;padding:16px}
+#canvas{position:relative;width:1640px;margin:0 auto;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--ring)}
+header{position:absolute;left:28px;top:22px;right:28px}
+h1{margin:0;font-size:26px;letter-spacing:-.3px}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:6px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:var(--ink2);align-items:center}
+.legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend .ln{display:inline-block;width:26px;border-top:2px solid var(--ink2);margin-right:6px;vertical-align:3px}
+.legend .ln.alt{border-top-style:dashed}
+.legend .ln.sub{border-top:2px dotted var(--ink2)}
+.theses{position:absolute;right:28px;top:22px;width:600px;display:grid;grid-template-columns:1fr;gap:6px}
+.th{background:var(--card);box-shadow:0 0 0 1px var(--ring);border-radius:8px;padding:7px 10px;font-size:12px;line-height:1.45;color:var(--ink2)}
+.th b{color:var(--ink);font-size:12.5px}
+.th .sws{display:inline-flex;gap:3px;margin-right:6px;vertical-align:-1px}
+.th .sws i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.colh{position:absolute;top:172px;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.5px}
+svg#links{position:absolute;left:0;top:0;pointer-events:none}
+.node{position:absolute;background:var(--card);border-radius:9px;box-shadow:0 0 0 1px var(--ring),0 1px 2px rgba(0,0,0,.04);
+  border-left:5px solid var(--f);padding:7px 10px 7px 10px;cursor:pointer;transition:box-shadow .15s}
+.node:hover{box-shadow:0 0 0 2px var(--f)}
+.node .nm{font-weight:700;font-size:14.5px;line-height:1.15}
+.node .en{color:var(--muted);font-size:11px;font-weight:500;margin-left:4px}
+.node .wow{font-size:11px;font-weight:600;margin-left:6px;font-variant-numeric:tabular-nums}
+.wow.up{color:var(--up)}.wow.dn{color:var(--dn)}.wow.fl{color:var(--muted)}
+.node .u1{font-size:11.5px;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.src{position:absolute;border-radius:10px;padding:9px 11px;background:var(--card);box-shadow:0 0 0 1px var(--ring);border-top:4px solid var(--f)}
+.src .ic{font-size:22px;line-height:1}
+.src .nm{font-weight:700;font-size:14px;margin-top:3px}
+.src .s{font-size:11px;color:var(--muted);margin-top:2px}
+.prod{display:grid;grid-template-columns:190px 250px 1fr;gap:12px;align-items:center}
+.uses{display:flex;flex-direction:column;gap:3px}
+.use{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink)}
+.use .e{font-size:22px;width:26px;text-align:center;line-height:1}
+.bar{display:flex;height:12px;gap:2px;border-radius:4px;overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%}
+.bl{font-size:11px;color:var(--ink2);margin-top:4px;line-height:1.35;font-variant-numeric:tabular-nums}
+.bl b{font-weight:700}
+.bl .c{color:var(--cn);font-weight:700}.bl .k{color:var(--kr);font-weight:700}
+.basis{font-size:10px;color:var(--muted);margin-top:2px}
+.krs{font-size:11px;color:var(--ink2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.foot{position:absolute;left:28px;right:28px;bottom:14px;font-size:10.5px;color:var(--muted);line-height:1.5}
+/* modal */
+#dlg{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;padding:16px;z-index:9}
+#dlg.on{display:flex}
+#dlg .box{background:var(--card);color:var(--ink);border-radius:12px;max-width:520px;width:100%;max-height:86vh;overflow:auto;padding:18px 20px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+#dlg h3{margin:0 0 4px;font-size:19px}
+#dlg table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+#dlg td{padding:4px 6px;border-bottom:1px solid var(--grid)}
+#dlg td.n{text-align:right;font-variant-numeric:tabular-nums}
+#dlg .k{color:var(--muted);font-size:12px;margin-top:10px}
+#dlg button{float:right;border:0;background:var(--grid);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer}
+
+/* ── Research Lab 테마 토큰 ── */
+:root[data-theme="light"]{--page:#f2f4f6;--surface:#ffffff;--card:#ffffff;--ink:#191f28;--ink2:#4e5968;--muted:#8b95a1;--grid:#e7eaee;
+ --axis:#d1d6db;--ring:rgba(25,31,40,.10);--land:#e5e8eb;--landline:#ffffff}
+:root[data-theme="dark"]{--page:#101014;--surface:#1a1b20;--card:#202128;--ink:#e9ebee;--ink2:#9aa2ad;--muted:#6d7480;--grid:#272930;
+ --axis:#33363f;--ring:rgba(255,255,255,.08);--land:#2a2c33;--landline:#1a1b20}
+*,*::before,*::after{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif}
+.wrap{padding:12px}
+#canvas{border-radius:14px}
+</style></head>
+<body data-palette="#eb6834,#2a78d6,#52514e,#008300">
+<div class="wrap"><div id="canvas">
+<svg id="links"></svg>
+<header>
+  <h1>화학 밸류체인 지도</h1>
+  <div class="sub">원료 → 기초유분 → 중간체 → 제품 · 칸 색 = 원료 기반 · 막대 = 글로벌 생산능력 국가별 점유율 · 칸을 누르면 상세</div>
+  <div class="legend" id="lg"></div>
+</header>
+<div class="theses" id="th"></div>
+</div></div>
+<div id="dlg"><div class="box" id="dbox"></div></div>
+<script>
+const D = {"sources": [{"id": "naphtha", "name": "원유 → 납사", "sub": "한국·유럽·일본 NCC", "feed": "oil", "col": 0, "row": 3.2, "icon": "🛢️"}, {"id": "gas", "name": "에탄·프로판", "sub": "미국 셰일가스·중동", "feed": "gas", "col": 0, "row": 0.6, "icon": "🔥"}, {"id": "coal", "name": "석탄", "sub": "중국 (CTO·카바이드)", "feed": "coal", "col": 0, "row": 8.2, "icon": "⚫"}, {"id": "quartz", "name": "석영 + 전력", "sub": "중국 (메탈실리콘)", "feed": "free", "col": 0, "row": 10.9, "icon": "🪨"}, {"id": "tree", "name": "고무나무 농장", "sub": "태국·인니·베트남", "feed": "free", "col": 0, "row": 5.9, "icon": "🌳"}], "nodes": [{"id": "ethylene", "name": "에틸렌", "en": "Ethylene", "feed": "gas", "col": 1, "row": 0.9, "wow": "+3.5%", "figs": [63, 68], "uses": [["🧱", "모든 합성수지의 출발점"]]}, {"id": "propylene", "name": "프로필렌", "en": "Propylene", "feed": "gas", "col": 1, "row": 2.4, "wow": "+5.4%", "figs": [64, 69], "uses": [["🧱", "PP·페놀·아크릴 원료"]]}, {"id": "bd", "name": "부타디엔", "en": "BD", "feed": "oil", "col": 1, "row": 4.5, "wow": "+8.9%", "figs": [65, 79], "uses": [["🛞", "합성고무 원료"]]}, {"id": "benzene", "name": "벤젠", "en": "Benzene", "feed": "oil", "col": 1, "row": 6.1, "wow": "-3.4%", "figs": [92], "uses": [["🧪", "SM·페놀 원료"]]}, {"id": "px", "name": "파라자일렌", "en": "PX", "feed": "oil", "col": 1, "row": 7.4, "wow": "+4.9%", "figs": [74], "uses": [["👕", "폴리에스터 원료 PTA로"]]}, {"id": "sm", "name": "스티렌모노머", "en": "SM", "feed": "oil", "col": 2, "row": 3.3, "wow": "+0.9%", "figs": [94], "uses": [["📦", "스티로폼·ABS·SBR"]]}, {"id": "meg", "name": "MEG", "en": "에틸렌글리콜", "feed": "coal", "col": 2, "row": 6.25, "wow": "+5.1%", "figs": [55, 57, 73], "uses": [["👕", "폴리에스터 섬유·페트병"], ["🚗", "부동액"]]}, {"id": "pta", "name": "PTA", "en": "테레프탈산", "feed": "oil", "col": 2, "row": 7.45, "wow": "+4.1%", "figs": [67, 76], "uses": [["👕", "폴리에스터 섬유·페트병"]]}, {"id": "phenol", "name": "페놀·아세톤", "en": "Phenol/Acetone", "feed": "oil", "col": 2, "row": 8.65, "wow": "+5.3% / +2.4%", "figs": [89, 90], "uses": [["💅", "아세톤=리무버·용제"]]}, {"id": "bdo", "name": "BDO", "en": "부탄디올", "feed": "coal", "col": 2, "row": 9.85, "wow": "보합", "figs": [105, 106], "uses": [["🧵", "스판덱스·PBT·생분해 플라스틱"]]}, {"id": "msi", "name": "메탈실리콘", "en": "Metal Si", "feed": "free", "col": 2, "row": 11.05, "wow": "보합", "figs": [100, 101], "uses": [["🔋", "실리콘·알루미늄 합금·태양광"]]}, {"id": "pe", "name": "PE", "en": "폴리에틸렌", "feed": "gas", "col": 3, "row": 0, "wow": "+7.3% (HDPE)", "figs": [3, 5, 6, 70, 71], "uses": [["🛍️", "비닐봉지·랩"], ["🥛", "우유통·세제통"]]}, {"id": "pvc", "name": "PVC", "en": "폴리염화비닐", "feed": "coal", "col": 3, "row": 1, "wow": "+4.9%", "figs": [54, 91], "uses": [["🚰", "수도관·하수관"], ["🪟", "창호·바닥재"]]}, {"id": "pp", "name": "PP", "en": "폴리프로필렌", "feed": "gas", "col": 3, "row": 2, "wow": "+4.7%", "figs": [4, 53, 72], "uses": [["🥡", "배달용기"], ["🚗", "자동차 범퍼"]]}, {"id": "abs", "name": "ABS", "en": "고기능 플라스틱", "feed": "oil", "col": 3, "row": 3, "wow": "+4.7%", "figs": [81], "uses": [["📺", "가전 외장"], ["🧸", "레고·장난감"]]}, {"id": "sbr", "name": "SBR", "en": "합성고무", "feed": "oil", "col": 3, "row": 4, "wow": "+1.3%", "figs": [80], "uses": [["🛞", "타이어"], ["👟", "신발 밑창"]]}, {"id": "nbl", "name": "NB라텍스", "en": "NBL", "feed": "oil", "col": 3, "row": 5, "wow": "+12.7% (9월 수출단가 MoM)", "figs": [82, 83, 84, 85, 86, 87], "uses": [["🧤", "니트릴 의료·위생 장갑"]]}, {"id": "nr", "name": "천연고무", "en": "Natural Rubber", "feed": "free", "col": 3, "row": 6, "wow": "-4.0%", "figs": [78], "uses": [["🚚", "트럭·대형 타이어"], ["🔁", "SBR의 대체재"]]}, {"id": "pet", "name": "폴리에스터·PET", "en": "Polyester", "feed": "oil", "col": 3, "row": 7, "wow": "+1.7% (PET Bottle)", "figs": [66, 75], "uses": [["👕", "기능성 옷감"], ["🧃", "페트병"]]}, {"id": "bpa", "name": "BPA", "en": "비스페놀A", "feed": "oil", "col": 3, "row": 8, "wow": "-1.2%", "figs": [88, 99], "uses": [["🚘", "폴리카보네이트(헤드램프·렌즈)"], ["🛠️", "에폭시 접착제"]]}, {"id": "spandex", "name": "스판덱스", "en": "Spandex", "feed": "coal", "col": 3, "row": 9, "wow": "보합", "figs": [104, 106], "uses": [["🩱", "레깅스·속옷"], ["👖", "스판 청바지"]]}, {"id": "silicone", "name": "실리콘", "en": "유기실리콘", "feed": "free", "col": 3, "row": 10, "wow": "보합", "figs": [100, 101, 102, 103], "uses": [["🧴", "실란트·화장품"], ["🔌", "반도체·전기차 소재"]]}], "links": [["naphtha", "ethylene", "solid"], ["naphtha", "propylene", "solid"], ["naphtha", "bd", "solid"], ["naphtha", "benzene", "solid"], ["naphtha", "px", "solid"], ["gas", "ethylene", "alt"], ["gas", "propylene", "alt"], ["coal", "ethylene", "alt"], ["coal", "propylene", "alt"], ["coal", "pvc", "alt"], ["coal", "meg", "alt"], ["coal", "bdo", "solid"], ["quartz", "msi", "solid"], ["tree", "nr", "solid"], ["ethylene", "pe", "solid"], ["ethylene", "pvc", "solid"], ["ethylene", "meg", "solid"], ["ethylene", "sm", "solid"], ["propylene", "pp", "solid"], ["propylene", "phenol", "solid"], ["bd", "abs", "solid"], ["bd", "sbr", "solid"], ["bd", "nbl", "solid"], ["benzene", "sm", "solid"], ["benzene", "phenol", "solid"], ["sm", "abs", "solid"], ["sm", "sbr", "solid"], ["px", "pta", "solid"], ["pta", "pet", "solid"], ["meg", "pet", "solid"], ["phenol", "bpa", "solid"], ["bdo", "spandex", "solid"], ["msi", "silicone", "solid"], ["nr", "sbr", "sub"]], "feeds": {"oil": {"label": "원유 전용", "desc": "납사·리포머로만 생산 → 중국 석탄·미국 에탄으로 대체 불가", "color": "#eb6834"}, "gas": {"label": "가스로도 생산", "desc": "미국·중동 에탄/프로판, 중국 석탄(CTO)과 경쟁", "color": "#2a78d6"}, "coal": {"label": "중국 석탄으로도 생산", "desc": "석탄가 안정 → 유가가 올라도 중국 원가는 그대로", "color": "#52514e"}, "free": {"label": "유가 무관", "desc": "석영·전력·농산물 기반", "color": "#008300"}}, "theses": [{"feeds": ["gas", "coal"], "title": "NCC 범용 (PE·PP·PVC·MEG)", "body": "중국 석탄·미국 에탄과 경쟁 (중국 석탄 비중: PVC 75~78%, MEG 설비 33~40%, PE ~20%, PP ~18%). 유가↑일수록 중국 석탄화학 호황 → 물량 확대"}, {"feeds": ["oil"], "title": "원유 전용 체인 (BD·SBR·벤젠·PX)", "body": "석탄·에탄으로 거의 못 만듦 (BD 석탄 경로 0.9%, 중국 코크스 벤젠 10~15%는 예외). 부타디엔 체인=금호석유, BTX 체인=정유사(PX가 큼)"}, {"feeds": ["coal", "free"], "title": "유가 무관 (스판덱스·실리콘)", "body": "중국 석탄·전력 기반 → 유가와 별개 사이클. 효성티앤씨·KCC 2Q부터 개선"}], "shares": {"sbr": {"basis": "생산능력 2023~24 · 중국 외 일부 추정", "total": "약 860만톤 (2024)", "share": [["중국", 25], ["한국", 10], ["미국", 8], ["러시아", 8], ["일본", 7], ["인도", 7], ["기타", 35]], "route": "납사 크래커 C4의 부타디엔 + 스티렌 → 원유 연동 (석탄·에탄 대체 경로 없음)", "uses": "타이어 68~75% (승용차 트레드, SSBR=저연비·EV 타이어) · 호스·벨트 ~10% · 신발 밑창 7~9%", "kr": "금호석유화학, LG화학, 롯데케미칼", "src": "GlobalData(2024) 글로벌 능력 · CCR/SunSirs 중국 22~28% · 한국 등은 회사 설비 합산 추정"}, "nbl": {"basis": "생산능력 2023~25 · 국가별은 회사 설비 합산 추정", "total": "약 350~400만톤", "share": [["한국", 32], ["말레이시아", 22], ["중국", 22], ["대만", 6], ["기타", 18]], "route": "부타디엔(납사 C4) + 아크릴로니트릴(프로필렌계) → 원유 연동", "uses": "니트릴 의료·위생 일회용 장갑이 대부분 (업계 통설 90%+)", "kr": "금호석유화학 (세계 1위, 94.6만톤·점유율 약 25%), LG화학", "src": "금호 94.6만톤·25% (2025.3 보도) · Synthomer·LG화학 설비 보도 합산"}, "nr": {"basis": "생산량 2024 (FAO)", "total": "약 1,480만톤", "share": [["태국", 32.3], ["인도네시아", 15.3], ["코트디부아르", 11.4], ["베트남", 9.0], ["중국", 5.9], ["인도", 5.9], ["기타", 20.2]], "route": "고무나무 수액 (농산물) → 유가 무관, 기후·병해·재배면적에 좌우", "uses": "타이어 60~70% (트럭·버스 타이어 비중 높음) · 장갑·콘돔 등 라텍스 · 벨트·호스·신발", "kr": "생산 없음 (수요 측: 한국타이어앤테크놀로지·금호타이어·넥센타이어)", "src": "FAO 코드 0836 (Tridge 집계) · ANRPC 2024 · 인니·코트디부아르는 출처별 편차 큼"}, "bdo": {"basis": "생산능력 2024 · 중국 외 추정", "total": "약 650만톤 (추정)", "share": [["중국", 72], ["대만", 7], ["미국", 5], ["사우디", 4], ["독일", 3], ["일본", 2], ["말레이시아", 2], ["기타", 5]], "route": "중국 Reppe법(아세틸렌) 94%, 그중 카바이드(석탄) 기반 ~81% → 사실상 석탄 · 해외는 부탄·PO법", "uses": "스판덱스 원료 PTMG ~48~52% · PBT(자동차·전자 부품) 22% · NMP(2차전지 용제) 15~19% · 생분해 비닐 PBAT", "kr": "국내 BDO 생산 없음 (효성티앤씨는 베트남에서 PTMG 자체 생산)", "src": "观研天下·CCR (중국 481만톤, 2024) · PUdaily · 글로벌은 추정"}, "spandex": {"basis": "생산능력 2024 · 한국 추정", "total": "약 175만톤", "share": [["중국", 78], ["한국", 4], ["기타", 18]], "route": "PTMG(BDO 유래, 중국 석탄 연동) + MDI", "uses": "의류 대부분 (레깅스·애슬레저·속옷·스판 청바지) · 기저귀 밴드 등 위생재", "kr": "효성티앤씨 (글로벌 1위, 회사 점유율 약 30%), 태광산업", "src": "观研天下(중국 137만톤·79%) · Longbridge(175만톤·77%) · 효성 30% (2026.1 보도)"}, "silicone": {"basis": "생산능력 2024 (유기실리콘) · 중국 외 추정", "total": "중국 DMC 335~344만톤", "share": [["중국", 83], ["미국", 5.5], ["독일", 4.5], ["일본", 3.5], ["한국", 1.5], ["기타", 2]], "route": "메탈실리콘 + 염화메틸 → 석영·전력·석탄 연동 (석유 무관)", "uses": "건축 실란트 25% · 전자전기(반도체·EV 방열) 23% · 가공 15% · 섬유 12% · 화장품·의료·태양광", "kr": "KCC (모멘티브, 글로벌 3위권)", "src": "SMM (중국 ~83%, 2024) · 观研天下 용도 · Dow 영국 Barry 폐쇄 2026"}, "msi": {"basis": "생산량 2024 (USGS)", "total": "약 460만톤", "share": [["중국", 85], ["브라질", 4.1], ["노르웨이", 2.6], ["프랑스", 2.0], ["러시아", 1.1], ["기타", 5.2]], "route": "석영 + 탄소환원제, 전력 다소비 (중국 신장=석탄 전력, 윈난·쓰촨=수력)", "uses": "알루미늄 합금 · 실리콘(실록산) · 폴리실리콘(태양광·반도체)", "kr": "국내 생산 없음", "src": "USGS Mineral Commodity Summaries 2025"}, "px": {"basis": "생산능력 2024 · 중국/세계 계산, 한국 회사 합산 추정", "total": "세계 설비 공개치 없음 (생산량 약 6,260만톤)", "share": [["중국", 52], ["한국", 10], ["인도", 4.5], ["기타", 33.5]], "route": "정유 리포머 혼합자일렌·톨루엔 전환 → 사실상 석유 전용 (석탄 경로 상업적 의미 없음)", "uses": "95%+가 PTA로 → 폴리에스터 옷감·페트병", "kr": "S-Oil, SK이노베이션, HD현대(현대오일뱅크), GS(GS칼텍스)", "src": "Argus 2025 (중국 약 4,700만톤) · S&P Platts · 국내 각사 설비 합산"}, "pta": {"basis": "생산능력 2023~24 · 계산치", "total": "약 1억 2,100만톤 (2023, GlobalData)", "share": [["중국", 70], ["한국", 3.5], ["기타", 26.5]], "route": "PX + 아세트산 산화 → 석유 전용", "uses": "폴리에스터 섬유 ~65% · PET병 수지 ~27% · 필름 ~8%", "kr": "태광산업, 효성화학 (최대 생산자 한화임팩트는 비상장)", "src": "GlobalData · SunSirs (중국 8,600만톤, 2024말)"}, "meg": {"basis": "생산능력 2024 · 계산치", "total": "약 5,500~6,200만톤", "share": [["중국", 48], ["한국", 2.5], ["기타", 49.5]], "route": "중동·미국=에탄, 아시아=납사, 중국=석탄 합성가스법 + MTO · 중국 석탄제 비중: 설비 33~40%, 실제 생산 20~27% (메모의 '50%'는 과대)", "uses": "폴리에스터(섬유·PET병·필름) 88~90% · 부동액 ~6%", "kr": "롯데케미칼, LG화학, 대한유화", "src": "观研天下 (중국 2,984만톤) · SunSirs·iTiger (석탄제 비중) · ICIS · 사우디는 중국 수입의 절반 공급"}, "phenol": {"basis": "페놀 생산능력 2023~24 · 계산·추정", "total": "페놀 약 1,600만톤 (2023, GlobalData)", "share": [["중국", 40], ["한국", 8], ["기타", 52]], "route": "벤젠 + 프로필렌 → 큐멘 → 페놀 + 아세톤 (페놀 1톤당 아세톤 0.6톤) → 석유 전용", "uses": "페놀: BPA 38~45% · 페놀수지(합판 접착제·브레이크 패드) 30~40% · 나일론 ~10% / 아세톤: 용제·리무버 ~34% · MMA(아크릴판) ~26% · BPA 20~25%", "kr": "금호석유화학(금호피앤비화학 70만톤), LG화학, 롯데케미칼(롯데GS화학)", "src": "GlobalData (국가 순위 중국·미국·한국·대만·독일) · 智研 (중국 635만톤) · 아세톤 중국 1/3+ (ResourceWise)"}, "bpa": {"basis": "생산능력 2023~24 · 계산·추정", "total": "약 1,060만톤 (2023, GlobalData)", "share": [["중국", 50], ["한국", 12.5], ["기타", 37.5]], "route": "페놀 2 + 아세톤 1 → 석유 전용", "uses": "폴리카보네이트(헤드램프·안경렌즈·전자제품) ~2/3 · 에폭시(도료·접착제·PCB) 25~30%", "kr": "금호석유화학(금호피앤비화학 45만톤, 세계 5위), LG화학, 롯데케미칼", "src": "GlobalData (순위 중국·한국·미국·대만·일본) · 观研 (중국 593만톤, 2024)"}, "pet": {"basis": "국가별 공개 자료 없음", "share": null, "uses": "병·포장, 섬유용 칩, 필름", "kr": "롯데케미칼, 티케이케미칼, SK케미칼, 효성티앤씨·태광산업(원사)"}, "ethylene": {"basis": "생산능력 2024 (한국화학산업협회)", "total": "약 2억 2,500만톤", "share": [["중국", 22.8], ["미국", 20.6], ["사우디", 7.8], ["한국", 5.7], ["기타", 43.1]], "route": "세계: 납사 43% · 에탄 36% · LPG·석탄 등 21% / 중국: 납사 ~70% · 석탄 CTO/MTO 14~20% · 에탄 8~13% / 한국: 납사 95%", "uses": "PE ~60% · MEG ~15% · PVC ~10% · SM ~5% (통설 근사)", "kr": "LG화학, 롯데케미칼, 대한유화, S-Oil(샤힌), SK이노베이션, 한화솔루션(여천NCC)", "src": "한국석유화학협회·수출입은행(2024.11) · 한국화학산업협회 2024 · OIES 2025 · Wood Mackenzie"}, "propylene": {"basis": "생산능력 2024 · 한국 환산 추정", "total": "약 1억 8,900만톤", "share": [["중국", 39], ["북미", 13.4], ["한국", 6.4], ["기타", 41.2]], "route": "세계 PDH 16% / 중국: 크래커 34% · PDH 32% · FCC 18% · 석탄 16%", "uses": "PP 65~70% · PO(폴리우레탄 쿠션) · AN(아크릴·ABS) · 큐멘(페놀)", "kr": "LG화학, 롯데케미칼, 대한유화, S-Oil, SK이노베이션, 효성화학(PDH) · 한국=세계 1위 수출국", "src": "국련기화 2025.7 (원자료 룽중) · Argus"}, "bd": {"basis": "생산능력 2024 지역 비중 · 한국 추정", "total": "약 1,830~2,050만톤", "share": [["중국", 36], ["한국", 7], ["일본·대만", 13], ["서유럽", 15], ["북미", 11], ["기타", 18]], "route": "95%+가 납사 크래커 C4 추출 · 중국도 석탄 경로 0.9% · 에탄 크래커는 BD가 거의 안 나옴 → 미국·중동이 에탄으로 갈수록 BD 부족", "uses": "SBR 26% · BR 25% (타이어) · ABS 14% · SBC 10% (신발창) · SB라텍스 6% · 나일론66 4%", "kr": "LG화학, 롯데케미칼, SK이노베이션 · 최대 수요처는 금호석유화학", "src": "Argus Butadiene 2024 · 룽중 · 중국화공정보주간 (중국 공정 비율)"}, "benzene": {"basis": "생산능력 2024 · 한국 추정", "total": "약 8,330만톤", "share": [["중국", 31], ["한국", 10], ["기타", 59]], "route": "세계: 리포메이트 39% · 분해가솔린 32% · 코크스(석탄) 6% / 중국 공급: 석유계 71% · 석탄 코크스 벤젠 10~15% · 수입 15% (주 수입원 한국)", "uses": "SM 47% · 페놀 20% · 사이클로헥산(나일론) 14% · 아닐린→MDI 11%", "kr": "S-Oil, SK이노베이션, HD현대, GS(GS칼텍스), 롯데케미칼, LG화학", "src": "OPIS 2023 · 민생선물 2025.7 · 한국화학산업협회"}, "pe": {"basis": "생산능력 2024 · 한국은 2023", "total": "약 1억 5,000만톤+", "share": [["중국", 23], ["미국", 18.5], ["중동", 14], ["한국", 5.5], ["기타", 39]], "route": "중국: 석유계 ~2/3 · 석탄 CTO ~20% · 에탄 10~15%", "uses": "필름 56% (포장·쇼핑백·택배봉투·농업용 비닐) · 수도관 11% · 우유통·세제통 11% · 팔레트·상자 10% (중국 기준)", "kr": "LG화학, 롯데케미칼, 한화솔루션, 대한유화, SK이노베이션, S-Oil", "src": "중국압축기협회 · 중신건투선물 2024.11 · 석유화학협회 미니북(그린피스 재인용) · Blooming"}, "pp": {"basis": "생산능력 2024 · 지역 혼합", "total": "약 1억 1,900만톤", "share": [["중국", 40], ["동남아", 13], ["북미", 11], ["유럽", 9], ["중동", 8], ["한국", 5.4], ["기타", 13.6]], "route": "중국: 석유계 52% · PDH 23% · 석탄 18% (+외부 메탄올 MTO 포함 시 20%대 중반)", "uses": "사출(배달용기·가전·범퍼) 39% · 포대·마대 32% · 부직포(마스크·기저귀) 10% · 과자 포장 필름 8% (중국 기준)", "kr": "롯데케미칼, 효성화학, 대한유화, LG화학, S-Oil", "src": "룽중 · 국련기화 · 중신건투선물 · Argus"}, "pvc": {"basis": "생산능력 2024~25", "total": "약 6,500만톤", "share": [["중국", 47], ["미국", 16], ["서유럽", 14], ["일본", 3], ["한국", 3], ["인도", 3], ["기타", 14]], "route": "세계는 에틸렌법 ~70% · 중국은 석탄 카바이드법 75~78% (메모의 '70%' 부합)", "uses": "상하수도관 ~40% · 창호 샷시 15~20% · 바닥재·필름 ~15% · 전선 피복 ~7% (통설 근사)", "kr": "LG화학, 한화솔루션 (국내 49%)", "src": "화경정보망·국투선물 · Hers Group · Sinopec Qilu"}, "sm": {"basis": "생산능력 2024 · 한국 추정", "total": "약 4,400~4,600만톤", "share": [["중국", 46], ["한국", 6], ["미주", 14.6], ["유럽", 12], ["기타", 21.4]], "route": "에틸렌 + 벤젠 → EB 탈수소 · 석탄 직접 경로 거의 없음", "uses": "PS(요구르트컵·일회용 식기) 33% · EPS(스티로폼) 21% · ABS/SAN 21% · UPR 7%", "kr": "LG화학, 롯데케미칼 (한화토탈에너지스는 비상장)", "src": "ICIS 2024.8 · OPIS 2024"}, "abs": {"basis": "생산능력 2023", "total": "약 1,570만톤", "share": [["중국", 53], ["한국", 14], ["대만", 11], ["기타", 22]], "route": "AN + BD + SM 3원 공중합 → 크래커·프로필렌 기반", "uses": "가전·전자 하우징 ~50% · 자동차 내장 15~20% · 레고·키보드 등", "kr": "LG화학 (회사 점유율 15%, 세계 2위), 롯데케미칼, 금호석유화학", "src": "chinabaogao·chemnews · 그린피스(석유화학협회 미니북) · 치메이 16% 1위"}}};
+const X = [28, 262, 518, 790], W = [176, 206, 222, 822], TOP = 200, RH = 102;
+const C = document.getElementById('canvas');
+const F = D.feeds;
+const byId = {};
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+// 범례
+const lg = document.getElementById('lg');
+lg.innerHTML = Object.entries(F).map(([k,f]) => `<span><i class="sw" style="background:${f.color}"></i><b style="color:var(--ink)">${f.label}</b></span>`).join('')
+ + `<span style="margin-left:8px"><i class="sw" style="background:var(--cn)"></i>중국</span><span><i class="sw" style="background:var(--kr)"></i>한국</span><span><i class="sw" style="background:var(--o1)"></i>기타 국가</span>`
+ + `<span style="margin-left:8px"><i class="ln"></i>주 경로</span><span><i class="ln alt"></i>대체 원료 경로</span><span><i class="ln sub"></i>대체재</span>`;
+document.getElementById('th').innerHTML = D.theses.map(t => `<div class="th"><span class="sws">${t.feeds.map(f=>`<i style="background:${F[f].color}"></i>`).join('')}</span><b>${t.title}</b> — ${t.body}</div>`).join('');
+
+['원료','기초유분','중간체','최종 제품 · 용도 · 글로벌 생산 점유율'].forEach((t,i)=>{
+  const h=document.createElement('div');h.className='colh';h.style.left=X[i]+'px';h.textContent=t;C.appendChild(h);});
+
+function wowCls(w){ if(!w) return 'fl'; if(w.startsWith('+')) return 'up'; if(w.startsWith('-')) return 'dn'; return 'fl'; }
+function shareBar(id, compact){
+  const s = D.shares[id]; if(!s || !s.share) return `<div class="basis">${s && s.basis ? s.basis : "점유율 조사 중"}</div>`;
+  const others = ['--o1','--o2','--o3']; let oi = 0;
+  const segs = s.share.map(([c,p]) => {
+    const col = c==='중국' ? 'var(--cn)' : c==='한국' ? 'var(--kr)' : c==='기타' ? 'var(--etc)' : `var(${others[Math.min(oi++,2)]})`;
+    return `<i style="width:${p}%;background:${col}" title="${c} ${p}%"></i>`;}).join('');
+  const lim = compact ? 3 : 6;
+  const lab = s.share.filter(([c])=>c!=='기타').slice(0,lim).map(([c,p]) => {
+    const cl = c==='중국'?'c':c==='한국'?'k':''; return `<span class="${cl}">${c} ${fmt(p)}</span>`;}).join(' · ');
+  const kr = s.share.find(([c])=>c==='한국');
+  const krTxt = compact && kr && !s.share.slice(0,lim).some(([c])=>c==='한국') ? ` · <span class="k">한국 ${fmt(kr[1])}</span>` : '';
+  return `<div class="bar">${segs}</div><div class="bl">${lab}${krTxt}</div>` + (compact?'':`<div class="basis">${s.basis||''}</div>`);
+}
+function shortKr(k){ const a=k.split(/,\s*(?![^()]*\))/).map(x=>x.replace(/\s*\(.*?\)/g,'').trim()); return a.slice(0,3).join(', ')+(a.length>3?' 외':''); }
+function fmt(p){ return (Math.round(p*10)/10)+'%'; }
+
+function place(el, col, row, h){ el.style.left=X[col]+'px'; el.style.top=(TOP+row*RH)+'px'; el.style.width=W[col]+'px'; if(h) el.style.minHeight=h+'px'; C.appendChild(el); }
+
+D.sources.forEach(s=>{
+  const el=document.createElement('div'); el.className='src'; el.style.setProperty('--f',F[s.feed].color);
+  el.innerHTML=`<div class="ic">${s.icon}</div><div class="nm">${s.name}</div><div class="s">${s.sub}</div>`;
+  place(el,s.col,s.row); byId[s.id]={el,col:s.col};
+});
+D.nodes.forEach(n=>{
+  const el=document.createElement('div'); el.className='node'; el.style.setProperty('--f',F[n.feed].color);
+  const head=`<div class="nm">${n.name}<span class="en">${n.en}</span></div><div class="wow ${wowCls(n.wow)}" style="margin:2px 0 0">주간 ${n.wow}</div>`;
+  const kr = (D.shares[n.id]||{}).kr;
+  if(n.col===3){
+    el.innerHTML=`<div class="prod"><div>${head}${kr?`<div class="krs">🇰🇷 ${shortKr(kr)}</div>`:''}</div>
+      <div class="uses">${n.uses.map(u=>`<div class="use"><span class="e">${u[0]}</span>${u[1]}</div>`).join('')}</div>
+      <div>${shareBar(n.id,false)}</div></div>`;
+    place(el,3,n.row,80);
+  } else {
+    el.innerHTML=`${head}<div class="u1">${n.uses[0][0]} ${n.uses[0][1]}</div>${shareBar(n.id,true)}`;
+    place(el,n.col,n.row);
+  }
+  el.onclick=()=>openDlg(n);
+  byId[n.id]={el,col:n.col,node:n};
+});
+
+function resolve(){
+  const cols={}; Object.values(byId).forEach(o=>{(cols[o.col]=cols[o.col]||[]).push(o.el);});
+  Object.values(cols).forEach(a=>{ a.sort((x,y)=>x.offsetTop-y.offsetTop); let lim=0;
+    a.forEach(e=>{ if(e.offsetTop<lim) e.style.top=lim+'px'; lim=e.offsetTop+e.offsetHeight+12; }); });
+}
+function layoutLinks(){ resolve();
+  const svg=document.getElementById('links');
+  const H=Math.max(...[...C.querySelectorAll('.node,.src')].map(e=>e.offsetTop+e.offsetHeight))+70;
+  C.style.height=H+'px'; svg.setAttribute('width',1640); svg.setAttribute('height',H);
+  const feedOf=id=>{const s=D.sources.find(x=>x.id===id); if(s) return s.feed; return D.nodes.find(x=>x.id===id).feed;};
+  svg.innerHTML=D.links.map(([a,b,st])=>{
+    const A=byId[a].el,B=byId[b].el;
+    let x1=A.offsetLeft+A.offsetWidth,y1=A.offsetTop+A.offsetHeight/2,x2=B.offsetLeft,y2=B.offsetTop+B.offsetHeight/2;
+    if(st==='sub'){ // 천연고무 → SBR: 오른쪽 바깥으로 돌아가는 대체재 표시
+      x1=A.offsetLeft+60; y1=A.offsetTop; x2=B.offsetLeft+60; y2=B.offsetTop+B.offsetHeight;
+      return `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${cssv('--ink2')}" stroke-width="2" stroke-dasharray="2 4" fill="none"/>`;
+    }
+    const mx=(x1+x2)/2, col=F[feedOf(a)].color;
+    const dash=st==='alt'?'stroke-dasharray="6 5"':'';
+    return `<path d="M${x1} ${y1} C${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}" stroke="${col}" stroke-opacity="${st==='alt'?.75:.55}" stroke-width="2" ${dash} fill="none"/>`;
+  }).join('');
+  const ft=document.createElement('div'); ft.className='foot';
+  ft.innerHTML='가격 변화: 하나증권 에너지/화학 Weekly Monitor(2026.11.02) 주간 WoW, NB라텍스는 9월 수출단가 MoM · 원료 기반 분류·투자 논리: 자체 정리 · 국가 점유율: 칸을 눌러 출처·기준연도 확인 (생산능력 기준, 기관마다 차이 있음)';
+  C.appendChild(ft);
+}
+function openDlg(n){
+  const s=D.shares[n.id]||{};
+  const rows=(s.share||[]).map(([c,p])=>`<tr><td>${c}</td><td class="n">${fmt(p)}</td></tr>`).join('');
+  document.getElementById('dbox').innerHTML=`<button onclick="document.getElementById('dlg').classList.remove('on')">닫기</button>
+   <h3>${n.name} <span style="color:var(--muted);font-size:13px">${n.en}</span></h3>
+   <div style="font-size:13px;color:var(--ink2)"><span style="color:${F[n.feed].color};font-weight:700">■ ${F[n.feed].label}</span> — ${F[n.feed].desc}</div>
+   <div class="k">용도</div><div style="font-size:14px">${n.uses.map(u=>u[0]+' '+u[1]).join('<br>')}${s.uses?`<div style="font-size:12px;color:var(--ink2);margin-top:4px">${s.uses}</div>`:''}</div>
+   <div class="k">글로벌 생산 점유율 ${s.basis?'('+s.basis+')':''}</div>${rows?`<table>${rows}</table>`:'<div>조사 중</div>'}
+   ${s.total?`<div style="font-size:12px;color:var(--ink2)">글로벌 규모: ${s.total}</div>`:''}
+   ${s.route?`<div class="k">원료 경로</div><div style="font-size:13px">${s.route}</div>`:''}
+   ${s.kr?`<div class="k">한국 상장사</div><div style="font-size:13px">${s.kr}</div>`:''}
+   <div class="k">이번 주 가격 (하나증권 11/2)</div><div style="font-size:13px">${n.wow} · 관련 도표 ${n.figs.join(', ')}</div>
+   ${s.src?`<div class="k">출처</div><div style="font-size:11.5px;color:var(--ink2);word-break:break-all">${s.src}</div>`:''}`;
+  document.getElementById('dlg').classList.add('on');
+}
+document.getElementById('dlg').onclick=e=>{ if(e.target.id==='dlg') e.target.classList.remove('on'); };
+if(window.preZoom)preZoom();
+layoutLinks();
+if(window.fitZoom)fitZoom();
+window.redraw=function(){preZoom();document.querySelectorAll('.foot').forEach(e=>e.remove());layoutLinks();fitZoom();};
+</script></body></html>

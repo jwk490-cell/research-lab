@@ -631,6 +631,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="trade10">수출입데이터</button>
     <button class="navitem" data-tab="taiwan">대만 테크 실적 모음</button>
     <button class="navitem" data-tab="chem">에너지/화학 가격 동향</button>
+    <button class="navitem" data-tab="chemmap">화학 밸류체인 지도 <small>NEW</small></button>
     <button class="navitem" data-tab="credit">글로벌 크레딧·유동성</button>
     <div class="navgroup">리서치</div>
     <button class="navitem" data-tab="telegram">텔레그램 채널 요약</button>
@@ -745,6 +746,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="trade10"><h3>수출입데이터 <span class="tag">관세청 월별</span></h3><p>디램·변압기·화장품 등 19품목 월별 수출 — 연도별 추이·국가별 비중</p></button>
           <button class="card" data-go="taiwan"><h3>대만 테크 실적 모음 <span class="tag">매일 21:50</span></h3><p>AI 반도체 밸류체인 128종목 월별 매출·전년비 (MOPS 의무공시)</p></button>
           <button class="card" data-go="chem"><h3>에너지/화학 가격 동향 <span class="tag">2024.1~</span></h3><p>유가·정제마진·석유화학 50품목 일별 시계열 — 하나증권 윤재성 가격표 누적 · Excel 다운로드</p></button>
+          <button class="card" data-go="chemmap"><h3>화학 밸류체인 지도 <span class="tag">NEW</span></h3><p>원료→기초유분→제품 체인과 용도 그림, 원료 기반(원유·가스·중국 석탄·유가 무관), 제품별 글로벌 생산국 점유율 세계지도</p></button>
           <button class="card" data-go="credit"><h3>글로벌 크레딧·유동성 <span class="tag">평일 07:15</span></h3><p>유동성 3층(금리 경로·순유동성·신용/금융여건·韓 자금) 전환 신호 + 美 순유동성·QT 시나리오 + 빅테크 5Y CDS</p></button>
         </div>
       </section>
@@ -980,6 +982,9 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-chem">
       <iframe data-src="chem.html" title="에너지/화학 가격 동향"></iframe>
+    </section>
+    <section class="panel embed" id="tab-chemmap">
+      <iframe data-src="chemmap.html" title="화학 밸류체인 지도"></iframe>
     </section>
 
     <section class="panel embed" id="tab-credit">
@@ -3572,7 +3577,7 @@ const RR_TABS={
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
   export:{m:'a',eta:'~1분'}, corpexport:{m:'a',eta:'~3분'},
-  trade10:{m:'a',eta:'~3분'}, taiwan:{m:'a',eta:'~3분'}, chem:{m:'a',eta:'~1분'},
+  trade10:{m:'a',eta:'~3분'}, taiwan:{m:'a',eta:'~3분'}, chem:{m:'a',eta:'~1분'}, chemmap:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   credit:{m:'a',eta:'~3분'},
   telegram:{m:'a',eta:'~2분'}, taerin:{m:'a',eta:'~2분'}, thememap:{m:'a',eta:'~3분'},
   deepresearch:{m:'x',note:'수동 발행 탭입니다'},

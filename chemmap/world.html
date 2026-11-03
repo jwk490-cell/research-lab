@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<script>
+/* 리서치랩 테마 연동: 상위 사이트의 rl-theme(기본 다크)를 따르고, 토글하면 storage 이벤트로 즉시 반영 */
+(function(){var qt=(location.search.match(/[?&]theme=(dark|light)/)||[])[1];function ap(){var t='dark';try{t=localStorage.getItem('rl-theme')||'dark';}catch(e){}if(qt)t=qt;document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}
+ap();window.addEventListener('storage',function(e){if(e.key==='rl-theme'){ap();if(window.redraw)redraw();}});})();
+/* 화면 폭 맞춤: 배율 1에서 배치를 계산한 뒤 캔버스만 축소 (최소 0.55, 그보다 좁으면 가로 스크롤) */
+window.preZoom=function(){var c=document.getElementById('canvas');if(c)c.style.zoom=1;};
+window.fitZoom=function(){var c=document.getElementById('canvas');if(!c)return;var a=document.documentElement.clientWidth-24;c.style.zoom=Math.max(.55,Math.min(1,a/1640));};
+window.addEventListener('resize',function(){window.fitZoom();});
+</script>
+<title>화학 생산국 지도</title>
+<style>
+:root{--page:#f9f9f7;--surface:#fcfcfb;--card:#fff;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--grid:#e1e0d9;--land:#e9e8e2;--landline:#fcfcfb;
+--ring:rgba(11,11,11,.10);--cn:#e34948;--kr:#4a3aa7;--sea:#f3f6f9;--s1:#cde2fb;--s2:#86b6ef;--s3:#3987e5;--s4:#1c5cab;--s5:#0d366b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#0d0d0d;--surface:#1a1a19;--card:#20201f;--ink:#fff;--ink2:#c3c2b7;--muted:#898781;
+--grid:#2c2c2a;--land:#2c2c2a;--landline:#1a1a19;--ring:rgba(255,255,255,.10);--cn:#e66767;--kr:#9085e9;--sea:#161a1e;--s1:#184f95;--s2:#256abf;--s3:#3987e5;--s4:#6da7ec;--s5:#b7d3f6}}
+:root[data-theme="dark"]{--page:#0d0d0d;--surface:#1a1a19;--card:#20201f;--ink:#fff;--ink2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--land:#2c2c2a;--landline:#1a1a19;
+--ring:rgba(255,255,255,.10);--cn:#e66767;--kr:#9085e9;--sea:#161a1e;--s1:#184f95;--s2:#256abf;--s3:#3987e5;--s4:#6da7ec;--s5:#b7d3f6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Segoe UI",sans-serif}
+.wrap{overflow-x:auto;padding:16px}
+#canvas{position:relative;width:1640px;margin:0 auto;background:var(--surface);border-radius:14px;box-shadow:0 0 0 1px var(--ring);padding:22px 28px 18px}
+h1{margin:0;font-size:26px;letter-spacing:-.3px}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px}
+.chip{border:0;border-radius:999px;padding:5px 11px;font-size:12.5px;background:var(--card);box-shadow:0 0 0 1px var(--ring);color:var(--ink);cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.chip i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.chip.on{box-shadow:0 0 0 2px var(--ink);font-weight:700}
+#map{position:relative;height:820px;margin-top:6px}
+#map svg{position:absolute;left:0;top:0}
+.call{position:absolute;background:var(--card);border-radius:9px;box-shadow:0 0 0 1px var(--ring),0 2px 6px rgba(0,0,0,.06);padding:7px 10px;font-size:11.5px;line-height:1.5;min-width:150px}
+.call .cn{font-weight:800;font-size:14px;margin-bottom:2px}
+.call .r{display:flex;justify-content:space-between;gap:10px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.call .r span:first-child{color:var(--ink2)}
+.call .r b{font-weight:700}
+.call.china{border-top:4px solid var(--cn)}.call.korea{border-top:4px solid var(--kr)}
+.call .e{margin-right:3px}
+.call .cnt{font-size:10.5px;font-weight:600;color:var(--muted);margin-left:6px}
+.call .rows.two{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+.call .big{font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.25}
+.rg{font-size:9.5px;font-weight:600;color:var(--muted);background:var(--grid);border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
+.leg{display:flex;gap:16px;align-items:center;font-size:12px;color:var(--ink2);flex-wrap:wrap}
+.ramp{display:inline-flex;gap:2px;vertical-align:-2px}.ramp i{width:22px;height:10px;display:inline-block}
+.side{position:absolute;left:1010px;top:455px;width:360px;max-height:360px;overflow:auto;z-index:2;background:var(--card);border-radius:10px;box-shadow:0 0 0 1px var(--ring);padding:12px 14px;font-size:12.5px;display:none}
+.side.on{display:block}
+.side h3{margin:0 0 2px;font-size:17px}
+.side table{width:100%;border-collapse:collapse;margin-top:6px}
+.side td{padding:3px 4px;border-bottom:1px solid var(--grid)}.side td.n{text-align:right;font-variant-numeric:tabular-nums}
+.foot{font-size:10.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+/* ── Research Lab 테마 토큰 ── */
+:root[data-theme="light"]{--page:#f2f4f6;--surface:#ffffff;--card:#ffffff;--ink:#191f28;--ink2:#4e5968;--muted:#8b95a1;--grid:#e7eaee;
+ --axis:#d1d6db;--ring:rgba(25,31,40,.10);--land:#e5e8eb;--landline:#ffffff}
+:root[data-theme="dark"]{--page:#101014;--surface:#1a1b20;--card:#202128;--ink:#e9ebee;--ink2:#9aa2ad;--muted:#6d7480;--grid:#272930;
+ --axis:#33363f;--ring:rgba(255,255,255,.08);--land:#2a2c33;--landline:#1a1b20}
+*,*::before,*::after{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif}
+.wrap{padding:12px}
+#canvas{border-radius:14px}
+</style></head>
+<body>
+<div class="wrap"><div id="canvas">
+  <h1>화학 제품 글로벌 생산국 지도</h1>
+  <div class="sub" id="sub"></div>
+  <div class="chips" id="chips"></div>
+  <div class="leg" id="leg"></div>
+  <div id="map"><svg id="svg"></svg><div class="side" id="side"></div></div>
+  <div class="foot" id="foot"></div>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+const D = {"nodes": [{"id": "ethylene", "name": "에틸렌", "en": "Ethylene", "feed": "gas", "uses": [["🧱", "모든 합성수지의 출발점"]]}, {"id": "propylene", "name": "프로필렌", "en": "Propylene", "feed": "gas", "uses": [["🧱", "PP·페놀·아크릴 원료"]]}, {"id": "bd", "name": "부타디엔", "en": "BD", "feed": "oil", "uses": [["🛞", "합성고무 원료"]]}, {"id": "benzene", "name": "벤젠", "en": "Benzene", "feed": "oil", "uses": [["🧪", "SM·페놀 원료"]]}, {"id": "px", "name": "파라자일렌", "en": "PX", "feed": "oil", "uses": [["👕", "폴리에스터 원료 PTA로"]]}, {"id": "sm", "name": "스티렌모노머", "en": "SM", "feed": "oil", "uses": [["📦", "스티로폼·ABS·SBR"]]}, {"id": "meg", "name": "MEG", "en": "에틸렌글리콜", "feed": "coal", "uses": [["👕", "폴리에스터 섬유·페트병"], ["🚗", "부동액"]]}, {"id": "pta", "name": "PTA", "en": "테레프탈산", "feed": "oil", "uses": [["👕", "폴리에스터 섬유·페트병"]]}, {"id": "phenol", "name": "페놀·아세톤", "en": "Phenol/Acetone", "feed": "oil", "uses": [["💅", "아세톤=리무버·용제"]]}, {"id": "bdo", "name": "BDO", "en": "부탄디올", "feed": "coal", "uses": [["🧵", "스판덱스·PBT·생분해 플라스틱"]]}, {"id": "msi", "name": "메탈실리콘", "en": "Metal Si", "feed": "free", "uses": [["🔋", "실리콘·알루미늄 합금·태양광"]]}, {"id": "pe", "name": "PE", "en": "폴리에틸렌", "feed": "gas", "uses": [["🛍️", "비닐봉지·랩"], ["🥛", "우유통·세제통"]]}, {"id": "pvc", "name": "PVC", "en": "폴리염화비닐", "feed": "coal", "uses": [["🚰", "수도관·하수관"], ["🪟", "창호·바닥재"]]}, {"id": "pp", "name": "PP", "en": "폴리프로필렌", "feed": "gas", "uses": [["🥡", "배달용기"], ["🚗", "자동차 범퍼"]]}, {"id": "abs", "name": "ABS", "en": "고기능 플라스틱", "feed": "oil", "uses": [["📺", "가전 외장"], ["🧸", "레고·장난감"]]}, {"id": "sbr", "name": "SBR", "en": "합성고무", "feed": "oil", "uses": [["🛞", "타이어"], ["👟", "신발 밑창"]]}, {"id": "nbl", "name": "NB라텍스", "en": "NBL", "feed": "oil", "uses": [["🧤", "니트릴 의료·위생 장갑"]]}, {"id": "nr", "name": "천연고무", "en": "Natural Rubber", "feed": "free", "uses": [["🚚", "트럭·대형 타이어"], ["🔁", "SBR의 대체재"]]}, {"id": "pet", "name": "폴리에스터·PET", "en": "Polyester", "feed": "oil", "uses": [["👕", "기능성 옷감"], ["🧃", "페트병"]]}, {"id": "bpa", "name": "BPA", "en": "비스페놀A", "feed": "oil", "uses": [["🚘", "폴리카보네이트(헤드램프·렌즈)"], ["🛠️", "에폭시 접착제"]]}, {"id": "spandex", "name": "스판덱스", "en": "Spandex", "feed": "coal", "uses": [["🩱", "레깅스·속옷"], ["👖", "스판 청바지"]]}, {"id": "silicone", "name": "실리콘", "en": "유기실리콘", "feed": "free", "uses": [["🧴", "실란트·화장품"], ["🔌", "반도체·전기차 소재"]]}], "feeds": {"oil": {"label": "원유 전용", "desc": "납사·리포머로만 생산 → 중국 석탄·미국 에탄으로 대체 불가", "color": "#eb6834"}, "gas": {"label": "가스로도 생산", "desc": "미국·중동 에탄/프로판, 중국 석탄(CTO)과 경쟁", "color": "#2a78d6"}, "coal": {"label": "중국 석탄으로도 생산", "desc": "석탄가 안정 → 유가가 올라도 중국 원가는 그대로", "color": "#52514e"}, "free": {"label": "유가 무관", "desc": "석영·전력·농산물 기반", "color": "#008300"}}, "shares": {"sbr": {"basis": "생산능력 2023~24 · 중국 외 일부 추정", "total": "약 860만톤 (2024)", "share": [["중국", 25], ["한국", 10], ["미국", 8], ["러시아", 8], ["일본", 7], ["인도", 7], ["기타", 35]], "route": "납사 크래커 C4의 부타디엔 + 스티렌 → 원유 연동 (석탄·에탄 대체 경로 없음)", "uses": "타이어 68~75% (승용차 트레드, SSBR=저연비·EV 타이어) · 호스·벨트 ~10% · 신발 밑창 7~9%", "kr": "금호석유화학, LG화학, 롯데케미칼", "src": "GlobalData(2024) 글로벌 능력 · CCR/SunSirs 중국 22~28% · 한국 등은 회사 설비 합산 추정"}, "nbl": {"basis": "생산능력 2023~25 · 국가별은 회사 설비 합산 추정", "total": "약 350~400만톤", "share": [["한국", 32], ["말레이시아", 22], ["중국", 22], ["대만", 6], ["기타", 18]], "route": "부타디엔(납사 C4) + 아크릴로니트릴(프로필렌계) → 원유 연동", "uses": "니트릴 의료·위생 일회용 장갑이 대부분 (업계 통설 90%+)", "kr": "금호석유화학 (세계 1위, 94.6만톤·점유율 약 25%), LG화학", "src": "금호 94.6만톤·25% (2025.3 보도) · Synthomer·LG화학 설비 보도 합산"}, "nr": {"basis": "생산량 2024 (FAO)", "total": "약 1,480만톤", "share": [["태국", 32.3], ["인도네시아", 15.3], ["코트디부아르", 11.4], ["베트남", 9.0], ["중국", 5.9], ["인도", 5.9], ["기타", 20.2]], "route": "고무나무 수액 (농산물) → 유가 무관, 기후·병해·재배면적에 좌우", "uses": "타이어 60~70% (트럭·버스 타이어 비중 높음) · 장갑·콘돔 등 라텍스 · 벨트·호스·신발", "kr": "생산 없음 (수요 측: 한국타이어앤테크놀로지·금호타이어·넥센타이어)", "src": "FAO 코드 0836 (Tridge 집계) · ANRPC 2024 · 인니·코트디부아르는 출처별 편차 큼"}, "bdo": {"basis": "생산능력 2024 · 중국 외 추정", "total": "약 650만톤 (추정)", "share": [["중국", 72], ["대만", 7], ["미국", 5], ["사우디", 4], ["독일", 3], ["일본", 2], ["말레이시아", 2], ["기타", 5]], "route": "중국 Reppe법(아세틸렌) 94%, 그중 카바이드(석탄) 기반 ~81% → 사실상 석탄 · 해외는 부탄·PO법", "uses": "스판덱스 원료 PTMG ~48~52% · PBT(자동차·전자 부품) 22% · NMP(2차전지 용제) 15~19% · 생분해 비닐 PBAT", "kr": "국내 BDO 생산 없음 (효성티앤씨는 베트남에서 PTMG 자체 생산)", "src": "观研天下·CCR (중국 481만톤, 2024) · PUdaily · 글로벌은 추정"}, "spandex": {"basis": "생산능력 2024 · 한국 추정", "total": "약 175만톤", "share": [["중국", 78], ["한국", 4], ["기타", 18]], "route": "PTMG(BDO 유래, 중국 석탄 연동) + MDI", "uses": "의류 대부분 (레깅스·애슬레저·속옷·스판 청바지) · 기저귀 밴드 등 위생재", "kr": "효성티앤씨 (글로벌 1위, 회사 점유율 약 30%), 태광산업", "src": "观研天下(중국 137만톤·79%) · Longbridge(175만톤·77%) · 효성 30% (2026.1 보도)"}, "silicone": {"basis": "생산능력 2024 (유기실리콘) · 중국 외 추정", "total": "중국 DMC 335~344만톤", "share": [["중국", 83], ["미국", 5.5], ["독일", 4.5], ["일본", 3.5], ["한국", 1.5], ["기타", 2]], "route": "메탈실리콘 + 염화메틸 → 석영·전력·석탄 연동 (석유 무관)", "uses": "건축 실란트 25% · 전자전기(반도체·EV 방열) 23% · 가공 15% · 섬유 12% · 화장품·의료·태양광", "kr": "KCC (모멘티브, 글로벌 3위권)", "src": "SMM (중국 ~83%, 2024) · 观研天下 용도 · Dow 영국 Barry 폐쇄 2026"}, "msi": {"basis": "생산량 2024 (USGS)", "total": "약 460만톤", "share": [["중국", 85], ["브라질", 4.1], ["노르웨이", 2.6], ["프랑스", 2.0], ["러시아", 1.1], ["기타", 5.2]], "route": "석영 + 탄소환원제, 전력 다소비 (중국 신장=석탄 전력, 윈난·쓰촨=수력)", "uses": "알루미늄 합금 · 실리콘(실록산) · 폴리실리콘(태양광·반도체)", "kr": "국내 생산 없음", "src": "USGS Mineral Commodity Summaries 2025"}, "px": {"basis": "생산능력 2024 · 중국/세계 계산, 한국 회사 합산 추정", "total": "세계 설비 공개치 없음 (생산량 약 6,260만톤)", "share": [["중국", 52], ["한국", 10], ["인도", 4.5], ["기타", 33.5]], "route": "정유 리포머 혼합자일렌·톨루엔 전환 → 사실상 석유 전용 (석탄 경로 상업적 의미 없음)", "uses": "95%+가 PTA로 → 폴리에스터 옷감·페트병", "kr": "S-Oil, SK이노베이션, HD현대(현대오일뱅크), GS(GS칼텍스)", "src": "Argus 2025 (중국 약 4,700만톤) · S&P Platts · 국내 각사 설비 합산"}, "pta": {"basis": "생산능력 2023~24 · 계산치", "total": "약 1억 2,100만톤 (2023, GlobalData)", "share": [["중국", 70], ["한국", 3.5], ["기타", 26.5]], "route": "PX + 아세트산 산화 → 석유 전용", "uses": "폴리에스터 섬유 ~65% · PET병 수지 ~27% · 필름 ~8%", "kr": "태광산업, 효성화학 (최대 생산자 한화임팩트는 비상장)", "src": "GlobalData · SunSirs (중국 8,600만톤, 2024말)"}, "meg": {"basis": "생산능력 2024 · 계산치", "total": "약 5,500~6,200만톤", "share": [["중국", 48], ["한국", 2.5], ["기타", 49.5]], "route": "중동·미국=에탄, 아시아=납사, 중국=석탄 합성가스법 + MTO · 중국 석탄제 비중: 설비 33~40%, 실제 생산 20~27% (메모의 '50%'는 과대)", "uses": "폴리에스터(섬유·PET병·필름) 88~90% · 부동액 ~6%", "kr": "롯데케미칼, LG화학, 대한유화", "src": "观研天下 (중국 2,984만톤) · SunSirs·iTiger (석탄제 비중) · ICIS · 사우디는 중국 수입의 절반 공급"}, "phenol": {"basis": "페놀 생산능력 2023~24 · 계산·추정", "total": "페놀 약 1,600만톤 (2023, GlobalData)", "share": [["중국", 40], ["한국", 8], ["기타", 52]], "route": "벤젠 + 프로필렌 → 큐멘 → 페놀 + 아세톤 (페놀 1톤당 아세톤 0.6톤) → 석유 전용", "uses": "페놀: BPA 38~45% · 페놀수지(합판 접착제·브레이크 패드) 30~40% · 나일론 ~10% / 아세톤: 용제·리무버 ~34% · MMA(아크릴판) ~26% · BPA 20~25%", "kr": "금호석유화학(금호피앤비화학 70만톤), LG화학, 롯데케미칼(롯데GS화학)", "src": "GlobalData (국가 순위 중국·미국·한국·대만·독일) · 智研 (중국 635만톤) · 아세톤 중국 1/3+ (ResourceWise)"}, "bpa": {"basis": "생산능력 2023~24 · 계산·추정", "total": "약 1,060만톤 (2023, GlobalData)", "share": [["중국", 50], ["한국", 12.5], ["기타", 37.5]], "route": "페놀 2 + 아세톤 1 → 석유 전용", "uses": "폴리카보네이트(헤드램프·안경렌즈·전자제품) ~2/3 · 에폭시(도료·접착제·PCB) 25~30%", "kr": "금호석유화학(금호피앤비화학 45만톤, 세계 5위), LG화학, 롯데케미칼", "src": "GlobalData (순위 중국·한국·미국·대만·일본) · 观研 (중국 593만톤, 2024)"}, "pet": {"basis": "국가별 공개 자료 없음", "share": null, "uses": "병·포장, 섬유용 칩, 필름", "kr": "롯데케미칼, 티케이케미칼, SK케미칼, 효성티앤씨·태광산업(원사)"}, "ethylene": {"basis": "생산능력 2024 (한국화학산업협회)", "total": "약 2억 2,500만톤", "share": [["중국", 22.8], ["미국", 20.6], ["사우디", 7.8], ["한국", 5.7], ["기타", 43.1]], "route": "세계: 납사 43% · 에탄 36% · LPG·석탄 등 21% / 중국: 납사 ~70% · 석탄 CTO/MTO 14~20% · 에탄 8~13% / 한국: 납사 95%", "uses": "PE ~60% · MEG ~15% · PVC ~10% · SM ~5% (통설 근사)", "kr": "LG화학, 롯데케미칼, 대한유화, S-Oil(샤힌), SK이노베이션, 한화솔루션(여천NCC)", "src": "한국석유화학협회·수출입은행(2024.11) · 한국화학산업협회 2024 · OIES 2025 · Wood Mackenzie"}, "propylene": {"basis": "생산능력 2024 · 한국 환산 추정", "total": "약 1억 8,900만톤", "share": [["중국", 39], ["북미", 13.4], ["한국", 6.4], ["기타", 41.2]], "route": "세계 PDH 16% / 중국: 크래커 34% · PDH 32% · FCC 18% · 석탄 16%", "uses": "PP 65~70% · PO(폴리우레탄 쿠션) · AN(아크릴·ABS) · 큐멘(페놀)", "kr": "LG화학, 롯데케미칼, 대한유화, S-Oil, SK이노베이션, 효성화학(PDH) · 한국=세계 1위 수출국", "src": "국련기화 2025.7 (원자료 룽중) · Argus"}, "bd": {"basis": "생산능력 2024 지역 비중 · 한국 추정", "total": "약 1,830~2,050만톤", "share": [["중국", 36], ["한국", 7], ["일본·대만", 13], ["서유럽", 15], ["북미", 11], ["기타", 18]], "route": "95%+가 납사 크래커 C4 추출 · 중국도 석탄 경로 0.9% · 에탄 크래커는 BD가 거의 안 나옴 → 미국·중동이 에탄으로 갈수록 BD 부족", "uses": "SBR 26% · BR 25% (타이어) · ABS 14% · SBC 10% (신발창) · SB라텍스 6% · 나일론66 4%", "kr": "LG화학, 롯데케미칼, SK이노베이션 · 최대 수요처는 금호석유화학", "src": "Argus Butadiene 2024 · 룽중 · 중국화공정보주간 (중국 공정 비율)"}, "benzene": {"basis": "생산능력 2024 · 한국 추정", "total": "약 8,330만톤", "share": [["중국", 31], ["한국", 10], ["기타", 59]], "route": "세계: 리포메이트 39% · 분해가솔린 32% · 코크스(석탄) 6% / 중국 공급: 석유계 71% · 석탄 코크스 벤젠 10~15% · 수입 15% (주 수입원 한국)", "uses": "SM 47% · 페놀 20% · 사이클로헥산(나일론) 14% · 아닐린→MDI 11%", "kr": "S-Oil, SK이노베이션, HD현대, GS(GS칼텍스), 롯데케미칼, LG화학", "src": "OPIS 2023 · 민생선물 2025.7 · 한국화학산업협회"}, "pe": {"basis": "생산능력 2024 · 한국은 2023", "total": "약 1억 5,000만톤+", "share": [["중국", 23], ["미국", 18.5], ["중동", 14], ["한국", 5.5], ["기타", 39]], "route": "중국: 석유계 ~2/3 · 석탄 CTO ~20% · 에탄 10~15%", "uses": "필름 56% (포장·쇼핑백·택배봉투·농업용 비닐) · 수도관 11% · 우유통·세제통 11% · 팔레트·상자 10% (중국 기준)", "kr": "LG화학, 롯데케미칼, 한화솔루션, 대한유화, SK이노베이션, S-Oil", "src": "중국압축기협회 · 중신건투선물 2024.11 · 석유화학협회 미니북(그린피스 재인용) · Blooming"}, "pp": {"basis": "생산능력 2024 · 지역 혼합", "total": "약 1억 1,900만톤", "share": [["중국", 40], ["동남아", 13], ["북미", 11], ["유럽", 9], ["중동", 8], ["한국", 5.4], ["기타", 13.6]], "route": "중국: 석유계 52% · PDH 23% · 석탄 18% (+외부 메탄올 MTO 포함 시 20%대 중반)", "uses": "사출(배달용기·가전·범퍼) 39% · 포대·마대 32% · 부직포(마스크·기저귀) 10% · 과자 포장 필름 8% (중국 기준)", "kr": "롯데케미칼, 효성화학, 대한유화, LG화학, S-Oil", "src": "룽중 · 국련기화 · 중신건투선물 · Argus"}, "pvc": {"basis": "생산능력 2024~25", "total": "약 6,500만톤", "share": [["중국", 47], ["미국", 16], ["서유럽", 14], ["일본", 3], ["한국", 3], ["인도", 3], ["기타", 14]], "route": "세계는 에틸렌법 ~70% · 중국은 석탄 카바이드법 75~78% (메모의 '70%' 부합)", "uses": "상하수도관 ~40% · 창호 샷시 15~20% · 바닥재·필름 ~15% · 전선 피복 ~7% (통설 근사)", "kr": "LG화학, 한화솔루션 (국내 49%)", "src": "화경정보망·국투선물 · Hers Group · Sinopec Qilu"}, "sm": {"basis": "생산능력 2024 · 한국 추정", "total": "약 4,400~4,600만톤", "share": [["중국", 46], ["한국", 6], ["미주", 14.6], ["유럽", 12], ["기타", 21.4]], "route": "에틸렌 + 벤젠 → EB 탈수소 · 석탄 직접 경로 거의 없음", "uses": "PS(요구르트컵·일회용 식기) 33% · EPS(스티로폼) 21% · ABS/SAN 21% · UPR 7%", "kr": "LG화학, 롯데케미칼 (한화토탈에너지스는 비상장)", "src": "ICIS 2024.8 · OPIS 2024"}, "abs": {"basis": "생산능력 2023", "total": "약 1,570만톤", "share": [["중국", 53], ["한국", 14], ["대만", 11], ["기타", 22]], "route": "AN + BD + SM 3원 공중합 → 크래커·프로필렌 기반", "uses": "가전·전자 하우징 ~50% · 자동차 내장 15~20% · 레고·키보드 등", "kr": "LG화학 (회사 점유율 15%, 세계 2위), 롯데케미칼, 금호석유화학", "src": "chinabaogao·chemnews · 그린피스(석유화학협회 미니북) · 치메이 16% 1위"}}, "panels": {"중국": {"keys": ["중국"], "ll": [104, 35], "xy": [830, 330], "cols": 2}, "한국": {"keys": ["한국"], "ll": [127.8, 36.3], "xy": [790, 24], "cols": 2}, "일본": {"keys": ["일본"], "ll": [138, 37], "xy": [1150, 60]}, "대만": {"keys": ["대만"], "ll": [121, 23.7], "xy": [668, 545]}, "인도": {"keys": ["인도"], "ll": [79, 22], "xy": [330, 470]}, "태국": {"keys": ["태국"], "ll": [101, 15], "xy": [300, 690]}, "베트남": {"keys": ["베트남"], "ll": [106, 15], "xy": [470, 690]}, "말레이시아": {"keys": ["말레이시아"], "ll": [102, 4], "xy": [640, 690]}, "인도네시아": {"keys": ["인도네시아"], "ll": [113, -1], "xy": [810, 690]}, "사우디·중동": {"keys": ["사우디", "중동"], "ll": [45, 24], "xy": [100, 430]}, "코트디부아르": {"keys": ["코트디부아르"], "ll": [-5.5, 7.5], "xy": [16, 690]}, "유럽": {"keys": ["독일", "서유럽", "유럽"], "ll": [10, 50], "xy": [30, 40]}, "러시아": {"keys": ["러시아"], "ll": [60, 58], "xy": [330, 24]}, "미국·북미": {"keys": ["미국", "북미", "미주"], "ll": [-98, 39], "xy": [1262, 330]}, "브라질": {"keys": ["브라질"], "ll": [-50, -10], "xy": [1400, 600]}, "노르웨이": {"keys": ["노르웨이"], "ll": [9, 61], "xy": null}, "프랑스": {"keys": ["프랑스"], "ll": [2.5, 46.5], "xy": null}}, "poly": {"중국": ["156"], "한국": ["410"], "일본": ["392"], "대만": ["158"], "인도": ["356"], "태국": ["764"], "베트남": ["704"], "말레이시아": ["458"], "인도네시아": ["360"], "사우디": ["682"], "중동": ["682", "784", "634", "414", "364", "512", "368"], "코트디부아르": ["384"], "독일": ["276"], "서유럽": ["276", "250", "528", "056", "380", "724", "826"], "유럽": ["276", "250", "528", "056", "380", "724", "826", "616"], "러시아": ["643"], "미국": ["840"], "북미": ["840", "124"], "미주": ["840", "124", "484", "076"], "브라질": ["076"], "노르웨이": ["578"], "프랑스": ["250"], "동남아": ["764", "704", "458", "360", "608"], "일본·대만": ["392", "158"]}, "region": ["동남아", "미주", "북미", "서유럽", "유럽", "일본·대만", "중동"]};
+const W = 1584, H = 820;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const svg = d3.select('#svg').attr('width', W).attr('height', H);
+const proj = d3.geoNaturalEarth1().rotate([-150, 0]);
+const path = d3.geoPath(proj);
+const fmt = p => (Math.round(p*10)/10) + '%';
+const REG = new Set(D.region);
+const keyPanel = {}; Object.entries(D.panels).forEach(([pn,o]) => o.keys.forEach(k => keyPanel[k] = pn));
+let world, sel = 'all';
+
+// 패널별 제품 점유율 (같은 제품이면 큰 값 하나)
+const byPanel = {};
+D.nodes.forEach(n => (D.shares[n.id].share || []).forEach(([c,p]) => {
+  const pn = keyPanel[c]; if (!pn) return;
+  const a = (byPanel[pn] = byPanel[pn] || []); const ex = a.find(x => x.n.id === n.id);
+  if (ex) { if (p > ex.p) { ex.p = p; ex.k = c; } } else a.push({n, p, k: c});
+}));
+Object.values(byPanel).forEach(a => a.sort((x,y) => y.p - x.p));
+
+const chips = document.getElementById('chips');
+chips.innerHTML = `<button class="chip on" data-k="all">🌏 전체 요약</button>` +
+  D.nodes.map(n => `<button class="chip" data-k="${n.id}"><i style="background:${D.feeds[n.feed].color}"></i>${n.uses[0][0]} ${n.name}</button>`).join('');
+chips.onclick = e => { const b = e.target.closest('.chip'); if (!b) return; sel = b.dataset.k;
+  chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b)); draw(); if(window.fitZoom)fitZoom(); };
+
+function rowHtml(x){ const reg = REG.has(x.k) ? `<span class="rg">${x.k}</span>` : '';
+  return `<div class="r"><span><span class="e">${x.n.uses[0][0]}</span>${x.n.name}${reg}</span><b>${fmt(x.p)}</b></div>`; }
+
+function draw(){
+  if(window.preZoom)preZoom();
+  const map = document.getElementById('map'); map.querySelectorAll('.call').forEach(e => e.remove());
+  const side = document.getElementById('side');
+  const ramp = ['--s1','--s2','--s3','--s4','--s5'].map(css);
+  const step = p => p >= 40 ? ramp[4] : p >= 20 ? ramp[3] : p >= 10 ? ramp[2] : p >= 5 ? ramp[1] : ramp[0];
+  let fillOf = () => css('--land'); const panels = [];
+  if (sel === 'all') {
+    document.getElementById('sub').textContent = '말풍선 = 그 나라(지역)가 글로벌 생산 점유율 3% 이상인 제품 · 회색 꼬리표 = 지역 단위 수치 · 위 칩을 누르면 제품별 지도';
+    document.getElementById('leg').innerHTML = `<span>지도 색 = 점유율 3%+ 제품 수</span><span class="ramp">${ramp.map(c=>`<i style="background:${c}"></i>`).join('')}</span><span>1 · 2 · 4 · 8 · 15+</span>`;
+    const cnt = {};
+    Object.entries(byPanel).forEach(([pn,a]) => { const k = a.filter(x => x.p >= 3 || pn === '한국').length;
+      D.panels[pn].keys.filter(c => !REG.has(c)).forEach(c => (D.poly[c]||[]).forEach(id => cnt[id] = Math.max(cnt[id]||0, k))); });
+    fillOf = f => { const c = cnt[f.id]; return c ? (c >= 15 ? ramp[4] : c >= 8 ? ramp[3] : c >= 4 ? ramp[2] : c >= 2 ? ramp[1] : ramp[0]) : css('--land'); };
+    side.classList.remove('on');
+    Object.entries(byPanel).forEach(([pn,a]) => {
+      const rows = a.filter(x => x.p >= 3 || pn === '한국'); if (!rows.length || !D.panels[pn].xy) return;
+      const cls = pn==='중국'?'china':pn==='한국'?'korea':'';
+      panels.push({pn, cls, html: `<div class="cn">${pn}<span class="cnt">${rows.length}개</span></div><div class="rows${D.panels[pn].cols===2?' two':''}">${rows.map(rowHtml).join('')}</div>`});
+    });
+  } else {
+    const n = D.nodes.find(x => x.id === sel), s = D.shares[sel];
+    document.getElementById('sub').textContent = `${n.name} (${n.en}) · ${s.basis || ''} · 용도: ${n.uses.map(u=>u[0]+' '+u[1]).join(', ')}`;
+    document.getElementById('leg').innerHTML = `<span>지도 색 = 점유율</span><span class="ramp">${ramp.map(c=>`<i style="background:${c}"></i>`).join('')}</span><span>&lt;5% · 5 · 10 · 20 · 40%+</span><span style="color:${D.feeds[n.feed].color};font-weight:700">■ ${D.feeds[n.feed].label}</span>`;
+    const m = {}; (s.share||[]).forEach(([c,p]) => (D.poly[c]||[]).forEach(id => m[id] = Math.max(m[id]||0, p)));
+    fillOf = f => m[f.id] ? step(m[f.id]) : css('--land');
+    const grouped = {};
+    (s.share||[]).forEach(([c,p]) => { const pn = keyPanel[c]; if (!pn || !D.panels[pn].xy) return; (grouped[pn] = grouped[pn] || []).push([c,p]); });
+    Object.entries(grouped).forEach(([pn, arr]) => panels.push({pn, cls: pn==='중국'?'china':pn==='한국'?'korea':'',
+      html: `<div class="cn">${pn}</div>` + arr.map(([c,p]) => `<div class="big">${fmt(p)}${REG.has(c)?` <span class="rg">${c}</span>`:''}</div>`).join('')}));
+    side.innerHTML = `<h3>${n.uses[0][0]} ${n.name}</h3><div style="color:var(--ink2)">${s.basis||''}${s.total?' · '+s.total:''}</div>
+      <table>${(s.share||[]).map(([c,p])=>`<tr><td>${c}${REG.has(c)?' <span class="rg">지역</span>':''}</td><td class="n">${fmt(p)}</td></tr>`).join('')}</table>
+      ${s.route?`<div style="margin-top:8px"><b>원료 경로</b><br>${s.route}</div>`:''}
+      ${s.uses?`<div style="margin-top:8px"><b>용도</b><br>${s.uses}</div>`:''}
+      ${s.kr?`<div style="margin-top:8px"><b>🇰🇷 한국 상장사</b><br>${s.kr}</div>`:''}
+      ${s.src?`<div style="margin-top:8px;font-size:11px;color:var(--muted);word-break:break-all">출처: ${s.src}</div>`:''}`;
+    side.classList.add('on');
+  }
+  svg.selectAll('*').remove();
+  svg.append('g').selectAll('path').data(world).join('path').attr('d', path)
+     .attr('fill', fillOf).attr('stroke', css('--landline')).attr('stroke-width', .6);
+  const g = svg.append('g');
+  panels.forEach(o => {
+    const P = D.panels[o.pn], a = proj(P.ll);
+    const el = document.createElement('div'); el.className = 'call ' + o.cls; el.innerHTML = o.html;
+    el.style.left = P.xy[0] + 'px'; el.style.top = P.xy[1] + 'px'; map.appendChild(el);
+    const x = P.xy[0], y = P.xy[1], w = el.offsetWidth, h = el.offsetHeight;
+    const bx = Math.max(x, Math.min(x + w, a[0])), by = Math.max(y, Math.min(y + h, a[1]));
+    g.append('line').attr('x1', a[0]).attr('y1', a[1]).attr('x2', bx).attr('y2', by).attr('stroke', css('--ink2')).attr('stroke-width', 1).attr('stroke-opacity', .55);
+    g.append('circle').attr('cx', a[0]).attr('cy', a[1]).attr('r', 4).attr('fill', css('--ink')).attr('stroke', css('--surface')).attr('stroke-width', 2);
+  });
+  // 겹침 점검 (디버그용)
+  const els = [...map.querySelectorAll('.call'), ...(side.classList.contains('on')?[side]:[])]; window.OVERLAPS = [];
+  els.forEach((e,i) => els.slice(i+1).forEach(f => { const A = e.getBoundingClientRect(), B = f.getBoundingClientRect();
+    if (A.left < B.right && B.left < A.right && A.top < B.bottom && B.top < A.bottom) OVERLAPS.push((e.querySelector('.cn')||e.querySelector('h3')).textContent.slice(0,8) + '×' + (f.querySelector('.cn')||f.querySelector('h3')).textContent.slice(0,8)); }));
+}
+d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(t => {
+  world = topojson.feature(t, t.objects.countries).features.filter(f => f.id !== '010');
+  proj.fitExtent([[0, 0], [W, H]], {type: 'FeatureCollection', features: world});
+  document.getElementById('foot').innerHTML = '점유율 = 글로벌 생산능력 비중 (천연고무·메탈실리콘은 생산량) · 제품마다 공개 자료 수준이 달라 일부는 "중국/한국/기타"만 확인되고 일부는 추정 · 기준연도·출처는 칩 선택 후 오른쪽 패널 · 원료 기반 색: ' +
+    Object.values(D.feeds).map(f => `<b style="color:${f.color}">■</b> ${f.label}`).join('  ');
+  draw(); if(window.fitZoom)fitZoom(); document.body.dataset.ready = '1';
+});
+window.redraw=function(){if(world){draw();fitZoom();}};
+</script></body></html>
