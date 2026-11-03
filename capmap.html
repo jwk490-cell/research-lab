@@ -234,14 +234,15 @@ function drawMap(){
     d.classList.toggle('xs',r.h<44||r.w<62); d.classList.toggle('xxs',r.h<18||r.w<30);
     d.classList.toggle('sel',r.id===selId);
     d.querySelector('.r').textContent=r.rank+'위'+(cmode!=='sec'&&ch!=null?' · '+fp(ch):'');
-    const n=d.querySelector('.n'); n.textContent=c.n; n.style.fontSize=fs+'px';
+    const n=d.querySelector('.n'); n.textContent=nameAt(c,t); n.style.fontSize=fs+'px';
     d.querySelector('.c').textContent=fmtCap(r.v)+' · '+(r.v/top.reduce((s,x)=>s+x[1],0)*100).toFixed(1)+'%';
   }
   el.querySelectorAll('.tile').forEach(d=>{if(!seen.has(d.dataset.id)){d.style.opacity=0;d.style.width='0px';d.style.height='0px';setTimeout(()=>{if(d.style.opacity==='0')d.remove();},600);}});
 }
 function tileTip(e,id){
   const t=idx,v=D.cap[id][t],c=COS[id],tip=$('#tip'),host=$('#tm').parentElement.getBoundingClientRect();
-  tip.innerHTML=`<div class="t">${c.n} <span class="mut">${c.t||''}</span></div>
+  const old=nameAt(c,t);
+  tip.innerHTML=`<div class="t">${old} <span class="mut">${c.t||''}</span></div>${old!==c.n?`<div class="l"><span>현재 이름</span><b>${c.n}</b></div>`:''}
    <div class="l"><span>순위</span><b>${rankOf(id,t)}위</b></div>
    <div class="l"><span>시가총액</span><b>${fmtCap(v)}</b></div>
    <div class="l"><span>전월 대비</span><b>${fp(pct(v,D.cap[id][t-1]))}</b></div>
@@ -252,6 +253,7 @@ function tileTip(e,id){
   if(x+tip.offsetWidth>host.width) x=e.clientX-host.left-tip.offsetWidth-14;
   tip.style.left=x+'px';tip.style.top=y+'px';
 }
+function nameAt(c,t){if(!c.h)return c.n;let n=c.h[0][1];for(const [i,x] of c.h){if(i<=t)n=x;else break;}return n;}
 function hideTip(){$('#tip').style.display='none';}
 
 function drawKpis(){
@@ -261,12 +263,12 @@ function drawKpis(){
   const k=(a,b,c)=>`<div class="kpi"><div class="k">${a}</div><div class="v">${b}</div><div class="s">${c}</div></div>`;
   $('#kpis').innerHTML=
     k('상위 30 시총 합계',fmtCap(sum),t>=12?'12개월 전 대비 '+fp(pct(sum,sumY)):'&nbsp;')+
-    k('1위',COS[top[0][0]].n,fmtCap(top[0][1])+' · 상위30 내 '+(top[0][1]/sum*100).toFixed(1)+'%')+
-    k('상위 5 비중',(s5/sum*100).toFixed(1)+'%',top.slice(0,5).map(x=>COS[x[0]].n).join(' · '))+
-    k('30위 컷',fmtCap(top[top.length-1][1]),COS[top[top.length-1][0]].n);
+    k('1위',nameAt(COS[top[0][0]],t),fmtCap(top[0][1])+' · 상위30 내 '+(top[0][1]/sum*100).toFixed(1)+'%')+
+    k('상위 5 비중',(s5/sum*100).toFixed(1)+'%',top.slice(0,5).map(x=>nameAt(COS[x[0]],t)).join(' · '))+
+    k('30위 컷',fmtCap(top[top.length-1][1]),nameAt(COS[top[top.length-1][0]],t));
   if(t>=12){
     const now=new Set(top.map(x=>x[0])), was=new Set(topY.map(x=>x[0]));
-    const ins=top.filter(x=>!was.has(x[0])).map(x=>COS[x[0]].n), outs=topY.filter(x=>!now.has(x[0])).map(x=>COS[x[0]].n);
+    const ins=top.filter(x=>!was.has(x[0])).map(x=>nameAt(COS[x[0]],t)), outs=topY.filter(x=>!now.has(x[0])).map(x=>nameAt(COS[x[0]],y1));
     $('#io').innerHTML=`<div><b>12개월 전 대비 신규 진입 ${ins.length}</b><span class="in">${ins.join(' · ')||'없음'}</span></div><div><b>12개월 전 대비 이탈 ${outs.length}</b><span class="out">${outs.join(' · ')||'없음'}</span></div>`;
   } else $('#io').innerHTML='';
 }

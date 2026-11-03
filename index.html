@@ -623,6 +623,8 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="pbrgrowth">저PBR × 컨센 성장 <small>매일</small></button>
     <button class="navitem" data-tab="kospitop">코스피 상위 × OP 컨센 <small>매일</small></button>
     <button class="navitem" data-tab="kosdaqtop">코스닥 상위 × OP 컨센 <small>매일</small></button>
+    <button class="navitem" data-tab="krcapmap">韓 시총 상위 30 지도 <small>NEW</small></button>
+    <button class="navitem" data-tab="uscapmap">美 시총 상위 30 지도 <small>NEW</small></button>
     <div class="navgroup">매크로 데이터</div>
     <button class="navitem" data-tab="ram">메모리 가격</button>
     <button class="navitem" data-tab="semiexport">반도체/전기전자 수출 추이</button>
@@ -732,6 +734,8 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="pbrgrowth"><h3>저PBR × 컨센 성장 스크리너 <span class="tag">평일 16:55</span></h3><p>PBR 1배 이하 종목을 26E→27E 컨센서스 성장률 4지표(매출·영업이익·지배순이익·ROE)로 랭킹 — 직전결산/26E BPS 기준 토글, 시장·시총 필터, 종목별 3개년 컨센 상세</p></button>
           <button class="card" data-go="kospitop"><h3>코스피 시총 상위 × 영업이익 컨센서스 <span class="tag">평일 20:15</span></h3><p>코스피 시총 상위 50(100·150 전환) 종목의 연간 영업이익 2025A·26E·27E·28E 컨센서스와 증가율(CAGR), 주가 수익률 1M~2Y(코스피 지수 대비), PER 26E~28E·PBR, 매일 20:15 누적되는 시총 순위 변동(전일·1주·1개월, 진입·이탈)</p></button>
           <button class="card" data-go="kosdaqtop"><h3>코스닥 시총 상위 × 영업이익 컨센서스 <span class="tag">평일 20:15</span></h3><p>코스닥 시총 상위 50(100·150 전환) 종목의 연간 영업이익 2025A·26E·27E·28E 컨센서스와 증가율(CAGR), 주가 수익률 1M~2Y(코스닥 지수 대비), PER 26E~28E·PBR, 매일 20:15 누적되는 시총 순위 변동(전일·1주·1개월, 진입·이탈)</p></button>
+          <button class="card" data-go="krcapmap"><h3>韓 시총 상위 30 지도 <span class="tag">2000~</span></h3><p>2000년 1월부터 매월 말 코스피+코스닥 시가총액 상위 30 트리맵 — 재생·연도 이동, 섹터/12개월 변화 색, 연말 순위 추이표, 상위 30 내 섹터 비중 추이, 종목별 시총·순위 상세(상장폐지 종목 포함)</p></button>
+          <button class="card" data-go="uscapmap"><h3>美 시총 상위 30 지도 <span class="tag">2000~</span></h3><p>2000년 1월부터 매월 말 미국 시가총액 상위 30 트리맵 — GE·엑슨·시스코 시대에서 빅테크·엔비디아까지, 연말 순위 추이표, 섹터 비중 추이, 기업별 상세(엔론·월드컴 등 상장폐지 포함)</p></button>
           <button class="card" data-go="dd"><h3>전고대비 <span class="tag">낙폭 트래킹</span></h3><p>전고점 대비 낙폭 추이 + −15% 이상 하락 구간 기록</p></button>
         </div>
       </section>
@@ -926,6 +930,14 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
 
     <section class="panel embed" id="tab-pbrgrowth">
       <iframe data-src="pbrgrowth.html" title="저PBR × 컨센 성장 스크리너"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-krcapmap">
+      <iframe data-src="capmap.html?m=kr" title="韓 시총 상위 30 지도"></iframe>
+    </section>
+
+    <section class="panel embed" id="tab-uscapmap">
+      <iframe data-src="capmap.html?m=us" title="美 시총 상위 30 지도"></iframe>
     </section>
 
     <section class="panel embed" id="tab-kospitop">
@@ -3325,7 +3337,7 @@ function openTab(tab){
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
   const FRESH={binjip:1,creditdd:1,invflow:1,oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,kospitop:1,kosdaqtop:1,etccorp:1,
-               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1,mktsize:1,ircal:1};
+               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1,mktsize:1,ircal:1,krcapmap:1,uscapmap:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?(f.dataset.src.includes('?')?'&':'?')+'v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
@@ -3567,6 +3579,7 @@ homeStart();
 const RL_API=location.hostname==='research-lab.jwk490.workers.dev'?'':'https://research-lab.jwk490.workers.dev';
 const RR_TABS={
   oprevision:{m:'x',note:'OP 리비전 안에서 데이터를 새로 읽습니다'},
+  krcapmap:{m:'x',note:'2000.01~2026.11 월말 스냅샷 탭입니다 — 자동 갱신 대상이 아닙니다'}, uscapmap:{m:'x',note:'2000.01~2026.11 월말 스냅샷 탭입니다 — 자동 갱신 대상이 아닙니다'},
   home:{m:'x'},
   raoni:{m:'a',eta:'~1분'}, term:{m:'a',eta:'~1분'}, quote:{m:'a',eta:'~5분'},
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
