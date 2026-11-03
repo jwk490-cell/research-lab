@@ -1,0 +1,458 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>시총 상위 30 지도</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<script>
+(function(){var t="dark";try{t=localStorage.getItem("rl-theme")||"dark";}catch(e){}if(t==="dark")document.documentElement.classList.add("dark");})();
+</script>
+<style>
+:root{
+  --bg:#f2f4f6; --surface:#ffffff; --surface2:#f2f4f6; --line:#e7eaee; --line2:#eef0f3;
+  --text:#191f28; --sub:#4e5968; --faint:#8b95a1;
+  --accent:#3168f0; --accent-soft:rgba(49,104,240,.08); --accent-line:rgba(49,104,240,.28);
+  --up:#e34948; --down:#2a78d6; --mid:#d9d8d4; --grid:#eef0f3;
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100; --c5:#e87ba4; --c6:#008300; --c7:#4a3aa7; --c8:#e34948;
+  --tile-ink:#ffffff; --gap:#ffffff;
+  --shadow:0 1px 3px rgba(25,31,40,.04);
+}
+html.dark{
+  --bg:#101014; --surface:#1a1b20; --surface2:#232530; --line:#272930; --line2:#232530;
+  --text:#e9ebee; --sub:#9aa2ad; --faint:#6d7480;
+  --accent:#4d7df5; --accent-soft:rgba(77,125,245,.14); --accent-line:rgba(77,125,245,.4);
+  --up:#e66767; --down:#3987e5; --mid:#383835; --grid:#24262d;
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --c6:#008300; --c7:#9085e9; --c8:#e66767;
+  --tile-ink:#ffffff; --gap:#1a1b20;
+  --shadow:0 1px 3px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif}
+body{background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;padding:20px 22px 64px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+h1{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--sub);font-size:12px;margin-top:3px}
+.sub b{color:var(--text);font-weight:700}
+.card{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:16px 18px;min-width:0}
+.card h2{font-size:14.5px;font-weight:800;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card h2 small{font-size:11.5px;font-weight:500;color:var(--faint)}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.seg button,.btn{border:1px solid var(--line);background:var(--surface);color:var(--sub);font:inherit;font-size:12.5px;font-weight:600;
+  height:32px;padding:0 12px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.seg button:hover,.btn:hover{color:var(--text)}
+.seg button.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent);font-weight:800}
+.seg.big button{height:36px;font-size:13.5px;padding:0 16px}
+.ctrl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.ctrl .lab{font-size:11.5px;font-weight:700;color:var(--faint)}
+.time{display:flex;align-items:center;gap:10px;margin-bottom:10px;min-width:0}
+.time .date{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em;min-width:118px}
+.time input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+.btn.play{width:40px;padding:0;font-size:14px}
+.yrs{display:flex;gap:2px;flex-wrap:wrap;margin:-4px 0 12px}
+.yrs button{border:0;background:none;color:var(--faint);font:inherit;font-size:11px;font-weight:600;padding:2px 5px;border-radius:5px;cursor:pointer;font-variant-numeric:tabular-nums}
+.yrs button:hover{color:var(--text);background:var(--surface2)}
+.yrs button.on{color:var(--accent);background:var(--accent-soft);font-weight:800}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.kpi{background:var(--surface2);border-radius:12px;padding:10px 12px;min-width:0}
+.kpi .k{font-size:11px;color:var(--faint);font-weight:700}
+.kpi .v{font-size:18px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .s{font-size:11px;color:var(--sub);margin-top:1px;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:11.5px;color:var(--sub);margin:0 0 10px}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px}
+.tm{position:relative;width:100%;height:560px;border-radius:10px;overflow:hidden;background:var(--surface2)}
+.tile{position:absolute;overflow:hidden;border:1px solid var(--gap);border-radius:5px;color:var(--tile-ink);cursor:pointer;
+  transition:left .55s ease,top .55s ease,width .55s ease,height .55s ease,background-color .4s ease,opacity .4s;padding:5px 7px;line-height:1.2}
+.tile.sel{box-shadow:inset 0 0 0 2px var(--text)}
+.tile .r{font-size:10.5px;opacity:.85;font-weight:700;font-variant-numeric:tabular-nums}
+.tile .n{font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .c{font-size:11px;opacity:.9;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tile.xs .c,.tile.xs .r{display:none}
+.tile.xxs .n{display:none}
+.mut{color:var(--faint);font-size:11.5px}
+.io{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:12px}
+.io div{background:var(--surface2);border-radius:12px;padding:9px 12px;font-size:12px;color:var(--sub);min-width:0}
+.io b{color:var(--text);font-size:11.5px;display:block;margin-bottom:2px}
+.io .in{color:var(--up);font-weight:700}.io .out{color:var(--down);font-weight:700}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;max-height:640px;overflow-y:auto}
+table{border-collapse:separate;border-spacing:0;font-size:12px}
+th,td{padding:0;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface);font-size:10.5px;font-weight:700;color:var(--faint);padding:5px 0;border-bottom:1px solid var(--line)}
+thead th.on{color:var(--accent)}
+tbody th{position:sticky;left:0;z-index:1;background:var(--surface);text-align:left;font-weight:700;padding:0 10px 0 4px;font-size:12px;max-width:150px;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+thead th:first-child{left:0;z-index:3;text-align:left;padding-left:4px}
+tbody th i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:0}
+td{width:34px;min-width:34px;height:24px;font-size:11px;font-weight:700;border:1px solid var(--surface);border-radius:5px;cursor:pointer}
+td.e{color:transparent}
+tbody tr:hover th{color:var(--accent)}
+tbody tr.sel th{color:var(--accent)}
+.svgw{position:relative;width:100%}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{fill:var(--faint);font-size:10.5px;font-variant-numeric:tabular-nums}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:11.5px;
+  box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:20;display:none;min-width:150px;color:var(--text)}
+.tip .t{font-weight:800;margin-bottom:4px}
+.tip .l{display:flex;justify-content:space-between;gap:12px;color:var(--sub);font-variant-numeric:tabular-nums}
+.tip .l b{color:var(--text)}
+.tip .l i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+.foot{color:var(--faint);font-size:11.5px;line-height:1.7}
+.foot b{color:var(--sub)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  body{padding:14px 12px 56px}
+  .tm{height:440px}
+  .time .date{font-size:18px;min-width:92px}
+  .io{grid-template-columns:minmax(0,1fr)}
+  .kpis{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+</style></head><body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1 id="ttl">시가총액 상위 30 지도</h1>
+      <div class="sub" id="sub">불러오는 중…</div>
+    </div>
+    <div class="seg big" id="mkt"><button data-m="kr">🇰🇷 한국</button><button data-m="us">🇺🇸 미국</button></div>
+  </div>
+
+  <div class="card">
+    <div class="time">
+      <button class="btn play" id="play" aria-label="재생">▶</button>
+      <div class="date" id="date">—</div>
+      <input type="range" id="slider" min="0" max="0" value="0" aria-label="기준 월">
+    </div>
+    <div class="yrs" id="yrs"></div>
+    <div class="ctrl">
+      <span class="lab">색</span>
+      <div class="seg" id="colorMode"><button data-c="sec" class="on">섹터</button><button data-c="y1">12개월 변화</button><button data-c="m1">전월 변화</button></div>
+      <span class="lab">속도</span>
+      <div class="seg" id="speed"><button data-s="700">느리게</button><button data-s="320" class="on">보통</button><button data-s="120">빠르게</button></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="legend" id="legend"></div>
+    <div class="tm" id="tm"></div>
+    <div class="io" id="io"></div>
+    <div class="tip" id="tip"></div>
+  </div>
+
+  <div class="card" id="detailCard" style="display:none">
+    <h2><span id="dTitle"></span> <small id="dSub"></small></h2>
+    <div class="svgw" id="dChart"></div>
+  </div>
+
+  <div class="card">
+    <h2>순위 추이 <small>연말 기준 · 마지막 열은 최신 · 칸 클릭 = 그 시점으로 이동</small></h2>
+    <div class="ctrl">
+      <div class="seg" id="rowMode"><button data-r="now" class="on">현재 상위 30</button><button data-r="all">역대 진입 전체</button><button data-r="top10">상위 10 경험</button></div>
+    </div>
+    <div class="legend" id="rlegend"></div>
+    <div class="tw"><table id="rank"></table></div>
+  </div>
+
+  <div class="card">
+    <h2>상위 30 섹터 비중 추이 <small>월말 · 상위 30 시총 합계 = 100%</small></h2>
+    <div class="legend" id="legend2"></div>
+    <div class="svgw" id="area"></div>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const SEC_COL=i=>`var(--c${i+1})`;
+const P=new URLSearchParams(location.search);
+let M=(P.get('m')==='us')?'us':'kr';
+let D=null, idx=0, timer=null, speed=320, cmode='sec', rmode='now', selId=null, RANKS=null;
+const CACHE={};
+
+function fmtCap(v){            // KR: 억원 → 조, US: $M → $B/T
+  if(v==null) return '–';
+  if(M==='kr'){const j=v/1e4; return j>=100?Math.round(j).toLocaleString()+'조':j>=10?j.toFixed(1)+'조':j.toFixed(2)+'조';}
+  const b=v/1e3; return b>=1000?'$'+(b/1e3).toFixed(2)+'T':b>=100?'$'+Math.round(b)+'B':'$'+b.toFixed(1)+'B';
+}
+const pct=(a,b)=>(a!=null&&b!=null&&b>0)?(a/b-1)*100:null;
+const fp=v=>v==null?'–':(v>0?'+':'')+v.toFixed(Math.abs(v)>=100?0:1)+'%';
+
+function computeRanks(){       // 월별 [id 정렬 배열]
+  const n=D.months.length; RANKS=[];
+  for(let t=0;t<n;t++){
+    const arr=[];
+    for(const c of D.cos){const v=D.cap[c.id][t]; if(v!=null&&v>0) arr.push([c.id,v]);}
+    arr.sort((a,b)=>b[1]-a[1]); RANKS.push(arr);
+  }
+}
+const COS={};
+function rankOf(id,t){const a=RANKS[t]; for(let i=0;i<a.length&&i<60;i++) if(a[i][0]===id) return i+1; return null;}
+
+/* ── squarified treemap ── */
+function squarify(items,x,y,w,h){
+  const out=[]; let rest=items.slice(); const total=rest.reduce((s,d)=>s+d.v,0); if(!total) return out;
+  const scale=(w*h)/total; rest=rest.map(d=>({...d,a:d.v*scale}));
+  function worst(row,side){const s=row.reduce((p,d)=>p+d.a,0),mx=Math.max(...row.map(d=>d.a)),mn=Math.min(...row.map(d=>d.a));return Math.max(side*side*mx/(s*s),(s*s)/(side*side*mn));}
+  let row=[];
+  while(rest.length){
+    const side=Math.min(w,h), d=rest[0];
+    if(!row.length||worst(row.concat([d]),side)<=worst(row,side)){row.push(d);rest.shift();continue;}
+    lay(); row=[];
+  }
+  if(row.length) lay();
+  function lay(){
+    const s=row.reduce((p,d)=>p+d.a,0);
+    if(w>=h){const cw=s/h;let cy=y;for(const d of row){const ch=d.a/cw;out.push({...d,x,y:cy,w:cw,h:ch});cy+=ch;}x+=cw;w-=cw;}
+    else{const ch=s/w;let cx=x;for(const d of row){const cw=d.a/ch;out.push({...d,x:cx,y,w:cw,h:ch});cx+=cw;}y+=ch;h-=ch;}
+  }
+  return out;
+}
+function divColor(v){            // 상승=빨강 / 하락=파랑, 0=회색
+  if(v==null) return 'var(--mid)';
+  const k=Math.max(-1,Math.min(1,v/60)), a=Math.round(Math.pow(Math.abs(k),.7)*100);
+  return `color-mix(in oklab, ${k>=0?'var(--up)':'var(--down)'} ${a}%, var(--mid))`;
+}
+
+function drawMap(){
+  const el=$('#tm'), W=el.clientWidth, H=el.clientHeight, t=idx;
+  const top=RANKS[t].slice(0,30);
+  const items=top.map(([id,v],i)=>({id,v,rank:i+1}));
+  const rects=squarify(items,0,0,W,H);
+  const seen=new Set();
+  const prevT=Math.max(0,t-1), y1T=Math.max(0,t-12);
+  for(const r of rects){
+    seen.add(r.id);
+    let d=el.querySelector(`[data-id="${CSS.escape(r.id)}"]`);
+    const c=COS[r.id];
+    if(!d){d=document.createElement('div');d.className='tile';d.dataset.id=r.id;d.innerHTML='<div class="r"></div><div class="n"></div><div class="c"></div>';
+      d.style.left=r.x+r.w/2+'px';d.style.top=r.y+r.h/2+'px';d.style.width='0px';d.style.height='0px';el.appendChild(d);
+      d.addEventListener('click',()=>selectCo(r.id===selId?null:d.dataset.id));
+      d.addEventListener('mousemove',e=>tileTip(e,d.dataset.id));d.addEventListener('mouseleave',hideTip);
+      d.getBoundingClientRect();}
+    d.style.opacity=1;
+    d.style.left=r.x+'px';d.style.top=r.y+'px';d.style.width=Math.max(0,r.w)+'px';d.style.height=Math.max(0,r.h)+'px';
+    const ch=cmode==='y1'?pct(r.v,D.cap[r.id][y1T]):cmode==='m1'?pct(r.v,D.cap[r.id][prevT]):null;
+    d.style.backgroundColor=cmode==='sec'?SEC_COL(c.s):divColor(cmode==='m1'&&ch!=null?ch*4:ch);
+    d.style.color=cmode==='sec'?'var(--tile-ink)':'var(--text)';
+    const area=r.w*r.h, fs=Math.max(10,Math.min(26,Math.sqrt(area)/7.5));
+    d.classList.toggle('xs',r.h<44||r.w<62); d.classList.toggle('xxs',r.h<18||r.w<30);
+    d.classList.toggle('sel',r.id===selId);
+    d.querySelector('.r').textContent=r.rank+'위'+(cmode!=='sec'&&ch!=null?' · '+fp(ch):'');
+    const n=d.querySelector('.n'); n.textContent=c.n; n.style.fontSize=fs+'px';
+    d.querySelector('.c').textContent=fmtCap(r.v)+' · '+(r.v/top.reduce((s,x)=>s+x[1],0)*100).toFixed(1)+'%';
+  }
+  el.querySelectorAll('.tile').forEach(d=>{if(!seen.has(d.dataset.id)){d.style.opacity=0;d.style.width='0px';d.style.height='0px';setTimeout(()=>{if(d.style.opacity==='0')d.remove();},600);}});
+}
+function tileTip(e,id){
+  const t=idx,v=D.cap[id][t],c=COS[id],tip=$('#tip'),host=$('#tm').parentElement.getBoundingClientRect();
+  tip.innerHTML=`<div class="t">${c.n} <span class="mut">${c.t||''}</span></div>
+   <div class="l"><span>순위</span><b>${rankOf(id,t)}위</b></div>
+   <div class="l"><span>시가총액</span><b>${fmtCap(v)}</b></div>
+   <div class="l"><span>전월 대비</span><b>${fp(pct(v,D.cap[id][t-1]))}</b></div>
+   <div class="l"><span>12개월 대비</span><b>${fp(pct(v,D.cap[id][t-12]))}</b></div>
+   <div class="l"><span>섹터</span><b>${D.sectors[c.s]}</b></div>`;
+  tip.style.display='block';
+  let x=e.clientX-host.left+14,y=e.clientY-host.top+14;
+  if(x+tip.offsetWidth>host.width) x=e.clientX-host.left-tip.offsetWidth-14;
+  tip.style.left=x+'px';tip.style.top=y+'px';
+}
+function hideTip(){$('#tip').style.display='none';}
+
+function drawKpis(){
+  const t=idx, top=RANKS[t].slice(0,30), sum=top.reduce((s,x)=>s+x[1],0);
+  const y1=Math.max(0,t-12), topY=RANKS[y1].slice(0,30), sumY=topY.reduce((s,x)=>s+x[1],0);
+  const s5=top.slice(0,5).reduce((s,x)=>s+x[1],0);
+  const k=(a,b,c)=>`<div class="kpi"><div class="k">${a}</div><div class="v">${b}</div><div class="s">${c}</div></div>`;
+  $('#kpis').innerHTML=
+    k('상위 30 시총 합계',fmtCap(sum),t>=12?'12개월 전 대비 '+fp(pct(sum,sumY)):'&nbsp;')+
+    k('1위',COS[top[0][0]].n,fmtCap(top[0][1])+' · 상위30 내 '+(top[0][1]/sum*100).toFixed(1)+'%')+
+    k('상위 5 비중',(s5/sum*100).toFixed(1)+'%',top.slice(0,5).map(x=>COS[x[0]].n).join(' · '))+
+    k('30위 컷',fmtCap(top[top.length-1][1]),COS[top[top.length-1][0]].n);
+  if(t>=12){
+    const now=new Set(top.map(x=>x[0])), was=new Set(topY.map(x=>x[0]));
+    const ins=top.filter(x=>!was.has(x[0])).map(x=>COS[x[0]].n), outs=topY.filter(x=>!now.has(x[0])).map(x=>COS[x[0]].n);
+    $('#io').innerHTML=`<div><b>12개월 전 대비 신규 진입 ${ins.length}</b><span class="in">${ins.join(' · ')||'없음'}</span></div><div><b>12개월 전 대비 이탈 ${outs.length}</b><span class="out">${outs.join(' · ')||'없음'}</span></div>`;
+  } else $('#io').innerHTML='';
+}
+function drawLegend(){
+  const h=D.sectors.map((s,i)=>`<span><i style="background:${SEC_COL(i)}"></i>${s}</span>`).join('');
+  $('#legend2').innerHTML=h;
+  $('#legend').innerHTML=cmode==='sec'?h:`<span><i style="background:var(--down)"></i>하락</span><span><i style="background:var(--mid)"></i>0%</span><span><i style="background:var(--up)"></i>상승</span><span class="mut">${cmode==='y1'?'±60%에서 색 포화':'±15%에서 색 포화'}</span>`;
+}
+function setIdx(i,fromUser){
+  idx=Math.max(0,Math.min(D.months.length-1,i));
+  $('#slider').value=idx; $('#date').textContent=D.labels[idx];
+  const y=D.months[idx].slice(0,4);
+  document.querySelectorAll('#yrs button').forEach(b=>b.classList.toggle('on',b.dataset.y===y));
+  document.querySelectorAll('#rank thead th[data-t]').forEach(th=>th.classList.toggle('on',+th.dataset.t===idx));
+  drawMap(); drawKpis(); drawCursor();
+}
+
+/* ── 순위 추이표 ── */
+function yearCols(){
+  const cols=[];
+  for(let t=0;t<D.months.length;t++){const m=D.months[t]; if(m.endsWith('-12')||t===D.months.length-1) cols.push(t);}
+  return cols;
+}
+function rankBg(r){
+  if(r==null) return '';
+  const a=r===1?100:r<=3?78:r<=5?60:r<=10?42:r<=20?26:14;
+  return `background:color-mix(in oklab, var(--accent) ${a}%, var(--surface));color:${r<=5?'#fff':'var(--text)'}`;
+}
+function drawRank(){
+  const cols=yearCols(), last=D.months.length-1;
+  let ids;
+  const best={};
+  for(const c of D.cos){let b=99;for(const t of cols){const r=rankOf(c.id,t);if(r&&r<b)b=r;}
+    for(let t=0;t<D.months.length;t++){const r=rankOf(c.id,t); if(r&&r<b)b=r;} best[c.id]=b;}
+  if(rmode==='now') ids=RANKS[last].slice(0,30).map(x=>x[0]);
+  else{
+    ids=D.cos.filter(c=>best[c.id]<=(rmode==='top10'?10:30)).map(c=>c.id);
+    ids.sort((a,b)=>{const ra=rankOf(a,last)||999,rb=rankOf(b,last)||999; if(ra!==rb) return ra-rb;
+      const la=lastTop(a),lb=lastTop(b); return lb-la||best[a]-best[b];});
+  }
+  function lastTop(id){for(let t=last;t>=0;t--){const r=rankOf(id,t); if(r&&r<=30) return t;} return -1;}
+  let h='<thead><tr><th>기업</th>'+cols.map(t=>`<th data-t="${t}">${t===last?D.labels[t].slice(2,7).replace('-','.'):"'"+D.months[t].slice(2,4)}</th>`).join('')+'</tr></thead><tbody>';
+  for(const id of ids){
+    const c=COS[id];
+    h+=`<tr data-id="${id}"${id===selId?' class="sel"':''}><th title="${c.n}"><i style="background:${SEC_COL(c.s)}"></i>${c.n}</th>`;
+    for(const t of cols){const r=rankOf(id,t); const ok=r&&r<=30;
+      h+=`<td data-t="${t}" class="${ok?'':'e'}" style="${ok?rankBg(r):''}" title="${c.n} ${D.labels[t]} ${ok?r+'위 · '+fmtCap(D.cap[id][t]):'30위 밖'}">${ok?r:''}</td>`;}
+    h+='</tr>';
+  }
+  $('#rank').innerHTML=h+'</tbody>';
+  $('#rlegend').innerHTML=[[1,'1위'],[3,'2~3위'],[5,'4~5위'],[10,'6~10위'],[20,'11~20위'],[30,'21~30위']].map(([r,l])=>`<span><i style="${rankBg(r)}"></i>${l}</span>`).join('')+'<span class="mut">빈칸 = 30위 밖·미상장</span>';
+  $('#rank').querySelectorAll('tbody tr').forEach(tr=>tr.querySelector('th').addEventListener('click',()=>selectCo(tr.dataset.id)));
+  $('#rank').querySelectorAll('td,thead th[data-t]').forEach(td=>td.addEventListener('click',()=>{stop();setIdx(+td.dataset.t);
+    const tr=td.closest('tr'); if(tr&&tr.dataset.id) selectCo(tr.dataset.id,true);}));
+  document.querySelectorAll('#rank thead th[data-t]').forEach(th=>th.classList.toggle('on',+th.dataset.t===idx));
+}
+
+/* ── 섹터 비중 100% 누적 영역 ── */
+let AREA=null;
+function drawArea(){
+  const host=$('#area'), W=Math.max(320,host.clientWidth), H=Math.round(Math.min(320,Math.max(220,W*.32)));
+  const L=34,R=8,T=8,B=22, n=D.months.length, S=D.sectors.length;
+  const share=[];
+  for(let t=0;t<n;t++){const top=RANKS[t].slice(0,30), sum=top.reduce((s,x)=>s+x[1],0), a=new Array(S).fill(0);
+    for(const [id,v] of top) a[COS[id].s]+=v/sum*100; share.push(a);}
+  const X=t=>L+(W-L-R)*t/(n-1), Y=v=>T+(H-T-B)*(1-v/100);
+  let paths='', base=new Array(n).fill(0);
+  for(let s=0;s<S;s++){
+    const up=base.map((b,t)=>b+share[t][s]);
+    let d='M'+X(0)+','+Y(up[0]);
+    for(let t=1;t<n;t++) d+='L'+X(t).toFixed(1)+','+Y(up[t]).toFixed(1);
+    for(let t=n-1;t>=0;t--) d+='L'+X(t).toFixed(1)+','+Y(base[t]).toFixed(1);
+    paths+=`<path d="${d}Z" fill="${SEC_COL(s)}" stroke="var(--surface)" stroke-width="1"/>`;
+    base=up;
+  }
+  let ax='';
+  for(const v of [0,25,50,75,100]) ax+=`<text x="${L-6}" y="${Y(v)+3.5}" text-anchor="end">${v}%</text>`;
+  for(let t=0;t<n;t++){const m=D.months[t]; if(m.endsWith('-01')&&(+m.slice(0,4))%4===0) ax+=`<text x="${X(t)}" y="${H-6}" text-anchor="middle">${m.slice(0,4)}</text>`;}
+  host.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${paths}${ax}<line id="acur" y1="${T}" y2="${H-B}" stroke="var(--text)" stroke-width="1.5"/><line id="ahov" y1="${T}" y2="${H-B}" stroke="var(--text)" stroke-width="1" stroke-dasharray="3 3" style="display:none"/><rect id="ahit" x="${L}" y="${T}" width="${W-L-R}" height="${H-T-B}" fill="transparent" style="cursor:pointer"/></svg><div class="tip" id="atip"></div>`;
+  AREA={X,share,W,L,R,n};
+  const hit=host.querySelector('#ahit'), tip=host.querySelector('#atip'), hv=host.querySelector('#ahov');
+  const tAt=e=>{const r=host.querySelector('svg').getBoundingClientRect();const x=(e.clientX-r.left)*W/r.width;return Math.max(0,Math.min(n-1,Math.round((x-L)/(W-L-R)*(n-1))));};
+  hit.addEventListener('mousemove',e=>{const t=tAt(e);hv.style.display='';hv.setAttribute('x1',X(t));hv.setAttribute('x2',X(t));
+    const rows=D.sectors.map((s,i)=>[i,share[t][i]]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+    tip.innerHTML=`<div class="t">${D.labels[t]}</div>`+rows.map(([i,v])=>`<div class="l"><span><i style="background:${SEC_COL(i)}"></i>${D.sectors[i]}</span><b>${v.toFixed(1)}%</b></div>`).join('');
+    tip.style.display='block'; const r=host.getBoundingClientRect(); let x=e.clientX-r.left+14; if(x+tip.offsetWidth>r.width) x=e.clientX-r.left-tip.offsetWidth-14;
+    tip.style.left=x+'px'; tip.style.top=Math.max(0,e.clientY-r.top-40)+'px';});
+  hit.addEventListener('mouseleave',()=>{tip.style.display='none';hv.style.display='none';});
+  hit.addEventListener('click',e=>{stop();setIdx(tAt(e));});
+  drawCursor();
+}
+function drawCursor(){
+  if(AREA){const c=document.getElementById('acur'); if(c){c.setAttribute('x1',AREA.X(idx));c.setAttribute('x2',AREA.X(idx));}}
+  if(DET){const c=document.getElementById('dcur'); if(c){c.setAttribute('x1',DET.X(idx));c.setAttribute('x2',DET.X(idx));}}
+}
+
+/* ── 기업 상세 (시총 선) ── */
+let DET=null;
+function selectCo(id,keep){
+  selId=id;
+  document.querySelectorAll('#tm .tile').forEach(d=>d.classList.toggle('sel',d.dataset.id===id));
+  document.querySelectorAll('#rank tbody tr').forEach(tr=>tr.classList.toggle('sel',tr.dataset.id===id));
+  if(!id){$('#detailCard').style.display='none';DET=null;return;}
+  $('#detailCard').style.display=''; drawDetail();
+  if(!keep) $('#detailCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function drawDetail(){
+  const id=selId; if(!id) return; const c=COS[id], s=D.cap[id], n=s.length;
+  let best=99,bestT=0,first=null,lastIn=null,cnt=0;
+  for(let t=0;t<n;t++){const r=rankOf(id,t); if(r&&r<best){best=r;bestT=t;} if(r&&r<=30){cnt++; if(first==null)first=t; lastIn=t;}}
+  $('#dTitle').innerHTML=`<i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${SEC_COL(c.s)};margin-right:6px"></i>${c.n}`;
+  $('#dSub').textContent=`${D.sectors[c.s]} · 최고 ${best}위(${D.labels[bestT]}) · 상위 30 체류 ${cnt}개월${lastIn!=null&&lastIn<n-1?' · 마지막 '+D.labels[lastIn]:''}`;
+  const host=$('#dChart'), W=Math.max(320,host.clientWidth), H=Math.round(Math.min(280,Math.max(200,W*.28)));
+  const L=52,R=10,T=10,B=22;
+  const vals=s.filter(v=>v!=null); const mx=Math.max(...vals)*1.06;
+  const X=t=>L+(W-L-R)*t/(n-1), Y=v=>T+(H-T-B)*(1-v/mx);
+  let d='',pen=false;
+  for(let t=0;t<n;t++){const v=s[t]; if(v==null){pen=false;continue;} d+=(pen?'L':'M')+X(t).toFixed(1)+','+Y(v).toFixed(1); pen=true;}
+  let ax='';
+  const step=niceStep(mx/4);
+  for(let v=0;v<=mx;v+=step) ax+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)"/><text x="${L-6}" y="${Y(v)+3.5}" text-anchor="end">${fmtCap(v)}</text>`;
+  for(let t=0;t<n;t++){const m=D.months[t]; if(m.endsWith('-01')&&(+m.slice(0,4))%4===0) ax+=`<text x="${X(t)}" y="${H-6}" text-anchor="middle">${m.slice(0,4)}</text>`;}
+  // 상위 30 구간 음영
+  let bands='',st=null;
+  for(let t=0;t<=n;t++){const r=t<n?rankOf(id,t):null, inn=r&&r<=30;
+    if(inn&&st==null) st=t; if(!inn&&st!=null){bands+=`<rect x="${X(st)}" y="${T}" width="${Math.max(1,X(t-1)-X(st))}" height="${H-T-B}" fill="var(--accent-soft)"/>`;st=null;}}
+  host.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${bands}${ax}<path d="${d}" fill="none" stroke="${SEC_COL(c.s)}" stroke-width="2" stroke-linejoin="round"/>
+   <line id="dcur" y1="${T}" y2="${H-B}" stroke="var(--text)" stroke-width="1.5"/><line id="dhov" y1="${T}" y2="${H-B}" stroke="var(--text)" stroke-dasharray="3 3" style="display:none"/>
+   <circle id="ddot" r="4" fill="${SEC_COL(c.s)}" stroke="var(--surface)" stroke-width="2" style="display:none"/>
+   <rect id="dhit" x="${L}" y="${T}" width="${W-L-R}" height="${H-T-B}" fill="transparent" style="cursor:pointer"/></svg><div class="tip" id="dtip"></div>
+   <div class="mut" style="margin-top:6px">음영 = 상위 30 안에 있던 기간 · 클릭하면 지도가 그 달로 이동</div>`;
+  DET={X};
+  const hit=host.querySelector('#dhit'),tip=host.querySelector('#dtip'),hv=host.querySelector('#dhov'),dot=host.querySelector('#ddot');
+  const tAt=e=>{const r=host.querySelector('svg').getBoundingClientRect();const x=(e.clientX-r.left)*W/r.width;return Math.max(0,Math.min(n-1,Math.round((x-L)/(W-L-R)*(n-1))));};
+  hit.addEventListener('mousemove',e=>{const t=tAt(e),v=s[t];hv.style.display='';hv.setAttribute('x1',X(t));hv.setAttribute('x2',X(t));
+    if(v!=null){dot.style.display='';dot.setAttribute('cx',X(t));dot.setAttribute('cy',Y(v));}else dot.style.display='none';
+    const r=rankOf(id,t);
+    tip.innerHTML=`<div class="t">${D.labels[t]}</div><div class="l"><span>시가총액</span><b>${fmtCap(v)}</b></div><div class="l"><span>순위</span><b>${r?r+'위':'–'}</b></div>`;
+    tip.style.display='block';const rr=host.getBoundingClientRect();let x=e.clientX-rr.left+14;if(x+tip.offsetWidth>rr.width)x=e.clientX-rr.left-tip.offsetWidth-14;
+    tip.style.left=x+'px';tip.style.top=Math.max(0,e.clientY-rr.top-30)+'px';});
+  hit.addEventListener('mouseleave',()=>{tip.style.display='none';hv.style.display='none';dot.style.display='none';});
+  hit.addEventListener('click',e=>{stop();setIdx(tAt(e));});
+  drawCursor();
+}
+function niceStep(x){const p=Math.pow(10,Math.floor(Math.log10(x)));for(const m of [1,2,2.5,5,10]) if(m*p>=x) return m*p; return 10*p;}
+
+/* ── 재생 ── */
+function stop(){if(timer){clearInterval(timer);timer=null;$('#play').textContent='▶';}}
+function play(){
+  if(timer){stop();return;}
+  if(idx>=D.months.length-1) setIdx(0);
+  $('#play').textContent='❚❚';
+  timer=setInterval(()=>{if(idx>=D.months.length-1){stop();return;} setIdx(idx+1);},speed);
+}
+
+async function load(m){
+  stop(); M=m;
+  document.querySelectorAll('#mkt button').forEach(b=>b.classList.toggle('on',b.dataset.m===M));
+  const u=new URL(location.href); u.searchParams.set('m',M); history.replaceState(null,'',u);
+  if(!CACHE[M]){const r=await fetch(`data/capmap_${M}.json?v=`+Date.now()); CACHE[M]=await r.json();}
+  D=CACHE[M]; for(const k in COS) delete COS[k]; for(const c of D.cos) COS[c.id]=c;
+  computeRanks();
+  $('#ttl').textContent=(M==='kr'?'한국':'미국')+' 시가총액 상위 30 지도';
+  $('#sub').innerHTML=D.subtitle;
+  $('#foot').innerHTML=D.foot;
+  $('#tm').innerHTML=''; selId=null; $('#detailCard').style.display='none';
+  $('#slider').max=D.months.length-1;
+  const yrs=[...new Set(D.months.map(m=>m.slice(0,4)))];
+  $('#yrs').innerHTML=yrs.map(y=>`<button data-y="${y}">${y}</button>`).join('');
+  $('#yrs').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{stop();
+    let t=D.months.lastIndexOf(b.dataset.y+'-12'); if(t<0) t=D.months.length-1; setIdx(t);}));
+  drawLegend(); drawRank(); drawArea(); setIdx(D.months.length-1);
+}
+$('#mkt').addEventListener('click',e=>{const b=e.target.closest('button'); if(b&&b.dataset.m!==M) load(b.dataset.m);});
+$('#slider').addEventListener('input',e=>{stop();setIdx(+e.target.value);});
+$('#play').addEventListener('click',play);
+$('#colorMode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cmode=b.dataset.c;
+  document.querySelectorAll('#colorMode button').forEach(x=>x.classList.toggle('on',x===b));drawLegend();drawMap();});
+$('#speed').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;speed=+b.dataset.s;
+  document.querySelectorAll('#speed button').forEach(x=>x.classList.toggle('on',x===b)); if(timer){stop();play();}});
+$('#rowMode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;rmode=b.dataset.r;
+  document.querySelectorAll('#rowMode button').forEach(x=>x.classList.toggle('on',x===b));drawRank();});
+document.addEventListener('keydown',e=>{if(!D||e.target.tagName==='INPUT')return;
+  if(e.key==='ArrowRight'){stop();setIdx(idx+1);} else if(e.key==='ArrowLeft'){stop();setIdx(idx-1);} else if(e.key===' '){e.preventDefault();play();}});
+let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!D)return;drawMap();drawArea();if(selId)drawDetail();},150);});
+window.addEventListener('storage',e=>{if(e.key==='rl-theme')document.documentElement.classList.toggle('dark',e.newValue!=='light');});
+load(M);
+</script>
+</body></html>
