@@ -607,6 +607,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="etccorp">기타법인 수급 <small>매일</small></button>
     <button class="navitem" data-tab="krhigh">韓 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="ushigh">美 신고가 (20·60일·52주)</button>
+    <button class="navitem" data-tab="jphigh">日 신고가 (20·60일·52주) <small>NEW</small></button>
     <button class="navitem" data-tab="rs">RS 분석</button>
     <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
     <button class="navitem" data-tab="semirebal">반도체 ETF 리밸런싱 <small>9/10</small></button>
@@ -714,6 +715,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="etccorp"><h3>기타법인 수급 <span class="tag">평일 16:35 · 21:30</span></h3><p>기타법인(지주·계열사·대주주 법인)이 매일 기계적으로 사 모으는 종목 — 연속 매집일·누적·거래대금 비중·추정 취득 지분·5% 보고까지 잔여일, 자사주 교차·DART 지분공시 연결</p></button>
           <button class="card" data-go="krhigh"><h3>韓 신고가 (20·60일·52주) <span class="tag">평일 21:35</span></h3><p>20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 30억↑ — 키움 전수판정</p></button>
           <button class="card" data-go="ushigh"><h3>美 신고가 (20·60일·52주) <span class="tag">매일 아침</span></h3><p>미국 세션 20일·60일·52주 신고가 종목 — 섹터별 분류, 시총·등락</p></button>
+          <button class="card" data-go="jphigh"><h3>日 신고가 (20·60일·52주) <span class="tag">평일 16:45</span></h3><p>도쿄증권거래소 프라임·스탠다드·그로스 20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 3억엔↑ — 일본거래소 공식 일봉 전수판정, 33업종별 분류</p></button>
           <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
           <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
           <button class="card" data-go="semirebal"><h3>반도체 ETF 리밸런싱 <span class="tag">KRX 반도체 9월 정기변경</span></h3><p>KODEX·TIGER 반도체 cap 20% 시나리오 — 35종목 유출입 금액 ÷ ADTV·종가 단일가 배수, 6월 삼성전기 교본</p></button>
@@ -842,6 +844,12 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <div class="ptitle">韓 신고가 <span style="font-size:12px;font-weight:600;color:var(--dim2)">20일·60일(장중 고가)·52주(종가) · 거래대금 30억↑ · 키움 ka10081 전수판정</span></div>
       <div class="pdesc" id="khMeta">불러오는 중…</div>
       <div id="khBody"></div>
+    </section>
+
+    <section class="panel" id="tab-jphigh">
+      <div class="ptitle">日 신고가 <span style="font-size:12px;font-weight:600;color:var(--dim2)">20일·60일(장중 고가)·52주(종가) · 거래대금 3억엔↑ · 도쿄증권거래소 전 종목 판정</span></div>
+      <div class="pdesc" id="jhMeta">불러오는 중…</div>
+      <div id="jhBody"></div>
     </section>
 
     <section class="panel" id="tab-ushigh">
@@ -2295,6 +2303,109 @@ function khCal(dates,sel){
   el.querySelectorAll('.calcell.has').forEach(b=>b.addEventListener('click',()=>{khYm=b.dataset.d.slice(0,6);khGo(b.dataset.d);}));
 }
 
+/* ══════════ 日 신고가 20일·60일·52주 (data/jphigh.json — J-Quants 전 종목 일봉, jp_newhigh.py) ══════════ */
+let JH=null,JHIDX=null,jhWin='d60',jhMkt='all',jhSec='all',jhSort='flu',jhDate=null,jhYm=null;
+const JHDAY={};
+async function jhLoad(){
+  const meta=document.getElementById('jhMeta');
+  if(!JH){
+    try{JH=await getJson('data/jphigh.json');}
+    catch(e){meta.textContent='데이터가 아직 없습니다 — 평일 16:45 빌드 후 이용 가능합니다.';return;}
+    try{JHIDX=await getJson('data/jphigh/index.json');}catch(e){JHIDX=null;}
+    JHDAY[JH.base_dt]=JH;
+  }
+  await jhDay(jhDate||JH.base_dt);
+  jhRender();
+}
+async function jhDay(bd){
+  if(JHDAY[bd]!==undefined)return JHDAY[bd];
+  try{JHDAY[bd]=await getJson(`data/jphigh/${bd}.json`);}catch(e){JHDAY[bd]=null;}
+  return JHDAY[bd];
+}
+async function jhGo(bd){
+  jhDate=bd===JH.base_dt?null:bd;jhYm=bd.slice(0,6);
+  await jhDay(bd);jhRender();
+  document.getElementById('tab-jphigh').scrollIntoView({block:'start',behavior:'smooth'});
+}
+function jhRender(){
+  const meta=document.getElementById('jhMeta'),body=document.getElementById('jhBody');
+  const bd=jhDate||JH.base_dt,V=JHDAY[bd]||JH;
+  const src=V[jhWin]||{items:[]},items=src.items||[];
+  const mk=items.filter(r=>jhMkt==='all'||r.mkt===jhMkt);
+  const bySec={};mk.forEach(r=>{bySec[r.s33]=(bySec[r.s33]||0)+1;});
+  const secs=Object.entries(bySec).sort((a,b)=>b[1]-a[1]);
+  if(jhSec!=='all'&&!bySec[jhSec])jhSec='all';
+  const show=(jhSec==='all'?mk:mk.filter(r=>r.s33===jhSec)).slice()
+    .sort((a,b)=>jhSort==='flu'?b.flu-a.flu:jhSort==='val'?b.val_oku-a.val_oku:(b.mc_oku||0)-(a.mc_oku||0));
+  const cnt=m=>items.filter(r=>r.mkt===m).length;
+  const tp=V.topix?` · TOPIX ${V.topix.close.toLocaleString('en-US',{maximumFractionDigits:2})} <span class="${V.topix.flu>=0?'up':'down'}">${V.topix.flu>=0?'+':''}${V.topix.flu.toFixed(2)}%</span>`:'';
+  meta.innerHTML=`기준일 <b>${khFmtD(bd)}(${khWd(bd)})</b>${jhDate?' <span style="color:var(--accent);font-weight:700">· 지난 신고가</span>':''} · <b>${items.length}종목</b> (프라임 ${cnt('프라임')} · 스탠다드 ${cnt('스탠다드')} · 그로스 ${cnt('그로스')})${tp} · ${esc(V.updated||'')} 갱신`;
+  const dates=JHIDX?JHIDX.days.map(x=>x.d).sort():[bd];
+  const di=dates.indexOf(bd);
+  const oku=v=>v==null?'—':v>=10000?(v/10000).toLocaleString('ko-KR',{maximumFractionDigits:1})+'조':v.toLocaleString('ko-KR',{maximumFractionDigits:0})+'억';
+  const n=k=>(V[k]&&V[k].items?V[k].items.length:0);
+  body.innerHTML=`
+  ${dates.length>1?`<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px">
+    <button class="calnav" id="jhPrev"${di<=0?' disabled':''} title="이전 거래일">‹</button>
+    <b style="font-size:13.5px">${khFmtD(bd)} (${khWd(bd)})</b>
+    <button class="calnav" id="jhNext"${di<0||di>=dates.length-1?' disabled':''} title="다음 거래일">›</button>
+    ${jhDate?'<button class="rng" id="jhLatest" style="margin-left:4px">최신으로</button>':''}</div>`:''}
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+    <div class="rngwrap" id="jhWinBar">
+      <button class="rng${jhWin==='d20'?' on':''}" data-w="d20">20일 ${n('d20')}</button>
+      <button class="rng${jhWin==='d60'?' on':''}" data-w="d60">60일 ${n('d60')}</button>
+      <button class="rng${jhWin==='w52'?' on':''}" data-w="w52">52주 ${n('w52')}</button></div>
+    <div class="rngwrap" id="jhMktBar">
+      ${['all','프라임','스탠다드','그로스'].map(m=>`<button class="rng${jhMkt===m?' on':''}" data-m="${m}">${m==='all'?'전체':m}</button>`).join('')}</div>
+    <div class="rngwrap" id="jhSortBar" style="margin-left:auto">
+      <button class="rng${jhSort==='flu'?' on':''}" data-s="flu">등락률순</button>
+      <button class="rng${jhSort==='val'?' on':''}" data-s="val">거래대금순</button>
+      <button class="rng${jhSort==='mc'?' on':''}" data-s="mc">시총순</button></div></div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="jhSecBar">
+    <button class="rng${jhSec==='all'?' on':''}" data-sec="all" style="font-size:11.5px;padding:5px 11px">전체 ${mk.length}</button>
+    ${secs.map(([s,c])=>`<button class="rng${jhSec===s?' on':''}" data-sec="${esc(s)}" style="font-size:11.5px;padding:5px 11px">${esc(s)} ${c}</button>`).join('')}</div>
+  <div class="rcard"><div style="overflow-x:auto"><table class="ddt"><thead><tr>
+    <th>#</th><th style="text-align:left">종목</th><th style="text-align:left">업종</th><th>종가(엔)</th><th>등락률</th><th>거래대금(엔)</th><th>시총(엔)</th></tr></thead><tbody>
+    ${show.length?show.map((r,i)=>`<tr><td style="color:var(--dim2)">${i+1}</td>
+      <td style="text-align:left"><b>${esc(r.name)}</b> <span style="color:var(--dim2);font-size:11px">${esc(r.code)} · ${esc(r.mkt)}</span>
+        <div style="color:var(--dim2);font-size:11px;font-weight:400">${esc(r.en||'')}</div></td>
+      <td style="text-align:left;color:var(--dim)">${esc(r.s33)}</td>
+      <td>${r.close.toLocaleString('ko-KR')}</td><td>${qtChg(r.flu)}</td>
+      <td>${oku(r.val_oku)}</td><td>${oku(r.mc_oku)}</td></tr>`).join(''):'<tr><td colspan="7" style="color:var(--dim2);padding:18px">해당 조건의 신고가 종목이 없습니다</td></tr>'}</tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:9px">신고가 판정 = ${esc(src.criteria||'')} · ${esc(V.filter||JH.filter||'')} · 업종=도쿄증권거래소 33업종 · 거래대금·시총 단위 억엔</div></div>
+  ${dates.length>1?'<div class="wrapdiv">지난 신고가 — 달력의 날짜를 누르면 해당일 명단으로 바뀝니다</div><div class="mwcal" id="jhCal" style="margin-top:8px"></div>':''}`;
+  document.getElementById('jhWinBar').onclick=e=>{const b=e.target.closest('[data-w]');if(b){jhWin=b.dataset.w;jhRender();}};
+  document.getElementById('jhMktBar').onclick=e=>{const b=e.target.closest('[data-m]');if(b){jhMkt=b.dataset.m;jhRender();}};
+  document.getElementById('jhSortBar').onclick=e=>{const b=e.target.closest('[data-s]');if(b){jhSort=b.dataset.s;jhRender();}};
+  document.getElementById('jhSecBar').onclick=e=>{const b=e.target.closest('[data-sec]');if(b){jhSec=b.dataset.sec;jhRender();}};
+  const pv=document.getElementById('jhPrev'),nx=document.getElementById('jhNext'),lt=document.getElementById('jhLatest');
+  if(pv)pv.onclick=()=>{if(di>0)jhGo(dates[di-1]);};
+  if(nx)nx.onclick=()=>{if(di>=0&&di<dates.length-1)jhGo(dates[di+1]);};
+  if(lt)lt.onclick=()=>jhGo(JH.base_dt);
+  if(!jhYm||jhYm.length!==6)jhYm=bd.slice(0,6);
+  jhCal(dates,bd);
+}
+function jhCal(dates,sel){
+  const el=document.getElementById('jhCal');if(!el)return;
+  const set=new Set(dates),y=+jhYm.slice(0,4),m=+jhYm.slice(4,6);
+  const minYm=dates[0].slice(0,6),maxYm=dates[dates.length-1].slice(0,6);
+  const start=new Date(y,m-1,1).getDay(),nd=new Date(y,m,0).getDate();
+  let h=`<div class="calhead"><button class="calnav" data-cn="-1" ${jhYm<=minYm?'disabled':''}>‹</button><b>${y}년 ${m}월</b><button class="calnav" data-cn="1" ${jhYm>=maxYm?'disabled':''}>›</button></div><div class="calgrid">`;
+  ['일','월','화','수','목','금','토'].forEach((w,i)=>h+=`<div class="calwd${i===0?' sun':''}">${w}</div>`);
+  for(let i=0;i<start;i++)h+='<div class="calcell"></div>';
+  for(let d=1;d<=nd;d++){
+    const ds=jhYm+String(d).padStart(2,'0'),has=set.has(ds);
+    h+=`<div class="calcell${has?' has':''}${ds===sel?' sel':''}"${has?` data-d="${ds}"`:''}>${d}</div>`;
+  }
+  el.innerHTML=h+'</div>';
+  el.querySelectorAll('.calnav').forEach(b=>b.addEventListener('click',()=>{
+    let yy=y,mm=m+ +b.dataset.cn;
+    if(mm===0){yy--;mm=12}else if(mm===13){yy++;mm=1}
+    jhYm=`${yy}${String(mm).padStart(2,'0')}`;jhCal(dates,sel);
+  }));
+  el.querySelectorAll('.calcell.has').forEach(b=>b.addEventListener('click',()=>{jhYm=b.dataset.d.slice(0,6);jhGo(b.dataset.d);}));
+}
+
 /* ══════════ 美 신고가 20일·60일·52주 (data/usnewhigh.json — TradingView 스캐너) ══════════ */
 let UH=null,uhSector='all',uhWin='w52';
 async function uhLoad(){
@@ -3347,6 +3458,7 @@ function openTab(tab){
   if(tab==='streak')skLoad();
   if(tab==='krhigh')khLoad();
   if(tab==='ushigh')uhLoad();
+  if(tab==='jphigh')jhLoad();
   if(tab==='raoni')raStart();
   if(tab==='caps')capsInit();
   if(tab==='gap')gapInit();
@@ -3585,7 +3697,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   ircal:{m:'x',note:'30분마다 자동 동기화됩니다 — 탭 안의 ↻ 버튼으로 최신 파일을 다시 읽습니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
-  supply:{m:'a',eta:'~7분'}, invflow:{m:'x',note:'장중 5분마다 잠정치, 장 마감 후 KRX 확정치로 자동 교체됩니다'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, binjip:{m:'x',note:'평일 21:25 확정치로 자동 갱신됩니다'}, creditdd:{m:'x',note:'금투협 공시(1~2영업일 지연)를 평일 아침·저녁 자동 반영합니다'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'},
+  supply:{m:'a',eta:'~7분'}, invflow:{m:'x',note:'장중 5분마다 잠정치, 장 마감 후 KRX 확정치로 자동 교체됩니다'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, binjip:{m:'x',note:'평일 21:25 확정치로 자동 갱신됩니다'}, creditdd:{m:'x',note:'금투협 공시(1~2영업일 지연)를 평일 아침·저녁 자동 반영합니다'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'}, jphigh:{m:'a',eta:'~1분'},
   rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'}, kospitop:{m:'a',eta:'~1분'}, kosdaqtop:{m:'a',eta:'~1분'}, brregime:{m:'a',eta:'~3분'}, etccorp:{m:'a',eta:'~1분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
