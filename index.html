@@ -317,6 +317,10 @@ html.dark .ftab.val tbody tr.est .lb{color:#e0b062}
 .wrapbody>.wrapsec:not(.mwhigh){border-left:3px solid var(--faint)}
 .wrapday .inner .wrapsec:not(.mwhigh){border-left:3px solid var(--faint);padding-left:14px}
 .wrapsec{background:var(--surface);border:none;border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
+.wrapsec.hascp{position:relative}
+.cpbtn{position:absolute;top:12px;right:12px;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--dim);cursor:pointer;z-index:1}
+.cpbtn:hover{color:var(--accent);border-color:var(--accent)}
+.cpbtn.ok{color:var(--accent);border-color:var(--accent)}
 .wrapsec h3{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:8px}
 .wrapsec ul{margin:11px 0 0 18px;padding:0}
 .wrapsec li{font-size:13px;line-height:1.72;margin-bottom:7px;color:var(--text)}
@@ -2481,12 +2485,18 @@ function jfRender(){
 }
 
 /* ══════════ 美 신고가 20일·60일·52주 (data/usnewhigh.json — TradingView 스캐너) ══════════ */
-let UH=null,uhSector='all',uhWin='w52';
+let UH=null,uhSector='all',uhWin='w52',UHTXT=null;
 async function uhLoad(){
   const meta=document.getElementById('uhMeta');
   if(!UH){
     try{UH=await getJson('data/usnewhigh.json');}
     catch(e){meta.textContent='데이터가 아직 없습니다 — 매일 아침 06:40 빌드 후 이용 가능합니다.';return;}
+  }
+  /* 美 신고가 정리·한미 교차분석 텍스트 = 美 시황 데이터(uswrap.json)의 high 필드 (세션일 매칭) */
+  if(!UHTXT){
+    try{const w=await getJson('data/uswrap.json'),sd=UH.session.replace(/-/g,'').slice(2);
+      const d=(w.days||[]).find(x=>x.high&&x.high.date===sd);UHTXT=d?d.high:{};}
+    catch(e){UHTXT={};}
   }
   uhRender();
 }
@@ -2517,7 +2527,9 @@ function uhRender(){
       <td style="text-align:left;color:var(--dim)">${esc(r.sector)}</td>
       <td style="text-align:left;color:var(--dim2);font-size:11.5px">${esc(r.industry)}</td>
       <td>${r.capB.toLocaleString('en-US')}</td>
-      <td class="${r.chg>=0?'up':'down'}">${r.chg>=0?'+':''}${r.chg.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>`;
+      <td class="${r.chg>=0?'up':'down'}">${r.chg>=0?'+':''}${r.chg.toFixed(1)}%</td></tr>`).join('')}</tbody></table></div></div>
+  ${UHTXT&&UHTXT.text?`<div class="wrapdiv">신고가 정리 — 52주 신고가 (매일 아침 美 신고가 봇 작성본)</div><div class="wrapsec mwhigh" style="margin-top:8px"><div class="mwtxt">${mwFmt(UHTXT.text)}</div></div>`:''}
+  ${UHTXT&&UHTXT.cross?`<details class="khb" style="margin-top:10px"><summary>한·미 60일·20일 신고가 교차분석 펼치기</summary><div class="wrapsec" style="margin-top:8px;border-left:3px solid var(--faint)"><div class="mwtxt">${mwFmt(UHTXT.cross)}</div></div></details>`:''}`;
   document.getElementById('uhWinBar').onclick=e=>{const b=e.target.closest('[data-w]');if(b&&!b.disabled){uhWin=b.dataset.w;uhRender();}};
   document.getElementById('uhSecBar').onclick=e=>{const b=e.target.closest('[data-sec]');if(b){uhSector=b.dataset.sec;uhRender();}};
 }
@@ -3743,6 +3755,31 @@ async function homeTick(){
 function homeStart(){homeTick();clearInterval(homeTimer);homeTimer=setInterval(()=>{
   if(document.getElementById('tab-home').classList.contains('on'))homeTick();else clearInterval(homeTimer);},5000);}
 homeStart();
+/* ── 텔레그램 붙여넣기용 복사 버튼: 봇 원문 상자(.wrapsec 안 .mwtxt)마다 자동 부착 (261105) ── */
+function cpLegacy(t){
+  const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;opacity:0';
+  document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,t.length);
+  let ok=false;try{ok=document.execCommand('copy');}finally{ta.remove();}
+  return ok?Promise.resolve():Promise.reject(new Error('copy'));
+}
+function cpText(t){   /* 클립보드 API(https) 우선, 거부되면 execCommand 폴백 */
+  if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(()=>cpLegacy(t));
+  return cpLegacy(t);
+}
+function cpAttach(root){
+  (root||document).querySelectorAll('.wrapsec').forEach(sec=>{
+    if(sec.classList.contains('hascp'))return;
+    const tx=sec.querySelector(':scope > .mwtxt');if(!tx)return;
+    sec.classList.add('hascp');
+    const b=document.createElement('button');b.type='button';b.className='cpbtn';b.textContent='복사';b.title='텔레그램에 붙여넣을 원문 복사';
+    b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();
+      cpText(tx.textContent.replace(/\n{3,}/g,'\n\n').trim()).then(()=>{b.textContent='복사됨 ✓';b.classList.add('ok');
+        setTimeout(()=>{b.textContent='복사';b.classList.remove('ok');},1600);},()=>{b.textContent='복사 실패';});});
+    sec.prepend(b);
+  });
+}
+new MutationObserver(()=>cpAttach()).observe(document.body,{childList:true,subtree:true});
+cpAttach();
 </script>
 
 <!-- ── 수동 갱신 버튼 (전 탭 공통) — Worker 큐 → 맥 rl_refresh_poll.py가 즉시 실행 ── -->
