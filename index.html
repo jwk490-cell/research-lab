@@ -2344,6 +2344,15 @@ function jhRender(){
   const di=dates.indexOf(bd);
   const oku=v=>v==null?'—':v>=10000?(v/10000).toLocaleString('ko-KR',{maximumFractionDigits:1})+'조':v.toLocaleString('ko-KR',{maximumFractionDigits:0})+'억';
   const n=k=>(V[k]&&V[k].items?V[k].items.length:0);
+  /* 하단: 신고가 정리 코멘트(60일·52주, TDnet 공시+일본 언론보도 근거) */
+  let cmt='';
+  if(jhWin!=='d20'){
+    const c=(V.comments||{})[jhWin],lb=jhWin==='w52'?'52주':'60일';
+    cmt+=`<div class="wrapdiv">신고가 정리 — ${lb} 신고가 (적시공시·일본 언론보도 근거)</div>`;
+    if(c&&c.a)cmt+=`<div class="wrapsec mwhigh" style="margin-top:8px"><div class="mwtxt">${mwFmt(c.a)}</div></div>`;
+    if(c&&c.b)cmt+=`<details class="khb" style="margin-top:10px"><summary>종목별 상세 펼치기</summary><div class="wrapsec" style="margin-top:8px;border-left:3px solid var(--faint)"><div class="mwtxt">${mwFmt(c.b)}</div></div></details>`;
+    if(!c)cmt+=`<div class="rcard" style="margin-top:8px;font-size:12.5px;color:var(--dim2)">이 날은 ${lb} 신고가 정리가 없습니다${jhDate?'':' — 명단 게시 후 30분~1시간 뒤 반영됩니다'}.</div>`;
+  }
   body.innerHTML=`
   ${dates.length>1?`<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px">
     <button class="calnav" id="jhPrev"${di<=0?' disabled':''} title="이전 거래일">‹</button>
@@ -2370,9 +2379,10 @@ function jhRender(){
       <td style="text-align:left"><b>${esc(r.name)}</b> <span style="color:var(--dim2);font-size:11px">${esc(r.code)} · ${esc(r.mkt)}</span>
         <div style="color:var(--dim2);font-size:11px;font-weight:400">${esc(r.en||'')}</div></td>
       <td style="text-align:left;color:var(--dim)">${esc(r.s33)}</td>
-      <td>${r.close.toLocaleString('ko-KR')}</td><td>${qtChg(r.flu)}</td>
+      <td>${r.close.toLocaleString('ko-KR')}</td><td>${qtChg(r.flu)}${r.ul?' <span style="font-size:10px;color:var(--up);font-weight:700">상한가</span>':''}</td>
       <td>${oku(r.val_oku)}</td><td>${oku(r.mc_oku)}</td></tr>`).join(''):'<tr><td colspan="7" style="color:var(--dim2);padding:18px">해당 조건의 신고가 종목이 없습니다</td></tr>'}</tbody></table></div>
     <div style="font-size:11px;color:var(--dim2);margin-top:9px">신고가 판정 = ${esc(src.criteria||'')} · ${esc(V.filter||JH.filter||'')} · 업종=도쿄증권거래소 33업종 · 거래대금·시총 단위 억엔</div></div>
+  ${cmt}
   ${dates.length>1?'<div class="wrapdiv">지난 신고가 — 달력의 날짜를 누르면 해당일 명단으로 바뀝니다</div><div class="mwcal" id="jhCal" style="margin-top:8px"></div>':''}`;
   document.getElementById('jhWinBar').onclick=e=>{const b=e.target.closest('[data-w]');if(b){jhWin=b.dataset.w;jhRender();}};
   document.getElementById('jhMktBar').onclick=e=>{const b=e.target.closest('[data-m]');if(b){jhMkt=b.dataset.m;jhRender();}};
