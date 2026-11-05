@@ -2387,7 +2387,7 @@ function jhRender(){
       <td style="text-align:left"><b>${esc(r.name)}</b> <span style="color:var(--dim2);font-size:11px">${esc(r.code)} · ${esc(r.mkt)}</span>
         <div style="color:var(--dim2);font-size:11px;font-weight:400">${esc(r.en||'')}</div></td>
       <td style="text-align:left;color:var(--dim)">${esc(r.s33)}</td>
-      <td>${r.close.toLocaleString('ko-KR')}</td><td>${qtChg(r.flu)}${r.ul?' <span style="font-size:10px;color:var(--up);font-weight:700">상한가</span>':''}</td>
+      <td>${r.close.toLocaleString('ko-KR')}</td><td>${qtChg(r.flu)}${r.ul?` <span style="font-size:10px;color:var(--up);font-weight:700">${r.ul===2?'상한가':'상한가 터치'}</span>`:''}</td>
       <td>${oku(r.val_oku)}</td><td>${oku(r.mc_oku)}</td></tr>`).join(''):'<tr><td colspan="7" style="color:var(--dim2);padding:18px">해당 조건의 신고가 종목이 없습니다</td></tr>'}</tbody></table></div>
     <div style="font-size:11px;color:var(--dim2);margin-top:9px">신고가 판정 = ${esc(src.criteria||'')} · ${esc(V.filter||JH.filter||'')} · 업종=도쿄증권거래소 33업종 · 거래대금·시총 단위 억엔</div></div>
   ${cmt}
