@@ -608,6 +608,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="krhigh">韓 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="ushigh">美 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="jphigh">日 신고가 (20·60일·52주) <small>NEW</small></button>
+    <button class="navitem" data-tab="jpflow">日 수급 (신용·공매도·주체) <small>NEW</small></button>
     <button class="navitem" data-tab="rs">RS 분석</button>
     <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
     <button class="navitem" data-tab="semirebal">반도체 ETF 리밸런싱 <small>9/10</small></button>
@@ -716,6 +717,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="krhigh"><h3>韓 신고가 (20·60일·52주) <span class="tag">평일 21:35</span></h3><p>20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 30억↑ — 키움 전수판정</p></button>
           <button class="card" data-go="ushigh"><h3>美 신고가 (20·60일·52주) <span class="tag">매일 아침</span></h3><p>미국 세션 20일·60일·52주 신고가 종목 — 섹터별 분류, 시총·등락</p></button>
           <button class="card" data-go="jphigh"><h3>日 신고가 (20·60일·52주) <span class="tag">평일 16:45</span></h3><p>도쿄증권거래소 프라임·스탠다드·그로스 20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 3억엔↑ — 일본거래소 공식 일봉 전수판정, 33업종별 분류</p></button>
+          <button class="card" data-go="jpflow"><h3>日 수급 (신용·공매도·주체) <span class="tag">평일 17:50</span></h3><p>일본은 종목별 투자주체 순매수를 공개하지 않아 대체 지표로 구성 — 신용 매수·매도잔고 시총대비 변화, 공매도 잔고 보고(0.5%↑ 보고자·펀드), 시장별 투자주체 주간 순매수</p></button>
           <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
           <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
           <button class="card" data-go="semirebal"><h3>반도체 ETF 리밸런싱 <span class="tag">KRX 반도체 9월 정기변경</span></h3><p>KODEX·TIGER 반도체 cap 20% 시나리오 — 35종목 유출입 금액 ÷ ADTV·종가 단일가 배수, 6월 삼성전기 교본</p></button>
@@ -850,6 +852,12 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <div class="ptitle">日 신고가 <span style="font-size:12px;font-weight:600;color:var(--dim2)">20일·60일(장중 고가)·52주(종가) · 거래대금 3억엔↑ · 도쿄증권거래소 전 종목 판정</span></div>
       <div class="pdesc" id="jhMeta">불러오는 중…</div>
       <div id="jhBody"></div>
+    </section>
+
+    <section class="panel" id="tab-jpflow">
+      <div class="ptitle">日 수급 <span style="font-size:12px;font-weight:600;color:var(--dim2)">신용잔고 · 공매도 잔고 보고 · 투자주체별 주간 순매수 — 도쿄증권거래소</span></div>
+      <div class="pdesc" id="jfMeta">불러오는 중…</div>
+      <div id="jfBody"></div>
     </section>
 
     <section class="panel" id="tab-ushigh">
@@ -2416,6 +2424,62 @@ function jhCal(dates,sel){
   el.querySelectorAll('.calcell.has').forEach(b=>b.addEventListener('click',()=>{jhYm=b.dataset.d.slice(0,6);jhGo(b.dataset.d);}));
 }
 
+/* ══════════ 日 수급 (data/jpflow.json — jp_flow_build.py: 신용잔고·공매도 잔고 보고·투자주체 주간) ══════════ */
+let JF=null,jfTab='margin',jfMg='long_up',jfSh='up',jfSec='프라임';
+async function jfLoad(){
+  if(!JF){
+    try{JF=await getJson('data/jpflow.json');}
+    catch(e){document.getElementById('jfMeta').textContent='데이터가 아직 없습니다 — 평일 17:50 빌드 후 이용 가능합니다.';return;}
+  }
+  jfRender();
+}
+function jfRender(){
+  const meta=document.getElementById('jfMeta'),body=document.getElementById('jfBody');
+  const M=JF.margin,S=JF.short,I=JF.investor;
+  const fd=d=>d?`${d.slice(4,6)}/${d.slice(6,8)}`:'—';
+  const oku=v=>v==null?'—':Math.abs(v)>=10000?(v/10000).toLocaleString('ko-KR',{maximumFractionDigits:2})+'조':v.toLocaleString('ko-KR',{maximumFractionDigits:1})+'억';
+  const sg=(v,d=2,u='%')=>v==null?'—':`<span class="${v>=0?'up':'down'}">${v>=0?'+':''}${v.toFixed(d)}${u}</span>`;
+  const nmCell=r=>`<td style="text-align:left"><b>${esc(r.name)}</b> <span style="color:var(--dim2);font-size:11px">${esc(r.code)} · ${esc(r.mkt)}</span></td><td style="text-align:left;color:var(--dim)">${esc(r.s33)}</td>`;
+  meta.innerHTML=`일본은 종목별 투자주체(외국인·기관) 순매수를 공개하지 않아, 공개되는 종목별 수급 지표로 대신합니다 · 시총 ${JF.mc_min}억엔↑ · ${esc(JF.updated)} 갱신`;
+  let h=`<div class="rngwrap" id="jfTabBar" style="margin-bottom:14px">
+    <button class="rng${jfTab==='margin'?' on':''}" data-t="margin">신용잔고</button>
+    <button class="rng${jfTab==='short'?' on':''}" data-t="short">공매도 잔고 보고</button>
+    <button class="rng${jfTab==='inv'?' on':''}" data-t="inv">투자주체 주간</button></div>`;
+  if(jfTab==='margin'&&M){
+    const L={long_up:'매수잔고 증가',long_dn:'매수잔고 감소',short_up:'매도잔고 증가',long_mc:'매수잔고/시총 상위'};
+    const rows=M[jfMg]||[];
+    h+=`<div class="rngwrap" id="jfMgBar" style="margin-bottom:12px">${Object.entries(L).map(([k,v])=>`<button class="rng${jfMg===k?' on':''}" data-m="${k}">${v}</button>`).join('')}</div>
+    <div class="rcard"><div style="font-size:12px;color:var(--dim2);margin-bottom:8px">신청일 <b>${fd(M.date)}</b> 기준(2영업일 뒤 공표) · 5일 변화 = ${fd(M.d5)} 대비 · 20일 = ${fd(M.d20)} 대비 · ${M.n.toLocaleString()}종목 중 상위 ${rows.length}</div>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th>#</th><th style="text-align:left">종목</th><th style="text-align:left">업종</th><th>시총(엔)</th>
+      <th>매수잔고</th><th>매수/시총</th><th>5일 Δ매수</th><th>Δ매수/시총 5일</th><th>20일</th><th>Δ매도/시총 5일</th><th>신용배율</th></tr></thead><tbody>
+    ${rows.map((r,i)=>`<tr><td style="color:var(--dim2)">${i+1}</td>${nmCell(r)}<td>${oku(r.mc)}</td>
+      <td>${oku(r.long_oku)}</td><td>${r.long_mc.toFixed(2)}%</td><td>${sg(r.dl5_oku,1,'억')}</td><td>${sg(r.dl5,2)}</td><td>${sg(r.dl20,2)}</td><td>${sg(r.ds5,2)}</td>
+      <td>${r.ratio==null?'—':r.ratio>=100?'100+':r.ratio.toFixed(1)}</td></tr>`).join('')}</tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:9px">매수잔고 증가 = 개인 레버리지 매수 유입(일본 신용 매수는 대부분 개인) · 매도잔고 증가 = 신용 공매도 증가 · 신용배율 = 매수잔고÷매도잔고(주수) · 잔고 금액은 시가가 아닌 신용 약정(매수 단가) 기준 · 시총은 최신 거래일 기준</div></div>`;
+  }else if(jfTab==='short'&&S){
+    const L={up:'최근 증가',dn:'최근 감소',top:'보고 합산 상위'};
+    const rows=S[jfSh]||[];
+    h+=`<div class="rngwrap" id="jfShBar" style="margin-bottom:12px">${Object.entries(L).map(([k,v])=>`<button class="rng${jfSh===k?' on':''}" data-s="${k}">${v}</button>`).join('')}</div>
+    <div class="rcard"><div style="font-size:12px;color:var(--dim2);margin-bottom:8px">최근 5공표일(${S.recent.map(fd).join('·')}) 보고분의 잔고비율 변화 · 합산 = 최근 120일 보고자별 최신 잔고 중 0.5%↑ 합계</div>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th>#</th><th style="text-align:left">종목</th><th style="text-align:left">업종</th><th>시총(엔)</th>
+      <th>보고 합산</th><th>보고자 수</th><th>최근 변화</th><th style="text-align:left">최근 보고 (이전→현재)</th></tr></thead><tbody>
+    ${rows.map((r,i)=>`<tr><td style="color:var(--dim2)">${i+1}</td>${nmCell(r)}<td>${oku(r.mc)}</td>
+      <td><b>${r.tot.toFixed(2)}%</b></td><td>${r.n}</td><td>${sg(r.chg,2,'%p')}</td>
+      <td style="text-align:left;font-size:11.5px;line-height:1.5">${r.who.map(w=>`${esc(w.who)} <span style="color:var(--dim2)">${w.p?w.p.toFixed(2)+'→':'신규 '}${w.r.toFixed(2)}% (${fd(w.d)})</span>`).join('<br>')||'—'}</td></tr>`).join('')}</tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:9px">공매도 잔고 보고 = 발행주식의 0.5% 이상 공매도 잔고를 가진 보고자의 의무 보고(이후 0.1%p 이상 변동 시 재보고) · 보고자 이름은 증권사(프라임 브로커), 실제 운용사·펀드명이 있으면 그 이름</div></div>`;
+  }else if(jfTab==='inv'&&I){
+    const secs=Object.keys(I.sections),W=(I.sections[jfSec]||[]).slice().reverse();
+    h+=`<div class="rngwrap" id="jfSecBar" style="margin-bottom:12px">${secs.map(k=>`<button class="rng${jfSec===k?' on':''}" data-c="${k}">${k}</button>`).join('')}</div>
+    <div class="rcard"><div style="font-size:12px;color:var(--dim2);margin-bottom:8px">${jfSec} 시장 투자주체별 주간 순매수(억엔) · 최근 ${W.length}주 · 매주 넷째 영업일(보통 목요일) 공표</div>
+    <div style="overflow-x:auto"><table class="ddt"><thead><tr><th style="text-align:left">주간</th>${I.cols.map(c=>`<th>${esc(c.lb)}</th>`).join('')}</tr></thead><tbody>
+    ${W.map(w=>`<tr><td style="text-align:left;white-space:nowrap">${w.st.slice(5).replace('-','/')}~${w.en.slice(5).replace('-','/')}</td>${I.cols.map(c=>`<td>${sg(w[c.k],0,'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <div style="font-size:11px;color:var(--dim2);margin-top:9px">시장 전체 합계이며 종목별 수치는 공개되지 않습니다 · 신탁은행 = 연기금(GPIF 등) 위탁 매매 · 사업법인 = 자사주 매입이 대부분</div></div>`;
+  }
+  body.innerHTML=h;
+  const on=(id,attr,fn)=>{const el=document.getElementById(id);if(el)el.onclick=e=>{const b=e.target.closest(`[data-${attr}]`);if(b){fn(b.dataset[attr]);jfRender();}};};
+  on('jfTabBar','t',v=>jfTab=v);on('jfMgBar','m',v=>jfMg=v);on('jfShBar','s',v=>jfSh=v);on('jfSecBar','c',v=>jfSec=v);
+}
+
 /* ══════════ 美 신고가 20일·60일·52주 (data/usnewhigh.json — TradingView 스캐너) ══════════ */
 let UH=null,uhSector='all',uhWin='w52';
 async function uhLoad(){
@@ -3469,6 +3533,7 @@ function openTab(tab){
   if(tab==='krhigh')khLoad();
   if(tab==='ushigh')uhLoad();
   if(tab==='jphigh')jhLoad();
+  if(tab==='jpflow')jfLoad();
   if(tab==='raoni')raStart();
   if(tab==='caps')capsInit();
   if(tab==='gap')gapInit();
@@ -3707,7 +3772,7 @@ const RR_TABS={
   weekly:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'},
   ircal:{m:'x',note:'30분마다 자동 동기화됩니다 — 탭 안의 ↻ 버튼으로 최신 파일을 다시 읽습니다'},
   krwrap:{m:'a',eta:'~2분'}, uswrap:{m:'a',eta:'~2분'}, sector:{m:'a',eta:'~3분'}, disparity:{m:'a',eta:'~2분'},
-  supply:{m:'a',eta:'~7분'}, invflow:{m:'x',note:'장중 5분마다 잠정치, 장 마감 후 KRX 확정치로 자동 교체됩니다'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, binjip:{m:'x',note:'평일 21:25 확정치로 자동 갱신됩니다'}, creditdd:{m:'x',note:'금투협 공시(1~2영업일 지연)를 평일 아침·저녁 자동 반영합니다'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'}, jphigh:{m:'a',eta:'~1분'},
+  supply:{m:'a',eta:'~7분'}, invflow:{m:'x',note:'장중 5분마다 잠정치, 장 마감 후 KRX 확정치로 자동 교체됩니다'}, streak:{m:'a',eta:'~3분'}, flowosc:{m:'a',eta:'~3분'}, binjip:{m:'x',note:'평일 21:25 확정치로 자동 갱신됩니다'}, creditdd:{m:'x',note:'금투협 공시(1~2영업일 지연)를 평일 아침·저녁 자동 반영합니다'}, krhigh:{m:'a',eta:'~10분'}, ushigh:{m:'a',eta:'~5분'}, jphigh:{m:'a',eta:'~1분'}, jpflow:{m:'a',eta:'~2분'},
   rs:{m:'a',eta:'~5분'}, semietf:{m:'a',eta:'~2분'}, semirebal:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, semicand:{m:'x',note:'수동 취합 탭입니다 — 자동 갱신 대상이 아닙니다'}, align:{m:'a',eta:'~15분'}, macd:{m:'a',eta:'~2분'}, buyback:{m:'a',eta:'~4분'}, pbrgrowth:{m:'a',eta:'~3분'}, kospitop:{m:'a',eta:'~1분'}, kosdaqtop:{m:'a',eta:'~1분'}, brregime:{m:'a',eta:'~3분'}, etccorp:{m:'a',eta:'~1분'},
   caps:{m:'a',eta:'~2분'}, gap:{m:'a',eta:'~2분'}, dd:{m:'a',eta:'~2분'}, ram:{m:'a',eta:'~2분'},
   etfgap:{m:'l'}, basket7:{m:'a',eta:'~5분'}, semiexport:{m:'a',eta:'~2분'},
