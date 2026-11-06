@@ -613,6 +613,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
     <button class="navitem" data-tab="ushigh">美 신고가 (20·60일·52주)</button>
     <button class="navitem" data-tab="jphigh">日 신고가 (20·60일·52주) <small>NEW</small></button>
     <button class="navitem" data-tab="jpflow">日 수급 (신용·공매도·주체) <small>NEW</small></button>
+    <button class="navitem" data-tab="jpearn">日 결산 스크리닝 <small>NEW</small></button>
     <button class="navitem" data-tab="rs">RS 분석</button>
     <button class="navitem" data-tab="semietf">반도체 ETF 수혜</button>
     <button class="navitem" data-tab="semirebal">반도체 ETF 리밸런싱 <small>9/10</small></button>
@@ -722,6 +723,7 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
           <button class="card" data-go="ushigh"><h3>美 신고가 (20·60일·52주) <span class="tag">매일 아침</span></h3><p>미국 세션 20일·60일·52주 신고가 종목 — 섹터별 분류, 시총·등락</p></button>
           <button class="card" data-go="jphigh"><h3>日 신고가 (20·60일·52주) <span class="tag">평일 16:45</span></h3><p>도쿄증권거래소 프라임·스탠다드·그로스 20일·60일(장중 고가)·52주(종가) 신고가 · 거래대금 3억엔↑ — 일본거래소 공식 일봉 전수판정, 33업종별 분류</p></button>
           <button class="card" data-go="jpflow"><h3>日 수급 (신용·공매도·주체) <span class="tag">평일 17:50</span></h3><p>일본은 종목별 투자주체 순매수를 공개하지 않아 대체 지표로 구성 — 신용 매수·매도잔고 시총대비 변화, 공매도 잔고 보고(0.5%↑ 보고자·펀드), 시장별 투자주체 주간 순매수</p></button>
+          <button class="card" data-go="jpearn"><h3>日 결산 스크리닝 <span class="tag">평일 18:40·07:30</span></h3><p>決算短信 전수 — 회사 가이던스 상향·하향, 진척률 vs 예년 5년 중앙값, 남은 기간 감익을 가정한 '보수적' 가이던스 태그, 발표 반응·이후 수익률, 2019~ 태그 검증 백테스트</p></button>
           <button class="card" data-go="rs"><h3>RS 분석 <span class="tag">韓·美 ETF</span></h3><p>섹터·테마 ETF 상대강도 60/120/250일 + 소티노 — Norm ≥70 주도 시그널</p></button>
           <button class="card" data-go="semietf"><h3>반도체 ETF 수혜 <span class="tag">장중 1시간</span></h3><p>ETF 자금 유입 ÷ 유통시총 — 매수 압력 랭킹</p></button>
           <button class="card" data-go="semirebal"><h3>반도체 ETF 리밸런싱 <span class="tag">KRX 반도체 9월 정기변경</span></h3><p>KODEX·TIGER 반도체 cap 20% 시나리오 — 35종목 유출입 금액 ÷ ADTV·종가 단일가 배수, 6월 삼성전기 교본</p></button>
@@ -856,6 +858,10 @@ footer{flex:none;padding:14px;display:flex;align-items:center;justify-content:ce
       <div class="ptitle">日 신고가 <span style="font-size:12px;font-weight:600;color:var(--dim2)">20일·60일(장중 고가)·52주(종가) · 거래대금 3억엔↑ · 도쿄증권거래소 전 종목 판정</span></div>
       <div class="pdesc" id="jhMeta">불러오는 중…</div>
       <div id="jhBody"></div>
+    </section>
+
+    <section class="panel embed" id="tab-jpearn">
+      <iframe data-src="jpearn.html" title="日 결산 스크리닝"></iframe>
     </section>
 
     <section class="panel" id="tab-jpflow">
@@ -3534,7 +3540,7 @@ function openTab(tab){
   const f=panel.querySelector('iframe[data-src]');
   // 자주 갱신되는 대시보드는 10분 단위 캐시버스터를 붙여 낡은 페이지가 남지 않게 한다
   const FRESH={binjip:1,creditdd:1,invflow:1,oprevision:1,backlog:1,basket7:1,supply:1,flowosc:1,util:1,screening:1,cost:1,vs:1,macd:1,buyback:1,pbrgrowth:1,kospitop:1,kosdaqtop:1,etccorp:1,
-               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1,mktsize:1,ircal:1,krcapmap:1,uscapmap:1};
+               rrgsec:1,rrgstk:1,leaders:1,meridian:1,brregime:1,mktsize:1,ircal:1,krcapmap:1,uscapmap:1,jpearn:1};
   if(f&&!f.src){f.src=f.dataset.src+(FRESH[tab]?(f.dataset.src.includes('?')?'&':'?')+'v='+Math.floor(Date.now()/6e5):'');}
   if(tab==='telegram')loadTG(false);
   if(tab==='home')homeStart();
@@ -3803,6 +3809,7 @@ cpAttach();
 const RL_API=location.hostname==='research-lab.jwk490.workers.dev'?'':'https://research-lab.jwk490.workers.dev';
 const RR_TABS={
   oprevision:{m:'x',note:'OP 리비전 안에서 데이터를 새로 읽습니다'},
+  jpearn:{m:'x',note:'평일 18:40 당일 속보, 07:30 확정치로 자동 갱신됩니다'},
   krcapmap:{m:'x',note:'2000.01~2026.11 월말 스냅샷 탭입니다 — 자동 갱신 대상이 아닙니다'}, uscapmap:{m:'x',note:'2000.01~2026.11 월말 스냅샷 탭입니다 — 자동 갱신 대상이 아닙니다'},
   home:{m:'x'},
   raoni:{m:'a',eta:'~1분'}, term:{m:'a',eta:'~1분'}, quote:{m:'a',eta:'~5분'},
